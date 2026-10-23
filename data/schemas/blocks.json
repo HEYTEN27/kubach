@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "category": "blocks",
+  "description": "Определение блока мира. Числовые ID назначаются при загрузке; в сохранениях хранится палитра строковых ID.",
+  "fields": {
+    "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$" },
+    "name": { "type": "localized", "required": true },
+    "material": {
+      "type": "enum", "required": true,
+      "values": ["stone", "soil", "sand", "gravel", "wood", "leaves", "plant", "liquid", "metal", "glass", "ice", "snow", "special"]
+    },
+    "render": { "type": "enum", "values": ["opaque", "cutout", "translucent", "liquid", "invisible"], "default": "opaque" },
+    "solid": { "type": "bool", "default": true },
+    "hardness": { "type": "float", "min": -1.0, "default": 1.0, "doc": "Время ломания голыми руками, с. -1 — неразрушаемый." },
+    "tool": { "type": "enum", "values": ["none", "pickaxe", "shovel", "axe", "hoe", "shears"], "default": "none" },
+    "tool_tier": { "type": "int", "min": 0, "max": 6, "default": 0, "doc": "0 — руки/любой, 1 — камень, 2 — бронза, 3 — железо, 4 — сталь, 5–6 — поздние." },
+    "light_emission": { "type": "int", "min": 0, "max": 15, "default": 0 },
+    "light_color": { "type": "color", "default": "#ffffff" },
+    "light_filter": { "type": "int", "min": 0, "max": 15, "default": 15, "doc": "Насколько блок гасит проходящий свет. 15 — полностью непрозрачен." },
+    "flammable": { "type": "bool", "default": false },
+    "sounds": { "type": "enum", "values": ["none", "stone", "dirt", "grass", "sand", "gravel", "wood", "leaves", "water", "snow", "metal", "glass"], "default": "stone" },
+    "map_color": { "type": "color", "required": true, "doc": "Цвет на миникарте и в отладочном мешере до появления текстур." },
+    "textures": {
+      "type": "object",
+      "required": true,
+      "doc": "Имена текстурных наборов (этап 3). Либо all, либо top/bottom/side; конкретная сторона перекрывает all.",
+      "fields": {
+        "all": { "type": "string" },
+        "top": { "type": "string" },
+        "bottom": { "type": "string" },
+        "side": { "type": "string" }
+      }
+    },
+    "drops": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "object",
+        "fields": {
+          "id": { "type": "ref", "required": true, "to": ["blocks", "items"] },
+          "min": { "type": "int", "min": 0, "default": 1 },
+          "max": { "type": "int", "min": 0, "default": 1 },
+          "chance": { "type": "float", "min": 0.0, "max": 1.0, "default": 1.0 }
+        }
+      }
+    },
+    "tags": { "type": "array", "of": { "type": "string" }, "default": [] }
+  }
+}

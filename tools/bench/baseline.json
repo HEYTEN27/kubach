@@ -1,0 +1,14 @@
+{
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "date": "2026-10-23T22:06:21",
+  "engine": "4.7.2-stable (official)",
+  "results": {
+    "registry_load": {
+      "iterations": 20,
+      "max_ms": 2.129,
+      "median_ms": 1.558,
+      "min_ms": 1.337
+    }
+  },
+  "threads": 4
+}

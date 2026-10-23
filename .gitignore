@@ -1,0 +1,22 @@
+# Godot
+.godot/
+*.translation
+export_credentials.cfg
+
+# Бинарник Godot и кэш шаблонов (скачиваются scripts/common.sh)
+tools/godot/
+
+# Сборки, отчёты тестов и бенчмарков
+build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# ОС и редакторы
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

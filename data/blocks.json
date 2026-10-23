@@ -1,0 +1,129 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "id": "bedrock",
+      "name": { "ru": "Материнская порода", "en": "Bedrock" },
+      "material": "stone",
+      "hardness": -1.0,
+      "sounds": "stone",
+      "map_color": "#2b2b2e",
+      "textures": { "all": "bedrock" },
+      "tags": ["unbreakable"]
+    },
+    {
+      "id": "granite",
+      "name": { "ru": "Гранит", "en": "Granite" },
+      "material": "stone",
+      "hardness": 6.0,
+      "tool": "pickaxe",
+      "tool_tier": 1,
+      "sounds": "stone",
+      "map_color": "#8f7a70",
+      "textures": { "all": "granite" },
+      "drops": [{ "id": "granite" }],
+      "tags": ["stone", "igneous"]
+    },
+    {
+      "id": "limestone",
+      "name": { "ru": "Известняк", "en": "Limestone" },
+      "material": "stone",
+      "hardness": 4.0,
+      "tool": "pickaxe",
+      "tool_tier": 1,
+      "sounds": "stone",
+      "map_color": "#c9c2ad",
+      "textures": { "all": "limestone" },
+      "drops": [{ "id": "limestone" }],
+      "tags": ["stone", "sedimentary"]
+    },
+    {
+      "id": "loam",
+      "name": { "ru": "Суглинок", "en": "Loam" },
+      "material": "soil",
+      "hardness": 0.8,
+      "tool": "shovel",
+      "sounds": "dirt",
+      "map_color": "#7a5a3c",
+      "textures": { "all": "loam" },
+      "drops": [{ "id": "loam" }],
+      "tags": ["soil", "tillable"]
+    },
+    {
+      "id": "turf",
+      "name": { "ru": "Дернина", "en": "Turf" },
+      "material": "soil",
+      "hardness": 0.9,
+      "tool": "shovel",
+      "sounds": "grass",
+      "map_color": "#5f8f3a",
+      "textures": { "top": "turf_top", "bottom": "loam", "side": "turf_side" },
+      "drops": [{ "id": "loam" }],
+      "tags": ["soil", "tillable", "biome_tinted"]
+    },
+    {
+      "id": "sand",
+      "name": { "ru": "Песок", "en": "Sand" },
+      "material": "sand",
+      "hardness": 0.7,
+      "tool": "shovel",
+      "sounds": "sand",
+      "map_color": "#d8c690",
+      "textures": { "all": "sand" },
+      "drops": [{ "id": "sand" }],
+      "tags": ["falling"]
+    },
+    {
+      "id": "gravel",
+      "name": { "ru": "Гравий", "en": "Gravel" },
+      "material": "gravel",
+      "hardness": 0.9,
+      "tool": "shovel",
+      "sounds": "gravel",
+      "map_color": "#80786f",
+      "textures": { "all": "gravel" },
+      "drops": [{ "id": "gravel" }],
+      "tags": ["falling"]
+    },
+    {
+      "id": "spruce_log",
+      "name": { "ru": "Еловое бревно", "en": "Spruce Log" },
+      "material": "wood",
+      "hardness": 3.0,
+      "tool": "axe",
+      "flammable": true,
+      "sounds": "wood",
+      "map_color": "#4a3526",
+      "textures": { "top": "spruce_log_end", "bottom": "spruce_log_end", "side": "spruce_bark" },
+      "drops": [{ "id": "spruce_log" }],
+      "tags": ["log", "taiga"]
+    },
+    {
+      "id": "spruce_needles",
+      "name": { "ru": "Еловая хвоя", "en": "Spruce Needles" },
+      "material": "leaves",
+      "render": "cutout",
+      "hardness": 0.3,
+      "tool": "shears",
+      "light_filter": 1,
+      "flammable": true,
+      "sounds": "leaves",
+      "map_color": "#2f4a2c",
+      "textures": { "all": "spruce_needles" },
+      "tags": ["leaves", "taiga", "biome_tinted", "decays"]
+    },
+    {
+      "id": "water",
+      "name": { "ru": "Вода", "en": "Water" },
+      "material": "liquid",
+      "render": "liquid",
+      "solid": false,
+      "hardness": -1.0,
+      "light_filter": 2,
+      "sounds": "water",
+      "map_color": "#2f5f86",
+      "textures": { "all": "water" },
+      "tags": ["fluid"]
+    }
+  ]
+}
