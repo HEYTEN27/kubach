@@ -11,6 +11,11 @@ const REGRESSION_PCT := 25.0
 
 
 func _ready() -> void:
+	# Отложенно: кейсам нужно добавлять узлы в дерево, а в _ready корень ещё занят.
+	_run.call_deferred()
+
+
+func _run() -> void:
 	var args := OS.get_cmdline_user_args()
 	var results := {}
 	var files := Array(DirAccess.get_files_at(CASES_DIR)).filter(func(f: String) -> bool: return f.ends_with(".gd"))

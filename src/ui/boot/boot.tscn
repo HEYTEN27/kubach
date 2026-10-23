@@ -49,11 +49,10 @@ theme_override_colors/font_color = Color(0.6, 0.66, 0.6, 1)
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
-[node name="Stage" type="Label" parent="Center"]
+[node name="Menu" type="VBoxContainer" parent="Center"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Этап 0 — каркас проекта. Мир появится на этапе 1."
-horizontal_alignment = 1
+theme_override_constants/separation = 24
 
 [node name="Status" type="Label" parent="Center"]
 unique_name_in_owner = true

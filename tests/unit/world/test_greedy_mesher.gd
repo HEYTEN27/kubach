@@ -104,3 +104,21 @@ func test_winding_is_clockwise_from_outside() -> void:
 		var normal := n[idx[t]]
 		assert_gt((p0 - center).dot(normal), 0.0, "нормаль наружу")
 		assert_lt((p1 - p0).cross(p2 - p0).dot(normal), 0.0, "обход по часовой (лицевая сторона Godot)")
+
+
+func test_mixed_opaque_section_enclosed_has_no_faces() -> void:
+	var limestone := Registry.block_num(&"limestone")
+	var s := ChunkSection.filled(stone)
+	for i in 2048:
+		s.set_block(i, limestone)
+	var full := [stone, PackedInt32Array()]
+	var r := mesher.mesh_section(GreedyMesher.snapshot(s), [full, full, full, full, full, full])
+	assert_eq(r["quads"], 0, "граница гранит/известняк внутри камня не видна")
+
+
+func test_enclosed_but_with_air_pocket_has_faces() -> void:
+	var s := ChunkSection.filled(stone)
+	s.set_block(WorldConst.local_index(8, 8, 8), 0)
+	var full := [stone, PackedInt32Array()]
+	var r := mesher.mesh_section(GreedyMesher.snapshot(s), [full, full, full, full, full, full])
+	assert_eq(r["quads"], 6, "полость в камне видна изнутри")

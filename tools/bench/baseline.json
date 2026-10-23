@@ -1,13 +1,31 @@
 {
   "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
-  "date": "2026-10-23T22:06:21",
+  "date": "2026-10-23T23:15:49",
   "engine": "4.7.2-stable (official)",
   "results": {
+    "mesh_surface_section": {
+      "iterations": 30,
+      "max_ms": 8.678,
+      "median_ms": 5.773,
+      "min_ms": 3.524
+    },
     "registry_load": {
       "iterations": 20,
-      "max_ms": 2.129,
-      "median_ms": 1.558,
-      "min_ms": 1.337
+      "max_ms": 4.068,
+      "median_ms": 3.435,
+      "min_ms": 2.338
+    },
+    "terrain_column": {
+      "iterations": 40,
+      "max_ms": 4.47,
+      "median_ms": 3.588,
+      "min_ms": 2.867
+    },
+    "world_load_view12": {
+      "iterations": 2,
+      "max_ms": 8585.668,
+      "median_ms": 8585.668,
+      "min_ms": 8390.425
     }
   },
   "threads": 4

@@ -100,7 +100,10 @@ func execute(action: GameAction) -> bool:
 		GameAction.Type.BREAK_BLOCK:
 			if current == 0 or not registry.block_by_num(current).is_breakable():
 				return false
-			return set_block(p.x, p.y, p.z, 0)
+			if not set_block(p.x, p.y, p.z, 0):
+				return false
+			_emit_bus(&"block_broken", p, current)
+			return true
 		GameAction.Type.PLACE_BLOCK:
 			var def := registry.block_by_num(action.block)
 			if def == null or action.block == 0:
@@ -112,8 +115,18 @@ func execute(action: GameAction) -> bool:
 				for b in bodies:
 					if b.intersects_block(p.x, p.y, p.z):
 						return false
-			return set_block(p.x, p.y, p.z, action.block)
+			if not set_block(p.x, p.y, p.z, action.block):
+				return false
+			_emit_bus(&"block_placed", p, action.block)
+			return true
 	return false
+
+
+## Сигнал в EventBus (через узел, а не идентификатор: World используется и в tools/ без автозагрузок).
+func _emit_bus(sig: StringName, p: Vector3i, block: int) -> void:
+	var bus := get_node_or_null(^"/root/EventBus")
+	if bus:
+		bus.emit_signal(sig, p, block, to_scene(p.x + 0.5, p.y + 0.5, p.z + 0.5))
 
 
 ## Сценовые координаты точки мира.

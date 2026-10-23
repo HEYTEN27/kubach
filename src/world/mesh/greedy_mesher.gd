@@ -49,6 +49,8 @@ func mesh_section(center: Array, neighbors: Array) -> Dictionary:
 		return result
 
 	var pad := _build_padded(cu, cb, neighbors)
+	if _is_enclosed(pad):
+		return result
 	# Однородная непрозрачная/жидкая секция: внутренние грани скрыты, смотрим только края.
 	var boundary_only := cb.is_empty() and _render[cu] != BlockDef.RENDER_CUTOUT
 
@@ -97,6 +99,25 @@ func mesh_section(center: Array, neighbors: Array) -> Dictionary:
 	result["transparent"] = transparent.to_arrays()
 	result["quads"] = opaque.quads + transparent.quads
 	return result
+
+
+## Все блоки секции и прилегающие слои соседей непрозрачны — видимых граней нет.
+## Проверка в ~5 раз дешевле полного прохода и отсекает почти весь подземный камень.
+func _is_enclosed(pad: PackedInt32Array) -> bool:
+	for y in range(0, P):
+		for z in range(0, P):
+			var row := z * P + y * PY
+			var edge_yz := y == 0 or y == P - 1 or z == 0 or z == P - 1
+			for x in range(0, P):
+				var edge := edge_yz or x == 0 or x == P - 1
+				if edge:
+					# Рёбра и углы массива не используются мешером; грани соседей — используются.
+					var outside := int(y == 0 or y == P - 1) + int(z == 0 or z == P - 1) + int(x == 0 or x == P - 1)
+					if outside != 1:
+						continue
+				if _render[pad[row + x]] != BlockDef.RENDER_OPAQUE:
+					return false
+	return true
 
 
 func _build_padded(cu: int, cb: PackedInt32Array, neighbors: Array) -> PackedInt32Array:

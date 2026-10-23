@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "category": "input_bindings",
+  "description": "Управление по умолчанию. Клавиши — физические (по положению), чтобы WASD работал и на русской раскладке. Переназначение — этап 4.",
+  "fields": {
+    "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$", "doc": "Имя действия в InputMap." },
+    "name": { "type": "localized", "required": true },
+    "category": { "type": "enum", "values": ["movement", "camera", "interaction", "interface", "debug"], "required": true },
+    "keys": { "type": "array", "of": { "type": "string" }, "default": [], "doc": "Имена клавиш как в OS.find_keycode_from_string: W, Space, Ctrl, Shift, F5, 1…" },
+    "mouse_buttons": { "type": "array", "of": { "type": "int", "min": 1, "max": 9 }, "default": [], "doc": "1 — левая, 2 — правая, 3 — средняя, 4/5 — колесо вверх/вниз." }
+  }
+}

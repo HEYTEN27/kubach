@@ -36,11 +36,13 @@ var _mesh_tasks := {}      # Vector3i(cx, si, cz) -> id задачи
 var _mesh_queue: Array[Vector3i] = []
 var _mesh_queued := {}     # Vector3i -> true
 var _mesh_again := {}      # секция изменилась, пока её мешили
+var _priority := {}        # Vector3i -> true: правки игрока, применяются вне очереди
 var _nodes := {}           # Vector3i -> MeshInstance3D
 var _section_quads := {}   # Vector3i -> int
 var _results_mutex := Mutex.new()
 var _gen_results: Array = []   # [cpos, ChunkColumn]
-var _mesh_results: Array = []  # [key, Dictionary]
+var _mesh_results: Array = []  # [key, Dictionary] — от потоков, под мьютексом
+var _to_apply: Array = []      # готовые результаты, ждущие бюджета главного потока
 
 
 func _ready() -> void:
@@ -84,6 +86,8 @@ func wait_all() -> void:
 	_gen_results.clear()
 	_mesh_results.clear()
 	_results_mutex.unlock()
+	_to_apply.clear()
+	_priority.clear()
 
 
 ## Загружены ли колонны в радиусе и готовы ли их меши (для экрана загрузки).
@@ -99,6 +103,10 @@ func is_area_ready(center: Vector2i, radius: int) -> bool:
 	for key: Vector3i in _mesh_tasks:
 		if absi(key.x - center.x) <= radius and absi(key.z - center.y) <= radius:
 			return false
+	for item: Array in _to_apply:
+		var key: Vector3i = item[0]
+		if absi(key.x - center.x) <= radius and absi(key.z - center.y) <= radius:
+			return false
 	return true
 
 
@@ -107,7 +115,10 @@ func pending_generation() -> int:
 
 
 func pending_meshing() -> int:
-	return _mesh_tasks.size() + _mesh_queue.size()
+	_results_mutex.lock()
+	var waiting := _mesh_results.size()
+	_results_mutex.unlock()
+	return _mesh_tasks.size() + _mesh_queue.size() + _to_apply.size() + waiting
 
 
 func mesh_node_count() -> int:
@@ -230,6 +241,8 @@ func _unload_far() -> void:
 func _queue_mesh(key: Vector3i, priority: bool) -> void:
 	if not _meshed.has(Vector2i(key.x, key.z)):
 		return
+	if priority:
+		_priority[key] = true
 	if _mesh_queued.has(key):
 		if priority:
 			_mesh_queue.erase(key)
@@ -254,6 +267,10 @@ func _dispatch_mesh() -> void:
 			continue
 		var si := key.y
 		var col: ChunkColumn = columns[cpos]
+		if _is_buried(cpos, si):
+			# Однородный непрозрачный камень со всех сторон: граней нет, поток не нужен.
+			_apply_mesh(key, { "opaque": [], "transparent": [], "quads": 0 })
+			continue
 		var center := GreedyMesher.snapshot(col.sections[si])
 		var nbs := [
 			_snap(cpos + Vector2i.LEFT, si), _snap(cpos + Vector2i.RIGHT, si),
@@ -261,6 +278,26 @@ func _dispatch_mesh() -> void:
 			_snap(cpos + Vector2i.UP, si), _snap(cpos + Vector2i.DOWN, si),
 		]
 		_mesh_tasks[key] = WorkerThreadPool.add_task(_mesh_task.bind(key, center, nbs), false, "mesh %s" % key)
+
+
+## Секция и все шесть соседей — однородные непрозрачные блоки (низ мира считается непрозрачным).
+func _is_buried(cpos: Vector2i, si: int) -> bool:
+	if not _uniform_opaque(cpos, si):
+		return false
+	for c: Vector2i in [cpos + Vector2i.LEFT, cpos + Vector2i.RIGHT, cpos + Vector2i.UP, cpos + Vector2i.DOWN]:
+		if not _uniform_opaque(c, si):
+			return false
+	return (si == 0 or _uniform_opaque(cpos, si - 1)) and _uniform_opaque(cpos, si + 1)
+
+
+func _uniform_opaque(cpos: Vector2i, si: int) -> bool:
+	if si < 0 or si >= WorldConst.SECTIONS_PER_COLUMN:
+		return false
+	var col: ChunkColumn = columns.get(cpos)
+	if col == null:
+		return false
+	var s := col.sections[si]
+	return s != null and s.is_uniform() and world.registry.block_opaque[s.uniform] == 1
 
 
 func _snap(cpos: Vector2i, si: int) -> Variant:
@@ -280,25 +317,34 @@ func _mesh_task(key: Vector3i, center: Array, nbs: Array) -> void:
 
 
 func _apply_mesh_results() -> void:
-	var t0 := Time.get_ticks_usec()
-	var applied := 0
-	while Time.get_ticks_usec() - t0 < apply_budget_usec:
-		_results_mutex.lock()
-		var item: Variant = _mesh_results.pop_front() if not _mesh_results.is_empty() else null
-		_results_mutex.unlock()
-		if item == null:
-			break
+	# Сначала забираем все готовые результаты: поток освобождается сразу, а не когда
+	# меш дойдёт до главного потока.
+	_results_mutex.lock()
+	var fresh := _mesh_results
+	_mesh_results = []
+	_results_mutex.unlock()
+	for item: Array in fresh:
 		var key: Vector3i = item[0]
-		var res: Dictionary = item[1]
 		WorkerThreadPool.wait_for_task_completion(_mesh_tasks[key])
 		_mesh_tasks.erase(key)
 		if _mesh_again.has(key):
+			# Секцию поменяли, пока её мешили: этот результат устарел, считаем заново.
 			_mesh_again.erase(key)
 			_queue_mesh(key, true)
-		if not columns.has(Vector2i(key.x, key.z)):
-			continue
-		_apply_mesh(key, res)
-		applied += 1
+		if _priority.has(key) and not _mesh_queued.has(key):
+			_priority.erase(key)
+			_to_apply.push_front(item)
+		else:
+			_to_apply.append(item)
+
+	var t0 := Time.get_ticks_usec()
+	var applied := 0
+	while not _to_apply.is_empty() and Time.get_ticks_usec() - t0 < apply_budget_usec:
+		var item: Array = _to_apply.pop_front()
+		var key: Vector3i = item[0]
+		if columns.has(Vector2i(key.x, key.z)):
+			_apply_mesh(key, item[1])
+			applied += 1
 	if applied > 0:
 		stat_last_apply_ms = (Time.get_ticks_usec() - t0) / 1000.0
 		stat_meshes_applied += applied

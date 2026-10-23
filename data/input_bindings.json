@@ -1,0 +1,280 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "id": "move_forward",
+      "name": {
+        "ru": "Вперёд",
+        "en": "Forward"
+      },
+      "category": "movement",
+      "keys": [
+        "W"
+      ]
+    },
+    {
+      "id": "move_back",
+      "name": {
+        "ru": "Назад",
+        "en": "Back"
+      },
+      "category": "movement",
+      "keys": [
+        "S"
+      ]
+    },
+    {
+      "id": "move_left",
+      "name": {
+        "ru": "Влево",
+        "en": "Left"
+      },
+      "category": "movement",
+      "keys": [
+        "A"
+      ]
+    },
+    {
+      "id": "move_right",
+      "name": {
+        "ru": "Вправо",
+        "en": "Right"
+      },
+      "category": "movement",
+      "keys": [
+        "D"
+      ]
+    },
+    {
+      "id": "jump",
+      "name": {
+        "ru": "Прыжок / вверх в полёте",
+        "en": "Jump / fly up"
+      },
+      "category": "movement",
+      "keys": [
+        "Space"
+      ]
+    },
+    {
+      "id": "sprint",
+      "name": {
+        "ru": "Бег",
+        "en": "Sprint"
+      },
+      "category": "movement",
+      "keys": [
+        "Ctrl"
+      ]
+    },
+    {
+      "id": "crouch",
+      "name": {
+        "ru": "Присесть / вниз в полёте",
+        "en": "Crouch / fly down"
+      },
+      "category": "movement",
+      "keys": [
+        "Shift"
+      ]
+    },
+    {
+      "id": "toggle_camera",
+      "name": {
+        "ru": "Сменить вид камеры",
+        "en": "Toggle camera"
+      },
+      "category": "camera",
+      "keys": [
+        "F5"
+      ]
+    },
+    {
+      "id": "attack",
+      "name": {
+        "ru": "Ломать / ударить",
+        "en": "Break / attack"
+      },
+      "category": "interaction",
+      "mouse_buttons": [
+        1
+      ]
+    },
+    {
+      "id": "use",
+      "name": {
+        "ru": "Поставить / использовать",
+        "en": "Place / use"
+      },
+      "category": "interaction",
+      "mouse_buttons": [
+        2
+      ]
+    },
+    {
+      "id": "pick_block",
+      "name": {
+        "ru": "Взять блок под прицелом",
+        "en": "Pick block"
+      },
+      "category": "interaction",
+      "mouse_buttons": [
+        3
+      ]
+    },
+    {
+      "id": "hotbar_1",
+      "name": {
+        "ru": "Ячейка 1",
+        "en": "Slot 1"
+      },
+      "category": "interface",
+      "keys": [
+        "1"
+      ]
+    },
+    {
+      "id": "hotbar_2",
+      "name": {
+        "ru": "Ячейка 2",
+        "en": "Slot 2"
+      },
+      "category": "interface",
+      "keys": [
+        "2"
+      ]
+    },
+    {
+      "id": "hotbar_3",
+      "name": {
+        "ru": "Ячейка 3",
+        "en": "Slot 3"
+      },
+      "category": "interface",
+      "keys": [
+        "3"
+      ]
+    },
+    {
+      "id": "hotbar_4",
+      "name": {
+        "ru": "Ячейка 4",
+        "en": "Slot 4"
+      },
+      "category": "interface",
+      "keys": [
+        "4"
+      ]
+    },
+    {
+      "id": "hotbar_5",
+      "name": {
+        "ru": "Ячейка 5",
+        "en": "Slot 5"
+      },
+      "category": "interface",
+      "keys": [
+        "5"
+      ]
+    },
+    {
+      "id": "hotbar_6",
+      "name": {
+        "ru": "Ячейка 6",
+        "en": "Slot 6"
+      },
+      "category": "interface",
+      "keys": [
+        "6"
+      ]
+    },
+    {
+      "id": "hotbar_7",
+      "name": {
+        "ru": "Ячейка 7",
+        "en": "Slot 7"
+      },
+      "category": "interface",
+      "keys": [
+        "7"
+      ]
+    },
+    {
+      "id": "hotbar_8",
+      "name": {
+        "ru": "Ячейка 8",
+        "en": "Slot 8"
+      },
+      "category": "interface",
+      "keys": [
+        "8"
+      ]
+    },
+    {
+      "id": "hotbar_9",
+      "name": {
+        "ru": "Ячейка 9",
+        "en": "Slot 9"
+      },
+      "category": "interface",
+      "keys": [
+        "9"
+      ]
+    },
+    {
+      "id": "hotbar_next",
+      "name": {
+        "ru": "Следующая ячейка",
+        "en": "Next slot"
+      },
+      "category": "interface",
+      "mouse_buttons": [
+        5
+      ]
+    },
+    {
+      "id": "hotbar_prev",
+      "name": {
+        "ru": "Предыдущая ячейка",
+        "en": "Previous slot"
+      },
+      "category": "interface",
+      "mouse_buttons": [
+        4
+      ]
+    },
+    {
+      "id": "pause",
+      "name": {
+        "ru": "Пауза",
+        "en": "Pause"
+      },
+      "category": "interface",
+      "keys": [
+        "Escape"
+      ]
+    },
+    {
+      "id": "debug_overlay",
+      "name": {
+        "ru": "Отладочный экран (F3)",
+        "en": "Debug overlay"
+      },
+      "category": "debug",
+      "keys": [
+        "F3"
+      ]
+    },
+    {
+      "id": "toggle_game_mode",
+      "name": {
+        "ru": "Выживание / творческий (отладка)",
+        "en": "Survival / creative (debug)"
+      },
+      "category": "debug",
+      "keys": [
+        "F4"
+      ]
+    }
+  ]
+}

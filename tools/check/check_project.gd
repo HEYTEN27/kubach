@@ -13,7 +13,7 @@ func _ready() -> void:
 	for root in SCRIPT_ROOTS:
 		_collect(root, scripts)
 	for path in scripts:
-		var s := ResourceLoader.load(path, "GDScript", ResourceLoader.CACHE_MODE_IGNORE) as GDScript
+		var s := ResourceLoader.load(path, "GDScript") as GDScript
 		if s == null or not s.can_instantiate():
 			print("✗ не компилируется: ", path)
 			failed += 1

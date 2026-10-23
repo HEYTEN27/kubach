@@ -3,29 +3,29 @@
 Сюда кладутся только **настоящие записи** (CC0, лицензионные библиотеки или собственные). Синтез в коде и ИИ-генерация запрещены (разделы 0, 17, 18 ТЗ).
 Каждый добавленный файл вносится в `CREDITS.md`: источник, автор, лицензия, ссылка.
 
-Формат: `.ogg` (Vorbis, 44.1/48 кГц). Короткие одиночные звуки допустимы в `.wav`. Имена — `snake_case`, вариации — `_01`, `_02`, …
+**Как подключается.** AudioManager (`src/audio/audio_manager.gd`, автозагрузка `Audio`) ищет вариации
+`res://assets/audio/sfx/<ключ>_01.ogg` … `_08.ogg` (или `.wav`) и проигрывает случайную со сдвигом
+высоты ±5%. Если нет ни одной вариации, звук пропускается, а в лог один раз пишется предупреждение.
+Значит, достаточно положить файлы с правильными именами, код менять не нужно.
+
+Формат: `.ogg` (Vorbis, 44,1 или 48 кГц), моно для 3D-звуков. Короткие одиночные звуки допустимы в `.wav`.
 Статус: ⬜ нет файла · ✅ есть.
 
-## Шаги (assets/audio/sfx/footsteps/) — 4–6 вариаций каждого
-Группы совпадают с полем `sounds` в `data/blocks.json`.
+## Подключено на этапе 1
 
-| Файл | Статус | Используется |
+Группы `<группа>` берутся из поля `sounds` в `data/blocks.json`:
+`stone` (гранит, известняк, материнская порода), `dirt` (суглинок), `grass` (дернина), `sand`, `gravel`,
+`wood` (еловое бревно), `leaves` (хвоя), `water` (вода).
+
+| Ключ (файлы `<ключ>_01..06.ogg`) | Когда звучит | Статус |
 |---|---|---|
-| `footsteps/stone_01..06.ogg` | ⬜ | granite, limestone, bedrock |
-| `footsteps/dirt_01..06.ogg` | ⬜ | loam |
-| `footsteps/grass_01..06.ogg` | ⬜ | turf |
-| `footsteps/sand_01..06.ogg` | ⬜ | sand |
-| `footsteps/gravel_01..06.ogg` | ⬜ | gravel |
-| `footsteps/wood_01..06.ogg` | ⬜ | spruce_log |
-| `footsteps/leaves_01..06.ogg` | ⬜ | spruce_needles |
-| `footsteps/water_01..06.ogg` | ⬜ | water (мелководье) |
+| `footsteps/stone_`, `footsteps/dirt_`, `footsteps/grass_`, `footsteps/sand_`, `footsteps/gravel_`, `footsteps/wood_`, `footsteps/leaves_`, `footsteps/water_` | шаг игрока каждые 2 блока (4–6 вариаций) | ⬜ |
+| `blocks/stone_break_`, `blocks/dirt_break_`, `blocks/grass_break_`, `blocks/sand_break_`, `blocks/gravel_break_`, `blocks/wood_break_`, `blocks/leaves_break_`, `blocks/water_break_` | блок сломан (3–4 вариации) | ⬜ |
+| `blocks/stone_place_`, `blocks/dirt_place_`, `blocks/grass_place_`, `blocks/sand_place_`, `blocks/gravel_place_`, `blocks/wood_place_`, `blocks/leaves_place_`, `blocks/water_place_` | блок поставлен (3 вариации) | ⬜ |
 
-## Ломание и установка блоков (assets/audio/sfx/blocks/)
+## Будет подключено позже
 
-| Файл | Статус |
+| Ключ | Этап |
 |---|---|
-| `blocks/{stone,dirt,grass,sand,gravel,wood,leaves}_dig_01..04.ogg` | ⬜ |
-| `blocks/{stone,dirt,grass,sand,gravel,wood,leaves}_break_01..03.ogg` | ⬜ |
-| `blocks/{stone,dirt,grass,sand,gravel,wood,leaves}_place_01..03.ogg` | ⬜ |
-
-Остальные группы (окружение, погода, станции, животные, музыка) добавляются в этот список на этапах, где появляются их хуки.
+| `blocks/<группа>_dig_01..04` — удары во время ломания | 6 (инструменты) |
+| Окружение по биомам, погода, музыка | 2, 7, 16 |
