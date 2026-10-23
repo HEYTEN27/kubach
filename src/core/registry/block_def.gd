@@ -5,6 +5,14 @@ extends RefCounted
 ## Числовой `num` годится только внутри одного запуска (чанки в памяти, мешер).
 ## На диск всегда пишется строковый `id` через палитру.
 
+## Коды `render` для плоского массива Registry.block_render (мешер).
+const RENDER_INVISIBLE := 0
+const RENDER_OPAQUE := 1
+const RENDER_CUTOUT := 2
+const RENDER_TRANSLUCENT := 3
+const RENDER_LIQUID := 4
+const RENDER_CODES := { &"invisible": 0, &"opaque": 1, &"cutout": 2, &"translucent": 3, &"liquid": 4 }
+
 var num: int
 var id: StringName
 var name: Dictionary
@@ -56,6 +64,10 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.drops = e["drops"]
 	b.tags = PackedStringArray(e["tags"])
 	return b
+
+
+func render_code() -> int:
+	return RENDER_CODES[render]
 
 
 func is_breakable() -> bool:

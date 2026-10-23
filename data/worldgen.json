@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "id": "default",
+      "name": { "ru": "Обычный", "en": "Default" },
+      "sea_level": 64,
+      "bedrock_block": "bedrock",
+      "bedrock_top": -250,
+      "noise": {
+        "continental": { "frequency": 0.0007, "octaves": 5 },
+        "erosion": { "frequency": 0.0014, "octaves": 3 },
+        "ridges": { "frequency": 0.0035, "octaves": 4 },
+        "detail": { "frequency": 0.015, "octaves": 3 },
+        "strata": { "frequency": 0.006, "octaves": 2 }
+      },
+      "height_spline": [
+        { "x": -1.0, "y": 18 },
+        { "x": -0.5, "y": 34 },
+        { "x": -0.28, "y": 52 },
+        { "x": -0.16, "y": 62 },
+        { "x": -0.08, "y": 66 },
+        { "x": 0.1, "y": 72 },
+        { "x": 0.35, "y": 84 },
+        { "x": 0.6, "y": 100 },
+        { "x": 1.0, "y": 130 }
+      ],
+      "mountain_height": 110,
+      "mountain_erosion": { "start": 0.05, "full": 0.45 },
+      "detail_amplitude": 4.0,
+      "cliff_slope": 3,
+      "layers": {
+        "surface": "turf",
+        "soil": "loam",
+        "soil_depth": 4,
+        "beach": "sand",
+        "beach_band": 2,
+        "shallow_floor": "sand",
+        "deep_floor": "gravel",
+        "deep_floor_depth": 6,
+        "cliff": "granite",
+        "upper_stone": "limestone",
+        "upper_stone_depth": 24,
+        "upper_stone_noise": 12.0,
+        "lower_stone": "granite",
+        "fluid": "water"
+      }
+    }
+  ]
+}

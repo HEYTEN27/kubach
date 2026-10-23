@@ -4,7 +4,7 @@
 source "$(dirname "$0")/common.sh"
 ensure_godot
 cd "$ROOT"
-ensure_imported
+FORCE_IMPORT=1 ensure_imported
 log "GUT-тесты ..."
 mkdir -p build
 godot_run --headless --path "$ROOT" -s res://addons/gut/gut_cmdln.gd -gconfig=res://.gutconfig.json "$@"

@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "category": "worldgen",
+  "description": "Пресеты генерации рельефа (этап 1). Биомы, пещеры и руды добавятся на этапе 2 отдельными категориями.",
+  "fields": {
+    "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$" },
+    "name": { "type": "localized", "required": true },
+    "sea_level": { "type": "int", "min": -200, "max": 300, "default": 64 },
+    "bedrock_block": { "type": "ref", "to": ["blocks"], "required": true },
+    "bedrock_top": { "type": "int", "min": -256, "max": -200, "default": -250, "doc": "Материнская порода — от −256 до этой Y включительно." },
+    "noise": {
+      "type": "object", "required": true,
+      "fields": {
+        "continental": { "type": "object", "required": true, "fields": {
+          "frequency": { "type": "float", "min": 0.00001, "max": 1.0, "required": true },
+          "octaves": { "type": "int", "min": 1, "max": 8, "default": 4 } } },
+        "erosion": { "type": "object", "required": true, "fields": {
+          "frequency": { "type": "float", "min": 0.00001, "max": 1.0, "required": true },
+          "octaves": { "type": "int", "min": 1, "max": 8, "default": 3 } } },
+        "ridges": { "type": "object", "required": true, "fields": {
+          "frequency": { "type": "float", "min": 0.00001, "max": 1.0, "required": true },
+          "octaves": { "type": "int", "min": 1, "max": 8, "default": 4 } } },
+        "detail": { "type": "object", "required": true, "fields": {
+          "frequency": { "type": "float", "min": 0.00001, "max": 1.0, "required": true },
+          "octaves": { "type": "int", "min": 1, "max": 8, "default": 3 } } },
+        "strata": { "type": "object", "required": true, "fields": {
+          "frequency": { "type": "float", "min": 0.00001, "max": 1.0, "required": true },
+          "octaves": { "type": "int", "min": 1, "max": 8, "default": 2 } } }
+      }
+    },
+    "height_spline": {
+      "type": "array", "required": true,
+      "doc": "Высота поверхности от континентальности (x ∈ [−1, 1]). Точки по возрастанию x.",
+      "of": { "type": "object", "fields": {
+        "x": { "type": "float", "min": -1.0, "max": 1.0, "required": true },
+        "y": { "type": "float", "min": -250.0, "max": 319.0, "required": true } } }
+    },
+    "mountain_height": { "type": "float", "min": 0.0, "max": 250.0, "default": 120.0, "doc": "Максимальная добавка хребтов при низкой эрозии." },
+    "mountain_erosion": {
+      "type": "object", "required": true,
+      "doc": "Эрозия от start до full плавно включает горы (0 → 1).",
+      "fields": {
+        "start": { "type": "float", "min": -1.0, "max": 1.0, "required": true },
+        "full": { "type": "float", "min": -1.0, "max": 1.0, "required": true } }
+    },
+    "detail_amplitude": { "type": "float", "min": 0.0, "max": 64.0, "default": 4.0 },
+    "cliff_slope": { "type": "int", "min": 1, "max": 64, "default": 3, "doc": "Перепад с соседом, начиная с которого склон — голая скала." },
+    "layers": {
+      "type": "object", "required": true,
+      "fields": {
+        "surface": { "type": "ref", "to": ["blocks"], "required": true },
+        "soil": { "type": "ref", "to": ["blocks"], "required": true },
+        "soil_depth": { "type": "int", "min": 0, "max": 16, "default": 4 },
+        "beach": { "type": "ref", "to": ["blocks"], "required": true },
+        "beach_band": { "type": "int", "min": 0, "max": 16, "default": 2, "doc": "Пляж — от sea_level − 1 до sea_level + beach_band." },
+        "shallow_floor": { "type": "ref", "to": ["blocks"], "required": true },
+        "deep_floor": { "type": "ref", "to": ["blocks"], "required": true },
+        "deep_floor_depth": { "type": "int", "min": 1, "max": 64, "default": 6, "doc": "Глубже sea_level − это — дно из deep_floor." },
+        "cliff": { "type": "ref", "to": ["blocks"], "required": true },
+        "upper_stone": { "type": "ref", "to": ["blocks"], "required": true },
+        "upper_stone_depth": { "type": "int", "min": 0, "max": 128, "default": 24 },
+        "upper_stone_noise": { "type": "float", "min": 0.0, "max": 64.0, "default": 12.0 },
+        "lower_stone": { "type": "ref", "to": ["blocks"], "required": true },
+        "fluid": { "type": "ref", "to": ["blocks"], "required": true }
+      }
+    }
+  }
+}

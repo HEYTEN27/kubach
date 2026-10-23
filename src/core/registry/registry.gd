@@ -31,6 +31,9 @@ var block_solid := PackedByteArray()
 var block_opaque := PackedByteArray()
 var block_light_emission := PackedByteArray()
 var block_light_filter := PackedByteArray()
+## Код BlockDef.RENDER_*.
+var block_render := PackedByteArray()
+var block_color := PackedColorArray()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -135,6 +138,8 @@ func _clear() -> void:
 	block_opaque = PackedByteArray()
 	block_light_emission = PackedByteArray()
 	block_light_filter = PackedByteArray()
+	block_render = PackedByteArray()
+	block_color = PackedColorArray()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -293,6 +298,8 @@ func _add_block(b: BlockDef) -> void:
 	block_opaque.append(1 if b.opaque else 0)
 	block_light_emission.append(b.light_emission)
 	block_light_filter.append(b.light_filter)
+	block_render.append(b.render_code())
+	block_color.append(b.map_color)
 
 
 func _parse_json(path: String) -> Variant:

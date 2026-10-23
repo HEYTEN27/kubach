@@ -7,7 +7,7 @@
 source "$(dirname "$0")/common.sh"
 ensure_godot
 cd "$ROOT"
-ensure_imported
+FORCE_IMPORT=1 ensure_imported
 out="${1:-$ROOT/build/screenshot.png}"
 shift || true
 command -v xvfb-run >/dev/null || die "нужен xvfb-run (apt install xvfb)"

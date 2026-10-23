@@ -7,6 +7,6 @@
 source "$(dirname "$0")/common.sh"
 ensure_godot
 cd "$ROOT"
-ensure_imported
+FORCE_IMPORT=1 ensure_imported
 mkdir -p build/bench
 godot_run --headless --path "$ROOT" res://tools/bench/cpu_bench.tscn -- "$@"
