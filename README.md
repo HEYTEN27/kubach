@@ -12,6 +12,8 @@
 1. Установи [Git LFS](https://git-lfs.com) и клонируй репозиторий (`git lfs install`, затем `git clone ...`).
 2. Скачай [Godot 4.7.2-stable](https://godotengine.org/download/archive/4.7.2-stable/) (обычная версия, не .NET).
 3. Открой `project.godot` в Godot и нажми F5. Или собери `Kubach.exe` через «Проект → Экспорт → Windows Desktop».
+   Рядом с `Kubach.exe` должна лежать `libkubach_native.windows.template_release.x86_64.dll` — это быстрый C++-мешер
+   (готовая библиотека уже в `native/bin/`; без неё игра работает, но мир подгружается в разы медленнее).
 
 Бенчмарк: `Kubach.exe -- --bench=60 --view=12`. Отчёт появится в `%APPDATA%\Kubach\bench\`.
 
@@ -38,5 +40,6 @@
 scripts/check.sh            # проверка скриптов и данных
 scripts/test.sh             # GUT-тесты
 scripts/bench.sh            # CPU-бенчмарки
-scripts/export_windows.sh   # build/windows/Kubach.exe
+scripts/build_native.sh     # пересобрать C++-расширение (Linux и Windows)
+scripts/export_windows.sh   # build/windows/Kubach.exe + dll
 ```
