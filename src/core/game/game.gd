@@ -12,14 +12,16 @@ var save: WorldSave
 var hud: Hud
 var debug_overlay: DebugOverlay
 var pause_menu: PauseMenu
-var sun: DirectionalLight3D
-var environment: Environment
+var rig: GraphicsRig
+var grass: GrassField
+var far_terrain: FarTerrain
 
 var _loading := true
 var _autosave_left := AUTOSAVE_SEC
 var _play_time := 0.0
 var _bench_logger: FrameTimeLogger
 var _screenshot_wait := 0.0
+var _climate_left := 0.0
 
 
 func _ready() -> void:
@@ -39,23 +41,38 @@ func _ready() -> void:
 		world_name = save.meta["name"]
 		seed_value = save.world_seed()
 
-	_setup_environment()
+	if GameLaunch.preset != "":
+		Settings.set_preset(StringName(GameLaunch.preset))
+	rig = GraphicsRig.new()
+	add_child(rig)
 	world = World.new()
 	world.name = "World"
 	world.setup(Registry, save, seed_value, save.gen_settings() if save else WorldGenSettings.new())
-	world.chunks.view_distance = GameLaunch.view_distance
+	world.chunks.view_distance = GameLaunch.view_distance if GameLaunch.view_distance > 0 else int(Settings.graphics.get("view_distance", 12))
 	if save != null:
 		world.game_mode = StringName(save.meta.get("game_mode", "survival"))
 		_play_time = float(save.meta.get("play_time_sec", 0.0))
 	else:
 		world.game_mode = &"creative"
 	add_child(world)
-	_update_fog()
+	grass = GrassField.new()
+	grass.name = "Grass"
+	world.add_child(grass)
+	grass.setup(world.chunks, world.chunks.materials.textures)
+	far_terrain = FarTerrain.new()
+	far_terrain.name = "FarTerrain"
+	world.add_child(far_terrain)
+	far_terrain.setup(world, world.chunks.season)
+	_apply_graphics(Settings.graphics)
+	Settings.graphics_changed.connect(_apply_graphics)
 	if GameLaunch.screenshot_path != "":
 		# Программный OpenGL рисует кадр секундами: пока мир грузится, не рисуем его и
 		# применяем готовые меши без бюджета.
-		world.chunks.visible = false
+		world.visible = false
 		world.chunks.apply_budget_usec = 200000
+		world.chunks.max_mesh_in_flight = 256
+		world.chunks.max_light_in_flight = 32
+		world.chunks.max_gen_in_flight = 16
 
 	player = Player.new()
 	player.name = "Player"
@@ -102,7 +119,21 @@ func _process(delta: float) -> void:
 	var b := player.body
 	var center := Vector2i(floori(b.x) >> 4, floori(b.z) >> 4)
 	world.chunks.update(center)
+	grass.update(center)
+	far_terrain.update(b.x, b.z)
+	_climate_left -= delta
+	if _climate_left <= 0.0:
+		_climate_left = 0.5
+		var bi := world.biome_at(floori(b.x), floori(b.z))
+		if bi >= 0:
+			rig.set_biome_climate(world.generator.biomes.temperature_c[bi])
 	if _loading:
+		if GameLaunch.screenshot_path != "":
+			_screenshot_wait += delta
+			if _screenshot_wait > 5.0:
+				_screenshot_wait = 0.0
+				print("Загрузка: колонн %d, генерация %d, свет %d, мешинг %d" % [world.chunks.columns.size(),
+					world.chunks.pending_generation(), world.chunks.pending_lighting(), world.chunks.pending_meshing()])
 		if world.chunks.is_area_ready(center, SPAWN_READY_RADIUS):
 			_on_loaded()
 		else:
@@ -163,6 +194,7 @@ func save_game() -> void:
 
 func _on_loaded() -> void:
 	_loading = false
+	_screenshot_wait = 0.0
 	hud.set_loading(false)
 	# В режиме скриншота игрок заморожен — кадр повторяем.
 	player.active = GameLaunch.screenshot_path == ""
@@ -171,7 +203,7 @@ func _on_loaded() -> void:
 	if GameLaunch.bench_seconds > 0.0:
 		player.motor.flying = true
 		_bench_logger = FrameTimeLogger.new()
-		_bench_logger.label = "flight_view%d" % world.chunks.view_distance
+		_bench_logger.label = "flight_%s_view%d" % [Settings.preset, world.chunks.view_distance]
 		_bench_logger.duration_sec = GameLaunch.bench_seconds
 		_bench_logger.finished.connect(func(_s: Dictionary) -> void: _quit())
 		add_child(_bench_logger)
@@ -192,6 +224,8 @@ func _resume() -> void:
 func _quit() -> void:
 	save_game()
 	world.chunks.wait_all()
+	grass.wait_all()
+	far_terrain.wait_all()
 	get_tree().quit()
 
 
@@ -251,40 +285,18 @@ func _find_land() -> Array:
 	return [0.5, float(gen.surface_height(0, 0) + 1), 0.5]
 
 
-func _setup_environment() -> void:
-	environment = Environment.new()
-	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color(0.32, 0.5, 0.75)
-	sky_mat.sky_horizon_color = Color(0.7, 0.78, 0.85)
-	sky_mat.ground_horizon_color = Color(0.7, 0.78, 0.85)
-	sky_mat.ground_bottom_color = Color(0.25, 0.27, 0.3)
-	var sky := Sky.new()
-	sky.sky_material = sky_mat
-	environment.background_mode = Environment.BG_SKY
-	environment.sky = sky
-	environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	environment.ambient_light_energy = 0.9
-	environment.tonemap_mode = Environment.TONE_MAPPER_AGX
-	environment.fog_enabled = true
-	environment.fog_mode = Environment.FOG_MODE_DEPTH
-	environment.fog_light_color = Color(0.7, 0.78, 0.85)
-	environment.fog_sun_scatter = 0.1
-	var we := WorldEnvironment.new()
-	we.environment = environment
-	add_child(we)
-	sun = DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-52, -35, 0)
-	sun.light_energy = 1.1
-	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 140.0
-	add_child(sun)
-
-
-func _update_fog() -> void:
-	var far := float(world.chunks.view_distance * 16)
-	environment.fog_depth_begin = far * 0.7
-	environment.fog_depth_end = far * 1.05
-	environment.fog_depth_curve = 1.0
+## Настройки графики: окружение, дальность, трава, LOD.
+func _apply_graphics(g: Dictionary) -> void:
+	rig.apply(g, get_viewport())
+	var ch := world.chunks
+	if GameLaunch.view_distance <= 0:
+		ch.set_view_distance(int(g.get("view_distance", 12)))
+	var view := ch.view_distance
+	var lod: int = g.get("lod_distance", 32)
+	far_terrain.configure(lod > view, lod, (view - 1.5) * 16.0)
+	grass.configure(g.get("dense_grass", true), int(g.get("grass_distance", 3)), int(g.get("grass_density", 4)))
+	ch.materials.set_param(&"parallax", g.get("parallax", false))
+	rig.set_view_range(view * 16.0, (lod if lod > view else view) * 16.0)
 
 
 ## Бенчмарк: прямой полёт на восток с постоянной скоростью.
@@ -302,13 +314,14 @@ func _bench_fly() -> void:
 func _screenshot_step(delta: float) -> void:
 	_screenshot_wait += delta
 	var ch := world.chunks
-	var settled := ch.pending_generation() == 0 and ch.pending_meshing() == 0
+	var settled := ch.pending_generation() == 0 and ch.pending_meshing() == 0 and grass.pending() == 0 \
+			and far_terrain.pending() == 0
 	if not settled and _screenshot_wait < 60.0:
 		return
 	if _screenshot_wait < 0.0:
 		return
 	_screenshot_wait = -1000.0
-	ch.visible = true
+	world.visible = true
 	for i in 8:
 		await RenderingServer.frame_post_draw
 	var err := get_viewport().get_texture().get_image().save_png(GameLaunch.screenshot_path)

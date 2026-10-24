@@ -8,7 +8,8 @@ extends RefCounted
 ##   --creative           творческий режим для нового мира;
 ##   --world-type=<id>    тип мира (normal, large_biomes, archipelago, mountainous, flat);
 ##   --biome-size= --caves= --ores= --sea= --season=spring|summer|autumn|winter — настройки нового мира;
-##   --view=<колонн>      дальность прорисовки (4–32);
+##   --view=<колонн>      дальность прорисовки (4–32; по умолчанию — из пресета графики);
+##   --preset=low|medium|high|ultra — пресет графики на этот запуск (не сохраняется);
 ##   --teleport=x,y,z     переместить игрока (мировые координаты; y = ~ — на поверхность);
 ##   --look=рыск,тангаж   направление взгляда в градусах;
 ##   --camera=first|back|front
@@ -20,7 +21,9 @@ static var folder := ""
 static var new_world_name := ""
 static var seed_text := ""
 static var game_mode: StringName = &"survival"
-static var view_distance := 12
+## 0 — дальность из настроек графики.
+static var view_distance := 0
+static var preset := ""
 static var teleport := PackedFloat64Array()
 static var look := Vector2(INF, INF)
 static var camera := ""
@@ -43,6 +46,8 @@ static func reset() -> void:
 	screenshot_path = ""
 	bench_seconds = 0.0
 	settings = {}
+	view_distance = 0
+	preset = ""
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -84,6 +89,8 @@ static func parse_args(args: PackedStringArray) -> bool:
 				var l := value.split_floats(",")
 				if l.size() == 2:
 					look = Vector2(l[0], l[1])
+			"--preset":
+				preset = value
 			"--camera":
 				camera = value
 			"--f3":

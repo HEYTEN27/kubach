@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "category": "graphics_presets",
+  "description": "Пресеты графики (раздел 19 ТЗ): Низкие, Средние, Высокие, Ультра. Значения — стартовые для «Своих» настроек.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "order": {
+      "type": "int",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    "view_distance": {
+      "type": "int",
+      "min": 4,
+      "max": 32,
+      "default": 12,
+      "doc": "Дальность прорисовки, колонн."
+    },
+    "lod_distance": {
+      "type": "int",
+      "min": 0,
+      "max": 96,
+      "default": 32,
+      "doc": "Дальность упрощённого рельефа (LOD), колонн; 0 — выкл."
+    },
+    "shadow_distance": {
+      "type": "float",
+      "min": 0.0,
+      "max": 500.0,
+      "default": 120.0,
+      "doc": "Дальность теней солнца, м; 0 — без теней."
+    },
+    "shadow_size": {
+      "type": "int",
+      "min": 512,
+      "max": 8192,
+      "default": 4096,
+      "doc": "Размер карты теней солнца."
+    },
+    "shadow_splits": {
+      "type": "int",
+      "min": 1,
+      "max": 4,
+      "default": 4,
+      "doc": "Каскады теней: 1, 2 или 4."
+    },
+    "ssao": {
+      "type": "int",
+      "min": 0,
+      "max": 4,
+      "default": 2,
+      "doc": "0 — выкл., 1–4 — качество SSAO."
+    },
+    "ssil": {
+      "type": "bool",
+      "default": false
+    },
+    "volumetric_fog": {
+      "type": "bool",
+      "default": true
+    },
+    "glow": {
+      "type": "bool",
+      "default": true
+    },
+    "auto_exposure": {
+      "type": "bool",
+      "default": true
+    },
+    "dense_grass": {
+      "type": "bool",
+      "default": true,
+      "doc": "Плотная трава (MultiMesh) вокруг игрока."
+    },
+    "grass_distance": {
+      "type": "int",
+      "min": 1,
+      "max": 8,
+      "default": 3,
+      "doc": "Радиус плотной травы, колонн."
+    },
+    "grass_density": {
+      "type": "int",
+      "min": 1,
+      "max": 12,
+      "default": 4,
+      "doc": "Пучков травы на блок дёрна."
+    },
+    "parallax": {
+      "type": "bool",
+      "default": false,
+      "doc": "Параллакс по карте высот блоков."
+    },
+    "anti_aliasing": {
+      "type": "enum",
+      "values": [
+        "none",
+        "fxaa",
+        "taa",
+        "msaa2",
+        "msaa4"
+      ],
+      "default": "fxaa"
+    },
+    "anisotropy": {
+      "type": "int",
+      "min": 0,
+      "max": 16,
+      "default": 8,
+      "doc": "Анизотропная фильтрация: 0, 2, 4, 8, 16."
+    },
+    "render_scale": {
+      "type": "float",
+      "min": 0.5,
+      "max": 1.0,
+      "default": 1.0,
+      "doc": "Доля разрешения рендера 3D."
+    },
+    "fsr": {
+      "type": "bool",
+      "default": false,
+      "doc": "FSR 1 при render_scale < 1."
+    }
+  }
+}

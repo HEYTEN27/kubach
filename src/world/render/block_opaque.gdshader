@@ -10,7 +10,12 @@ void vertex() {
 }
 
 void fragment() {
-	KbSample s = kb_sample(kb_face_uv(UV, v_face_axis), v_world, v_n, v_info);
+	vec2 tuv = kb_face_uv(UV, v_face_axis);
+	if (parallax && v_info.x >= 0.0) {
+		vec3 view_ts = vec3(dot(VIEW, TANGENT), dot(VIEW, BINORMAL), dot(VIEW, NORMAL));
+		tuv = kb_parallax(tuv, v_world, v_n, v_info, view_ts);
+	}
+	KbSample s = kb_sample(tuv, v_world, v_n, v_info);
 	vec3 base = s.albedo.rgb;
 	if (v_info.x < 0.0) {
 		base = v_block.rgb;

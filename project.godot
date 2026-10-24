@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Кубач"
 config/description="Блочная песочница-выживание: тайга, сезоны, ремесло, электричество."
-config/version="0.2.0"
+config/version="0.3.0"
 run/main_scene="res://src/ui/boot/boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Kubach"
@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 EventBus="*res://src/core/event_bus.gd"
 Registry="*res://src/core/registry/registry.gd"
 Controls="*res://src/core/controls.gd"
+Settings="*res://src/core/settings/settings.gd"
 Audio="*res://src/audio/audio_manager.gd"
 
 [display]

@@ -22,7 +22,9 @@
 | `scripts/check.sh` | JSON в `data/` валиден; все `.gd` из `src/ tests/ tools/` компилируются (с автозагрузками); `Registry` грузит `data/` без ошибок. |
 | `scripts/test.sh [аргументы GUT]` | Все GUT-тесты из `tests/`. Пример: `scripts/test.sh -gselect=test_registry`. JUnit-отчёт: `build/test_results.xml`. |
 | `scripts/bench.sh [--strict \| --update-baseline]` | CPU-бенчмарки из `tools/bench/cases/`, сравнение с `tools/bench/baseline.json`. |
-| `scripts/screenshot.sh [out.png] [аргументы игры]` | Запуск под Xvfb с программным OpenGL и сохранение кадра (визуальный смоук-тест). Пример: `scripts/screenshot.sh build/s.png --world=Тест --view=6 --camera=back --teleport=40.5,~,40.5 --f3`. |
+| `scripts/screenshot.sh [out.png] [аргументы игры]` | Запуск под Xvfb с программным OpenGL и сохранение кадра (визуальный смоук-тест, 1280×720, ~4 мин). Пример: `scripts/screenshot.sh build/s.png --world=Тест --view=6 --camera=back --teleport=40.5,~,40.5 --f3`. `SHOT_SIZE=1920x1080 SHOT_TIMEOUT=400` — крупнее. |
+| `scripts/gallery.sh [out.png] [--blocks=a,b]` | Ряд блоков с шейдерами этапа 3 — быстрый (секунды) визуальный тест текстур и материалов. |
+| `python3 tools/texgen/texgen.py [--only a,b] [--size 128]` | Перерисовать текстуры блоков (атласы `assets/textures/generated/`, превью `docs/textures_preview.png`). Нужно после добавления блока с новым набором текстур. ~90 с. |
 | `scripts/build_native.sh [linux\|windows]` | Сборка C++-расширения `native/kubach_native` (godot-cpp 4.5 скачивается в `tools/`; Windows — кросс-компиляцией через zig). Готовые `.so`/`.dll` лежат в `native/bin/` и коммитятся. |
 | `scripts/export_windows.sh` | `build/windows/Kubach.exe` (pck встроен) + `libkubach_native…dll` рядом. Сам скачивает шаблоны экспорта. |
 | `scripts/export_linux.sh` | `build/linux/Kubach.x86_64`. |
@@ -33,8 +35,11 @@
 - **`check.sh`/`test.sh` всегда переимпортируют проект**: без этого новые `class_name` не попадают в кэш и скрипты «не видят» классы.
 - **Packed-массивы в GDScript 4 передаются по ссылке.** Снимок для потока = ссылка на массив, который потом не меняется: `ChunkSection.set_block()` сначала заменяет массив копией. Массовые записи собирают новый массив и присваивают целиком.
 - **`Vector3` — float32.** Мировые координаты (до ±15 000) и сдвиги храни в `float` (double) по отдельности или в `PackedFloat64Array`; `Vector3` — только для сценовых координат после `World.to_scene()`.
-- Аргументы запуска игры (`--world`, `--seed`, `--creative`, `--view`, `--teleport=x,~,z`, `--look`, `--camera`, `--f3`, `--screenshot`, `--bench`) описаны в `src/core/game/game_launch.gd`.
-- **Нативное расширение.** Горячие циклы, упёршиеся в GDScript, переносятся в `native/kubach_native/src/` (сейчас — greedy-мешер, `NativeMesher`). GDScript-версия остаётся эталоном и запасным путём: `GreedyMesher.create_best()` берёт C++, если библиотека загрузилась. **Любая правка `greedy_mesher.gd` повторяется в `native_mesher.cpp`**, иначе упадёт `test_native_mesher.gd` (сравнивает результаты побайтно). `KUBACH_NO_NATIVE=1` — принудительно GDScript.
+- Аргументы запуска игры (`--world`, `--seed`, `--creative`, `--view`, `--preset`, `--teleport=x,~,z`, `--look`, `--camera`, `--f3`, `--screenshot`, `--bench`) описаны в `src/core/game/game_launch.gd`.
+- **Нативное расширение.** Горячие циклы, упёршиеся в GDScript, переносятся в `native/kubach_native/src/` (сейчас — greedy-мешер `NativeMesher` и свет `NativeLight`). GDScript-версии остаются эталоном: `GreedyMesher.create_best()` / `VoxelLight.create_best()` берут C++, если библиотека загрузилась. **Любая правка `greedy_mesher.gd` повторяется в `native_mesher.cpp`, правка `voxel_light.gd` — в `native_light.cpp`**, иначе упадут `test_native_mesher.gd` / `test_voxel_light.gd` (сравнивают побайтно). `KUBACH_NO_NATIVE=1` — принудительно GDScript (свет тогда выключается: на GDScript он идёт секунды на колонну). После правки C++ — `scripts/build_native.sh` (обе платформы) и закоммитить `native/bin/`.
+- **Текстуры блоков** — атласы `CompressedTexture2DArray`: это `TextureLayered`, **не** `Texture2DArray` (`load(...) as Texture2DArray` даёт null). Новый набор текстур в `data/blocks*.json` → `texgen.py`, иначе `test_block_textures` упадёт.
+- **Шейдеры:** варинги можно писать только в `vertex()`/`fragment()` — общая часть вершинного шейдера блоков сделана макросом `KB_VERTEX_COMMON`, функции получают значения параметрами. `instance uniform` не годится для секций: буфер ограничен 4096 экземплярами — свет секции идёт обычным uniform в кэше материалов (`BlockMaterials.for_const`). В `check.sh` шейдеры не компилируются (headless без рендера) — проверяй `scripts/gallery.sh`.
+- **Пул потоков:** генерация колонны на GDScript почти не ускоряется от потоков (общие RefCounted), поэтому её задачи ставятся с высоким приоритетом, а мешинг и свет — обычными. Иначе загрузка мира ждёт генерацию в очереди за светом.
 - **Циклические ссылки RefCounted не освобождаются.** Вспомогательные объекты генератора (`CaveCarver`, `OrePlacer`, `VegetationPlacer`) не хранят генератор — получают нужные значения в `_init` или генератор параметром. Статические переменные держат только простые данные (`GameLaunch.settings` — словарь).
 - Имена помощников в тестах не должны совпадать с членами `GutTest` (например, `_compare` занят).
 - Каталоги с `.gdignore` (godot-cpp, сборки) не импортируются Godot и не проверяются `check.sh`.
@@ -47,8 +52,9 @@ project.godot          Forward+, имя «Кубач», user://Kubach
 data/                  JSON-контент; data/schemas/ — схемы категорий (см. data/README.md)
 assets/                textures (source, generated), models, audio (sfx, music, ambience), fonts, shaders
 src/
-  core/                EventBus, Registry (registry/), perf/ (FrameTimeLogger); позже GameState, SaveSystem, Settings, Time&Season
-  world/               WorldGen, Chunk, ChunkManager, Mesher, LOD, Lighting; structures/ — деревни, поселения, лагеря
+  core/                EventBus, Registry (registry/), Settings (settings/), perf/ (FrameTimeLogger); позже GameState, Time&Season
+  world/               ChunkManager, gen/, mesh/, light/ (VoxelLight), render/ (текстуры, шейдеры, трава), lod/ (FarTerrain), save/; structures/ — позже
+  graphics/            GraphicsRig: небо, солнце, тени, туман, SSAO/SSIL, glow, AgX, автоэкспозиция, пресеты
   fluids/ weather/ player/ inventory/ crafting/ cooking/ farming/ fishing/
   power/ npc/ ai/ combat/ progression/ audio/
   ui/                  меню, HUD, окна (сейчас — ui/boot/ стартовый экран этапа 0)
@@ -59,9 +65,11 @@ scripts/               check, test, bench, screenshot, export_*
 docs/                  скриншоты и заметки
 ```
 
-Автозагрузки: `EventBus` (`src/core/event_bus.gd`), `Registry` (`src/core/registry/registry.gd`, класс `ContentRegistry`), `Controls` (действия InputMap из `data/input_bindings.json`, физические клавиши), `Audio` (`src/audio/audio_manager.gd`).
+Автозагрузки: `EventBus` (`src/core/event_bus.gd`), `Registry` (`src/core/registry/registry.gd`, класс `ContentRegistry`), `Controls` (действия InputMap из `data/input_bindings.json`, физические клавиши), `Settings` (`src/core/settings/settings.gd`, класс `GameSettings`: пресет графики из `data/graphics_presets.json` + личные правки, `user://settings.cfg`), `Audio` (`src/audio/audio_manager.gd`).
 
 Мир (этап 1): `World` (доступ к блокам, слой действий `execute(GameAction)`, floating origin) → `ChunkManager` (потоки генерации и мешинга, бюджет применения мешей, отсечение пещер) → `ChunkColumn` (36 × `ChunkSection` 16³ + карта биомов и сетка цветов). `RegionStore` + `WorldSave` — сохранения. Игрок: `Player` (узел) → `PlayerMotor` (движение) → `VoxelBody` (AABB-коллизии в double).
+
+Графика (этап 3): `tools/texgen` → атласы albedo/normal/ORM (`Texture2DArray`, 553 слоя 128²) + `blocks_manifest.json`. `BlockTextures` строит таблицу «блок × грань → слой, вариантов, поворот» (текстура `block_info`), `BlockMaterials` — материалы 4 поверхностей мешера (`opaque`, `cutout`, `transparent`, `plants`). Вершина несёт UV в блоках, ID блока в UV2.x, вес ветра в UV2.y, множитель тонирования биомом в COLOR (÷2). Вариант и поворот текстуры — хэш мировой клетки в шейдере (глобальный uniform `world_origin`), поэтому greedy-слияние не страдает. Свет: `VoxelLight`/`NativeLight` по области 3×3 колонны → на секцию `Color` или 3D-текстура 18³ (срезы по Y, в шейдере `p.xzy`). Колонна мешится только после света (нужны все 8 соседей). `GrassField` — MultiMesh-трава, `FarTerrain` — LOD-плитки 64² из чистых функций генератора, `GraphicsRig` — окружение.
 
 Генерация (этап 2, `src/world/gen/`): `TerrainGenerator` — конвейер колонны и чистые функции (`surface_info`, `biome_index_at`, `height_at`); `BiomeSource` — выбор биома по климату; `GeologySampler` — провинции и слои; `CaveCarver`, `OrePlacer`, `VegetationPlacer` + `TreeBuilder`; `ColumnWriter` — запись с отсечением по колонне; `GenRandom` — хэши, не зависящие от порядка; `WorldGenSettings` — настройки с экрана создания; `BiomePreview` — карта для экрана создания. Всё, что пересекает границу колонны (деревья, залежи, валуны), строится целиком из хэша «хозяина», а колонна пишет только свои блоки.
 
@@ -83,7 +91,7 @@ docs/                  скриншоты и заметки
 - `scripts/bench.sh` гоняет кейсы из `tools/bench/cases/*.gd`. Каждый кейс — класс с `name`, `iterations`, `setup()`, `run()`, `teardown()`. Берётся медиана, результат пишется в `build/bench/cpu_bench.json`.
 - Сравнение с `tools/bench/baseline.json`: если медиана выросла больше чем на 25%, выводится предупреждение, а с `--strict` скрипт падает. Эталон снят на облачном CPU (4 потока), поэтому сравнивать можно только облако с облаком.
 - По мере этапов сюда добавляются: генерация колонны чанка, greedy-мешинг секции, распространение света, тик водяной симуляции, расчёт электросети, тик ИИ на N мобов.
-- Бюджеты (для 6-ядерного CPU из раздела 20, в облаке пересчитываю пропорционально): мешинг секции 16³ — < 2 мс в одном потоке (C++: ~0,3 мс); генерация колонны — < 10 мс (сейчас ~27 мс в облаке на GDScript — кандидат в C++ на этапе оптимизации); применение готовых мешей в главном потоке — ≤ 3 мс на кадр. Внутриигровые счётчики (F3, этап 1) показывают очередь чанков, время генерации и мешинга.
+- Бюджеты (для 6-ядерного CPU из раздела 20, в облаке пересчитываю пропорционально): мешинг секции 16³ — < 2 мс в одном потоке (C++: ~0,3 мс); генерация колонны — < 10 мс (сейчас ~27 мс в облаке на GDScript — кандидат в C++ на этапе оптимизации); свет колонны (C++, область 3×3) — ~14 мс в облаке; LOD-плитка 64² с шагом 4 — ~26 мс (GDScript, в потоке); применение готовых мешей и света в главном потоке — ≤ 3 мс на кадр. Внутриигровые счётчики (F3, этап 1) показывают очередь чанков, время генерации и мешинга.
 - Сложность алгоритмов проверяю тестами: число вершин и граней после greedy-мешинга, количество draw calls на чанк (по числу поверхностей меша), размер очередей.
 
 **2. GPU-часть — меряешь ты на ПК, по бенчмарк-логам.**

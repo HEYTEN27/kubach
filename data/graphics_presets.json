@@ -1,0 +1,109 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "low",
+   "name": {
+    "ru": "Низкие",
+    "en": "Low"
+   },
+   "order": 0,
+   "view_distance": 6,
+   "lod_distance": 16,
+   "shadow_distance": 48.0,
+   "shadow_size": 2048,
+   "shadow_splits": 2,
+   "ssao": 0,
+   "ssil": false,
+   "volumetric_fog": false,
+   "glow": false,
+   "auto_exposure": true,
+   "dense_grass": false,
+   "grass_distance": 1,
+   "grass_density": 1,
+   "parallax": false,
+   "anti_aliasing": "none",
+   "anisotropy": 2,
+   "render_scale": 0.77,
+   "fsr": true
+  },
+  {
+   "id": "medium",
+   "name": {
+    "ru": "Средние",
+    "en": "Medium"
+   },
+   "order": 1,
+   "view_distance": 8,
+   "lod_distance": 24,
+   "shadow_distance": 80.0,
+   "shadow_size": 2048,
+   "shadow_splits": 2,
+   "ssao": 1,
+   "ssil": false,
+   "volumetric_fog": false,
+   "glow": true,
+   "auto_exposure": true,
+   "dense_grass": true,
+   "grass_distance": 2,
+   "grass_density": 2,
+   "parallax": false,
+   "anti_aliasing": "fxaa",
+   "anisotropy": 4,
+   "render_scale": 1.0,
+   "fsr": false
+  },
+  {
+   "id": "high",
+   "name": {
+    "ru": "Высокие",
+    "en": "High"
+   },
+   "order": 2,
+   "view_distance": 12,
+   "lod_distance": 32,
+   "shadow_distance": 120.0,
+   "shadow_size": 4096,
+   "shadow_splits": 4,
+   "ssao": 2,
+   "ssil": false,
+   "volumetric_fog": true,
+   "glow": true,
+   "auto_exposure": true,
+   "dense_grass": true,
+   "grass_distance": 3,
+   "grass_density": 4,
+   "parallax": false,
+   "anti_aliasing": "fxaa",
+   "anisotropy": 8,
+   "render_scale": 1.0,
+   "fsr": false
+  },
+  {
+   "id": "ultra",
+   "name": {
+    "ru": "Ультра",
+    "en": "Ultra"
+   },
+   "order": 3,
+   "view_distance": 16,
+   "lod_distance": 48,
+   "shadow_distance": 180.0,
+   "shadow_size": 4096,
+   "shadow_splits": 4,
+   "ssao": 3,
+   "ssil": true,
+   "volumetric_fog": true,
+   "glow": true,
+   "auto_exposure": true,
+   "dense_grass": true,
+   "grass_distance": 4,
+   "grass_density": 6,
+   "parallax": true,
+   "anti_aliasing": "taa",
+   "anisotropy": 16,
+   "render_scale": 1.0,
+   "fsr": false
+  }
+ ]
+}

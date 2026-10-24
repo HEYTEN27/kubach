@@ -19,6 +19,9 @@ uniform float normal_depth = 1.0;
 // Минимальная доля рассеянного света в полной темноте (пещеры почти чёрные без факела).
 uniform float cave_ambient = 0.015;
 uniform float block_light_energy = 1.6;
+// Параллакс по карте высот (ORM.b) — пресет «Ультра».
+uniform bool parallax = false;
+uniform float parallax_scale = 0.045;
 // Свет секции, если он однородный (без 3D-текстуры): x — небо, yzw — блочный свет.
 uniform vec4 light_const = vec4(1.0, 0.0, 0.0, 0.0);
 
@@ -108,6 +111,31 @@ KbSample kb_sample(vec2 tuv, vec3 world, vec3 n, vec4 info) {
 	vec2 n_face = transpose(r) * n_uv;                         // в осях tuv
 	s.normal_ts = normalize(vec3(n_face.x, -n_face.y, nm.z * 2.0 - 1.0));
 	return s;
+}
+
+// Слой и поворот для клетки (как в kb_sample): x — слой, y — номер поворота.
+vec2 kb_layer_rot(vec3 world, vec3 n, vec4 info) {
+	ivec3 cell = ivec3(floor(world - n * 0.01)) + world_origin;
+	uint h = kb_hash(cell);
+	float count = max(info.y, 1.0);
+	return vec2(info.x + float(h % uint(count)), info.z > 0.5 ? float((h >> 8u) & 3u) : 0.0);
+}
+
+// Простой параллакс: сдвиг текстурных координат по высоте и направлению взгляда в осях грани.
+vec2 kb_parallax(vec2 tuv, vec3 world, vec3 n, vec4 info, vec3 view_ts) {
+	vec2 lr = kb_layer_rot(world, n, info);
+	int rot = int(lr.y);
+	mat2 r = mat2(1.0);
+	if (rot == 1) {
+		r = mat2(vec2(0.0, 1.0), vec2(-1.0, 0.0));
+	} else if (rot == 2) {
+		r = mat2(vec2(-1.0, 0.0), vec2(0.0, -1.0));
+	} else if (rot == 3) {
+		r = mat2(vec2(0.0, -1.0), vec2(1.0, 0.0));
+	}
+	vec2 suv = r * (fract(tuv) - 0.5) + 0.5;
+	float h = textureLod(orm_tex, vec3(suv, lr.x), 0.0).b;
+	return tuv + vec2(view_ts.x, -view_ts.y) / max(view_ts.z, 0.25) * (h - 0.5) * parallax_scale;
 }
 
 // Свет клетки перед гранью: x — небо 0…1, yzw — блочный свет.

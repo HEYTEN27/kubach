@@ -20,7 +20,10 @@ var underground_radius := 4
 const DEEP_MARGIN := 8
 var apply_budget_usec := 3000
 var max_gen_in_flight := maxi(2, OS.get_processor_count() - 1)
-var max_mesh_in_flight := maxi(2, OS.get_processor_count() - 1)
+## Мешинг секции в C++ — доли миллисекунды: задач в полёте должно хватать, чтобы потоки не
+## простаивали между кадрами (результаты забираются раз в кадр).
+var max_mesh_in_flight := maxi(4, OS.get_processor_count() * 4)
+var max_light_in_flight := maxi(2, OS.get_processor_count())
 
 var world: World
 ## Vector2i -> ChunkColumn.
@@ -82,6 +85,14 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	wait_all()
+
+
+## Сменить дальность прорисовки на ходу (настройки графики).
+func set_view_distance(v: int) -> void:
+	if v == view_distance:
+		return
+	view_distance = v
+	_center = Vector2i(1 << 30, 0)
 
 
 ## Вызывается каждый кадр с колонной, где стоит игрок.
@@ -184,6 +195,11 @@ func mesher_name() -> String:
 	return "C++" if GreedyMesher.is_native(_mesher) else "GDScript"
 
 
+## Колонна освещена и её секции поставлены в мешинг.
+func is_column_meshed(c: Vector2i) -> bool:
+	return _meshed.has(c)
+
+
 func mesh_node_count() -> int:
 	return _nodes.size()
 
@@ -251,7 +267,9 @@ func _dispatch_gen() -> void:
 		_wanted_cursor += 1
 		if columns.has(c) or _gen_tasks.has(c):
 			continue
-		_gen_tasks[c] = WorkerThreadPool.add_task(_gen_task.bind(c), false, "gen %s" % c)
+		# Генерация — критический путь загрузки (GDScript почти не ускоряется от потоков):
+		# высокий приоритет, чтобы не ждать за светом и мешингом.
+		_gen_tasks[c] = WorkerThreadPool.add_task(_gen_task.bind(c), true, "gen %s" % c)
 
 
 func _gen_task(cpos: Vector2i) -> void:
@@ -330,7 +348,7 @@ func _queue_light(c: Vector2i, priority: bool) -> void:
 
 
 func _dispatch_light() -> void:
-	while _light_tasks.size() < max_mesh_in_flight and not _light_queue.is_empty():
+	while _light_tasks.size() < max_light_in_flight and not _light_queue.is_empty():
 		var c: Vector2i = _light_queue.pop_front()
 		_light_queued.erase(c)
 		if not columns.has(c) or not _neighbors_loaded(c):
