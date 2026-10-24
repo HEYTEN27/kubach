@@ -15,8 +15,6 @@ func _ready() -> void:
 			list = a.substr(9)
 	var reg: ContentRegistry = get_node("/root/Registry")
 	var bt := BlockTextures.load_default(reg)
-	print("albedo: ", bt.albedo, " layers ", bt.albedo.get_layers() if bt.albedo else -1, " fmt ", bt.albedo.get_format() if bt.albedo else -1, " size ", bt.albedo.get_width() if bt.albedo else -1)
-	print("info turf: ", bt.block_info.get_image().get_pixel(0, reg.block_num(&"turf")), bt.block_info.get_image().get_pixel(2, reg.block_num(&"turf")))
 	var mats := BlockMaterials.new(bt)
 	var mesher := GreedyMesher.new(reg)
 	var s := ChunkSection.new()
