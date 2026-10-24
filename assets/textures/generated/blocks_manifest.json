@@ -1,0 +1,1139 @@
+{
+ "format": 1,
+ "size": 128,
+ "columns": 32,
+ "sets": {
+  "acacia_bark": {
+   "first": 0,
+   "count": 2,
+   "rotate": false
+  },
+  "acacia_leaves": {
+   "first": 2,
+   "count": 2,
+   "rotate": true
+  },
+  "acacia_log_end": {
+   "first": 4,
+   "count": 2,
+   "rotate": true
+  },
+  "alder_bark": {
+   "first": 6,
+   "count": 2,
+   "rotate": false
+  },
+  "alder_leaves": {
+   "first": 8,
+   "count": 2,
+   "rotate": true
+  },
+  "alder_log_end": {
+   "first": 10,
+   "count": 2,
+   "rotate": true
+  },
+  "amethyst": {
+   "first": 12,
+   "count": 3,
+   "rotate": true
+  },
+  "andesite": {
+   "first": 15,
+   "count": 4,
+   "rotate": true
+  },
+  "anthracite_ore": {
+   "first": 19,
+   "count": 3,
+   "rotate": true
+  },
+  "apple_bark": {
+   "first": 22,
+   "count": 2,
+   "rotate": false
+  },
+  "apple_leaves": {
+   "first": 24,
+   "count": 2,
+   "rotate": true
+  },
+  "apple_log_end": {
+   "first": 26,
+   "count": 2,
+   "rotate": true
+  },
+  "apricot_bark": {
+   "first": 28,
+   "count": 2,
+   "rotate": false
+  },
+  "apricot_leaves": {
+   "first": 30,
+   "count": 2,
+   "rotate": true
+  },
+  "apricot_log_end": {
+   "first": 32,
+   "count": 2,
+   "rotate": true
+  },
+  "aspen_bark": {
+   "first": 34,
+   "count": 2,
+   "rotate": false
+  },
+  "aspen_leaves": {
+   "first": 36,
+   "count": 2,
+   "rotate": true
+  },
+  "aspen_log_end": {
+   "first": 38,
+   "count": 2,
+   "rotate": true
+  },
+  "bamboo_leaves": {
+   "first": 40,
+   "count": 2,
+   "rotate": true
+  },
+  "bamboo_stalk": {
+   "first": 42,
+   "count": 2,
+   "rotate": false
+  },
+  "basalt": {
+   "first": 44,
+   "count": 4,
+   "rotate": true
+  },
+  "bauxite": {
+   "first": 48,
+   "count": 4,
+   "rotate": true
+  },
+  "bedrock": {
+   "first": 52,
+   "count": 4,
+   "rotate": true
+  },
+  "bellflower": {
+   "first": 56,
+   "count": 2,
+   "rotate": false
+  },
+  "bilberry_bush": {
+   "first": 58,
+   "count": 2,
+   "rotate": false
+  },
+  "birch_bark": {
+   "first": 60,
+   "count": 2,
+   "rotate": false
+  },
+  "birch_bolete": {
+   "first": 62,
+   "count": 2,
+   "rotate": false
+  },
+  "birch_leaves": {
+   "first": 64,
+   "count": 2,
+   "rotate": true
+  },
+  "birch_log_end": {
+   "first": 66,
+   "count": 2,
+   "rotate": true
+  },
+  "bird_cherry_bark": {
+   "first": 68,
+   "count": 2,
+   "rotate": false
+  },
+  "bird_cherry_leaves": {
+   "first": 70,
+   "count": 2,
+   "rotate": true
+  },
+  "bird_cherry_log_end": {
+   "first": 72,
+   "count": 2,
+   "rotate": true
+  },
+  "bog_bilberry": {
+   "first": 74,
+   "count": 2,
+   "rotate": false
+  },
+  "bog_iron_ore": {
+   "first": 76,
+   "count": 3,
+   "rotate": true
+  },
+  "brown_mushroom_cap": {
+   "first": 79,
+   "count": 2,
+   "rotate": true
+  },
+  "buttercup": {
+   "first": 81,
+   "count": 2,
+   "rotate": false
+  },
+  "cactus": {
+   "first": 83,
+   "count": 2,
+   "rotate": false
+  },
+  "calcite": {
+   "first": 85,
+   "count": 4,
+   "rotate": true
+  },
+  "cassiterite_ore": {
+   "first": 89,
+   "count": 3,
+   "rotate": true
+  },
+  "cedar_bark": {
+   "first": 92,
+   "count": 2,
+   "rotate": false
+  },
+  "cedar_leaves": {
+   "first": 94,
+   "count": 2,
+   "rotate": true
+  },
+  "cedar_log_end": {
+   "first": 96,
+   "count": 2,
+   "rotate": true
+  },
+  "chalk": {
+   "first": 98,
+   "count": 4,
+   "rotate": true
+  },
+  "chamomile": {
+   "first": 102,
+   "count": 2,
+   "rotate": false
+  },
+  "chanterelle": {
+   "first": 104,
+   "count": 2,
+   "rotate": false
+  },
+  "chernozem": {
+   "first": 106,
+   "count": 3,
+   "rotate": true
+  },
+  "cherry_bark": {
+   "first": 109,
+   "count": 2,
+   "rotate": false
+  },
+  "cherry_leaves": {
+   "first": 111,
+   "count": 2,
+   "rotate": true
+  },
+  "cherry_log_end": {
+   "first": 113,
+   "count": 2,
+   "rotate": true
+  },
+  "chicory": {
+   "first": 115,
+   "count": 2,
+   "rotate": false
+  },
+  "clay": {
+   "first": 117,
+   "count": 3,
+   "rotate": true
+  },
+  "cloudberry": {
+   "first": 120,
+   "count": 2,
+   "rotate": false
+  },
+  "clover": {
+   "first": 122,
+   "count": 2,
+   "rotate": false
+  },
+  "coal_ore": {
+   "first": 124,
+   "count": 3,
+   "rotate": true
+  },
+  "conglomerate": {
+   "first": 127,
+   "count": 4,
+   "rotate": true
+  },
+  "coral_blue": {
+   "first": 131,
+   "count": 2,
+   "rotate": true
+  },
+  "coral_pink": {
+   "first": 133,
+   "count": 2,
+   "rotate": true
+  },
+  "coral_red": {
+   "first": 135,
+   "count": 2,
+   "rotate": true
+  },
+  "coral_yellow": {
+   "first": 137,
+   "count": 2,
+   "rotate": true
+  },
+  "cornflower": {
+   "first": 139,
+   "count": 2,
+   "rotate": false
+  },
+  "cranberry_bush": {
+   "first": 141,
+   "count": 2,
+   "rotate": false
+  },
+  "dandelion": {
+   "first": 143,
+   "count": 2,
+   "rotate": false
+  },
+  "dead_bush": {
+   "first": 145,
+   "count": 2,
+   "rotate": false
+  },
+  "death_cap": {
+   "first": 147,
+   "count": 2,
+   "rotate": false
+  },
+  "deepslate": {
+   "first": 149,
+   "count": 4,
+   "rotate": true
+  },
+  "diamond_ore": {
+   "first": 153,
+   "count": 3,
+   "rotate": true
+  },
+  "dianthus": {
+   "first": 156,
+   "count": 2,
+   "rotate": false
+  },
+  "diorite": {
+   "first": 158,
+   "count": 4,
+   "rotate": true
+  },
+  "dolomite": {
+   "first": 162,
+   "count": 4,
+   "rotate": true
+  },
+  "dwarf_birch_bark": {
+   "first": 166,
+   "count": 2,
+   "rotate": false
+  },
+  "dwarf_birch_leaves": {
+   "first": 168,
+   "count": 2,
+   "rotate": true
+  },
+  "dwarf_birch_log_end": {
+   "first": 170,
+   "count": 2,
+   "rotate": true
+  },
+  "edelweiss": {
+   "first": 172,
+   "count": 2,
+   "rotate": false
+  },
+  "emerald_ore": {
+   "first": 174,
+   "count": 3,
+   "rotate": true
+  },
+  "fallen_leaves": {
+   "first": 177,
+   "count": 2,
+   "rotate": true
+  },
+  "false_chanterelle": {
+   "first": 179,
+   "count": 2,
+   "rotate": false
+  },
+  "feather_grass": {
+   "first": 181,
+   "count": 2,
+   "rotate": false
+  },
+  "fern": {
+   "first": 183,
+   "count": 2,
+   "rotate": false
+  },
+  "fir_bark": {
+   "first": 185,
+   "count": 2,
+   "rotate": false
+  },
+  "fir_leaves": {
+   "first": 187,
+   "count": 2,
+   "rotate": true
+  },
+  "fir_log_end": {
+   "first": 189,
+   "count": 2,
+   "rotate": true
+  },
+  "fireweed": {
+   "first": 191,
+   "count": 2,
+   "rotate": false
+  },
+  "fly_agaric": {
+   "first": 193,
+   "count": 2,
+   "rotate": false
+  },
+  "forget_me_not": {
+   "first": 195,
+   "count": 2,
+   "rotate": false
+  },
+  "gabbro": {
+   "first": 197,
+   "count": 4,
+   "rotate": true
+  },
+  "galena_ore": {
+   "first": 201,
+   "count": 3,
+   "rotate": true
+  },
+  "garnet_ore": {
+   "first": 204,
+   "count": 3,
+   "rotate": true
+  },
+  "gentian": {
+   "first": 207,
+   "count": 2,
+   "rotate": false
+  },
+  "geyser_vent": {
+   "first": 209,
+   "count": 1,
+   "rotate": false
+  },
+  "globeflower": {
+   "first": 210,
+   "count": 2,
+   "rotate": false
+  },
+  "gneiss": {
+   "first": 212,
+   "count": 4,
+   "rotate": true
+  },
+  "gold_gravel": {
+   "first": 216,
+   "count": 3,
+   "rotate": true
+  },
+  "gold_quartz_ore": {
+   "first": 219,
+   "count": 3,
+   "rotate": true
+  },
+  "granite": {
+   "first": 222,
+   "count": 4,
+   "rotate": true
+  },
+  "graphite_ore": {
+   "first": 226,
+   "count": 3,
+   "rotate": true
+  },
+  "grass": {
+   "first": 229,
+   "count": 2,
+   "rotate": false
+  },
+  "gravel": {
+   "first": 231,
+   "count": 3,
+   "rotate": true
+  },
+  "hazel_bark": {
+   "first": 234,
+   "count": 2,
+   "rotate": false
+  },
+  "hazel_leaves": {
+   "first": 236,
+   "count": 2,
+   "rotate": true
+  },
+  "hazel_log_end": {
+   "first": 238,
+   "count": 2,
+   "rotate": true
+  },
+  "heather": {
+   "first": 240,
+   "count": 2,
+   "rotate": false
+  },
+  "hematite_ore": {
+   "first": 242,
+   "count": 3,
+   "rotate": true
+  },
+  "hibiscus": {
+   "first": 245,
+   "count": 2,
+   "rotate": false
+  },
+  "ice": {
+   "first": 247,
+   "count": 2,
+   "rotate": true
+  },
+  "jungle_bark": {
+   "first": 249,
+   "count": 2,
+   "rotate": false
+  },
+  "jungle_leaves": {
+   "first": 251,
+   "count": 2,
+   "rotate": true
+  },
+  "jungle_log_end": {
+   "first": 253,
+   "count": 2,
+   "rotate": true
+  },
+  "juniper": {
+   "first": 255,
+   "count": 2,
+   "rotate": false
+  },
+  "kimberlite": {
+   "first": 257,
+   "count": 4,
+   "rotate": true
+  },
+  "labrador_tea": {
+   "first": 261,
+   "count": 2,
+   "rotate": false
+  },
+  "larch_bark": {
+   "first": 263,
+   "count": 2,
+   "rotate": false
+  },
+  "larch_leaves": {
+   "first": 265,
+   "count": 2,
+   "rotate": true
+  },
+  "larch_log_end": {
+   "first": 267,
+   "count": 2,
+   "rotate": true
+  },
+  "lava": {
+   "first": 269,
+   "count": 2,
+   "rotate": true
+  },
+  "lichen": {
+   "first": 271,
+   "count": 2,
+   "rotate": false
+  },
+  "lichen_carpet": {
+   "first": 273,
+   "count": 2,
+   "rotate": true
+  },
+  "lignite_ore": {
+   "first": 275,
+   "count": 3,
+   "rotate": true
+  },
+  "lily_of_the_valley": {
+   "first": 278,
+   "count": 2,
+   "rotate": false
+  },
+  "limestone": {
+   "first": 280,
+   "count": 4,
+   "rotate": true
+  },
+  "linden_bark": {
+   "first": 284,
+   "count": 2,
+   "rotate": false
+  },
+  "linden_leaves": {
+   "first": 286,
+   "count": 2,
+   "rotate": true
+  },
+  "linden_log_end": {
+   "first": 288,
+   "count": 2,
+   "rotate": true
+  },
+  "lingonberry_bush": {
+   "first": 290,
+   "count": 2,
+   "rotate": false
+  },
+  "loam": {
+   "first": 292,
+   "count": 3,
+   "rotate": true
+  },
+  "lupine": {
+   "first": 295,
+   "count": 2,
+   "rotate": false
+  },
+  "magnetite_ore": {
+   "first": 297,
+   "count": 3,
+   "rotate": true
+  },
+  "malachite_ore": {
+   "first": 300,
+   "count": 3,
+   "rotate": true
+  },
+  "mangrove_bark": {
+   "first": 303,
+   "count": 2,
+   "rotate": false
+  },
+  "mangrove_leaves": {
+   "first": 305,
+   "count": 2,
+   "rotate": true
+  },
+  "mangrove_log_end": {
+   "first": 307,
+   "count": 2,
+   "rotate": true
+  },
+  "maple_bark": {
+   "first": 309,
+   "count": 2,
+   "rotate": false
+  },
+  "maple_leaves": {
+   "first": 311,
+   "count": 2,
+   "rotate": true
+  },
+  "maple_log_end": {
+   "first": 313,
+   "count": 2,
+   "rotate": true
+  },
+  "marble": {
+   "first": 315,
+   "count": 4,
+   "rotate": true
+  },
+  "martagon_lily": {
+   "first": 319,
+   "count": 2,
+   "rotate": false
+  },
+  "moss_carpet": {
+   "first": 321,
+   "count": 2,
+   "rotate": true
+  },
+  "mushroom_stem": {
+   "first": 323,
+   "count": 2,
+   "rotate": false
+  },
+  "mycelium_side": {
+   "first": 325,
+   "count": 2,
+   "rotate": false
+  },
+  "mycelium_top": {
+   "first": 327,
+   "count": 3,
+   "rotate": true
+  },
+  "native_copper_ore": {
+   "first": 330,
+   "count": 3,
+   "rotate": true
+  },
+  "native_silver_ore": {
+   "first": 333,
+   "count": 3,
+   "rotate": true
+  },
+  "nettle": {
+   "first": 336,
+   "count": 2,
+   "rotate": false
+  },
+  "oak_bark": {
+   "first": 338,
+   "count": 2,
+   "rotate": false
+  },
+  "oak_leaves": {
+   "first": 340,
+   "count": 2,
+   "rotate": true
+  },
+  "oak_log_end": {
+   "first": 342,
+   "count": 2,
+   "rotate": true
+  },
+  "obsidian": {
+   "first": 344,
+   "count": 4,
+   "rotate": true
+  },
+  "ochre_clay": {
+   "first": 348,
+   "count": 3,
+   "rotate": true
+  },
+  "orchid": {
+   "first": 351,
+   "count": 2,
+   "rotate": false
+  },
+  "packed_ice": {
+   "first": 353,
+   "count": 2,
+   "rotate": true
+  },
+  "palm_bark": {
+   "first": 355,
+   "count": 2,
+   "rotate": false
+  },
+  "palm_leaves": {
+   "first": 357,
+   "count": 2,
+   "rotate": true
+  },
+  "palm_log_end": {
+   "first": 359,
+   "count": 2,
+   "rotate": true
+  },
+  "pear_bark": {
+   "first": 361,
+   "count": 2,
+   "rotate": false
+  },
+  "pear_leaves": {
+   "first": 363,
+   "count": 2,
+   "rotate": true
+  },
+  "pear_log_end": {
+   "first": 365,
+   "count": 2,
+   "rotate": true
+  },
+  "peat": {
+   "first": 367,
+   "count": 3,
+   "rotate": true
+  },
+  "pentlandite_ore": {
+   "first": 370,
+   "count": 3,
+   "rotate": true
+  },
+  "peridotite": {
+   "first": 373,
+   "count": 4,
+   "rotate": true
+  },
+  "permafrost": {
+   "first": 377,
+   "count": 3,
+   "rotate": true
+  },
+  "pine_bark": {
+   "first": 380,
+   "count": 2,
+   "rotate": false
+  },
+  "pine_leaves": {
+   "first": 382,
+   "count": 2,
+   "rotate": true
+  },
+  "pine_log_end": {
+   "first": 384,
+   "count": 2,
+   "rotate": true
+  },
+  "plantain": {
+   "first": 386,
+   "count": 2,
+   "rotate": false
+  },
+  "platinum_ore": {
+   "first": 388,
+   "count": 3,
+   "rotate": true
+  },
+  "plum_bark": {
+   "first": 391,
+   "count": 2,
+   "rotate": false
+  },
+  "plum_leaves": {
+   "first": 393,
+   "count": 2,
+   "rotate": true
+  },
+  "plum_log_end": {
+   "first": 395,
+   "count": 2,
+   "rotate": true
+  },
+  "podzol": {
+   "first": 397,
+   "count": 3,
+   "rotate": true
+  },
+  "poppy": {
+   "first": 400,
+   "count": 2,
+   "rotate": false
+  },
+  "porcini": {
+   "first": 402,
+   "count": 2,
+   "rotate": false
+  },
+  "pumice": {
+   "first": 404,
+   "count": 4,
+   "rotate": true
+  },
+  "quartz": {
+   "first": 408,
+   "count": 4,
+   "rotate": true
+  },
+  "quartzite": {
+   "first": 412,
+   "count": 4,
+   "rotate": true
+  },
+  "raspberry_bush": {
+   "first": 416,
+   "count": 2,
+   "rotate": false
+  },
+  "red_clay": {
+   "first": 418,
+   "count": 3,
+   "rotate": true
+  },
+  "red_mushroom_cap": {
+   "first": 421,
+   "count": 2,
+   "rotate": true
+  },
+  "red_sand": {
+   "first": 423,
+   "count": 3,
+   "rotate": true
+  },
+  "red_sandstone": {
+   "first": 426,
+   "count": 4,
+   "rotate": true
+  },
+  "reeds": {
+   "first": 430,
+   "count": 2,
+   "rotate": false
+  },
+  "rhododendron": {
+   "first": 432,
+   "count": 2,
+   "rotate": false
+  },
+  "rock_salt": {
+   "first": 434,
+   "count": 4,
+   "rotate": true
+  },
+  "rowan_bark": {
+   "first": 438,
+   "count": 2,
+   "rotate": false
+  },
+  "rowan_leaves": {
+   "first": 440,
+   "count": 2,
+   "rotate": true
+  },
+  "rowan_log_end": {
+   "first": 442,
+   "count": 2,
+   "rotate": true
+  },
+  "rubble": {
+   "first": 444,
+   "count": 4,
+   "rotate": true
+  },
+  "ruby_ore": {
+   "first": 448,
+   "count": 3,
+   "rotate": true
+  },
+  "russula": {
+   "first": 451,
+   "count": 2,
+   "rotate": false
+  },
+  "sage": {
+   "first": 453,
+   "count": 2,
+   "rotate": false
+  },
+  "saltpeter_ore": {
+   "first": 455,
+   "count": 3,
+   "rotate": true
+  },
+  "sand": {
+   "first": 458,
+   "count": 3,
+   "rotate": true
+  },
+  "sandstone": {
+   "first": 461,
+   "count": 4,
+   "rotate": true
+  },
+  "sapphire_ore": {
+   "first": 465,
+   "count": 3,
+   "rotate": true
+  },
+  "saxifrage": {
+   "first": 468,
+   "count": 2,
+   "rotate": false
+  },
+  "sedge": {
+   "first": 470,
+   "count": 2,
+   "rotate": false
+  },
+  "serpentinite": {
+   "first": 472,
+   "count": 4,
+   "rotate": true
+  },
+  "shale": {
+   "first": 476,
+   "count": 4,
+   "rotate": true
+  },
+  "silica_sand": {
+   "first": 480,
+   "count": 3,
+   "rotate": true
+  },
+  "silt": {
+   "first": 483,
+   "count": 3,
+   "rotate": true
+  },
+  "sinter": {
+   "first": 486,
+   "count": 4,
+   "rotate": true
+  },
+  "slate": {
+   "first": 490,
+   "count": 4,
+   "rotate": true
+  },
+  "snow_block": {
+   "first": 494,
+   "count": 2,
+   "rotate": true
+  },
+  "snow_layer": {
+   "first": 496,
+   "count": 2,
+   "rotate": true
+  },
+  "snowdrop": {
+   "first": 498,
+   "count": 2,
+   "rotate": false
+  },
+  "sphalerite_ore": {
+   "first": 500,
+   "count": 3,
+   "rotate": true
+  },
+  "spodumene_ore": {
+   "first": 503,
+   "count": 3,
+   "rotate": true
+  },
+  "spruce_bark": {
+   "first": 506,
+   "count": 2,
+   "rotate": false
+  },
+  "spruce_log_end": {
+   "first": 508,
+   "count": 2,
+   "rotate": true
+  },
+  "spruce_needles": {
+   "first": 510,
+   "count": 2,
+   "rotate": true
+  },
+  "st_johns_wort": {
+   "first": 512,
+   "count": 2,
+   "rotate": false
+  },
+  "sulfur_ore": {
+   "first": 514,
+   "count": 3,
+   "rotate": true
+  },
+  "tall_grass": {
+   "first": 517,
+   "count": 2,
+   "rotate": false
+  },
+  "tansy": {
+   "first": 519,
+   "count": 2,
+   "rotate": false
+  },
+  "thyme": {
+   "first": 521,
+   "count": 2,
+   "rotate": false
+  },
+  "topaz_ore": {
+   "first": 523,
+   "count": 3,
+   "rotate": true
+  },
+  "tuff": {
+   "first": 526,
+   "count": 4,
+   "rotate": true
+  },
+  "tulip": {
+   "first": 530,
+   "count": 2,
+   "rotate": false
+  },
+  "turf_side": {
+   "first": 532,
+   "count": 3,
+   "rotate": false
+  },
+  "turf_top": {
+   "first": 535,
+   "count": 3,
+   "rotate": true
+  },
+  "violet": {
+   "first": 538,
+   "count": 2,
+   "rotate": false
+  },
+  "water": {
+   "first": 540,
+   "count": 1,
+   "rotate": true
+  },
+  "water_lily": {
+   "first": 541,
+   "count": 2,
+   "rotate": false
+  },
+  "wild_strawberry": {
+   "first": 543,
+   "count": 2,
+   "rotate": false
+  },
+  "willow_bark": {
+   "first": 545,
+   "count": 2,
+   "rotate": false
+  },
+  "willow_leaves": {
+   "first": 547,
+   "count": 2,
+   "rotate": true
+  },
+  "willow_log_end": {
+   "first": 549,
+   "count": 2,
+   "rotate": true
+  },
+  "yarrow": {
+   "first": 551,
+   "count": 2,
+   "rotate": false
+  }
+ },
+ "rows": 18,
+ "layers": 553
+}
