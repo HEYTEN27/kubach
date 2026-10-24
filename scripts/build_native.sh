@@ -24,13 +24,14 @@ for p in ${platforms[@]}; do
 			log "Сборка Windows x86_64 (zig) ..."
 			ZB="$ROOT/tools/zig-mingw/bin"
 			mkdir -p "$ZB"
-			# Обёртки под имена MinGW-clang; zig не знает флагов статической libstdc++ — убираем их.
+			# Обёртки под имена MinGW-clang. У zig своя libc++ (линкуется статически): флаги
+			# статической libstdc++ убираем, -lstdc++ заменяем на -lc++.
 			for tool in clang clang++; do
 				cat > "$ZB/x86_64-w64-mingw32-$tool" <<WRAP
 #!/usr/bin/env bash
 args=()
 for a in "\$@"; do
-	case "\$a" in -static|-static-libgcc|-static-libstdc++|-lstdc++) ;; *) args+=("\$a") ;; esac
+	case "\$a" in -static|-static-libgcc|-static-libstdc++) ;; -lstdc++) args+=("-lc++") ;; *) args+=("\$a") ;; esac
 done
 export ZIG_GLOBAL_CACHE_DIR="$ZB/../cache" ZIG_LOCAL_CACHE_DIR="$ZB/../cache"
 exec python3 -m ziglang $([[ $tool == clang ]] && echo cc || echo c++) -target x86_64-windows-gnu "\${args[@]}"

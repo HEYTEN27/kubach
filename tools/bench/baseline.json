@@ -1,31 +1,43 @@
 {
-  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
-  "date": "2026-10-23T23:15:49",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+  "date": "2026-10-24T04:26:14",
   "engine": "4.7.2-stable (official)",
   "results": {
+    "biome_preview_128": {
+      "iterations": 3,
+      "max_ms": 223.046,
+      "median_ms": 222.06,
+      "min_ms": 212.735
+    },
     "mesh_surface_section": {
       "iterations": 30,
-      "max_ms": 8.678,
-      "median_ms": 5.773,
-      "min_ms": 3.524
+      "max_ms": 21.747,
+      "median_ms": 11.55,
+      "min_ms": 5.701
+    },
+    "mesh_surface_section_native": {
+      "iterations": 30,
+      "max_ms": 0.973,
+      "median_ms": 0.512,
+      "min_ms": 0.1
     },
     "registry_load": {
       "iterations": 20,
-      "max_ms": 4.068,
-      "median_ms": 3.435,
-      "min_ms": 2.338
+      "max_ms": 102.905,
+      "median_ms": 68.344,
+      "min_ms": 65.393
     },
     "terrain_column": {
       "iterations": 40,
-      "max_ms": 4.47,
-      "median_ms": 3.588,
-      "min_ms": 2.867
+      "max_ms": 45.082,
+      "median_ms": 27.241,
+      "min_ms": 20.22
     },
     "world_load_view12": {
       "iterations": 2,
-      "max_ms": 8585.668,
-      "median_ms": 8585.668,
-      "min_ms": 8390.425
+      "max_ms": 16757.143,
+      "median_ms": 16757.143,
+      "min_ms": 14496.267
     }
   },
   "threads": 4

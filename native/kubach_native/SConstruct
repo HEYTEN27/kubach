@@ -5,6 +5,9 @@ import os
 GODOT_CPP = os.environ.get("GODOT_CPP", "../../tools/godot-cpp")
 env = SConscript(os.path.join(GODOT_CPP, "SConstruct"))
 env.Append(CPPPATH=["src/"])
+# Объектные файлы — свои для каждой платформы и с расширением .o (zig не понимает .os).
+env["SHOBJSUFFIX"] = env["suffix"] + ".o"
+env["OBJSUFFIX"] = env["suffix"] + ".o"
 sources = Glob("src/*.cpp")
 out = "../bin/libkubach_native{}{}".format(env["suffix"], env["SHLIBSUFFIX"])
 library = env.SharedLibrary(out, source=sources)

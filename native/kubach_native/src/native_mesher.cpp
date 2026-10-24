@@ -407,7 +407,8 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 
 void NativeMesher::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setup", "render", "shape", "color", "tint", "tint_strength", "layer_h", "opaque"), &NativeMesher::setup);
-	ClassDB::bind_method(D_METHOD("mesh_section", "center", "neighbors", "tints", "season", "origin"), &NativeMesher::mesh_section);
+	ClassDB::bind_method(D_METHOD("mesh_section", "center", "neighbors", "tints", "season", "origin"), &NativeMesher::mesh_section,
+			DEFVAL(PackedColorArray()), DEFVAL(1), DEFVAL(Vector3i()));
 	ClassDB::bind_method(D_METHOD("version"), &NativeMesher::version);
 }
 

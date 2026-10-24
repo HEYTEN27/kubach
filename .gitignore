@@ -27,4 +27,9 @@ tools/zig-mingw/
 native/kubach_native/.sconsign.dblite
 native/kubach_native/src/*.o
 native/kubach_native/src/*.os
+native/kubach_native/src/*.o
 native/kubach_native/src/*.obj
+
+# Библиотеки импорта Windows (не нужны игре)
+native/bin/*.lib
+native/bin/*.exp

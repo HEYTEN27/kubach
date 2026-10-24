@@ -80,3 +80,14 @@ func test_native_is_faster() -> void:
 	var t_native := Time.get_ticks_usec() - t0
 	gut.p("мешинг секции: GDScript %.2f мс, C++ %.2f мс" % [t_gd / 5000.0, t_native / 5000.0])
 	assert_lt(t_native * 5, t_gd, "C++ хотя бы в 5 раз быстрее")
+
+
+func test_default_arguments() -> void:
+	if native == null:
+		fail_test("нет нативной библиотеки")
+		return
+	var stone := Registry.block_num(&"granite")
+	var empty := [null, null, null, null, null, null]
+	var a := gd.mesh_section([stone, PackedInt32Array(), true, false], empty)
+	var b: Dictionary = native.mesh_section([stone, PackedInt32Array(), true, false], empty)
+	assert_eq(b["quads"], a["quads"], "вызов без необязательных аргументов")
