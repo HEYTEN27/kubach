@@ -162,7 +162,8 @@
    ],
    "textures": {
     "all": "cactus"
-   }
+   },
+   "contact_damage": 2.0
   },
   {
    "id": "coral_red",

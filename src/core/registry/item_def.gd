@@ -22,8 +22,10 @@ var damage := 0.0
 var armor := 0.0
 var insulation := 0.0
 var water_resist := 0.0
-## { nutrition, thirst, spoil_days } или пусто.
+## { nutrition, thirst, spoil_days, hot, eat_seconds, effects } или пусто.
 var food := {}
+## { cures, chance, heal, applies } или пусто.
+var medicine := {}
 var light := 0
 var light_color := Color.WHITE
 ## Числовой ID блока, который ставит предмет; 0 — не ставится.
@@ -50,7 +52,8 @@ static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
 	d.armor = e["armor"]
 	d.insulation = e["insulation"]
 	d.water_resist = e["water_resist"]
-	d.food = e.get("food", {})
+	d.food = BlockDef._non_empty(e.get("food", {}))
+	d.medicine = BlockDef._non_empty(e.get("medicine", {}))
 	d.light = e["light"]
 	d.light_color = e["light_color"]
 	var place: String = e.get("place", "")
@@ -77,6 +80,8 @@ static func from_block(b: BlockDef) -> ItemDef:
 		d.equip = &"offhand"
 		d.stack = 64
 	d.tags = b.tags
+	d.food = b.food
+	d.medicine = b.medicine
 	return d
 
 
@@ -99,3 +104,12 @@ func is_tool() -> bool:
 
 func is_food() -> bool:
 	return not food.is_empty()
+
+
+func is_medicine() -> bool:
+	return not medicine.is_empty()
+
+
+## Можно употребить (съесть, выпить или применить): еда или лекарство.
+func is_consumable() -> bool:
+	return is_food() or is_medicine()

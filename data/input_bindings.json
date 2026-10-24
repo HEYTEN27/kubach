@@ -432,6 +432,17 @@
       "joy_buttons": [
         2
       ]
+    },
+    {
+      "id": "stats",
+      "name": {
+        "ru": "Состояние персонажа",
+        "en": "Character status"
+      },
+      "category": "interface",
+      "keys": [
+        "C"
+      ]
     }
   ]
 }

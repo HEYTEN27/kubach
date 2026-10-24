@@ -39,6 +39,9 @@ var block_shape := PackedByteArray()
 var block_tint := PackedByteArray()
 var block_tint_strength := PackedFloat32Array()
 var block_layer_height := PackedFloat32Array()
+## Выживание: тепло блока (°C) и урон при контакте (в секунду) — для быстрого обхода.
+var block_heat := PackedFloat32Array()
+var block_contact := PackedFloat32Array()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -164,6 +167,8 @@ func _clear() -> void:
 	block_tint = PackedByteArray()
 	block_tint_strength = PackedFloat32Array()
 	block_layer_height = PackedFloat32Array()
+	block_heat = PackedFloat32Array()
+	block_contact = PackedFloat32Array()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -350,6 +355,8 @@ func _add_block(b: BlockDef) -> void:
 	block_tint.append(b.tint_code())
 	block_tint_strength.append(b.tint_strength)
 	block_layer_height.append(b.layer_height)
+	block_heat.append(b.heat)
+	block_contact.append(b.contact_damage)
 
 
 func _parse_json(path: String) -> Variant:

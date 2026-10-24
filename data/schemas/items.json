@@ -154,6 +154,40 @@
           "max": 10000.0,
           "default": 0.0,
           "doc": "0 — не портится."
+        },
+        "hot": {
+          "type": "bool",
+          "default": false,
+          "doc": "Горячая еда/питьё: согревает (бафф «Согрелся»)."
+        },
+        "eat_seconds": {
+          "type": "float",
+          "min": 0.1,
+          "max": 10.0,
+          "default": 1.4
+        },
+        "effects": {
+          "type": "array",
+          "default": [],
+          "doc": "Эффекты от еды: id из effects и шанс.",
+          "of": {
+            "type": "object",
+            "fields": {
+              "id": {
+                "type": "ref",
+                "to": [
+                  "effects"
+                ],
+                "required": true
+              },
+              "chance": {
+                "type": "float",
+                "min": 0.0,
+                "max": 1.0,
+                "default": 1.0
+              }
+            }
+          }
         }
       }
     },
@@ -215,6 +249,47 @@
         "type": "string"
       },
       "default": []
+    },
+    "medicine": {
+      "type": "object",
+      "default": {},
+      "doc": "Лекарство: какие эффекты снимает (с шансом).",
+      "fields": {
+        "cures": {
+          "type": "array",
+          "default": [],
+          "of": {
+            "type": "ref",
+            "to": [
+              "effects"
+            ]
+          }
+        },
+        "chance": {
+          "type": "float",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 1.0
+        },
+        "heal": {
+          "type": "float",
+          "min": 0.0,
+          "max": 100.0,
+          "default": 0.0,
+          "doc": "Сразу восстанавливает здоровье."
+        },
+        "applies": {
+          "type": "array",
+          "default": [],
+          "of": {
+            "type": "ref",
+            "to": [
+              "effects"
+            ]
+          },
+          "doc": "Какие эффекты накладывает (шина → «Шина на ноге»)."
+        }
+      }
     }
   }
 }

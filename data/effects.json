@@ -1,0 +1,545 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "cold",
+   "name": {
+    "ru": "Простуда",
+    "en": "Cold"
+   },
+   "kind": "disease",
+   "color": "#6a9ad0",
+   "abbr": "Пр",
+   "worsen_chance": 0.25,
+   "cure_items": [
+    "herbal_tea"
+   ],
+   "bed_rest": true,
+   "treatment": {
+    "ru": "Отвар трав, сон в кровати, тепло и сухость",
+    "en": "Herbal tea, bed rest, warmth"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Насморк",
+      "en": "Runny nose"
+     },
+     "hours": 8,
+     "symptoms": {
+      "ru": "Чихание, быстрее устаёте",
+      "en": "Sneezing, tire faster"
+     },
+     "stamina_regen_mult": 0.85,
+     "thirst_mult": 1.1
+    },
+    {
+     "name": {
+      "ru": "Простуда",
+      "en": "Cold"
+     },
+     "hours": 16,
+     "symptoms": {
+      "ru": "Жар, слабость, здоровье не восстанавливается",
+      "en": "Fever, weakness"
+     },
+     "stamina_regen_mult": 0.65,
+     "health_per_hour": -1,
+     "temp_shift": 0.7,
+     "regen_mult": 0
+    },
+    {
+     "name": {
+      "ru": "Осложнение",
+      "en": "Complication"
+     },
+     "hours": 0,
+     "symptoms": {
+      "ru": "Сильный жар, здоровье падает",
+      "en": "High fever, health drops"
+     },
+     "stamina_regen_mult": 0.5,
+     "health_per_hour": -4,
+     "temp_shift": 1.2,
+     "speed_mult": 0.9,
+     "regen_mult": 0
+    }
+   ]
+  },
+  {
+   "id": "flu",
+   "name": {
+    "ru": "Грипп",
+    "en": "Flu"
+   },
+   "kind": "disease",
+   "color": "#5a7ab8",
+   "abbr": "Гр",
+   "worsen_chance": 0.3,
+   "cure_items": [
+    "herbal_tea"
+   ],
+   "bed_rest": true,
+   "treatment": {
+    "ru": "Сон в кровати, отвары, обильное питьё",
+    "en": "Bed rest, tea, drinking"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Ломота",
+      "en": "Aches"
+     },
+     "hours": 10,
+     "symptoms": {
+      "ru": "Ломота, жар",
+      "en": "Aches, fever"
+     },
+     "stamina_regen_mult": 0.7,
+     "thirst_mult": 1.3,
+     "temp_shift": 0.8,
+     "regen_mult": 0.3
+    },
+    {
+     "name": {
+      "ru": "Грипп",
+      "en": "Flu"
+     },
+     "hours": 24,
+     "symptoms": {
+      "ru": "Высокий жар, бег невозможен",
+      "en": "High fever, no sprint"
+     },
+     "stamina_regen_mult": 0.5,
+     "speed_mult": 0.9,
+     "thirst_mult": 1.5,
+     "health_per_hour": -2,
+     "temp_shift": 1.5,
+     "regen_mult": 0,
+     "no_sprint": true
+    }
+   ]
+  },
+  {
+   "id": "food_poisoning",
+   "name": {
+    "ru": "Пищевое отравление",
+    "en": "Food Poisoning"
+   },
+   "kind": "disease",
+   "color": "#8aa040",
+   "abbr": "От",
+   "cure_items": [
+    "herbal_tea",
+    "activated_charcoal"
+   ],
+   "treatment": {
+    "ru": "Отвар, уголь, вода",
+    "en": "Tea, charcoal, water"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Тошнота",
+      "en": "Nausea"
+     },
+     "hours": 2,
+     "symptoms": {
+      "ru": "Еда не идёт",
+      "en": "No appetite"
+     },
+     "hunger_mult": 0.5,
+     "stamina_regen_mult": 0.8,
+     "regen_mult": 0
+    },
+    {
+     "name": {
+      "ru": "Отравление",
+      "en": "Poisoning"
+     },
+     "hours": 5,
+     "symptoms": {
+      "ru": "Рвота, жажда, потеря здоровья",
+      "en": "Vomiting, thirst"
+     },
+     "thirst_mult": 2.0,
+     "health_per_hour": -4,
+     "stamina_regen_mult": 0.6,
+     "regen_mult": 0
+    }
+   ],
+   "worsen_chance": 1.0
+  },
+  {
+   "id": "dysentery",
+   "name": {
+    "ru": "Дизентерия",
+    "en": "Dysentery"
+   },
+   "kind": "disease",
+   "color": "#a08040",
+   "abbr": "Ди",
+   "worsen_chance": 0.8,
+   "cure_items": [
+    "antibiotics"
+   ],
+   "treatment": {
+    "ru": "Антибиотики; пить только чистую воду",
+    "en": "Antibiotics; clean water only"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Резь в животе",
+      "en": "Cramps"
+     },
+     "hours": 6,
+     "symptoms": {
+      "ru": "Жажда сильнее",
+      "en": "More thirst"
+     },
+     "thirst_mult": 1.5,
+     "stamina_regen_mult": 0.8,
+     "regen_mult": 0.5
+    },
+    {
+     "name": {
+      "ru": "Дизентерия",
+      "en": "Dysentery"
+     },
+     "hours": 36,
+     "symptoms": {
+      "ru": "Обезвоживание, слабость",
+      "en": "Dehydration"
+     },
+     "thirst_mult": 2.5,
+     "hunger_mult": 1.4,
+     "health_per_hour": -3,
+     "stamina_regen_mult": 0.6,
+     "regen_mult": 0
+    }
+   ]
+  },
+  {
+   "id": "wound",
+   "name": {
+    "ru": "Рана",
+    "en": "Wound"
+   },
+   "kind": "debuff",
+   "color": "#c03030",
+   "abbr": "Ра",
+   "worsen_chance": 1.0,
+   "cure_items": [
+    "bandage",
+    "plantain"
+   ],
+   "treatment": {
+    "ru": "Перевязать бинтом или приложить подорожник",
+    "en": "Bandage or plantain"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Кровотечение",
+      "en": "Bleeding"
+     },
+     "hours": 6,
+     "symptoms": {
+      "ru": "Кровь, здоровье не восстанавливается",
+      "en": "Bleeding"
+     },
+     "health_per_hour": -3,
+     "regen_mult": 0
+    }
+   ],
+   "next_effect": "wound_infection"
+  },
+  {
+   "id": "wound_infection",
+   "name": {
+    "ru": "Заражение раны",
+    "en": "Wound Infection"
+   },
+   "kind": "disease",
+   "color": "#b05080",
+   "abbr": "За",
+   "worsen_chance": 0.5,
+   "cure_items": [
+    "antibiotics",
+    "salve"
+   ],
+   "treatment": {
+    "ru": "Мазь (начало) или антибиотики",
+    "en": "Salve or antibiotics"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Воспаление",
+      "en": "Inflammation"
+     },
+     "hours": 12,
+     "symptoms": {
+      "ru": "Рана воспалена, жар",
+      "en": "Inflamed"
+     },
+     "health_per_hour": -1.5,
+     "temp_shift": 0.6,
+     "regen_mult": 0
+    },
+    {
+     "name": {
+      "ru": "Заражение",
+      "en": "Infection"
+     },
+     "hours": 0,
+     "symptoms": {
+      "ru": "Сильный жар, нужны антибиотики",
+      "en": "Needs antibiotics"
+     },
+     "health_per_hour": -5,
+     "temp_shift": 1.4,
+     "speed_mult": 0.85,
+     "stamina_regen_mult": 0.5,
+     "regen_mult": 0
+    }
+   ]
+  },
+  {
+   "id": "fracture",
+   "name": {
+    "ru": "Перелом",
+    "en": "Fracture"
+   },
+   "kind": "disease",
+   "color": "#d0c0a0",
+   "abbr": "Пе",
+   "cure_items": [
+    "splint"
+   ],
+   "treatment": {
+    "ru": "Наложить шину, потом заживёт за двое суток",
+    "en": "Apply a splint"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Перелом",
+      "en": "Fracture"
+     },
+     "hours": 0,
+     "symptoms": {
+      "ru": "Хромота, бег невозможен",
+      "en": "Limp, no sprint"
+     },
+     "speed_mult": 0.55,
+     "stamina_regen_mult": 0.7,
+     "no_sprint": true,
+     "regen_mult": 0.5
+    }
+   ]
+  },
+  {
+   "id": "splinted",
+   "name": {
+    "ru": "Шина на ноге",
+    "en": "Splinted"
+   },
+   "kind": "debuff",
+   "color": "#c0b090",
+   "abbr": "Ши",
+   "treatment": {
+    "ru": "Само заживёт",
+    "en": "Heals with time"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Срастается",
+      "en": "Healing"
+     },
+     "hours": 48,
+     "symptoms": {
+      "ru": "Медленная ходьба",
+      "en": "Slow walk"
+     },
+     "speed_mult": 0.8,
+     "no_sprint": true
+    }
+   ]
+  },
+  {
+   "id": "venom",
+   "name": {
+    "ru": "Отравление ядом",
+    "en": "Venom"
+   },
+   "kind": "disease",
+   "color": "#60a060",
+   "abbr": "Яд",
+   "cure_items": [
+    "antidote_decoction"
+   ],
+   "treatment": {
+    "ru": "Противоядный отвар",
+    "en": "Antidote decoction"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Яд",
+      "en": "Venom"
+     },
+     "hours": 3,
+     "symptoms": {
+      "ru": "Быстрая потеря здоровья",
+      "en": "Fast health loss"
+     },
+     "health_per_hour": -12,
+     "stamina_regen_mult": 0.5,
+     "speed_mult": 0.8,
+     "regen_mult": 0
+    }
+   ]
+  },
+  {
+   "id": "frostbite",
+   "name": {
+    "ru": "Обморожение",
+    "en": "Frostbite"
+   },
+   "kind": "disease",
+   "color": "#a0d0f0",
+   "abbr": "Об",
+   "cure_items": [
+    "salve"
+   ],
+   "treatment": {
+    "ru": "Согреться, мазь",
+    "en": "Warm up, salve"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Обморожение",
+      "en": "Frostbite"
+     },
+     "hours": 12,
+     "symptoms": {
+      "ru": "Онемевшие пальцы",
+      "en": "Numb fingers"
+     },
+     "health_per_hour": -2,
+     "speed_mult": 0.85,
+     "stamina_regen_mult": 0.8
+    }
+   ]
+  },
+  {
+   "id": "heatstroke",
+   "name": {
+    "ru": "Тепловой удар",
+    "en": "Heatstroke"
+   },
+   "kind": "disease",
+   "color": "#e08030",
+   "abbr": "ТУ",
+   "cure_items": [],
+   "treatment": {
+    "ru": "Тень, вода, прохлада",
+    "en": "Shade, water, cool down"
+   },
+   "stages": [
+    {
+     "name": {
+      "ru": "Тепловой удар",
+      "en": "Heatstroke"
+     },
+     "hours": 4,
+     "symptoms": {
+      "ru": "Головокружение, жажда",
+      "en": "Dizziness, thirst"
+     },
+     "thirst_mult": 2.0,
+     "health_per_hour": -4,
+     "stamina_regen_mult": 0.5,
+     "speed_mult": 0.85
+    }
+   ]
+  },
+  {
+   "id": "well_fed",
+   "name": {
+    "ru": "Сытный обед",
+    "en": "Well Fed"
+   },
+   "kind": "buff",
+   "color": "#d0a040",
+   "abbr": "Сы",
+   "stages": [
+    {
+     "name": {
+      "ru": "Сытно",
+      "en": "Well fed"
+     },
+     "hours": 4,
+     "symptoms": {
+      "ru": "Здоровье восстанавливается быстрее",
+      "en": "Faster regen"
+     },
+     "regen_mult": 1.6,
+     "stamina_regen_mult": 1.15
+    }
+   ]
+  },
+  {
+   "id": "warm_meal",
+   "name": {
+    "ru": "Согрелся",
+    "en": "Warmed Up"
+   },
+   "kind": "buff",
+   "color": "#e07040",
+   "abbr": "Тп",
+   "stages": [
+    {
+     "name": {
+      "ru": "Согрев",
+      "en": "Warmth"
+     },
+     "hours": 1.5,
+     "symptoms": {
+      "ru": "Теплее на 8 °C",
+      "en": "+8 °C"
+     },
+     "warmth": 8
+    }
+   ]
+  },
+  {
+   "id": "rested",
+   "name": {
+    "ru": "Отдохнувший",
+    "en": "Rested"
+   },
+   "kind": "buff",
+   "color": "#70b0d0",
+   "abbr": "Сн",
+   "stages": [
+    {
+     "name": {
+      "ru": "Выспался",
+      "en": "Rested"
+     },
+     "hours": 8,
+     "symptoms": {
+      "ru": "Выносливость восстанавливается быстрее",
+      "en": "Stamina regen up"
+     },
+     "stamina_regen_mult": 1.3
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,392 @@
+{
+ "format": 1,
+ "category": "survival",
+ "description": "Константы выживания (раздел 4.3): скорости, пороги, температуры. Время — игровые часы.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "hunger_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 3.5,
+   "doc": "Голод за игровой час (из 100)."
+  },
+  "thirst_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 5.0
+  },
+  "sprint_hunger_mult": {
+   "type": "float",
+   "min": 1,
+   "max": 10,
+   "default": 2.0
+  },
+  "cold_hunger_mult": {
+   "type": "float",
+   "min": 1,
+   "max": 10,
+   "default": 1.5
+  },
+  "heat_thirst_mult": {
+   "type": "float",
+   "min": 1,
+   "max": 10,
+   "default": 1.8
+  },
+  "work_hunger": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 0.12,
+   "doc": "Голод за каждый сломанный блок."
+  },
+  "stamina_max": {
+   "type": "float",
+   "min": 1,
+   "max": 1000,
+   "default": 100
+  },
+  "sprint_stamina_per_s": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 12
+  },
+  "jump_stamina": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 5
+  },
+  "work_stamina_per_s": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 3
+  },
+  "stamina_regen_per_s": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 16
+  },
+  "stamina_regen_delay_s": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1.2
+  },
+  "health_max": {
+   "type": "float",
+   "min": 1,
+   "max": 1000,
+   "default": 100
+  },
+  "regen_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 8
+  },
+  "regen_min_hunger": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 55
+  },
+  "regen_min_thirst": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 35
+  },
+  "starve_damage_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 1000,
+   "default": 15
+  },
+  "dehydrate_damage_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 1000,
+   "default": 22
+  },
+  "body_temp_normal": {
+   "type": "float",
+   "min": 30,
+   "max": 45,
+   "default": 37.0
+  },
+  "hypothermia": {
+   "type": "float",
+   "min": 25,
+   "max": 40,
+   "default": 35.0
+  },
+  "frostbite_temp": {
+   "type": "float",
+   "min": 25,
+   "max": 40,
+   "default": 33.5
+  },
+  "heatstroke": {
+   "type": "float",
+   "min": 36,
+   "max": 45,
+   "default": 39.3
+  },
+  "comfort_low": {
+   "type": "float",
+   "min": -50,
+   "max": 50,
+   "default": 14,
+   "doc": "Ощущаемая температура, ниже которой тело остывает."
+  },
+  "comfort_high": {
+   "type": "float",
+   "min": -50,
+   "max": 60,
+   "default": 28
+  },
+  "body_temp_rate": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 0.35,
+   "doc": "°C тела в час на каждые 10° вне комфорта."
+  },
+  "body_recover_rate": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1.2,
+   "doc": "°C в час — возврат к норме в комфорте."
+  },
+  "wet_in_water_per_s": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 0.5
+  },
+  "dry_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 0.8
+  },
+  "wet_cold": {
+   "type": "float",
+   "min": 0,
+   "max": 50,
+   "default": 12,
+   "doc": "Насколько холоднее ощущается при полной мокрости (°C)."
+  },
+  "air_max_s": {
+   "type": "float",
+   "min": 1,
+   "max": 600,
+   "default": 15
+  },
+  "drown_damage_per_s": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 8
+  },
+  "fall_safe": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 3.5
+  },
+  "fall_damage_per_block": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 7
+  },
+  "fracture_min_fall": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 7
+  },
+  "fracture_chance": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.35
+  },
+  "wound_min_damage": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 18
+  },
+  "fatigue_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 4.0
+  },
+  "tired_fatigue": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 75
+  },
+  "sleep_fatigue_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 14
+  },
+  "heat_radius": {
+   "type": "float",
+   "min": 1,
+   "max": 16,
+   "default": 7,
+   "doc": "Дальше этого тепло блоков не чувствуется."
+  },
+  "night_cold": {
+   "type": "float",
+   "min": 0,
+   "max": 40,
+   "default": 5,
+   "doc": "Ночью холоднее на столько °C."
+  },
+  "underground_temp": {
+   "type": "float",
+   "min": -20,
+   "max": 40,
+   "default": 10,
+   "doc": "Температура глубоко под землёй."
+  },
+  "altitude_lapse": {
+   "type": "float",
+   "min": 0,
+   "max": 5,
+   "default": 0.6,
+   "doc": "°C на каждые 10 блоков выше моря."
+  },
+  "water_cold": {
+   "type": "float",
+   "min": 0,
+   "max": 40,
+   "default": 8
+  },
+  "respawn_hunger": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 70
+  },
+  "respawn_thirst": {
+   "type": "float",
+   "min": 0,
+   "max": 100,
+   "default": 70
+  },
+  "cold_chance_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.18,
+   "doc": "Шанс простудиться за час в мокром холоде."
+  },
+  "dirty_water_chance": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.35
+  },
+  "fresh_water_chance": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.02
+  },
+  "sea_water_thirst": {
+   "type": "float",
+   "min": -100,
+   "max": 100,
+   "default": -6
+  },
+  "drink_amount": {
+   "type": "float",
+   "min": 1,
+   "max": 100,
+   "default": 25.0,
+   "doc": "Сколько жажды снимает глоток воды."
+  },
+  "spoiled_poison_chance": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.6,
+   "doc": "Шанс отравиться испорченной едой (свежесть ниже 0,25)."
+  },
+  "cold_damage_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 200,
+   "default": 10.0,
+   "doc": "Урон при переохлаждении за час на каждый градус ниже порога."
+  },
+  "heat_damage_per_hour": {
+   "type": "float",
+   "min": 0,
+   "max": 200,
+   "default": 8.0
+  },
+  "infection_hours": {
+   "type": "float",
+   "min": 0,
+   "max": 1000,
+   "default": 6,
+   "doc": "Неперевязанная рана воспаляется через столько часов."
+  },
+  "season_temp": {
+   "type": "object",
+   "default": {
+    "spring": -3.0,
+    "summer": 2.0,
+    "autumn": -5.0,
+    "winter": -18.0
+   },
+   "fields": {
+    "spring": {
+     "type": "float",
+     "min": -50,
+     "max": 50,
+     "default": -3
+    },
+    "summer": {
+     "type": "float",
+     "min": -50,
+     "max": 50,
+     "default": 2
+    },
+    "autumn": {
+     "type": "float",
+     "min": -50,
+     "max": 50,
+     "default": -5
+    },
+    "winter": {
+     "type": "float",
+     "min": -50,
+     "max": 50,
+     "default": -18
+    }
+   }
+  }
+ }
+}

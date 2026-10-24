@@ -47,6 +47,11 @@ var pad_look_speed := 1.0
 var use_weight := false
 ## Принимать ввод без захвата мыши (тесты, headless).
 var force_input := false
+## Выживание (этап 5): множитель скорости от травм и болезней, можно ли бежать.
+var survival_speed := 1.0
+var can_sprint := true
+## Прыжков с прошлого опроса SurvivalController (тратят выносливость).
+var jumps := 0
 var fov := 75.0
 
 var _prev := PackedFloat64Array([0.0, 0.0, 0.0])
@@ -169,7 +174,7 @@ func _physics_process(delta: float) -> void:
 		_sprint_on = not _sprint_on
 	if input.length() < 0.1:
 		_sprint_on = false
-	var sprint := captured and (_sprint_on if sprint_toggle else Input.is_action_pressed(&"sprint"))
+	var sprint := captured and can_sprint and (_sprint_on if sprint_toggle else Input.is_action_pressed(&"sprint"))
 	var crouch := captured and (_crouch_on if crouch_toggle else Input.is_action_pressed(&"crouch"))
 	# Автопрыжок: идём в стену высотой в один блок, над ней свободно.
 	if auto_jump and body.on_ground and body.hit_wall and wish.length() > 0.1 and not motor.flying:
@@ -178,7 +183,7 @@ func _physics_process(delta: float) -> void:
 		var fy := floori(body.y + 0.01)
 		if world.is_solid(fx, fy, fz) and not world.is_solid(fx, fy + 1, fz) and not world.is_solid(fx, fy + 2, fz):
 			jump = true
-	motor.speed_mult = inventory.overload_factor() if use_weight else 1.0
+	motor.speed_mult = (inventory.overload_factor() if use_weight else 1.0) * survival_speed
 
 	if captured and Input.is_action_just_pressed(&"jump") and world.game_mode == &"creative":
 		var now := Time.get_ticks_msec() / 1000.0
@@ -191,6 +196,8 @@ func _physics_process(delta: float) -> void:
 		motor.flying = false
 
 	motor.step(delta, wish, jump, sprint, crouch)
+	if motor.jumped:
+		jumps += 1
 	if motor.landed_fall > 0.0:
 		EventBus.player_landed.emit(motor.landed_fall)
 	_emit_steps()

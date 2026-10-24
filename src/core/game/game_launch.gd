@@ -17,7 +17,9 @@ extends RefCounted
 ##   --screenshot=<png>   дождаться загрузки, сохранить кадр и выйти;
 ##   --bench=<сек>        бенчмарк: временный мир, полёт по прямой, лог frametime, выход;
 ##   --open=inventory|chest — после загрузки открыть окно инвентаря (или поставить рядом сундук
-##                        с предметами и открыть его) — для скриншотов.
+##                        с предметами и открыть его) — для скриншотов; --open=status —
+##                        экран состояния персонажа (C);
+##   --time=<час>         поставить время суток (например 22.5), для проверки ночи.
 
 static var folder := ""
 static var new_world_name := ""
@@ -33,6 +35,8 @@ static var show_debug := false
 static var screenshot_path := ""
 static var bench_seconds := 0.0
 static var open_ui := ""
+## Час суток при запуске (−1 — из сохранения).
+static var start_hour := -1.0
 ## Внешность и стартовая одежда из редактора персонажа (новый мир).
 static var appearance: Dictionary = {}
 static var outfit: Array = []
@@ -57,6 +61,7 @@ static func reset() -> void:
 	appearance = {}
 	outfit = []
 	open_ui = ""
+	start_hour = -1.0
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -102,6 +107,8 @@ static func parse_args(args: PackedStringArray) -> bool:
 				preset = value
 			"--open":
 				open_ui = value
+			"--time":
+				start_hour = clampf(value.to_float(), 0.0, 23.99)
 			"--camera":
 				camera = value
 			"--f3":

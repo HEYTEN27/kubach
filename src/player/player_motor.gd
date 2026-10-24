@@ -33,6 +33,8 @@ var sprinting := false
 var in_fluid := false
 ## Высота последнего падения (в блоках), выставляется в шаге приземления, иначе 0.
 var landed_fall := 0.0
+## Был ли прыжок в последнем шаге (выносливость, этап 5).
+var jumped := false
 ## Множитель скорости ходьбы (перегруз, позже — снег, болото, ранения).
 var speed_mult := 1.0
 var _fall_peak := 0.0
@@ -51,6 +53,7 @@ func eye_height() -> float:
 ## wish — желаемое направление в мировых X/Z (длина ≤ 1).
 func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> void:
 	landed_fall = 0.0
+	jumped = false
 	_update_crouch(crouch and not flying)
 	sprinting = sprint and not crouching and wish.length_squared() > 0.01
 	in_fluid = _check_fluid()
@@ -81,6 +84,7 @@ func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> v
 	else:
 		if jump and body.on_ground:
 			vy = JUMP_VELOCITY
+			jumped = true
 		dy = vy * dt - 0.5 * GRAVITY * dt * dt
 		vy = maxf(vy - GRAVITY * dt, -TERMINAL_VELOCITY)
 

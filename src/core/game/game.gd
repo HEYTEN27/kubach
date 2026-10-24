@@ -1,5 +1,5 @@
 extends Node3D
-## Игровая сцена: окружение, мир, игрок, инвентарь, HUD, окна, F3, пауза, сохранение.
+## Игровая сцена: окружение, мир, игрок, инвентарь, выживание, HUD, окна, F3, пауза, сохранение.
 ## Параметры запуска — в GameLaunch.
 
 const AUTOSAVE_SEC := 300.0
@@ -16,9 +16,14 @@ var rig: GraphicsRig
 var grass: GrassField
 var far_terrain: FarTerrain
 var dropped: DroppedItems
+var survival: SurvivalController
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
 var _window: InventoryWindow
+var _status: StatusScreen
+var _death: DeathScreen
+## Точка мира для возрождения без кровати: [x, y, z].
+var _world_spawn: Array = []
 
 var _loading := true
 var _autosave_left := AUTOSAVE_SEC
@@ -104,6 +109,7 @@ func _ready() -> void:
 	dropped.picked_up.connect(func(_s: ItemStack) -> void: Audio.play_ui("ui/pickup"))
 	if save != null:
 		dropped.from_array(save.meta.get("dropped", []))
+	_setup_survival(pmeta, spawn)
 	_apply_player_settings()
 	Settings.setting_changed.connect(func(_id: String, _v: Variant) -> void: _apply_player_settings())
 	player.teleport(spawn[0], spawn[1], spawn[2])
@@ -121,12 +127,19 @@ func _ready() -> void:
 	hud = Hud.new()
 	hud.player = player
 	hud.world = world
+	hud.survival = survival
 	add_child(hud)
+	survival.hurt.connect(func(amount: float, _c: String) -> void: hud.vitals_hud.flash_hurt(amount))
+	survival.message.connect(func(t: String) -> void: hud.show_toast(t))
+	survival.effect_changed.connect(_on_effect_changed)
+	if save != null and save.meta.get("hardcore_dead", false):
+		hud.show_toast("Хардкор: персонаж погиб — мир открыт только для осмотра", 6.0)
 	hud.set_loading(true, "Загрузка мира…")
 	debug_overlay = DebugOverlay.new()
 	debug_overlay.player = player
 	debug_overlay.world = world
 	debug_overlay.world_name = world_name
+	debug_overlay.survival = survival
 	add_child(debug_overlay)
 	debug_overlay.visible = GameLaunch.show_debug
 	pause_menu = PauseMenu.new()
@@ -148,6 +161,8 @@ func _process(delta: float) -> void:
 	world.chunks.update(center)
 	grass.update(center)
 	far_terrain.update(b.x, b.z)
+	rig.set_time_of_day(survival.clock.hour())
+	survival.daylight = rig.daylight
 	_climate_left -= delta
 	if _climate_left <= 0.0:
 		_climate_left = 0.5
@@ -189,8 +204,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed(&"pause"):
 		_pause()
-	elif event.is_action_pressed(&"inventory") and _window == null and not get_tree().paused:
+	elif event.is_action_pressed(&"inventory") and _window == null and _status == null and _death == null and not get_tree().paused:
 		open_inventory()
+	elif event.is_action_pressed(&"stats") and _window == null and _status == null and _death == null and not get_tree().paused:
+		_open_status()
 	elif event.is_action_pressed(&"drop_item") and _window == null and player.input_allowed():
 		var a := InventoryAction.make(InventoryAction.Op.DROP_SLOT, "hotbar", player.inventory.selected)
 		a.amount = 0 if Input.is_key_pressed(KEY_CTRL) else 1
@@ -226,9 +243,12 @@ func save_game(autosave: bool = false) -> void:
 		save.backup(3)
 	var b := player.body
 	save.meta["player"] = { "x": b.x, "y": b.y, "z": b.z, "yaw": player.yaw, "pitch": player.pitch, "flying": player.motor.flying,
-		"inventory": player.inventory.to_dict(), "appearance": player.appearance }
+		"inventory": player.inventory.to_dict(), "appearance": player.appearance, "survival": survival.to_dict() }
 	save.meta["dropped"] = dropped.to_array()
-	save.meta["season"] = String(world.settings.start_season)
+	save.meta["season"] = String(survival.clock.season())
+	save.meta["day"] = survival.clock.day
+	save.meta["world_spawn"] = _world_spawn
+	save.meta["worldgen"] = world.settings.to_dict()
 	save.meta["game_mode"] = String(world.game_mode)
 	save.meta["play_time_sec"] = _play_time
 	var err := world.save_chunks()
@@ -252,7 +272,8 @@ func _save_preview() -> void:
 	img.save_png(save.folder.path_join("preview.png"))
 
 
-## Новый мир: стартовая одежда из редактора персонажа; в творческом — блоки в хотбаре.
+## Новый мир: стартовая одежда из редактора персонажа; в выживании — стартовый набор,
+## в творческом — блоки в хотбаре.
 func _starting_inventory() -> void:
 	var inv := player.inventory
 	var outfit: Array = GameLaunch.outfit if not GameLaunch.outfit.is_empty() else [
@@ -269,6 +290,12 @@ func _starting_inventory() -> void:
 			inv.equipment.set_stack(slot, st)
 		else:
 			inv.add(st)
+	if world.game_mode == &"survival":
+		# Стартовый набор до ремесла (этап 6): спальник, костёр, хлеб, бинты.
+		for pair: Array in [[&"sleeping_bag", 1], [&"campfire", 1], [&"rye_bread", 3], [&"bandage", 2]]:
+			var d := Registry.item(pair[0])
+			if d != null:
+				inv.add(ItemStack.create(d, pair[1]))
 	if world.game_mode == &"creative":
 		var i := 0
 		for id: StringName in [&"granite", &"spruce_log", &"loam", &"sand", &"chest_wood", &"torch", &"oak_leaves",
@@ -291,7 +318,117 @@ func _apply_player_settings() -> void:
 	player.pad_look_speed = float(Settings.get_value("pad_look_speed"))
 	player.use_weight = bool(Settings.get_value("weight"))
 	rig.set_depth_of_field(bool(Settings.get_value("depth_of_field")))
+	var v := survival.vitals
+	v.diseases_enabled = bool(Settings.get_value("diseases"))
+	v.temperature_enabled = bool(Settings.get_value("body_temperature"))
+	v.thirst_enabled = bool(Settings.get_value("thirst"))
+	# Сложность — у мира; настройка меняет её для текущего мира (кроме хардкора).
+	var diff := StringName(Settings.get_value("difficulty"))
+	if world.settings.difficulty != &"hardcore" and diff != world.settings.difficulty and save != null:
+		world.settings.difficulty = diff
+		survival.set_difficulty(diff)
+		if hud != null:
+				hud.show_toast("Сложность мира: %s" % Registry.get_entry("difficulties", diff)["name"]["ru"])
 	_autosave_left = minf(_autosave_left, float(Settings.get_value("autosave_minutes")) * 60.0)
+
+
+## Выживание: часы по длине суток мира, сложность, сохранённое состояние, точки возрождения.
+func _setup_survival(pmeta: Dictionary, spawn: Array) -> void:
+	survival = SurvivalController.new()
+	survival.name = "Survival"
+	survival.setup(world, player, float(world.settings.day_length))
+	survival.set_difficulty(world.settings.difficulty)
+	if pmeta.has("survival"):
+		survival.from_dict(pmeta["survival"])
+	if GameLaunch.start_hour >= 0.0:
+		survival.clock.minute = GameLaunch.start_hour * 60.0
+	add_child(survival)
+	var ws: Array = save.meta.get("world_spawn", []) if save != null else []
+	_world_spawn = ws if ws.size() == 3 else [spawn[0], spawn[1], spawn[2]]
+	if world.settings.difficulty != &"hardcore" and save != null:
+		Settings.set_value("difficulty", String(world.settings.difficulty))
+	if save != null and save.meta.get("hardcore_dead", false):
+		world.game_mode = &"creative"
+	survival.died.connect(_on_died)
+	player.interaction.bed_requested.connect(func(pos: Vector3i) -> void:
+		var msg := survival.use_bed(pos)
+		if msg.contains("проспали") or msg.contains("прерван"):
+			hud.fade_sleep()
+		if msg != "":
+			hud.show_toast(msg, 3.5))
+
+
+func _on_effect_changed(id: StringName, added: bool) -> void:
+	var def := Registry.get_entry("effects", id)
+	var name: String = def.get("name", {}).get("ru", String(id))
+	match String(def.get("kind", "")):
+		"buff":
+			if added:
+				hud.show_toast(name)
+		_:
+			hud.show_toast(("Вы чувствуете: %s" if added else "Прошло: %s") % name, 3.0)
+
+
+func _open_status() -> void:
+	_status = StatusScreen.new()
+	_status.survival = survival
+	_status.player = player
+	_status.closed.connect(func() -> void:
+		_status = null
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+	add_child(_status)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+## Смерть: вещи выпадают (если так на сложности), экран смерти. Хардкор — мир помечается.
+func _on_died(cause: String) -> void:
+	if _window != null:
+		_window.close()
+	if _status != null:
+		_status.close()
+	var diff := survival.difficulty_def()
+	var note := ""
+	if diff.get("drop_on_death", true):
+		var b := player.body
+		var rng := RandomNumberGenerator.new()
+		for st in player.inventory.take_all():
+			var a := rng.randf() * TAU
+			dropped.spawn(st, b.x, b.y + 1.0, b.z, cos(a) * 2.0, 3.0, sin(a) * 2.0, 0.0)
+		note = "Вещи остались на месте гибели"
+	_death = DeathScreen.new()
+	_death.cause = cause
+	_death.registry = Registry
+	_death.days = survival.clock.day
+	_death.one_life = diff.get("one_life", false)
+	_death.drop_note = note
+	_death.respawn_requested.connect(_respawn)
+	_death.menu_requested.connect(func() -> void:
+		save_game()
+		get_tree().change_scene_to_file(MENU_SCENE))
+	add_child(_death)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if _death.one_life and save != null:
+		save.meta["hardcore_dead"] = true
+		save_game()
+
+
+func _respawn() -> void:
+	_death = null
+	var p := survival.respawn_point(_world_spawn)
+	var x: float = p[0]
+	var z: float = p[2]
+	var y: float = p[1]
+	if not survival.spawn.has("bed"):
+		# Точка мира: поверхность по генератору (колонна может быть не загружена).
+		y = float(maxi(world.generator.surface_height(floori(x), floori(z)), world.generator.sea_level) + 1)
+	survival.respawn()
+	player.teleport(x, y, z)
+	player.motor.vx = 0.0
+	player.motor.vy = 0.0
+	player.motor.vz = 0.0
+	player.active = true
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	hud.show_toast("Вы возродились %s" % ("у кровати" if survival.spawn.has("bed") else "в начале мира"))
 
 
 func execute_inventory(a: InventoryAction) -> bool:
@@ -348,6 +485,7 @@ func _on_loaded() -> void:
 	hud.set_loading(false)
 	# В режиме скриншота игрок заморожен — кадр повторяем.
 	player.active = GameLaunch.screenshot_path == ""
+	survival.running = true
 	if GameLaunch.screenshot_path == "" and GameLaunch.bench_seconds == 0.0:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if GameLaunch.bench_seconds > 0.0:
@@ -474,6 +612,14 @@ func _screenshot_step(delta: float) -> void:
 	world.visible = true
 	if GameLaunch.open_ui == "inventory":
 		open_inventory()
+	elif GameLaunch.open_ui == "status":
+		survival.vitals.hunger = 46.0
+		survival.vitals.thirst = 18.0
+		survival.vitals.health = 72.0
+		survival.vitals.add_effect(&"cold")
+		survival.vitals.add_effect(&"well_fed")
+		survival.vitals.add_effect(&"splinted")
+		_open_status()
 	elif GameLaunch.open_ui == "chest":
 		var b := player.body
 		var p := Vector3i(floori(b.x) + 2, floori(b.y), floori(b.z))

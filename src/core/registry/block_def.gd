@@ -56,6 +56,14 @@ var container_kind: StringName = &""
 ## Есть ли у блока предмет (воды, лавы, материнской породы в инвентаре нет).
 var has_item := true
 var weight := 1.0
+## Выживание (этап 5): тепло рядом с блоком, °C; урон в секунду внутри блока.
+var heat := 0.0
+var contact_damage := 0.0
+## Кровать: kind (none, sleeping_bag, bed, double_bed) и rest.
+var bed := {}
+## Съедобные растения и лекарственные травы: те же поля, что у предметов.
+var food := {}
+var medicine := {}
 
 
 static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
@@ -92,7 +100,26 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.container_kind = StringName(cont.get("kind", "")) if b.container_slots > 0 else &""
 	b.has_item = e.get("item", true) and b.render != &"liquid" and b.is_breakable()
 	b.weight = e.get("weight", 1.0)
+	b.heat = e.get("heat", 0.0)
+	b.contact_damage = e.get("contact_damage", 0.0)
+	var bd: Dictionary = e.get("bed", {})
+	b.bed = bd if String(bd.get("kind", "none")) != "none" else {}
+	b.food = _non_empty(e.get("food", {}))
+	b.medicine = _non_empty(e.get("medicine", {}))
 	return b
+
+
+static func _non_empty(d: Dictionary) -> Dictionary:
+	if d.is_empty():
+		return {}
+	if float(d.get("nutrition", 0.0)) == 0.0 and float(d.get("thirst", 0.0)) == 0.0 and (d.get("cures", []) as Array).is_empty() and float(d.get("heal", 0.0)) == 0.0 and (d.get("applies", []) as Array).is_empty() and (d.get("effects", []) as Array).is_empty():
+		return {}
+	return d
+
+
+## Кровать или спальник.
+func is_bed() -> bool:
+	return not bed.is_empty()
 
 
 func render_code() -> int:

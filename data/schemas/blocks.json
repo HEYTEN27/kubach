@@ -244,6 +244,144 @@
       "max": 500.0,
       "default": 1.0,
       "doc": "Вес предмета блока, кг (перегруз — опция в настройках)."
+    },
+    "food": {
+      "type": "object",
+      "default": {},
+      "fields": {
+        "nutrition": {
+          "type": "float",
+          "min": 0.0,
+          "max": 100.0,
+          "default": 0.0
+        },
+        "thirst": {
+          "type": "float",
+          "min": -50.0,
+          "max": 100.0,
+          "default": 0.0
+        },
+        "spoil_days": {
+          "type": "float",
+          "min": 0.0,
+          "max": 10000.0,
+          "default": 0.0,
+          "doc": "0 — не портится."
+        },
+        "hot": {
+          "type": "bool",
+          "default": false,
+          "doc": "Горячая еда/питьё: согревает (бафф «Согрелся»)."
+        },
+        "eat_seconds": {
+          "type": "float",
+          "min": 0.1,
+          "max": 10.0,
+          "default": 1.4
+        },
+        "effects": {
+          "type": "array",
+          "default": [],
+          "doc": "Эффекты от еды: id из effects и шанс.",
+          "of": {
+            "type": "object",
+            "fields": {
+              "id": {
+                "type": "ref",
+                "to": [
+                  "effects"
+                ],
+                "required": true
+              },
+              "chance": {
+                "type": "float",
+                "min": 0.0,
+                "max": 1.0,
+                "default": 1.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "medicine": {
+      "type": "object",
+      "default": {},
+      "doc": "Лекарство: какие эффекты снимает (с шансом).",
+      "fields": {
+        "cures": {
+          "type": "array",
+          "default": [],
+          "of": {
+            "type": "ref",
+            "to": [
+              "effects"
+            ]
+          }
+        },
+        "chance": {
+          "type": "float",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 1.0
+        },
+        "heal": {
+          "type": "float",
+          "min": 0.0,
+          "max": 100.0,
+          "default": 0.0,
+          "doc": "Сразу восстанавливает здоровье."
+        },
+        "applies": {
+          "type": "array",
+          "default": [],
+          "of": {
+            "type": "ref",
+            "to": [
+              "effects"
+            ]
+          },
+          "doc": "Какие эффекты накладывает (шина → «Шина на ноге»)."
+        }
+      }
+    },
+    "heat": {
+      "type": "float",
+      "min": 0.0,
+      "max": 80.0,
+      "default": 0.0,
+      "doc": "Тепло рядом с блоком, °C (костёр, лава, факел); убывает с расстоянием."
+    },
+    "contact_damage": {
+      "type": "float",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 0.0,
+      "doc": "Урон в секунду, если стоять в блоке (лава, костёр)."
+    },
+    "bed": {
+      "type": "object",
+      "default": {},
+      "doc": "Кровать: спать (пропуск ночи) и точка возрождения.",
+      "fields": {
+        "kind": {
+          "type": "enum",
+          "values": [
+            "none",
+            "sleeping_bag",
+            "bed",
+            "double_bed"
+          ],
+          "default": "none"
+        },
+        "rest": {
+          "type": "float",
+          "min": 0.1,
+          "max": 3.0,
+          "default": 1.0,
+          "doc": "Насколько хорошо отдыхаешь (снятие усталости)."
+        }
+      }
     }
   }
 }

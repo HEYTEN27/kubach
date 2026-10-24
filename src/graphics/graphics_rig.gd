@@ -5,7 +5,8 @@ extends Node3D
 ## автоэкспозиция (выход из пещеры ослепляет), цветокоррекция по климату биома.
 ## Значения качества — из Settings.graphics (data/graphics_presets.json).
 ##
-## Смена суток и луна — этап 5 (время и сезоны); сейчас солнце стоит в утреннем положении.
+## Базовая смена суток (этап 5): солнце идёт по дуге по часам GameClock, ночью гаснет, небо
+## и рассеянный свет темнеют. Луна с фазами, звёзды и длина дня по сезону — этап 7.
 
 const SUN_ROTATION := Vector3(-48.0, -35.0, 0.0)
 ## Скорость смены цветокоррекции при переходе между биомами (доля за секунду).
@@ -13,6 +14,8 @@ const GRADE_SPEED := 0.6
 
 var environment: Environment
 var sun: DirectionalLight3D
+## Лунный свет: тусклый холодный, ночью вместо солнца (фазы луны — этап 7).
+var moon: DirectionalLight3D
 var camera_attributes: CameraAttributesPractical
 var sky_material: PhysicalSkyMaterial
 var world_environment: WorldEnvironment
@@ -20,6 +23,9 @@ var graphics := {}
 
 var _grade_target := Vector4(1.0, 1.0, 1.0, 0.0)   # насыщенность, контраст, яркость, теплота
 var _grade := Vector4(1.0, 1.0, 1.0, 0.0)
+## Дневной свет 0 (ночь) … 1 (день) — для неба, солнца и рассеянного света.
+var daylight := 1.0
+var _sun_color := Color(1.0, 0.97, 0.92)
 
 
 func _init() -> void:
@@ -103,6 +109,45 @@ func _init() -> void:
 	sun.light_volumetric_fog_energy = 1.2
 	add_child(sun)
 
+	moon = DirectionalLight3D.new()
+	moon.name = "Moon"
+	moon.light_color = Color(0.62, 0.72, 1.0)
+	moon.light_energy = 0.0
+	moon.shadow_enabled = false
+	moon.visible = false
+	add_child(moon)
+
+
+## Положение солнца по часу суток (0…24): восход в 6:00, закат в 21:00, полдень ~13:30.
+func set_time_of_day(hour: float) -> void:
+	const RISE := 6.0
+	const SET := 21.0
+	var t := (hour - RISE) / (SET - RISE)   # 0…1 — день
+	var elev: float
+	if t >= 0.0 and t <= 1.0:
+		elev = sin(t * PI) * 62.0
+	else:
+		# Ночь: солнце под горизонтом.
+		var n := fposmod(hour - SET, 24.0) / (24.0 - (SET - RISE))
+		elev = -sin(n * PI) * 30.0
+	var azimuth := -90.0 + clampf(t, -0.2, 1.2) * 180.0
+	sun.rotation_degrees = Vector3(-elev, azimuth + SUN_ROTATION.y, 0.0)
+	daylight = smoothstep(-6.0, 8.0, elev)
+	var low := 1.0 - smoothstep(4.0, 22.0, elev)   # закатный тёплый свет
+	_sun_color = Color(1.0, 0.97, 0.92).lerp(Color(1.0, 0.62, 0.36), low * daylight)
+	sun.light_energy = daylight
+	sun.visible = daylight > 0.01
+	var night := 1.0 - daylight
+	moon.visible = night > 0.01
+	moon.light_energy = 0.16 * night
+	moon.rotation_degrees = Vector3(-50.0, sun.rotation_degrees.y + 180.0, 0.0)
+	# Ночью рассеянный свет — не только от тёмного неба, но и постоянный синеватый (луна, звёзды).
+	environment.ambient_light_sky_contribution = lerpf(0.35, 1.0, daylight)
+	environment.ambient_light_color = Color(0.16, 0.2, 0.32)
+	environment.ambient_light_energy = lerpf(0.55, 1.0, daylight)
+	environment.background_energy_multiplier = lerpf(0.12, 1.0, daylight)
+	environment.fog_light_color = Color(0.05, 0.07, 0.12).lerp(Color(0.62, 0.72, 0.86), daylight)
+
 
 ## Применить качество графики (Settings.graphics) к окружению, солнцу и вьюпорту.
 func apply(g: Dictionary, viewport: Viewport) -> void:
@@ -175,4 +220,4 @@ func _process(delta: float) -> void:
 	environment.adjustment_contrast = _grade.y
 	environment.adjustment_brightness = _grade.z
 	var warm := _grade.w
-	sun.light_color = Color(1.0, 0.97, 0.92).lerp(Color(1.0, 0.92, 0.8), maxf(warm, 0.0)).lerp(Color(0.92, 0.96, 1.0), maxf(-warm, 0.0))
+	sun.light_color = _sun_color.lerp(Color(1.0, 0.92, 0.8), maxf(warm, 0.0) * 0.5).lerp(Color(0.92, 0.96, 1.0), maxf(-warm, 0.0) * 0.5)

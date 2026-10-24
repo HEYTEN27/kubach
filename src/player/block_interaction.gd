@@ -5,12 +5,14 @@ extends Node
 ##
 ## Этап 4: ставится предмет из выбранной ячейки хотбара (в выживании расходуется), инструмент
 ## в руке ускоряет добычу подходящих блоков и изнашивается. ПКМ по сундуку открывает его
-## (с Shift — ставит блок рядом). Средняя кнопка: в творческом — взять блок в руку.
+## (с Shift — ставит блок рядом), по кровати — ложится спать. Средняя кнопка: в творческом — взять блок в руку.
 
 ## ПКМ по контейнеру: открыть окно хранилища.
 signal container_requested(pos: Vector3i)
 ## Инструмент сломался.
 signal tool_broken(item: StringName)
+## ПКМ по кровати: сон и точка возрождения (этап 5).
+signal bed_requested(pos: Vector3i)
 
 const REACH_SURVIVAL := 5.0
 const REACH_CREATIVE := 7.0
@@ -75,6 +77,10 @@ func _process(delta: float) -> void:
 		if def != null and def.container_slots > 0 and not Input.is_action_pressed(&"crouch"):
 			if Input.is_action_just_pressed(&"use"):
 				container_requested.emit(b)
+			_cooldown = PLACE_COOLDOWN
+		elif def != null and def.is_bed() and not Input.is_action_pressed(&"crouch"):
+			if Input.is_action_just_pressed(&"use"):
+				bed_requested.emit(b)
 			_cooldown = PLACE_COOLDOWN
 		else:
 			var block := selected_block()

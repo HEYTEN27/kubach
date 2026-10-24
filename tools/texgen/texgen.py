@@ -65,7 +65,10 @@ def classify(name, uses):
         "chest_iron_side": lambda c: F.chest(c, True, "iron"), "chest_iron_top": lambda c: F.chest(c, False, "iron"),
         "dresser_side": lambda c: F.dresser(c, True), "dresser_top": lambda c: F.dresser(c, False),
         "barrel_side": lambda c: F.barrel(c, True), "barrel_top": lambda c: F.barrel(c, False),
-        "crate": F.crate, "torch": F.torch,
+        "crate": F.crate, "torch": F.torch, "campfire": F.campfire,
+        "sleeping_bag_top": lambda c: F.bed(c, False, "sleeping_bag"), "sleeping_bag_side": lambda c: F.bed(c, True, "sleeping_bag"),
+        "bed_top": lambda c: F.bed(c, False, "bed"), "bed_side": lambda c: F.bed(c, True, "bed"),
+        "double_bed_top": lambda c: F.bed(c, False, "double_bed"), "double_bed_side": lambda c: F.bed(c, True, "double_bed"),
     }
     if name in furn:
         return furn[name], 1, False

@@ -1,0 +1,150 @@
+{
+ "format": 1,
+ "category": "effects",
+ "description": "Болезни, баффы и дебаффы (раздел 4.3): стадии с симптомами, лечение.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "kind": {
+   "type": "enum",
+   "values": [
+    "disease",
+    "buff",
+    "debuff"
+   ],
+   "required": true
+  },
+  "color": {
+   "type": "color",
+   "default": "#c05050"
+  },
+  "abbr": {
+   "type": "string",
+   "default": "?",
+   "doc": "Буквы на значке HUD."
+  },
+  "stages": {
+   "type": "array",
+   "of": {
+    "type": "object",
+    "fields": {
+     "name": {
+      "type": "localized",
+      "required": true
+     },
+     "hours": {
+      "type": "float",
+      "min": 0,
+      "max": 10000,
+      "default": 0,
+      "doc": "Длительность стадии, игровые часы; 0 — пока не вылечат."
+     },
+     "hunger_mult": {
+      "type": "float",
+      "min": 0,
+      "max": 10,
+      "default": 1
+     },
+     "thirst_mult": {
+      "type": "float",
+      "min": 0,
+      "max": 10,
+      "default": 1
+     },
+     "stamina_regen_mult": {
+      "type": "float",
+      "min": 0,
+      "max": 10,
+      "default": 1
+     },
+     "speed_mult": {
+      "type": "float",
+      "min": 0,
+      "max": 10,
+      "default": 1
+     },
+     "health_per_hour": {
+      "type": "float",
+      "min": -1000,
+      "max": 1000,
+      "default": 0
+     },
+     "temp_shift": {
+      "type": "float",
+      "min": -10,
+      "max": 10,
+      "default": 0,
+      "doc": "Сдвиг температуры тела (жар)."
+     },
+     "warmth": {
+      "type": "float",
+      "min": -30,
+      "max": 30,
+      "default": 0,
+      "doc": "Тепло как от одежды, °C (согрев от горячей еды)."
+     },
+     "regen_mult": {
+      "type": "float",
+      "min": 0,
+      "max": 10,
+      "default": 1
+     },
+     "no_sprint": {
+      "type": "bool",
+      "default": false
+     },
+     "symptoms": {
+      "type": "localized",
+      "default": {
+       "ru": "—",
+       "en": "—"
+      }
+     }
+    }
+   },
+   "required": true
+  },
+  "worsen_chance": {
+   "type": "float",
+   "min": 0,
+   "max": 1,
+   "default": 0.0,
+   "doc": "Шанс перейти на следующую стадию по окончании текущей (иначе — выздоровление)."
+  },
+  "cure_items": {
+   "type": "array",
+   "of": {
+    "type": "ref",
+    "to": [
+     "items",
+     "blocks"
+    ]
+   },
+   "default": []
+  },
+  "bed_rest": {
+   "type": "bool",
+   "default": false,
+   "doc": "Сон в кровати сокращает болезнь."
+  },
+  "treatment": {
+   "type": "localized",
+   "default": {
+    "ru": "—",
+    "en": "—"
+   }
+  },
+  "next_effect": {
+   "type": "string",
+   "default": "",
+   "doc": "Во что переходит эффект, если ухудшился после последней стадии (рана → заражение)."
+  }
+ }
+}

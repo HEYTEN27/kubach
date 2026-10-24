@@ -12,7 +12,7 @@ const SECTIONS := [
 	["graphics", "Графика"], ["display", "Экран"], ["audio", "Звук"], ["controls", "Управление"],
 	["interface", "Интерфейс"], ["accessibility", "Доступность"], ["gameplay", "Игра"],
 ]
-const CURRENT_STAGE := 4
+const CURRENT_STAGE := 5
 
 var _tabs: TabContainer
 var _widgets := {}   # id -> [Control, def]

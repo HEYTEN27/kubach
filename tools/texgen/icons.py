@@ -123,7 +123,13 @@ def block_icon(e, atlas):
     if shape == "cross":
         return sprite(top)
     if shape == "layer":
-        return iso_cube(top, side, False, height=max(0.12, float(e.get("layer_height", 0.125))))
+        solid_layer = render != "cutout"
+        if solid_layer:
+            top = top.copy()
+            top.putalpha(255)
+            side = side.copy()
+            side.putalpha(255)
+        return iso_cube(top, side, solid_layer, height=max(0.12, float(e.get("layer_height", 0.125))))
     if render == "translucent":
         return iso_cube(top, side, True, alpha_scale=0.85)
     if render == "cutout":
@@ -288,6 +294,43 @@ def draw_item(e):
         d.ellipse([40, 90, 190, 170], fill=_c(col))
         d.polygon([(180, 130), (236, 90), (236, 170)], fill=_c(col, 0.85))
         d.ellipse([62, 112, 76, 126], fill=(30, 30, 30, 255))
+    elif shape == "meat":
+        d.ellipse([40, 70, 200, 200], fill=_c(col))
+        d.ellipse([60, 86, 150, 150], fill=_c(col, 1.2))
+        d.line([(180, 170), (230, 220)], fill=_c(hex_rgb("#ece6da")), width=18)
+        d.ellipse([214, 204, 244, 234], fill=_c(hex_rgb("#ece6da")))
+    elif shape in ("bowl", "cup"):
+        if shape == "bowl":
+            d.chord([40, 70, 216, 220], 0, 180, fill=_c(col2))
+            d.ellipse([40, 100, 216, 150], fill=_c(col))
+        else:
+            d.rounded_rectangle([70, 80, 180, 220], 14, fill=_c(col2))
+            d.ellipse([70, 70, 180, 104], fill=_c(col))
+            d.arc([160, 110, 220, 180], 270, 90, fill=_c(col2), width=12)
+            for x in (100, 125, 150):
+                d.arc([x - 10, 20, x + 10, 70], 90, 270, fill=(220, 220, 220, 160), width=5)
+    elif shape == "powder":
+        d.polygon([(40, 210), (216, 210), (170, 120), (90, 120)], fill=_c(col))
+        d.polygon([(90, 120), (170, 120), (150, 90), (110, 90)], fill=_c(col, 1.3))
+    elif shape == "roll":
+        d.ellipse([40, 90, 140, 200], fill=_c(col, 0.9))
+        d.rectangle([90, 90, 200, 200], fill=_c(col))
+        d.ellipse([150, 90, 250, 200], fill=_c(col, 1.05))
+        d.ellipse([180, 125, 220, 165], fill=_c(col, 0.75))
+    elif shape == "splint":
+        for x in (80, 160):
+            d.rectangle([x, 30, x + 26, 226], fill=_c(col))
+        for y in (70, 128, 186):
+            d.rectangle([66, y, 200, y + 18], fill=_c(col2))
+    elif shape == "jar":
+        d.rounded_rectangle([60, 90, 196, 220], 26, fill=_c(col))
+        d.rectangle([70, 60, 186, 96], fill=_c(col2))
+        d.ellipse([80, 110, 120, 150], fill=_c(col, 1.3))
+    elif shape == "pills":
+        d.rounded_rectangle([60, 40, 196, 220], 22, fill=_c(col))
+        d.rectangle([60, 40, 196, 90], fill=_c(col2))
+        for i in range(3):
+            d.ellipse([86 + i * 30, 140, 112 + i * 30, 166], fill=_c(col2, 1.1))
     else:
         d.rounded_rectangle([60, 60, 196, 196], 24, fill=_c(col))
     # Обводка и мягкая тень сверху-слева → объём.

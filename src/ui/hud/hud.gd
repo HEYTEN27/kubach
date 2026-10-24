@@ -1,13 +1,15 @@
 class_name Hud
 extends CanvasLayer
 ## Игровой HUD: прицел (вид и размер — из настроек), прогресс ломания, хотбар с иконками,
-## название предмета в руке, компас, FPS, режим, предупреждение о краю мира, экран загрузки.
-## Здоровье, голод и прочие параметры выживания — этап 5.
+## название предмета в руке, компас, FPS, режим, предупреждение о краю мира, экран загрузки,
+## параметры выживания (SurvivalHud, этап 5) и затемнение при сне.
 
 const BORDER_WARNING_DISTANCE := 48.0
 
 var player: Player
 var world: World
+var survival: SurvivalController
+var vitals_hud: SurvivalHud
 
 var _crosshair: Control
 var _break_bar: ProgressBar
@@ -24,6 +26,7 @@ var _loading: Control
 var _loading_label: Label
 var _toast: Label
 var _toast_time := 0.0
+var _fade: ColorRect
 
 
 func _ready() -> void:
@@ -33,6 +36,11 @@ func _ready() -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
 	_root = root
+
+	vitals_hud = SurvivalHud.new()
+	vitals_hud.survival = survival
+	vitals_hud.hotbar_width = 9 * 56 + 8
+	root.add_child(vitals_hud)
 
 	_crosshair = _Crosshair.new()
 	_crosshair.set_anchors_preset(Control.PRESET_CENTER)
@@ -57,7 +65,7 @@ func _ready() -> void:
 	_hotbar.position = Vector2(-_hotbar.size.x * 0.5, -_hotbar.size.y - 10)
 	root.add_child(_hotbar)
 	_selected = _label(root, Control.PRESET_CENTER_BOTTOM, 19, HORIZONTAL_ALIGNMENT_CENTER)
-	_selected.position.y -= 104
+	_selected.position.y -= 150
 	_compass = _label(root, Control.PRESET_CENTER_TOP, 16, HORIZONTAL_ALIGNMENT_CENTER)
 	_compass.position.y += 10
 	_fps = _label(root, Control.PRESET_TOP_LEFT, 15, HORIZONTAL_ALIGNMENT_LEFT)
@@ -70,6 +78,12 @@ func _ready() -> void:
 	_toast = _label(root, Control.PRESET_CENTER_TOP, 18, HORIZONTAL_ALIGNMENT_CENTER)
 	_toast.position.y += 96
 
+	_fade = ColorRect.new()
+	_fade.color = Color(0, 0, 0, 0)
+	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(_fade)
+
 	_loading = ColorRect.new()
 	(_loading as ColorRect).color = Color(0.07, 0.09, 0.08, 1.0)
 	_loading.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -80,6 +94,14 @@ func _ready() -> void:
 func show_toast(text: String, seconds: float = 2.5) -> void:
 	_toast.text = text
 	_toast_time = seconds
+
+
+## Затемнение экрана (сон): быстро темнеет и плавно светлеет.
+func fade_sleep() -> void:
+	var tw := create_tween()
+	tw.tween_property(_fade, "color:a", 1.0, 0.35)
+	tw.tween_interval(0.6)
+	tw.tween_property(_fade, "color:a", 0.0, 1.2)
 
 
 func set_loading(visible_: bool, text: String = "") -> void:

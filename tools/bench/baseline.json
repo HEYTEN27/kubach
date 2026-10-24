@@ -1,61 +1,67 @@
 {
   "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
-  "date": "2026-10-24T14:07:10",
+  "date": "2026-10-24T15:18:21",
   "engine": "4.7.2-stable (official)",
   "results": {
     "biome_preview_128": {
       "iterations": 3,
-      "max_ms": 185.264,
-      "median_ms": 184.615,
-      "min_ms": 180.741
+      "max_ms": 195.352,
+      "median_ms": 189.927,
+      "min_ms": 187.921
     },
     "grass_column": {
       "iterations": 20,
-      "max_ms": 7.038,
-      "median_ms": 3.507,
-      "min_ms": 1.858
+      "max_ms": 7.205,
+      "median_ms": 3.584,
+      "min_ms": 1.851
     },
     "light_column_native": {
       "iterations": 12,
-      "max_ms": 10.688,
-      "median_ms": 9.184,
-      "min_ms": 8.115
+      "max_ms": 10.339,
+      "median_ms": 9.199,
+      "min_ms": 8.022
     },
     "lod_tile_step4": {
       "iterations": 10,
-      "max_ms": 28.93,
-      "median_ms": 23.68,
-      "min_ms": 12.24
+      "max_ms": 26.52,
+      "median_ms": 23.664,
+      "min_ms": 13.966
     },
     "mesh_surface_section": {
       "iterations": 30,
-      "max_ms": 31.896,
-      "median_ms": 11.727,
-      "min_ms": 4.651
+      "max_ms": 20.7,
+      "median_ms": 11.547,
+      "min_ms": 4.858
     },
     "mesh_surface_section_native": {
       "iterations": 30,
-      "max_ms": 1.546,
-      "median_ms": 0.649,
-      "min_ms": 0.117
+      "max_ms": 0.877,
+      "median_ms": 0.325,
+      "min_ms": 0.068
     },
     "registry_load": {
       "iterations": 20,
-      "max_ms": 138.179,
-      "median_ms": 88.448,
-      "min_ms": 84.168
+      "max_ms": 184.299,
+      "median_ms": 114.574,
+      "min_ms": 99.467
+    },
+    "survival_probe": {
+      "iterations": 20,
+      "max_ms": 1.977,
+      "median_ms": 0.479,
+      "min_ms": 0.43
     },
     "terrain_column": {
       "iterations": 40,
-      "max_ms": 38.791,
-      "median_ms": 22.613,
-      "min_ms": 16.426
+      "max_ms": 47.339,
+      "median_ms": 25.455,
+      "min_ms": 16.169
     },
     "world_load_view12": {
       "iterations": 2,
-      "max_ms": 8010.0,
-      "median_ms": 8010.0,
-      "min_ms": 6666.553
+      "max_ms": 7925.394,
+      "median_ms": 7925.394,
+      "min_ms": 6832.325
     }
   },
   "threads": 4

@@ -1064,7 +1064,9 @@
    ],
    "textures": {
     "all": "lava"
-   }
+   },
+   "heat": 30.0,
+   "contact_damage": 40.0
   }
  ]
 }

@@ -236,3 +236,105 @@ def torch(ctx):
     t = Tex(np.clip(albedo, 0, 1), alpha, blur(alpha, 1), 0.8 * ones(ctx), normal_strength=1.0, emissive=False)
     t.emission = (np.asarray(glow).astype(float) / 255) * alpha
     return t
+
+
+def _fabric(ctx, base, pattern="plain", quilt=0):
+    """Ткань: переплетение нитей, складки, узор (клетка, полосы, ромбы), стёжка."""
+    s = ctx.size
+    rng = ctx.rng
+    ys, xs = np.mgrid[0:s, 0:s]
+    weave = (np.sin(xs * math.pi * 0.9) * np.sin(ys * math.pi * 0.9)) * 0.5 + 0.5
+    folds = fbm(s, 3, rng, 3)
+    mod = 0.82 + 0.1 * weave + 0.22 * (folds - 0.5)
+    alb = colorize(base, mod)
+    if pattern == "check":
+        cell = s // 6
+        chk = (((xs // cell) + (ys // cell)) % 2).astype(float)
+        stripe = ((xs % cell < 2) | (ys % cell < 2)).astype(float)
+        alb = lerp_img(alb, alb * 0.75, chk * 0.6)
+        alb = lerp_img(alb, colorize(hex_rgb("#e8dcc0"), mod), stripe * 0.5)
+    elif pattern == "ornament":
+        d = np.abs(((xs + ys) % (s // 4)) - s // 8) + np.abs(((xs - ys) % (s // 4)) - s // 8)
+        orn = (d < 3).astype(float)
+        alb = lerp_img(alb, colorize(hex_rgb("#e0c060"), mod), orn * 0.8)
+    h = 0.3 * weave + 0.6 * folds
+    if quilt:
+        q = s // quilt
+        seam = ((xs % q < 1.5) | (ys % q < 1.5)).astype(float)
+        puff = (np.sin(np.pi * (xs % q) / q) * np.sin(np.pi * (ys % q) / q))
+        alb *= (0.85 + 0.2 * puff)[..., None]
+        alb *= (1 - 0.3 * seam)[..., None]
+        h = 0.3 * h + 0.7 * puff - 0.3 * seam
+    return alb, h
+
+
+def bed(ctx, side=True, kind="bed"):
+    s = ctx.size
+    blanket = np.array(ctx.color)
+    if kind == "sleeping_bag":
+        alb, h = _fabric(ctx, blanket, "plain", quilt=4)
+        if side:
+            ys = np.mgrid[0:s, 0:s][0]
+            zip_ = (np.abs(ys - s * 0.5) < 2).astype(float)
+            alb = lerp_img(alb, solid(ctx, (0.25, 0.25, 0.27)), zip_)
+        return Tex(np.clip(alb, 0, 1), ones(ctx, 0.0), normalize(h), 0.95 * ones(ctx), normal_strength=1.6)
+    pattern = "check" if kind == "bed" else "ornament"
+    alb, h = _fabric(ctx, blanket, pattern)
+    ys, xs = np.mgrid[0:s, 0:s]
+    if not side:
+        # Подушка у одного края и отогнутый край одеяла.
+        pillow = ((ys < s * 0.28) & (xs > s * 0.08) & (xs < s * 0.92)).astype(float)
+        pil_alb, pil_h = _fabric(ctx, hex_rgb("#ece6da"), "plain", quilt=0)
+        alb = lerp_img(alb, pil_alb, pillow)
+        h = np.where(pillow > 0.5, 0.6 + 0.4 * pil_h, h)
+        fold = ((ys >= s * 0.28) & (ys < s * 0.36)).astype(float)
+        alb = lerp_img(alb, colorize(hex_rgb("#ece6da"), 0.95 * ones(ctx)), fold)
+        return Tex(np.clip(alb, 0, 1), ones(ctx, 0.0), normalize(h), 0.95 * ones(ctx), normal_strength=1.8)
+    # Бок: деревянная рама снизу, свисающее одеяло сверху.
+    wood_alb, wood_h, wood_r = planks(ctx, boards=2, horizontal=True, base=hex_rgb("#7a5534"))
+    frame = (ys > s * 0.55).astype(float)
+    alb = lerp_img(alb, wood_alb, frame)
+    h = np.where(frame > 0.5, wood_h, h)
+    edge = (np.abs(ys - s * 0.55) < 1.5).astype(float)
+    alb *= (1 - 0.4 * edge)[..., None]
+    return Tex(np.clip(alb, 0, 1), ones(ctx, 0.0), normalize(h), np.where(frame > 0.5, wood_r, 0.95), normal_strength=2.0)
+
+
+def campfire(ctx):
+    """Спрайт костра: скрещённые поленья, угли и языки пламени (светятся — ORM.A)."""
+    s = ctx.size
+    rng = ctx.rng
+    k = 4
+    big = s * k
+    img = Image.new("RGBA", (big, big), (0, 0, 0, 0))
+    glow = Image.new("L", (big, big), 0)
+    d = ImageDraw.Draw(img)
+    dg = ImageDraw.Draw(glow)
+    for i in range(4):
+        a = (i - 1.5) * 0.45
+        x0 = big / 2 + math.sin(a) * big * 0.42
+        d.line([(x0, big * 0.98), (big / 2 - math.sin(a) * big * 0.05, big * 0.66)], fill=_rgba(shade(hex_rgb("#5a3a22"), 0.8 + 0.1 * i)), width=k * 7)
+        d.line([(x0 - k, big * 0.97), (big / 2 - math.sin(a) * big * 0.05 - k, big * 0.67)], fill=_rgba(hex_rgb("#7a5232")), width=k * 2)
+    for i in range(14):
+        x = big * (0.32 + 0.36 * rng.random())
+        y = big * (0.86 + 0.1 * rng.random())
+        r = k * (2 + 3 * rng.random())
+        d.ellipse([x - r, y - r, x + r, y + r], fill=_rgba((1.0, 0.45 + 0.3 * rng.random(), 0.1)))
+        dg.ellipse([x - r, y - r, x + r, y + r], fill=200)
+    for layer, (col, scale) in enumerate([((0.92, 0.32, 0.06), 1.0), ((1.0, 0.6, 0.15), 0.72), ((1.0, 0.9, 0.55), 0.42)]):
+        for t in range(3):
+            cx = big / 2 + (t - 1) * big * 0.12 * scale + rng.normal() * k * 2
+            w = big * 0.12 * scale
+            top = big * (0.12 + 0.12 * layer + 0.1 * abs(t - 1))
+            pts = [(cx - w, big * 0.8), (cx + w, big * 0.8), (cx + w * 0.4, top + big * 0.15), (cx + rng.normal() * k * 3, top),
+                   (cx - w * 0.5, top + big * 0.18)]
+            d.polygon(pts, fill=_rgba(col))
+            dg.polygon(pts, fill=255)
+    img = img.resize((s, s), Image.LANCZOS)
+    glow = glow.resize((s, s), Image.LANCZOS)
+    a = np.asarray(img).astype(float) / 255
+    alpha = (a[..., 3] > 0.4).astype(float)
+    albedo = np.where(alpha[..., None] > 0, a[..., :3] / np.maximum(a[..., 3:4], 1e-3), np.array(ctx.color)[None, None, :])
+    t = Tex(np.clip(albedo, 0, 1), alpha, blur(alpha, 1), 0.85 * ones(ctx), normal_strength=1.0)
+    t.emission = (np.asarray(glow).astype(float) / 255) * alpha
+    return t

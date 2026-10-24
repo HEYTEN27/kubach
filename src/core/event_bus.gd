@@ -7,7 +7,7 @@ extends Node
 ## Registry закончил загрузку data/. `error_count` > 0 — данные битые, см. Registry.errors.
 signal registry_loaded(error_count: int)
 
-## Игрок приземлился после падения с высоты `fall` блоков (урон от падения — этап 5).
+## Игрок приземлился после падения с высоты `fall` блоков (урон от падения — SurvivalController).
 signal player_landed(fall: float)
 
 ## Мир сохранён (ручное сохранение, автосохранение, выход).

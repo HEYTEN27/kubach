@@ -134,6 +134,37 @@ func insulation_total() -> float:
 	return t
 
 
+## Забрать всё (смерть с выпадением вещей): хотбар, основной, экипировка. Рюкзак снимается
+## последним — его содержимое остаётся в данных рюкзака и выпадает вместе с ним.
+func take_all() -> Array[ItemStack]:
+	var out: Array[ItemStack] = []
+	for inv: Inventory in [hotbar, main]:
+		for i in inv.size():
+			var s := inv.get_stack(i)
+			if s != null:
+				out.append(s)
+				inv.set_stack(i, null)
+	for i in equipment.size():
+		var s := equipment.get_stack(i)
+		if s != null:
+			equipment.set_stack(i, null)
+			out.append(s)
+	return out
+
+
+## Влагостойкость надетой одежды 0…1: среднее по вещам, которые греют или защищают от воды.
+func water_resist_total() -> float:
+	var sum := 0.0
+	var n := 0
+	for s: ItemStack in equipment.slots:
+		if s != null:
+			var d := registry.item(s.id)
+			if d != null and (d.insulation > 0.0 or d.water_resist > 0.0):
+				sum += d.water_resist
+				n += 1
+	return clampf(sum / maxf(1.0, float(n)), 0.0, 1.0)
+
+
 ## Свет предмета во второй руке (факел) или в основной: [уровень 0…15, цвет].
 func hand_light() -> Array:
 	var best := [0, Color.WHITE]

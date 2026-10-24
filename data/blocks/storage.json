@@ -221,7 +221,155 @@
    "solid": false,
    "light_emission": 14,
    "light_color": "#ffb36a",
-   "light_filter": 0
+   "light_filter": 0,
+   "heat": 4.0
+  },
+  {
+   "id": "sleeping_bag",
+   "name": {
+    "ru": "Спальник",
+    "en": "Sleeping Bag"
+   },
+   "material": "wood",
+   "map_color": "#5a6a4a",
+   "render": "opaque",
+   "shape": "layer",
+   "layer_height": 0.1875,
+   "solid": true,
+   "light_filter": 0,
+   "hardness": 1.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "sleeping_bag_top",
+    "bottom": "sleeping_bag_top",
+    "side": "sleeping_bag_side"
+   },
+   "drops": [
+    {
+     "id": "sleeping_bag"
+    }
+   ],
+   "tags": [
+    "bed",
+    "furniture"
+   ],
+   "weight": 2.0,
+   "bed": {
+    "kind": "sleeping_bag",
+    "rest": 0.7
+   }
+  },
+  {
+   "id": "bed",
+   "name": {
+    "ru": "Кровать",
+    "en": "Bed"
+   },
+   "material": "wood",
+   "map_color": "#9a4a3a",
+   "render": "opaque",
+   "shape": "layer",
+   "layer_height": 0.5625,
+   "solid": true,
+   "light_filter": 0,
+   "hardness": 1.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "bed_top",
+    "bottom": "bed_top",
+    "side": "bed_side"
+   },
+   "drops": [
+    {
+     "id": "bed"
+    }
+   ],
+   "tags": [
+    "bed",
+    "furniture"
+   ],
+   "weight": 25.0,
+   "bed": {
+    "kind": "bed",
+    "rest": 1.0
+   }
+  },
+  {
+   "id": "double_bed",
+   "name": {
+    "ru": "Двуспальная кровать",
+    "en": "Double Bed"
+   },
+   "material": "wood",
+   "map_color": "#4a5a8a",
+   "render": "opaque",
+   "shape": "layer",
+   "layer_height": 0.5625,
+   "solid": true,
+   "light_filter": 0,
+   "hardness": 1.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "double_bed_top",
+    "bottom": "double_bed_top",
+    "side": "double_bed_side"
+   },
+   "drops": [
+    {
+     "id": "double_bed"
+    }
+   ],
+   "tags": [
+    "bed",
+    "furniture"
+   ],
+   "weight": 40.0,
+   "bed": {
+    "kind": "double_bed",
+    "rest": 1.25
+   }
+  },
+  {
+   "id": "campfire",
+   "name": {
+    "ru": "Костёр",
+    "en": "Campfire"
+   },
+   "material": "wood",
+   "map_color": "#e08030",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "light_emission": 15,
+   "light_color": "#ffa050",
+   "light_filter": 0,
+   "hardness": 0.5,
+   "tool": "none",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "campfire"
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "min": 2,
+     "max": 4
+    }
+   ],
+   "tags": [
+    "fire",
+    "heat"
+   ],
+   "heat": 18.0,
+   "contact_damage": 6.0,
+   "weight": 3.0
   }
  ]
 }

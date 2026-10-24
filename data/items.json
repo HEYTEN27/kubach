@@ -908,7 +908,8 @@
    "food": {
     "nutrition": 3.0,
     "thirst": 1.0,
-    "spoil_days": 4.0
+    "spoil_days": 4.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -926,7 +927,8 @@
    "food": {
     "nutrition": 2.5,
     "thirst": 1.0,
-    "spoil_days": 20.0
+    "spoil_days": 20.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -944,7 +946,8 @@
    "food": {
     "nutrition": 2.0,
     "thirst": 1.0,
-    "spoil_days": 30.0
+    "spoil_days": 30.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -962,7 +965,8 @@
    "food": {
     "nutrition": 3.0,
     "thirst": 1.5,
-    "spoil_days": 3.0
+    "spoil_days": 3.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -980,7 +984,8 @@
    "food": {
     "nutrition": 3.0,
     "thirst": 1.0,
-    "spoil_days": 4.0
+    "spoil_days": 4.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -998,7 +1003,8 @@
    "food": {
     "nutrition": 2.5,
     "thirst": 1.0,
-    "spoil_days": 2.0
+    "spoil_days": 2.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -1016,7 +1022,8 @@
    "food": {
     "nutrition": 3.0,
     "thirst": 1.0,
-    "spoil_days": 2.0
+    "spoil_days": 2.0,
+    "eat_seconds": 0.8
    },
    "icon": {
     "shape": "berries",
@@ -1035,7 +1042,8 @@
    "food": {
     "nutrition": 20.0,
     "thirst": -2.0,
-    "spoil_days": 6.0
+    "spoil_days": 6.0,
+    "eat_seconds": 1.6
    },
    "icon": {
     "shape": "bread",
@@ -1054,11 +1062,259 @@
    "food": {
     "nutrition": 12.0,
     "thirst": -6.0,
-    "spoil_days": 60.0
+    "spoil_days": 60.0,
+    "eat_seconds": 1.6
    },
    "icon": {
     "shape": "fish",
     "color": "#a8885a"
+   }
+  },
+  {
+   "id": "raw_meat",
+   "name": {
+    "ru": "Сырое мясо",
+    "en": "Raw Meat"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "food": {
+    "nutrition": 10.0,
+    "thirst": 0.0,
+    "spoil_days": 2.0,
+    "eat_seconds": 2.0,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.55
+     }
+    ]
+   },
+   "icon": {
+    "shape": "meat",
+    "color": "#c04a4a"
+   }
+  },
+  {
+   "id": "cooked_meat",
+   "name": {
+    "ru": "Жареное мясо",
+    "en": "Cooked Meat"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "quality": true,
+   "food": {
+    "nutrition": 32.0,
+    "thirst": -3.0,
+    "spoil_days": 4.0,
+    "hot": true,
+    "eat_seconds": 2.0,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "icon": {
+    "shape": "meat",
+    "color": "#8a4a2a"
+   }
+  },
+  {
+   "id": "mushroom_soup",
+   "name": {
+    "ru": "Грибная похлёбка",
+    "en": "Mushroom Soup"
+   },
+   "kind": "food",
+   "stack": 1,
+   "weight": 0.6,
+   "quality": true,
+   "food": {
+    "nutrition": 24.0,
+    "thirst": 12.0,
+    "spoil_days": 2.0,
+    "hot": true,
+    "eat_seconds": 2.2,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "icon": {
+    "shape": "bowl",
+    "color": "#a07040",
+    "color2": "#6a4a2a"
+   }
+  },
+  {
+   "id": "herbal_tea",
+   "name": {
+    "ru": "Отвар трав",
+    "en": "Herbal Tea"
+   },
+   "kind": "food",
+   "stack": 4,
+   "weight": 0.4,
+   "food": {
+    "nutrition": 0.0,
+    "thirst": 18.0,
+    "hot": true,
+    "eat_seconds": 1.8
+   },
+   "medicine": {
+    "cures": [
+     "cold",
+     "flu",
+     "food_poisoning"
+    ],
+    "chance": 0.6
+   },
+   "icon": {
+    "shape": "cup",
+    "color": "#8aa060",
+    "color2": "#7a5a36"
+   }
+  },
+  {
+   "id": "antidote_decoction",
+   "name": {
+    "ru": "Противоядный отвар",
+    "en": "Antidote Decoction"
+   },
+   "kind": "food",
+   "stack": 4,
+   "weight": 0.4,
+   "food": {
+    "nutrition": 0.0,
+    "thirst": 8.0,
+    "eat_seconds": 1.8
+   },
+   "medicine": {
+    "cures": [
+     "venom",
+     "food_poisoning"
+    ],
+    "chance": 0.9
+   },
+   "icon": {
+    "shape": "cup",
+    "color": "#4a8a6a",
+    "color2": "#5a5a5a"
+   }
+  },
+  {
+   "id": "activated_charcoal",
+   "name": {
+    "ru": "Толчёный уголь",
+    "en": "Crushed Charcoal"
+   },
+   "kind": "misc",
+   "stack": 16,
+   "weight": 0.05,
+   "medicine": {
+    "cures": [
+     "food_poisoning"
+    ],
+    "chance": 0.7
+   },
+   "icon": {
+    "shape": "powder",
+    "color": "#2a2a2a"
+   }
+  },
+  {
+   "id": "bandage",
+   "name": {
+    "ru": "Бинт",
+    "en": "Bandage"
+   },
+   "kind": "misc",
+   "stack": 16,
+   "weight": 0.05,
+   "medicine": {
+    "cures": [
+     "wound"
+    ],
+    "chance": 1.0,
+    "heal": 4.0
+   },
+   "icon": {
+    "shape": "roll",
+    "color": "#e8e2d6"
+   }
+  },
+  {
+   "id": "splint",
+   "name": {
+    "ru": "Шина",
+    "en": "Splint"
+   },
+   "kind": "misc",
+   "stack": 4,
+   "weight": 0.4,
+   "medicine": {
+    "cures": [
+     "fracture"
+    ],
+    "chance": 1.0,
+    "applies": [
+     "splinted"
+    ]
+   },
+   "icon": {
+    "shape": "splint",
+    "color": "#a08050",
+    "color2": "#e8e2d6"
+   }
+  },
+  {
+   "id": "salve",
+   "name": {
+    "ru": "Мазь",
+    "en": "Salve"
+   },
+   "kind": "misc",
+   "stack": 8,
+   "weight": 0.1,
+   "medicine": {
+    "cures": [
+     "frostbite",
+     "wound_infection"
+    ],
+    "chance": 0.6,
+    "heal": 6.0
+   },
+   "icon": {
+    "shape": "jar",
+    "color": "#c0b070",
+    "color2": "#7a5a36"
+   }
+  },
+  {
+   "id": "antibiotics",
+   "name": {
+    "ru": "Антибиотики",
+    "en": "Antibiotics"
+   },
+   "kind": "misc",
+   "stack": 16,
+   "weight": 0.02,
+   "medicine": {
+    "cures": [
+     "wound_infection",
+     "dysentery"
+    ],
+    "chance": 0.95
+   },
+   "icon": {
+    "shape": "pills",
+    "color": "#e8e8f0",
+    "color2": "#d04040"
    }
   }
  ]

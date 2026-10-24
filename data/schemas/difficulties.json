@@ -1,0 +1,63 @@
+{
+ "format": 1,
+ "category": "difficulties",
+ "description": "Сложности: множители выживания. Хардкор — одна жизнь.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "hunger_mult": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1
+  },
+  "thirst_mult": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1
+  },
+  "damage_mult": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1
+  },
+  "disease_mult": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1
+  },
+  "regen_mult": {
+   "type": "float",
+   "min": 0,
+   "max": 10,
+   "default": 1
+  },
+  "starve": {
+   "type": "bool",
+   "default": true,
+   "doc": "Голод и жажда наносят урон."
+  },
+  "drop_on_death": {
+   "type": "bool",
+   "default": true
+  },
+  "one_life": {
+   "type": "bool",
+   "default": false
+  }
+ }
+}

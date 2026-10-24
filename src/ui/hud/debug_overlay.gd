@@ -1,7 +1,7 @@
 class_name DebugOverlay
 extends CanvasLayer
 ## Отладочный экран F3 (раздел 20 ТЗ): FPS, frametime, очереди чанков, память, вызовы отрисовки,
-## координаты, цель, режим. Биом, освещённость и температура появятся на этапах 2, 3 и 5.
+## координаты, цель, режим. Биом, освещённость, температура тела и время.
 
 const REFRESH_SEC := 0.25
 const DIRS := ["север (−Z)", "северо-запад", "запад (−X)", "юго-запад", "юг (+Z)", "юго-восток", "восток (+X)", "северо-восток"]
@@ -9,6 +9,7 @@ const DIRS := ["север (−Z)", "северо-запад", "запад (−X
 var player: Player
 var world: World
 var world_name := ""
+var survival: SurvivalController
 
 var _label: Label
 var _accum := 0.0
@@ -107,10 +108,17 @@ func build_text() -> String:
 		lines.append("Биом: —")
 	var light := ch.light_at(bx, by + 1, bz)
 	if light.is_empty():
-		lines.append("Свет: — · расчёт %s · Температура тела: — (этап 5)" % ch.light_name())
+		lines.append("Свет: — · расчёт %s" % ch.light_name())
 	else:
-		lines.append("Свет: небо %d · блоки %d/%d/%d · расчёт %s · в очереди %d · Температура тела: — (этап 5)" % [
+		lines.append("Свет: небо %d · блоки %d/%d/%d · расчёт %s · в очереди %d" % [
 			light[0], light[1], light[2], light[3], ch.light_name(), ch.pending_lighting()])
+	if survival != null:
+		var v := survival.vitals
+		var e := survival.env
+		lines.append("Тело %.2f °C · ощущается %.1f · воздух %.1f · тепло %.1f · мокрость %.2f · усталость %.0f" % [
+			v.body_temp, v.perceived, float(e.get("ambient", 0.0)), float(e.get("heat", 0.0)), v.wetness, v.fatigue])
+		lines.append("Время %s · день %d · %s · дневной свет %.2f · сложность %s" % [survival.clock.time_text(),
+			survival.clock.day, survival.clock.season(), survival.daylight, survival.difficulty])
 	lines.append("Мир: %s · сид %d" % [world_name, world.world_seed])
 	return "\n".join(lines)
 

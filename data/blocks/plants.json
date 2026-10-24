@@ -248,7 +248,11 @@
      "min": 1,
      "max": 2
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 2.0,
+    "eat_seconds": 1.0
+   }
   },
   {
    "id": "plantain",
@@ -279,7 +283,14 @@
     {
      "id": "plantain"
     }
-   ]
+   ],
+   "medicine": {
+    "cures": [
+     "wound"
+    ],
+    "chance": 0.6,
+    "heal": 2.0
+   }
   },
   {
    "id": "bilberry_bush",
@@ -550,7 +561,17 @@
     {
      "id": "labrador_tea"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 0.0,
+    "eat_seconds": 1.0,
+    "effects": [
+     {
+      "id": "venom",
+      "chance": 0.5
+     }
+    ]
+   }
   },
   {
    "id": "juniper",
@@ -607,7 +628,17 @@
     {
      "id": "porcini"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 6.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.08
+     }
+    ]
+   }
   },
   {
    "id": "birch_bolete",
@@ -636,7 +667,17 @@
     {
      "id": "birch_bolete"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 5.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.1
+     }
+    ]
+   }
   },
   {
    "id": "chanterelle",
@@ -665,7 +706,17 @@
     {
      "id": "chanterelle"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 5.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.08
+     }
+    ]
+   }
   },
   {
    "id": "false_chanterelle",
@@ -695,7 +746,17 @@
     {
      "id": "false_chanterelle"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 3.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.8
+     }
+    ]
+   }
   },
   {
    "id": "russula",
@@ -724,7 +785,17 @@
     {
      "id": "russula"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 4.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.15
+     }
+    ]
+   }
   },
   {
    "id": "death_cap",
@@ -754,7 +825,17 @@
     {
      "id": "death_cap"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 3.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "venom",
+      "chance": 0.95
+     }
+    ]
+   }
   },
   {
    "id": "fly_agaric",
@@ -783,7 +864,17 @@
     {
      "id": "fly_agaric"
     }
-   ]
+   ],
+   "food": {
+    "nutrition": 2.0,
+    "eat_seconds": 1.2,
+    "effects": [
+     {
+      "id": "venom",
+      "chance": 0.7
+     }
+    ]
+   }
   },
   {
    "id": "lichen",

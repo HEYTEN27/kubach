@@ -511,7 +511,8 @@
    "weather": [
     "fog",
     "rain"
-   ]
+   ],
+   "water_kind": "dirty"
   },
   {
    "id": "tundra",
@@ -2039,7 +2040,8 @@
    "weather": [
     "fog",
     "rain"
-   ]
+   ],
+   "water_kind": "dirty"
   },
   {
    "id": "karst",
@@ -2582,7 +2584,8 @@
    "weather": [
     "rain",
     "thunderstorm"
-   ]
+   ],
+   "water_kind": "dirty"
   },
   {
    "id": "river",
@@ -2726,7 +2729,8 @@
    "fauna": [
     "fish",
     "dolphin"
-   ]
+   ],
+   "water_kind": "sea"
   },
   {
    "id": "warm_ocean",
@@ -2766,7 +2770,8 @@
    "fauna": [
     "fish",
     "turtle"
-   ]
+   ],
+   "water_kind": "sea"
   },
   {
    "id": "cold_ocean",
@@ -2807,7 +2812,8 @@
     "fish",
     "seal",
     "walrus"
-   ]
+   ],
+   "water_kind": "sea"
   },
   {
    "id": "deep_ocean",
@@ -2847,7 +2853,8 @@
    "fauna": [
     "whale",
     "squid"
-   ]
+   ],
+   "water_kind": "sea"
   },
   {
    "id": "reef_ocean",
@@ -2895,7 +2902,8 @@
     "fish",
     "turtle",
     "shark"
-   ]
+   ],
+   "water_kind": "sea"
   }
  ]
 }
