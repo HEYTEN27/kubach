@@ -1,0 +1,23 @@
+{
+ "format": 1,
+ "category": "palettes",
+ "description": "Наборы цветов редактора персонажа: кожа, волосы, глаза, одежда.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "colors": {
+   "type": "array",
+   "of": {
+    "type": "color"
+   },
+   "required": true
+  }
+ }
+}

@@ -30,6 +30,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(__file__))
 import recipes as R  # noqa: E402
+import furniture as F  # noqa: E402
 from noise import blur  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -57,6 +58,17 @@ def classify(name, uses):
     mat = e["material"]
     tags = e.get("tags", [])
     shape = e.get("shape", "cube")
+    furn = {
+        "chest_wood_side": lambda c: F.chest(c, True, "wood"), "chest_wood_top": lambda c: F.chest(c, False, "wood"),
+        "chest_reinforced_side": lambda c: F.chest(c, True, "reinforced"),
+        "chest_reinforced_top": lambda c: F.chest(c, False, "reinforced"),
+        "chest_iron_side": lambda c: F.chest(c, True, "iron"), "chest_iron_top": lambda c: F.chest(c, False, "iron"),
+        "dresser_side": lambda c: F.dresser(c, True), "dresser_top": lambda c: F.dresser(c, False),
+        "barrel_side": lambda c: F.barrel(c, True), "barrel_top": lambda c: F.barrel(c, False),
+        "crate": F.crate, "torch": F.torch,
+    }
+    if name in furn:
+        return furn[name], 1, False
     if name in ("turf_top", "mycelium_top"):
         return R.turf_top, 3, True
     if name in ("turf_side", "mycelium_side"):
@@ -168,6 +180,8 @@ def finish(tex, size):
     metal = tex.metal if tex.metal is not None else np.zeros_like(h)
     rough = np.clip(np.broadcast_to(tex.rough, h.shape), 0.04, 1.0)
     emit = np.ones_like(h) if tex.emissive else np.zeros_like(h)
+    if getattr(tex, "emission", None) is not None:
+        emit = np.clip(tex.emission, 0, 1)
     albedo = np.concatenate([np.clip(tex.albedo, 0, 1), np.clip(tex.alpha, 0, 1)[..., None]], -1)
     normal_m = np.concatenate([normal, metal[..., None]], -1)
     orm = np.stack([ao, rough, h, emit], -1)
@@ -263,6 +277,9 @@ def main():
     print(f"наборов {len(names)}, слоёв {count}, сетка {COLUMNS}×{rows}, {time.time() - t0:.1f} с")
     if args.preview:
         preview(names, manifest, layers_albedo, layers_normal, size, args.preview)
+    if not args.only and args.out == OUT_DIR:
+        import icons
+        icons.build(args.out)
 
 
 def preview(names, manifest, albedo, normal, size, path):

@@ -4,7 +4,7 @@ extends RefCounted
 ## создаёт действие, а World.execute() проверяет и применяет его. Тот же объект в будущем
 ## можно отправить по сети на сервер.
 
-enum Type { BREAK_BLOCK, PLACE_BLOCK }
+enum Type { BREAK_BLOCK, PLACE_BLOCK, INVENTORY }
 
 var type: Type
 var pos: Vector3i

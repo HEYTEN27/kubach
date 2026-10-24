@@ -16,11 +16,23 @@ var tints := PackedColorArray()
 ## Минимальная высота поверхности рельефа по колонне (до пещер). Секции целиком ниже неё
 ## «глубокие»: их мешат только рядом с игроком (отсечение пещер).
 var surface_min := WorldConst.MAX_Y
+## Данные блоков (этап 4): локальный индекс (entity_index) → словарь, например
+## { "type": "container", "items": [...] } у сундука. Сохраняются в region-файлах.
+var block_entities := {}
 
 
 func _init(p_cpos: Vector2i = Vector2i.ZERO) -> void:
 	cpos = p_cpos
 	sections.resize(WorldConst.SECTIONS_PER_COLUMN)
+
+
+## Ключ данных блока в колонне: x | z << 4 | (y − MIN_Y) << 8.
+static func entity_index(lx: int, y: int, lz: int) -> int:
+	return lx | (lz << 4) | ((y - WorldConst.MIN_Y) << 8)
+
+
+static func entity_pos(index: int) -> Vector3i:
+	return Vector3i(index & 15, (index >> 8) + WorldConst.MIN_Y, (index >> 4) & 15)
 
 
 func get_section(index: int) -> ChunkSection:

@@ -10,6 +10,12 @@
       "category": "movement",
       "keys": [
         "W"
+      ],
+      "joy_axes": [
+        {
+          "axis": 1,
+          "dir": -1
+        }
       ]
     },
     {
@@ -21,6 +27,12 @@
       "category": "movement",
       "keys": [
         "S"
+      ],
+      "joy_axes": [
+        {
+          "axis": 1,
+          "dir": 1
+        }
       ]
     },
     {
@@ -32,6 +44,12 @@
       "category": "movement",
       "keys": [
         "A"
+      ],
+      "joy_axes": [
+        {
+          "axis": 0,
+          "dir": -1
+        }
       ]
     },
     {
@@ -43,6 +61,12 @@
       "category": "movement",
       "keys": [
         "D"
+      ],
+      "joy_axes": [
+        {
+          "axis": 0,
+          "dir": 1
+        }
       ]
     },
     {
@@ -54,6 +78,9 @@
       "category": "movement",
       "keys": [
         "Space"
+      ],
+      "joy_buttons": [
+        0
       ]
     },
     {
@@ -65,6 +92,9 @@
       "category": "movement",
       "keys": [
         "Ctrl"
+      ],
+      "joy_buttons": [
+        7
       ]
     },
     {
@@ -76,6 +106,9 @@
       "category": "movement",
       "keys": [
         "Shift"
+      ],
+      "joy_buttons": [
+        8
       ]
     },
     {
@@ -87,6 +120,9 @@
       "category": "camera",
       "keys": [
         "F5"
+      ],
+      "joy_buttons": [
+        4
       ]
     },
     {
@@ -98,6 +134,12 @@
       "category": "interaction",
       "mouse_buttons": [
         1
+      ],
+      "joy_axes": [
+        {
+          "axis": 5,
+          "dir": 1
+        }
       ]
     },
     {
@@ -109,6 +151,12 @@
       "category": "interaction",
       "mouse_buttons": [
         2
+      ],
+      "joy_axes": [
+        {
+          "axis": 4,
+          "dir": 1
+        }
       ]
     },
     {
@@ -230,6 +278,9 @@
       "category": "interface",
       "mouse_buttons": [
         5
+      ],
+      "joy_buttons": [
+        10
       ]
     },
     {
@@ -241,6 +292,9 @@
       "category": "interface",
       "mouse_buttons": [
         4
+      ],
+      "joy_buttons": [
+        9
       ]
     },
     {
@@ -252,6 +306,9 @@
       "category": "interface",
       "keys": [
         "Escape"
+      ],
+      "joy_buttons": [
+        6
       ]
     },
     {
@@ -263,7 +320,8 @@
       "category": "debug",
       "keys": [
         "F3"
-      ]
+      ],
+      "rebindable": true
     },
     {
       "id": "toggle_game_mode",
@@ -274,6 +332,105 @@
       "category": "debug",
       "keys": [
         "F4"
+      ],
+      "rebindable": true
+    },
+    {
+      "id": "look_left",
+      "name": {
+        "ru": "Взгляд влево (геймпад)",
+        "en": "Look left (gamepad)"
+      },
+      "category": "camera",
+      "joy_axes": [
+        {
+          "axis": 2,
+          "dir": -1
+        }
+      ]
+    },
+    {
+      "id": "look_right",
+      "name": {
+        "ru": "Взгляд вправо (геймпад)",
+        "en": "Look right (gamepad)"
+      },
+      "category": "camera",
+      "joy_axes": [
+        {
+          "axis": 2,
+          "dir": 1
+        }
+      ]
+    },
+    {
+      "id": "look_up",
+      "name": {
+        "ru": "Взгляд вверх (геймпад)",
+        "en": "Look up (gamepad)"
+      },
+      "category": "camera",
+      "joy_axes": [
+        {
+          "axis": 3,
+          "dir": -1
+        }
+      ]
+    },
+    {
+      "id": "look_down",
+      "name": {
+        "ru": "Взгляд вниз (геймпад)",
+        "en": "Look down (gamepad)"
+      },
+      "category": "camera",
+      "joy_axes": [
+        {
+          "axis": 3,
+          "dir": 1
+        }
+      ]
+    },
+    {
+      "id": "inventory",
+      "name": {
+        "ru": "Инвентарь",
+        "en": "Inventory"
+      },
+      "category": "interface",
+      "keys": [
+        "E"
+      ],
+      "joy_buttons": [
+        3
+      ]
+    },
+    {
+      "id": "drop_item",
+      "name": {
+        "ru": "Выбросить предмет (Ctrl — весь стак)",
+        "en": "Drop item (Ctrl — whole stack)"
+      },
+      "category": "interaction",
+      "keys": [
+        "Q"
+      ],
+      "joy_buttons": [
+        1
+      ]
+    },
+    {
+      "id": "swap_hands",
+      "name": {
+        "ru": "Поменять руки",
+        "en": "Swap hands"
+      },
+      "category": "interaction",
+      "keys": [
+        "F"
+      ],
+      "joy_buttons": [
+        2
       ]
     }
   ]

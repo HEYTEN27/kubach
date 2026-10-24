@@ -15,12 +15,16 @@ var _cache := {}    # ключ -> Array[AudioStream]
 var _warned := {}
 var _pool: Array[AudioStreamPlayer3D] = []
 var _next := 0
+var _ui: AudioStreamPlayer
 
 
 func _ready() -> void:
+	_ui = AudioStreamPlayer.new()
+	_ui.bus = &"UI"
+	add_child(_ui)
 	for i in POOL_SIZE:
 		var p := AudioStreamPlayer3D.new()
-		p.bus = &"Master"
+		p.bus = &"SFX"
 		p.unit_size = 6.0
 		p.max_distance = 48.0
 		add_child(p)
@@ -30,6 +34,20 @@ func _ready() -> void:
 		bus.block_broken.connect(func(_p: Vector3i, block: int, at: Vector3) -> void: _block_sound(block, "break", at))
 		bus.block_placed.connect(func(_p: Vector3i, block: int, at: Vector3) -> void: _block_sound(block, "place", at))
 		bus.player_step.connect(func(group: StringName, at: Vector3) -> void: play_at("footsteps/%s" % group, at))
+
+
+## Звук интерфейса (не в пространстве, шина UI). false — файлов нет.
+func play_ui(key: String, volume_db: float = 0.0) -> bool:
+	var streams := streams_for(key)
+	if streams.is_empty():
+		if not _warned.has(key):
+			_warned[key] = true
+			push_warning("Audio: нет файлов для '%s' (%s/%s_01.ogg …) — см. assets/audio/MANIFEST.md" % [key, SFX_ROOT, key])
+		return false
+	_ui.stream = streams[randi() % streams.size()]
+	_ui.volume_db = volume_db
+	_ui.play()
+	return true
 
 
 ## Проиграть случайную вариацию звука в точке сцены. false — файлов нет.

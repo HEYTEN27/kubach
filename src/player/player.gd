@@ -24,14 +24,27 @@ var world: World
 var body: VoxelBody
 var motor: PlayerMotor
 var interaction: BlockInteraction
+## Инвентарь игрока (этап 4).
+var inventory: PlayerInventory
 var camera: Camera3D
-var model: PlayerModel
+var model: CharacterModel
+## Внешность из редактора персонажа (CharacterModel.default_appearance()).
+var appearance := {}
 ## false — игрок заморожен (загрузка мира, пауза).
 var active := false
 var yaw := 0.0
 var pitch := 0.0
 var camera_mode := CameraMode.FIRST_PERSON
-var mouse_sensitivity := 0.0025
+## Чувствительность мыши по осям (знак — инверсия), из настроек.
+var mouse_sens_x := 0.0025
+var mouse_sens_y := 0.0025
+var crouch_toggle := false
+var sprint_toggle := false
+var auto_jump := false
+var camera_bob := true
+var pad_look_speed := 1.0
+## Учитывать вес инвентаря (перегруз замедляет) — опция в настройках.
+var use_weight := false
 ## Принимать ввод без захвата мыши (тесты, headless).
 var force_input := false
 var fov := 75.0
@@ -41,13 +54,20 @@ var _eye := PlayerMotor.STAND_EYE
 var _cam_dist := 0.0
 var _cam_turn := 0.0
 var _hand: Node3D
+var _hand_icon: Sprite3D
+var _light: OmniLight3D
 var _hand_swing := 0.0
 var _last_jump_tap := -10.0
 var _step_accum := 0.0
+var _crouch_on := false
+var _sprint_on := false
+var _bob := 0.0
 
 
 func setup(p_world: World, x: float, y: float, z: float, p_yaw: float = 0.0, p_pitch: float = 0.0) -> void:
 	world = p_world
+	if inventory == null:
+		inventory = PlayerInventory.new(world.registry)
 	body = VoxelBody.new(world.is_solid)
 	body.set_position(x, y, z)
 	motor = PlayerMotor.new(body, world.is_fluid)
@@ -58,9 +78,20 @@ func setup(p_world: World, x: float, y: float, z: float, p_yaw: float = 0.0, p_p
 
 
 func _ready() -> void:
-	model = PlayerModel.new()
+	model = CharacterModel.new()
 	model.name = "Model"
 	add_child(model)
+	model.setup(world.registry, appearance)
+	model.set_equipment(inventory.equipment)
+	inventory.equipment_changed.connect(_on_equipment_changed)
+	inventory.changed.connect(_on_inventory_changed)
+	inventory.selected_changed.connect(func(_i: int) -> void: _on_inventory_changed())
+	_light = OmniLight3D.new()
+	_light.omni_range = 9.0
+	_light.light_energy = 0.0
+	_light.shadow_enabled = false
+	_light.position = Vector3(0, 1.4, 0)
+	add_child(_light)
 	camera = Camera3D.new()
 	camera.name = "Camera"
 	camera.fov = fov
@@ -70,6 +101,7 @@ func _ready() -> void:
 	add_child(camera)
 	_hand = _make_hand()
 	camera.add_child(_hand)
+	_on_inventory_changed()
 	interaction = BlockInteraction.new()
 	interaction.name = "Interaction"
 	interaction.player = self
@@ -114,8 +146,8 @@ func set_camera_mode(mode: CameraMode) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var rel: Vector2 = event.screen_relative
-		yaw = wrapf(yaw - rel.x * mouse_sensitivity, -PI, PI)
-		pitch = clampf(pitch - rel.y * mouse_sensitivity, -PITCH_LIMIT, PITCH_LIMIT)
+		yaw = wrapf(yaw - rel.x * mouse_sens_x, -PI, PI)
+		pitch = clampf(pitch - rel.y * mouse_sens_y, -PITCH_LIMIT, PITCH_LIMIT)
 	elif event.is_action_pressed(&"toggle_camera"):
 		set_camera_mode(((camera_mode + 1) % 3) as CameraMode)
 
@@ -131,8 +163,22 @@ func _physics_process(delta: float) -> void:
 	var right := Vector2(cos(yaw), -sin(yaw))
 	var wish := right * input.x - forward * input.y
 	var jump := captured and Input.is_action_pressed(&"jump")
-	var sprint := captured and Input.is_action_pressed(&"sprint")
-	var crouch := captured and Input.is_action_pressed(&"crouch")
+	if captured and Input.is_action_just_pressed(&"crouch"):
+		_crouch_on = not _crouch_on
+	if captured and Input.is_action_just_pressed(&"sprint"):
+		_sprint_on = not _sprint_on
+	if input.length() < 0.1:
+		_sprint_on = false
+	var sprint := captured and (_sprint_on if sprint_toggle else Input.is_action_pressed(&"sprint"))
+	var crouch := captured and (_crouch_on if crouch_toggle else Input.is_action_pressed(&"crouch"))
+	# Автопрыжок: идём в стену высотой в один блок, над ней свободно.
+	if auto_jump and body.on_ground and body.hit_wall and wish.length() > 0.1 and not motor.flying:
+		var fx := floori(body.x + wish.normalized().x * 0.6)
+		var fz := floori(body.z + wish.normalized().y * 0.6)
+		var fy := floori(body.y + 0.01)
+		if world.is_solid(fx, fy, fz) and not world.is_solid(fx, fy + 1, fz) and not world.is_solid(fx, fy + 2, fz):
+			jump = true
+	motor.speed_mult = inventory.overload_factor() if use_weight else 1.0
 
 	if captured and Input.is_action_just_pressed(&"jump") and world.game_mode == &"creative":
 		var now := Time.get_ticks_msec() / 1000.0
@@ -152,6 +198,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	# Обзор стиком геймпада.
+	if input_allowed():
+		var look := Input.get_vector(&"look_left", &"look_right", &"look_up", &"look_down")
+		if look != Vector2.ZERO:
+			yaw = wrapf(yaw - look.x * 2.6 * pad_look_speed * delta, -PI, PI)
+			pitch = clampf(pitch - look.y * 2.0 * pad_look_speed * delta, -PITCH_LIMIT, PITCH_LIMIT)
 	_update_visual(delta)
 
 
@@ -193,7 +245,13 @@ func _update_visual(delta: float) -> void:
 		var hit := VoxelRaycast.cast(eye[0], eye[1], eye[2], offset / dist, dist + 0.3, world.is_solid)
 		if hit["hit"]:
 			offset *= clampf(float(hit["distance"]) - 0.3, 0.0, dist) / dist
-	camera.transform = Transform3D(cam_basis, Vector3(0.0, _eye, 0.0) + offset)
+	var bob := Vector3.ZERO
+	if camera_bob and body.on_ground and not motor.flying:
+		var spd := Vector2(motor.vx, motor.vz).length()
+		_bob += delta * spd * 1.9
+		var amp := clampf(spd / 6.0, 0.0, 1.0) * 0.035
+		bob = cam_basis.x * sin(_bob) * amp + Vector3(0, absf(cos(_bob)) * amp, 0)
+	camera.transform = Transform3D(cam_basis, Vector3(0.0, _eye, 0.0) + offset + bob)
 	camera.fov = fov
 
 	var third_person := _cam_dist > 0.6
@@ -206,14 +264,43 @@ func _update_visual(delta: float) -> void:
 	_hand.rotation = Vector3(-0.35 - s * 0.9, 0.15, 0.1 - s * 0.3)
 
 
+func _on_equipment_changed() -> void:
+	model.set_equipment(inventory.equipment)
+	_on_inventory_changed()
+
+
+## Предмет в руке: иконка в руке (1-е и 3-е лицо), свет факела.
+func _on_inventory_changed() -> void:
+	if model == null or _hand_icon == null:
+		return
+	var held := inventory.held()
+	model.set_held(held)
+	_hand_icon.visible = held != null
+	if held != null:
+		_hand_icon.texture = ItemIcons.shared().icon(held.id)
+	var light := inventory.hand_light()
+	_light.light_energy = float(light[0]) / 15.0 * 1.6
+	_light.light_color = light[1]
+	_light.visible = light[0] > 0
+
+
 func _make_hand() -> Node3D:
 	var pivot := Node3D.new()
 	pivot.position = Vector3(0.36, -0.36, -0.72)
+	_hand_icon = Sprite3D.new()
+	_hand_icon.pixel_size = 0.32 / 64.0
+	_hand_icon.position = Vector3(-0.02, 0.1, -0.3)
+	_hand_icon.rotation_degrees = Vector3(0, 70, 0)
+	_hand_icon.alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
+	_hand_icon.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	_hand_icon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_hand_icon.visible = false
+	pivot.add_child(_hand_icon)
 	var mi := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
 	mesh.size = Vector3(0.08, 0.08, 0.4)
 	var mat := StandardMaterial3D.new()
-	mat.albedo_color = PlayerModel.SKIN
+	mat.albedo_color = Color(String(CharacterModel.default_appearance().merged(appearance, true)["skin"]))
 	mat.roughness = 0.9
 	mesh.material = mat
 	mi.mesh = mesh

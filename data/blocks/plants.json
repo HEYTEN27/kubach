@@ -24,7 +24,13 @@
     "all": "grass"
    },
    "tint": "grass",
-   "tint_strength": 1.0
+   "tint_strength": 1.0,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.35
+    }
+   ]
   },
   {
    "id": "tall_grass",
@@ -49,7 +55,13 @@
     "all": "tall_grass"
    },
    "tint": "grass",
-   "tint_strength": 1.0
+   "tint_strength": 1.0,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.35
+    }
+   ]
   },
   {
    "id": "fern",
@@ -74,7 +86,12 @@
     "all": "fern"
    },
    "tint": "foliage",
-   "tint_strength": 0.5
+   "tint_strength": 0.5,
+   "drops": [
+    {
+     "id": "fern"
+    }
+   ]
   },
   {
    "id": "sedge",
@@ -100,7 +117,13 @@
     "all": "sedge"
    },
    "tint": "grass",
-   "tint_strength": 0.6
+   "tint_strength": 0.6,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.35
+    }
+   ]
   },
   {
    "id": "reeds",
@@ -124,7 +147,14 @@
    ],
    "textures": {
     "all": "reeds"
-   }
+   },
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "min": 1,
+     "max": 2
+    }
+   ]
   },
   {
    "id": "feather_grass",
@@ -148,7 +178,13 @@
    ],
    "textures": {
     "all": "feather_grass"
-   }
+   },
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.35
+    }
+   ]
   },
   {
    "id": "dead_bush",
@@ -171,7 +207,14 @@
    ],
    "textures": {
     "all": "dead_bush"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "min": 1,
+     "max": 2
+    }
+   ]
   },
   {
    "id": "nettle",
@@ -198,7 +241,14 @@
     "all": "nettle"
    },
    "tint": "grass",
-   "tint_strength": 0.5
+   "tint_strength": 0.5,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "min": 1,
+     "max": 2
+    }
+   ]
   },
   {
    "id": "plantain",
@@ -224,7 +274,12 @@
     "all": "plantain"
    },
    "tint": "grass",
-   "tint_strength": 0.5
+   "tint_strength": 0.5,
+   "drops": [
+    {
+     "id": "plantain"
+    }
+   ]
   },
   {
    "id": "bilberry_bush",
@@ -248,7 +303,17 @@
    ],
    "textures": {
     "all": "bilberry_bush"
-   }
+   },
+   "drops": [
+    {
+     "id": "bilberry_bush"
+    },
+    {
+     "id": "bilberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "lingonberry_bush",
@@ -272,7 +337,17 @@
    ],
    "textures": {
     "all": "lingonberry_bush"
-   }
+   },
+   "drops": [
+    {
+     "id": "lingonberry_bush"
+    },
+    {
+     "id": "lingonberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "cranberry_bush",
@@ -297,7 +372,17 @@
    ],
    "textures": {
     "all": "cranberry_bush"
-   }
+   },
+   "drops": [
+    {
+     "id": "cranberry_bush"
+    },
+    {
+     "id": "cranberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "cloudberry",
@@ -322,7 +407,17 @@
    ],
    "textures": {
     "all": "cloudberry"
-   }
+   },
+   "drops": [
+    {
+     "id": "cloudberry"
+    },
+    {
+     "id": "cloudberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "bog_bilberry",
@@ -347,7 +442,17 @@
    ],
    "textures": {
     "all": "bog_bilberry"
-   }
+   },
+   "drops": [
+    {
+     "id": "bog_bilberry"
+    },
+    {
+     "id": "bog_bilberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "wild_strawberry",
@@ -371,7 +476,17 @@
    ],
    "textures": {
     "all": "wild_strawberry"
-   }
+   },
+   "drops": [
+    {
+     "id": "wild_strawberry"
+    },
+    {
+     "id": "wild_strawberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "raspberry_bush",
@@ -395,7 +510,17 @@
    ],
    "textures": {
     "all": "raspberry_bush"
-   }
+   },
+   "drops": [
+    {
+     "id": "raspberry_bush"
+    },
+    {
+     "id": "raspberries",
+     "min": 1,
+     "max": 3
+    }
+   ]
   },
   {
    "id": "labrador_tea",
@@ -420,7 +545,12 @@
    ],
    "textures": {
     "all": "labrador_tea"
-   }
+   },
+   "drops": [
+    {
+     "id": "labrador_tea"
+    }
+   ]
   },
   {
    "id": "juniper",
@@ -443,7 +573,12 @@
    ],
    "textures": {
     "all": "juniper"
-   }
+   },
+   "drops": [
+    {
+     "id": "juniper"
+    }
+   ]
   },
   {
    "id": "porcini",
@@ -467,7 +602,12 @@
    ],
    "textures": {
     "all": "porcini"
-   }
+   },
+   "drops": [
+    {
+     "id": "porcini"
+    }
+   ]
   },
   {
    "id": "birch_bolete",
@@ -491,7 +631,12 @@
    ],
    "textures": {
     "all": "birch_bolete"
-   }
+   },
+   "drops": [
+    {
+     "id": "birch_bolete"
+    }
+   ]
   },
   {
    "id": "chanterelle",
@@ -515,7 +660,12 @@
    ],
    "textures": {
     "all": "chanterelle"
-   }
+   },
+   "drops": [
+    {
+     "id": "chanterelle"
+    }
+   ]
   },
   {
    "id": "false_chanterelle",
@@ -540,7 +690,12 @@
    ],
    "textures": {
     "all": "false_chanterelle"
-   }
+   },
+   "drops": [
+    {
+     "id": "false_chanterelle"
+    }
+   ]
   },
   {
    "id": "russula",
@@ -564,7 +719,12 @@
    ],
    "textures": {
     "all": "russula"
-   }
+   },
+   "drops": [
+    {
+     "id": "russula"
+    }
+   ]
   },
   {
    "id": "death_cap",
@@ -589,7 +749,12 @@
    ],
    "textures": {
     "all": "death_cap"
-   }
+   },
+   "drops": [
+    {
+     "id": "death_cap"
+    }
+   ]
   },
   {
    "id": "fly_agaric",
@@ -613,7 +778,12 @@
    ],
    "textures": {
     "all": "fly_agaric"
-   }
+   },
+   "drops": [
+    {
+     "id": "fly_agaric"
+    }
+   ]
   },
   {
    "id": "lichen",
@@ -636,7 +806,12 @@
    ],
    "textures": {
     "all": "lichen"
-   }
+   },
+   "drops": [
+    {
+     "id": "lichen"
+    }
+   ]
   },
   {
    "id": "chamomile",
@@ -660,7 +835,12 @@
    ],
    "textures": {
     "all": "chamomile"
-   }
+   },
+   "drops": [
+    {
+     "id": "chamomile"
+    }
+   ]
   },
   {
    "id": "cornflower",
@@ -684,7 +864,12 @@
    ],
    "textures": {
     "all": "cornflower"
-   }
+   },
+   "drops": [
+    {
+     "id": "cornflower"
+    }
+   ]
   },
   {
    "id": "bellflower",
@@ -708,7 +893,12 @@
    ],
    "textures": {
     "all": "bellflower"
-   }
+   },
+   "drops": [
+    {
+     "id": "bellflower"
+    }
+   ]
   },
   {
    "id": "dandelion",
@@ -732,7 +922,12 @@
    ],
    "textures": {
     "all": "dandelion"
-   }
+   },
+   "drops": [
+    {
+     "id": "dandelion"
+    }
+   ]
   },
   {
    "id": "poppy",
@@ -756,7 +951,12 @@
    ],
    "textures": {
     "all": "poppy"
-   }
+   },
+   "drops": [
+    {
+     "id": "poppy"
+    }
+   ]
   },
   {
    "id": "buttercup",
@@ -780,7 +980,12 @@
    ],
    "textures": {
     "all": "buttercup"
-   }
+   },
+   "drops": [
+    {
+     "id": "buttercup"
+    }
+   ]
   },
   {
    "id": "clover",
@@ -804,7 +1009,12 @@
    ],
    "textures": {
     "all": "clover"
-   }
+   },
+   "drops": [
+    {
+     "id": "clover"
+    }
+   ]
   },
   {
    "id": "fireweed",
@@ -828,7 +1038,12 @@
    ],
    "textures": {
     "all": "fireweed"
-   }
+   },
+   "drops": [
+    {
+     "id": "fireweed"
+    }
+   ]
   },
   {
    "id": "st_johns_wort",
@@ -852,7 +1067,12 @@
    ],
    "textures": {
     "all": "st_johns_wort"
-   }
+   },
+   "drops": [
+    {
+     "id": "st_johns_wort"
+    }
+   ]
   },
   {
    "id": "yarrow",
@@ -876,7 +1096,12 @@
    ],
    "textures": {
     "all": "yarrow"
-   }
+   },
+   "drops": [
+    {
+     "id": "yarrow"
+    }
+   ]
   },
   {
    "id": "tansy",
@@ -900,7 +1125,12 @@
    ],
    "textures": {
     "all": "tansy"
-   }
+   },
+   "drops": [
+    {
+     "id": "tansy"
+    }
+   ]
   },
   {
    "id": "chicory",
@@ -924,7 +1154,12 @@
    ],
    "textures": {
     "all": "chicory"
-   }
+   },
+   "drops": [
+    {
+     "id": "chicory"
+    }
+   ]
   },
   {
    "id": "forget_me_not",
@@ -948,7 +1183,12 @@
    ],
    "textures": {
     "all": "forget_me_not"
-   }
+   },
+   "drops": [
+    {
+     "id": "forget_me_not"
+    }
+   ]
   },
   {
    "id": "lily_of_the_valley",
@@ -972,7 +1212,12 @@
    ],
    "textures": {
     "all": "lily_of_the_valley"
-   }
+   },
+   "drops": [
+    {
+     "id": "lily_of_the_valley"
+    }
+   ]
   },
   {
    "id": "violet",
@@ -996,7 +1241,12 @@
    ],
    "textures": {
     "all": "violet"
-   }
+   },
+   "drops": [
+    {
+     "id": "violet"
+    }
+   ]
   },
   {
    "id": "dianthus",
@@ -1020,7 +1270,12 @@
    ],
    "textures": {
     "all": "dianthus"
-   }
+   },
+   "drops": [
+    {
+     "id": "dianthus"
+    }
+   ]
   },
   {
    "id": "tulip",
@@ -1044,7 +1299,12 @@
    ],
    "textures": {
     "all": "tulip"
-   }
+   },
+   "drops": [
+    {
+     "id": "tulip"
+    }
+   ]
   },
   {
    "id": "thyme",
@@ -1068,7 +1328,12 @@
    ],
    "textures": {
     "all": "thyme"
-   }
+   },
+   "drops": [
+    {
+     "id": "thyme"
+    }
+   ]
   },
   {
    "id": "sage",
@@ -1092,7 +1357,12 @@
    ],
    "textures": {
     "all": "sage"
-   }
+   },
+   "drops": [
+    {
+     "id": "sage"
+    }
+   ]
   },
   {
    "id": "edelweiss",
@@ -1116,7 +1386,12 @@
    ],
    "textures": {
     "all": "edelweiss"
-   }
+   },
+   "drops": [
+    {
+     "id": "edelweiss"
+    }
+   ]
   },
   {
    "id": "gentian",
@@ -1140,7 +1415,12 @@
    ],
    "textures": {
     "all": "gentian"
-   }
+   },
+   "drops": [
+    {
+     "id": "gentian"
+    }
+   ]
   },
   {
    "id": "rhododendron",
@@ -1164,7 +1444,12 @@
    ],
    "textures": {
     "all": "rhododendron"
-   }
+   },
+   "drops": [
+    {
+     "id": "rhododendron"
+    }
+   ]
   },
   {
    "id": "martagon_lily",
@@ -1188,7 +1473,12 @@
    ],
    "textures": {
     "all": "martagon_lily"
-   }
+   },
+   "drops": [
+    {
+     "id": "martagon_lily"
+    }
+   ]
   },
   {
    "id": "snowdrop",
@@ -1212,7 +1502,12 @@
    ],
    "textures": {
     "all": "snowdrop"
-   }
+   },
+   "drops": [
+    {
+     "id": "snowdrop"
+    }
+   ]
   },
   {
    "id": "globeflower",
@@ -1236,7 +1531,12 @@
    ],
    "textures": {
     "all": "globeflower"
-   }
+   },
+   "drops": [
+    {
+     "id": "globeflower"
+    }
+   ]
   },
   {
    "id": "orchid",
@@ -1260,7 +1560,12 @@
    ],
    "textures": {
     "all": "orchid"
-   }
+   },
+   "drops": [
+    {
+     "id": "orchid"
+    }
+   ]
   },
   {
    "id": "hibiscus",
@@ -1284,7 +1589,12 @@
    ],
    "textures": {
     "all": "hibiscus"
-   }
+   },
+   "drops": [
+    {
+     "id": "hibiscus"
+    }
+   ]
   },
   {
    "id": "saxifrage",
@@ -1308,7 +1618,12 @@
    ],
    "textures": {
     "all": "saxifrage"
-   }
+   },
+   "drops": [
+    {
+     "id": "saxifrage"
+    }
+   ]
   },
   {
    "id": "lupine",
@@ -1332,7 +1647,12 @@
    ],
    "textures": {
     "all": "lupine"
-   }
+   },
+   "drops": [
+    {
+     "id": "lupine"
+    }
+   ]
   },
   {
    "id": "heather",
@@ -1356,7 +1676,12 @@
    ],
    "textures": {
     "all": "heather"
-   }
+   },
+   "drops": [
+    {
+     "id": "heather"
+    }
+   ]
   }
  ]
 }

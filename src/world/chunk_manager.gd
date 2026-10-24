@@ -477,6 +477,7 @@ func _unload_far() -> void:
 			world.store.store_column(col)
 		for si in WorldConst.SECTIONS_PER_COLUMN:
 			_remove_node(Vector3i(cpos.x, si, cpos.y))
+		world.forget_containers(cpos)
 		columns.erase(cpos)
 		_meshed.erase(cpos)
 		_deep_meshed.erase(cpos)

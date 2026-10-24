@@ -1,0 +1,31 @@
+{
+ "format": 1,
+ "category": "beards",
+ "description": "Бороды и усы: коробки у нижней части лица.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "boxes": {
+   "type": "array",
+   "of": {
+    "type": "array",
+    "of": {
+     "type": "float"
+    },
+    "doc": "[x0, y0, z0, x1, y1, z1] в «пикселях» головы: голова — куб 0…8, лицо смотрит в −Z (z = 0)."
+   },
+   "default": []
+  }
+ }
+}

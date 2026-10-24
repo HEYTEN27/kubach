@@ -148,6 +148,14 @@ func apply(g: Dictionary, viewport: Viewport) -> void:
 			viewport.set(&"anisotropic_filtering_level", level)
 
 
+## Глубина резкости (настройка): размытие дальнего плана.
+func set_depth_of_field(on: bool) -> void:
+	camera_attributes.dof_blur_far_enabled = on
+	camera_attributes.dof_blur_far_distance = 60.0
+	camera_attributes.dof_blur_far_transition = 40.0
+	camera_attributes.dof_blur_amount = 0.06
+
+
 ## Дальний туман: начинается за прорисованными чанками и прячет край LOD-рельефа.
 func set_view_range(near_blocks: float, far_blocks: float) -> void:
 	environment.fog_depth_begin = near_blocks * 0.6

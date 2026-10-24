@@ -219,7 +219,13 @@
         "decays"
       ],
       "tint": "foliage",
-      "tint_strength": 0.35
+      "tint_strength": 0.35,
+      "drops": [
+        {
+          "id": "stick",
+          "chance": 0.12
+        }
+      ]
     },
     {
       "id": "water",

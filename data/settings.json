@@ -1,0 +1,1656 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "graphics_preset",
+   "section": "graphics",
+   "name": {
+    "ru": "Пресет",
+    "en": "Preset"
+   },
+   "type": "enum",
+   "default": "high",
+   "order": 0,
+   "options": [
+    {
+     "value": "low",
+     "name": {
+      "ru": "Низкие",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "medium",
+     "name": {
+      "ru": "Средние",
+      "en": "Medium"
+     }
+    },
+    {
+     "value": "high",
+     "name": {
+      "ru": "Высокие",
+      "en": "High"
+     }
+    },
+    {
+     "value": "ultra",
+     "name": {
+      "ru": "Ультра",
+      "en": "Ultra"
+     }
+    },
+    {
+     "value": "custom",
+     "name": {
+      "ru": "Свои",
+      "en": "Custom"
+     }
+    }
+   ],
+   "hint": "Любое изменение ниже переключает на «Свои»."
+  },
+  {
+   "id": "view_distance",
+   "section": "graphics",
+   "name": {
+    "ru": "Дальность прорисовки, чанков",
+    "en": "View distance, chunks"
+   },
+   "type": "int",
+   "default": "12",
+   "order": 1,
+   "min": 4,
+   "max": 32,
+   "preset_key": true
+  },
+  {
+   "id": "lod_distance",
+   "section": "graphics",
+   "name": {
+    "ru": "Дальность упрощённого рельефа",
+    "en": "Far terrain (LOD) distance"
+   },
+   "type": "int",
+   "default": "32",
+   "order": 2,
+   "min": 0,
+   "max": 96,
+   "step": 8,
+   "preset_key": true,
+   "hint": "0 — выключено."
+  },
+  {
+   "id": "dense_grass",
+   "section": "graphics",
+   "name": {
+    "ru": "Плотная трава",
+    "en": "Dense grass"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 3,
+   "preset_key": true
+  },
+  {
+   "id": "grass_distance",
+   "section": "graphics",
+   "name": {
+    "ru": "Дальность растительности, чанков",
+    "en": "Vegetation distance, chunks"
+   },
+   "type": "int",
+   "default": "3",
+   "order": 4,
+   "min": 1,
+   "max": 8,
+   "preset_key": true
+  },
+  {
+   "id": "grass_density",
+   "section": "graphics",
+   "name": {
+    "ru": "Плотность травы",
+    "en": "Grass density"
+   },
+   "type": "int",
+   "default": "4",
+   "order": 5,
+   "min": 1,
+   "max": 12,
+   "preset_key": true
+  },
+  {
+   "id": "shadow_distance",
+   "section": "graphics",
+   "name": {
+    "ru": "Дальность теней, м",
+    "en": "Shadow distance, m"
+   },
+   "type": "float",
+   "default": "120",
+   "order": 6,
+   "min": 0,
+   "max": 300,
+   "step": 10,
+   "preset_key": true,
+   "hint": "0 — без теней."
+  },
+  {
+   "id": "shadow_size",
+   "section": "graphics",
+   "name": {
+    "ru": "Качество теней",
+    "en": "Shadow quality"
+   },
+   "type": "enum",
+   "default": "4096",
+   "order": 7,
+   "options": [
+    {
+     "value": "1024",
+     "name": {
+      "ru": "Низкое (1024)",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "2048",
+     "name": {
+      "ru": "Среднее (2048)",
+      "en": "Medium"
+     }
+    },
+    {
+     "value": "4096",
+     "name": {
+      "ru": "Высокое (4096)",
+      "en": "High"
+     }
+    },
+    {
+     "value": "8192",
+     "name": {
+      "ru": "Ультра (8192)",
+      "en": "Ultra"
+     }
+    }
+   ],
+   "preset_key": true
+  },
+  {
+   "id": "shadow_splits",
+   "section": "graphics",
+   "name": {
+    "ru": "Каскады теней",
+    "en": "Shadow cascades"
+   },
+   "type": "enum",
+   "default": "4",
+   "order": 8,
+   "options": [
+    {
+     "value": "1",
+     "name": {
+      "ru": "1",
+      "en": "1"
+     }
+    },
+    {
+     "value": "2",
+     "name": {
+      "ru": "2",
+      "en": "2"
+     }
+    },
+    {
+     "value": "4",
+     "name": {
+      "ru": "4",
+      "en": "4"
+     }
+    }
+   ],
+   "preset_key": true
+  },
+  {
+   "id": "ssao",
+   "section": "graphics",
+   "name": {
+    "ru": "SSAO",
+    "en": "SSAO"
+   },
+   "type": "int",
+   "default": "2",
+   "order": 9,
+   "min": 0,
+   "max": 4,
+   "preset_key": true,
+   "hint": "0 — выкл., 1–4 — качество."
+  },
+  {
+   "id": "ssil",
+   "section": "graphics",
+   "name": {
+    "ru": "SSIL",
+    "en": "SSIL"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 10,
+   "preset_key": true
+  },
+  {
+   "id": "volumetric_fog",
+   "section": "graphics",
+   "name": {
+    "ru": "Объёмный туман",
+    "en": "Volumetric fog"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 11,
+   "preset_key": true
+  },
+  {
+   "id": "glow",
+   "section": "graphics",
+   "name": {
+    "ru": "Свечение (bloom)",
+    "en": "Glow (bloom)"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 12,
+   "preset_key": true
+  },
+  {
+   "id": "auto_exposure",
+   "section": "graphics",
+   "name": {
+    "ru": "Автоэкспозиция",
+    "en": "Auto exposure"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 13,
+   "preset_key": true
+  },
+  {
+   "id": "parallax",
+   "section": "graphics",
+   "name": {
+    "ru": "Параллакс",
+    "en": "Parallax"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 14,
+   "preset_key": true
+  },
+  {
+   "id": "anti_aliasing",
+   "section": "graphics",
+   "name": {
+    "ru": "Сглаживание",
+    "en": "Anti-aliasing"
+   },
+   "type": "enum",
+   "default": "fxaa",
+   "order": 15,
+   "options": [
+    {
+     "value": "none",
+     "name": {
+      "ru": "Нет",
+      "en": "None"
+     }
+    },
+    {
+     "value": "fxaa",
+     "name": {
+      "ru": "FXAA",
+      "en": "FXAA"
+     }
+    },
+    {
+     "value": "taa",
+     "name": {
+      "ru": "TAA",
+      "en": "TAA"
+     }
+    },
+    {
+     "value": "msaa2",
+     "name": {
+      "ru": "MSAA 2×",
+      "en": "MSAA 2x"
+     }
+    },
+    {
+     "value": "msaa4",
+     "name": {
+      "ru": "MSAA 4×",
+      "en": "MSAA 4x"
+     }
+    }
+   ],
+   "preset_key": true
+  },
+  {
+   "id": "anisotropy",
+   "section": "graphics",
+   "name": {
+    "ru": "Анизотропная фильтрация",
+    "en": "Anisotropic filtering"
+   },
+   "type": "enum",
+   "default": "8",
+   "order": 16,
+   "options": [
+    {
+     "value": "0",
+     "name": {
+      "ru": "Выкл.",
+      "en": "Off"
+     }
+    },
+    {
+     "value": "2",
+     "name": {
+      "ru": "2×",
+      "en": "2x"
+     }
+    },
+    {
+     "value": "4",
+     "name": {
+      "ru": "4×",
+      "en": "4x"
+     }
+    },
+    {
+     "value": "8",
+     "name": {
+      "ru": "8×",
+      "en": "8x"
+     }
+    },
+    {
+     "value": "16",
+     "name": {
+      "ru": "16×",
+      "en": "16x"
+     }
+    }
+   ],
+   "preset_key": true
+  },
+  {
+   "id": "render_scale",
+   "section": "graphics",
+   "name": {
+    "ru": "Разрешение рендера",
+    "en": "Render scale"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 17,
+   "min": 0.5,
+   "max": 1.0,
+   "step": 0.05,
+   "preset_key": true
+  },
+  {
+   "id": "fsr",
+   "section": "graphics",
+   "name": {
+    "ru": "FSR при уменьшенном рендере",
+    "en": "FSR upscaling"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 18,
+   "preset_key": true
+  },
+  {
+   "id": "texture_resolution",
+   "section": "graphics",
+   "name": {
+    "ru": "Разрешение текстур",
+    "en": "Texture resolution"
+   },
+   "type": "enum",
+   "default": "128",
+   "order": 19,
+   "options": [
+    {
+     "value": "64",
+     "name": {
+      "ru": "64",
+      "en": "64"
+     }
+    },
+    {
+     "value": "128",
+     "name": {
+      "ru": "128",
+      "en": "128"
+     }
+    },
+    {
+     "value": "256",
+     "name": {
+      "ru": "256",
+      "en": "256"
+     }
+    }
+   ],
+   "stage": 17,
+   "hint": "Сейчас поставляются только атласы 128."
+  },
+  {
+   "id": "ssr",
+   "section": "graphics",
+   "name": {
+    "ru": "Отражения (SSR)",
+    "en": "Reflections (SSR)"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 20,
+   "stage": 8
+  },
+  {
+   "id": "water_quality",
+   "section": "graphics",
+   "name": {
+    "ru": "Качество воды",
+    "en": "Water quality"
+   },
+   "type": "enum",
+   "default": "high",
+   "order": 21,
+   "options": [
+    {
+     "value": "low",
+     "name": {
+      "ru": "Низкое",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "high",
+     "name": {
+      "ru": "Высокое",
+      "en": "High"
+     }
+    }
+   ],
+   "stage": 8
+  },
+  {
+   "id": "particles",
+   "section": "graphics",
+   "name": {
+    "ru": "Количество частиц",
+    "en": "Particles"
+   },
+   "type": "enum",
+   "default": "high",
+   "order": 22,
+   "options": [
+    {
+     "value": "low",
+     "name": {
+      "ru": "Мало",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "medium",
+     "name": {
+      "ru": "Средне",
+      "en": "Medium"
+     }
+    },
+    {
+     "value": "high",
+     "name": {
+      "ru": "Много",
+      "en": "High"
+     }
+    }
+   ],
+   "stage": 6
+  },
+  {
+   "id": "clouds",
+   "section": "graphics",
+   "name": {
+    "ru": "Качество облаков",
+    "en": "Cloud quality"
+   },
+   "type": "enum",
+   "default": "high",
+   "order": 23,
+   "options": [
+    {
+     "value": "off",
+     "name": {
+      "ru": "Выкл.",
+      "en": "Off"
+     }
+    },
+    {
+     "value": "low",
+     "name": {
+      "ru": "Низкое",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "high",
+     "name": {
+      "ru": "Высокое",
+      "en": "High"
+     }
+    }
+   ],
+   "stage": 7
+  },
+  {
+   "id": "depth_of_field",
+   "section": "graphics",
+   "name": {
+    "ru": "Глубина резкости",
+    "en": "Depth of field"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 24
+  },
+  {
+   "id": "motion_blur",
+   "section": "graphics",
+   "name": {
+    "ru": "Размытие в движении",
+    "en": "Motion blur"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 25,
+   "stage": 17
+  },
+  {
+   "id": "blood",
+   "section": "graphics",
+   "name": {
+    "ru": "Кровь",
+    "en": "Blood"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 26,
+   "stage": 11
+  },
+  {
+   "id": "window_mode",
+   "section": "display",
+   "name": {
+    "ru": "Режим окна",
+    "en": "Window mode"
+   },
+   "type": "enum",
+   "default": "windowed",
+   "order": 0,
+   "options": [
+    {
+     "value": "windowed",
+     "name": {
+      "ru": "В окне",
+      "en": "Windowed"
+     }
+    },
+    {
+     "value": "borderless",
+     "name": {
+      "ru": "Без рамки на весь экран",
+      "en": "Borderless"
+     }
+    },
+    {
+     "value": "fullscreen",
+     "name": {
+      "ru": "Полный экран",
+      "en": "Fullscreen"
+     }
+    }
+   ]
+  },
+  {
+   "id": "resolution",
+   "section": "display",
+   "name": {
+    "ru": "Разрешение окна",
+    "en": "Window resolution"
+   },
+   "type": "enum",
+   "default": "1280x720",
+   "order": 1,
+   "options": [
+    {
+     "value": "1280x720",
+     "name": {
+      "ru": "1280×720",
+      "en": "1280x720"
+     }
+    },
+    {
+     "value": "1600x900",
+     "name": {
+      "ru": "1600×900",
+      "en": "1600x900"
+     }
+    },
+    {
+     "value": "1920x1080",
+     "name": {
+      "ru": "1920×1080",
+      "en": "1920x1080"
+     }
+    },
+    {
+     "value": "2560x1440",
+     "name": {
+      "ru": "2560×1440",
+      "en": "2560x1440"
+     }
+    },
+    {
+     "value": "3840x2160",
+     "name": {
+      "ru": "3840×2160",
+      "en": "3840x2160"
+     }
+    }
+   ]
+  },
+  {
+   "id": "vsync",
+   "section": "display",
+   "name": {
+    "ru": "Вертикальная синхронизация",
+    "en": "VSync"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 2
+  },
+  {
+   "id": "fps_limit",
+   "section": "display",
+   "name": {
+    "ru": "Лимит FPS",
+    "en": "FPS limit"
+   },
+   "type": "enum",
+   "default": "0",
+   "order": 3,
+   "options": [
+    {
+     "value": "0",
+     "name": {
+      "ru": "Без лимита",
+      "en": "Unlimited"
+     }
+    },
+    {
+     "value": "30",
+     "name": {
+      "ru": "30",
+      "en": "30"
+     }
+    },
+    {
+     "value": "60",
+     "name": {
+      "ru": "60",
+      "en": "60"
+     }
+    },
+    {
+     "value": "120",
+     "name": {
+      "ru": "120",
+      "en": "120"
+     }
+    },
+    {
+     "value": "144",
+     "name": {
+      "ru": "144",
+      "en": "144"
+     }
+    },
+    {
+     "value": "240",
+     "name": {
+      "ru": "240",
+      "en": "240"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fov",
+   "section": "display",
+   "name": {
+    "ru": "Поле зрения (FOV)",
+    "en": "Field of view"
+   },
+   "type": "int",
+   "default": "75",
+   "order": 4,
+   "min": 60,
+   "max": 110
+  },
+  {
+   "id": "gamma",
+   "section": "display",
+   "name": {
+    "ru": "Гамма",
+    "en": "Gamma"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 5,
+   "min": 0.6,
+   "max": 1.6,
+   "step": 0.05
+  },
+  {
+   "id": "brightness",
+   "section": "display",
+   "name": {
+    "ru": "Яркость",
+    "en": "Brightness"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 6,
+   "min": 0.6,
+   "max": 1.5,
+   "step": 0.05
+  },
+  {
+   "id": "camera_bob",
+   "section": "display",
+   "name": {
+    "ru": "Покачивание камеры",
+    "en": "Camera bob"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 7
+  },
+  {
+   "id": "show_fps",
+   "section": "display",
+   "name": {
+    "ru": "Показывать FPS",
+    "en": "Show FPS"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 8
+  },
+  {
+   "id": "vol_master",
+   "section": "audio",
+   "name": {
+    "ru": "Общая громкость",
+    "en": "Master"
+   },
+   "type": "int",
+   "default": "100",
+   "order": 0,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "vol_music",
+   "section": "audio",
+   "name": {
+    "ru": "Музыка",
+    "en": "Music"
+   },
+   "type": "int",
+   "default": "70",
+   "order": 1,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "vol_sfx",
+   "section": "audio",
+   "name": {
+    "ru": "Эффекты",
+    "en": "Effects"
+   },
+   "type": "int",
+   "default": "100",
+   "order": 2,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "vol_ambience",
+   "section": "audio",
+   "name": {
+    "ru": "Окружение",
+    "en": "Ambience"
+   },
+   "type": "int",
+   "default": "100",
+   "order": 3,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "vol_voice",
+   "section": "audio",
+   "name": {
+    "ru": "Голоса",
+    "en": "Voices"
+   },
+   "type": "int",
+   "default": "100",
+   "order": 4,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "vol_ui",
+   "section": "audio",
+   "name": {
+    "ru": "Интерфейс",
+    "en": "Interface"
+   },
+   "type": "int",
+   "default": "100",
+   "order": 5,
+   "min": 0,
+   "max": 100,
+   "step": 5
+  },
+  {
+   "id": "music_frequency",
+   "section": "audio",
+   "name": {
+    "ru": "Частота музыки",
+    "en": "Music frequency"
+   },
+   "type": "enum",
+   "default": "normal",
+   "order": 6,
+   "options": [
+    {
+     "value": "rare",
+     "name": {
+      "ru": "Редко",
+      "en": "Rarely"
+     }
+    },
+    {
+     "value": "normal",
+     "name": {
+      "ru": "Обычно",
+      "en": "Normal"
+     }
+    },
+    {
+     "value": "often",
+     "name": {
+      "ru": "Часто",
+      "en": "Often"
+     }
+    }
+   ],
+   "stage": 16
+  },
+  {
+   "id": "mono",
+   "section": "audio",
+   "name": {
+    "ru": "Моно",
+    "en": "Mono audio"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 7
+  },
+  {
+   "id": "subtitles",
+   "section": "audio",
+   "name": {
+    "ru": "Субтитры звуков",
+    "en": "Sound subtitles"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 8,
+   "stage": 16
+  },
+  {
+   "id": "mouse_sens_x",
+   "section": "controls",
+   "name": {
+    "ru": "Чувствительность мыши по X",
+    "en": "Mouse sensitivity X"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 0,
+   "min": 0.1,
+   "max": 3.0,
+   "step": 0.05
+  },
+  {
+   "id": "mouse_sens_y",
+   "section": "controls",
+   "name": {
+    "ru": "Чувствительность мыши по Y",
+    "en": "Mouse sensitivity Y"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 1,
+   "min": 0.1,
+   "max": 3.0,
+   "step": 0.05
+  },
+  {
+   "id": "invert_y",
+   "section": "controls",
+   "name": {
+    "ru": "Инверсия по Y",
+    "en": "Invert Y"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 2
+  },
+  {
+   "id": "invert_x",
+   "section": "controls",
+   "name": {
+    "ru": "Инверсия по X",
+    "en": "Invert X"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 3
+  },
+  {
+   "id": "crouch_mode",
+   "section": "controls",
+   "name": {
+    "ru": "Присед",
+    "en": "Crouch"
+   },
+   "type": "enum",
+   "default": "hold",
+   "order": 4,
+   "options": [
+    {
+     "value": "hold",
+     "name": {
+      "ru": "Удерживать",
+      "en": "Hold"
+     }
+    },
+    {
+     "value": "toggle",
+     "name": {
+      "ru": "Переключать",
+      "en": "Toggle"
+     }
+    }
+   ]
+  },
+  {
+   "id": "sprint_mode",
+   "section": "controls",
+   "name": {
+    "ru": "Бег",
+    "en": "Sprint"
+   },
+   "type": "enum",
+   "default": "hold",
+   "order": 5,
+   "options": [
+    {
+     "value": "hold",
+     "name": {
+      "ru": "Удерживать",
+      "en": "Hold"
+     }
+    },
+    {
+     "value": "toggle",
+     "name": {
+      "ru": "Переключать",
+      "en": "Toggle"
+     }
+    }
+   ]
+  },
+  {
+   "id": "auto_jump",
+   "section": "controls",
+   "name": {
+    "ru": "Автопрыжок",
+    "en": "Auto-jump"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 6
+  },
+  {
+   "id": "minigames",
+   "section": "controls",
+   "name": {
+    "ru": "Мини-игры ремесла",
+    "en": "Crafting minigames"
+   },
+   "type": "enum",
+   "default": "on",
+   "order": 7,
+   "options": [
+    {
+     "value": "on",
+     "name": {
+      "ru": "Вкл.",
+      "en": "On"
+     }
+    },
+    {
+     "value": "auto",
+     "name": {
+      "ru": "Авто",
+      "en": "Auto"
+     }
+    }
+   ],
+   "stage": 6
+  },
+  {
+   "id": "pad_deadzone",
+   "section": "controls",
+   "name": {
+    "ru": "Мёртвая зона геймпада",
+    "en": "Gamepad dead zone"
+   },
+   "type": "float",
+   "default": "0.2",
+   "order": 8,
+   "min": 0.05,
+   "max": 0.5,
+   "step": 0.05
+  },
+  {
+   "id": "pad_look_speed",
+   "section": "controls",
+   "name": {
+    "ru": "Скорость обзора геймпадом",
+    "en": "Gamepad look speed"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 9,
+   "min": 0.2,
+   "max": 3.0,
+   "step": 0.1
+  },
+  {
+   "id": "ui_scale",
+   "section": "interface",
+   "name": {
+    "ru": "Масштаб интерфейса",
+    "en": "UI scale"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 0,
+   "min": 0.75,
+   "max": 1.5,
+   "step": 0.05
+  },
+  {
+   "id": "hud_opacity",
+   "section": "interface",
+   "name": {
+    "ru": "Прозрачность HUD",
+    "en": "HUD opacity"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 1,
+   "min": 0.2,
+   "max": 1.0,
+   "step": 0.05
+  },
+  {
+   "id": "hud_hotbar",
+   "section": "interface",
+   "name": {
+    "ru": "Показывать хотбар",
+    "en": "Show hotbar"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 2
+  },
+  {
+   "id": "hud_item_name",
+   "section": "interface",
+   "name": {
+    "ru": "Название предмета в руке",
+    "en": "Held item name"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 3
+  },
+  {
+   "id": "crosshair_size",
+   "section": "interface",
+   "name": {
+    "ru": "Размер прицела",
+    "en": "Crosshair size"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 4,
+   "min": 0.5,
+   "max": 2.0,
+   "step": 0.1
+  },
+  {
+   "id": "crosshair_style",
+   "section": "interface",
+   "name": {
+    "ru": "Вид прицела",
+    "en": "Crosshair style"
+   },
+   "type": "enum",
+   "default": "cross",
+   "order": 5,
+   "options": [
+    {
+     "value": "cross",
+     "name": {
+      "ru": "Крест",
+      "en": "Cross"
+     }
+    },
+    {
+     "value": "dot",
+     "name": {
+      "ru": "Точка",
+      "en": "Dot"
+     }
+    },
+    {
+     "value": "circle",
+     "name": {
+      "ru": "Кольцо",
+      "en": "Circle"
+     }
+    }
+   ]
+  },
+  {
+   "id": "minimap",
+   "section": "interface",
+   "name": {
+    "ru": "Миникарта",
+    "en": "Minimap"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 6,
+   "stage": 15
+  },
+  {
+   "id": "compass",
+   "section": "interface",
+   "name": {
+    "ru": "Компас",
+    "en": "Compass"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 7
+  },
+  {
+   "id": "hints",
+   "section": "interface",
+   "name": {
+    "ru": "Подсказки",
+    "en": "Hints"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 8
+  },
+  {
+   "id": "language",
+   "section": "interface",
+   "name": {
+    "ru": "Язык",
+    "en": "Language"
+   },
+   "type": "enum",
+   "default": "ru",
+   "order": 9,
+   "options": [
+    {
+     "value": "ru",
+     "name": {
+      "ru": "Русский",
+      "en": "Russian"
+     }
+    },
+    {
+     "value": "en",
+     "name": {
+      "ru": "English",
+      "en": "English"
+     }
+    }
+   ],
+   "hint": "Пока переводятся названия блоков и предметов; весь интерфейс — к этапу 17."
+  },
+  {
+   "id": "temperature_unit",
+   "section": "interface",
+   "name": {
+    "ru": "Температура",
+    "en": "Temperature"
+   },
+   "type": "enum",
+   "default": "c",
+   "order": 10,
+   "options": [
+    {
+     "value": "c",
+     "name": {
+      "ru": "°C",
+      "en": "°C"
+     }
+    },
+    {
+     "value": "f",
+     "name": {
+      "ru": "°F",
+      "en": "°F"
+     }
+    }
+   ]
+  },
+  {
+   "id": "time_format",
+   "section": "interface",
+   "name": {
+    "ru": "Формат времени",
+    "en": "Time format"
+   },
+   "type": "enum",
+   "default": "24",
+   "order": 11,
+   "options": [
+    {
+     "value": "24",
+     "name": {
+      "ru": "24 часа",
+      "en": "24-hour"
+     }
+    },
+    {
+     "value": "12",
+     "name": {
+      "ru": "12 часов",
+      "en": "12-hour"
+     }
+    }
+   ],
+   "stage": 7
+  },
+  {
+   "id": "font_size",
+   "section": "interface",
+   "name": {
+    "ru": "Размер шрифта",
+    "en": "Font size"
+   },
+   "type": "float",
+   "default": "1.0",
+   "order": 12,
+   "min": 0.8,
+   "max": 1.5,
+   "step": 0.05
+  },
+  {
+   "id": "dyslexia_font",
+   "section": "interface",
+   "name": {
+    "ru": "Шрифт для дислексии",
+    "en": "Dyslexia-friendly font"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 13,
+   "stage": 17,
+   "hint": "Нужен файл шрифта OpenDyslexic (OFL) в assets/fonts."
+  },
+  {
+   "id": "colorblind",
+   "section": "accessibility",
+   "name": {
+    "ru": "Режим для дальтонизма",
+    "en": "Colorblind mode"
+   },
+   "type": "enum",
+   "default": "none",
+   "order": 0,
+   "options": [
+    {
+     "value": "none",
+     "name": {
+      "ru": "Выкл.",
+      "en": "Off"
+     }
+    },
+    {
+     "value": "protanopia",
+     "name": {
+      "ru": "Протанопия",
+      "en": "Protanopia"
+     }
+    },
+    {
+     "value": "deuteranopia",
+     "name": {
+      "ru": "Дейтеранопия",
+      "en": "Deuteranopia"
+     }
+    },
+    {
+     "value": "tritanopia",
+     "name": {
+      "ru": "Тританопия",
+      "en": "Tritanopia"
+     }
+    }
+   ]
+  },
+  {
+   "id": "high_contrast",
+   "section": "accessibility",
+   "name": {
+    "ru": "Высокий контраст",
+    "en": "High contrast"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 1
+  },
+  {
+   "id": "reduce_flashing",
+   "section": "accessibility",
+   "name": {
+    "ru": "Меньше вспышек (молнии)",
+    "en": "Reduce flashing"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 2,
+   "stage": 7
+  },
+  {
+   "id": "screen_shake",
+   "section": "accessibility",
+   "name": {
+    "ru": "Тряска экрана",
+    "en": "Screen shake"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 3,
+   "stage": 11
+  },
+  {
+   "id": "slow_minigames",
+   "section": "accessibility",
+   "name": {
+    "ru": "Замедлить мини-игры",
+    "en": "Slower minigames"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 4,
+   "stage": 6
+  },
+  {
+   "id": "sound_indicators",
+   "section": "accessibility",
+   "name": {
+    "ru": "Визуальные индикаторы звуков",
+    "en": "Visual sound indicators"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 5,
+   "stage": 16
+  },
+  {
+   "id": "difficulty",
+   "section": "gameplay",
+   "name": {
+    "ru": "Сложность",
+    "en": "Difficulty"
+   },
+   "type": "enum",
+   "default": "normal",
+   "order": 0,
+   "options": [
+    {
+     "value": "peaceful",
+     "name": {
+      "ru": "Мирная",
+      "en": "Peaceful"
+     }
+    },
+    {
+     "value": "easy",
+     "name": {
+      "ru": "Лёгкая",
+      "en": "Easy"
+     }
+    },
+    {
+     "value": "normal",
+     "name": {
+      "ru": "Нормальная",
+      "en": "Normal"
+     }
+    },
+    {
+     "value": "hard",
+     "name": {
+      "ru": "Сложная",
+      "en": "Hard"
+     }
+    }
+   ],
+   "stage": 5,
+   "hint": "Хардкор выбирается только при создании мира."
+  },
+  {
+   "id": "diseases",
+   "section": "gameplay",
+   "name": {
+    "ru": "Болезни",
+    "en": "Diseases"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 1,
+   "stage": 5
+  },
+  {
+   "id": "body_temperature",
+   "section": "gameplay",
+   "name": {
+    "ru": "Температура тела",
+    "en": "Body temperature"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 2,
+   "stage": 5
+  },
+  {
+   "id": "thirst",
+   "section": "gameplay",
+   "name": {
+    "ru": "Жажда",
+    "en": "Thirst"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 3,
+   "stage": 5
+  },
+  {
+   "id": "weight",
+   "section": "gameplay",
+   "name": {
+    "ru": "Вес и перегруз",
+    "en": "Weight and overload"
+   },
+   "type": "bool",
+   "default": "false",
+   "order": 4
+  },
+  {
+   "id": "food_spoilage",
+   "section": "gameplay",
+   "name": {
+    "ru": "Порча еды",
+    "en": "Food spoilage"
+   },
+   "type": "bool",
+   "default": "true",
+   "order": 5,
+   "stage": 9
+  },
+  {
+   "id": "animal_aggression",
+   "section": "gameplay",
+   "name": {
+    "ru": "Агрессивность животных",
+    "en": "Animal aggression"
+   },
+   "type": "enum",
+   "default": "normal",
+   "order": 6,
+   "options": [
+    {
+     "value": "low",
+     "name": {
+      "ru": "Низкая",
+      "en": "Low"
+     }
+    },
+    {
+     "value": "normal",
+     "name": {
+      "ru": "Обычная",
+      "en": "Normal"
+     }
+    },
+    {
+     "value": "high",
+     "name": {
+      "ru": "Высокая",
+      "en": "High"
+     }
+    }
+   ],
+   "stage": 11
+  },
+  {
+   "id": "raid_frequency",
+   "section": "gameplay",
+   "name": {
+    "ru": "Частота набегов",
+    "en": "Raid frequency"
+   },
+   "type": "enum",
+   "default": "normal",
+   "order": 7,
+   "options": [
+    {
+     "value": "off",
+     "name": {
+      "ru": "Без набегов",
+      "en": "Off"
+     }
+    },
+    {
+     "value": "rare",
+     "name": {
+      "ru": "Редко",
+      "en": "Rare"
+     }
+    },
+    {
+     "value": "normal",
+     "name": {
+      "ru": "Обычно",
+      "en": "Normal"
+     }
+    },
+    {
+     "value": "often",
+     "name": {
+      "ru": "Часто",
+      "en": "Often"
+     }
+    }
+   ],
+   "stage": 13
+  },
+  {
+   "id": "autosave_minutes",
+   "section": "gameplay",
+   "name": {
+    "ru": "Автосохранение, мин",
+    "en": "Autosave, min"
+   },
+   "type": "int",
+   "default": "5",
+   "order": 8,
+   "min": 1,
+   "max": 30
+  }
+ ]
+}

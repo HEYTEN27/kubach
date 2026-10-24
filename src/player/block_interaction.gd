@@ -3,10 +3,14 @@ extends Node
 ## Наведение на блок (луч DDA из глаз), подсветка, ломание с удержанием и установка блоков.
 ## Изменения мира — только через World.execute(GameAction).
 ##
-## До этапа 4 (инвентарь) ставятся блоки из отладочной палитры: все блоки реестра, кроме
-## воздуха и материнской породы; выбор — 1…9 и колесо мыши.
+## Этап 4: ставится предмет из выбранной ячейки хотбара (в выживании расходуется), инструмент
+## в руке ускоряет добычу подходящих блоков и изнашивается. ПКМ по сундуку открывает его
+## (с Shift — ставит блок рядом). Средняя кнопка: в творческом — взять блок в руку.
 
-signal selection_changed(block: int)
+## ПКМ по контейнеру: открыть окно хранилища.
+signal container_requested(pos: Vector3i)
+## Инструмент сломался.
+signal tool_broken(item: StringName)
 
 const REACH_SURVIVAL := 5.0
 const REACH_CREATIVE := 7.0
@@ -18,8 +22,6 @@ var world: World
 var target := {}
 ## 0…1 — прогресс ломания текущего блока.
 var break_progress := 0.0
-var palette: Array[int] = []
-var selected := 0
 
 var _break_block := Vector3i(0, 1 << 30, 0)
 var _cooldown := 0.0
@@ -27,10 +29,6 @@ var _highlight: MeshInstance3D
 
 
 func _ready() -> void:
-	for n in world.registry.block_count():
-		var def := world.registry.block_by_num(n)
-		if n != 0 and (def.is_breakable() or def.render == &"liquid"):
-			palette.append(n)
 	_highlight = MeshInstance3D.new()
 	_highlight.mesh = _make_outline()
 	_highlight.top_level = true
@@ -38,15 +36,14 @@ func _ready() -> void:
 	add_child(_highlight)
 
 
+## Блок, который поставит предмет в руке (0 — предмет не ставится).
 func selected_block() -> int:
-	return palette[selected] if not palette.is_empty() else 0
+	var d := player.inventory.held_def()
+	return d.place_block if d != null else 0
 
 
 func select(index: int) -> void:
-	if palette.is_empty():
-		return
-	selected = posmod(index, palette.size())
-	selection_changed.emit(selected_block())
+	player.inventory.select(index)
 
 
 func _process(delta: float) -> void:
@@ -72,15 +69,21 @@ func _process(delta: float) -> void:
 		_break_block = Vector3i(0, 1 << 30, 0)
 
 	if Input.is_action_pressed(&"use") and target["hit"] and _cooldown <= 0.0:
-		var p: Vector3i = target["block"] + target["normal"]
-		if world.execute(GameAction.place_block(p, selected_block())):
-			player.swing()
-		_cooldown = PLACE_COOLDOWN
-	if Input.is_action_just_pressed(&"pick_block") and target["hit"]:
 		var b: Vector3i = target["block"]
-		var idx := palette.find(world.get_block(b.x, b.y, b.z))
-		if idx >= 0:
-			select(idx)
+		var def := world.registry.block_by_num(world.get_block(b.x, b.y, b.z))
+		if def != null and def.container_slots > 0 and not Input.is_action_pressed(&"crouch"):
+			if Input.is_action_just_pressed(&"use"):
+				container_requested.emit(b)
+			_cooldown = PLACE_COOLDOWN
+		else:
+			var block := selected_block()
+			if block > 0 and world.execute(GameAction.place_block(b + target["normal"], block)):
+				player.swing()
+				if not creative:
+					player.inventory.consume_held()
+			_cooldown = PLACE_COOLDOWN
+	if Input.is_action_just_pressed(&"pick_block") and target["hit"]:
+		_pick_block(target["block"], creative)
 
 
 func _process_break(delta: float, creative: bool) -> void:
@@ -98,15 +101,50 @@ func _process_break(delta: float, creative: bool) -> void:
 			player.swing()
 			_cooldown = CREATIVE_BREAK_COOLDOWN
 		return
-	# hardness — время ломания голыми руками (инструменты — этапы 6 и 11).
+	# hardness — время ломания голыми руками; подходящий инструмент делит его на speed.
 	var before := break_progress
-	break_progress += delta / maxf(def.hardness, 0.05)
+	break_progress += delta * break_speed(def, player.inventory.held_def()) / maxf(def.hardness, 0.05)
 	if floori(before * 4.0) != floori(break_progress * 4.0):
 		player.swing()
 	if break_progress >= 1.0:
-		world.execute(GameAction.break_block(pos))
+		var tool := player.inventory.held_def()
+		if world.execute(GameAction.break_block(pos)) and tool != null and tool.is_tool() and def.hardness > 0.0:
+			if player.inventory.damage_held():
+				tool_broken.emit(tool.id)
 		break_progress = 0.0
 		_break_block = Vector3i(0, 1 << 30, 0)
+
+
+## Во сколько раз быстрее голых рук: инструмент нужного типа и уровня не ниже требуемого —
+## его speed; нужного типа, но слабее — половина; ножницы режут листву и растения.
+static func break_speed(block: BlockDef, tool: ItemDef) -> float:
+	if tool == null or not tool.is_tool():
+		return 1.0
+	var t: StringName = tool.tool.get("type", &"")
+	var speed: float = tool.tool.get("speed", 1.0)
+	if t == &"shears" and (block.material == &"leaves" or block.material == &"plant"):
+		return speed
+	if t == &"knife" and block.material == &"plant":
+		return speed
+	if t != block.tool:
+		return 1.0
+	if int(tool.tool.get("tier", 0)) < block.tool_tier:
+		return maxf(1.0, speed * 0.5)
+	return speed
+
+
+func _pick_block(b: Vector3i, creative: bool) -> void:
+	var def := world.registry.block_by_num(world.get_block(b.x, b.y, b.z))
+	if def == null or world.registry.item(def.id) == null:
+		return
+	var inv := player.inventory
+	for i in PlayerInventory.HOTBAR:
+		var s := inv.hotbar.get_stack(i)
+		if s != null and s.id == def.id:
+			inv.select(i)
+			return
+	if creative:
+		inv.hotbar.set_stack(inv.selected, ItemStack.create(world.registry.item(def.id), 64))
 
 
 func _handle_selection_input() -> void:
@@ -114,9 +152,9 @@ func _handle_selection_input() -> void:
 		if Input.is_action_just_pressed(StringName("hotbar_%d" % (i + 1))):
 			select(i)
 	if Input.is_action_just_pressed(&"hotbar_next"):
-		select(selected + 1)
+		select(player.inventory.selected + 1)
 	if Input.is_action_just_pressed(&"hotbar_prev"):
-		select(selected - 1)
+		select(player.inventory.selected - 1)
 
 
 ## Каркас куба 1×1×1 (чуть больше блока, чтобы не мерцал).

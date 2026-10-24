@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "category": "settings",
+  "description": "Все настройки игрока (раздел 19): по этому описанию строится экран настроек. Значения хранятся в user://settings.cfg. Графика с полем preset_key берётся из пресета (data/graphics_presets.json).",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "hint": {
+      "type": "string",
+      "default": "",
+      "doc": "Подсказка (по-русски)."
+    },
+    "section": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "graphics",
+        "display",
+        "audio",
+        "controls",
+        "interface",
+        "accessibility",
+        "gameplay"
+      ]
+    },
+    "order": {
+      "type": "int",
+      "default": 0
+    },
+    "type": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "bool",
+        "int",
+        "float",
+        "enum"
+      ]
+    },
+    "default": {
+      "type": "string",
+      "default": "",
+      "doc": "Значение по умолчанию строкой (true, 75, 0.5, fxaa)."
+    },
+    "min": {
+      "type": "float",
+      "default": 0.0
+    },
+    "max": {
+      "type": "float",
+      "default": 1.0
+    },
+    "step": {
+      "type": "float",
+      "default": 1.0
+    },
+    "options": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "object",
+        "fields": {
+          "value": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "localized",
+            "required": true
+          }
+        }
+      }
+    },
+    "preset_key": {
+      "type": "bool",
+      "default": false,
+      "doc": "Значение входит в пресет графики."
+    },
+    "stage": {
+      "type": "int",
+      "min": 0,
+      "max": 17,
+      "default": 0,
+      "doc": "С какого этапа настройка влияет на игру (0 — уже работает)."
+    }
+  }
+}

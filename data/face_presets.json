@@ -1,0 +1,77 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "calm",
+   "name": {
+    "ru": "Спокойное",
+    "en": "Calm"
+   },
+   "order": 0,
+   "eyes": "eyes_round",
+   "brows": "brows_thin",
+   "nose": "nose_small",
+   "mouth": "mouth_neutral"
+  },
+  {
+   "id": "stern",
+   "name": {
+    "ru": "Суровое",
+    "en": "Stern"
+   },
+   "order": 1,
+   "eyes": "eyes_narrow",
+   "brows": "brows_angry",
+   "nose": "nose_long",
+   "mouth": "mouth_neutral"
+  },
+  {
+   "id": "kind",
+   "name": {
+    "ru": "Доброе",
+    "en": "Kind"
+   },
+   "order": 2,
+   "eyes": "eyes_round",
+   "brows": "brows_arched",
+   "nose": "nose_snub",
+   "mouth": "mouth_smile"
+  },
+  {
+   "id": "weathered",
+   "name": {
+    "ru": "Обветренное",
+    "en": "Weathered"
+   },
+   "order": 3,
+   "eyes": "eyes_almond",
+   "brows": "brows_thick",
+   "nose": "nose_wide",
+   "mouth": "mouth_wide"
+  },
+  {
+   "id": "young",
+   "name": {
+    "ru": "Юное",
+    "en": "Young"
+   },
+   "order": 4,
+   "eyes": "eyes_wide",
+   "brows": "brows_thin",
+   "nose": "nose_snub",
+   "mouth": "mouth_smile"
+  },
+  {
+   "id": "sharp",
+   "name": {
+    "ru": "Острое",
+    "en": "Sharp"
+   },
+   "order": 5,
+   "eyes": "eyes_close",
+   "brows": "brows_arched",
+   "nose": "nose_long",
+   "mouth": "mouth_neutral"
+  }
+ ]
+}

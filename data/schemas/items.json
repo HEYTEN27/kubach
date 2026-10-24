@@ -1,0 +1,220 @@
+{
+  "format": 1,
+  "category": "items",
+  "description": "Предметы (раздел 4.4 ТЗ). Блоки становятся предметами автоматически (поле item блока); здесь — всё, что не блок.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "kind": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "material",
+        "tool",
+        "weapon",
+        "armor",
+        "clothing",
+        "backpack",
+        "accessory",
+        "shield",
+        "light",
+        "food",
+        "misc"
+      ]
+    },
+    "stack": {
+      "type": "int",
+      "min": 1,
+      "max": 999,
+      "default": 64,
+      "doc": "Максимум в стаке. Инструменты, оружие, броня — 1."
+    },
+    "weight": {
+      "type": "float",
+      "min": 0.0,
+      "max": 500.0,
+      "default": 0.1,
+      "doc": "Вес одной штуки, кг."
+    },
+    "durability": {
+      "type": "int",
+      "min": 0,
+      "max": 100000,
+      "default": 0,
+      "doc": "Прочность; 0 — не изнашивается."
+    },
+    "quality": {
+      "type": "bool",
+      "default": false,
+      "doc": "У предмета есть качество (ремесло, этап 6)."
+    },
+    "equip": {
+      "type": "enum",
+      "values": [
+        "none",
+        "head",
+        "body",
+        "legs",
+        "feet",
+        "hands",
+        "back",
+        "accessory",
+        "offhand"
+      ],
+      "default": "none"
+    },
+    "backpack_slots": {
+      "type": "int",
+      "min": 0,
+      "max": 27,
+      "default": 0,
+      "doc": "Рюкзак: дополнительные ячейки (9, 18, 27)."
+    },
+    "tool": {
+      "type": "object",
+      "fields": {
+        "type": {
+          "type": "enum",
+          "values": [
+            "pickaxe",
+            "shovel",
+            "axe",
+            "hoe",
+            "shears",
+            "knife"
+          ],
+          "required": true
+        },
+        "tier": {
+          "type": "int",
+          "min": 0,
+          "max": 6,
+          "default": 1
+        },
+        "speed": {
+          "type": "float",
+          "min": 0.1,
+          "max": 50.0,
+          "default": 2.0,
+          "doc": "Во сколько раз быстрее голых рук на подходящих блоках."
+        }
+      }
+    },
+    "damage": {
+      "type": "float",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 0.0
+    },
+    "armor": {
+      "type": "float",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0
+    },
+    "insulation": {
+      "type": "float",
+      "min": -20.0,
+      "max": 40.0,
+      "default": 0.0,
+      "doc": "Теплоизоляция, °C (этап 5)."
+    },
+    "water_resist": {
+      "type": "float",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    "food": {
+      "type": "object",
+      "default": {},
+      "fields": {
+        "nutrition": {
+          "type": "float",
+          "min": 0.0,
+          "max": 100.0,
+          "default": 0.0
+        },
+        "thirst": {
+          "type": "float",
+          "min": -50.0,
+          "max": 100.0,
+          "default": 0.0
+        },
+        "spoil_days": {
+          "type": "float",
+          "min": 0.0,
+          "max": 10000.0,
+          "default": 0.0,
+          "doc": "0 — не портится."
+        }
+      }
+    },
+    "light": {
+      "type": "int",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "doc": "Свет в руке (факел во второй руке)."
+    },
+    "light_color": {
+      "type": "color",
+      "default": "#ffffff"
+    },
+    "place": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "doc": "Блок, который ставится этим предметом."
+    },
+    "model": {
+      "type": "object",
+      "default": {},
+      "doc": "Как предмет выглядит на модели персонажа (экипировка): color, style.",
+      "fields": {
+        "color": {
+          "type": "color",
+          "default": "#808080"
+        },
+        "style": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "icon": {
+      "type": "object",
+      "default": {},
+      "doc": "Как texgen рисует иконку: shape и цвета.",
+      "fields": {
+        "shape": {
+          "type": "string",
+          "default": ""
+        },
+        "color": {
+          "type": "color",
+          "default": "#808080"
+        },
+        "color2": {
+          "type": "color",
+          "default": "#5a4030"
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "of": {
+        "type": "string"
+      },
+      "default": []
+    }
+  }
+}

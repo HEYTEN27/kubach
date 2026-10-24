@@ -47,7 +47,12 @@
    ],
    "textures": {
     "all": "moss_carpet"
-   }
+   },
+   "drops": [
+    {
+     "id": "moss_carpet"
+    }
+   ]
   },
   {
    "id": "lichen_carpet",
@@ -70,7 +75,12 @@
    ],
    "textures": {
     "all": "lichen_carpet"
-   }
+   },
+   "drops": [
+    {
+     "id": "lichen_carpet"
+    }
+   ]
   },
   {
    "id": "water_lily",
@@ -94,7 +104,12 @@
    ],
    "textures": {
     "all": "water_lily"
-   }
+   },
+   "drops": [
+    {
+     "id": "water_lily"
+    }
+   ]
   },
   {
    "id": "fallen_leaves",
@@ -118,7 +133,12 @@
    ],
    "textures": {
     "all": "fallen_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "fallen_leaves"
+    }
+   ]
   },
   {
    "id": "cactus",
@@ -160,7 +180,12 @@
    ],
    "textures": {
     "all": "coral_red"
-   }
+   },
+   "drops": [
+    {
+     "id": "coral_red"
+    }
+   ]
   },
   {
    "id": "coral_yellow",
@@ -178,7 +203,12 @@
    ],
    "textures": {
     "all": "coral_yellow"
-   }
+   },
+   "drops": [
+    {
+     "id": "coral_yellow"
+    }
+   ]
   },
   {
    "id": "coral_blue",
@@ -196,7 +226,12 @@
    ],
    "textures": {
     "all": "coral_blue"
-   }
+   },
+   "drops": [
+    {
+     "id": "coral_blue"
+    }
+   ]
   },
   {
    "id": "coral_pink",
@@ -214,7 +249,12 @@
    ],
    "textures": {
     "all": "coral_pink"
-   }
+   },
+   "drops": [
+    {
+     "id": "coral_pink"
+    }
+   ]
   }
  ]
 }

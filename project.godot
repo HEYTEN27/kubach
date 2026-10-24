@@ -23,8 +23,8 @@ config/icon="res://icon.svg"
 
 EventBus="*res://src/core/event_bus.gd"
 Registry="*res://src/core/registry/registry.gd"
-Controls="*res://src/core/controls.gd"
 Settings="*res://src/core/settings/settings.gd"
+Controls="*res://src/core/controls.gd"
 Audio="*res://src/audio/audio_manager.gd"
 
 [display]

@@ -50,6 +50,12 @@ var texture_bottom: StringName
 var texture_side: StringName
 var drops: Array
 var tags: PackedStringArray
+## Хранилище: число ячеек (0 — не контейнер) и вид (chest, dresser, barrel, crate, shelf).
+var container_slots := 0
+var container_kind: StringName = &""
+## Есть ли у блока предмет (воды, лавы, материнской породы в инвентаре нет).
+var has_item := true
+var weight := 1.0
 
 
 static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
@@ -81,6 +87,11 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.texture_side = StringName(tex.get("side", all))
 	b.drops = e["drops"]
 	b.tags = PackedStringArray(e["tags"])
+	var cont: Dictionary = e.get("container", {})
+	b.container_slots = int(cont.get("slots", 0))
+	b.container_kind = StringName(cont.get("kind", "")) if b.container_slots > 0 else &""
+	b.has_item = e.get("item", true) and b.render != &"liquid" and b.is_breakable()
+	b.weight = e.get("weight", 1.0)
 	return b
 
 
@@ -104,5 +115,10 @@ func has_tag(tag: String) -> bool:
 	return tags.has(tag)
 
 
-func display_name(locale: String = "ru") -> String:
-	return name.get(locale, name.get("ru", String(id)))
+## Язык названий по умолчанию (настройка «Язык»).
+static var locale := "ru"
+
+
+func display_name(p_locale: String = "") -> String:
+	var l := p_locale if p_locale != "" else locale
+	return name.get(l, name.get("ru", String(id)))

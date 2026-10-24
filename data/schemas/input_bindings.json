@@ -1,12 +1,82 @@
 {
   "format": 1,
   "category": "input_bindings",
-  "description": "Управление по умолчанию. Клавиши — физические (по положению), чтобы WASD работал и на русской раскладке. Переназначение — этап 4.",
+  "description": "Управление по умолчанию. Клавиши — физические (по положению), чтобы WASD работал и на русской раскладке. Игрок переназначает их в настройках (этап 4), правки хранятся в user://settings.cfg.",
   "fields": {
-    "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$", "doc": "Имя действия в InputMap." },
-    "name": { "type": "localized", "required": true },
-    "category": { "type": "enum", "values": ["movement", "camera", "interaction", "interface", "debug"], "required": true },
-    "keys": { "type": "array", "of": { "type": "string" }, "default": [], "doc": "Имена клавиш как в OS.find_keycode_from_string: W, Space, Ctrl, Shift, F5, 1…" },
-    "mouse_buttons": { "type": "array", "of": { "type": "int", "min": 1, "max": 9 }, "default": [], "doc": "1 — левая, 2 — правая, 3 — средняя, 4/5 — колесо вверх/вниз." }
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "doc": "Имя действия в InputMap."
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "category": {
+      "type": "enum",
+      "values": [
+        "movement",
+        "camera",
+        "interaction",
+        "interface",
+        "debug"
+      ],
+      "required": true
+    },
+    "keys": {
+      "type": "array",
+      "of": {
+        "type": "string"
+      },
+      "default": [],
+      "doc": "Имена клавиш как в OS.find_keycode_from_string: W, Space, Ctrl, Shift, F5, 1…"
+    },
+    "mouse_buttons": {
+      "type": "array",
+      "of": {
+        "type": "int",
+        "min": 1,
+        "max": 9
+      },
+      "default": [],
+      "doc": "1 — левая, 2 — правая, 3 — средняя, 4/5 — колесо вверх/вниз."
+    },
+    "joy_buttons": {
+      "type": "array",
+      "of": {
+        "type": "int",
+        "min": 0,
+        "max": 20
+      },
+      "default": [],
+      "doc": "Кнопки геймпада (JoyButton): 0 — A, 1 — B, 2 — X, 3 — Y, 4 — Back, 6 — Start, 9 — LB, 10 — RB, 11–14 — крестовина."
+    },
+    "joy_axes": {
+      "type": "array",
+      "default": [],
+      "doc": "Оси геймпада: axis (0/1 — левый стик, 2/3 — правый, 4/5 — курки) и dir (−1 или 1).",
+      "of": {
+        "type": "object",
+        "fields": {
+          "axis": {
+            "type": "int",
+            "min": 0,
+            "max": 9,
+            "required": true
+          },
+          "dir": {
+            "type": "int",
+            "min": -1,
+            "max": 1,
+            "required": true
+          }
+        }
+      }
+    },
+    "rebindable": {
+      "type": "bool",
+      "default": true
+    }
   }
 }

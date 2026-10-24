@@ -1,0 +1,48 @@
+{
+ "format": 1,
+ "category": "face_presets",
+ "description": "Готовые лица: набор черт.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "eyes": {
+   "type": "ref",
+   "to": [
+    "face_parts"
+   ],
+   "required": true
+  },
+  "brows": {
+   "type": "ref",
+   "to": [
+    "face_parts"
+   ],
+   "required": true
+  },
+  "nose": {
+   "type": "ref",
+   "to": [
+    "face_parts"
+   ],
+   "required": true
+  },
+  "mouth": {
+   "type": "ref",
+   "to": [
+    "face_parts"
+   ],
+   "required": true
+  }
+ }
+}

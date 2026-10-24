@@ -1,0 +1,33 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "a",
+   "name": {
+    "ru": "Тип A (мужской)",
+    "en": "Type A (masculine)"
+   },
+   "order": 0,
+   "shoulders": 1.08,
+   "hips": 0.95,
+   "chest": 0.0,
+   "torso": 1.0,
+   "legs": 1.0,
+   "head": 1.0
+  },
+  {
+   "id": "b",
+   "name": {
+    "ru": "Тип B (женский)",
+    "en": "Type B (feminine)"
+   },
+   "order": 1,
+   "shoulders": 0.92,
+   "hips": 1.05,
+   "chest": 0.06,
+   "torso": 0.96,
+   "legs": 1.03,
+   "head": 0.97
+  }
+ ]
+}

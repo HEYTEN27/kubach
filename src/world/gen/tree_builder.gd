@@ -48,7 +48,8 @@ func build(t: int, x: int, y: int, z: int, h_seed: int, w: ColumnWriter) -> void
 	var tw := width[t]
 	match SHAPES[shape[t]]:
 		&"conifer":
-			_trunk(w, x, y, z, hgt, tw, lg)
+			# Ствол кончается под верхушкой: верхние ярусы — хвоя вокруг ствола (не «шест»).
+			_trunk(w, x, y, z, hgt - 1, tw, lg)
 			var start := y + maxi(2, int(hgt * 0.22))
 			var top := y + hgt
 			for yy in range(start, top + 2):
@@ -56,7 +57,7 @@ func build(t: int, x: int, y: int, z: int, h_seed: int, w: ColumnWriter) -> void
 				var rr := r * k
 				if (yy - start) % 2 == 1:
 					rr *= 0.7
-				_disc(w, x, yy, z, maxf(rr, 0.6), tw, lv, 0.0)
+				_disc(w, x, yy, z, maxf(rr, 1.05 if yy < top else 0.6), tw, lv, 0.0)
 			w.place_soft(x, top + 2, z, lv)
 		&"pine":
 			_trunk(w, x, y, z, hgt, tw, lg)

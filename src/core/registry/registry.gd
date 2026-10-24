@@ -46,6 +46,8 @@ var _order := {}     # категория -> Array[StringName], порядок �
 var _sources := {}   # "категория:id" -> путь файла (для сообщений о дублях)
 var _blocks: Array[BlockDef] = []
 var _block_nums := {}  # StringName -> int
+var _items: Array[ItemDef] = []
+var _item_index := {}  # StringName -> ItemDef
 var _id_regex := RegEx.create_from_string(ID_PATTERN)
 
 
@@ -80,6 +82,7 @@ func load_all(dir: String = DEFAULT_DATA_DIR) -> bool:
 	_resolve_refs(validator)
 	errors.append_array(validator.errors)
 	_build_blocks()
+	_build_items()
 	loaded = errors.is_empty()
 	return loaded
 
@@ -129,6 +132,16 @@ func block_by_num(n: int) -> BlockDef:
 	return _blocks[n] if n >= 0 and n < _blocks.size() else null
 
 
+## Предмет по id (блоки — тоже предметы) или null.
+func item(id: StringName) -> ItemDef:
+	return _item_index.get(id)
+
+
+## Все предметы: сначала блоки (в порядке загрузки), затем data/items.json.
+func items() -> Array[ItemDef]:
+	return _items
+
+
 func _clear() -> void:
 	errors = PackedStringArray()
 	warnings = PackedStringArray()
@@ -138,6 +151,8 @@ func _clear() -> void:
 	_order.clear()
 	_sources.clear()
 	_blocks.clear()
+	_items.clear()
+	_item_index.clear()
 	_block_nums.clear()
 	block_solid = PackedByteArray()
 	block_opaque = PackedByteArray()
@@ -280,6 +295,27 @@ func _build_blocks() -> void:
 			errors.append("%s: превышен лимит %d блоков" % [where, MAX_BLOCKS])
 			return
 		_add_block(BlockDef.from_entry(_blocks.size(), e))
+
+
+func _build_items() -> void:
+	for b in _blocks:
+		if b.num != 0 and b.has_item:
+			_add_item(ItemDef.from_block(b))
+	if not _entries.has("items"):
+		return
+	for id: StringName in _order["items"]:
+		var e: Dictionary = _entries["items"][id]
+		if _item_index.has(id):
+			errors.append("%s:%s: id предмета совпадает с блоком" % [_sources["items:%s" % id], id])
+			continue
+		if not e.has("kind") or not e.has("stack"):
+			continue
+		_add_item(ItemDef.from_entry(e, self))
+
+
+func _add_item(d: ItemDef) -> void:
+	_items.append(d)
+	_item_index[d.id] = d
 
 
 ## Смысловые проверки, которые не выражаются схемой.

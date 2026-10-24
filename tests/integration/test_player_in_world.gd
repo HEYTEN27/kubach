@@ -79,7 +79,8 @@ func test_break_and_place_block_in_creative() -> void:
 	player.teleport(ground.x + 0.5, ground.y + 4.0, ground.z + 0.5)
 	await _frames(3)
 	var granite := Registry.block_num(&"granite")
-	player.interaction.select(player.interaction.palette.find(granite))
+	player.inventory.hotbar.set_stack(2, ItemStack.create(Registry.item(&"granite"), 5))
+	player.interaction.select(2)
 	assert_eq(player.interaction.selected_block(), granite)
 	var target := ground + Vector3i.UP
 	# Растения, снег и листву над точкой убираем: цель луча должна быть землёй.

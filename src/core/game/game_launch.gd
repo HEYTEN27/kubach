@@ -15,7 +15,9 @@ extends RefCounted
 ##   --camera=first|back|front
 ##   --f3                 сразу показать отладочный экран;
 ##   --screenshot=<png>   дождаться загрузки, сохранить кадр и выйти;
-##   --bench=<сек>        бенчмарк: временный мир, полёт по прямой, лог frametime, выход.
+##   --bench=<сек>        бенчмарк: временный мир, полёт по прямой, лог frametime, выход;
+##   --open=inventory|chest — после загрузки открыть окно инвентаря (или поставить рядом сундук
+##                        с предметами и открыть его) — для скриншотов.
 
 static var folder := ""
 static var new_world_name := ""
@@ -30,6 +32,10 @@ static var camera := ""
 static var show_debug := false
 static var screenshot_path := ""
 static var bench_seconds := 0.0
+static var open_ui := ""
+## Внешность и стартовая одежда из редактора персонажа (новый мир).
+static var appearance: Dictionary = {}
+static var outfit: Array = []
 ## Настройки генерации нового мира (экран создания или --world-type, --biome-size, --caves, --ores, --sea).
 static var settings: Dictionary = {}
 
@@ -48,6 +54,9 @@ static func reset() -> void:
 	settings = {}
 	view_distance = 0
 	preset = ""
+	appearance = {}
+	outfit = []
+	open_ui = ""
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -91,6 +100,8 @@ static func parse_args(args: PackedStringArray) -> bool:
 					look = Vector2(l[0], l[1])
 			"--preset":
 				preset = value
+			"--open":
+				open_ui = value
 			"--camera":
 				camera = value
 			"--f3":

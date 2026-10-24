@@ -1,0 +1,57 @@
+{
+ "format": 1,
+ "category": "body_types",
+ "description": "Типы тела: пропорции модели (множители).",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "shoulders": {
+   "type": "float",
+   "min": 0.5,
+   "max": 1.5,
+   "default": 1.0
+  },
+  "hips": {
+   "type": "float",
+   "min": 0.5,
+   "max": 1.5,
+   "default": 1.0
+  },
+  "chest": {
+   "type": "float",
+   "min": 0.0,
+   "max": 0.3,
+   "default": 0.0,
+   "doc": "Выпуклость груди, блоки."
+  },
+  "torso": {
+   "type": "float",
+   "min": 0.7,
+   "max": 1.3,
+   "default": 1.0
+  },
+  "legs": {
+   "type": "float",
+   "min": 0.7,
+   "max": 1.3,
+   "default": 1.0
+  },
+  "head": {
+   "type": "float",
+   "min": 0.8,
+   "max": 1.2,
+   "default": 1.0
+  }
+ }
+}

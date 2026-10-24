@@ -10,6 +10,8 @@ extends Node3D
 
 signal block_changed(pos: Vector3i, old_block: int, new_block: int)
 signal origin_shifted(new_origin: Vector3i)
+## Предметы выпали в мир (мировые координаты точки, стопки). Их подхватывает DroppedItems.
+signal items_dropped(x: float, y: float, z: float, stacks: Array)
 
 const REBASE_DISTANCE := 256.0
 
@@ -25,6 +27,8 @@ var game_mode: StringName = &"survival"
 var origin := Vector3i.ZERO
 ## Тела, внутрь которых нельзя ставить блоки.
 var bodies: Array[VoxelBody] = []
+## Открытые инвентари контейнеров: Vector3i → Inventory (данные — в ChunkColumn.block_entities).
+var _containers := {}
 
 
 func setup(p_registry: ContentRegistry, p_save: WorldSave, p_seed: int, p_settings: WorldGenSettings = null) -> void:
@@ -93,6 +97,7 @@ func set_block(x: int, y: int, z: int, block: int) -> bool:
 	var old := col.get_block(x & 15, y, z & 15)
 	if old == block:
 		return true
+	_remove_entity(col, x, y, z)
 	col.set_block(x & 15, y, z & 15, block)
 	var sec := col.sections[WorldConst.section_index(y)]
 	if sec != null:
@@ -115,6 +120,10 @@ func execute(action: GameAction) -> bool:
 				return false
 			if not set_block(p.x, p.y, p.z, 0):
 				return false
+			if game_mode != &"creative":
+				var drops := roll_drops(current)
+				if not drops.is_empty():
+					items_dropped.emit(p.x + 0.5, p.y + 0.3, p.z + 0.5, drops)
 			_emit_bus(&"block_broken", p, current)
 			return true
 		GameAction.Type.PLACE_BLOCK:
@@ -136,8 +145,95 @@ func execute(action: GameAction) -> bool:
 	return false
 
 
+## Что выпадает из блока (поле drops: шанс, min…max). Блок без drops ничего не даёт.
+func roll_drops(block: int) -> Array[ItemStack]:
+	var out: Array[ItemStack] = []
+	var def := registry.block_by_num(block)
+	if def == null:
+		return out
+	for d: Dictionary in def.drops:
+		if randf() > float(d.get("chance", 1.0)):
+			continue
+		var item := registry.item(StringName(d["id"]))
+		if item == null:
+			continue
+		var n := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
+		if n > 0:
+			out.append(ItemStack.create(item, n))
+	return out
+
+
+## Инвентарь контейнера в клетке (сундук) или null, если там не контейнер или колонна
+## не загружена. Изменения сразу пишутся в данные колонны.
+func get_container(x: int, y: int, z: int) -> Inventory:
+	var p := Vector3i(x, y, z)
+	if _containers.has(p):
+		return _containers[p]
+	var col: ChunkColumn = chunks.columns.get(Vector2i(x >> 4, z >> 4))
+	if col == null:
+		return null
+	var def := registry.block_by_num(col.get_block(x & 15, y, z & 15))
+	if def == null or def.container_slots <= 0:
+		return null
+	var key := ChunkColumn.entity_index(x & 15, y, z & 15)
+	var e: Dictionary = col.block_entities.get(key, {})
+	var inv := Inventory.new(registry, def.container_slots, String(def.container_kind))
+	inv.from_array(e.get("items", []))
+	inv.changed.connect(_on_container_changed.bind(p))
+	_containers[p] = inv
+	return inv
+
+
+## Отвязанный инвентарь (блок сломан, колонна выгружена) сюда больше не пишет.
+func _on_container_changed(p: Vector3i) -> void:
+	var inv: Inventory = _containers.get(p)
+	var col: ChunkColumn = chunks.columns.get(Vector2i(p.x >> 4, p.z >> 4))
+	if inv == null or col == null:
+		return
+	var key := ChunkColumn.entity_index(p.x & 15, p.y, p.z & 15)
+	if inv.is_empty():
+		col.block_entities.erase(key)
+	else:
+		col.block_entities[key] = { "type": "container", "items": inv.to_array() }
+	col.dirty = true
+
+
+## Блок заменён: данные блока удаляются, содержимое контейнера выпадает.
+func _remove_entity(col: ChunkColumn, x: int, y: int, z: int) -> void:
+	var p := Vector3i(x, y, z)
+	var inv: Inventory = _containers.get(p)
+	var key := ChunkColumn.entity_index(x & 15, y, z & 15)
+	var items: Array = []
+	if inv != null:
+		items = inv.to_array()
+		_containers.erase(p)
+	elif col.block_entities.has(key):
+		items = col.block_entities[key].get("items", [])
+	if not col.block_entities.has(key) and items.is_empty():
+		return
+	col.block_entities.erase(key)
+	col.dirty = true
+	var stacks: Array[ItemStack] = []
+	for d: Variant in items:
+		if d is Dictionary:
+			var st := ItemStack.from_dict(d)
+			if st != null and registry.item(st.id) != null:
+				stacks.append(st)
+	if not stacks.is_empty():
+		items_dropped.emit(x + 0.5, y + 0.5, z + 0.5, stacks)
+
+
+## Колонна выгружена: открытые инвентари её контейнеров забываются (данные уже в колонне).
+func forget_containers(cpos: Vector2i) -> void:
+	for p: Vector3i in _containers.keys():
+		if Vector2i(p.x >> 4, p.z >> 4) == cpos:
+			_containers.erase(p)
+
+
 ## Сигнал в EventBus (через узел, а не идентификатор: World используется и в tools/ без автозагрузок).
 func _emit_bus(sig: StringName, p: Vector3i, block: int) -> void:
+	if not is_inside_tree():
+		return
 	var bus := get_node_or_null(^"/root/EventBus")
 	if bus:
 		bus.emit_signal(sig, p, block, to_scene(p.x + 0.5, p.y + 0.5, p.z + 0.5))

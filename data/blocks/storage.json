@@ -1,0 +1,227 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "chest_wood",
+   "name": {
+    "ru": "Деревянный сундук",
+    "en": "Wooden Chest"
+   },
+   "material": "wood",
+   "map_color": "#8a6238",
+   "hardness": 2.5,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "chest_wood_top",
+    "bottom": "chest_wood_top",
+    "side": "chest_wood_side"
+   },
+   "drops": [
+    {
+     "id": "chest_wood"
+    }
+   ],
+   "tags": [
+    "storage",
+    "chest"
+   ],
+   "weight": 8.0,
+   "container": {
+    "slots": 27,
+    "kind": "chest"
+   }
+  },
+  {
+   "id": "chest_reinforced",
+   "name": {
+    "ru": "Укреплённый сундук",
+    "en": "Reinforced Chest"
+   },
+   "material": "wood",
+   "map_color": "#6f5233",
+   "hardness": 4.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "chest_reinforced_top",
+    "bottom": "chest_reinforced_top",
+    "side": "chest_reinforced_side"
+   },
+   "drops": [
+    {
+     "id": "chest_reinforced"
+    }
+   ],
+   "tags": [
+    "storage",
+    "chest"
+   ],
+   "weight": 14.0,
+   "container": {
+    "slots": 36,
+    "kind": "chest"
+   }
+  },
+  {
+   "id": "chest_iron",
+   "name": {
+    "ru": "Железный сундук",
+    "en": "Iron Chest"
+   },
+   "material": "metal",
+   "map_color": "#7c7f84",
+   "hardness": 7.0,
+   "tool": "pickaxe",
+   "flammable": false,
+   "sounds": "metal",
+   "textures": {
+    "top": "chest_iron_top",
+    "bottom": "chest_iron_top",
+    "side": "chest_iron_side"
+   },
+   "drops": [
+    {
+     "id": "chest_iron"
+    }
+   ],
+   "tags": [
+    "storage",
+    "chest"
+   ],
+   "weight": 30.0,
+   "container": {
+    "slots": 54,
+    "kind": "chest"
+   }
+  },
+  {
+   "id": "dresser",
+   "name": {
+    "ru": "Комод",
+    "en": "Dresser"
+   },
+   "material": "wood",
+   "map_color": "#7a5534",
+   "hardness": 2.5,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "dresser_top",
+    "bottom": "dresser_top",
+    "side": "dresser_side"
+   },
+   "drops": [
+    {
+     "id": "dresser"
+    }
+   ],
+   "tags": [
+    "storage",
+    "dresser"
+   ],
+   "weight": 20.0,
+   "container": {
+    "slots": 27,
+    "kind": "dresser"
+   }
+  },
+  {
+   "id": "barrel",
+   "name": {
+    "ru": "Бочка",
+    "en": "Barrel"
+   },
+   "material": "wood",
+   "map_color": "#7b5a3a",
+   "hardness": 2.5,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "barrel_top",
+    "bottom": "barrel_top",
+    "side": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "barrel"
+    }
+   ],
+   "tags": [
+    "storage",
+    "barrel"
+   ],
+   "weight": 10.0,
+   "container": {
+    "slots": 18,
+    "kind": "barrel"
+   }
+  },
+  {
+   "id": "crate",
+   "name": {
+    "ru": "Ящик",
+    "en": "Crate"
+   },
+   "material": "wood",
+   "map_color": "#a07a4c",
+   "hardness": 1.5,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "crate"
+   },
+   "drops": [
+    {
+     "id": "crate"
+    }
+   ],
+   "tags": [
+    "storage",
+    "crate"
+   ],
+   "weight": 5.0,
+   "container": {
+    "slots": 18,
+    "kind": "crate"
+   }
+  },
+  {
+   "id": "torch",
+   "name": {
+    "ru": "Факел",
+    "en": "Torch"
+   },
+   "material": "wood",
+   "map_color": "#e0a040",
+   "hardness": 0.0,
+   "tool": "none",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "torch"
+   },
+   "drops": [
+    {
+     "id": "torch"
+    }
+   ],
+   "tags": [
+    "light",
+    "fire"
+   ],
+   "weight": 0.2,
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "light_emission": 14,
+   "light_color": "#ffb36a",
+   "light_filter": 0
+  }
+ ]
+}

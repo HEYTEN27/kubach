@@ -2,8 +2,8 @@ extends Control
 ## Экран создания мира (раздел 2.2): название, сид, тип мира, ползунки, сложность, стартовый
 ## сезон, режим игры и предпросмотр карты биомов 512×512 (обновляется в потоке при изменениях).
 
-const GAME_SCENE := "res://src/core/game/game.tscn"
 const MENU_SCENE := "res://src/ui/boot/boot.tscn"
+const CHARACTER_SCENE := "res://src/ui/character/character_create.tscn"
 const PREVIEW_DELAY := 0.35
 
 var _name: LineEdit
@@ -208,7 +208,7 @@ func _on_create() -> void:
 	GameLaunch.seed_text = seed_text() if seed_text() != "" else str(WorldSeed.random())
 	GameLaunch.game_mode = &"creative" if _mode.selected == 1 else &"survival"
 	GameLaunch.settings = settings().to_dict()
-	get_tree().change_scene_to_file(GAME_SCENE)
+	get_tree().change_scene_to_file(CHARACTER_SCENE)
 
 
 func _line(parent: Control, label: String, value: String) -> LineEdit:

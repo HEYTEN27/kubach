@@ -1,0 +1,42 @@
+{
+ "format": 1,
+ "category": "face_parts",
+ "description": "Черты лица — пиксели на текстуре лица 8×8 (x вправо, y вниз).",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "part": {
+   "type": "enum",
+   "values": [
+    "eyes",
+    "brows",
+    "nose",
+    "mouth",
+    "scar"
+   ],
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "pixels": {
+   "type": "array",
+   "default": [],
+   "doc": "[x, y, роль]: роль — white, iris, dark, hair, shade, light, lip, scar.",
+   "of": {
+    "type": "array",
+    "of": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

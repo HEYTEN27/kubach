@@ -51,3 +51,61 @@ func test_unknown_preset_falls_back() -> void:
 	add_child_autofree(s)
 	s.set_preset(&"nope")
 	assert_eq(s.graphics["view_distance"], 12, "неизвестный пресет → «Высокие»")
+
+
+func test_all_sections_have_settings() -> void:
+	var s := GameSettings.new()
+	add_child_autofree(s)
+	for sec in ["graphics", "display", "audio", "controls", "interface", "accessibility", "gameplay"]:
+		assert_gt(s.definitions(sec).size(), 0, sec)
+
+
+func test_defaults_and_values() -> void:
+	var s := GameSettings.new()
+	add_child_autofree(s)
+	s.load_settings(TMP)
+	assert_eq(s.get_value("fov"), 75)
+	assert_eq(s.get_value("show_fps"), false)
+	assert_eq(s.get_value("crosshair_style"), "cross")
+	s.set_value("fov", 90)
+	assert_eq(s.get_value("fov"), 90)
+	assert_eq(s.save_settings(TMP), OK)
+	var s2 := GameSettings.new()
+	add_child_autofree(s2)
+	s2.load_settings(TMP)
+	assert_eq(s2.get_value("fov"), 90)
+
+
+func test_graphics_setting_goes_through_preset() -> void:
+	var s := GameSettings.new()
+	add_child_autofree(s)
+	s.set_preset(&"high")
+	assert_eq(s.get_value("view_distance"), 12)
+	s.set_value("view_distance", 20)
+	assert_eq(s.preset, GameSettings.CUSTOM)
+	assert_eq(s.graphics["view_distance"], 20)
+	s.set_value("graphics_preset", "low")
+	assert_eq(s.get_value("view_distance"), 6)
+
+
+func test_reset_section() -> void:
+	var s := GameSettings.new()
+	add_child_autofree(s)
+	s.set_value("hud_opacity", 0.4)
+	s.reset_section("interface")
+	assert_almost_eq(float(s.get_value("hud_opacity")), 1.0, 0.001)
+
+
+func test_every_setting_definition_is_consistent() -> void:
+	var s := GameSettings.new()
+	add_child_autofree(s)
+	for d in s.definitions():
+		var v: Variant = s.default_value(String(d["id"]))
+		match String(d["type"]):
+			"enum":
+				var vals := []
+				for o: Dictionary in d["options"]:
+					vals.append(String(o["value"]))
+				assert_has(vals, String(v), "%s: значение по умолчанию среди вариантов" % d["id"])
+			"int", "float":
+				assert_between(float(v), float(d["min"]), float(d["max"]), String(d["id"]))

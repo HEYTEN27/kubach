@@ -9,13 +9,17 @@ extends RefCounted
 ## Блоб колонны: u32 исходный размер + данные, сжатые zstd. Внутри — палитра строковых ID блоков
 ## и секции (однородная — один индекс палитры, иначе 4096 × u16). Числовые ID на диск не попадают,
 ## поэтому порядок блоков в data/ можно менять.
+## Формат колонны 2 (этап 4): после секций — данные блоков (содержимое сундуков):
+## u16 число, далее (u32 локальный индекс, u32 длина, JSON). Колонны формата 1 читаются как есть.
 ##
 ## Пишутся только колонны, которые игрок менял (их передаёт ChunkManager). Остальное мир
 ## генерирует заново по сиду. Потокобезопасен: load_column() вызывается из потоков генерации.
 
 const REGION_MAGIC := 0x4752424B  # "KBRG"
 const COLUMN_MAGIC := 0x4343424B  # "KBCC"
+## Формат region-файла (заголовок) и блоба колонны.
 const FORMAT := 1
+const COLUMN_FORMAT := 2
 const COLUMNS_PER_REGION := WorldConst.REGION_SIZE * WorldConst.REGION_SIZE
 const HEADER_SIZE := 8 + COLUMNS_PER_REGION * 8
 const KIND_UNIFORM := 0
@@ -129,7 +133,7 @@ func encode_column(col: ChunkColumn) -> PackedByteArray:
 
 	var buf := StreamPeerBuffer.new()
 	buf.put_u32(COLUMN_MAGIC)
-	buf.put_u16(FORMAT)
+	buf.put_u16(COLUMN_FORMAT)
 	buf.put_32(col.cpos.x)
 	buf.put_32(col.cpos.y)
 	buf.put_u16(ids.size())
@@ -157,6 +161,14 @@ func encode_column(col: ChunkColumn) -> PackedByteArray:
 			for i in WorldConst.SECTION_VOLUME:
 				data.encode_u16(i * 2, palette[s.blocks[i]])
 			buf.put_data(data)
+	var keys := col.block_entities.keys()
+	keys.sort()
+	buf.put_u16(keys.size())
+	for k: int in keys:
+		var json := JSON.stringify(col.block_entities[k]).to_utf8_buffer()
+		buf.put_u32(k)
+		buf.put_u32(json.size())
+		buf.put_data(json)
 	var raw := buf.data_array
 	var out := PackedByteArray()
 	out.resize(4)
@@ -169,7 +181,9 @@ func decode_column(blob: PackedByteArray, expected: Vector2i) -> ChunkColumn:
 	var raw := blob.slice(4).decompress(blob.decode_u32(0), FileAccess.COMPRESSION_ZSTD)
 	var buf := StreamPeerBuffer.new()
 	buf.data_array = raw
-	if buf.get_u32() != COLUMN_MAGIC or buf.get_u16() != FORMAT:
+	var magic := buf.get_u32()
+	var fmt := buf.get_u16()
+	if magic != COLUMN_MAGIC or fmt < 1 or fmt > COLUMN_FORMAT:
 		warnings.append("колонна %s: неизвестный формат, будет сгенерирована заново" % expected)
 		return null
 	var cpos := Vector2i(buf.get_32(), buf.get_32())
@@ -203,6 +217,13 @@ func decode_column(blob: PackedByteArray, expected: Vector2i) -> ChunkColumn:
 			s.try_compact()
 		if not s.is_empty():
 			col.sections[si] = s
+	if fmt >= 2:
+		for i in buf.get_u16():
+			var k := buf.get_u32()
+			var bytes: PackedByteArray = buf.get_data(buf.get_u32())[1]
+			var e: Variant = JSON.parse_string(bytes.get_string_from_utf8())
+			if e is Dictionary:
+				col.block_entities[k] = e
 	return col
 
 

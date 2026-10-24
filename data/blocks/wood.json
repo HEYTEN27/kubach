@@ -51,7 +51,13 @@
    ],
    "textures": {
     "all": "fir_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "pine_log",
@@ -103,7 +109,13 @@
    ],
    "textures": {
     "all": "pine_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "cedar_log",
@@ -155,7 +167,13 @@
    ],
    "textures": {
     "all": "cedar_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "larch_log",
@@ -207,7 +225,13 @@
    ],
    "textures": {
     "all": "larch_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "birch_log",
@@ -259,7 +283,13 @@
    ],
    "textures": {
     "all": "birch_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "aspen_log",
@@ -311,7 +341,13 @@
    ],
    "textures": {
     "all": "aspen_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "oak_log",
@@ -363,7 +399,13 @@
    ],
    "textures": {
     "all": "oak_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "maple_log",
@@ -415,7 +457,13 @@
    ],
    "textures": {
     "all": "maple_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "linden_log",
@@ -467,7 +515,13 @@
    ],
    "textures": {
     "all": "linden_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "alder_log",
@@ -519,7 +573,13 @@
    ],
    "textures": {
     "all": "alder_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "willow_log",
@@ -571,7 +631,13 @@
    ],
    "textures": {
     "all": "willow_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "rowan_log",
@@ -623,7 +689,13 @@
    ],
    "textures": {
     "all": "rowan_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "bird_cherry_log",
@@ -675,7 +747,13 @@
    ],
    "textures": {
     "all": "bird_cherry_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "apple_log",
@@ -727,7 +805,13 @@
    ],
    "textures": {
     "all": "apple_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "pear_log",
@@ -779,7 +863,13 @@
    ],
    "textures": {
     "all": "pear_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "cherry_log",
@@ -831,7 +921,13 @@
    ],
    "textures": {
     "all": "cherry_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "plum_log",
@@ -883,7 +979,13 @@
    ],
    "textures": {
     "all": "plum_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "apricot_log",
@@ -935,7 +1037,13 @@
    ],
    "textures": {
     "all": "apricot_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "hazel_log",
@@ -987,7 +1095,13 @@
    ],
    "textures": {
     "all": "hazel_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "palm_log",
@@ -1039,7 +1153,13 @@
    ],
    "textures": {
     "all": "palm_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "acacia_log",
@@ -1091,7 +1211,13 @@
    ],
    "textures": {
     "all": "acacia_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "jungle_log",
@@ -1143,7 +1269,13 @@
    ],
    "textures": {
     "all": "jungle_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "mangrove_log",
@@ -1195,7 +1327,13 @@
    ],
    "textures": {
     "all": "mangrove_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "dwarf_birch_log",
@@ -1247,7 +1385,13 @@
    ],
    "textures": {
     "all": "dwarf_birch_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "bamboo_stalk",
@@ -1298,7 +1442,13 @@
    ],
    "textures": {
     "all": "bamboo_leaves"
-   }
+   },
+   "drops": [
+    {
+     "id": "stick",
+     "chance": 0.12
+    }
+   ]
   },
   {
    "id": "mushroom_stem",
@@ -1339,7 +1489,12 @@
    ],
    "textures": {
     "all": "red_mushroom_cap"
-   }
+   },
+   "drops": [
+    {
+     "id": "red_mushroom_cap"
+    }
+   ]
   },
   {
    "id": "brown_mushroom_cap",
@@ -1357,7 +1512,12 @@
    ],
    "textures": {
     "all": "brown_mushroom_cap"
-   }
+   },
+   "drops": [
+    {
+     "id": "brown_mushroom_cap"
+    }
+   ]
   }
  ]
 }

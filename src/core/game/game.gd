@@ -1,5 +1,5 @@
 extends Node3D
-## Игровая сцена: окружение, мир, игрок, HUD, F3, пауза, сохранение.
+## Игровая сцена: окружение, мир, игрок, инвентарь, HUD, окна, F3, пауза, сохранение.
 ## Параметры запуска — в GameLaunch.
 
 const AUTOSAVE_SEC := 300.0
@@ -15,6 +15,10 @@ var pause_menu: PauseMenu
 var rig: GraphicsRig
 var grass: GrassField
 var far_terrain: FarTerrain
+var dropped: DroppedItems
+## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
+var inv_ops: InventoryOps
+var _window: InventoryWindow
 
 var _loading := true
 var _autosave_left := AUTOSAVE_SEC
@@ -77,8 +81,31 @@ func _ready() -> void:
 	player = Player.new()
 	player.name = "Player"
 	var spawn := _spawn_point()
+	var pmeta: Dictionary = save.meta.get("player", {}) if save != null else {}
+	player.appearance = pmeta.get("appearance", GameLaunch.appearance if not GameLaunch.appearance.is_empty() else CharacterModel.default_appearance())
 	player.setup(world, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4])
+	if pmeta.has("inventory"):
+		player.inventory.from_dict(pmeta["inventory"])
+	else:
+		_starting_inventory()
 	add_child(player)
+	inv_ops = InventoryOps.new(player.inventory)
+	inv_ops.creative = world.game_mode == &"creative"
+	inv_ops.dropped.connect(_throw_from_player)
+	player.interaction.container_requested.connect(open_container)
+	player.interaction.tool_broken.connect(func(id: StringName) -> void:
+		hud.show_toast("Сломался инструмент: %s" % Registry.item(id).display_name()))
+	dropped = DroppedItems.new()
+	dropped.name = "DroppedItems"
+	world.add_child(dropped)
+	dropped.setup(world)
+	dropped.inventory = player.inventory
+	dropped.player_body = player.body
+	dropped.picked_up.connect(func(_s: ItemStack) -> void: Audio.play_ui("ui/pickup"))
+	if save != null:
+		dropped.from_array(save.meta.get("dropped", []))
+	_apply_player_settings()
+	Settings.setting_changed.connect(func(_id: String, _v: Variant) -> void: _apply_player_settings())
 	player.teleport(spawn[0], spawn[1], spawn[2])
 	if save != null and save.meta.get("player", {}).get("flying", false):
 		player.motor.flying = true
@@ -149,7 +176,7 @@ func _process(delta: float) -> void:
 	if save != null:
 		_autosave_left -= delta
 		if _autosave_left <= 0.0:
-			save_game()
+			save_game(true)
 			hud.show_toast("Автосохранение")
 	if GameLaunch.bench_seconds > 0.0:
 		_bench_fly()
@@ -162,11 +189,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed(&"pause"):
 		_pause()
+	elif event.is_action_pressed(&"inventory") and _window == null and not get_tree().paused:
+		open_inventory()
+	elif event.is_action_pressed(&"drop_item") and _window == null and player.input_allowed():
+		var a := InventoryAction.make(InventoryAction.Op.DROP_SLOT, "hotbar", player.inventory.selected)
+		a.amount = 0 if Input.is_key_pressed(KEY_CTRL) else 1
+		execute_inventory(a)
+	elif event.is_action_pressed(&"swap_hands") and _window == null:
+		var eq := player.inventory.equipment
+		var held := player.inventory.held()
+		if eq.accepts(PlayerInventory.OFFHAND_SLOT, held):
+			var off := eq.get_stack(PlayerInventory.OFFHAND_SLOT)
+			eq.set_stack(PlayerInventory.OFFHAND_SLOT, held)
+			player.inventory.hotbar.set_stack(player.inventory.selected, off)
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and not get_tree().paused:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed(&"toggle_game_mode"):
 		world.game_mode = &"survival" if world.game_mode == &"creative" else &"creative"
+		inv_ops.creative = world.game_mode == &"creative"
 		hud.show_toast("Режим: %s" % ("творческий" if world.game_mode == &"creative" else "выживание"))
 
 
@@ -177,19 +218,128 @@ func _notification(what: int) -> void:
 		_pause()
 
 
-func save_game() -> void:
+## autosave — перед записью сохранить копию предыдущего состояния (3 последних, раздел 21).
+func save_game(autosave: bool = false) -> void:
 	if save == null:
 		return
+	if autosave:
+		save.backup(3)
 	var b := player.body
-	save.meta["player"] = { "x": b.x, "y": b.y, "z": b.z, "yaw": player.yaw, "pitch": player.pitch, "flying": player.motor.flying }
+	save.meta["player"] = { "x": b.x, "y": b.y, "z": b.z, "yaw": player.yaw, "pitch": player.pitch, "flying": player.motor.flying,
+		"inventory": player.inventory.to_dict(), "appearance": player.appearance }
+	save.meta["dropped"] = dropped.to_array()
+	save.meta["season"] = String(world.settings.start_season)
 	save.meta["game_mode"] = String(world.game_mode)
 	save.meta["play_time_sec"] = _play_time
 	var err := world.save_chunks()
 	if err != OK:
 		push_error("Сохранение region-файлов: %s" % error_string(err))
 	save.save_meta()
-	_autosave_left = AUTOSAVE_SEC
+	_save_preview()
+	_autosave_left = float(Settings.get_value("autosave_minutes")) * 60.0
 	EventBus.world_saved.emit(save.folder)
+
+
+## Превью слота: уменьшенный текущий кадр (без окон поверх — их на время скрываем нельзя,
+## поэтому берём кадр как есть).
+func _save_preview() -> void:
+	if DisplayServer.get_name() == "headless" or _loading:
+		return
+	var img := get_viewport().get_texture().get_image()
+	if img == null or img.is_empty():
+		return
+	img.resize(320, 180, Image.INTERPOLATE_BILINEAR)
+	img.save_png(save.folder.path_join("preview.png"))
+
+
+## Новый мир: стартовая одежда из редактора персонажа; в творческом — блоки в хотбаре.
+func _starting_inventory() -> void:
+	var inv := player.inventory
+	var outfit: Array = GameLaunch.outfit if not GameLaunch.outfit.is_empty() else [
+		{ "id": "linen_shirt" }, { "id": "linen_pants" }, { "id": "bast_shoes" }]
+	for o: Dictionary in outfit:
+		var d := Registry.item(StringName(o.get("id", "")))
+		if d == null:
+			continue
+		var st := ItemStack.create(d)
+		if o.has("color"):
+			st.data["color"] = o["color"]
+		var slot := PlayerInventory.EQUIP_KINDS.find(d.equip)
+		if slot >= 0 and inv.equipment.get_stack(slot) == null:
+			inv.equipment.set_stack(slot, st)
+		else:
+			inv.add(st)
+	if world.game_mode == &"creative":
+		var i := 0
+		for id: StringName in [&"granite", &"spruce_log", &"loam", &"sand", &"chest_wood", &"torch", &"oak_leaves",
+				&"iron_pickaxe", &"iron_axe"]:
+			var d := Registry.item(id)
+			if d != null:
+				inv.hotbar.set_stack(i, ItemStack.create(d, d.stack))
+				i += 1
+
+
+## Настройки, которые читает игрок: обзор, мышь, присед/бег, автопрыжок, вес, автосохранение.
+func _apply_player_settings() -> void:
+	player.fov = float(Settings.get_value("fov"))
+	player.mouse_sens_x = 0.0025 * float(Settings.get_value("mouse_sens_x")) * (-1.0 if Settings.get_value("invert_x") else 1.0)
+	player.mouse_sens_y = 0.0025 * float(Settings.get_value("mouse_sens_y")) * (-1.0 if Settings.get_value("invert_y") else 1.0)
+	player.crouch_toggle = String(Settings.get_value("crouch_mode")) == "toggle"
+	player.sprint_toggle = String(Settings.get_value("sprint_mode")) == "toggle"
+	player.auto_jump = bool(Settings.get_value("auto_jump"))
+	player.camera_bob = bool(Settings.get_value("camera_bob"))
+	player.pad_look_speed = float(Settings.get_value("pad_look_speed"))
+	player.use_weight = bool(Settings.get_value("weight"))
+	rig.set_depth_of_field(bool(Settings.get_value("depth_of_field")))
+	_autosave_left = minf(_autosave_left, float(Settings.get_value("autosave_minutes")) * 60.0)
+
+
+func execute_inventory(a: InventoryAction) -> bool:
+	return inv_ops.execute(a)
+
+
+func open_inventory() -> void:
+	_open_window(null, "")
+
+
+func open_container(pos: Vector3i) -> void:
+	var inv := world.get_container(pos.x, pos.y, pos.z)
+	if inv == null or _window != null:
+		return
+	var def := Registry.block_by_num(world.get_block(pos.x, pos.y, pos.z))
+	Audio.play_at("containers/%s_open" % def.container_kind, world.to_scene(pos.x + 0.5, pos.y + 0.5, pos.z + 0.5))
+	_open_window(inv, def.display_name())
+
+
+func _open_window(container: Inventory, title: String) -> void:
+	inv_ops.container = container
+	_window = InventoryWindow.new()
+	_window.ops = inv_ops
+	_window.player_inv = player.inventory
+	_window.registry = Registry
+	_window.executor = execute_inventory
+	_window.creative = world.game_mode == &"creative" and container == null
+	_window.container_title = title
+	_window.appearance = player.appearance
+	_window.closed.connect(_on_window_closed)
+	add_child(_window)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Audio.play_ui("ui/inventory_open")
+
+
+func _on_window_closed() -> void:
+	_window = null
+	inv_ops.container = null
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Audio.play_ui("ui/inventory_close")
+
+
+## Выброшенное игроком летит вперёд по взгляду.
+func _throw_from_player(stack: ItemStack) -> void:
+	var eye := player.eye_world()
+	var dir := player.look_dir()
+	dropped.spawn(stack, eye[0] + dir.x * 0.4, eye[1] - 0.3, eye[2] + dir.z * 0.4, dir.x * 5.0, dir.y * 5.0 + 2.0,
+		dir.z * 5.0, 1.2)
 
 
 func _on_loaded() -> void:
@@ -322,6 +472,16 @@ func _screenshot_step(delta: float) -> void:
 		return
 	_screenshot_wait = -1000.0
 	world.visible = true
+	if GameLaunch.open_ui == "inventory":
+		open_inventory()
+	elif GameLaunch.open_ui == "chest":
+		var b := player.body
+		var p := Vector3i(floori(b.x) + 2, floori(b.y), floori(b.z))
+		world.set_block(p.x, p.y, p.z, Registry.block_num(&"chest_wood"))
+		var inv := world.get_container(p.x, p.y, p.z)
+		for id: StringName in [&"granite", &"stick", &"bilberries", &"iron_pickaxe", &"fur_coat", &"torch"]:
+			inv.add(ItemStack.create(Registry.item(id), 20))
+		open_container(p)
 	for i in 8:
 		await RenderingServer.frame_post_draw
 	var err := get_viewport().get_texture().get_image().save_png(GameLaunch.screenshot_path)

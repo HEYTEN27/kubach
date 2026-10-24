@@ -35,5 +35,6 @@ void fragment() {
 	AO = mix(0.55, 1.0, UV2.y) * mix(cave_ambient, 1.0, sky);
 	AO_LIGHT_AFFECT = 1.0;
 	BACKLIGHT = ALBEDO * backlight * sky;
-	EMISSION = ALBEDO * L.yzw * block_light_energy;
+	// Пламя факела светится (ORM.A — маска свечения из texgen).
+	EMISSION = ALBEDO * (L.yzw * block_light_energy + orm.a * v_info.w);
 }

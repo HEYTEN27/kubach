@@ -1,0 +1,595 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "eyes_round",
+   "name": {
+    "ru": "Круглые",
+    "en": "Round"
+   },
+   "part": "eyes",
+   "order": 0,
+   "pixels": [
+    [
+     "1",
+     "4",
+     "white"
+    ],
+    [
+     "2",
+     "4",
+     "iris"
+    ],
+    [
+     "5",
+     "4",
+     "iris"
+    ],
+    [
+     "6",
+     "4",
+     "white"
+    ],
+    [
+     "2",
+     "5",
+     "dark"
+    ],
+    [
+     "5",
+     "5",
+     "dark"
+    ]
+   ]
+  },
+  {
+   "id": "eyes_narrow",
+   "name": {
+    "ru": "Узкие",
+    "en": "Narrow"
+   },
+   "part": "eyes",
+   "order": 1,
+   "pixels": [
+    [
+     "1",
+     "4",
+     "dark"
+    ],
+    [
+     "2",
+     "4",
+     "iris"
+    ],
+    [
+     "5",
+     "4",
+     "iris"
+    ],
+    [
+     "6",
+     "4",
+     "dark"
+    ]
+   ]
+  },
+  {
+   "id": "eyes_wide",
+   "name": {
+    "ru": "Широко посаженные",
+    "en": "Wide-set"
+   },
+   "part": "eyes",
+   "order": 2,
+   "pixels": [
+    [
+     "0",
+     "4",
+     "white"
+    ],
+    [
+     "1",
+     "4",
+     "iris"
+    ],
+    [
+     "6",
+     "4",
+     "iris"
+    ],
+    [
+     "7",
+     "4",
+     "white"
+    ]
+   ]
+  },
+  {
+   "id": "eyes_almond",
+   "name": {
+    "ru": "Миндалевидные",
+    "en": "Almond"
+   },
+   "part": "eyes",
+   "order": 3,
+   "pixels": [
+    [
+     "1",
+     "4",
+     "white"
+    ],
+    [
+     "2",
+     "4",
+     "iris"
+    ],
+    [
+     "5",
+     "4",
+     "iris"
+    ],
+    [
+     "6",
+     "4",
+     "white"
+    ],
+    [
+     "1",
+     "3",
+     "dark"
+    ],
+    [
+     "6",
+     "3",
+     "dark"
+    ]
+   ]
+  },
+  {
+   "id": "eyes_close",
+   "name": {
+    "ru": "Близко посаженные",
+    "en": "Close-set"
+   },
+   "part": "eyes",
+   "order": 4,
+   "pixels": [
+    [
+     "2",
+     "4",
+     "white"
+    ],
+    [
+     "3",
+     "4",
+     "iris"
+    ],
+    [
+     "4",
+     "4",
+     "iris"
+    ],
+    [
+     "5",
+     "4",
+     "white"
+    ]
+   ]
+  },
+  {
+   "id": "brows_thin",
+   "name": {
+    "ru": "Тонкие",
+    "en": "Thin"
+   },
+   "part": "brows",
+   "order": 0,
+   "pixels": [
+    [
+     "1",
+     "3",
+     "hair"
+    ],
+    [
+     "2",
+     "3",
+     "hair"
+    ],
+    [
+     "5",
+     "3",
+     "hair"
+    ],
+    [
+     "6",
+     "3",
+     "hair"
+    ]
+   ]
+  },
+  {
+   "id": "brows_thick",
+   "name": {
+    "ru": "Густые",
+    "en": "Thick"
+   },
+   "part": "brows",
+   "order": 1,
+   "pixels": [
+    [
+     "1",
+     "3",
+     "hair"
+    ],
+    [
+     "2",
+     "3",
+     "hair"
+    ],
+    [
+     "3",
+     "3",
+     "hair"
+    ],
+    [
+     "4",
+     "3",
+     "hair"
+    ],
+    [
+     "5",
+     "3",
+     "hair"
+    ],
+    [
+     "6",
+     "3",
+     "hair"
+    ]
+   ]
+  },
+  {
+   "id": "brows_arched",
+   "name": {
+    "ru": "Дугой",
+    "en": "Arched"
+   },
+   "part": "brows",
+   "order": 2,
+   "pixels": [
+    [
+     "1",
+     "3",
+     "hair"
+    ],
+    [
+     "2",
+     "2",
+     "hair"
+    ],
+    [
+     "5",
+     "2",
+     "hair"
+    ],
+    [
+     "6",
+     "3",
+     "hair"
+    ]
+   ]
+  },
+  {
+   "id": "brows_angry",
+   "name": {
+    "ru": "Нахмуренные",
+    "en": "Frowning"
+   },
+   "part": "brows",
+   "order": 3,
+   "pixels": [
+    [
+     "1",
+     "2",
+     "hair"
+    ],
+    [
+     "2",
+     "3",
+     "hair"
+    ],
+    [
+     "5",
+     "3",
+     "hair"
+    ],
+    [
+     "6",
+     "2",
+     "hair"
+    ]
+   ]
+  },
+  {
+   "id": "nose_small",
+   "name": {
+    "ru": "Маленький",
+    "en": "Small"
+   },
+   "part": "nose",
+   "order": 0,
+   "pixels": [
+    [
+     "3",
+     "5",
+     "shade"
+    ],
+    [
+     "4",
+     "5",
+     "shade"
+    ]
+   ]
+  },
+  {
+   "id": "nose_long",
+   "name": {
+    "ru": "Длинный",
+    "en": "Long"
+   },
+   "part": "nose",
+   "order": 1,
+   "pixels": [
+    [
+     "3",
+     "5",
+     "light"
+    ],
+    [
+     "3",
+     "6",
+     "shade"
+    ],
+    [
+     "4",
+     "6",
+     "shade"
+    ]
+   ]
+  },
+  {
+   "id": "nose_wide",
+   "name": {
+    "ru": "Широкий",
+    "en": "Wide"
+   },
+   "part": "nose",
+   "order": 2,
+   "pixels": [
+    [
+     "2",
+     "6",
+     "shade"
+    ],
+    [
+     "3",
+     "5",
+     "light"
+    ],
+    [
+     "4",
+     "5",
+     "light"
+    ],
+    [
+     "5",
+     "6",
+     "shade"
+    ]
+   ]
+  },
+  {
+   "id": "nose_snub",
+   "name": {
+    "ru": "Курносый",
+    "en": "Snub"
+   },
+   "part": "nose",
+   "order": 3,
+   "pixels": [
+    [
+     "3",
+     "6",
+     "dark"
+    ],
+    [
+     "4",
+     "6",
+     "dark"
+    ]
+   ]
+  },
+  {
+   "id": "mouth_neutral",
+   "name": {
+    "ru": "Спокойный",
+    "en": "Neutral"
+   },
+   "part": "mouth",
+   "order": 0,
+   "pixels": [
+    [
+     "3",
+     "7",
+     "lip"
+    ],
+    [
+     "4",
+     "7",
+     "lip"
+    ]
+   ]
+  },
+  {
+   "id": "mouth_wide",
+   "name": {
+    "ru": "Широкий",
+    "en": "Wide"
+   },
+   "part": "mouth",
+   "order": 1,
+   "pixels": [
+    [
+     "2",
+     "7",
+     "lip"
+    ],
+    [
+     "3",
+     "7",
+     "lip"
+    ],
+    [
+     "4",
+     "7",
+     "lip"
+    ],
+    [
+     "5",
+     "7",
+     "lip"
+    ]
+   ]
+  },
+  {
+   "id": "mouth_smile",
+   "name": {
+    "ru": "Улыбка",
+    "en": "Smile"
+   },
+   "part": "mouth",
+   "order": 2,
+   "pixels": [
+    [
+     "2",
+     "6",
+     "lip"
+    ],
+    [
+     "3",
+     "7",
+     "lip"
+    ],
+    [
+     "4",
+     "7",
+     "lip"
+    ],
+    [
+     "5",
+     "6",
+     "lip"
+    ]
+   ]
+  },
+  {
+   "id": "scar_cheek",
+   "name": {
+    "ru": "Шрам на щеке",
+    "en": "Cheek Scar"
+   },
+   "part": "scar",
+   "order": 0,
+   "pixels": [
+    [
+     "6",
+     "5",
+     "scar"
+    ],
+    [
+     "6",
+     "6",
+     "scar"
+    ],
+    [
+     "7",
+     "6",
+     "scar"
+    ]
+   ]
+  },
+  {
+   "id": "scar_brow",
+   "name": {
+    "ru": "Шрам через бровь",
+    "en": "Brow Scar"
+   },
+   "part": "scar",
+   "order": 1,
+   "pixels": [
+    [
+     "2",
+     "2",
+     "scar"
+    ],
+    [
+     "2",
+     "3",
+     "scar"
+    ],
+    [
+     "1",
+     "4",
+     "scar"
+    ]
+   ]
+  },
+  {
+   "id": "scar_lip",
+   "name": {
+    "ru": "Шрам на губе",
+    "en": "Lip Scar"
+   },
+   "part": "scar",
+   "order": 2,
+   "pixels": [
+    [
+     "4",
+     "6",
+     "scar"
+    ],
+    [
+     "4",
+     "7",
+     "scar"
+    ]
+   ]
+  },
+  {
+   "id": "scar_forehead",
+   "name": {
+    "ru": "Шрам на лбу",
+    "en": "Forehead Scar"
+   },
+   "part": "scar",
+   "order": 3,
+   "pixels": [
+    [
+     "3",
+     "1",
+     "scar"
+    ],
+    [
+     "4",
+     "1",
+     "scar"
+    ],
+    [
+     "5",
+     "0",
+     "scar"
+    ]
+   ]
+  }
+ ]
+}

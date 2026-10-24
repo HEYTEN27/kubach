@@ -208,6 +208,42 @@
         "type": "string"
       },
       "default": []
+    },
+    "container": {
+      "type": "object",
+      "default": {},
+      "doc": "Хранилище (этап 4): slots — число ячеек; пусто — блок не контейнер.",
+      "fields": {
+        "slots": {
+          "type": "int",
+          "min": 0,
+          "max": 108,
+          "default": 0
+        },
+        "kind": {
+          "type": "enum",
+          "values": [
+            "chest",
+            "dresser",
+            "barrel",
+            "crate",
+            "shelf"
+          ],
+          "default": "chest"
+        }
+      }
+    },
+    "item": {
+      "type": "bool",
+      "default": true,
+      "doc": "Есть ли у блока предмет (иначе его нельзя держать в инвентаре: вода, лава, материнская порода)."
+    },
+    "weight": {
+      "type": "float",
+      "min": 0.0,
+      "max": 500.0,
+      "default": 1.0,
+      "doc": "Вес предмета блока, кг (перегруз — опция в настройках)."
     }
   }
 }

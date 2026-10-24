@@ -33,6 +33,8 @@ var sprinting := false
 var in_fluid := false
 ## Высота последнего падения (в блоках), выставляется в шаге приземления, иначе 0.
 var landed_fall := 0.0
+## Множитель скорости ходьбы (перегруз, позже — снег, болото, ранения).
+var speed_mult := 1.0
 var _fall_peak := 0.0
 var _airborne := false
 
@@ -63,6 +65,7 @@ func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> v
 		speed = SWIM_SPEED
 	elif sprinting:
 		speed = SPRINT_SPEED
+	speed *= speed_mult
 	var accel := GROUND_ACCEL if body.on_ground or in_fluid else AIR_ACCEL
 	vx = move_toward(vx, wish.x * speed, accel * dt)
 	vz = move_toward(vz, wish.y * speed, accel * dt)
