@@ -22,7 +22,7 @@ func _compare_meshes(center: Array, nbs: Array, tints: PackedColorArray, origin:
 	var a := gd.mesh_section(center, nbs, tints, 1, origin)
 	var b: Dictionary = native.mesh_section(center, nbs, tints, 1, origin)
 	assert_eq(b["quads"], a["quads"], "число граней")
-	for surf in ["opaque", "transparent", "plants"]:
+	for surf in ["opaque", "cutout", "transparent", "plants"]:
 		var sa: Array = a[surf]
 		var sb: Array = b[surf]
 		assert_eq(sa.is_empty(), sb.is_empty(), surf)
@@ -31,6 +31,8 @@ func _compare_meshes(center: Array, nbs: Array, tints: PackedColorArray, origin:
 		assert_eq(sb[Mesh.ARRAY_INDEX], sa[Mesh.ARRAY_INDEX], "%s: индексы" % surf)
 		assert_eq(sb[Mesh.ARRAY_VERTEX], sa[Mesh.ARRAY_VERTEX], "%s: вершины" % surf)
 		assert_eq(sb[Mesh.ARRAY_NORMAL], sa[Mesh.ARRAY_NORMAL], "%s: нормали" % surf)
+		assert_eq(sb[Mesh.ARRAY_TEX_UV], sa[Mesh.ARRAY_TEX_UV], "%s: UV" % surf)
+		assert_eq(sb[Mesh.ARRAY_TEX_UV2], sa[Mesh.ARRAY_TEX_UV2], "%s: UV2" % surf)
 		var ca: PackedColorArray = sa[Mesh.ARRAY_COLOR]
 		var cb: PackedColorArray = sb[Mesh.ARRAY_COLOR]
 		var max_diff := 0.0

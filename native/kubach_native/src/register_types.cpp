@@ -1,3 +1,4 @@
+#include "native_light.h"
 #include "native_mesher.h"
 
 #include <gdextension_interface.h>
@@ -12,6 +13,7 @@ void initialize_kubach_native(ModuleInitializationLevel p_level) {
 		return;
 	}
 	GDREGISTER_CLASS(kubach::NativeMesher);
+	GDREGISTER_CLASS(kubach::NativeLight);
 }
 
 void uninitialize_kubach_native(ModuleInitializationLevel p_level) {

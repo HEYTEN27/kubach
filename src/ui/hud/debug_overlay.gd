@@ -105,7 +105,12 @@ func build_text() -> String:
 			bsrc.defs[bi]["name"]["ru"], bsrc.ids[bi], bsrc.temperature_c[bi], world.generator.geology.ids[prov]])
 	else:
 		lines.append("Биом: —")
-	lines.append("Освещённость: — (этап 3) · Температура тела: — (этап 5)")
+	var light := ch.light_at(bx, by + 1, bz)
+	if light.is_empty():
+		lines.append("Свет: — · расчёт %s · Температура тела: — (этап 5)" % ch.light_name())
+	else:
+		lines.append("Свет: небо %d · блоки %d/%d/%d · расчёт %s · в очереди %d · Температура тела: — (этап 5)" % [
+			light[0], light[1], light[2], light[3], ch.light_name(), ch.pending_lighting()])
 	lines.append("Мир: %s · сид %d" % [world_name, world.world_seed])
 	return "\n".join(lines)
 

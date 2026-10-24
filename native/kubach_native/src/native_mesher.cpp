@@ -33,6 +33,12 @@ constexpr int STRIDE[3] = { 1, PY, P };
 constexpr int AXIS_U[3] = { 2, 0, 0 };
 constexpr int AXIS_V[3] = { 1, 2, 1 };
 constexpr int TINT_N = 5;
+const Color NEUTRAL(0.5f, 0.5f, 0.5f, 1.0f);
+const Vector2 PLANT_UV[4] = { Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(0, 0) };
+
+inline float ratio(float v, float base) {
+	return std::clamp(v / std::max(base, 0.02f), 0.0f, 2.0f) * 0.5f;
+}
 
 // GenRandom.mix / hash3 / unit — те же 64-битные операции, что и в GDScript (там int — int64
 // с переполнением по модулю 2^64 и арифметическим сдвигом).
@@ -62,10 +68,13 @@ struct Surface {
 	PackedVector3Array normals;
 	PackedColorArray colors;
 	PackedVector2Array uvs;
+	PackedVector2Array uv2s;
 	PackedInt32Array indices;
 	int quads = 0;
 
-	void add_quad(const Vector3 pts[4], const Vector3 &n, const Color cols[4]) {
+	// block — числовой ID блока (UV2.x); quad_uv — явные UV (растения), верх получает вес ветра 1.
+	void add_quad(const Vector3 pts[4], const Vector3 &n, const Color cols[4], int block,
+			const Vector2 *quad_uv = nullptr) {
 		Vector3 e1 = pts[1] - pts[0];
 		Vector3 e2 = pts[2] - pts[0];
 		bool flip = e1.cross(e2).dot(n) > 0.0f;
@@ -85,7 +94,13 @@ struct Surface {
 			verts.push_back(pts[c]);
 			normals.push_back(n);
 			colors.push_back(cols[c]);
-			uvs.push_back(Vector2(pts[c][ua], pts[c][va]));
+			if (quad_uv != nullptr) {
+				uvs.push_back(quad_uv[c]);
+				uv2s.push_back(Vector2((float)block, 1.0f - quad_uv[c].y));
+			} else {
+				uvs.push_back(Vector2(pts[c][ua], pts[c][va]));
+				uv2s.push_back(Vector2((float)block, 0.0f));
+			}
 		}
 		if (flip) {
 			const int idx[6] = { base, base + 2, base + 1, base, base + 3, base + 2 };
@@ -111,6 +126,7 @@ struct Surface {
 		arrays[Mesh::ARRAY_NORMAL] = normals;
 		arrays[Mesh::ARRAY_COLOR] = colors;
 		arrays[Mesh::ARRAY_TEX_UV] = uvs;
+		arrays[Mesh::ARRAY_TEX_UV2] = uv2s;
 		arrays[Mesh::ARRAY_INDEX] = indices;
 		return arrays;
 	}
@@ -137,13 +153,14 @@ void NativeMesher::setup(const PackedByteArray &p_render, const PackedByteArray 
 }
 
 String NativeMesher::version() const {
-	return "kubach_native 1";
+	return "kubach_native 2";
 }
 
 Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neighbors,
 		const PackedColorArray &p_tints, int p_season, const Vector3i &p_origin) const {
 	Dictionary result;
 	result["opaque"] = Array();
+	result["cutout"] = Array();
 	result["transparent"] = Array();
 	result["plants"] = Array();
 	result["quads"] = 0;
@@ -231,9 +248,8 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 	const Color *tp = p_tints.ptr();
 	auto block_color = [&](int b, double lx, double lz) -> Color {
 		int t = tint[b];
-		Color base = color[b];
 		if (t == TINT_NONE || !tinting) {
-			return base;
+			return NEUTRAL;
 		}
 		int ch = p_season * 2 + (t == TINT_FOLIAGE ? 1 : 0);
 		int off = ch * TINT_N * TINT_N;
@@ -245,10 +261,12 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 		double fz = gz - iz;
 		Color c0 = tp[off + iz * TINT_N + ix].lerp(tp[off + iz * TINT_N + ix + 1], (float)fx);
 		Color c1 = tp[off + (iz + 1) * TINT_N + ix].lerp(tp[off + (iz + 1) * TINT_N + ix + 1], (float)fx);
-		return base.lerp(c0.lerp(c1, (float)fz), tint_strength[b]);
+		const Color base = color[b];
+		const Color mixed = base.lerp(c0.lerp(c1, (float)fz), tint_strength[b]);
+		return Color(ratio(mixed.r, base.r), ratio(mixed.g, base.g), ratio(mixed.b, base.b), 1.0f);
 	};
 
-	Surface s_opaque, s_transparent, s_plants;
+	Surface s_opaque, s_cutout, s_transparent, s_plants;
 	const bool boundary_only = c_uniform && render[cu] != RENDER_CUTOUT && shape[cu] == SHAPE_CUBE;
 	int32_t mask[256];
 
@@ -325,7 +343,8 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 							}
 						}
 						const int rr = render[m];
-						Surface &surf = (rr == RENDER_TRANSLUCENT || rr == RENDER_LIQUID) ? s_transparent : s_opaque;
+						Surface &surf = (rr == RENDER_TRANSLUCENT || rr == RENDER_LIQUID) ? s_transparent
+								: (rr == RENDER_CUTOUT ? s_cutout : s_opaque);
 						Vector3 n;
 						n[d] = (float)s;
 						Vector3 pts[4];
@@ -338,7 +357,7 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 							pts[c] = p;
 							cols[c] = block_color(m, p.x, p.z);
 						}
-						surf.add_quad(pts, n, cols);
+						surf.add_quad(pts, n, cols, m);
 						uu += w;
 					}
 				}
@@ -369,28 +388,29 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 						const Vector3 n2 = Vector3(1, 0, 1).normalized();
 						const Vector3 q1[4] = { Vector3(x0, y, z0), Vector3(x1, y, z1), Vector3(x1, y + 1, z1), Vector3(x0, y + 1, z0) };
 						const Vector3 q2[4] = { Vector3(x0, y, z1), Vector3(x1, y, z0), Vector3(x1, y + 1, z0), Vector3(x0, y + 1, z1) };
-						s_plants.add_quad(q1, n1, cols);
-						s_plants.add_quad(q2, n2, cols);
+						s_plants.add_quad(q1, n1, cols, b, PLANT_UV);
+						s_plants.add_quad(q2, n2, cols, b, PLANT_UV);
 					} else {
+						Surface &ls = render[b] == RENDER_CUTOUT ? s_cutout : s_opaque;
 						const float top = (float)((double)y + (double)layer_h[b]);
 						const int pi = (x + 1) + (z + 1) * P + (y + 1) * PY;
 						const Vector3 qt[4] = { Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1) };
-						s_opaque.add_quad(qt, Vector3(0, 1, 0), cols);
+						ls.add_quad(qt, Vector3(0, 1, 0), cols, b);
 						if (opaque[pad[pi - 1]] != 1) {
 							const Vector3 q[4] = { Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z) };
-							s_opaque.add_quad(q, Vector3(-1, 0, 0), cols);
+							ls.add_quad(q, Vector3(-1, 0, 0), cols, b);
 						}
 						if (opaque[pad[pi + 1]] != 1) {
 							const Vector3 q[4] = { Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z) };
-							s_opaque.add_quad(q, Vector3(1, 0, 0), cols);
+							ls.add_quad(q, Vector3(1, 0, 0), cols, b);
 						}
 						if (opaque[pad[pi - P]] != 1) {
 							const Vector3 q[4] = { Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z) };
-							s_opaque.add_quad(q, Vector3(0, 0, -1), cols);
+							ls.add_quad(q, Vector3(0, 0, -1), cols, b);
 						}
 						if (opaque[pad[pi + P]] != 1) {
 							const Vector3 q[4] = { Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1) };
-							s_opaque.add_quad(q, Vector3(0, 0, 1), cols);
+							ls.add_quad(q, Vector3(0, 0, 1), cols, b);
 						}
 					}
 				}
@@ -399,9 +419,10 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 	}
 
 	result["opaque"] = s_opaque.to_arrays();
+	result["cutout"] = s_cutout.to_arrays();
 	result["transparent"] = s_transparent.to_arrays();
 	result["plants"] = s_plants.to_arrays();
-	result["quads"] = s_opaque.quads + s_transparent.quads + s_plants.quads;
+	result["quads"] = s_opaque.quads + s_cutout.quads + s_transparent.quads + s_plants.quads;
 	return result;
 }
 

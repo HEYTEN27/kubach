@@ -144,12 +144,13 @@ func test_plant_does_not_hide_neighbor_faces() -> void:
 func test_layer_block() -> void:
 	var snow := Registry.block_num(&"snow_layer")
 	var r := mesher.mesh_section(_section({ Vector3i(4, 4, 4): stone, Vector3i(4, 5, 4): snow }), _empty_neighbors())
-	var verts: PackedVector3Array = r["opaque"][Mesh.ARRAY_VERTEX]
+	var verts: PackedVector3Array = r["cutout"][Mesh.ARRAY_VERTEX]
 	var top := -1.0
 	for v in verts:
 		top = maxf(top, v.y)
 	assert_almost_eq(top, 5.125, 0.001, "верх снежного слоя на 1/8 блока")
 	assert_eq(r["quads"], 6 + 5, "камень 6 граней + слой: верх и 4 бока")
+	assert_eq(r["opaque"][Mesh.ARRAY_VERTEX].size(), 24, "камень — в непрозрачной поверхности")
 
 
 func test_tint_varies_across_merged_quad() -> void:
@@ -171,3 +172,30 @@ func test_tint_varies_across_merged_quad() -> void:
 	for c in cols:
 		reds[snappedf(c.r, 0.01)] = true
 	assert_gt(reds.size(), 1, "углы одного прямоугольника окрашены по-разному")
+
+
+func test_leaves_go_to_cutout_surface() -> void:
+	var r := mesher.mesh_section(_section({ Vector3i(2, 2, 2): needles }), _empty_neighbors())
+	assert_eq(r["opaque"], [])
+	assert_eq(r["cutout"][Mesh.ARRAY_VERTEX].size(), 24)
+
+
+func test_uv2_carries_block_id_and_plant_sway() -> void:
+	var grass := Registry.block_num(&"grass")
+	var r := mesher.mesh_section(_section({ Vector3i(4, 4, 4): stone, Vector3i(4, 5, 4): grass }), _empty_neighbors())
+	for uv: Vector2 in r["opaque"][Mesh.ARRAY_TEX_UV2]:
+		assert_eq(int(uv.x), stone)
+		assert_eq(uv.y, 0.0)
+	var verts: PackedVector3Array = r["plants"][Mesh.ARRAY_VERTEX]
+	var uv2: PackedVector2Array = r["plants"][Mesh.ARRAY_TEX_UV2]
+	var uv: PackedVector2Array = r["plants"][Mesh.ARRAY_TEX_UV]
+	for i in verts.size():
+		assert_eq(int(uv2[i].x), grass)
+		assert_eq(uv2[i].y, verts[i].y - 5.0, "вес покачивания: низ 0, верх 1")
+		assert_eq(uv[i].y, 1.0 - (verts[i].y - 5.0), "спрайт растения: v = 1 внизу")
+
+
+func test_untinted_block_has_neutral_color() -> void:
+	var r := mesher.mesh_section(_section({ Vector3i(1, 1, 1): stone }), _empty_neighbors())
+	for c: Color in r["opaque"][Mesh.ARRAY_COLOR]:
+		assert_eq(c, GreedyMesher.NEUTRAL)

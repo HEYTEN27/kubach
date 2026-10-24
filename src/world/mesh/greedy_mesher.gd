@@ -3,9 +3,15 @@ extends RefCounted
 ## Greedy meshing секции 16×16×16 с отсечением невидимых граней (раздел 20 ТЗ).
 ##
 ## Соседние видимые грани одного блока в одной плоскости сливаются в один прямоугольник.
-## Поверхности: "opaque" — непрозрачные и cutout-кубы и тонкие слои, "transparent" — вода, лёд,
-## стекло, "plants" — растения крестом (двусторонние). Блоки с тонированием получают цвет травы
-## или листвы биома по вершинам — плавный переход между биомами без потери слияния граней.
+## Поверхности: "opaque" — непрозрачные кубы, "cutout" — листва и тонкие слои (альфа-тест),
+## "transparent" — вода, лёд, стекло, "plants" — растения крестом (двусторонние).
+##
+## Вершина несёт (этап 3):
+## - UV — координаты в блоках вдоль грани (у растений — 0…1 по спрайту); шейдер берёт fract;
+## - UV2.x — числовой ID блока (шейдер находит слой текстуры по стороне грани), UV2.y — вес
+##   покачивания на ветру (верх растения — 1);
+## - COLOR — множитель тонирования ÷ 2: цвет биома / map_color блока (у нетонированных — 0,5),
+##   плавно меняется по вершинам и не мешает слиянию граней.
 ## Потокобезопасен: после создания только читает свои массивы.
 ##
 ## Снимок секции — [uniform, blocks, all_opaque, has_special] (см. snapshot()).
@@ -27,6 +33,9 @@ const STRIDE: Array[int] = [1, PY, P]
 const AXIS_U: Array[int] = [2, 0, 0]
 const AXIS_V: Array[int] = [1, 2, 1]
 const TINT_N := 5
+const NEUTRAL := Color(0.5, 0.5, 0.5, 1.0)
+## UV спрайта растения: низ квадрата — v = 1, верх — v = 0.
+const PLANT_UV: PackedVector2Array = [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(0, 0)]
 
 var _render: PackedByteArray
 var _shape: PackedByteArray
@@ -73,7 +82,7 @@ static func snapshot(section: ChunkSection) -> Array:
 ## tints — сетка цветов колонны (ChunkColumn.tints), season — 0…3, origin — мировой угол секции.
 func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = PackedColorArray(),
 		season: int = 1, origin: Vector3i = Vector3i.ZERO) -> Dictionary:
-	var result := { "opaque": [], "transparent": [], "plants": [], "quads": 0 }
+	var result := { "opaque": [], "cutout": [], "transparent": [], "plants": [], "quads": 0 }
 	var cu: int = center[0]
 	var cb: PackedInt32Array = center[1]
 	if cb.is_empty() and _render[cu] == BlockDef.RENDER_INVISIBLE:
@@ -86,6 +95,7 @@ func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = Pac
 	var boundary_only := cb.is_empty() and _render[cu] != BlockDef.RENDER_CUTOUT and _shape[cu] == BlockDef.SHAPE_CUBE
 
 	var opaque := _Surface.new()
+	var cutout := _Surface.new()
 	var transparent := _Surface.new()
 	var plants := _Surface.new()
 	var mask := PackedInt32Array()
@@ -126,15 +136,16 @@ func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = Pac
 						if m != 0:
 							any = true
 				if any:
-					_greedy(mask, d, s, k, opaque, transparent, tints if tinting else PackedColorArray(), season)
+					_greedy(mask, d, s, k, opaque, cutout, transparent, tints if tinting else PackedColorArray(), season)
 
 	if center[3]:
-		_special(cb, cu, pad, opaque, plants, tints if tinting else PackedColorArray(), season, origin)
+		_special(cb, cu, pad, opaque, cutout, plants, tints if tinting else PackedColorArray(), season, origin)
 
 	result["opaque"] = opaque.to_arrays()
+	result["cutout"] = cutout.to_arrays()
 	result["transparent"] = transparent.to_arrays()
 	result["plants"] = plants.to_arrays()
-	result["quads"] = opaque.quads + transparent.quads + plants.quads
+	result["quads"] = opaque.quads + cutout.quads + transparent.quads + plants.quads
 	return result
 
 
@@ -203,8 +214,8 @@ func _build_padded(cu: int, cb: PackedInt32Array, neighbors: Array) -> PackedInt
 	return pad
 
 
-func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, transparent: _Surface,
-		tints: PackedColorArray, season: int) -> void:
+func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, cutout: _Surface,
+		transparent: _Surface, tints: PackedColorArray, season: int) -> void:
 	var ua: int = AXIS_U[d]
 	var va: int = AXIS_V[d]
 	var f := float(k + (1 if s > 0 else 0))
@@ -232,7 +243,11 @@ func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, t
 				for i in w:
 					mask[uu + i + (vv + j) * 16] = 0
 			var r := _render[m]
-			var surf := transparent if r == BlockDef.RENDER_TRANSLUCENT or r == BlockDef.RENDER_LIQUID else opaque
+			var surf := opaque
+			if r == BlockDef.RENDER_TRANSLUCENT or r == BlockDef.RENDER_LIQUID:
+				surf = transparent
+			elif r == BlockDef.RENDER_CUTOUT:
+				surf = cutout
 			var n := Vector3.ZERO
 			n[d] = float(s)
 			var pts := PackedVector3Array()
@@ -244,13 +259,13 @@ func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, t
 				p[va] = float(vv + (h if c >= 2 else 0))
 				pts.append(p)
 				cols.append(_block_color(m, p.x, p.z, tints, season))
-			surf.add_quad(pts, n, cols)
+			surf.add_quad(pts, n, cols, m)
 			uu += w
 
 
 ## Растения крестом и тонкие слои (снег, мох, кувшинки).
-func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Surface, plants: _Surface,
-		tints: PackedColorArray, season: int, origin: Vector3i) -> void:
+func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Surface, cutout: _Surface,
+		plants: _Surface, tints: PackedColorArray, season: int, origin: Vector3i) -> void:
 	for y in 16:
 		for z in 16:
 			for x in 16:
@@ -271,42 +286,42 @@ func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Sur
 					var n1 := Vector3(1, 0, -1).normalized()
 					var n2 := Vector3(1, 0, 1).normalized()
 					plants.add_quad(PackedVector3Array([Vector3(x0, y, z0), Vector3(x1, y, z1), Vector3(x1, y + 1, z1), Vector3(x0, y + 1, z0)]),
-						n1, cols)
+						n1, cols, b, PLANT_UV)
 					plants.add_quad(PackedVector3Array([Vector3(x0, y, z1), Vector3(x1, y, z0), Vector3(x1, y + 1, z0), Vector3(x0, y + 1, z1)]),
-						n2, cols)
+						n2, cols, b, PLANT_UV)
 				else:
-					_layer(b, x, y, z, pad, opaque, c)
+					_layer(b, x, y, z, pad, cutout if _render[b] == BlockDef.RENDER_CUTOUT else opaque, c)
 
 
-func _layer(b: int, x: int, y: int, z: int, pad: PackedInt32Array, opaque: _Surface, c: Color) -> void:
+func _layer(b: int, x: int, y: int, z: int, pad: PackedInt32Array, surf: _Surface, c: Color) -> void:
 	var h := _layer_h[b]
 	var top := y + h
 	var cols := PackedColorArray([c, c, c, c])
 	var pi := (x + 1) + (z + 1) * P + (y + 1) * PY
 	# Верх слоя.
-	opaque.add_quad(PackedVector3Array([Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
-		Vector3.UP, cols)
+	surf.add_quad(PackedVector3Array([Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+		Vector3.UP, cols, b)
 	# Бока — если сосед не закрывает.
 	if _opaque[pad[pi - 1]] != 1:
-		opaque.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z)]),
-			Vector3.LEFT, cols)
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z)]),
+			Vector3.LEFT, cols, b)
 	if _opaque[pad[pi + 1]] != 1:
-		opaque.add_quad(PackedVector3Array([Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z)]),
-			Vector3.RIGHT, cols)
+		surf.add_quad(PackedVector3Array([Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z)]),
+			Vector3.RIGHT, cols, b)
 	if _opaque[pad[pi - P]] != 1:
-		opaque.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z)]),
-			Vector3.FORWARD, cols)
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z)]),
+			Vector3.FORWARD, cols, b)
 	if _opaque[pad[pi + P]] != 1:
-		opaque.add_quad(PackedVector3Array([Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
-			Vector3.BACK, cols)
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+			Vector3.BACK, cols, b)
 
 
-## Цвет блока в точке (локальные x, z колонны): map_color, смешанный с цветом биома.
+## Множитель тонирования в точке (локальные x, z колонны), делённый на 2: (map_color, смешанный
+## с цветом биома) / map_color. Текстура нарисована в map_color, шейдер умножает её на 2·COLOR.
 func _block_color(b: int, lx: float, lz: float, tints: PackedColorArray, season: int) -> Color:
 	var t := _tint[b]
-	var base := _color[b]
 	if t == BlockDef.TINT_NONE or tints.is_empty():
-		return base
+		return NEUTRAL
 	var ch := season * 2 + (1 if t == BlockDef.TINT_FOLIAGE else 0)
 	var off := ch * TINT_N * TINT_N
 	var gx := clampf(lx / 4.0, 0.0, 4.0)
@@ -317,7 +332,13 @@ func _block_color(b: int, lx: float, lz: float, tints: PackedColorArray, season:
 	var fz := gz - iz
 	var c0 := tints[off + iz * TINT_N + ix].lerp(tints[off + iz * TINT_N + ix + 1], fx)
 	var c1 := tints[off + (iz + 1) * TINT_N + ix].lerp(tints[off + (iz + 1) * TINT_N + ix + 1], fx)
-	return base.lerp(c0.lerp(c1, fz), _tint_strength[b])
+	var base := _color[b]
+	var mixed := base.lerp(c0.lerp(c1, fz), _tint_strength[b])
+	return Color(_ratio(mixed.r, base.r), _ratio(mixed.g, base.g), _ratio(mixed.b, base.b), 1.0)
+
+
+static func _ratio(v: float, base: float) -> float:
+	return clampf(v / maxf(base, 0.02), 0.0, 2.0) * 0.5
 
 
 ## Накопитель вершин одной поверхности.
@@ -326,21 +347,31 @@ class _Surface:
 	var normals := PackedVector3Array()
 	var colors := PackedColorArray()
 	var uvs := PackedVector2Array()
+	var uv2s := PackedVector2Array()
 	var indices := PackedInt32Array()
 	var quads := 0
 
 	## Четыре угла по кругу. Godot рисует лицевыми треугольники, обходимые по часовой стрелке
 	## (если смотреть со стороны нормали): обход разворачивается, если (p1−p0)×(p2−p0) смотрит
 	## туда же, куда нормаль.
-	func add_quad(pts: PackedVector3Array, n: Vector3, cols: PackedColorArray) -> void:
+	## block — числовой ID блока (в UV2.x). quad_uv — явные UV (растения): тогда верх квадрата
+	## (v = 0) получает вес покачивания 1.
+	func add_quad(pts: PackedVector3Array, n: Vector3, cols: PackedColorArray, block: int,
+			quad_uv: PackedVector2Array = PackedVector2Array()) -> void:
 		var flip := (pts[1] - pts[0]).cross(pts[2] - pts[0]).dot(n) > 0.0
 		var base := verts.size()
 		var uv_axes := Vector2i(0, 2) if absf(n.y) > 0.5 else (Vector2i(2, 1) if absf(n.x) > 0.5 else Vector2i(0, 1))
+		var explicit := not quad_uv.is_empty()
 		for c in 4:
 			verts.append(pts[c])
 			normals.append(n)
 			colors.append(cols[c])
-			uvs.append(Vector2(pts[c][uv_axes.x], pts[c][uv_axes.y]))
+			if explicit:
+				uvs.append(quad_uv[c])
+				uv2s.append(Vector2(block, 1.0 - quad_uv[c].y))
+			else:
+				uvs.append(Vector2(pts[c][uv_axes.x], pts[c][uv_axes.y]))
+				uv2s.append(Vector2(block, 0.0))
 		if flip:
 			indices.append_array([base, base + 2, base + 1, base, base + 3, base + 2])
 		else:
@@ -356,5 +387,6 @@ class _Surface:
 		arrays[Mesh.ARRAY_NORMAL] = normals
 		arrays[Mesh.ARRAY_COLOR] = colors
 		arrays[Mesh.ARRAY_TEX_UV] = uvs
+		arrays[Mesh.ARRAY_TEX_UV2] = uv2s
 		arrays[Mesh.ARRAY_INDEX] = indices
 		return arrays

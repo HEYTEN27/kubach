@@ -49,6 +49,17 @@ locale/fallback="ru"
 
 common/physics_ticks_per_second=60
 
+[shader_globals]
+
+world_origin={
+"type": "ivec3",
+"value": Vector3i(0, 0, 0)
+}
+wind={
+"type": "vec4",
+"value": Vector4(0.8, 0.6, 0.5, 0)
+}
+
 [rendering]
 
 renderer/rendering_method="forward_plus"

@@ -38,6 +38,7 @@ func setup(p_registry: ContentRegistry, p_save: WorldSave, p_seed: int, p_settin
 	chunks.name = "Chunks"
 	chunks.world = self
 	chunks.season = maxi(0, settings.season_index())
+	RenderingServer.global_shader_parameter_set(&"world_origin", origin)
 	add_child(chunks)
 
 
@@ -153,6 +154,7 @@ func update_origin(wx: float, wy: float, wz: float) -> bool:
 		return false
 	origin = Vector3i(floori(wx / 16.0) * 16, floori(wy / 16.0) * 16, floori(wz / 16.0) * 16)
 	position = -Vector3(origin)
+	RenderingServer.global_shader_parameter_set(&"world_origin", origin)
 	origin_shifted.emit(origin)
 	return true
 

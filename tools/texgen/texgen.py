@@ -237,6 +237,9 @@ def main():
         for v in range(variants):
             ctx = R.Ctx(size, np.random.default_rng(seed_of(name, v)), color, e, role, v, name)
             tex = recipe(ctx)
+            if e.get("render") == "cutout" and float(np.max(tex.alpha)) == 0.0:
+                # В cutout-шейдере альфа — покрытие: сплошной слой (снег) не должен пропасть.
+                tex.alpha = np.ones_like(tex.alpha)
             a, n, o = finish(tex, size)
             layers_albedo.append(a)
             layers_normal.append(n)

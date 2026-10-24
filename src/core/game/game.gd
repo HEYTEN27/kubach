@@ -51,6 +51,11 @@ func _ready() -> void:
 		world.game_mode = &"creative"
 	add_child(world)
 	_update_fog()
+	if GameLaunch.screenshot_path != "":
+		# Программный OpenGL рисует кадр секундами: пока мир грузится, не рисуем его и
+		# применяем готовые меши без бюджета.
+		world.chunks.visible = false
+		world.chunks.apply_budget_usec = 200000
 
 	player = Player.new()
 	player.name = "Player"
@@ -303,6 +308,7 @@ func _screenshot_step(delta: float) -> void:
 	if _screenshot_wait < 0.0:
 		return
 	_screenshot_wait = -1000.0
+	ch.visible = true
 	for i in 8:
 		await RenderingServer.frame_post_draw
 	var err := get_viewport().get_texture().get_image().save_png(GameLaunch.screenshot_path)
