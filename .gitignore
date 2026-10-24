@@ -20,3 +20,11 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# godot-cpp и обёртки zig (скачиваются scripts/build_native.sh)
+tools/godot-cpp/
+tools/zig-mingw/
+native/kubach_native/.sconsign.dblite
+native/kubach_native/src/*.o
+native/kubach_native/src/*.os
+native/kubach_native/src/*.obj

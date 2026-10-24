@@ -78,7 +78,8 @@ func build_text() -> String:
 		player.position.x, player.position.y, player.position.z])
 	lines.append("Чанки: колонн %d · генерация %d · мешинг %d · мешей %d · граней %d · применение %.2f мс" % [
 		ch.columns.size(), ch.pending_generation(), ch.pending_meshing(), ch.mesh_node_count(), ch.stat_quads, ch.stat_last_apply_ms])
-	lines.append("Дальность: %d колонн · потоков %d" % [ch.view_distance, OS.get_processor_count()])
+	lines.append("Дальность: %d колонн · пещеры в радиусе %d · потоков %d · мешер %s" % [
+		ch.view_distance, ch.underground_radius, OS.get_processor_count(), ch.mesher_name()])
 	lines.append("Память: %.0f МБ · видео %.0f МБ" % [Performance.get_monitor(Performance.MEMORY_STATIC) / 1048576.0,
 		Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0])
 	lines.append("Отрисовка: вызовов %d · примитивов %d · объектов %d" % [
@@ -96,7 +97,15 @@ func build_text() -> String:
 		lines.append("Цель: %s (%s) · %d %d %d · грань %s" % [def.display_name(), def.id, p.x, p.y, p.z, t["normal"]])
 	else:
 		lines.append("Цель: —")
-	lines.append("Биом: — (этап 2) · Освещённость: — (этап 3) · Температура: — (этап 5)")
+	var bi := world.biome_at(bx, bz)
+	if bi >= 0:
+		var bsrc := world.generator.biomes
+		var prov := world.generator.geology.province_at(bx, bz)
+		lines.append("Биом: %s (%s) · %.0f °C · провинция: %s" % [
+			bsrc.defs[bi]["name"]["ru"], bsrc.ids[bi], bsrc.temperature_c[bi], world.generator.geology.ids[prov]])
+	else:
+		lines.append("Биом: —")
+	lines.append("Освещённость: — (этап 3) · Температура тела: — (этап 5)")
 	lines.append("Мир: %s · сид %d" % [world_name, world.world_seed])
 	return "\n".join(lines)
 

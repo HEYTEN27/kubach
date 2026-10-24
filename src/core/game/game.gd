@@ -35,14 +35,14 @@ func _ready() -> void:
 		if save == null:
 			var wname := GameLaunch.new_world_name if GameLaunch.new_world_name != "" else "Новый мир"
 			var s := GameLaunch.seed_text if GameLaunch.seed_text != "" else str(WorldSeed.random())
-			save = WorldSave.create(wname, s, GameLaunch.game_mode)
+			save = WorldSave.create(wname, s, GameLaunch.game_mode, WorldSave.ROOT, WorldGenSettings.from_dict(GameLaunch.settings))
 		world_name = save.meta["name"]
 		seed_value = save.world_seed()
 
 	_setup_environment()
 	world = World.new()
 	world.name = "World"
-	world.setup(Registry, save, seed_value, StringName(save.meta.get("worldgen", "default")) if save else &"default")
+	world.setup(Registry, save, seed_value, save.gen_settings() if save else WorldGenSettings.new())
 	world.chunks.view_distance = GameLaunch.view_distance
 	if save != null:
 		world.game_mode = StringName(save.meta.get("game_mode", "survival"))
@@ -210,10 +210,26 @@ func _spawn_point() -> Array:
 		yaw = deg_to_rad(GameLaunch.look.x)
 		pitch = deg_to_rad(GameLaunch.look.y)
 	if GameLaunch.bench_seconds > 0.0:
+		# Маршрут бенчмарка начинается в тайге (самый тяжёлый лес) и идёт на восток.
+		var taiga := _find_biome(&"taiga")
+		out = [taiga.x + 0.5, float(world.generator.surface_height(taiga.x, taiga.y)), taiga.y + 0.5]
 		out[1] = maxf(out[1], float(world.generator.sea_level)) + 28.0
 		pitch = deg_to_rad(-12.0)
 		yaw = -PI * 0.5
 	return out + [yaw, pitch]
+
+
+func _find_biome(id: StringName) -> Vector2i:
+	var gen := world.generator
+	var b := gen.biomes.index_of(id)
+	for r in range(0, 8000, 64):
+		for i in maxi(1, r / 16):
+			var a := TAU * i / maxi(1, r / 16)
+			var x := roundi(cos(a) * r)
+			var z := roundi(sin(a) * r)
+			if gen.grid_biome(x, z) == b:
+				return Vector2i(x, z)
+	return Vector2i.ZERO
 
 
 ## Ближайшая к началу мира суша (спираль с шагом 16 блоков).

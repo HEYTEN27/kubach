@@ -12,14 +12,26 @@ const RENDER_CUTOUT := 2
 const RENDER_TRANSLUCENT := 3
 const RENDER_LIQUID := 4
 const RENDER_CODES := { &"invisible": 0, &"opaque": 1, &"cutout": 2, &"translucent": 3, &"liquid": 4 }
+## Коды формы (Registry.block_shape).
+const SHAPE_CUBE := 0
+const SHAPE_CROSS := 1
+const SHAPE_LAYER := 2
+const SHAPE_CODES := { &"cube": 0, &"cross": 1, &"layer": 2 }
+## Коды тонирования (Registry.block_tint).
+const TINT_NONE := 0
+const TINT_GRASS := 1
+const TINT_FOLIAGE := 2
+const TINT_CODES := { &"none": 0, &"grass": 1, &"foliage": 2 }
 
 var num: int
 var id: StringName
 var name: Dictionary
 var material: StringName
 var render: StringName
+var shape: StringName
+var layer_height: float
 var solid: bool
-## Полностью закрывает соседние грани (для отсечения граней в мешере).
+## Полностью закрывает соседние грани (для отсечения граней в мешере): непрозрачный куб.
 var opaque: bool
 ## Время ломания голыми руками, с. Отрицательное — неразрушаемый.
 var hardness: float
@@ -31,6 +43,8 @@ var light_filter: int
 var flammable: bool
 var sounds: StringName
 var map_color: Color
+var tint: StringName
+var tint_strength: float
 var texture_top: StringName
 var texture_bottom: StringName
 var texture_side: StringName
@@ -45,8 +59,10 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.name = e["name"]
 	b.material = e["material"]
 	b.render = e["render"]
+	b.shape = e.get("shape", &"cube")
+	b.layer_height = e.get("layer_height", 1.0)
 	b.solid = e["solid"]
-	b.opaque = b.render == &"opaque"
+	b.opaque = b.render == &"opaque" and b.shape == &"cube"
 	b.hardness = e["hardness"]
 	b.tool = e["tool"]
 	b.tool_tier = e["tool_tier"]
@@ -56,6 +72,8 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.flammable = e["flammable"]
 	b.sounds = e["sounds"]
 	b.map_color = e["map_color"]
+	b.tint = e.get("tint", &"none")
+	b.tint_strength = e.get("tint_strength", 0.0)
 	var tex: Dictionary = e["textures"]
 	var all: String = tex.get("all", "")
 	b.texture_top = StringName(tex.get("top", all))
@@ -68,6 +86,14 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 
 func render_code() -> int:
 	return RENDER_CODES[render]
+
+
+func shape_code() -> int:
+	return SHAPE_CODES[shape]
+
+
+func tint_code() -> int:
+	return TINT_CODES[tint]
 
 
 func is_breakable() -> bool:

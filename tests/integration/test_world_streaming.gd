@@ -162,3 +162,13 @@ func test_generation_determinism_through_world() -> void:
 	assert_true(_load_area(world, Vector2i(2, -3)))
 	for i in 20:
 		assert_eq(world.get_block(32 + i, world.generator.surface_height(32 + i, -45), -45), a[i])
+
+
+func test_place_replaces_plant() -> void:
+	world = _make_world(null)
+	assert_true(_load_area(world, Vector2i.ZERO))
+	var h := world.generator.surface_height(4, 4)
+	var y := maxi(h, world.generator.sea_level) + 10
+	var grass := Registry.block_num(&"grass")
+	world.set_block(4, y, 4, grass)
+	assert_true(world.execute(GameAction.place_block(Vector3i(4, y, 4), Registry.block_num(&"granite"))), "блок ставится поверх травы")

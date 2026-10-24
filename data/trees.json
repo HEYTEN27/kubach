@@ -1,0 +1,502 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "spruce",
+   "name": {
+    "ru": "Ель",
+    "en": "Spruce"
+   },
+   "log": "spruce_log",
+   "leaves": "spruce_needles",
+   "shape": "conifer",
+   "height": {
+    "min": 8,
+    "max": 14
+   },
+   "canopy_radius": 2.6,
+   "trunk_width": 1
+  },
+  {
+   "id": "giant_spruce",
+   "name": {
+    "ru": "Гигантская ель",
+    "en": "Giant Spruce"
+   },
+   "log": "spruce_log",
+   "leaves": "spruce_needles",
+   "shape": "conifer",
+   "height": {
+    "min": 28,
+    "max": 40
+   },
+   "canopy_radius": 5.0,
+   "trunk_width": 2
+  },
+  {
+   "id": "fir",
+   "name": {
+    "ru": "Пихта",
+    "en": "Fir"
+   },
+   "log": "fir_log",
+   "leaves": "fir_leaves",
+   "shape": "conifer",
+   "height": {
+    "min": 9,
+    "max": 15
+   },
+   "canopy_radius": 2.1,
+   "trunk_width": 1
+  },
+  {
+   "id": "pine",
+   "name": {
+    "ru": "Сосна",
+    "en": "Pine"
+   },
+   "log": "pine_log",
+   "leaves": "pine_leaves",
+   "shape": "pine",
+   "height": {
+    "min": 12,
+    "max": 18
+   },
+   "canopy_radius": 3.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "cedar",
+   "name": {
+    "ru": "Кедр",
+    "en": "Siberian Pine"
+   },
+   "log": "cedar_log",
+   "leaves": "cedar_leaves",
+   "shape": "pine",
+   "height": {
+    "min": 10,
+    "max": 16
+   },
+   "canopy_radius": 3.6,
+   "trunk_width": 1
+  },
+  {
+   "id": "larch",
+   "name": {
+    "ru": "Лиственница",
+    "en": "Larch"
+   },
+   "log": "larch_log",
+   "leaves": "larch_leaves",
+   "shape": "conifer",
+   "height": {
+    "min": 12,
+    "max": 18
+   },
+   "canopy_radius": 2.4,
+   "trunk_width": 1
+  },
+  {
+   "id": "birch",
+   "name": {
+    "ru": "Берёза",
+    "en": "Birch"
+   },
+   "log": "birch_log",
+   "leaves": "birch_leaves",
+   "shape": "oval",
+   "height": {
+    "min": 7,
+    "max": 11
+   },
+   "canopy_radius": 2.2,
+   "trunk_width": 1
+  },
+  {
+   "id": "aspen",
+   "name": {
+    "ru": "Осина",
+    "en": "Aspen"
+   },
+   "log": "aspen_log",
+   "leaves": "aspen_leaves",
+   "shape": "oval",
+   "height": {
+    "min": 9,
+    "max": 14
+   },
+   "canopy_radius": 2.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "oak",
+   "name": {
+    "ru": "Дуб",
+    "en": "Oak"
+   },
+   "log": "oak_log",
+   "leaves": "oak_leaves",
+   "shape": "broad",
+   "height": {
+    "min": 6,
+    "max": 9
+   },
+   "canopy_radius": 3.8,
+   "trunk_width": 1
+  },
+  {
+   "id": "big_oak",
+   "name": {
+    "ru": "Вековой дуб",
+    "en": "Old Oak"
+   },
+   "log": "oak_log",
+   "leaves": "oak_leaves",
+   "shape": "broad",
+   "height": {
+    "min": 9,
+    "max": 13
+   },
+   "canopy_radius": 6.0,
+   "trunk_width": 2
+  },
+  {
+   "id": "maple",
+   "name": {
+    "ru": "Клён",
+    "en": "Maple"
+   },
+   "log": "maple_log",
+   "leaves": "maple_leaves",
+   "shape": "round",
+   "height": {
+    "min": 7,
+    "max": 11
+   },
+   "canopy_radius": 3.4,
+   "trunk_width": 1
+  },
+  {
+   "id": "linden",
+   "name": {
+    "ru": "Липа",
+    "en": "Linden"
+   },
+   "log": "linden_log",
+   "leaves": "linden_leaves",
+   "shape": "round",
+   "height": {
+    "min": 9,
+    "max": 13
+   },
+   "canopy_radius": 3.8,
+   "trunk_width": 1
+  },
+  {
+   "id": "alder",
+   "name": {
+    "ru": "Ольха",
+    "en": "Alder"
+   },
+   "log": "alder_log",
+   "leaves": "alder_leaves",
+   "shape": "oval",
+   "height": {
+    "min": 7,
+    "max": 10
+   },
+   "canopy_radius": 2.4,
+   "trunk_width": 1
+  },
+  {
+   "id": "willow",
+   "name": {
+    "ru": "Ива",
+    "en": "Willow"
+   },
+   "log": "willow_log",
+   "leaves": "willow_leaves",
+   "shape": "willow",
+   "height": {
+    "min": 6,
+    "max": 9
+   },
+   "canopy_radius": 3.8,
+   "trunk_width": 1
+  },
+  {
+   "id": "rowan",
+   "name": {
+    "ru": "Рябина",
+    "en": "Rowan"
+   },
+   "log": "rowan_log",
+   "leaves": "rowan_leaves",
+   "shape": "round",
+   "height": {
+    "min": 5,
+    "max": 7
+   },
+   "canopy_radius": 2.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "bird_cherry",
+   "name": {
+    "ru": "Черёмуха",
+    "en": "Bird Cherry"
+   },
+   "log": "bird_cherry_log",
+   "leaves": "bird_cherry_leaves",
+   "shape": "round",
+   "height": {
+    "min": 5,
+    "max": 8
+   },
+   "canopy_radius": 2.4,
+   "trunk_width": 1
+  },
+  {
+   "id": "apple",
+   "name": {
+    "ru": "Яблоня",
+    "en": "Apple"
+   },
+   "log": "apple_log",
+   "leaves": "apple_leaves",
+   "shape": "round",
+   "height": {
+    "min": 4,
+    "max": 6
+   },
+   "canopy_radius": 2.5,
+   "trunk_width": 1
+  },
+  {
+   "id": "pear",
+   "name": {
+    "ru": "Груша",
+    "en": "Pear"
+   },
+   "log": "pear_log",
+   "leaves": "pear_leaves",
+   "shape": "oval",
+   "height": {
+    "min": 5,
+    "max": 7
+   },
+   "canopy_radius": 2.2,
+   "trunk_width": 1
+  },
+  {
+   "id": "cherry",
+   "name": {
+    "ru": "Вишня",
+    "en": "Cherry"
+   },
+   "log": "cherry_log",
+   "leaves": "cherry_leaves",
+   "shape": "round",
+   "height": {
+    "min": 4,
+    "max": 6
+   },
+   "canopy_radius": 2.2,
+   "trunk_width": 1
+  },
+  {
+   "id": "plum",
+   "name": {
+    "ru": "Слива",
+    "en": "Plum"
+   },
+   "log": "plum_log",
+   "leaves": "plum_leaves",
+   "shape": "round",
+   "height": {
+    "min": 4,
+    "max": 6
+   },
+   "canopy_radius": 2.2,
+   "trunk_width": 1
+  },
+  {
+   "id": "apricot",
+   "name": {
+    "ru": "Абрикос",
+    "en": "Apricot"
+   },
+   "log": "apricot_log",
+   "leaves": "apricot_leaves",
+   "shape": "round",
+   "height": {
+    "min": 4,
+    "max": 6
+   },
+   "canopy_radius": 2.6,
+   "trunk_width": 1
+  },
+  {
+   "id": "hazel",
+   "name": {
+    "ru": "Орешник",
+    "en": "Hazel"
+   },
+   "log": "hazel_log",
+   "leaves": "hazel_leaves",
+   "shape": "bush",
+   "height": {
+    "min": 2,
+    "max": 3
+   },
+   "canopy_radius": 2.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "palm",
+   "name": {
+    "ru": "Пальма",
+    "en": "Palm"
+   },
+   "log": "palm_log",
+   "leaves": "palm_leaves",
+   "shape": "palm",
+   "height": {
+    "min": 6,
+    "max": 10
+   },
+   "canopy_radius": 3.5,
+   "trunk_width": 1
+  },
+  {
+   "id": "acacia",
+   "name": {
+    "ru": "Акация",
+    "en": "Acacia"
+   },
+   "log": "acacia_log",
+   "leaves": "acacia_leaves",
+   "shape": "acacia",
+   "height": {
+    "min": 5,
+    "max": 8
+   },
+   "canopy_radius": 3.6,
+   "trunk_width": 1
+  },
+  {
+   "id": "jungle",
+   "name": {
+    "ru": "Тропический великан",
+    "en": "Jungle Giant"
+   },
+   "log": "jungle_log",
+   "leaves": "jungle_leaves",
+   "shape": "jungle",
+   "height": {
+    "min": 18,
+    "max": 28
+   },
+   "canopy_radius": 6.0,
+   "trunk_width": 2
+  },
+  {
+   "id": "jungle_small",
+   "name": {
+    "ru": "Тропическое дерево",
+    "en": "Jungle Tree"
+   },
+   "log": "jungle_log",
+   "leaves": "jungle_leaves",
+   "shape": "round",
+   "height": {
+    "min": 6,
+    "max": 9
+   },
+   "canopy_radius": 3.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "mangrove",
+   "name": {
+    "ru": "Мангр",
+    "en": "Mangrove"
+   },
+   "log": "mangrove_log",
+   "leaves": "mangrove_leaves",
+   "shape": "mangrove",
+   "height": {
+    "min": 6,
+    "max": 9
+   },
+   "canopy_radius": 3.5,
+   "trunk_width": 1,
+   "in_water": true
+  },
+  {
+   "id": "bamboo",
+   "name": {
+    "ru": "Бамбук",
+    "en": "Bamboo"
+   },
+   "log": "bamboo_stalk",
+   "leaves": "bamboo_leaves",
+   "shape": "bamboo",
+   "height": {
+    "min": 8,
+    "max": 16
+   },
+   "canopy_radius": 1.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "dwarf_birch",
+   "name": {
+    "ru": "Карликовая берёза",
+    "en": "Dwarf Birch"
+   },
+   "log": "dwarf_birch_log",
+   "leaves": "dwarf_birch_leaves",
+   "shape": "bush",
+   "height": {
+    "min": 1,
+    "max": 2
+   },
+   "canopy_radius": 1.6,
+   "trunk_width": 1
+  },
+  {
+   "id": "red_giant_mushroom",
+   "name": {
+    "ru": "Гигантский красный гриб",
+    "en": "Giant Red Mushroom"
+   },
+   "log": "mushroom_stem",
+   "leaves": "red_mushroom_cap",
+   "shape": "mushroom",
+   "height": {
+    "min": 5,
+    "max": 9
+   },
+   "canopy_radius": 3.0,
+   "trunk_width": 1
+  },
+  {
+   "id": "brown_giant_mushroom",
+   "name": {
+    "ru": "Гигантский бурый гриб",
+    "en": "Giant Brown Mushroom"
+   },
+   "log": "mushroom_stem",
+   "leaves": "brown_mushroom_cap",
+   "shape": "mushroom",
+   "height": {
+    "min": 4,
+    "max": 7
+   },
+   "canopy_radius": 4.0,
+   "trunk_width": 1
+  }
+ ]
+}

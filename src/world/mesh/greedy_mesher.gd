@@ -3,11 +3,13 @@ extends RefCounted
 ## Greedy meshing секции 16×16×16 с отсечением невидимых граней (раздел 20 ТЗ).
 ##
 ## Соседние видимые грани одного блока в одной плоскости сливаются в один прямоугольник.
-## Непрозрачные и cutout-блоки идут в поверхность "opaque", вода и стекло — в "transparent".
+## Поверхности: "opaque" — непрозрачные и cutout-кубы и тонкие слои, "transparent" — вода, лёд,
+## стекло, "plants" — растения крестом (двусторонние). Блоки с тонированием получают цвет травы
+## или листвы биома по вершинам — плавный переход между биомами без потери слияния граней.
 ## Потокобезопасен: после создания только читает свои массивы.
 ##
-## Снимок секции — массив [uniform: int, blocks: PackedInt32Array] (см. snapshot()).
-## Соседи передаются в порядке NEIGHBOR_DIRS; null — воздух.
+## Снимок секции — [uniform, blocks, all_opaque, has_special] (см. snapshot()).
+## Соседи — в порядке NEIGHBOR_DIRS; null — воздух.
 
 ## −X, +X, −Y, +Y, −Z, +Z.
 const NEIGHBOR_DIRS: Array[Vector3i] = [
@@ -24,40 +26,71 @@ const STRIDE: Array[int] = [1, PY, P]
 # Оси u, v для каждой оси нормали d: x → (z, y), y → (x, z), z → (x, y).
 const AXIS_U: Array[int] = [2, 0, 0]
 const AXIS_V: Array[int] = [1, 2, 1]
+const TINT_N := 5
 
 var _render: PackedByteArray
+var _shape: PackedByteArray
 var _color: PackedColorArray
+var _tint: PackedByteArray
+var _tint_strength: PackedFloat32Array
+var _layer_h: PackedFloat32Array
+var _opaque: PackedByteArray
 
 
 func _init(registry: ContentRegistry) -> void:
 	_render = registry.block_render.duplicate()
+	_shape = registry.block_shape.duplicate()
 	_color = registry.block_color.duplicate()
+	_tint = registry.block_tint.duplicate()
+	_tint_strength = registry.block_tint_strength.duplicate()
+	_layer_h = registry.block_layer_height.duplicate()
+	_opaque = registry.block_opaque.duplicate()
+
+
+## Лучший доступный мешер: нативный (C++ GDExtension, native/kubach_native), если библиотека
+## загружена, иначе этот, на GDScript. Результаты у них одинаковые (см. test_native_mesher.gd).
+## Переменная окружения KUBACH_NO_NATIVE=1 принудительно включает GDScript.
+static func create_best(registry: ContentRegistry) -> Object:
+	if ClassDB.class_exists(&"NativeMesher") and not OS.has_environment("KUBACH_NO_NATIVE"):
+		var m: Object = ClassDB.instantiate(&"NativeMesher")
+		m.call(&"setup", registry.block_render, registry.block_shape, registry.block_color, registry.block_tint,
+			registry.block_tint_strength, registry.block_layer_height, registry.block_opaque)
+		return m
+	return GreedyMesher.new(registry)
+
+
+static func is_native(mesher: Object) -> bool:
+	return mesher != null and mesher.get_class() == "NativeMesher"
 
 
 static func snapshot(section: ChunkSection) -> Array:
 	if section == null:
-		return [0, PackedInt32Array()]
-	return [section.uniform, section.blocks]
+		return [0, PackedInt32Array(), false, false]
+	return [section.uniform, section.blocks, section.all_opaque, section.has_special]
 
 
-## Результат: { "opaque": Array (массивы ArrayMesh) или [], "transparent": то же, "quads": int }.
-func mesh_section(center: Array, neighbors: Array) -> Dictionary:
-	var result := { "opaque": [], "transparent": [], "quads": 0 }
+## Результат: { "opaque", "transparent", "plants": массивы ArrayMesh или [], "quads": int }.
+## tints — сетка цветов колонны (ChunkColumn.tints), season — 0…3, origin — мировой угол секции.
+func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = PackedColorArray(),
+		season: int = 1, origin: Vector3i = Vector3i.ZERO) -> Dictionary:
+	var result := { "opaque": [], "transparent": [], "plants": [], "quads": 0 }
 	var cu: int = center[0]
 	var cb: PackedInt32Array = center[1]
 	if cb.is_empty() and _render[cu] == BlockDef.RENDER_INVISIBLE:
 		return result
+	if center[2] and _all_neighbors_opaque(neighbors):
+		return result
 
 	var pad := _build_padded(cu, cb, neighbors)
-	if _is_enclosed(pad):
-		return result
 	# Однородная непрозрачная/жидкая секция: внутренние грани скрыты, смотрим только края.
-	var boundary_only := cb.is_empty() and _render[cu] != BlockDef.RENDER_CUTOUT
+	var boundary_only := cb.is_empty() and _render[cu] != BlockDef.RENDER_CUTOUT and _shape[cu] == BlockDef.SHAPE_CUBE
 
 	var opaque := _Surface.new()
 	var transparent := _Surface.new()
+	var plants := _Surface.new()
 	var mask := PackedInt32Array()
 	mask.resize(256)
+	var tinting := tints.size() == 8 * TINT_N * TINT_N
 
 	for d in 3:
 		var sd: int = STRIDE[d]
@@ -82,41 +115,33 @@ func mesh_section(center: Array, neighbors: Array) -> Dictionary:
 						var a := pad[pi]
 						var m := 0
 						var ra := _render[a]
-						if ra != BlockDef.RENDER_INVISIBLE:
+						if ra != BlockDef.RENDER_INVISIBLE and _shape[a] == BlockDef.SHAPE_CUBE:
 							var b := pad[pi + nstep]
 							var rb := _render[b]
 							if rb == BlockDef.RENDER_INVISIBLE:
 								m = a
-							elif rb != BlockDef.RENDER_OPAQUE and (a != b or ra == BlockDef.RENDER_CUTOUT):
+							elif _opaque[b] != 1 and (a != b or ra == BlockDef.RENDER_CUTOUT):
 								m = a
 						mask[uu + vv * 16] = m
 						if m != 0:
 							any = true
 				if any:
-					_greedy(mask, d, s, k, opaque, transparent)
+					_greedy(mask, d, s, k, opaque, transparent, tints if tinting else PackedColorArray(), season)
+
+	if center[3]:
+		_special(cb, cu, pad, opaque, plants, tints if tinting else PackedColorArray(), season, origin)
 
 	result["opaque"] = opaque.to_arrays()
 	result["transparent"] = transparent.to_arrays()
-	result["quads"] = opaque.quads + transparent.quads
+	result["plants"] = plants.to_arrays()
+	result["quads"] = opaque.quads + transparent.quads + plants.quads
 	return result
 
 
-## Все блоки секции и прилегающие слои соседей непрозрачны — видимых граней нет.
-## Проверка в ~5 раз дешевле полного прохода и отсекает почти весь подземный камень.
-func _is_enclosed(pad: PackedInt32Array) -> bool:
-	for y in range(0, P):
-		for z in range(0, P):
-			var row := z * P + y * PY
-			var edge_yz := y == 0 or y == P - 1 or z == 0 or z == P - 1
-			for x in range(0, P):
-				var edge := edge_yz or x == 0 or x == P - 1
-				if edge:
-					# Рёбра и углы массива не используются мешером; грани соседей — используются.
-					var outside := int(y == 0 or y == P - 1) + int(z == 0 or z == P - 1) + int(x == 0 or x == P - 1)
-					if outside != 1:
-						continue
-				if _render[pad[row + x]] != BlockDef.RENDER_OPAQUE:
-					return false
+func _all_neighbors_opaque(neighbors: Array) -> bool:
+	for nb: Variant in neighbors:
+		if nb == null or not nb[2]:
+			return false
 	return true
 
 
@@ -178,7 +203,11 @@ func _build_padded(cu: int, cb: PackedInt32Array, neighbors: Array) -> PackedInt
 	return pad
 
 
-func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, transparent: _Surface) -> void:
+func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, transparent: _Surface,
+		tints: PackedColorArray, season: int) -> void:
+	var ua: int = AXIS_U[d]
+	var va: int = AXIS_V[d]
+	var f := float(k + (1 if s > 0 else 0))
 	for vv in 16:
 		var uu := 0
 		while uu < 16:
@@ -204,8 +233,91 @@ func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, t
 					mask[uu + i + (vv + j) * 16] = 0
 			var r := _render[m]
 			var surf := transparent if r == BlockDef.RENDER_TRANSLUCENT or r == BlockDef.RENDER_LIQUID else opaque
-			surf.add_quad(d, s, k, uu, vv, w, h, _color[m])
+			var n := Vector3.ZERO
+			n[d] = float(s)
+			var pts := PackedVector3Array()
+			var cols := PackedColorArray()
+			for c in 4:
+				var p := Vector3.ZERO
+				p[d] = f
+				p[ua] = float(uu + (w if c == 1 or c == 2 else 0))
+				p[va] = float(vv + (h if c >= 2 else 0))
+				pts.append(p)
+				cols.append(_block_color(m, p.x, p.z, tints, season))
+			surf.add_quad(pts, n, cols)
 			uu += w
+
+
+## Растения крестом и тонкие слои (снег, мох, кувшинки).
+func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Surface, plants: _Surface,
+		tints: PackedColorArray, season: int, origin: Vector3i) -> void:
+	for y in 16:
+		for z in 16:
+			for x in 16:
+				var b := cu if cb.is_empty() else cb[x | (z << 4) | (y << 8)]
+				var sh := _shape[b]
+				if sh == BlockDef.SHAPE_CUBE:
+					continue
+				var c := _block_color(b, x + 0.5, z + 0.5, tints, season)
+				if sh == BlockDef.SHAPE_CROSS:
+					var hsh := GenRandom.hash3(0, origin.x + x, origin.y + y, origin.z + z, 5)
+					var ox := (GenRandom.unit(hsh) - 0.5) * 0.3
+					var oz := (GenRandom.unit(GenRandom.mix(hsh)) - 0.5) * 0.3
+					var x0 := x + 0.15 + ox
+					var x1 := x + 0.85 + ox
+					var z0 := z + 0.15 + oz
+					var z1 := z + 0.85 + oz
+					var cols := PackedColorArray([c, c, c, c])
+					var n1 := Vector3(1, 0, -1).normalized()
+					var n2 := Vector3(1, 0, 1).normalized()
+					plants.add_quad(PackedVector3Array([Vector3(x0, y, z0), Vector3(x1, y, z1), Vector3(x1, y + 1, z1), Vector3(x0, y + 1, z0)]),
+						n1, cols)
+					plants.add_quad(PackedVector3Array([Vector3(x0, y, z1), Vector3(x1, y, z0), Vector3(x1, y + 1, z0), Vector3(x0, y + 1, z1)]),
+						n2, cols)
+				else:
+					_layer(b, x, y, z, pad, opaque, c)
+
+
+func _layer(b: int, x: int, y: int, z: int, pad: PackedInt32Array, opaque: _Surface, c: Color) -> void:
+	var h := _layer_h[b]
+	var top := y + h
+	var cols := PackedColorArray([c, c, c, c])
+	var pi := (x + 1) + (z + 1) * P + (y + 1) * PY
+	# Верх слоя.
+	opaque.add_quad(PackedVector3Array([Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+		Vector3.UP, cols)
+	# Бока — если сосед не закрывает.
+	if _opaque[pad[pi - 1]] != 1:
+		opaque.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z)]),
+			Vector3.LEFT, cols)
+	if _opaque[pad[pi + 1]] != 1:
+		opaque.add_quad(PackedVector3Array([Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z)]),
+			Vector3.RIGHT, cols)
+	if _opaque[pad[pi - P]] != 1:
+		opaque.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z)]),
+			Vector3.FORWARD, cols)
+	if _opaque[pad[pi + P]] != 1:
+		opaque.add_quad(PackedVector3Array([Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+			Vector3.BACK, cols)
+
+
+## Цвет блока в точке (локальные x, z колонны): map_color, смешанный с цветом биома.
+func _block_color(b: int, lx: float, lz: float, tints: PackedColorArray, season: int) -> Color:
+	var t := _tint[b]
+	var base := _color[b]
+	if t == BlockDef.TINT_NONE or tints.is_empty():
+		return base
+	var ch := season * 2 + (1 if t == BlockDef.TINT_FOLIAGE else 0)
+	var off := ch * TINT_N * TINT_N
+	var gx := clampf(lx / 4.0, 0.0, 4.0)
+	var gz := clampf(lz / 4.0, 0.0, 4.0)
+	var ix := mini(int(gx), 3)
+	var iz := mini(int(gz), 3)
+	var fx := gx - ix
+	var fz := gz - iz
+	var c0 := tints[off + iz * TINT_N + ix].lerp(tints[off + iz * TINT_N + ix + 1], fx)
+	var c1 := tints[off + (iz + 1) * TINT_N + ix].lerp(tints[off + (iz + 1) * TINT_N + ix + 1], fx)
+	return base.lerp(c0.lerp(c1, fz), _tint_strength[b])
 
 
 ## Накопитель вершин одной поверхности.
@@ -217,32 +329,19 @@ class _Surface:
 	var indices := PackedInt32Array()
 	var quads := 0
 
-	func add_quad(d: int, s: int, k: int, u0: int, v0: int, w: int, h: int, color: Color) -> void:
-		var f := float(k + (1 if s > 0 else 0))
-		var n := Vector3.ZERO
-		n[d] = float(s)
-		var ua: int = GreedyMesher.AXIS_U[d]
-		var va: int = GreedyMesher.AXIS_V[d]
+	## Четыре угла по кругу. Godot рисует лицевыми треугольники, обходимые по часовой стрелке
+	## (если смотреть со стороны нормали): обход разворачивается, если (p1−p0)×(p2−p0) смотрит
+	## туда же, куда нормаль.
+	func add_quad(pts: PackedVector3Array, n: Vector3, cols: PackedColorArray) -> void:
+		var flip := (pts[1] - pts[0]).cross(pts[2] - pts[0]).dot(n) > 0.0
 		var base := verts.size()
+		var uv_axes := Vector2i(0, 2) if absf(n.y) > 0.5 else (Vector2i(2, 1) if absf(n.x) > 0.5 else Vector2i(0, 1))
 		for c in 4:
-			var cu := u0 + (w if c == 1 or c == 2 else 0)
-			var cv := v0 + (h if c >= 2 else 0)
-			var p := Vector3.ZERO
-			p[d] = f
-			p[ua] = float(cu)
-			p[va] = float(cv)
-			verts.append(p)
+			verts.append(pts[c])
 			normals.append(n)
-			colors.append(color)
-			uvs.append(Vector2(cu, cv))
-		# Godot рисует лицевыми треугольники, обходимые по часовой стрелке (если смотреть
-		# со стороны нормали). Обход c0→c1→c2 даёт векторное произведение e_u × e_v;
-		# разворачиваем, если оно смотрит в ту же сторону, что и нормаль.
-		var eu := Vector3.ZERO
-		eu[ua] = 1.0
-		var ev := Vector3.ZERO
-		ev[va] = 1.0
-		if eu.cross(ev).dot(n) > 0.0:
+			colors.append(cols[c])
+			uvs.append(Vector2(pts[c][uv_axes.x], pts[c][uv_axes.y]))
+		if flip:
 			indices.append_array([base, base + 2, base + 1, base, base + 3, base + 2])
 		else:
 			indices.append_array([base, base + 1, base + 2, base, base + 2, base + 3])

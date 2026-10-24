@@ -11,6 +11,10 @@ extends Node3D
 var view_distance := 12
 ## Колонны выгружаются на расстоянии view_distance + unload_margin (чтобы не дёргать на границе).
 var unload_margin := 2
+## Отсечение пещер: «глубокие» секции (целиком ниже поверхности колонны на DEEP_MARGIN) мешатся
+## только в этом радиусе колонн от игрока — издалека их всё равно не видно.
+var underground_radius := 4
+const DEEP_MARGIN := 8
 var apply_budget_usec := 3000
 var max_gen_in_flight := maxi(2, OS.get_processor_count() - 1)
 var max_mesh_in_flight := maxi(2, OS.get_processor_count() - 1)
@@ -24,13 +28,18 @@ var stat_quads := 0
 var stat_last_apply_ms := 0.0
 var stat_meshes_applied := 0
 
-var _mesher: GreedyMesher
+## GreedyMesher (GDScript) или NativeMesher (C++) — см. GreedyMesher.create_best().
+var _mesher: Object
 var _opaque_material: StandardMaterial3D
 var _transparent_material: StandardMaterial3D
+var _plant_material: StandardMaterial3D
+## Сезон для цветов травы и листвы (0 — весна … 3 — зима). Смена сезона — этап 7.
+var season := 1
 var _center := Vector2i(1 << 30, 0)
 var _wanted: Array[Vector2i] = []
 var _wanted_cursor := 0
 var _meshed := {}          # Vector2i -> true: секции колонны уже поставлены в мешинг
+var _deep_meshed := {}     # Vector2i -> true: глубокие секции колонны тоже в работе
 var _gen_tasks := {}       # Vector2i -> id задачи
 var _mesh_tasks := {}      # Vector3i(cx, si, cz) -> id задачи
 var _mesh_queue: Array[Vector3i] = []
@@ -46,7 +55,7 @@ var _to_apply: Array = []      # готовые результаты, ждущи
 
 
 func _ready() -> void:
-	_mesher = GreedyMesher.new(world.registry)
+	_mesher = GreedyMesher.create_best(world.registry)
 	_opaque_material = StandardMaterial3D.new()
 	_opaque_material.vertex_color_use_as_albedo = true
 	_opaque_material.roughness = 0.92
@@ -56,6 +65,10 @@ func _ready() -> void:
 	_transparent_material.albedo_color = Color(1, 1, 1, 0.72)
 	_transparent_material.cull_mode = BaseMaterial3D.CULL_DISABLED
 	_transparent_material.roughness = 0.08
+	_plant_material = StandardMaterial3D.new()
+	_plant_material.vertex_color_use_as_albedo = true
+	_plant_material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	_plant_material.roughness = 0.95
 
 
 func _exit_tree() -> void:
@@ -69,6 +82,7 @@ func update(center: Vector2i) -> void:
 		_center = center
 		_rebuild_wanted()
 		_unload_far()
+		_update_underground()
 	_dispatch_gen()
 	_dispatch_mesh()
 	_apply_mesh_results()
@@ -119,6 +133,10 @@ func pending_meshing() -> int:
 	var waiting := _mesh_results.size()
 	_results_mutex.unlock()
 	return _mesh_tasks.size() + _mesh_queue.size() + _to_apply.size() + waiting
+
+
+func mesher_name() -> String:
+	return "C++" if GreedyMesher.is_native(_mesher) else "GDScript"
 
 
 func mesh_node_count() -> int:
@@ -190,6 +208,9 @@ func _gen_task(cpos: Vector2i) -> void:
 	var col := world.store.load_column(cpos)
 	if col == null:
 		col = world.generator.generate_column(cpos)
+	else:
+		# Биомы и цвета не сохраняются — их даёт сид.
+		world.generator.fill_climate(col)
 	_results_mutex.lock()
 	_gen_results.append([cpos, col])
 	_results_mutex.unlock()
@@ -219,9 +240,42 @@ func _on_column_added(cpos: Vector2i) -> void:
 			continue
 		_meshed[c] = true
 		var col: ChunkColumn = columns[c]
+		var deep := _in_radius(c, _center, underground_radius)
+		if deep:
+			_deep_meshed[c] = true
 		for si in WorldConst.SECTIONS_PER_COLUMN:
-			if col.sections[si] != null:
+			if col.sections[si] != null and (deep or not _is_deep(col, si)):
 				_queue_mesh(Vector3i(c.x, si, c.y), false)
+
+
+## Секция целиком ниже поверхности колонны.
+func _is_deep(col: ChunkColumn, si: int) -> bool:
+	return WorldConst.section_base_y(si) + 15 < col.surface_min - DEEP_MARGIN
+
+
+## Глубокие секции: мешим у колонн, вошедших в радиус, и убираем у вышедших из него.
+func _update_underground() -> void:
+	for c: Vector2i in _deep_meshed.keys():
+		if _in_radius(c, _center, underground_radius + 1) and columns.has(c):
+			continue
+		_deep_meshed.erase(c)
+		var col: ChunkColumn = columns.get(c)
+		if col == null:
+			continue
+		for si in WorldConst.SECTIONS_PER_COLUMN:
+			if _is_deep(col, si):
+				_remove_node(Vector3i(c.x, si, c.y))
+	var r := underground_radius
+	for dz in range(-r, r + 1):
+		for dx in range(-r, r + 1):
+			var c := _center + Vector2i(dx, dz)
+			if _deep_meshed.has(c) or not _meshed.has(c) or not _in_radius(c, _center, r):
+				continue
+			_deep_meshed[c] = true
+			var col: ChunkColumn = columns[c]
+			for si in WorldConst.SECTIONS_PER_COLUMN:
+				if col.sections[si] != null and _is_deep(col, si):
+					_queue_mesh(Vector3i(c.x, si, c.y), false)
 
 
 func _unload_far() -> void:
@@ -236,10 +290,14 @@ func _unload_far() -> void:
 			_remove_node(Vector3i(cpos.x, si, cpos.y))
 		columns.erase(cpos)
 		_meshed.erase(cpos)
+		_deep_meshed.erase(cpos)
 
 
 func _queue_mesh(key: Vector3i, priority: bool) -> void:
-	if not _meshed.has(Vector2i(key.x, key.z)):
+	var cpos := Vector2i(key.x, key.z)
+	if not _meshed.has(cpos):
+		return
+	if not _deep_meshed.has(cpos) and _is_deep(columns[cpos], key.y):
 		return
 	if priority:
 		_priority[key] = true
@@ -269,7 +327,7 @@ func _dispatch_mesh() -> void:
 		var col: ChunkColumn = columns[cpos]
 		if _is_buried(cpos, si):
 			# Однородный непрозрачный камень со всех сторон: граней нет, поток не нужен.
-			_apply_mesh(key, { "opaque": [], "transparent": [], "quads": 0 })
+			_apply_mesh(key, { "opaque": [], "transparent": [], "plants": [], "quads": 0 })
 			continue
 		var center := GreedyMesher.snapshot(col.sections[si])
 		var nbs := [
@@ -277,27 +335,29 @@ func _dispatch_mesh() -> void:
 			_snap(cpos, si - 1), _snap(cpos, si + 1),
 			_snap(cpos + Vector2i.UP, si), _snap(cpos + Vector2i.DOWN, si),
 		]
-		_mesh_tasks[key] = WorkerThreadPool.add_task(_mesh_task.bind(key, center, nbs), false, "mesh %s" % key)
+		var origin := Vector3i(cpos.x * 16, WorldConst.section_base_y(si), cpos.y * 16)
+		_mesh_tasks[key] = WorkerThreadPool.add_task(_mesh_task.bind(key, center, nbs, col.tints, origin), false, "mesh %s" % key)
 
 
 ## Секция и все шесть соседей — однородные непрозрачные блоки (низ мира считается непрозрачным).
+## Секция и все шесть соседей целиком из непрозрачных кубов (низ мира считается закрытым).
 func _is_buried(cpos: Vector2i, si: int) -> bool:
-	if not _uniform_opaque(cpos, si):
+	if not _all_opaque(cpos, si):
 		return false
 	for c: Vector2i in [cpos + Vector2i.LEFT, cpos + Vector2i.RIGHT, cpos + Vector2i.UP, cpos + Vector2i.DOWN]:
-		if not _uniform_opaque(c, si):
+		if not _all_opaque(c, si):
 			return false
-	return (si == 0 or _uniform_opaque(cpos, si - 1)) and _uniform_opaque(cpos, si + 1)
+	return (si == 0 or _all_opaque(cpos, si - 1)) and _all_opaque(cpos, si + 1)
 
 
-func _uniform_opaque(cpos: Vector2i, si: int) -> bool:
+func _all_opaque(cpos: Vector2i, si: int) -> bool:
 	if si < 0 or si >= WorldConst.SECTIONS_PER_COLUMN:
 		return false
 	var col: ChunkColumn = columns.get(cpos)
 	if col == null:
 		return false
 	var s := col.sections[si]
-	return s != null and s.is_uniform() and world.registry.block_opaque[s.uniform] == 1
+	return s != null and s.all_opaque
 
 
 func _snap(cpos: Vector2i, si: int) -> Variant:
@@ -309,8 +369,8 @@ func _snap(cpos: Vector2i, si: int) -> Variant:
 	return GreedyMesher.snapshot(col.sections[si])
 
 
-func _mesh_task(key: Vector3i, center: Array, nbs: Array) -> void:
-	var res := _mesher.mesh_section(center, nbs)
+func _mesh_task(key: Vector3i, center: Array, nbs: Array, tints: PackedColorArray, origin: Vector3i) -> void:
+	var res: Dictionary = _mesher.mesh_section(center, nbs, tints, season, origin)
 	_results_mutex.lock()
 	_mesh_results.append([key, res])
 	_results_mutex.unlock()
@@ -342,7 +402,8 @@ func _apply_mesh_results() -> void:
 	while not _to_apply.is_empty() and Time.get_ticks_usec() - t0 < apply_budget_usec:
 		var item: Array = _to_apply.pop_front()
 		var key: Vector3i = item[0]
-		if columns.has(Vector2i(key.x, key.z)):
+		var cp := Vector2i(key.x, key.z)
+		if columns.has(cp) and (_deep_meshed.has(cp) or not _is_deep(columns[cp], key.y)):
 			_apply_mesh(key, item[1])
 			applied += 1
 	if applied > 0:
@@ -363,6 +424,9 @@ func _apply_mesh(key: Vector3i, res: Dictionary) -> void:
 	if not res["transparent"].is_empty():
 		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, res["transparent"])
 		mesh.surface_set_material(mesh.get_surface_count() - 1, _transparent_material)
+	if not res["plants"].is_empty():
+		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, res["plants"])
+		mesh.surface_set_material(mesh.get_surface_count() - 1, _plant_material)
 	var node: MeshInstance3D = _nodes.get(key)
 	if node == null:
 		node = MeshInstance3D.new()

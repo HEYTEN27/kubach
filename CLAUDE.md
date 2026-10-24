@@ -23,7 +23,8 @@
 | `scripts/test.sh [аргументы GUT]` | Все GUT-тесты из `tests/`. Пример: `scripts/test.sh -gselect=test_registry`. JUnit-отчёт: `build/test_results.xml`. |
 | `scripts/bench.sh [--strict \| --update-baseline]` | CPU-бенчмарки из `tools/bench/cases/`, сравнение с `tools/bench/baseline.json`. |
 | `scripts/screenshot.sh [out.png] [аргументы игры]` | Запуск под Xvfb с программным OpenGL и сохранение кадра (визуальный смоук-тест). Пример: `scripts/screenshot.sh build/s.png --world=Тест --view=6 --camera=back --teleport=40.5,~,40.5 --f3`. |
-| `scripts/export_windows.sh` | `build/windows/Kubach.exe` (pck встроен). Сам скачивает шаблоны экспорта. |
+| `scripts/build_native.sh [linux\|windows]` | Сборка C++-расширения `native/kubach_native` (godot-cpp 4.5 скачивается в `tools/`; Windows — кросс-компиляцией через zig). Готовые `.so`/`.dll` лежат в `native/bin/` и коммитятся. |
+| `scripts/export_windows.sh` | `build/windows/Kubach.exe` (pck встроен) + `libkubach_native…dll` рядом. Сам скачивает шаблоны экспорта. |
 | `scripts/export_linux.sh` | `build/linux/Kubach.x86_64`. |
 
 - Godot скачивается автоматически в `tools/godot/` (в `.gitignore`) при первом запуске любого скрипта. Версия — `GODOT_VERSION` в `scripts/common.sh`. Свой бинарник: `GODOT=/путь scripts/test.sh`.
@@ -33,6 +34,10 @@
 - **Packed-массивы в GDScript 4 передаются по ссылке.** Снимок для потока = ссылка на массив, который потом не меняется: `ChunkSection.set_block()` сначала заменяет массив копией. Массовые записи собирают новый массив и присваивают целиком.
 - **`Vector3` — float32.** Мировые координаты (до ±15 000) и сдвиги храни в `float` (double) по отдельности или в `PackedFloat64Array`; `Vector3` — только для сценовых координат после `World.to_scene()`.
 - Аргументы запуска игры (`--world`, `--seed`, `--creative`, `--view`, `--teleport=x,~,z`, `--look`, `--camera`, `--f3`, `--screenshot`, `--bench`) описаны в `src/core/game/game_launch.gd`.
+- **Нативное расширение.** Горячие циклы, упёршиеся в GDScript, переносятся в `native/kubach_native/src/` (сейчас — greedy-мешер, `NativeMesher`). GDScript-версия остаётся эталоном и запасным путём: `GreedyMesher.create_best()` берёт C++, если библиотека загрузилась. **Любая правка `greedy_mesher.gd` повторяется в `native_mesher.cpp`**, иначе упадёт `test_native_mesher.gd` (сравнивает результаты побайтно). `KUBACH_NO_NATIVE=1` — принудительно GDScript.
+- **Циклические ссылки RefCounted не освобождаются.** Вспомогательные объекты генератора (`CaveCarver`, `OrePlacer`, `VegetationPlacer`) не хранят генератор — получают нужные значения в `_init` или генератор параметром. Статические переменные держат только простые данные (`GameLaunch.settings` — словарь).
+- Имена помощников в тестах не должны совпадать с членами `GutTest` (например, `_compare` занят).
+- Каталоги с `.gdignore` (godot-cpp, сборки) не импортируются Godot и не проверяются `check.sh`.
 - GUT считает любую ошибку движка (`push_error`, ошибки RegEx и т.п.) провалом теста. Ожидаемые ошибки помечай `assert_engine_error(...)` / `assert_push_error(...)`.
 
 ## Структура (раздел 23)
@@ -56,7 +61,9 @@ docs/                  скриншоты и заметки
 
 Автозагрузки: `EventBus` (`src/core/event_bus.gd`), `Registry` (`src/core/registry/registry.gd`, класс `ContentRegistry`), `Controls` (действия InputMap из `data/input_bindings.json`, физические клавиши), `Audio` (`src/audio/audio_manager.gd`).
 
-Мир (этап 1): `World` (доступ к блокам, слой действий `execute(GameAction)`, floating origin) → `ChunkManager` (потоки генерации и мешинга, бюджет применения мешей) → `ChunkColumn` (36 × `ChunkSection` 16³). `TerrainGenerator` — чистая функция сида; `GreedyMesher` — мешинг секции; `RegionStore` + `WorldSave` — сохранения. Игрок: `Player` (узел) → `PlayerMotor` (движение) → `VoxelBody` (AABB-коллизии в double).
+Мир (этап 1): `World` (доступ к блокам, слой действий `execute(GameAction)`, floating origin) → `ChunkManager` (потоки генерации и мешинга, бюджет применения мешей, отсечение пещер) → `ChunkColumn` (36 × `ChunkSection` 16³ + карта биомов и сетка цветов). `RegionStore` + `WorldSave` — сохранения. Игрок: `Player` (узел) → `PlayerMotor` (движение) → `VoxelBody` (AABB-коллизии в double).
+
+Генерация (этап 2, `src/world/gen/`): `TerrainGenerator` — конвейер колонны и чистые функции (`surface_info`, `biome_index_at`, `height_at`); `BiomeSource` — выбор биома по климату; `GeologySampler` — провинции и слои; `CaveCarver`, `OrePlacer`, `VegetationPlacer` + `TreeBuilder`; `ColumnWriter` — запись с отсечением по колонне; `GenRandom` — хэши, не зависящие от порядка; `WorldGenSettings` — настройки с экрана создания; `BiomePreview` — карта для экрана создания. Всё, что пересекает границу колонны (деревья, залежи, валуны), строится целиком из хэша «хозяина», а колонна пишет только свои блоки.
 
 ## Соглашения по коду
 
@@ -76,7 +83,7 @@ docs/                  скриншоты и заметки
 - `scripts/bench.sh` гоняет кейсы из `tools/bench/cases/*.gd`. Каждый кейс — класс с `name`, `iterations`, `setup()`, `run()`, `teardown()`. Берётся медиана, результат пишется в `build/bench/cpu_bench.json`.
 - Сравнение с `tools/bench/baseline.json`: если медиана выросла больше чем на 25%, выводится предупреждение, а с `--strict` скрипт падает. Эталон снят на облачном CPU (4 потока), поэтому сравнивать можно только облако с облаком.
 - По мере этапов сюда добавляются: генерация колонны чанка, greedy-мешинг секции, распространение света, тик водяной симуляции, расчёт электросети, тик ИИ на N мобов.
-- Бюджеты (для 6-ядерного CPU из раздела 20, в облаке пересчитываю пропорционально): мешинг секции 16³ — < 2 мс в одном потоке; генерация колонны — < 10 мс; применение готовых мешей в главном потоке — ≤ 2 мс на кадр. Внутриигровые счётчики (F3, этап 1) показывают очередь чанков, время генерации и мешинга.
+- Бюджеты (для 6-ядерного CPU из раздела 20, в облаке пересчитываю пропорционально): мешинг секции 16³ — < 2 мс в одном потоке (C++: ~0,3 мс); генерация колонны — < 10 мс (сейчас ~27 мс в облаке на GDScript — кандидат в C++ на этапе оптимизации); применение готовых мешей в главном потоке — ≤ 3 мс на кадр. Внутриигровые счётчики (F3, этап 1) показывают очередь чанков, время генерации и мешинга.
 - Сложность алгоритмов проверяю тестами: число вершин и граней после greedy-мешинга, количество draw calls на чанк (по числу поверхностей меша), размер очередей.
 
 **2. GPU-часть — меряешь ты на ПК, по бенчмарк-логам.**

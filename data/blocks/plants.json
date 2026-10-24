@@ -1,0 +1,1362 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "grass",
+   "name": {
+    "ru": "Трава",
+    "en": "Grass"
+   },
+   "material": "plant",
+   "map_color": "#5f8f3a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "grass"
+   ],
+   "textures": {
+    "all": "grass"
+   },
+   "tint": "grass",
+   "tint_strength": 1.0
+  },
+  {
+   "id": "tall_grass",
+   "name": {
+    "ru": "Высокая трава",
+    "en": "Tall Grass"
+   },
+   "material": "plant",
+   "map_color": "#5a8a36",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "grass"
+   ],
+   "textures": {
+    "all": "tall_grass"
+   },
+   "tint": "grass",
+   "tint_strength": 1.0
+  },
+  {
+   "id": "fern",
+   "name": {
+    "ru": "Папоротник",
+    "en": "Fern"
+   },
+   "material": "plant",
+   "map_color": "#3f7034",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "fern"
+   ],
+   "textures": {
+    "all": "fern"
+   },
+   "tint": "foliage",
+   "tint_strength": 0.5
+  },
+  {
+   "id": "sedge",
+   "name": {
+    "ru": "Осока",
+    "en": "Sedge"
+   },
+   "material": "plant",
+   "map_color": "#6e8a45",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "grass",
+    "wetland"
+   ],
+   "textures": {
+    "all": "sedge"
+   },
+   "tint": "grass",
+   "tint_strength": 0.6
+  },
+  {
+   "id": "reeds",
+   "name": {
+    "ru": "Камыш",
+    "en": "Reeds"
+   },
+   "material": "plant",
+   "map_color": "#8a9a55",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "wetland",
+    "fiber"
+   ],
+   "textures": {
+    "all": "reeds"
+   }
+  },
+  {
+   "id": "feather_grass",
+   "name": {
+    "ru": "Ковыль",
+    "en": "Feather Grass"
+   },
+   "material": "plant",
+   "map_color": "#c9c19a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "grass",
+    "steppe"
+   ],
+   "textures": {
+    "all": "feather_grass"
+   }
+  },
+  {
+   "id": "dead_bush",
+   "name": {
+    "ru": "Сухой куст",
+    "en": "Dead Bush"
+   },
+   "material": "plant",
+   "map_color": "#8a6a40",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "dry"
+   ],
+   "textures": {
+    "all": "dead_bush"
+   }
+  },
+  {
+   "id": "nettle",
+   "name": {
+    "ru": "Крапива",
+    "en": "Nettle"
+   },
+   "material": "plant",
+   "map_color": "#3f6e30",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "herb",
+    "fiber",
+    "edible"
+   ],
+   "textures": {
+    "all": "nettle"
+   },
+   "tint": "grass",
+   "tint_strength": 0.5
+  },
+  {
+   "id": "plantain",
+   "name": {
+    "ru": "Подорожник",
+    "en": "Plantain"
+   },
+   "material": "plant",
+   "map_color": "#4f7a3a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "herb",
+    "medicinal"
+   ],
+   "textures": {
+    "all": "plantain"
+   },
+   "tint": "grass",
+   "tint_strength": 0.5
+  },
+  {
+   "id": "bilberry_bush",
+   "name": {
+    "ru": "Черника",
+    "en": "Bilberry"
+   },
+   "material": "plant",
+   "map_color": "#2f4a5a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible"
+   ],
+   "textures": {
+    "all": "bilberry_bush"
+   }
+  },
+  {
+   "id": "lingonberry_bush",
+   "name": {
+    "ru": "Брусника",
+    "en": "Lingonberry"
+   },
+   "material": "plant",
+   "map_color": "#7a2a2a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible"
+   ],
+   "textures": {
+    "all": "lingonberry_bush"
+   }
+  },
+  {
+   "id": "cranberry_bush",
+   "name": {
+    "ru": "Клюква",
+    "en": "Cranberry"
+   },
+   "material": "plant",
+   "map_color": "#a02030",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible",
+    "wetland"
+   ],
+   "textures": {
+    "all": "cranberry_bush"
+   }
+  },
+  {
+   "id": "cloudberry",
+   "name": {
+    "ru": "Морошка",
+    "en": "Cloudberry"
+   },
+   "material": "plant",
+   "map_color": "#e8a040",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible",
+    "wetland"
+   ],
+   "textures": {
+    "all": "cloudberry"
+   }
+  },
+  {
+   "id": "bog_bilberry",
+   "name": {
+    "ru": "Голубика",
+    "en": "Bog Bilberry"
+   },
+   "material": "plant",
+   "map_color": "#4a6a8a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible",
+    "wetland"
+   ],
+   "textures": {
+    "all": "bog_bilberry"
+   }
+  },
+  {
+   "id": "wild_strawberry",
+   "name": {
+    "ru": "Земляника",
+    "en": "Wild Strawberry"
+   },
+   "material": "plant",
+   "map_color": "#c03a3a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible"
+   ],
+   "textures": {
+    "all": "wild_strawberry"
+   }
+  },
+  {
+   "id": "raspberry_bush",
+   "name": {
+    "ru": "Малина",
+    "en": "Raspberry"
+   },
+   "material": "plant",
+   "map_color": "#b0304a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "berry",
+    "edible"
+   ],
+   "textures": {
+    "all": "raspberry_bush"
+   }
+  },
+  {
+   "id": "labrador_tea",
+   "name": {
+    "ru": "Багульник",
+    "en": "Labrador Tea"
+   },
+   "material": "plant",
+   "map_color": "#5a6a3a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "herb",
+    "poisonous",
+    "wetland"
+   ],
+   "textures": {
+    "all": "labrador_tea"
+   }
+  },
+  {
+   "id": "juniper",
+   "name": {
+    "ru": "Можжевельник",
+    "en": "Juniper"
+   },
+   "material": "plant",
+   "map_color": "#3a5a45",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "shrub"
+   ],
+   "textures": {
+    "all": "juniper"
+   }
+  },
+  {
+   "id": "porcini",
+   "name": {
+    "ru": "Белый гриб",
+    "en": "Porcini"
+   },
+   "material": "plant",
+   "map_color": "#8a5a30",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "edible"
+   ],
+   "textures": {
+    "all": "porcini"
+   }
+  },
+  {
+   "id": "birch_bolete",
+   "name": {
+    "ru": "Подберёзовик",
+    "en": "Birch Bolete"
+   },
+   "material": "plant",
+   "map_color": "#7a5a40",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "edible"
+   ],
+   "textures": {
+    "all": "birch_bolete"
+   }
+  },
+  {
+   "id": "chanterelle",
+   "name": {
+    "ru": "Лисичка",
+    "en": "Chanterelle"
+   },
+   "material": "plant",
+   "map_color": "#e0a030",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "edible"
+   ],
+   "textures": {
+    "all": "chanterelle"
+   }
+  },
+  {
+   "id": "false_chanterelle",
+   "name": {
+    "ru": "Ложная лисичка",
+    "en": "False Chanterelle"
+   },
+   "material": "plant",
+   "map_color": "#e08a2a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "poisonous",
+    "lookalike"
+   ],
+   "textures": {
+    "all": "false_chanterelle"
+   }
+  },
+  {
+   "id": "russula",
+   "name": {
+    "ru": "Сыроежка",
+    "en": "Russula"
+   },
+   "material": "plant",
+   "map_color": "#c0605a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "edible"
+   ],
+   "textures": {
+    "all": "russula"
+   }
+  },
+  {
+   "id": "death_cap",
+   "name": {
+    "ru": "Бледная поганка",
+    "en": "Death Cap"
+   },
+   "material": "plant",
+   "map_color": "#c8c4a0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "poisonous",
+    "lookalike"
+   ],
+   "textures": {
+    "all": "death_cap"
+   }
+  },
+  {
+   "id": "fly_agaric",
+   "name": {
+    "ru": "Мухомор",
+    "en": "Fly Agaric"
+   },
+   "material": "plant",
+   "map_color": "#c02020",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "mushroom",
+    "poisonous"
+   ],
+   "textures": {
+    "all": "fly_agaric"
+   }
+  },
+  {
+   "id": "lichen",
+   "name": {
+    "ru": "Ягель (лишайник)",
+    "en": "Reindeer Lichen"
+   },
+   "material": "plant",
+   "map_color": "#c9c8b0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "lichen"
+   ],
+   "textures": {
+    "all": "lichen"
+   }
+  },
+  {
+   "id": "chamomile",
+   "name": {
+    "ru": "Ромашка",
+    "en": "Chamomile"
+   },
+   "material": "plant",
+   "map_color": "#f2f0e0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "chamomile"
+   }
+  },
+  {
+   "id": "cornflower",
+   "name": {
+    "ru": "Василёк",
+    "en": "Cornflower"
+   },
+   "material": "plant",
+   "map_color": "#3a5ad0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "cornflower"
+   }
+  },
+  {
+   "id": "bellflower",
+   "name": {
+    "ru": "Колокольчик",
+    "en": "Bellflower"
+   },
+   "material": "plant",
+   "map_color": "#6a5ac8",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "bellflower"
+   }
+  },
+  {
+   "id": "dandelion",
+   "name": {
+    "ru": "Одуванчик",
+    "en": "Dandelion"
+   },
+   "material": "plant",
+   "map_color": "#f0d020",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "dandelion"
+   }
+  },
+  {
+   "id": "poppy",
+   "name": {
+    "ru": "Мак",
+    "en": "Poppy"
+   },
+   "material": "plant",
+   "map_color": "#d02a20",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "poppy"
+   }
+  },
+  {
+   "id": "buttercup",
+   "name": {
+    "ru": "Лютик",
+    "en": "Buttercup"
+   },
+   "material": "plant",
+   "map_color": "#f0e030",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "buttercup"
+   }
+  },
+  {
+   "id": "clover",
+   "name": {
+    "ru": "Клевер",
+    "en": "Clover"
+   },
+   "material": "plant",
+   "map_color": "#c05a90",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "clover"
+   }
+  },
+  {
+   "id": "fireweed",
+   "name": {
+    "ru": "Иван-чай",
+    "en": "Fireweed"
+   },
+   "material": "plant",
+   "map_color": "#c04a9a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "fireweed"
+   }
+  },
+  {
+   "id": "st_johns_wort",
+   "name": {
+    "ru": "Зверобой",
+    "en": "St John's Wort"
+   },
+   "material": "plant",
+   "map_color": "#e8c020",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "st_johns_wort"
+   }
+  },
+  {
+   "id": "yarrow",
+   "name": {
+    "ru": "Тысячелистник",
+    "en": "Yarrow"
+   },
+   "material": "plant",
+   "map_color": "#ece6d0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "yarrow"
+   }
+  },
+  {
+   "id": "tansy",
+   "name": {
+    "ru": "Пижма",
+    "en": "Tansy"
+   },
+   "material": "plant",
+   "map_color": "#e0b020",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "tansy"
+   }
+  },
+  {
+   "id": "chicory",
+   "name": {
+    "ru": "Цикорий",
+    "en": "Chicory"
+   },
+   "material": "plant",
+   "map_color": "#6a8ad8",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "chicory"
+   }
+  },
+  {
+   "id": "forget_me_not",
+   "name": {
+    "ru": "Незабудка",
+    "en": "Forget-me-not"
+   },
+   "material": "plant",
+   "map_color": "#6aa0e0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "forget_me_not"
+   }
+  },
+  {
+   "id": "lily_of_the_valley",
+   "name": {
+    "ru": "Ландыш",
+    "en": "Lily of the Valley"
+   },
+   "material": "plant",
+   "map_color": "#f4f4ec",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "lily_of_the_valley"
+   }
+  },
+  {
+   "id": "violet",
+   "name": {
+    "ru": "Фиалка",
+    "en": "Violet"
+   },
+   "material": "plant",
+   "map_color": "#7a3ab0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "violet"
+   }
+  },
+  {
+   "id": "dianthus",
+   "name": {
+    "ru": "Гвоздика",
+    "en": "Dianthus"
+   },
+   "material": "plant",
+   "map_color": "#e04a7a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "dianthus"
+   }
+  },
+  {
+   "id": "tulip",
+   "name": {
+    "ru": "Тюльпан",
+    "en": "Tulip"
+   },
+   "material": "plant",
+   "map_color": "#e03a3a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "tulip"
+   }
+  },
+  {
+   "id": "thyme",
+   "name": {
+    "ru": "Чабрец",
+    "en": "Thyme"
+   },
+   "material": "plant",
+   "map_color": "#a07ab0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "thyme"
+   }
+  },
+  {
+   "id": "sage",
+   "name": {
+    "ru": "Шалфей",
+    "en": "Sage"
+   },
+   "material": "plant",
+   "map_color": "#7a6ac0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "sage"
+   }
+  },
+  {
+   "id": "edelweiss",
+   "name": {
+    "ru": "Эдельвейс",
+    "en": "Edelweiss"
+   },
+   "material": "plant",
+   "map_color": "#e8e8dc",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "edelweiss"
+   }
+  },
+  {
+   "id": "gentian",
+   "name": {
+    "ru": "Горечавка",
+    "en": "Gentian"
+   },
+   "material": "plant",
+   "map_color": "#2a4ac0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "gentian"
+   }
+  },
+  {
+   "id": "rhododendron",
+   "name": {
+    "ru": "Рододендрон",
+    "en": "Rhododendron"
+   },
+   "material": "plant",
+   "map_color": "#d05a9a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "rhododendron"
+   }
+  },
+  {
+   "id": "martagon_lily",
+   "name": {
+    "ru": "Лилия саранка",
+    "en": "Martagon Lily"
+   },
+   "material": "plant",
+   "map_color": "#b04a6a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "martagon_lily"
+   }
+  },
+  {
+   "id": "snowdrop",
+   "name": {
+    "ru": "Подснежник",
+    "en": "Snowdrop"
+   },
+   "material": "plant",
+   "map_color": "#f6f6f6",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "snowdrop"
+   }
+  },
+  {
+   "id": "globeflower",
+   "name": {
+    "ru": "Купальница",
+    "en": "Globeflower"
+   },
+   "material": "plant",
+   "map_color": "#f0b020",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "globeflower"
+   }
+  },
+  {
+   "id": "orchid",
+   "name": {
+    "ru": "Орхидея",
+    "en": "Orchid"
+   },
+   "material": "plant",
+   "map_color": "#d07ad0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "orchid"
+   }
+  },
+  {
+   "id": "hibiscus",
+   "name": {
+    "ru": "Гибискус",
+    "en": "Hibiscus"
+   },
+   "material": "plant",
+   "map_color": "#e0303a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "hibiscus"
+   }
+  },
+  {
+   "id": "saxifrage",
+   "name": {
+    "ru": "Камнеломка",
+    "en": "Saxifrage"
+   },
+   "material": "plant",
+   "map_color": "#f0d0e0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "saxifrage"
+   }
+  },
+  {
+   "id": "lupine",
+   "name": {
+    "ru": "Люпин",
+    "en": "Lupine"
+   },
+   "material": "plant",
+   "map_color": "#7a5ad0",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "lupine"
+   }
+  },
+  {
+   "id": "heather",
+   "name": {
+    "ru": "Вереск",
+    "en": "Heather"
+   },
+   "material": "plant",
+   "map_color": "#a05a9a",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "flammable": true,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "flower",
+    "dye"
+   ],
+   "textures": {
+    "all": "heather"
+   }
+  }
+ ]
+}

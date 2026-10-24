@@ -3,48 +3,158 @@
   "entries": [
     {
       "id": "default",
-      "name": { "ru": "Обычный", "en": "Default" },
+      "name": {
+        "ru": "Обычный",
+        "en": "Default"
+      },
       "sea_level": 64,
       "bedrock_block": "bedrock",
       "bedrock_top": -250,
       "noise": {
-        "continental": { "frequency": 0.0007, "octaves": 5 },
-        "erosion": { "frequency": 0.0014, "octaves": 3 },
-        "ridges": { "frequency": 0.0035, "octaves": 4 },
-        "detail": { "frequency": 0.015, "octaves": 3 },
-        "strata": { "frequency": 0.006, "octaves": 2 }
+        "continental": {
+          "frequency": 0.0007,
+          "octaves": 5
+        },
+        "erosion": {
+          "frequency": 0.0014,
+          "octaves": 3
+        },
+        "ridges": {
+          "frequency": 0.0035,
+          "octaves": 4
+        },
+        "detail": {
+          "frequency": 0.015,
+          "octaves": 3
+        },
+        "strata": {
+          "frequency": 0.006,
+          "octaves": 2
+        },
+        "temperature": {
+          "frequency": 0.0011,
+          "octaves": 3
+        },
+        "humidity": {
+          "frequency": 0.0013,
+          "octaves": 3
+        },
+        "weirdness": {
+          "frequency": 0.0016,
+          "octaves": 2
+        },
+        "river": {
+          "frequency": 0.0012,
+          "octaves": 3
+        },
+        "province": {
+          "frequency": 0.0009,
+          "octaves": 1
+        }
       },
       "height_spline": [
-        { "x": -1.0, "y": 18 },
-        { "x": -0.5, "y": 34 },
-        { "x": -0.28, "y": 52 },
-        { "x": -0.16, "y": 62 },
-        { "x": -0.08, "y": 66 },
-        { "x": 0.1, "y": 72 },
-        { "x": 0.35, "y": 84 },
-        { "x": 0.6, "y": 100 },
-        { "x": 1.0, "y": 130 }
+        {
+          "x": -1.0,
+          "y": 14
+        },
+        {
+          "x": -0.5,
+          "y": 32
+        },
+        {
+          "x": -0.28,
+          "y": 50
+        },
+        {
+          "x": -0.16,
+          "y": 61
+        },
+        {
+          "x": -0.08,
+          "y": 66
+        },
+        {
+          "x": 0.1,
+          "y": 72
+        },
+        {
+          "x": 0.35,
+          "y": 84
+        },
+        {
+          "x": 0.6,
+          "y": 100
+        },
+        {
+          "x": 1.0,
+          "y": 130
+        }
       ],
       "mountain_height": 110,
-      "mountain_erosion": { "start": 0.05, "full": 0.45 },
+      "mountain_erosion": {
+        "start": 0.05,
+        "full": 0.45
+      },
       "detail_amplitude": 4.0,
       "cliff_slope": 3,
-      "layers": {
-        "surface": "turf",
-        "soil": "loam",
-        "soil_depth": 4,
-        "beach": "sand",
-        "beach_band": 2,
-        "shallow_floor": "sand",
-        "deep_floor": "gravel",
-        "deep_floor_depth": 6,
-        "cliff": "granite",
-        "upper_stone": "limestone",
-        "upper_stone_depth": 24,
-        "upper_stone_noise": 12.0,
-        "lower_stone": "granite",
-        "fluid": "water"
-      }
+      "peak_height": 105,
+      "temperature_bias": -0.08,
+      "biome_blend": 10,
+      "rivers": {
+        "width": 0.022,
+        "valley": 0.09,
+        "depth": 4,
+        "max_height": 55
+      },
+      "lakes": {
+        "cell": 224,
+        "chance": 0.4,
+        "radius": {
+          "min": 7,
+          "max": 22
+        },
+        "depth": 5,
+        "max_height": 60
+      },
+      "caves": {
+        "cheese": {
+          "frequency": 0.012,
+          "octaves": 2
+        },
+        "cheese_threshold": 0.58,
+        "spaghetti": {
+          "frequency": 0.009,
+          "octaves": 1
+        },
+        "spaghetti_width": 0.055,
+        "noodle": {
+          "frequency": 0.022,
+          "octaves": 1
+        },
+        "noodle_width": 0.03,
+        "ravine": {
+          "frequency": 0.004,
+          "octaves": 2
+        },
+        "ravine_width": 0.02,
+        "ravine_depth": 42,
+        "ravine_region": 0.5,
+        "aquifer": {
+          "frequency": 0.004,
+          "octaves": 2
+        },
+        "aquifer_threshold": 0.3,
+        "aquifer_level": {
+          "min": -60,
+          "max": 20
+        },
+        "lava_level": -160,
+        "lava_block": "lava",
+        "water_block": "water"
+      },
+      "fluid": "water",
+      "ice": "ice",
+      "snow_layer": "snow_layer"
     }
   ]
 }

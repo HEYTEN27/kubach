@@ -34,6 +34,11 @@ var block_light_filter := PackedByteArray()
 ## Код BlockDef.RENDER_*.
 var block_render := PackedByteArray()
 var block_color := PackedColorArray()
+## Код BlockDef.SHAPE_*, BlockDef.TINT_*, сила тонирования и высота слоя.
+var block_shape := PackedByteArray()
+var block_tint := PackedByteArray()
+var block_tint_strength := PackedFloat32Array()
+var block_layer_height := PackedFloat32Array()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -140,6 +145,10 @@ func _clear() -> void:
 	block_light_filter = PackedByteArray()
 	block_render = PackedByteArray()
 	block_color = PackedColorArray()
+	block_shape = PackedByteArray()
+	block_tint = PackedByteArray()
+	block_tint_strength = PackedFloat32Array()
+	block_layer_height = PackedFloat32Array()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -251,6 +260,7 @@ func _build_blocks() -> void:
 		"render": &"invisible", "solid": false, "hardness": -1.0, "tool": &"none", "tool_tier": 0,
 		"light_emission": 0, "light_color": Color.WHITE, "light_filter": 0, "flammable": false,
 		"sounds": &"none", "map_color": Color(0, 0, 0, 0), "textures": {}, "drops": [], "tags": [],
+		"shape": &"cube", "layer_height": 1.0, "tint": &"none", "tint_strength": 0.0,
 	})
 	_add_block(air)
 	if not _entries.has("blocks"):
@@ -286,7 +296,7 @@ func _check_block(e: Dictionary, where: String) -> bool:
 		if drop.get("min", 0) > drop.get("max", 0):
 			errors.append("%s: drops '%s' — min больше max" % [where, drop.get("id")])
 			return false
-	if e["render"] == &"opaque" and e["light_filter"] != 15:
+	if e["render"] == &"opaque" and e["shape"] == &"cube" and e["light_filter"] != 15:
 		warnings.append("%s: непрозрачный блок с light_filter %d" % [where, e["light_filter"]])
 	return true
 
@@ -300,6 +310,10 @@ func _add_block(b: BlockDef) -> void:
 	block_light_filter.append(b.light_filter)
 	block_render.append(b.render_code())
 	block_color.append(b.map_color)
+	block_shape.append(b.shape_code())
+	block_tint.append(b.tint_code())
+	block_tint_strength.append(b.tint_strength)
+	block_layer_height.append(b.layer_height)
 
 
 func _parse_json(path: String) -> Variant:

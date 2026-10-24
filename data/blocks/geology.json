@@ -1,0 +1,1070 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "chernozem",
+   "name": {
+    "ru": "Чернозём",
+    "en": "Chernozem"
+   },
+   "material": "soil",
+   "map_color": "#3b2e25",
+   "hardness": 0.8,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "tillable",
+    "plantable"
+   ],
+   "drops": [
+    {
+     "id": "chernozem"
+    }
+   ],
+   "textures": {
+    "all": "chernozem"
+   }
+  },
+  {
+   "id": "clay",
+   "name": {
+    "ru": "Глина",
+    "en": "Clay"
+   },
+   "material": "soil",
+   "map_color": "#9a8f86",
+   "hardness": 1.0,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil"
+   ],
+   "drops": [
+    {
+     "id": "clay"
+    }
+   ],
+   "textures": {
+    "all": "clay"
+   }
+  },
+  {
+   "id": "peat",
+   "name": {
+    "ru": "Торф",
+    "en": "Peat"
+   },
+   "material": "soil",
+   "map_color": "#4a3a2a",
+   "hardness": 0.7,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "plantable",
+    "flammable"
+   ],
+   "flammable": true,
+   "drops": [
+    {
+     "id": "peat"
+    }
+   ],
+   "textures": {
+    "all": "peat"
+   }
+  },
+  {
+   "id": "silt",
+   "name": {
+    "ru": "Ил",
+    "en": "Silt"
+   },
+   "material": "soil",
+   "map_color": "#5d5747",
+   "hardness": 0.6,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "plantable"
+   ],
+   "drops": [
+    {
+     "id": "silt"
+    }
+   ],
+   "textures": {
+    "all": "silt"
+   }
+  },
+  {
+   "id": "permafrost",
+   "name": {
+    "ru": "Вечная мерзлота",
+    "en": "Permafrost"
+   },
+   "material": "soil",
+   "map_color": "#6f6a66",
+   "hardness": 2.5,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "frozen"
+   ],
+   "drops": [
+    {
+     "id": "permafrost"
+    }
+   ],
+   "textures": {
+    "all": "permafrost"
+   }
+  },
+  {
+   "id": "podzol",
+   "name": {
+    "ru": "Подзол",
+    "en": "Podzol"
+   },
+   "material": "soil",
+   "map_color": "#6b5236",
+   "hardness": 0.8,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "plantable",
+    "tillable"
+   ],
+   "drops": [
+    {
+     "id": "podzol"
+    }
+   ],
+   "textures": {
+    "all": "podzol"
+   }
+  },
+  {
+   "id": "mycelium_turf",
+   "name": {
+    "ru": "Грибница",
+    "en": "Mycelium"
+   },
+   "material": "soil",
+   "map_color": "#7e6e7e",
+   "hardness": 0.9,
+   "tool": "shovel",
+   "sounds": "grass",
+   "tags": [
+    "soil",
+    "plantable"
+   ],
+   "textures": {
+    "top": "mycelium_top",
+    "bottom": "loam",
+    "side": "mycelium_side"
+   },
+   "drops": [
+    {
+     "id": "loam"
+    }
+   ]
+  },
+  {
+   "id": "red_sand",
+   "name": {
+    "ru": "Красный песок",
+    "en": "Red Sand"
+   },
+   "material": "soil",
+   "map_color": "#b8643a",
+   "hardness": 0.7,
+   "tool": "shovel",
+   "sounds": "sand",
+   "tags": [
+    "sand",
+    "falling",
+    "plantable"
+   ],
+   "drops": [
+    {
+     "id": "red_sand"
+    }
+   ],
+   "textures": {
+    "all": "red_sand"
+   }
+  },
+  {
+   "id": "silica_sand",
+   "name": {
+    "ru": "Кремнезёмный песок",
+    "en": "Silica Sand"
+   },
+   "material": "soil",
+   "map_color": "#e9e4d6",
+   "hardness": 0.7,
+   "tool": "shovel",
+   "sounds": "sand",
+   "tags": [
+    "sand",
+    "falling",
+    "mineral"
+   ],
+   "drops": [
+    {
+     "id": "silica_sand"
+    }
+   ],
+   "textures": {
+    "all": "silica_sand"
+   }
+  },
+  {
+   "id": "red_clay",
+   "name": {
+    "ru": "Красная глина",
+    "en": "Red Clay"
+   },
+   "material": "soil",
+   "map_color": "#9c4a32",
+   "hardness": 1.4,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "band"
+   ],
+   "drops": [
+    {
+     "id": "red_clay"
+    }
+   ],
+   "textures": {
+    "all": "red_clay"
+   }
+  },
+  {
+   "id": "ochre_clay",
+   "name": {
+    "ru": "Охристая глина",
+    "en": "Ochre Clay"
+   },
+   "material": "soil",
+   "map_color": "#c08a3e",
+   "hardness": 1.4,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "band"
+   ],
+   "drops": [
+    {
+     "id": "ochre_clay"
+    }
+   ],
+   "textures": {
+    "all": "ochre_clay"
+   }
+  },
+  {
+   "id": "snow_block",
+   "name": {
+    "ru": "Снег",
+    "en": "Snow"
+   },
+   "material": "snow",
+   "map_color": "#eef3f6",
+   "hardness": 0.4,
+   "tool": "shovel",
+   "sounds": "snow",
+   "drops": [
+    {
+     "id": "snow_block"
+    }
+   ],
+   "tags": [
+    "snow",
+    "plantable"
+   ],
+   "textures": {
+    "all": "snow_block"
+   }
+  },
+  {
+   "id": "ice",
+   "name": {
+    "ru": "Лёд",
+    "en": "Ice"
+   },
+   "material": "ice",
+   "map_color": "#a9cbe8",
+   "render": "translucent",
+   "hardness": 0.8,
+   "tool": "pickaxe",
+   "sounds": "glass",
+   "light_filter": 2,
+   "tags": [
+    "ice",
+    "slippery"
+   ],
+   "textures": {
+    "all": "ice"
+   }
+  },
+  {
+   "id": "packed_ice",
+   "name": {
+    "ru": "Плотный лёд",
+    "en": "Packed Ice"
+   },
+   "material": "ice",
+   "map_color": "#8fb4dc",
+   "hardness": 1.6,
+   "tool": "pickaxe",
+   "sounds": "glass",
+   "tags": [
+    "ice",
+    "slippery"
+   ],
+   "drops": [
+    {
+     "id": "packed_ice"
+    }
+   ],
+   "textures": {
+    "all": "packed_ice"
+   }
+  },
+  {
+   "id": "sandstone",
+   "name": {
+    "ru": "Песчаник",
+    "en": "Sandstone"
+   },
+   "material": "stone",
+   "map_color": "#d4c08c",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary",
+    "band"
+   ],
+   "drops": [
+    {
+     "id": "sandstone"
+    }
+   ],
+   "textures": {
+    "all": "sandstone"
+   }
+  },
+  {
+   "id": "red_sandstone",
+   "name": {
+    "ru": "Красный песчаник",
+    "en": "Red Sandstone"
+   },
+   "material": "stone",
+   "map_color": "#b35a34",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary",
+    "band"
+   ],
+   "drops": [
+    {
+     "id": "red_sandstone"
+    }
+   ],
+   "textures": {
+    "all": "red_sandstone"
+   }
+  },
+  {
+   "id": "dolomite",
+   "name": {
+    "ru": "Доломит",
+    "en": "Dolomite"
+   },
+   "material": "stone",
+   "map_color": "#d8d0c3",
+   "hardness": 4.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary"
+   ],
+   "drops": [
+    {
+     "id": "dolomite"
+    }
+   ],
+   "textures": {
+    "all": "dolomite"
+   }
+  },
+  {
+   "id": "chalk",
+   "name": {
+    "ru": "Мел",
+    "en": "Chalk"
+   },
+   "material": "stone",
+   "map_color": "#efece2",
+   "hardness": 2.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary",
+    "band"
+   ],
+   "drops": [
+    {
+     "id": "chalk"
+    }
+   ],
+   "textures": {
+    "all": "chalk"
+   }
+  },
+  {
+   "id": "shale",
+   "name": {
+    "ru": "Глинистый сланец",
+    "en": "Shale"
+   },
+   "material": "stone",
+   "map_color": "#5d5a55",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary"
+   ],
+   "drops": [
+    {
+     "id": "shale"
+    }
+   ],
+   "textures": {
+    "all": "shale"
+   }
+  },
+  {
+   "id": "conglomerate",
+   "name": {
+    "ru": "Конгломерат",
+    "en": "Conglomerate"
+   },
+   "material": "stone",
+   "map_color": "#8d8174",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "sedimentary"
+   ],
+   "drops": [
+    {
+     "id": "conglomerate"
+    }
+   ],
+   "textures": {
+    "all": "conglomerate"
+   }
+  },
+  {
+   "id": "marble",
+   "name": {
+    "ru": "Мрамор",
+    "en": "Marble"
+   },
+   "material": "stone",
+   "map_color": "#e6e3df",
+   "hardness": 5.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "metamorphic"
+   ],
+   "drops": [
+    {
+     "id": "marble"
+    }
+   ],
+   "textures": {
+    "all": "marble"
+   }
+  },
+  {
+   "id": "slate",
+   "name": {
+    "ru": "Сланец",
+    "en": "Slate"
+   },
+   "material": "stone",
+   "map_color": "#4b5058",
+   "hardness": 5.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "metamorphic"
+   ],
+   "drops": [
+    {
+     "id": "slate"
+    }
+   ],
+   "textures": {
+    "all": "slate"
+   }
+  },
+  {
+   "id": "quartzite",
+   "name": {
+    "ru": "Кварцит",
+    "en": "Quartzite"
+   },
+   "material": "stone",
+   "map_color": "#dcd2cf",
+   "hardness": 7.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "metamorphic"
+   ],
+   "drops": [
+    {
+     "id": "quartzite"
+    }
+   ],
+   "textures": {
+    "all": "quartzite"
+   }
+  },
+  {
+   "id": "gneiss",
+   "name": {
+    "ru": "Гнейс",
+    "en": "Gneiss"
+   },
+   "material": "stone",
+   "map_color": "#7d7570",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "metamorphic"
+   ],
+   "drops": [
+    {
+     "id": "gneiss"
+    }
+   ],
+   "textures": {
+    "all": "gneiss"
+   }
+  },
+  {
+   "id": "serpentinite",
+   "name": {
+    "ru": "Серпентинит",
+    "en": "Serpentinite"
+   },
+   "material": "stone",
+   "map_color": "#4d6650",
+   "hardness": 5.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "metamorphic"
+   ],
+   "drops": [
+    {
+     "id": "serpentinite"
+    }
+   ],
+   "textures": {
+    "all": "serpentinite"
+   }
+  },
+  {
+   "id": "diorite",
+   "name": {
+    "ru": "Диорит",
+    "en": "Diorite"
+   },
+   "material": "stone",
+   "map_color": "#b9b6b1",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous"
+   ],
+   "drops": [
+    {
+     "id": "diorite"
+    }
+   ],
+   "textures": {
+    "all": "diorite"
+   }
+  },
+  {
+   "id": "gabbro",
+   "name": {
+    "ru": "Габбро",
+    "en": "Gabbro"
+   },
+   "material": "stone",
+   "map_color": "#3d3f40",
+   "hardness": 6.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous"
+   ],
+   "drops": [
+    {
+     "id": "gabbro"
+    }
+   ],
+   "textures": {
+    "all": "gabbro"
+   }
+  },
+  {
+   "id": "andesite",
+   "name": {
+    "ru": "Андезит",
+    "en": "Andesite"
+   },
+   "material": "stone",
+   "map_color": "#86847f",
+   "hardness": 5.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous"
+   ],
+   "drops": [
+    {
+     "id": "andesite"
+    }
+   ],
+   "textures": {
+    "all": "andesite"
+   }
+  },
+  {
+   "id": "basalt",
+   "name": {
+    "ru": "Базальт",
+    "en": "Basalt"
+   },
+   "material": "stone",
+   "map_color": "#3a3a3d",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous",
+    "volcanic"
+   ],
+   "drops": [
+    {
+     "id": "basalt"
+    }
+   ],
+   "textures": {
+    "all": "basalt"
+   }
+  },
+  {
+   "id": "tuff",
+   "name": {
+    "ru": "Туф",
+    "en": "Tuff"
+   },
+   "material": "stone",
+   "map_color": "#8e8a73",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous",
+    "volcanic"
+   ],
+   "drops": [
+    {
+     "id": "tuff"
+    }
+   ],
+   "textures": {
+    "all": "tuff"
+   }
+  },
+  {
+   "id": "obsidian",
+   "name": {
+    "ru": "Обсидиан",
+    "en": "Obsidian"
+   },
+   "material": "stone",
+   "map_color": "#1b1622",
+   "hardness": 25.0,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous",
+    "volcanic"
+   ],
+   "drops": [
+    {
+     "id": "obsidian"
+    }
+   ],
+   "textures": {
+    "all": "obsidian"
+   }
+  },
+  {
+   "id": "pumice",
+   "name": {
+    "ru": "Пемза",
+    "en": "Pumice"
+   },
+   "material": "stone",
+   "map_color": "#bdb7aa",
+   "hardness": 1.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "igneous",
+    "volcanic"
+   ],
+   "drops": [
+    {
+     "id": "pumice"
+    }
+   ],
+   "textures": {
+    "all": "pumice"
+   }
+  },
+  {
+   "id": "deepslate",
+   "name": {
+    "ru": "Глубинный сланец",
+    "en": "Deepslate"
+   },
+   "material": "stone",
+   "map_color": "#46464c",
+   "hardness": 8.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "deepslate"
+    }
+   ],
+   "textures": {
+    "all": "deepslate"
+   }
+  },
+  {
+   "id": "peridotite",
+   "name": {
+    "ru": "Перидотит",
+    "en": "Peridotite"
+   },
+   "material": "stone",
+   "map_color": "#4f5d3c",
+   "hardness": 8.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "peridotite"
+    }
+   ],
+   "textures": {
+    "all": "peridotite"
+   }
+  },
+  {
+   "id": "kimberlite",
+   "name": {
+    "ru": "Кимберлит",
+    "en": "Kimberlite"
+   },
+   "material": "stone",
+   "map_color": "#4a5352",
+   "hardness": 8.5,
+   "tool": "pickaxe",
+   "tool_tier": 3,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "kimberlite"
+    }
+   ],
+   "textures": {
+    "all": "kimberlite"
+   }
+  },
+  {
+   "id": "calcite",
+   "name": {
+    "ru": "Кальцит",
+    "en": "Calcite"
+   },
+   "material": "stone",
+   "map_color": "#e0ddd2",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "mineral"
+   ],
+   "drops": [
+    {
+     "id": "calcite"
+    }
+   ],
+   "textures": {
+    "all": "calcite"
+   }
+  },
+  {
+   "id": "quartz",
+   "name": {
+    "ru": "Кварц",
+    "en": "Quartz"
+   },
+   "material": "stone",
+   "map_color": "#ece6e1",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "mineral"
+   ],
+   "drops": [
+    {
+     "id": "quartz"
+    }
+   ],
+   "textures": {
+    "all": "quartz"
+   }
+  },
+  {
+   "id": "rock_salt",
+   "name": {
+    "ru": "Каменная соль",
+    "en": "Rock Salt"
+   },
+   "material": "stone",
+   "map_color": "#e3d6d5",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "mineral"
+   ],
+   "drops": [
+    {
+     "id": "rock_salt"
+    }
+   ],
+   "textures": {
+    "all": "rock_salt"
+   }
+  },
+  {
+   "id": "bauxite",
+   "name": {
+    "ru": "Боксит",
+    "en": "Bauxite"
+   },
+   "material": "stone",
+   "map_color": "#a8573a",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "mineral"
+   ],
+   "drops": [
+    {
+     "id": "bauxite"
+    }
+   ],
+   "textures": {
+    "all": "bauxite"
+   }
+  },
+  {
+   "id": "rubble",
+   "name": {
+    "ru": "Каменная осыпь",
+    "en": "Rubble"
+   },
+   "material": "stone",
+   "map_color": "#7f7b76",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone"
+   ],
+   "drops": [
+    {
+     "id": "rubble"
+    }
+   ],
+   "textures": {
+    "all": "rubble"
+   }
+  },
+  {
+   "id": "sinter",
+   "name": {
+    "ru": "Гейзерит",
+    "en": "Sinter"
+   },
+   "material": "stone",
+   "map_color": "#d9cfb6",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "volcanic"
+   ],
+   "drops": [
+    {
+     "id": "sinter"
+    }
+   ],
+   "textures": {
+    "all": "sinter"
+   }
+  },
+  {
+   "id": "geyser_vent",
+   "name": {
+    "ru": "Жерло гейзера",
+    "en": "Geyser Vent"
+   },
+   "material": "stone",
+   "map_color": "#8f8166",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "volcanic",
+    "geyser"
+   ],
+   "textures": {
+    "all": "geyser_vent"
+   }
+  },
+  {
+   "id": "lava",
+   "name": {
+    "ru": "Лава",
+    "en": "Lava"
+   },
+   "material": "liquid",
+   "map_color": "#e2591b",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_emission": 15,
+   "light_color": "#ff9a4a",
+   "light_filter": 2,
+   "sounds": "lava",
+   "tags": [
+    "fluid",
+    "hot"
+   ],
+   "textures": {
+    "all": "lava"
+   }
+  }
+ ]
+}

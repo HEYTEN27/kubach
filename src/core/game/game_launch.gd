@@ -6,6 +6,8 @@ extends RefCounted
 ##   --world=<имя>        открыть мир с таким именем или создать новый;
 ##   --seed=<текст>       сид для нового мира;
 ##   --creative           творческий режим для нового мира;
+##   --world-type=<id>    тип мира (normal, large_biomes, archipelago, mountainous, flat);
+##   --biome-size= --caves= --ores= --sea= --season=spring|summer|autumn|winter — настройки нового мира;
 ##   --view=<колонн>      дальность прорисовки (4–32);
 ##   --teleport=x,y,z     переместить игрока (мировые координаты; y = ~ — на поверхность);
 ##   --look=рыск,тангаж   направление взгляда в градусах;
@@ -25,6 +27,8 @@ static var camera := ""
 static var show_debug := false
 static var screenshot_path := ""
 static var bench_seconds := 0.0
+## Настройки генерации нового мира (экран создания или --world-type, --biome-size, --caves, --ores, --sea).
+static var settings: Dictionary = {}
 
 
 static func reset() -> void:
@@ -38,6 +42,7 @@ static func reset() -> void:
 	show_debug = false
 	screenshot_path = ""
 	bench_seconds = 0.0
+	settings = {}
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -57,6 +62,18 @@ static func parse_args(args: PackedStringArray) -> bool:
 				seed_text = value
 			"--creative":
 				game_mode = &"creative"
+			"--world-type":
+				settings["world_type"] = value
+			"--biome-size":
+				settings["biome_size"] = clampf(value.to_float(), 0.25, 8.0)
+			"--caves":
+				settings["caves"] = clampf(value.to_float(), 0.0, 3.0)
+			"--ores":
+				settings["ores"] = clampf(value.to_float(), 0.0, 3.0)
+			"--sea":
+				settings["sea_level"] = clampi(value.to_int(), 32, 96)
+			"--season":
+				settings["start_season"] = value
 			"--view":
 				view_distance = clampi(value.to_int(), 4, 32)
 			"--teleport":

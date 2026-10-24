@@ -13,15 +13,16 @@
 
 ## Подключено на этапе 1
 
-Группы `<группа>` берутся из поля `sounds` в `data/blocks.json`:
-`stone` (гранит, известняк, материнская порода), `dirt` (суглинок), `grass` (дернина), `sand`, `gravel`,
-`wood` (еловое бревно), `leaves` (хвоя), `water` (вода).
+Группы `<группа>` берутся из поля `sounds` в `data/blocks*.json`:
+`stone` (все породы, руды, кораллы), `dirt` (почвы, глина, торф), `grass` (дернина, растения, мох),
+`sand`, `gravel`, `wood` (брёвна, бамбук, гигантские грибы), `leaves` (листва и хвоя),
+`water`, `lava`, `snow` (снег, снежный покров), `glass` (лёд).
 
 | Ключ (файлы `<ключ>_01..06.ogg`) | Когда звучит | Статус |
 |---|---|---|
-| `footsteps/stone_`, `footsteps/dirt_`, `footsteps/grass_`, `footsteps/sand_`, `footsteps/gravel_`, `footsteps/wood_`, `footsteps/leaves_`, `footsteps/water_` | шаг игрока каждые 2 блока (4–6 вариаций) | ⬜ |
-| `blocks/stone_break_`, `blocks/dirt_break_`, `blocks/grass_break_`, `blocks/sand_break_`, `blocks/gravel_break_`, `blocks/wood_break_`, `blocks/leaves_break_`, `blocks/water_break_` | блок сломан (3–4 вариации) | ⬜ |
-| `blocks/stone_place_`, `blocks/dirt_place_`, `blocks/grass_place_`, `blocks/sand_place_`, `blocks/gravel_place_`, `blocks/wood_place_`, `blocks/leaves_place_`, `blocks/water_place_` | блок поставлен (3 вариации) | ⬜ |
+| `footsteps/stone_`, `footsteps/dirt_`, `footsteps/grass_`, `footsteps/sand_`, `footsteps/gravel_`, `footsteps/wood_`, `footsteps/leaves_`, `footsteps/water_`, `footsteps/lava_`, `footsteps/snow_`, `footsteps/glass_` | шаг игрока каждые 2 блока (4–6 вариаций) | ⬜ |
+| `blocks/stone_break_`, `blocks/dirt_break_`, `blocks/grass_break_`, `blocks/sand_break_`, `blocks/gravel_break_`, `blocks/wood_break_`, `blocks/leaves_break_`, `blocks/water_break_`, `blocks/lava_break_`, `blocks/snow_break_`, `blocks/glass_break_` | блок сломан (3–4 вариации) | ⬜ |
+| `blocks/stone_place_`, `blocks/dirt_place_`, `blocks/grass_place_`, `blocks/sand_place_`, `blocks/gravel_place_`, `blocks/wood_place_`, `blocks/leaves_place_`, `blocks/water_place_`, `blocks/lava_place_`, `blocks/snow_place_`, `blocks/glass_place_` | блок поставлен (3 вариации) | ⬜ |
 
 ## Будет подключено позже
 

@@ -8,6 +8,14 @@ var sections: Array[ChunkSection] = []
 var dirty := false
 ## Колонна пришла из сохранения, а не из генератора.
 var from_save := false
+## Индекс биома (в BiomeSource) для каждого столба x + z*16.
+var biomes := PackedByteArray()
+## Цвета биомов с блендингом: сетка 5×5 узлов (через 4 блока) × 8 каналов (сезон*2 + 0 трава, + 1 листва).
+## Не сохраняются: пересчитываются генератором по сиду.
+var tints := PackedColorArray()
+## Минимальная высота поверхности рельефа по колонне (до пещер). Секции целиком ниже неё
+## «глубокие»: их мешат только рядом с игроком (отсечение пещер).
+var surface_min := WorldConst.MAX_Y
 
 
 func _init(p_cpos: Vector2i = Vector2i.ZERO) -> void:
@@ -28,6 +36,10 @@ func get_block(lx: int, y: int, lz: int) -> int:
 	if s == null:
 		return 0
 	return s.get_block(WorldConst.local_index(lx, y & 15, lz))
+
+
+func biome_at(lx: int, lz: int) -> int:
+	return biomes[lx + lz * 16] if biomes.size() == 256 else -1
 
 
 func set_block(lx: int, y: int, lz: int, block: int) -> bool:

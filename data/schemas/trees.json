@@ -1,0 +1,85 @@
+{
+  "format": 1,
+  "category": "trees",
+  "description": "Виды деревьев: блоки и форма. Формы реализованы в src/world/gen/tree_builder.gd.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "log": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "required": true
+    },
+    "leaves": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "required": true
+    },
+    "shape": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "conifer",
+        "pine",
+        "round",
+        "oval",
+        "broad",
+        "willow",
+        "bush",
+        "palm",
+        "acacia",
+        "jungle",
+        "mangrove",
+        "bamboo",
+        "mushroom"
+      ]
+    },
+    "height": {
+      "type": "object",
+      "required": true,
+      "doc": "Высота ствола в блоках.",
+      "fields": {
+        "min": {
+          "type": "int",
+          "min": 1,
+          "max": 48,
+          "required": true
+        },
+        "max": {
+          "type": "int",
+          "min": 1,
+          "max": 48,
+          "required": true
+        }
+      }
+    },
+    "trunk_width": {
+      "type": "int",
+      "min": 1,
+      "max": 2,
+      "default": 1
+    },
+    "canopy_radius": {
+      "type": "float",
+      "min": 0.5,
+      "max": 9.0,
+      "default": 2.5
+    },
+    "in_water": {
+      "type": "bool",
+      "default": false,
+      "doc": "Может расти на мелководье (мангры)."
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "format": 1,
+  "category": "geology",
+  "description": "Геологические провинции (раздел 2.5): осадочный чехол, фундамент и глубинный слой. Провинции — крупные ячейки регионального шума.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "weight": {
+      "type": "float",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "doc": "Относительная частота."
+    },
+    "sediments": {
+      "type": "array",
+      "default": [],
+      "doc": "Слои сверху вниз под почвой.",
+      "of": {
+        "type": "object",
+        "fields": {
+          "block": {
+            "type": "ref",
+            "to": [
+              "blocks"
+            ],
+            "required": true
+          },
+          "thickness": {
+            "type": "object",
+            "required": true,
+            "doc": "",
+            "fields": {
+              "min": {
+                "type": "int",
+                "min": 0,
+                "max": 64,
+                "required": true
+              },
+              "max": {
+                "type": "int",
+                "min": 0,
+                "max": 64,
+                "required": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "basement": {
+      "type": "array",
+      "required": true,
+      "doc": "Фундамент сверху вниз; последний слой тянется до глубинного.",
+      "of": {
+        "type": "object",
+        "fields": {
+          "block": {
+            "type": "ref",
+            "to": [
+              "blocks"
+            ],
+            "required": true
+          },
+          "thickness": {
+            "type": "object",
+            "required": true,
+            "doc": "",
+            "fields": {
+              "min": {
+                "type": "int",
+                "min": 1,
+                "max": 400,
+                "required": true
+              },
+              "max": {
+                "type": "int",
+                "min": 1,
+                "max": 400,
+                "required": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "deep": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "required": true
+    },
+    "deep_top": {
+      "type": "int",
+      "min": -250,
+      "max": 0,
+      "default": -100
+    },
+    "deep_noise": {
+      "type": "int",
+      "min": 0,
+      "max": 32,
+      "default": 8
+    }
+  }
+}

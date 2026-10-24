@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "id": "normal",
+      "name": {
+        "ru": "Обычный",
+        "en": "Normal"
+      },
+      "preset": "default",
+      "order": 0
+    },
+    {
+      "id": "large_biomes",
+      "name": {
+        "ru": "Большие биомы",
+        "en": "Large Biomes"
+      },
+      "preset": "default",
+      "biome_scale": 4.0,
+      "order": 1
+    },
+    {
+      "id": "archipelago",
+      "name": {
+        "ru": "Архипелаг",
+        "en": "Archipelago"
+      },
+      "preset": "default",
+      "continental_offset": -0.32,
+      "continental_scale": 2.6,
+      "order": 2
+    },
+    {
+      "id": "mountainous",
+      "name": {
+        "ru": "Горный",
+        "en": "Mountainous"
+      },
+      "preset": "default",
+      "continental_offset": 0.12,
+      "mountain_scale": 1.8,
+      "order": 3
+    },
+    {
+      "id": "flat",
+      "name": {
+        "ru": "Плоский (для тестов)",
+        "en": "Flat (testing)"
+      },
+      "preset": "default",
+      "flat": true,
+      "order": 4
+    }
+  ]
+}

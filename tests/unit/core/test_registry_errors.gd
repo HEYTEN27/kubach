@@ -155,11 +155,11 @@ func test_duplicate_across_files_names_both() -> void:
 func test_category_without_schema_loads_with_warning() -> void:
 	dir = TempDataDir.new("noschema")
 	dir.write_entries("blocks.json", [TempDataDir.block("rock")])
-	dir.write_entries("biomes.json", [{ "id": "taiga", "temperature": -2 }])
+	dir.write_entries("widgets.json", [{ "id": "gear", "teeth": 12 }])
 	assert_true(reg.load_all(dir.path), _errors_text())
 	assert_eq(reg.warnings.size(), 1)
-	assert_eq(reg.get_entry("biomes", &"taiga")["temperature"], -2.0)
-	assert_eq(reg.categories(), PackedStringArray(["biomes", "blocks"]))
+	assert_eq(reg.get_entry("widgets", &"gear")["teeth"], 12.0)
+	assert_eq(reg.categories(), PackedStringArray(["blocks", "widgets"]))
 
 
 func test_blocks_without_schema_is_error() -> void:

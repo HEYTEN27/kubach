@@ -1,0 +1,1363 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "fir_log",
+   "name": {
+    "ru": "Пихта: бревно",
+    "en": "Fir Log"
+   },
+   "material": "wood",
+   "map_color": "#4f3e30",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "fir_log_end",
+    "bottom": "fir_log_end",
+    "side": "fir_bark"
+   },
+   "drops": [
+    {
+     "id": "fir_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "fir"
+   ]
+  },
+  {
+   "id": "fir_leaves",
+   "name": {
+    "ru": "Пихта: хвоя",
+    "en": "Fir Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#25402d",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.35,
+   "tags": [
+    "leaves",
+    "fir",
+    "decays"
+   ],
+   "textures": {
+    "all": "fir_leaves"
+   }
+  },
+  {
+   "id": "pine_log",
+   "name": {
+    "ru": "Сосна: бревно",
+    "en": "Pine Log"
+   },
+   "material": "wood",
+   "map_color": "#7a4f32",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "pine_log_end",
+    "bottom": "pine_log_end",
+    "side": "pine_bark"
+   },
+   "drops": [
+    {
+     "id": "pine_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "pine"
+   ]
+  },
+  {
+   "id": "pine_leaves",
+   "name": {
+    "ru": "Сосна: хвоя",
+    "en": "Pine Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#30502f",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.35,
+   "tags": [
+    "leaves",
+    "pine",
+    "decays"
+   ],
+   "textures": {
+    "all": "pine_leaves"
+   }
+  },
+  {
+   "id": "cedar_log",
+   "name": {
+    "ru": "Кедр: бревно",
+    "en": "Cedar Log"
+   },
+   "material": "wood",
+   "map_color": "#5a4130",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "cedar_log_end",
+    "bottom": "cedar_log_end",
+    "side": "cedar_bark"
+   },
+   "drops": [
+    {
+     "id": "cedar_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "cedar"
+   ]
+  },
+  {
+   "id": "cedar_leaves",
+   "name": {
+    "ru": "Кедр: хвоя",
+    "en": "Cedar Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#2a4a2c",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.35,
+   "tags": [
+    "leaves",
+    "cedar",
+    "decays"
+   ],
+   "textures": {
+    "all": "cedar_leaves"
+   }
+  },
+  {
+   "id": "larch_log",
+   "name": {
+    "ru": "Лиственница: бревно",
+    "en": "Larch Log"
+   },
+   "material": "wood",
+   "map_color": "#6b4a35",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "larch_log_end",
+    "bottom": "larch_log_end",
+    "side": "larch_bark"
+   },
+   "drops": [
+    {
+     "id": "larch_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "larch"
+   ]
+  },
+  {
+   "id": "larch_leaves",
+   "name": {
+    "ru": "Лиственница: хвоя",
+    "en": "Larch Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#5f8a3e",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "larch",
+    "decays"
+   ],
+   "textures": {
+    "all": "larch_leaves"
+   }
+  },
+  {
+   "id": "birch_log",
+   "name": {
+    "ru": "Берёза: бревно",
+    "en": "Birch Log"
+   },
+   "material": "wood",
+   "map_color": "#ddd8cc",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "birch_log_end",
+    "bottom": "birch_log_end",
+    "side": "birch_bark"
+   },
+   "drops": [
+    {
+     "id": "birch_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "birch"
+   ]
+  },
+  {
+   "id": "birch_leaves",
+   "name": {
+    "ru": "Берёза: листва",
+    "en": "Birch Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#6f9a45",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "birch",
+    "decays"
+   ],
+   "textures": {
+    "all": "birch_leaves"
+   }
+  },
+  {
+   "id": "aspen_log",
+   "name": {
+    "ru": "Осина: бревно",
+    "en": "Aspen Log"
+   },
+   "material": "wood",
+   "map_color": "#a8ad9a",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "aspen_log_end",
+    "bottom": "aspen_log_end",
+    "side": "aspen_bark"
+   },
+   "drops": [
+    {
+     "id": "aspen_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "aspen"
+   ]
+  },
+  {
+   "id": "aspen_leaves",
+   "name": {
+    "ru": "Осина: листва",
+    "en": "Aspen Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#6d9446",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "aspen",
+    "decays"
+   ],
+   "textures": {
+    "all": "aspen_leaves"
+   }
+  },
+  {
+   "id": "oak_log",
+   "name": {
+    "ru": "Дуб: бревно",
+    "en": "Oak Log"
+   },
+   "material": "wood",
+   "map_color": "#4e3a28",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "oak_log_end",
+    "bottom": "oak_log_end",
+    "side": "oak_bark"
+   },
+   "drops": [
+    {
+     "id": "oak_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "oak"
+   ]
+  },
+  {
+   "id": "oak_leaves",
+   "name": {
+    "ru": "Дуб: листва",
+    "en": "Oak Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#4b7533",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "oak",
+    "decays"
+   ],
+   "textures": {
+    "all": "oak_leaves"
+   }
+  },
+  {
+   "id": "maple_log",
+   "name": {
+    "ru": "Клён: бревно",
+    "en": "Maple Log"
+   },
+   "material": "wood",
+   "map_color": "#5a4430",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "maple_log_end",
+    "bottom": "maple_log_end",
+    "side": "maple_bark"
+   },
+   "drops": [
+    {
+     "id": "maple_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "maple"
+   ]
+  },
+  {
+   "id": "maple_leaves",
+   "name": {
+    "ru": "Клён: листва",
+    "en": "Maple Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#5a8a38",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.85,
+   "tags": [
+    "leaves",
+    "maple",
+    "decays"
+   ],
+   "textures": {
+    "all": "maple_leaves"
+   }
+  },
+  {
+   "id": "linden_log",
+   "name": {
+    "ru": "Липа: бревно",
+    "en": "Linden Log"
+   },
+   "material": "wood",
+   "map_color": "#5d4b3a",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "linden_log_end",
+    "bottom": "linden_log_end",
+    "side": "linden_bark"
+   },
+   "drops": [
+    {
+     "id": "linden_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "linden"
+   ]
+  },
+  {
+   "id": "linden_leaves",
+   "name": {
+    "ru": "Липа: листва",
+    "en": "Linden Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#5c8c3c",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "linden",
+    "decays"
+   ],
+   "textures": {
+    "all": "linden_leaves"
+   }
+  },
+  {
+   "id": "alder_log",
+   "name": {
+    "ru": "Ольха: бревно",
+    "en": "Alder Log"
+   },
+   "material": "wood",
+   "map_color": "#5e5246",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "alder_log_end",
+    "bottom": "alder_log_end",
+    "side": "alder_bark"
+   },
+   "drops": [
+    {
+     "id": "alder_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "alder"
+   ]
+  },
+  {
+   "id": "alder_leaves",
+   "name": {
+    "ru": "Ольха: листва",
+    "en": "Alder Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#3f6a33",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "alder",
+    "decays"
+   ],
+   "textures": {
+    "all": "alder_leaves"
+   }
+  },
+  {
+   "id": "willow_log",
+   "name": {
+    "ru": "Ива: бревно",
+    "en": "Willow Log"
+   },
+   "material": "wood",
+   "map_color": "#5b5240",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "willow_log_end",
+    "bottom": "willow_log_end",
+    "side": "willow_bark"
+   },
+   "drops": [
+    {
+     "id": "willow_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "willow"
+   ]
+  },
+  {
+   "id": "willow_leaves",
+   "name": {
+    "ru": "Ива: листва",
+    "en": "Willow Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#7a9a4a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.7,
+   "tags": [
+    "leaves",
+    "willow",
+    "decays"
+   ],
+   "textures": {
+    "all": "willow_leaves"
+   }
+  },
+  {
+   "id": "rowan_log",
+   "name": {
+    "ru": "Рябина: бревно",
+    "en": "Rowan Log"
+   },
+   "material": "wood",
+   "map_color": "#6a5a4a",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "rowan_log_end",
+    "bottom": "rowan_log_end",
+    "side": "rowan_bark"
+   },
+   "drops": [
+    {
+     "id": "rowan_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "rowan"
+   ]
+  },
+  {
+   "id": "rowan_leaves",
+   "name": {
+    "ru": "Рябина: листва",
+    "en": "Rowan Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#55823a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "rowan",
+    "decays"
+   ],
+   "textures": {
+    "all": "rowan_leaves"
+   }
+  },
+  {
+   "id": "bird_cherry_log",
+   "name": {
+    "ru": "Черёмуха: бревно",
+    "en": "Bird Cherry Log"
+   },
+   "material": "wood",
+   "map_color": "#4a3e36",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "bird_cherry_log_end",
+    "bottom": "bird_cherry_log_end",
+    "side": "bird_cherry_bark"
+   },
+   "drops": [
+    {
+     "id": "bird_cherry_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "bird_cherry"
+   ]
+  },
+  {
+   "id": "bird_cherry_leaves",
+   "name": {
+    "ru": "Черёмуха: листва",
+    "en": "Bird Cherry Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#4e7c38",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "bird_cherry",
+    "decays"
+   ],
+   "textures": {
+    "all": "bird_cherry_leaves"
+   }
+  },
+  {
+   "id": "apple_log",
+   "name": {
+    "ru": "Яблоня: бревно",
+    "en": "Apple Log"
+   },
+   "material": "wood",
+   "map_color": "#5c4636",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "apple_log_end",
+    "bottom": "apple_log_end",
+    "side": "apple_bark"
+   },
+   "drops": [
+    {
+     "id": "apple_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "apple"
+   ]
+  },
+  {
+   "id": "apple_leaves",
+   "name": {
+    "ru": "Яблоня: листва",
+    "en": "Apple Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#5a8a3a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "apple",
+    "decays"
+   ],
+   "textures": {
+    "all": "apple_leaves"
+   }
+  },
+  {
+   "id": "pear_log",
+   "name": {
+    "ru": "Груша: бревно",
+    "en": "Pear Log"
+   },
+   "material": "wood",
+   "map_color": "#58463a",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "pear_log_end",
+    "bottom": "pear_log_end",
+    "side": "pear_bark"
+   },
+   "drops": [
+    {
+     "id": "pear_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "pear"
+   ]
+  },
+  {
+   "id": "pear_leaves",
+   "name": {
+    "ru": "Груша: листва",
+    "en": "Pear Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#55863a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "pear",
+    "decays"
+   ],
+   "textures": {
+    "all": "pear_leaves"
+   }
+  },
+  {
+   "id": "cherry_log",
+   "name": {
+    "ru": "Вишня: бревно",
+    "en": "Cherry Log"
+   },
+   "material": "wood",
+   "map_color": "#5a3a34",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "cherry_log_end",
+    "bottom": "cherry_log_end",
+    "side": "cherry_bark"
+   },
+   "drops": [
+    {
+     "id": "cherry_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "cherry"
+   ]
+  },
+  {
+   "id": "cherry_leaves",
+   "name": {
+    "ru": "Вишня: листва",
+    "en": "Cherry Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#4f8238",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "cherry",
+    "decays"
+   ],
+   "textures": {
+    "all": "cherry_leaves"
+   }
+  },
+  {
+   "id": "plum_log",
+   "name": {
+    "ru": "Слива: бревно",
+    "en": "Plum Log"
+   },
+   "material": "wood",
+   "map_color": "#4d3a35",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "plum_log_end",
+    "bottom": "plum_log_end",
+    "side": "plum_bark"
+   },
+   "drops": [
+    {
+     "id": "plum_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "plum"
+   ]
+  },
+  {
+   "id": "plum_leaves",
+   "name": {
+    "ru": "Слива: листва",
+    "en": "Plum Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#4c7d38",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "plum",
+    "decays"
+   ],
+   "textures": {
+    "all": "plum_leaves"
+   }
+  },
+  {
+   "id": "apricot_log",
+   "name": {
+    "ru": "Абрикос: бревно",
+    "en": "Apricot Log"
+   },
+   "material": "wood",
+   "map_color": "#5b4234",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "apricot_log_end",
+    "bottom": "apricot_log_end",
+    "side": "apricot_bark"
+   },
+   "drops": [
+    {
+     "id": "apricot_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "apricot"
+   ]
+  },
+  {
+   "id": "apricot_leaves",
+   "name": {
+    "ru": "Абрикос: листва",
+    "en": "Apricot Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#5c8a3a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.75,
+   "tags": [
+    "leaves",
+    "apricot",
+    "decays"
+   ],
+   "textures": {
+    "all": "apricot_leaves"
+   }
+  },
+  {
+   "id": "hazel_log",
+   "name": {
+    "ru": "Орешник: бревно",
+    "en": "Hazel Log"
+   },
+   "material": "wood",
+   "map_color": "#6b5440",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "hazel_log_end",
+    "bottom": "hazel_log_end",
+    "side": "hazel_bark"
+   },
+   "drops": [
+    {
+     "id": "hazel_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "hazel"
+   ]
+  },
+  {
+   "id": "hazel_leaves",
+   "name": {
+    "ru": "Орешник: листва",
+    "en": "Hazel Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#56853a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "hazel",
+    "decays"
+   ],
+   "textures": {
+    "all": "hazel_leaves"
+   }
+  },
+  {
+   "id": "palm_log",
+   "name": {
+    "ru": "Пальма: бревно",
+    "en": "Palm Log"
+   },
+   "material": "wood",
+   "map_color": "#8a7350",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "palm_log_end",
+    "bottom": "palm_log_end",
+    "side": "palm_bark"
+   },
+   "drops": [
+    {
+     "id": "palm_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "palm"
+   ]
+  },
+  {
+   "id": "palm_leaves",
+   "name": {
+    "ru": "Пальма: листья",
+    "en": "Palm Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#4d8f3a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.5,
+   "tags": [
+    "leaves",
+    "palm",
+    "decays"
+   ],
+   "textures": {
+    "all": "palm_leaves"
+   }
+  },
+  {
+   "id": "acacia_log",
+   "name": {
+    "ru": "Акация: бревно",
+    "en": "Acacia Log"
+   },
+   "material": "wood",
+   "map_color": "#6b5a48",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "acacia_log_end",
+    "bottom": "acacia_log_end",
+    "side": "acacia_bark"
+   },
+   "drops": [
+    {
+     "id": "acacia_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "acacia"
+   ]
+  },
+  {
+   "id": "acacia_leaves",
+   "name": {
+    "ru": "Акация: листва",
+    "en": "Acacia Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#6f8a35",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.6,
+   "tags": [
+    "leaves",
+    "acacia",
+    "decays"
+   ],
+   "textures": {
+    "all": "acacia_leaves"
+   }
+  },
+  {
+   "id": "jungle_log",
+   "name": {
+    "ru": "Тропическое дерево: бревно",
+    "en": "Jungle Tree Log"
+   },
+   "material": "wood",
+   "map_color": "#5a4630",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "jungle_log_end",
+    "bottom": "jungle_log_end",
+    "side": "jungle_bark"
+   },
+   "drops": [
+    {
+     "id": "jungle_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "jungle"
+   ]
+  },
+  {
+   "id": "jungle_leaves",
+   "name": {
+    "ru": "Тропическое дерево: листва",
+    "en": "Jungle Tree Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#2f7a2a",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.6,
+   "tags": [
+    "leaves",
+    "jungle",
+    "decays"
+   ],
+   "textures": {
+    "all": "jungle_leaves"
+   }
+  },
+  {
+   "id": "mangrove_log",
+   "name": {
+    "ru": "Мангр: бревно",
+    "en": "Mangrove Log"
+   },
+   "material": "wood",
+   "map_color": "#5a3d33",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "mangrove_log_end",
+    "bottom": "mangrove_log_end",
+    "side": "mangrove_bark"
+   },
+   "drops": [
+    {
+     "id": "mangrove_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "mangrove"
+   ]
+  },
+  {
+   "id": "mangrove_leaves",
+   "name": {
+    "ru": "Мангр: листва",
+    "en": "Mangrove Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#3f7034",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.6,
+   "tags": [
+    "leaves",
+    "mangrove",
+    "decays"
+   ],
+   "textures": {
+    "all": "mangrove_leaves"
+   }
+  },
+  {
+   "id": "dwarf_birch_log",
+   "name": {
+    "ru": "Карликовая берёза: бревно",
+    "en": "Dwarf Birch Log"
+   },
+   "material": "wood",
+   "map_color": "#9a8e7c",
+   "hardness": 3.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "top": "dwarf_birch_log_end",
+    "bottom": "dwarf_birch_log_end",
+    "side": "dwarf_birch_bark"
+   },
+   "drops": [
+    {
+     "id": "dwarf_birch_log"
+    }
+   ],
+   "tags": [
+    "log",
+    "dwarf_birch"
+   ]
+  },
+  {
+   "id": "dwarf_birch_leaves",
+   "name": {
+    "ru": "Карликовая берёза: листва",
+    "en": "Dwarf Birch Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#7a8a45",
+   "render": "cutout",
+   "hardness": 0.3,
+   "tool": "shears",
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.8,
+   "tags": [
+    "leaves",
+    "dwarf_birch",
+    "decays"
+   ],
+   "textures": {
+    "all": "dwarf_birch_leaves"
+   }
+  },
+  {
+   "id": "bamboo_stalk",
+   "name": {
+    "ru": "Бамбук",
+    "en": "Bamboo"
+   },
+   "material": "wood",
+   "map_color": "#7da042",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 1.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "tags": [
+    "bamboo"
+   ],
+   "drops": [
+    {
+     "id": "bamboo_stalk"
+    }
+   ],
+   "textures": {
+    "all": "bamboo_stalk"
+   }
+  },
+  {
+   "id": "bamboo_leaves",
+   "name": {
+    "ru": "Бамбук: листья",
+    "en": "Bamboo Leaves"
+   },
+   "material": "leaves",
+   "map_color": "#6c9d3c",
+   "render": "cutout",
+   "hardness": 0.2,
+   "light_filter": 1,
+   "flammable": true,
+   "sounds": "leaves",
+   "tint": "foliage",
+   "tint_strength": 0.4,
+   "tags": [
+    "leaves",
+    "bamboo",
+    "decays"
+   ],
+   "textures": {
+    "all": "bamboo_leaves"
+   }
+  },
+  {
+   "id": "mushroom_stem",
+   "name": {
+    "ru": "Ножка гигантского гриба",
+    "en": "Mushroom Stem"
+   },
+   "material": "wood",
+   "map_color": "#d9d2c0",
+   "hardness": 1.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "tags": [
+    "mushroom"
+   ],
+   "drops": [
+    {
+     "id": "mushroom_stem"
+    }
+   ],
+   "textures": {
+    "all": "mushroom_stem"
+   }
+  },
+  {
+   "id": "red_mushroom_cap",
+   "name": {
+    "ru": "Шляпка красного гриба",
+    "en": "Red Mushroom Cap"
+   },
+   "material": "wood",
+   "map_color": "#b3302a",
+   "hardness": 1.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "tags": [
+    "mushroom"
+   ],
+   "textures": {
+    "all": "red_mushroom_cap"
+   }
+  },
+  {
+   "id": "brown_mushroom_cap",
+   "name": {
+    "ru": "Шляпка бурого гриба",
+    "en": "Brown Mushroom Cap"
+   },
+   "material": "wood",
+   "map_color": "#8a6a4a",
+   "hardness": 1.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "tags": [
+    "mushroom"
+   ],
+   "textures": {
+    "all": "brown_mushroom_cap"
+   }
+  }
+ ]
+}

@@ -1,0 +1,742 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "peridotite_pockets",
+   "block": "peridotite",
+   "shape": "blob",
+   "hosts": [
+    "deepslate"
+   ],
+   "y_min": -250,
+   "y_max": -100,
+   "per_column": 2.0,
+   "size": {
+    "min": 30,
+    "max": 80
+   }
+  },
+  {
+   "id": "gravel_pockets",
+   "block": "gravel",
+   "shape": "blob",
+   "hosts": [
+    "granite",
+    "limestone",
+    "sandstone",
+    "shale",
+    "gneiss",
+    "diorite",
+    "andesite"
+   ],
+   "y_min": -100,
+   "y_max": 60,
+   "per_column": 0.8,
+   "size": {
+    "min": 15,
+    "max": 40
+   }
+  },
+  {
+   "id": "clay_pockets",
+   "block": "clay",
+   "shape": "blob",
+   "hosts": [
+    "loam",
+    "sand",
+    "silt",
+    "chernozem"
+   ],
+   "y_min": 30,
+   "y_max": 80,
+   "per_column": 0.5,
+   "size": {
+    "min": 10,
+    "max": 30
+   }
+  },
+  {
+   "id": "native_copper",
+   "block": "native_copper_ore",
+   "shape": "blob",
+   "hosts": [
+    "basalt",
+    "andesite",
+    "gabbro",
+    "sandstone",
+    "tuff"
+   ],
+   "y_min": -40,
+   "y_max": 70,
+   "per_column": 1.2,
+   "size": {
+    "min": 4,
+    "max": 10
+   },
+   "provinces": [
+    "volcanic_province",
+    "sedimentary_basin"
+   ]
+  },
+  {
+   "id": "malachite",
+   "block": "malachite_ore",
+   "shape": "blob",
+   "hosts": [
+    "limestone",
+    "dolomite",
+    "sandstone",
+    "marble"
+   ],
+   "y_min": -30,
+   "y_max": 60,
+   "per_column": 1.0,
+   "size": {
+    "min": 4,
+    "max": 9
+   }
+  },
+  {
+   "id": "cassiterite",
+   "block": "cassiterite_ore",
+   "shape": "vein",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "quartzite",
+    "diorite"
+   ],
+   "y_min": -90,
+   "y_max": 30,
+   "per_column": 0.8,
+   "size": {
+    "min": 4,
+    "max": 10
+   }
+  },
+  {
+   "id": "hematite",
+   "block": "hematite_ore",
+   "shape": "blob",
+   "hosts": [
+    "sandstone",
+    "shale",
+    "limestone",
+    "quartzite",
+    "granite",
+    "red_sandstone"
+   ],
+   "y_min": -100,
+   "y_max": 50,
+   "per_column": 1.4,
+   "size": {
+    "min": 5,
+    "max": 12
+   }
+  },
+  {
+   "id": "magnetite",
+   "block": "magnetite_ore",
+   "shape": "blob",
+   "hosts": [
+    "gabbro",
+    "diorite",
+    "basalt",
+    "gneiss",
+    "serpentinite",
+    "deepslate"
+   ],
+   "y_min": -180,
+   "y_max": 0,
+   "per_column": 1.0,
+   "size": {
+    "min": 5,
+    "max": 14
+   }
+  },
+  {
+   "id": "bog_iron",
+   "block": "bog_iron_ore",
+   "shape": "placer",
+   "hosts": [
+    "peat",
+    "silt",
+    "loam"
+   ],
+   "y_min": -256,
+   "y_max": 319,
+   "per_column": 0.06,
+   "size": {
+    "min": 1,
+    "max": 1
+   },
+   "biomes": [
+    "taiga_swamp",
+    "temperate_swamp"
+   ],
+   "depth": {
+    "min": 1,
+    "max": 3
+   }
+  },
+  {
+   "id": "galena",
+   "block": "galena_ore",
+   "shape": "vein",
+   "hosts": [
+    "limestone",
+    "dolomite",
+    "shale",
+    "marble"
+   ],
+   "y_min": -120,
+   "y_max": 0,
+   "per_column": 0.8,
+   "size": {
+    "min": 4,
+    "max": 10
+   }
+  },
+  {
+   "id": "sphalerite",
+   "block": "sphalerite_ore",
+   "shape": "vein",
+   "hosts": [
+    "limestone",
+    "dolomite",
+    "shale",
+    "marble"
+   ],
+   "y_min": -120,
+   "y_max": 0,
+   "per_column": 0.7,
+   "size": {
+    "min": 4,
+    "max": 10
+   }
+  },
+  {
+   "id": "pentlandite",
+   "block": "pentlandite_ore",
+   "shape": "blob",
+   "hosts": [
+    "gabbro",
+    "peridotite",
+    "serpentinite",
+    "deepslate"
+   ],
+   "y_min": -220,
+   "y_max": -60,
+   "per_column": 0.5,
+   "size": {
+    "min": 4,
+    "max": 8
+   }
+  },
+  {
+   "id": "bauxite",
+   "block": "bauxite",
+   "shape": "layer",
+   "hosts": [
+    "limestone",
+    "sandstone",
+    "loam",
+    "dolomite"
+   ],
+   "y_min": 20,
+   "y_max": 80,
+   "per_column": 0.4,
+   "size": {
+    "min": 20,
+    "max": 60
+   },
+   "provinces": [
+    "carbonate_platform"
+   ]
+  },
+  {
+   "id": "native_silver",
+   "block": "native_silver_ore",
+   "shape": "vein",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "quartzite",
+    "diorite",
+    "deepslate"
+   ],
+   "y_min": -200,
+   "y_max": -60,
+   "per_column": 0.5,
+   "size": {
+    "min": 3,
+    "max": 7
+   }
+  },
+  {
+   "id": "gold_quartz",
+   "block": "gold_quartz_ore",
+   "shape": "vein",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "quartzite",
+    "slate",
+    "deepslate"
+   ],
+   "y_min": -240,
+   "y_max": -40,
+   "per_column": 0.45,
+   "size": {
+    "min": 3,
+    "max": 8
+   }
+  },
+  {
+   "id": "gold_placer",
+   "block": "gold_gravel",
+   "shape": "placer",
+   "hosts": [
+    "gravel",
+    "sand"
+   ],
+   "y_min": -256,
+   "y_max": 319,
+   "per_column": 0.08,
+   "size": {
+    "min": 1,
+    "max": 1
+   },
+   "biomes": [
+    "river",
+    "frozen_river"
+   ],
+   "depth": {
+    "min": 0,
+    "max": 1
+   }
+  },
+  {
+   "id": "platinum",
+   "block": "platinum_ore",
+   "shape": "blob",
+   "hosts": [
+    "peridotite",
+    "deepslate",
+    "serpentinite"
+   ],
+   "y_min": -250,
+   "y_max": -150,
+   "per_column": 0.25,
+   "size": {
+    "min": 2,
+    "max": 5
+   }
+  },
+  {
+   "id": "lignite",
+   "block": "lignite_ore",
+   "shape": "layer",
+   "hosts": [
+    "shale",
+    "sandstone",
+    "clay",
+    "limestone"
+   ],
+   "y_min": -10,
+   "y_max": 70,
+   "per_column": 0.6,
+   "size": {
+    "min": 20,
+    "max": 60
+   },
+   "provinces": [
+    "sedimentary_basin",
+    "carbonate_platform"
+   ]
+  },
+  {
+   "id": "coal",
+   "block": "coal_ore",
+   "shape": "layer",
+   "hosts": [
+    "shale",
+    "sandstone",
+    "limestone",
+    "conglomerate"
+   ],
+   "y_min": -80,
+   "y_max": 40,
+   "per_column": 0.9,
+   "size": {
+    "min": 20,
+    "max": 80
+   }
+  },
+  {
+   "id": "anthracite",
+   "block": "anthracite_ore",
+   "shape": "layer",
+   "hosts": [
+    "slate",
+    "shale",
+    "gneiss"
+   ],
+   "y_min": -160,
+   "y_max": -40,
+   "per_column": 0.5,
+   "size": {
+    "min": 15,
+    "max": 40
+   }
+  },
+  {
+   "id": "sulfur",
+   "block": "sulfur_ore",
+   "shape": "blob",
+   "hosts": [
+    "basalt",
+    "tuff",
+    "andesite",
+    "pumice"
+   ],
+   "y_min": -100,
+   "y_max": 80,
+   "per_column": 1.2,
+   "size": {
+    "min": 3,
+    "max": 8
+   },
+   "provinces": [
+    "volcanic_province"
+   ]
+  },
+  {
+   "id": "sulfur_crust",
+   "block": "sulfur_ore",
+   "shape": "placer",
+   "hosts": [
+    "basalt",
+    "tuff",
+    "pumice"
+   ],
+   "y_min": -256,
+   "y_max": 319,
+   "per_column": 0.03,
+   "size": {
+    "min": 1,
+    "max": 1
+   },
+   "biomes": [
+    "volcanic_plateau"
+   ],
+   "depth": {
+    "min": 0,
+    "max": 2
+   }
+  },
+  {
+   "id": "saltpeter",
+   "block": "saltpeter_ore",
+   "shape": "blob",
+   "hosts": [
+    "limestone",
+    "dolomite",
+    "chalk"
+   ],
+   "y_min": -60,
+   "y_max": 50,
+   "per_column": 0.8,
+   "size": {
+    "min": 3,
+    "max": 8
+   }
+  },
+  {
+   "id": "rock_salt",
+   "block": "rock_salt",
+   "shape": "layer",
+   "hosts": [
+    "shale",
+    "limestone",
+    "sandstone",
+    "dolomite"
+   ],
+   "y_min": -150,
+   "y_max": -20,
+   "per_column": 0.35,
+   "size": {
+    "min": 40,
+    "max": 120
+   }
+  },
+  {
+   "id": "salt_crust",
+   "block": "rock_salt",
+   "shape": "placer",
+   "hosts": [
+    "sand",
+    "clay",
+    "red_sand"
+   ],
+   "y_min": -256,
+   "y_max": 319,
+   "per_column": 0.02,
+   "size": {
+    "min": 1,
+    "max": 1
+   },
+   "biomes": [
+    "sand_desert",
+    "steppe",
+    "rocky_desert"
+   ],
+   "depth": {
+    "min": 0,
+    "max": 0
+   }
+  },
+  {
+   "id": "quartz",
+   "block": "quartz",
+   "shape": "vein",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "sandstone",
+    "quartzite",
+    "slate"
+   ],
+   "y_min": -200,
+   "y_max": 60,
+   "per_column": 1.0,
+   "size": {
+    "min": 6,
+    "max": 14
+   }
+  },
+  {
+   "id": "silica_sand",
+   "block": "silica_sand",
+   "shape": "placer",
+   "hosts": [
+    "sand"
+   ],
+   "y_min": -256,
+   "y_max": 319,
+   "per_column": 0.25,
+   "size": {
+    "min": 1,
+    "max": 1
+   },
+   "biomes": [
+    "beach",
+    "sand_desert",
+    "river"
+   ],
+   "depth": {
+    "min": 1,
+    "max": 5
+   }
+  },
+  {
+   "id": "spodumene",
+   "block": "spodumene_ore",
+   "shape": "vein",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "deepslate"
+   ],
+   "y_min": -250,
+   "y_max": -120,
+   "per_column": 0.35,
+   "size": {
+    "min": 3,
+    "max": 7
+   }
+  },
+  {
+   "id": "graphite",
+   "block": "graphite_ore",
+   "shape": "blob",
+   "hosts": [
+    "marble",
+    "gneiss",
+    "slate",
+    "quartzite"
+   ],
+   "y_min": -150,
+   "y_max": 20,
+   "per_column": 0.6,
+   "size": {
+    "min": 4,
+    "max": 9
+   },
+   "provinces": [
+    "metamorphic_belt"
+   ]
+  },
+  {
+   "id": "amethyst_geode",
+   "block": "amethyst",
+   "shape": "geode",
+   "hosts": [
+    "granite",
+    "limestone",
+    "sandstone",
+    "red_sandstone",
+    "dolomite",
+    "chalk",
+    "shale",
+    "conglomerate",
+    "marble",
+    "slate",
+    "quartzite",
+    "gneiss",
+    "serpentinite",
+    "diorite",
+    "gabbro",
+    "andesite",
+    "basalt",
+    "tuff",
+    "deepslate",
+    "peridotite"
+   ],
+   "y_min": -200,
+   "y_max": -20,
+   "per_column": 0.06,
+   "size": {
+    "min": 4,
+    "max": 6
+   },
+   "shell": "calcite"
+  },
+  {
+   "id": "topaz",
+   "block": "topaz_ore",
+   "shape": "blob",
+   "hosts": [
+    "granite",
+    "gneiss"
+   ],
+   "y_min": -200,
+   "y_max": -80,
+   "per_column": 0.25,
+   "size": {
+    "min": 1,
+    "max": 3
+   }
+  },
+  {
+   "id": "garnet",
+   "block": "garnet_ore",
+   "shape": "blob",
+   "hosts": [
+    "gneiss",
+    "slate",
+    "quartzite",
+    "marble"
+   ],
+   "y_min": -180,
+   "y_max": -60,
+   "per_column": 0.3,
+   "size": {
+    "min": 1,
+    "max": 3
+   }
+  },
+  {
+   "id": "emerald",
+   "block": "emerald_ore",
+   "shape": "blob",
+   "hosts": [
+    "granite",
+    "gneiss",
+    "marble",
+    "deepslate"
+   ],
+   "y_min": -240,
+   "y_max": -120,
+   "per_column": 0.15,
+   "size": {
+    "min": 1,
+    "max": 2
+   }
+  },
+  {
+   "id": "sapphire",
+   "block": "sapphire_ore",
+   "shape": "blob",
+   "hosts": [
+    "marble",
+    "gneiss",
+    "basalt",
+    "deepslate"
+   ],
+   "y_min": -250,
+   "y_max": -130,
+   "per_column": 0.12,
+   "size": {
+    "min": 1,
+    "max": 2
+   }
+  },
+  {
+   "id": "ruby",
+   "block": "ruby_ore",
+   "shape": "blob",
+   "hosts": [
+    "marble",
+    "gneiss",
+    "deepslate"
+   ],
+   "y_min": -250,
+   "y_max": -130,
+   "per_column": 0.12,
+   "size": {
+    "min": 1,
+    "max": 2
+   }
+  },
+  {
+   "id": "kimberlite_pipe",
+   "block": "kimberlite",
+   "shape": "pipe",
+   "hosts": [
+    "granite",
+    "limestone",
+    "sandstone",
+    "red_sandstone",
+    "dolomite",
+    "chalk",
+    "shale",
+    "conglomerate",
+    "marble",
+    "slate",
+    "quartzite",
+    "gneiss",
+    "serpentinite",
+    "diorite",
+    "gabbro",
+    "andesite",
+    "basalt",
+    "tuff",
+    "deepslate",
+    "peridotite"
+   ],
+   "y_min": -249,
+   "y_max": -40,
+   "per_column": 0.012,
+   "size": {
+    "min": 2,
+    "max": 4
+   },
+   "inclusion": {
+    "block": "diamond_ore",
+    "chance": 0.025,
+    "y_max": -180
+   }
+  }
+ ]
+}

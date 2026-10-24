@@ -1,0 +1,220 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "snow_layer",
+   "name": {
+    "ru": "Снежный покров",
+    "en": "Snow Layer"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.125,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.1,
+   "tool": "shovel",
+   "tags": [
+    "snow"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   }
+  },
+  {
+   "id": "moss_carpet",
+   "name": {
+    "ru": "Мох",
+    "en": "Moss"
+   },
+   "material": "plant",
+   "map_color": "#4f7a3a",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.0625,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "grass",
+   "hardness": 0.1,
+   "tint": "grass",
+   "tint_strength": 0.4,
+   "tags": [
+    "plant",
+    "moss"
+   ],
+   "textures": {
+    "all": "moss_carpet"
+   }
+  },
+  {
+   "id": "lichen_carpet",
+   "name": {
+    "ru": "Лишайник",
+    "en": "Lichen"
+   },
+   "material": "plant",
+   "map_color": "#a8ad8a",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.0625,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "grass",
+   "hardness": 0.1,
+   "tags": [
+    "plant",
+    "lichen"
+   ],
+   "textures": {
+    "all": "lichen_carpet"
+   }
+  },
+  {
+   "id": "water_lily",
+   "name": {
+    "ru": "Кувшинка",
+    "en": "Water Lily"
+   },
+   "material": "plant",
+   "map_color": "#3f8a3a",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.03,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "grass",
+   "hardness": 0.0,
+   "tags": [
+    "plant",
+    "flower",
+    "on_water"
+   ],
+   "textures": {
+    "all": "water_lily"
+   }
+  },
+  {
+   "id": "fallen_leaves",
+   "name": {
+    "ru": "Опавшая листва",
+    "en": "Fallen Leaves"
+   },
+   "material": "plant",
+   "map_color": "#8a6a30",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.0625,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "leaves",
+   "hardness": 0.0,
+   "tint": "foliage",
+   "tint_strength": 0.5,
+   "tags": [
+    "plant"
+   ],
+   "textures": {
+    "all": "fallen_leaves"
+   }
+  },
+  {
+   "id": "cactus",
+   "name": {
+    "ru": "Кактус",
+    "en": "Cactus"
+   },
+   "material": "plant",
+   "map_color": "#3f7a3a",
+   "hardness": 0.5,
+   "sounds": "grass",
+   "tags": [
+    "plant",
+    "dry",
+    "spiky"
+   ],
+   "drops": [
+    {
+     "id": "cactus"
+    }
+   ],
+   "textures": {
+    "all": "cactus"
+   }
+  },
+  {
+   "id": "coral_red",
+   "name": {
+    "ru": "Красный коралл",
+    "en": "Red Coral"
+   },
+   "material": "stone",
+   "map_color": "#d04a4a",
+   "hardness": 1.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "tags": [
+    "coral"
+   ],
+   "textures": {
+    "all": "coral_red"
+   }
+  },
+  {
+   "id": "coral_yellow",
+   "name": {
+    "ru": "Жёлтый коралл",
+    "en": "Yellow Coral"
+   },
+   "material": "stone",
+   "map_color": "#e0c040",
+   "hardness": 1.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "tags": [
+    "coral"
+   ],
+   "textures": {
+    "all": "coral_yellow"
+   }
+  },
+  {
+   "id": "coral_blue",
+   "name": {
+    "ru": "Синий коралл",
+    "en": "Blue Coral"
+   },
+   "material": "stone",
+   "map_color": "#3a6ad0",
+   "hardness": 1.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "tags": [
+    "coral"
+   ],
+   "textures": {
+    "all": "coral_blue"
+   }
+  },
+  {
+   "id": "coral_pink",
+   "name": {
+    "ru": "Розовый коралл",
+    "en": "Pink Coral"
+   },
+   "material": "stone",
+   "map_color": "#e07ab0",
+   "hardness": 1.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "tags": [
+    "coral"
+   ],
+   "textures": {
+    "all": "coral_pink"
+   }
+  }
+ ]
+}

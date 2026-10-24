@@ -13,12 +13,55 @@ var uniform := 0
 var blocks := PackedInt32Array()
 ## Растёт при каждом изменении; мешер по нему понимает, что результат устарел.
 var version := 0
+## Все блоки — непрозрачные кубы (секция ничего не показывает и всё закрывает).
+## Ложное значение безопасно: только отключает быстрый пропуск мешинга.
+var all_opaque := false
+## Есть блоки нестандартной формы (растения, слои) — мешеру нужен отдельный проход.
+var has_special := false
 
 
 static func filled(block: int) -> ChunkSection:
 	var s := ChunkSection.new()
 	s.uniform = block
 	return s
+
+
+## Пересчитывает флаги по массивам реестра (opaque[n] == 1, shape[n] != куб).
+func analyze(opaque: PackedByteArray, shape: PackedByteArray) -> void:
+	if blocks.is_empty():
+		all_opaque = opaque[uniform] == 1
+		has_special = shape[uniform] != 0
+		return
+	var seen := {}
+	all_opaque = true
+	has_special = false
+	for b in blocks:
+		if seen.has(b):
+			continue
+		seen[b] = true
+		if opaque[b] != 1:
+			all_opaque = false
+		if shape[b] != 0:
+			has_special = true
+
+
+## Обновление флагов при записи одного блока (консервативно).
+func note_block(block: int, opaque: PackedByteArray, shape: PackedByteArray) -> void:
+	if opaque[block] != 1:
+		all_opaque = false
+	if shape[block] != 0:
+		has_special = true
+
+
+## Разворачивает однородную секцию в массив без копирования ссылок —
+## только для генератора, пока секцию никто не видел.
+func ensure_array() -> PackedInt32Array:
+	if blocks.is_empty():
+		var arr := PackedInt32Array()
+		arr.resize(WorldConst.SECTION_VOLUME)
+		arr.fill(uniform)
+		blocks = arr
+	return blocks
 
 
 func is_uniform() -> bool:

@@ -1,6 +1,6 @@
 extends RefCounted
-## Greedy-мешинг секции с поверхностью рельефа (худший типичный случай) вместе с соседями.
-## Бюджет — < 2 мс на 6-ядерном CPU в одном потоке.
+## Greedy-мешинг секции с поверхностью рельефа (худший типичный случай: трава, цветы, листва,
+## цвета биомов) вместе с соседями. Бюджет — < 2 мс на 6-ядерном CPU в одном потоке.
 
 var name := "mesh_surface_section"
 var iterations := 30
@@ -20,8 +20,9 @@ func setup() -> void:
 			cols[d] = gen.generate_column(cpos + d)
 		var center: ChunkColumn = cols[Vector2i.ZERO]
 		# Самая «смешанная» секция колонны — с поверхностью.
-		var si := WorldConst.section_index(center.top_block_y(8, 8))
+		var si := WorldConst.section_index(gen.surface_height(cpos.x * 16 + 8, cpos.y * 16 + 8) + 1)
 		_jobs.append([
+			center.tints,
 			GreedyMesher.snapshot(center.sections[si]),
 			[
 				GreedyMesher.snapshot(cols[Vector2i(-1, 0)].sections[si]),
@@ -36,7 +37,7 @@ func setup() -> void:
 
 func run() -> void:
 	var job: Array = _jobs[_i % _jobs.size()]
-	_mesher.mesh_section(job[0], job[1])
+	_mesher.mesh_section(job[1], job[2], job[0], 1)
 	_i += 1
 
 

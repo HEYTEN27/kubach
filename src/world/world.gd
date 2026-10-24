@@ -20,21 +20,24 @@ var chunks: ChunkManager
 ## null — временный мир без сохранения (бенчмарк, тесты).
 var save: WorldSave
 var world_seed := 0
+var settings: WorldGenSettings
 var game_mode: StringName = &"survival"
 var origin := Vector3i.ZERO
 ## Тела, внутрь которых нельзя ставить блоки.
 var bodies: Array[VoxelBody] = []
 
 
-func setup(p_registry: ContentRegistry, p_save: WorldSave, p_seed: int, preset: StringName = &"default") -> void:
+func setup(p_registry: ContentRegistry, p_save: WorldSave, p_seed: int, p_settings: WorldGenSettings = null) -> void:
 	registry = p_registry
 	save = p_save
 	world_seed = p_seed
-	generator = TerrainGenerator.new(world_seed, registry, preset)
+	settings = p_settings if p_settings != null else WorldGenSettings.new()
+	generator = TerrainGenerator.new(world_seed, registry, settings)
 	store = RegionStore.new(save.region_dir() if save != null else "", registry)
 	chunks = ChunkManager.new()
 	chunks.name = "Chunks"
 	chunks.world = self
+	chunks.season = maxi(0, settings.season_index())
 	add_child(chunks)
 
 
@@ -48,6 +51,12 @@ func get_block(x: int, y: int, z: int) -> int:
 	if col == null:
 		return -1
 	return col.get_block(x & 15, y, z & 15)
+
+
+## Индекс биома в точке (BiomeSource) или −1, если колонна не загружена.
+func biome_at(x: int, z: int) -> int:
+	var col: ChunkColumn = chunks.columns.get(Vector2i(x >> 4, z >> 4))
+	return col.biome_at(x & 15, z & 15) if col != null else -1
 
 
 func is_loaded(x: int, z: int) -> bool:
@@ -84,6 +93,9 @@ func set_block(x: int, y: int, z: int, block: int) -> bool:
 	if old == block:
 		return true
 	col.set_block(x & 15, y, z & 15, block)
+	var sec := col.sections[WorldConst.section_index(y)]
+	if sec != null:
+		sec.note_block(block, registry.block_opaque, registry.block_shape)
 	col.dirty = true
 	chunks.notify_block_changed(x, y, z)
 	block_changed.emit(Vector3i(x, y, z), old, block)
@@ -108,8 +120,9 @@ func execute(action: GameAction) -> bool:
 			var def := registry.block_by_num(action.block)
 			if def == null or action.block == 0:
 				return false
-			# Ставить можно в воздух и в жидкость.
-			if current != 0 and registry.block_render[current] != BlockDef.RENDER_LIQUID:
+			# Ставить можно в воздух, в жидкость и поверх растений и тонких слоёв (трава, снег).
+			if current != 0 and registry.block_render[current] != BlockDef.RENDER_LIQUID \
+					and registry.block_shape[current] == BlockDef.SHAPE_CUBE:
 				return false
 			if def.solid:
 				for b in bodies:

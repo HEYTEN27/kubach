@@ -23,11 +23,12 @@ func _section(cells: Dictionary) -> Array:
 	var s := ChunkSection.new()
 	for p: Vector3i in cells:
 		s.set_block(WorldConst.local_index(p.x, p.y, p.z), cells[p])
+	s.analyze(Registry.block_opaque, Registry.block_shape)
 	return GreedyMesher.snapshot(s)
 
 
 func test_empty_section() -> void:
-	var r := mesher.mesh_section([0, PackedInt32Array()], _empty_neighbors())
+	var r := mesher.mesh_section([0, PackedInt32Array(), false, false], _empty_neighbors())
 	assert_eq(r["quads"], 0)
 	assert_eq(r["opaque"], [])
 
@@ -55,7 +56,7 @@ func test_different_blocks_do_not_merge() -> void:
 
 
 func test_full_uniform_section_shows_only_outer_faces() -> void:
-	var r := mesher.mesh_section([stone, PackedInt32Array()], _empty_neighbors())
+	var r := mesher.mesh_section([stone, PackedInt32Array(), true, false], _empty_neighbors())
 	assert_eq(r["quads"], 6)
 	var verts: PackedVector3Array = r["opaque"][Mesh.ARRAY_VERTEX]
 	for v in verts:
@@ -63,7 +64,7 @@ func test_full_uniform_section_shows_only_outer_faces() -> void:
 
 
 func test_enclosed_by_opaque_neighbors_has_no_faces() -> void:
-	var full := [stone, PackedInt32Array()]
+	var full := [stone, PackedInt32Array(), true, false]
 	var r := mesher.mesh_section(full, [full, full, full, full, full, full])
 	assert_eq(r["quads"], 0)
 
@@ -111,7 +112,8 @@ func test_mixed_opaque_section_enclosed_has_no_faces() -> void:
 	var s := ChunkSection.filled(stone)
 	for i in 2048:
 		s.set_block(i, limestone)
-	var full := [stone, PackedInt32Array()]
+	s.analyze(Registry.block_opaque, Registry.block_shape)
+	var full := [stone, PackedInt32Array(), true, false]
 	var r := mesher.mesh_section(GreedyMesher.snapshot(s), [full, full, full, full, full, full])
 	assert_eq(r["quads"], 0, "граница гранит/известняк внутри камня не видна")
 
@@ -119,6 +121,53 @@ func test_mixed_opaque_section_enclosed_has_no_faces() -> void:
 func test_enclosed_but_with_air_pocket_has_faces() -> void:
 	var s := ChunkSection.filled(stone)
 	s.set_block(WorldConst.local_index(8, 8, 8), 0)
-	var full := [stone, PackedInt32Array()]
+	s.analyze(Registry.block_opaque, Registry.block_shape)
+	var full := [stone, PackedInt32Array(), true, false]
 	var r := mesher.mesh_section(GreedyMesher.snapshot(s), [full, full, full, full, full, full])
 	assert_eq(r["quads"], 6, "полость в камне видна изнутри")
+
+
+func test_cross_plant_goes_to_plants_surface() -> void:
+	var grass := Registry.block_num(&"grass")
+	var r := mesher.mesh_section(_section({ Vector3i(4, 4, 4): grass }), _empty_neighbors())
+	assert_eq(r["quads"], 2, "крест — два квадрата")
+	assert_eq(r["opaque"], [])
+	assert_eq(r["plants"][Mesh.ARRAY_VERTEX].size(), 8)
+
+
+func test_plant_does_not_hide_neighbor_faces() -> void:
+	var grass := Registry.block_num(&"grass")
+	var r := mesher.mesh_section(_section({ Vector3i(4, 4, 4): stone, Vector3i(4, 5, 4): grass }), _empty_neighbors())
+	assert_eq(r["opaque"][Mesh.ARRAY_VERTEX].size() / 4, 6, "верх камня под травой виден")
+
+
+func test_layer_block() -> void:
+	var snow := Registry.block_num(&"snow_layer")
+	var r := mesher.mesh_section(_section({ Vector3i(4, 4, 4): stone, Vector3i(4, 5, 4): snow }), _empty_neighbors())
+	var verts: PackedVector3Array = r["opaque"][Mesh.ARRAY_VERTEX]
+	var top := -1.0
+	for v in verts:
+		top = maxf(top, v.y)
+	assert_almost_eq(top, 5.125, 0.001, "верх снежного слоя на 1/8 блока")
+	assert_eq(r["quads"], 6 + 5, "камень 6 граней + слой: верх и 4 бока")
+
+
+func test_tint_varies_across_merged_quad() -> void:
+	var turf := Registry.block_num(&"turf")
+	var cells := {}
+	for x in 16:
+		for z in 16:
+			cells[Vector3i(x, 0, z)] = turf
+	var tints := PackedColorArray()
+	tints.resize(200)
+	for i in 200:
+		tints[i] = Color(0.2, 0.8, 0.2)
+	for tz in 5:
+		tints[2 * 25 + tz * 5 + 4] = Color(0.8, 0.6, 0.2)  # лето, трава, правый край — жёлтый
+	var r := mesher.mesh_section(_section(cells), _empty_neighbors(), tints, 1)
+	assert_eq(r["quads"], 6, "тонирование не мешает слиянию граней")
+	var cols: PackedColorArray = r["opaque"][Mesh.ARRAY_COLOR]
+	var reds := {}
+	for c in cols:
+		reds[snappedf(c.r, 0.01)] = true
+	assert_gt(reds.size(), 1, "углы одного прямоугольника окрашены по-разному")

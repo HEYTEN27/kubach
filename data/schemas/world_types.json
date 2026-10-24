@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "category": "world_types",
+  "description": "Типы мира на экране создания (раздел 2.2).",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "preset": {
+      "type": "ref",
+      "to": [
+        "worldgen"
+      ],
+      "required": true
+    },
+    "continental_offset": {
+      "type": "float",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0,
+      "doc": "Сдвиг континентальности: < 0 — больше океана."
+    },
+    "continental_scale": {
+      "type": "float",
+      "min": 0.1,
+      "max": 8.0,
+      "default": 1.0,
+      "doc": "Множитель частоты континентов (>1 — мельче острова)."
+    },
+    "mountain_scale": {
+      "type": "float",
+      "min": 0.0,
+      "max": 4.0,
+      "default": 1.0
+    },
+    "biome_scale": {
+      "type": "float",
+      "min": 0.25,
+      "max": 8.0,
+      "default": 1.0,
+      "doc": "Множитель размера биомов."
+    },
+    "flat": {
+      "type": "bool",
+      "default": false,
+      "doc": "Плоский мир для тестов: ровная поверхность, без рек, озёр и пещер."
+    },
+    "order": {
+      "type": "int",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    }
+  }
+}

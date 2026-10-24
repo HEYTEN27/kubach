@@ -1,0 +1,269 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "sedimentary_basin",
+   "name": {
+    "ru": "Осадочный бассейн",
+    "en": "Sedimentary Basin"
+   },
+   "weight": 3.0,
+   "sediments": [
+    {
+     "block": "sandstone",
+     "thickness": {
+      "min": 2,
+      "max": 7
+     }
+    },
+    {
+     "block": "shale",
+     "thickness": {
+      "min": 2,
+      "max": 8
+     }
+    },
+    {
+     "block": "limestone",
+     "thickness": {
+      "min": 4,
+      "max": 12
+     }
+    },
+    {
+     "block": "conglomerate",
+     "thickness": {
+      "min": 0,
+      "max": 4
+     }
+    },
+    {
+     "block": "dolomite",
+     "thickness": {
+      "min": 0,
+      "max": 6
+     }
+    }
+   ],
+   "basement": [
+    {
+     "block": "granite",
+     "thickness": {
+      "min": 30,
+      "max": 70
+     }
+    },
+    {
+     "block": "gneiss",
+     "thickness": {
+      "min": 40,
+      "max": 400
+     }
+    }
+   ],
+   "deep": "deepslate"
+  },
+  {
+   "id": "granite_shield",
+   "name": {
+    "ru": "Гранитный щит",
+    "en": "Granite Shield"
+   },
+   "weight": 2.0,
+   "sediments": [
+    {
+     "block": "conglomerate",
+     "thickness": {
+      "min": 0,
+      "max": 3
+     }
+    }
+   ],
+   "basement": [
+    {
+     "block": "granite",
+     "thickness": {
+      "min": 40,
+      "max": 90
+     }
+    },
+    {
+     "block": "diorite",
+     "thickness": {
+      "min": 10,
+      "max": 30
+     }
+    },
+    {
+     "block": "gneiss",
+     "thickness": {
+      "min": 40,
+      "max": 400
+     }
+    }
+   ],
+   "deep": "deepslate",
+   "deep_top": -110
+  },
+  {
+   "id": "metamorphic_belt",
+   "name": {
+    "ru": "Метаморфический пояс",
+    "en": "Metamorphic Belt"
+   },
+   "weight": 2.0,
+   "sediments": [
+    {
+     "block": "shale",
+     "thickness": {
+      "min": 0,
+      "max": 4
+     }
+    }
+   ],
+   "basement": [
+    {
+     "block": "slate",
+     "thickness": {
+      "min": 10,
+      "max": 30
+     }
+    },
+    {
+     "block": "marble",
+     "thickness": {
+      "min": 5,
+      "max": 20
+     }
+    },
+    {
+     "block": "quartzite",
+     "thickness": {
+      "min": 5,
+      "max": 20
+     }
+    },
+    {
+     "block": "gneiss",
+     "thickness": {
+      "min": 20,
+      "max": 60
+     }
+    },
+    {
+     "block": "serpentinite",
+     "thickness": {
+      "min": 40,
+      "max": 400
+     }
+    }
+   ],
+   "deep": "deepslate",
+   "deep_top": -95
+  },
+  {
+   "id": "volcanic_province",
+   "name": {
+    "ru": "Вулканическая провинция",
+    "en": "Volcanic Province"
+   },
+   "weight": 1.2,
+   "sediments": [
+    {
+     "block": "tuff",
+     "thickness": {
+      "min": 2,
+      "max": 8
+     }
+    },
+    {
+     "block": "pumice",
+     "thickness": {
+      "min": 0,
+      "max": 3
+     }
+    }
+   ],
+   "basement": [
+    {
+     "block": "basalt",
+     "thickness": {
+      "min": 20,
+      "max": 50
+     }
+    },
+    {
+     "block": "andesite",
+     "thickness": {
+      "min": 10,
+      "max": 30
+     }
+    },
+    {
+     "block": "gabbro",
+     "thickness": {
+      "min": 40,
+      "max": 400
+     }
+    }
+   ],
+   "deep": "deepslate",
+   "deep_top": -90
+  },
+  {
+   "id": "carbonate_platform",
+   "name": {
+    "ru": "Карбонатная платформа",
+    "en": "Carbonate Platform"
+   },
+   "weight": 1.6,
+   "sediments": [
+    {
+     "block": "limestone",
+     "thickness": {
+      "min": 10,
+      "max": 30
+     }
+    },
+    {
+     "block": "dolomite",
+     "thickness": {
+      "min": 5,
+      "max": 15
+     }
+    },
+    {
+     "block": "chalk",
+     "thickness": {
+      "min": 2,
+      "max": 8
+     }
+    },
+    {
+     "block": "limestone",
+     "thickness": {
+      "min": 5,
+      "max": 15
+     }
+    }
+   ],
+   "basement": [
+    {
+     "block": "granite",
+     "thickness": {
+      "min": 30,
+      "max": 60
+     }
+    },
+    {
+     "block": "gneiss",
+     "thickness": {
+      "min": 40,
+      "max": 400
+     }
+    }
+   ],
+   "deep": "deepslate"
+  }
+ ]
+}

@@ -1,0 +1,2901 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "taiga",
+   "name": {
+    "ru": "Тайга",
+    "en": "Taiga"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.2,
+    "humidity": 0.08
+   },
+   "map_color": "#2f5a3a",
+   "temperature_c": 2.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "gravel",
+    "subsoil": "permafrost",
+    "subsoil_depth": 6
+   },
+   "grass_colors": {
+    "spring": "#6f9a45",
+    "summer": "#5a8a38",
+    "autumn": "#8a8a40",
+    "winter": "#7a8670"
+   },
+   "foliage_colors": {
+    "spring": "#6aa04a",
+    "summer": "#4f8a3a",
+    "autumn": "#c49a2c",
+    "winter": "#6a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "taiga",
+   "music": "taiga",
+   "trees": [
+    {
+     "tree": "spruce",
+     "weight": 5
+    },
+    {
+     "tree": "fir",
+     "weight": 3
+    },
+    {
+     "tree": "pine",
+     "weight": 2
+    },
+    {
+     "tree": "birch",
+     "weight": 0.5
+    }
+   ],
+   "tree_density": 4.5,
+   "plants": [
+    {
+     "block": "fern",
+     "density": 0.06
+    },
+    {
+     "block": "bilberry_bush",
+     "density": 0.04
+    },
+    {
+     "block": "lingonberry_bush",
+     "density": 0.03
+    },
+    {
+     "block": "grass",
+     "density": 0.05
+    },
+    {
+     "block": "moss_carpet",
+     "density": 0.08
+    },
+    {
+     "block": "porcini",
+     "density": 0.004
+    },
+    {
+     "block": "chanterelle",
+     "density": 0.004
+    },
+    {
+     "block": "false_chanterelle",
+     "density": 0.002
+    },
+    {
+     "block": "russula",
+     "density": 0.004
+    },
+    {
+     "block": "death_cap",
+     "density": 0.0015
+    },
+    {
+     "block": "fly_agaric",
+     "density": 0.003
+    }
+   ],
+   "fauna": [
+    "bear",
+    "wolf",
+    "moose",
+    "lynx",
+    "capercaillie",
+    "squirrel",
+    "hare"
+   ],
+   "weather": [
+    "rain",
+    "fog",
+    "snow"
+   ]
+  },
+  {
+   "id": "snowy_taiga",
+   "name": {
+    "ru": "Снежная тайга",
+    "en": "Snowy Taiga"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.36,
+    "humidity": 0.12
+   },
+   "map_color": "#5a7a6a",
+   "temperature_c": -9.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 3,
+    "underwater": "gravel",
+    "subsoil": "permafrost",
+    "subsoil_depth": 10
+   },
+   "grass_colors": {
+    "spring": "#7a9a6a",
+    "summer": "#6a925a",
+    "autumn": "#8a8a5a",
+    "winter": "#a8b0a8"
+   },
+   "foliage_colors": {
+    "spring": "#5a8a50",
+    "summer": "#4a7a45",
+    "autumn": "#a08a40",
+    "winter": "#7a7a6a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "snowy_taiga",
+   "music": "taiga_snow",
+   "trees": [
+    {
+     "tree": "spruce",
+     "weight": 5
+    },
+    {
+     "tree": "fir",
+     "weight": 3
+    },
+    {
+     "tree": "larch",
+     "weight": 2
+    }
+   ],
+   "tree_density": 3.5,
+   "plants": [
+    {
+     "block": "lingonberry_bush",
+     "density": 0.02
+    },
+    {
+     "block": "lichen",
+     "density": 0.02
+    }
+   ],
+   "snow_cover": true,
+   "freeze_water": true,
+   "fauna": [
+    "wolf",
+    "moose",
+    "lynx",
+    "hare",
+    "fox"
+   ],
+   "weather": [
+    "snow",
+    "blizzard"
+   ]
+  },
+  {
+   "id": "old_growth_taiga",
+   "name": {
+    "ru": "Старовозрастная тайга",
+    "en": "Old-Growth Taiga"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.18,
+    "humidity": 0.34
+   },
+   "map_color": "#1f4a30",
+   "temperature_c": 1.0,
+   "surface": {
+    "top": "podzol",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "gravel",
+    "subsoil": "permafrost",
+    "subsoil_depth": 8
+   },
+   "grass_colors": {
+    "spring": "#6f9a45",
+    "summer": "#5a8a38",
+    "autumn": "#8a8a40",
+    "winter": "#7a8670"
+   },
+   "foliage_colors": {
+    "spring": "#6aa04a",
+    "summer": "#4f8a3a",
+    "autumn": "#c49a2c",
+    "winter": "#6a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "old_growth_taiga",
+   "music": "taiga",
+   "trees": [
+    {
+     "tree": "giant_spruce",
+     "weight": 3
+    },
+    {
+     "tree": "spruce",
+     "weight": 3
+    },
+    {
+     "tree": "fir",
+     "weight": 1.5
+    }
+   ],
+   "tree_density": 3.0,
+   "plants": [
+    {
+     "block": "moss_carpet",
+     "density": 0.15
+    },
+    {
+     "block": "lichen_carpet",
+     "density": 0.05
+    },
+    {
+     "block": "fern",
+     "density": 0.08
+    },
+    {
+     "block": "bilberry_bush",
+     "density": 0.05
+    },
+    {
+     "block": "porcini",
+     "density": 0.004
+    },
+    {
+     "block": "chanterelle",
+     "density": 0.004
+    },
+    {
+     "block": "false_chanterelle",
+     "density": 0.002
+    },
+    {
+     "block": "russula",
+     "density": 0.004
+    },
+    {
+     "block": "death_cap",
+     "density": 0.0015
+    },
+    {
+     "block": "fly_agaric",
+     "density": 0.003
+    }
+   ],
+   "features": [
+    {
+     "kind": "fallen_log",
+     "density": 1.2
+    },
+    {
+     "kind": "boulder",
+     "density": 0.1,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "bear",
+    "wolf",
+    "moose",
+    "lynx",
+    "capercaillie",
+    "squirrel",
+    "hare"
+   ],
+   "weather": [
+    "rain",
+    "fog"
+   ]
+  },
+  {
+   "id": "mountain_taiga",
+   "name": {
+    "ru": "Горная тайга",
+    "en": "Mountain Taiga"
+   },
+   "category": "mountain",
+   "climate": {
+    "temperature": -0.22,
+    "humidity": 0.1
+   },
+   "map_color": "#3f5f4a",
+   "temperature_c": -2.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "cliff": "granite"
+   },
+   "grass_colors": {
+    "spring": "#6f9a45",
+    "summer": "#5a8a38",
+    "autumn": "#8a8a40",
+    "winter": "#7a8670"
+   },
+   "foliage_colors": {
+    "spring": "#6aa04a",
+    "summer": "#4f8a3a",
+    "autumn": "#c49a2c",
+    "winter": "#6a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "mountain_taiga",
+   "music": "taiga",
+   "trees": [
+    {
+     "tree": "cedar",
+     "weight": 4
+    },
+    {
+     "tree": "spruce",
+     "weight": 3
+    },
+    {
+     "tree": "larch",
+     "weight": 2
+    }
+   ],
+   "tree_density": 3.0,
+   "plants": [
+    {
+     "block": "lingonberry_bush",
+     "density": 0.03
+    },
+    {
+     "block": "bilberry_bush",
+     "density": 0.02
+    },
+    {
+     "block": "moss_carpet",
+     "density": 0.06
+    },
+    {
+     "block": "lichen",
+     "density": 0.02
+    },
+    {
+     "block": "rhododendron",
+     "density": 0.005
+    }
+   ],
+   "features": [
+    {
+     "kind": "rock_pile",
+     "density": 0.8,
+     "block": "rubble"
+    },
+    {
+     "kind": "boulder",
+     "density": 0.3,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "bear",
+    "lynx",
+    "wolf",
+    "sable"
+   ],
+   "weather": [
+    "rain",
+    "snow",
+    "fog"
+   ]
+  },
+  {
+   "id": "taiga_swamp",
+   "name": {
+    "ru": "Таёжное болото",
+    "en": "Taiga Swamp"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.22,
+    "humidity": 0.5,
+    "elevation": 0.03
+   },
+   "map_color": "#4a5a3a",
+   "temperature_c": 1.0,
+   "surface": {
+    "top": "peat",
+    "soil": "peat",
+    "soil_depth": 4,
+    "underwater": "silt",
+    "subsoil": "loam",
+    "subsoil_depth": 3
+   },
+   "grass_colors": {
+    "spring": "#6a8a45",
+    "summer": "#5a7a3a",
+    "autumn": "#7a7a3a",
+    "winter": "#6a7060"
+   },
+   "foliage_colors": {
+    "spring": "#5a7a40",
+    "summer": "#4a6a35",
+    "autumn": "#8a7a35",
+    "winter": "#5a6045"
+   },
+   "water_color": "#4a4a2a",
+   "ambience": "swamp",
+   "music": "swamp",
+   "terrain": {
+    "kind": "swamp",
+    "strength": 0.95
+   },
+   "trees": [
+    {
+     "tree": "pine",
+     "weight": 2
+    },
+    {
+     "tree": "birch",
+     "weight": 2
+    },
+    {
+     "tree": "spruce",
+     "weight": 1
+    }
+   ],
+   "tree_density": 1.5,
+   "plants": [
+    {
+     "block": "cranberry_bush",
+     "density": 0.06
+    },
+    {
+     "block": "cloudberry",
+     "density": 0.03
+    },
+    {
+     "block": "bog_bilberry",
+     "density": 0.03
+    },
+    {
+     "block": "sedge",
+     "density": 0.12
+    },
+    {
+     "block": "labrador_tea",
+     "density": 0.04
+    },
+    {
+     "block": "moss_carpet",
+     "density": 0.15
+    },
+    {
+     "block": "reeds",
+     "density": 0.03
+    },
+    {
+     "block": "water_lily",
+     "density": 0.03,
+     "on_water": true
+    }
+   ],
+   "features": [
+    {
+     "kind": "tussock",
+     "density": 3.0
+    }
+   ],
+   "fauna": [
+    "moose",
+    "crane",
+    "duck"
+   ],
+   "weather": [
+    "fog",
+    "rain"
+   ]
+  },
+  {
+   "id": "tundra",
+   "name": {
+    "ru": "Тундра",
+    "en": "Tundra"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.46,
+    "humidity": -0.15
+   },
+   "map_color": "#8a8a6a",
+   "temperature_c": -12.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "subsoil": "permafrost",
+    "subsoil_depth": 24
+   },
+   "grass_colors": {
+    "spring": "#8a9a6a",
+    "summer": "#7a8a5a",
+    "autumn": "#a08a50",
+    "winter": "#c0c4c0"
+   },
+   "foliage_colors": {
+    "spring": "#8a9a5a",
+    "summer": "#7a8a50",
+    "autumn": "#c09a40",
+    "winter": "#8a8a7a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "tundra",
+   "music": "tundra",
+   "trees": [
+    {
+     "tree": "dwarf_birch",
+     "weight": 1
+    }
+   ],
+   "tree_density": 0.6,
+   "plants": [
+    {
+     "block": "lichen",
+     "density": 0.12
+    },
+    {
+     "block": "lichen_carpet",
+     "density": 0.15
+    },
+    {
+     "block": "moss_carpet",
+     "density": 0.1
+    },
+    {
+     "block": "cloudberry",
+     "density": 0.02
+    },
+    {
+     "block": "bog_bilberry",
+     "density": 0.02
+    },
+    {
+     "block": "grass",
+     "density": 0.05
+    }
+   ],
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.2,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "reindeer",
+    "arctic_fox",
+    "polar_bear",
+    "lemming"
+   ],
+   "weather": [
+    "snow",
+    "blizzard",
+    "fog"
+   ]
+  },
+  {
+   "id": "forest_tundra",
+   "name": {
+    "ru": "Лесотундра",
+    "en": "Forest Tundra"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.38,
+    "humidity": 0.05
+   },
+   "map_color": "#6a7a5a",
+   "temperature_c": -7.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "subsoil": "permafrost",
+    "subsoil_depth": 16
+   },
+   "grass_colors": {
+    "spring": "#8a9a6a",
+    "summer": "#7a8a5a",
+    "autumn": "#a08a50",
+    "winter": "#c0c4c0"
+   },
+   "foliage_colors": {
+    "spring": "#8a9a5a",
+    "summer": "#7a8a50",
+    "autumn": "#c09a40",
+    "winter": "#8a8a7a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "forest_tundra",
+   "music": "forest_tundra",
+   "trees": [
+    {
+     "tree": "larch",
+     "weight": 3
+    },
+    {
+     "tree": "spruce",
+     "weight": 2
+    },
+    {
+     "tree": "dwarf_birch",
+     "weight": 2
+    }
+   ],
+   "tree_density": 1.5,
+   "plants": [
+    {
+     "block": "lichen",
+     "density": 0.06
+    },
+    {
+     "block": "lichen_carpet",
+     "density": 0.08
+    },
+    {
+     "block": "moss_carpet",
+     "density": 0.08
+    },
+    {
+     "block": "cloudberry",
+     "density": 0.02
+    },
+    {
+     "block": "grass",
+     "density": 0.06
+    }
+   ],
+   "fauna": [
+    "reindeer",
+    "wolf",
+    "arctic_fox"
+   ],
+   "weather": [
+    "snow",
+    "fog"
+   ]
+  },
+  {
+   "id": "glacier",
+   "name": {
+    "ru": "Ледник",
+    "en": "Glacier"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.62,
+    "humidity": 0.0
+   },
+   "map_color": "#dfe8ee",
+   "temperature_c": -25.0,
+   "surface": {
+    "top": "snow_block",
+    "soil": "packed_ice",
+    "soil_depth": 14,
+    "underwater": "packed_ice",
+    "subsoil": "ice",
+    "subsoil_depth": 6
+   },
+   "grass_colors": {
+    "spring": "#7a9a6a",
+    "summer": "#6a925a",
+    "autumn": "#8a8a5a",
+    "winter": "#a8b0a8"
+   },
+   "foliage_colors": {
+    "spring": "#5a8a50",
+    "summer": "#4a7a45",
+    "autumn": "#a08a40",
+    "winter": "#7a7a6a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "glacier",
+   "music": "glacier",
+   "terrain": {
+    "kind": "glacier",
+    "strength": 1.0
+   },
+   "snow_cover": true,
+   "freeze_water": true,
+   "fauna": [
+    "polar_bear"
+   ],
+   "weather": [
+    "blizzard",
+    "snow"
+   ]
+  },
+  {
+   "id": "mixed_conifer_broadleaf",
+   "name": {
+    "ru": "Хвойно-широколиственный лес",
+    "en": "Mixed Conifer-Broadleaf Forest"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.06,
+    "humidity": 0.2
+   },
+   "map_color": "#3f6a3a",
+   "temperature_c": 5.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "mixed_conifer_broadleaf",
+   "music": "mixed_conifer_broadleaf",
+   "trees": [
+    {
+     "tree": "spruce",
+     "weight": 2
+    },
+    {
+     "tree": "fir",
+     "weight": 1
+    },
+    {
+     "tree": "oak",
+     "weight": 1.5
+    },
+    {
+     "tree": "maple",
+     "weight": 1.5
+    },
+    {
+     "tree": "linden",
+     "weight": 1.5
+    },
+    {
+     "tree": "birch",
+     "weight": 1
+    }
+   ],
+   "tree_density": 4.5,
+   "plants": [
+    {
+     "block": "fern",
+     "density": 0.05
+    },
+    {
+     "block": "grass",
+     "density": 0.1
+    },
+    {
+     "block": "lily_of_the_valley",
+     "density": 0.01
+    },
+    {
+     "block": "bilberry_bush",
+     "density": 0.02
+    },
+    {
+     "block": "nettle",
+     "density": 0.01
+    },
+    {
+     "block": "porcini",
+     "density": 0.004
+    },
+    {
+     "block": "chanterelle",
+     "density": 0.004
+    },
+    {
+     "block": "false_chanterelle",
+     "density": 0.002
+    },
+    {
+     "block": "russula",
+     "density": 0.004
+    }
+   ],
+   "fauna": [
+    "bear",
+    "boar",
+    "deer",
+    "squirrel"
+   ],
+   "weather": [
+    "rain",
+    "fog"
+   ]
+  },
+  {
+   "id": "birch_grove",
+   "name": {
+    "ru": "Берёзовая роща",
+    "en": "Birch Grove"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": -0.1,
+    "humidity": -0.04
+   },
+   "map_color": "#7aa860",
+   "temperature_c": 6.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#82b450",
+    "summer": "#6aa640",
+    "autumn": "#b0a040",
+    "winter": "#8a8a62"
+   },
+   "foliage_colors": {
+    "spring": "#8ac050",
+    "summer": "#6aaa42",
+    "autumn": "#e0b830",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "birch_grove",
+   "music": "birch_grove",
+   "trees": [
+    {
+     "tree": "birch",
+     "weight": 8
+    },
+    {
+     "tree": "aspen",
+     "weight": 1
+    }
+   ],
+   "tree_density": 4.5,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.2
+    },
+    {
+     "block": "chamomile",
+     "density": 0.02
+    },
+    {
+     "block": "bellflower",
+     "density": 0.01
+    },
+    {
+     "block": "wild_strawberry",
+     "density": 0.02
+    },
+    {
+     "block": "birch_bolete",
+     "density": 0.006
+    },
+    {
+     "block": "russula",
+     "density": 0.003
+    }
+   ],
+   "fauna": [
+    "hare",
+    "fox",
+    "deer"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "oak_forest",
+   "name": {
+    "ru": "Дубрава",
+    "en": "Oak Forest"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.12,
+    "humidity": 0.1
+   },
+   "map_color": "#4a7a35",
+   "temperature_c": 8.0,
+   "surface": {
+    "top": "turf",
+    "soil": "chernozem",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "oak_forest",
+   "music": "oak_forest",
+   "trees": [
+    {
+     "tree": "oak",
+     "weight": 6
+    },
+    {
+     "tree": "big_oak",
+     "weight": 1
+    },
+    {
+     "tree": "maple",
+     "weight": 1
+    },
+    {
+     "tree": "linden",
+     "weight": 1
+    },
+    {
+     "tree": "hazel",
+     "weight": 1
+    }
+   ],
+   "tree_density": 3.5,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.15
+    },
+    {
+     "block": "fern",
+     "density": 0.03
+    },
+    {
+     "block": "violet",
+     "density": 0.01
+    },
+    {
+     "block": "lily_of_the_valley",
+     "density": 0.008
+    },
+    {
+     "block": "porcini",
+     "density": 0.003
+    }
+   ],
+   "fauna": [
+    "boar",
+    "deer",
+    "squirrel"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "mixed_forest",
+   "name": {
+    "ru": "Смешанный лес",
+    "en": "Mixed Forest"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.02,
+    "humidity": 0.06
+   },
+   "map_color": "#4f7a3f",
+   "temperature_c": 6.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "mixed_forest",
+   "music": "mixed_forest",
+   "trees": [
+    {
+     "tree": "oak",
+     "weight": 2
+    },
+    {
+     "tree": "birch",
+     "weight": 2
+    },
+    {
+     "tree": "spruce",
+     "weight": 2
+    },
+    {
+     "tree": "aspen",
+     "weight": 1
+    },
+    {
+     "tree": "maple",
+     "weight": 1
+    },
+    {
+     "tree": "rowan",
+     "weight": 0.5
+    },
+    {
+     "tree": "alder",
+     "weight": 0.5
+    },
+    {
+     "tree": "bird_cherry",
+     "weight": 0.4
+    }
+   ],
+   "tree_density": 4.5,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.12
+    },
+    {
+     "block": "fern",
+     "density": 0.04
+    },
+    {
+     "block": "wild_strawberry",
+     "density": 0.01
+    },
+    {
+     "block": "raspberry_bush",
+     "density": 0.01
+    },
+    {
+     "block": "porcini",
+     "density": 0.004
+    },
+    {
+     "block": "chanterelle",
+     "density": 0.004
+    },
+    {
+     "block": "false_chanterelle",
+     "density": 0.002
+    },
+    {
+     "block": "russula",
+     "density": 0.004
+    }
+   ],
+   "fauna": [
+    "deer",
+    "boar",
+    "fox",
+    "hare"
+   ],
+   "weather": [
+    "rain",
+    "fog"
+   ]
+  },
+  {
+   "id": "meadow",
+   "name": {
+    "ru": "Луг",
+    "en": "Meadow"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.05,
+    "humidity": -0.15
+   },
+   "map_color": "#8ab45a",
+   "temperature_c": 9.0,
+   "surface": {
+    "top": "turf",
+    "soil": "chernozem",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "meadow",
+   "music": "meadow",
+   "trees": [
+    {
+     "tree": "birch",
+     "weight": 1
+    },
+    {
+     "tree": "oak",
+     "weight": 0.5
+    }
+   ],
+   "tree_density": 0.15,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.35
+    },
+    {
+     "block": "tall_grass",
+     "density": 0.1
+    },
+    {
+     "block": "clover",
+     "density": 0.04
+    },
+    {
+     "block": "chamomile",
+     "density": 0.03
+    },
+    {
+     "block": "buttercup",
+     "density": 0.02
+    },
+    {
+     "block": "dandelion",
+     "density": 0.02
+    },
+    {
+     "block": "yarrow",
+     "density": 0.015
+    },
+    {
+     "block": "plantain",
+     "density": 0.01
+    },
+    {
+     "block": "nettle",
+     "density": 0.005
+    },
+    {
+     "block": "st_johns_wort",
+     "density": 0.01
+    }
+   ],
+   "fauna": [
+    "hare",
+    "fox",
+    "quail"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "flower_fields",
+   "name": {
+    "ru": "Цветочные поля",
+    "en": "Flower Fields"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.1,
+    "humidity": -0.02,
+    "weirdness": 0.3
+   },
+   "map_color": "#c8a0c8",
+   "temperature_c": 10.0,
+   "surface": {
+    "top": "turf",
+    "soil": "chernozem",
+    "soil_depth": 4,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "flower_fields",
+   "music": "flower_fields",
+   "trees": [
+    {
+     "tree": "apple",
+     "weight": 0.5
+    },
+    {
+     "tree": "bird_cherry",
+     "weight": 0.5
+    }
+   ],
+   "tree_density": 0.1,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.2
+    },
+    {
+     "block": "chamomile",
+     "density": 0.05
+    },
+    {
+     "block": "cornflower",
+     "density": 0.05
+    },
+    {
+     "block": "poppy",
+     "density": 0.05
+    },
+    {
+     "block": "bellflower",
+     "density": 0.04
+    },
+    {
+     "block": "forget_me_not",
+     "density": 0.04
+    },
+    {
+     "block": "dianthus",
+     "density": 0.03
+    },
+    {
+     "block": "lupine",
+     "density": 0.03
+    },
+    {
+     "block": "tansy",
+     "density": 0.03
+    },
+    {
+     "block": "fireweed",
+     "density": 0.03
+    },
+    {
+     "block": "chicory",
+     "density": 0.03
+    },
+    {
+     "block": "violet",
+     "density": 0.02
+    },
+    {
+     "block": "heather",
+     "density": 0.02
+    }
+   ],
+   "fauna": [
+    "bee",
+    "butterfly",
+    "hare"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "steppe",
+   "name": {
+    "ru": "Степь",
+    "en": "Steppe"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.24,
+    "humidity": -0.34
+   },
+   "map_color": "#c0b070",
+   "temperature_c": 12.0,
+   "surface": {
+    "top": "turf",
+    "soil": "chernozem",
+    "soil_depth": 6,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#8ab04a",
+    "summer": "#b0a85a",
+    "autumn": "#a08a50",
+    "winter": "#9a9070"
+   },
+   "foliage_colors": {
+    "spring": "#8aa04a",
+    "summer": "#7a9a40",
+    "autumn": "#b08a3a",
+    "winter": "#8a7a5a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "steppe",
+   "music": "steppe",
+   "plants": [
+    {
+     "block": "feather_grass",
+     "density": 0.25
+    },
+    {
+     "block": "grass",
+     "density": 0.1
+    },
+    {
+     "block": "tulip",
+     "density": 0.01
+    },
+    {
+     "block": "thyme",
+     "density": 0.02
+    },
+    {
+     "block": "sage",
+     "density": 0.02
+    },
+    {
+     "block": "chicory",
+     "density": 0.01
+    }
+   ],
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.05,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "saiga",
+    "marmot",
+    "eagle",
+    "wolf"
+   ],
+   "weather": [
+    "dry_wind",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "forest_steppe",
+   "name": {
+    "ru": "Лесостепь",
+    "en": "Forest Steppe"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.18,
+    "humidity": -0.2
+   },
+   "map_color": "#9aaa5a",
+   "temperature_c": 10.0,
+   "surface": {
+    "top": "turf",
+    "soil": "chernozem",
+    "soil_depth": 5,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#8ab04a",
+    "summer": "#b0a85a",
+    "autumn": "#a08a50",
+    "winter": "#9a9070"
+   },
+   "foliage_colors": {
+    "spring": "#8aa04a",
+    "summer": "#7a9a40",
+    "autumn": "#b08a3a",
+    "winter": "#8a7a5a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "forest_steppe",
+   "music": "forest_steppe",
+   "trees": [
+    {
+     "tree": "oak",
+     "weight": 3
+    },
+    {
+     "tree": "birch",
+     "weight": 2
+    },
+    {
+     "tree": "apple",
+     "weight": 0.5
+    },
+    {
+     "tree": "pear",
+     "weight": 0.5
+    },
+    {
+     "tree": "plum",
+     "weight": 0.3
+    },
+    {
+     "tree": "apricot",
+     "weight": 0.3
+    },
+    {
+     "tree": "cherry",
+     "weight": 0.3
+    }
+   ],
+   "tree_density": 1.2,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.3
+    },
+    {
+     "block": "feather_grass",
+     "density": 0.05
+    },
+    {
+     "block": "cornflower",
+     "density": 0.01
+    },
+    {
+     "block": "sage",
+     "density": 0.01
+    },
+    {
+     "block": "wild_strawberry",
+     "density": 0.01
+    }
+   ],
+   "fauna": [
+    "deer",
+    "hare",
+    "fox",
+    "boar"
+   ],
+   "weather": [
+    "rain",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "savanna",
+   "name": {
+    "ru": "Саванна",
+    "en": "Savanna"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.36,
+    "humidity": -0.25
+   },
+   "map_color": "#b0a050",
+   "temperature_c": 26.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 3,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#a8b050",
+    "summer": "#b8a850",
+    "autumn": "#a89a50",
+    "winter": "#a8a060"
+   },
+   "foliage_colors": {
+    "spring": "#8aa040",
+    "summer": "#8a9a3a",
+    "autumn": "#9a8a3a",
+    "winter": "#8a8a45"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "savanna",
+   "music": "savanna",
+   "trees": [
+    {
+     "tree": "acacia",
+     "weight": 1
+    }
+   ],
+   "tree_density": 0.6,
+   "plants": [
+    {
+     "block": "tall_grass",
+     "density": 0.15
+    },
+    {
+     "block": "grass",
+     "density": 0.25
+    },
+    {
+     "block": "dead_bush",
+     "density": 0.005
+    }
+   ],
+   "fauna": [
+    "antelope",
+    "lion",
+    "zebra"
+   ],
+   "weather": [
+    "dry_wind",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "sand_desert",
+   "name": {
+    "ru": "Песчаная пустыня",
+    "en": "Sand Desert"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.42,
+    "humidity": -0.45
+   },
+   "map_color": "#e0cc8a",
+   "temperature_c": 30.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 5,
+    "underwater": "sand",
+    "subsoil": "sandstone",
+    "subsoil_depth": 10
+   },
+   "grass_colors": {
+    "spring": "#b0a868",
+    "summer": "#c0b070",
+    "autumn": "#b0a070",
+    "winter": "#a8a080"
+   },
+   "foliage_colors": {
+    "spring": "#9a9a50",
+    "summer": "#a09a50",
+    "autumn": "#a08a50",
+    "winter": "#9a9060"
+   },
+   "water_color": "#3a7a8a",
+   "ambience": "sand_desert",
+   "music": "sand_desert",
+   "terrain": {
+    "kind": "dunes",
+    "strength": 0.85
+   },
+   "plants": [
+    {
+     "block": "cactus",
+     "density": 0.004,
+     "on": [
+      "sand"
+     ]
+    },
+    {
+     "block": "dead_bush",
+     "density": 0.006,
+     "on": [
+      "sand"
+     ]
+    }
+   ],
+   "fauna": [
+    "camel",
+    "snake",
+    "scorpion"
+   ],
+   "weather": [
+    "dry_wind"
+   ]
+  },
+  {
+   "id": "rocky_desert",
+   "name": {
+    "ru": "Каменистая пустыня",
+    "en": "Rocky Desert"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.35,
+    "humidity": -0.45
+   },
+   "map_color": "#a89070",
+   "temperature_c": 24.0,
+   "surface": {
+    "top": "gravel",
+    "soil": "rubble",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "subsoil": "sandstone",
+    "subsoil_depth": 6,
+    "cliff": "sandstone"
+   },
+   "grass_colors": {
+    "spring": "#b0a868",
+    "summer": "#c0b070",
+    "autumn": "#b0a070",
+    "winter": "#a8a080"
+   },
+   "foliage_colors": {
+    "spring": "#9a9a50",
+    "summer": "#a09a50",
+    "autumn": "#a08a50",
+    "winter": "#9a9060"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "rocky_desert",
+   "music": "rocky_desert",
+   "terrain": {
+    "kind": "rugged",
+    "strength": 0.8
+   },
+   "plants": [
+    {
+     "block": "dead_bush",
+     "density": 0.01,
+     "on": [
+      "gravel",
+      "rubble"
+     ]
+    },
+    {
+     "block": "cactus",
+     "density": 0.002,
+     "on": [
+      "gravel"
+     ]
+    }
+   ],
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.4,
+     "block": "sandstone"
+    }
+   ],
+   "fauna": [
+    "snake",
+    "lizard"
+   ],
+   "weather": [
+    "dry_wind"
+   ]
+  },
+  {
+   "id": "canyons",
+   "name": {
+    "ru": "Каньоны",
+    "en": "Canyons"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.45,
+    "humidity": -0.4,
+    "weirdness": 0.3
+   },
+   "map_color": "#c06a3a",
+   "temperature_c": 22.0,
+   "surface": {
+    "top": "red_sand",
+    "soil": "red_sand",
+    "soil_depth": 2,
+    "underwater": "red_sand",
+    "cliff": "red_sandstone"
+   },
+   "grass_colors": {
+    "spring": "#b0a868",
+    "summer": "#c0b070",
+    "autumn": "#b0a070",
+    "winter": "#a8a080"
+   },
+   "foliage_colors": {
+    "spring": "#9a9a50",
+    "summer": "#a09a50",
+    "autumn": "#a08a50",
+    "winter": "#9a9060"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "canyons",
+   "music": "canyons",
+   "terrain": {
+    "kind": "terrace",
+    "strength": 1.0
+   },
+   "plants": [
+    {
+     "block": "dead_bush",
+     "density": 0.01,
+     "on": [
+      "red_sand"
+     ]
+    },
+    {
+     "block": "cactus",
+     "density": 0.003,
+     "on": [
+      "red_sand"
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "block": "red_sandstone",
+     "thickness": 3
+    },
+    {
+     "block": "ochre_clay",
+     "thickness": 2
+    },
+    {
+     "block": "red_clay",
+     "thickness": 3
+    },
+    {
+     "block": "sandstone",
+     "thickness": 2
+    },
+    {
+     "block": "chalk",
+     "thickness": 1
+    },
+    {
+     "block": "red_sandstone",
+     "thickness": 4
+    },
+    {
+     "block": "ochre_clay",
+     "thickness": 1
+    }
+   ],
+   "fauna": [
+    "snake",
+    "eagle"
+   ],
+   "weather": [
+    "dry_wind",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "jungle",
+   "name": {
+    "ru": "Джунгли",
+    "en": "Jungle"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.5,
+    "humidity": 0.4
+   },
+   "map_color": "#2f8a2a",
+   "temperature_c": 27.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#5ab03a",
+    "summer": "#4aa83a",
+    "autumn": "#5aa53a",
+    "winter": "#5ab03a"
+   },
+   "foliage_colors": {
+    "spring": "#3a9a2a",
+    "summer": "#2f8a2a",
+    "autumn": "#3a902a",
+    "winter": "#3a9a2a"
+   },
+   "water_color": "#2a6a5a",
+   "ambience": "jungle",
+   "music": "jungle",
+   "trees": [
+    {
+     "tree": "jungle",
+     "weight": 2.5
+    },
+    {
+     "tree": "jungle_small",
+     "weight": 4
+    },
+    {
+     "tree": "palm",
+     "weight": 1
+    }
+   ],
+   "tree_density": 7.0,
+   "plants": [
+    {
+     "block": "fern",
+     "density": 0.15
+    },
+    {
+     "block": "tall_grass",
+     "density": 0.15
+    },
+    {
+     "block": "orchid",
+     "density": 0.01
+    },
+    {
+     "block": "hibiscus",
+     "density": 0.01
+    }
+   ],
+   "fauna": [
+    "parrot",
+    "monkey",
+    "jaguar",
+    "snake"
+   ],
+   "weather": [
+    "rain",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "bamboo_forest",
+   "name": {
+    "ru": "Бамбуковый лес",
+    "en": "Bamboo Forest"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.4,
+    "humidity": 0.45,
+    "weirdness": 0.3
+   },
+   "map_color": "#6aa040",
+   "temperature_c": 22.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 4,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#5ab03a",
+    "summer": "#4aa83a",
+    "autumn": "#5aa53a",
+    "winter": "#5ab03a"
+   },
+   "foliage_colors": {
+    "spring": "#3a9a2a",
+    "summer": "#2f8a2a",
+    "autumn": "#3a902a",
+    "winter": "#3a9a2a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "bamboo_forest",
+   "music": "bamboo_forest",
+   "trees": [
+    {
+     "tree": "bamboo",
+     "weight": 6
+    },
+    {
+     "tree": "jungle_small",
+     "weight": 1
+    }
+   ],
+   "tree_density": 8.0,
+   "plants": [
+    {
+     "block": "fern",
+     "density": 0.1
+    },
+    {
+     "block": "grass",
+     "density": 0.2
+    }
+   ],
+   "fauna": [
+    "panda",
+    "monkey"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "temperate_swamp",
+   "name": {
+    "ru": "Болото",
+    "en": "Swamp"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.1,
+    "humidity": 0.52,
+    "elevation": 0.03
+   },
+   "map_color": "#4a6a40",
+   "temperature_c": 10.0,
+   "surface": {
+    "top": "silt",
+    "soil": "peat",
+    "soil_depth": 3,
+    "underwater": "silt",
+    "subsoil": "clay",
+    "subsoil_depth": 2
+   },
+   "grass_colors": {
+    "spring": "#6a8a45",
+    "summer": "#5a7a3a",
+    "autumn": "#7a7a3a",
+    "winter": "#6a7060"
+   },
+   "foliage_colors": {
+    "spring": "#5a7a40",
+    "summer": "#4a6a35",
+    "autumn": "#8a7a35",
+    "winter": "#5a6045"
+   },
+   "water_color": "#4a5a35",
+   "ambience": "swamp",
+   "music": "swamp",
+   "terrain": {
+    "kind": "swamp",
+    "strength": 1.0
+   },
+   "trees": [
+    {
+     "tree": "willow",
+     "weight": 3
+    },
+    {
+     "tree": "alder",
+     "weight": 2
+    },
+    {
+     "tree": "birch",
+     "weight": 0.5
+    }
+   ],
+   "tree_density": 2.0,
+   "plants": [
+    {
+     "block": "reeds",
+     "density": 0.08
+    },
+    {
+     "block": "sedge",
+     "density": 0.15
+    },
+    {
+     "block": "water_lily",
+     "density": 0.06,
+     "on_water": true
+    },
+    {
+     "block": "cranberry_bush",
+     "density": 0.01
+    },
+    {
+     "block": "globeflower",
+     "density": 0.01
+    },
+    {
+     "block": "forget_me_not",
+     "density": 0.02
+    }
+   ],
+   "fauna": [
+    "frog",
+    "heron",
+    "duck",
+    "beaver"
+   ],
+   "weather": [
+    "fog",
+    "rain"
+   ]
+  },
+  {
+   "id": "karst",
+   "name": {
+    "ru": "Карстовая местность",
+    "en": "Karst"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.15,
+    "humidity": 0.2,
+    "weirdness": 0.33
+   },
+   "map_color": "#9aa080",
+   "temperature_c": 9.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 1,
+    "underwater": "gravel",
+    "cliff": "limestone"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "karst",
+   "music": "karst",
+   "terrain": {
+    "kind": "karst",
+    "strength": 1.0
+   },
+   "trees": [
+    {
+     "tree": "oak",
+     "weight": 1
+    },
+    {
+     "tree": "hazel",
+     "weight": 1
+    },
+    {
+     "tree": "rowan",
+     "weight": 0.5
+    }
+   ],
+   "tree_density": 1.0,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.25
+    },
+    {
+     "block": "thyme",
+     "density": 0.02
+    },
+    {
+     "block": "saxifrage",
+     "density": 0.01
+    },
+    {
+     "block": "juniper",
+     "density": 0.01
+    }
+   ],
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.2,
+     "block": "limestone"
+    }
+   ],
+   "fauna": [
+    "bat",
+    "lynx"
+   ],
+   "weather": [
+    "rain",
+    "fog"
+   ]
+  },
+  {
+   "id": "volcanic_plateau",
+   "name": {
+    "ru": "Вулканическое плато",
+    "en": "Volcanic Plateau"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.2,
+    "humidity": -0.1,
+    "weirdness": 0.42
+   },
+   "map_color": "#4a3f3f",
+   "temperature_c": 14.0,
+   "surface": {
+    "top": "basalt",
+    "soil": "tuff",
+    "soil_depth": 3,
+    "underwater": "basalt",
+    "cliff": "basalt"
+   },
+   "grass_colors": {
+    "spring": "#b0a868",
+    "summer": "#c0b070",
+    "autumn": "#b0a070",
+    "winter": "#a8a080"
+   },
+   "foliage_colors": {
+    "spring": "#9a9a50",
+    "summer": "#a09a50",
+    "autumn": "#a08a50",
+    "winter": "#9a9060"
+   },
+   "water_color": "#3a7a7a",
+   "ambience": "volcanic_plateau",
+   "music": "volcanic_plateau",
+   "terrain": {
+    "kind": "plateau",
+    "strength": 1.0
+   },
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.03,
+     "on": [
+      "tuff",
+      "basalt"
+     ]
+    },
+    {
+     "block": "lichen",
+     "density": 0.02,
+     "on": [
+      "basalt",
+      "tuff"
+     ]
+    }
+   ],
+   "features": [
+    {
+     "kind": "geyser",
+     "density": 0.25
+    },
+    {
+     "kind": "boulder",
+     "density": 0.3,
+     "block": "obsidian"
+    },
+    {
+     "kind": "boulder",
+     "density": 0.3,
+     "block": "pumice"
+    }
+   ],
+   "fauna": [
+    "eagle"
+   ],
+   "weather": [
+    "fog",
+    "dry_wind"
+   ]
+  },
+  {
+   "id": "mushroom_forest",
+   "name": {
+    "ru": "Грибной лес",
+    "en": "Mushroom Forest"
+   },
+   "category": "land",
+   "climate": {
+    "temperature": 0.1,
+    "humidity": 0.38,
+    "weirdness": 0.5
+   },
+   "map_color": "#8a5a7a",
+   "temperature_c": 12.0,
+   "surface": {
+    "top": "mycelium_turf",
+    "soil": "loam",
+    "soil_depth": 3,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#8a7a8a",
+    "summer": "#8a7a8a",
+    "autumn": "#8a7080",
+    "winter": "#9a90a0"
+   },
+   "foliage_colors": {
+    "spring": "#7a8a5a",
+    "summer": "#6a7a50",
+    "autumn": "#8a7a50",
+    "winter": "#7a7a6a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "mushroom_forest",
+   "music": "mushroom_forest",
+   "trees": [
+    {
+     "tree": "red_giant_mushroom",
+     "weight": 1
+    },
+    {
+     "tree": "brown_giant_mushroom",
+     "weight": 1
+    }
+   ],
+   "tree_density": 3.0,
+   "plants": [
+    {
+     "block": "porcini",
+     "density": 0.02
+    },
+    {
+     "block": "russula",
+     "density": 0.02
+    },
+    {
+     "block": "fly_agaric",
+     "density": 0.02
+    },
+    {
+     "block": "death_cap",
+     "density": 0.01
+    },
+    {
+     "block": "chanterelle",
+     "density": 0.01
+    },
+    {
+     "block": "false_chanterelle",
+     "density": 0.01
+    }
+   ],
+   "weather": [
+    "fog"
+   ]
+  },
+  {
+   "id": "alpine_meadows",
+   "name": {
+    "ru": "Альпийские луга",
+    "en": "Alpine Meadows"
+   },
+   "category": "mountain",
+   "climate": {
+    "temperature": 0.05,
+    "humidity": 0.0
+   },
+   "map_color": "#8ab07a",
+   "temperature_c": 4.0,
+   "surface": {
+    "top": "turf",
+    "soil": "loam",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "cliff": "granite"
+   },
+   "grass_colors": {
+    "spring": "#7aa850",
+    "summer": "#6aa048",
+    "autumn": "#9a9a50",
+    "winter": "#c0c8c0"
+   },
+   "foliage_colors": {
+    "spring": "#6a9a4a",
+    "summer": "#5a9040",
+    "autumn": "#b09a40",
+    "winter": "#8a8a7a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "alpine_meadows",
+   "music": "alpine_meadows",
+   "trees": [
+    {
+     "tree": "spruce",
+     "weight": 1
+    },
+    {
+     "tree": "larch",
+     "weight": 1
+    }
+   ],
+   "tree_density": 0.4,
+   "plants": [
+    {
+     "block": "grass",
+     "density": 0.3
+    },
+    {
+     "block": "edelweiss",
+     "density": 0.01
+    },
+    {
+     "block": "gentian",
+     "density": 0.02
+    },
+    {
+     "block": "rhododendron",
+     "density": 0.02
+    },
+    {
+     "block": "saxifrage",
+     "density": 0.01
+    },
+    {
+     "block": "globeflower",
+     "density": 0.01
+    },
+    {
+     "block": "snowdrop",
+     "density": 0.005
+    }
+   ],
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.2,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "ibex",
+    "marmot",
+    "eagle"
+   ],
+   "weather": [
+    "rain",
+    "fog",
+    "snow"
+   ]
+  },
+  {
+   "id": "snowy_peaks",
+   "name": {
+    "ru": "Заснеженные пики",
+    "en": "Snowy Peaks"
+   },
+   "category": "peak",
+   "climate": {
+    "temperature": -0.2,
+    "humidity": 0.0
+   },
+   "map_color": "#f0f4f6",
+   "temperature_c": -15.0,
+   "surface": {
+    "top": "snow_block",
+    "soil": "packed_ice",
+    "soil_depth": 3,
+    "underwater": "gravel",
+    "cliff": "granite"
+   },
+   "grass_colors": {
+    "spring": "#7a9a6a",
+    "summer": "#6a925a",
+    "autumn": "#8a8a5a",
+    "winter": "#a8b0a8"
+   },
+   "foliage_colors": {
+    "spring": "#5a8a50",
+    "summer": "#4a7a45",
+    "autumn": "#a08a40",
+    "winter": "#7a7a6a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "snowy_peaks",
+   "music": "snowy_peaks",
+   "snow_cover": true,
+   "freeze_water": true,
+   "fauna": [
+    "snow_leopard",
+    "ibex"
+   ],
+   "weather": [
+    "blizzard",
+    "snow"
+   ]
+  },
+  {
+   "id": "beach",
+   "name": {
+    "ru": "Пляж",
+    "en": "Beach"
+   },
+   "category": "beach",
+   "climate": {
+    "temperature": 0.05,
+    "humidity": 0.0
+   },
+   "map_color": "#e8d8a0",
+   "temperature_c": 14.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 4,
+    "underwater": "sand",
+    "subsoil": "sandstone",
+    "subsoil_depth": 3
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "beach",
+   "music": "beach",
+   "fauna": [
+    "crab",
+    "gull"
+   ],
+   "weather": [
+    "rain"
+   ]
+  },
+  {
+   "id": "rocky_shore",
+   "name": {
+    "ru": "Скалистый берег",
+    "en": "Rocky Shore"
+   },
+   "category": "beach",
+   "climate": {
+    "temperature": -0.3,
+    "humidity": 0.0
+   },
+   "map_color": "#8a8a8a",
+   "temperature_c": 4.0,
+   "surface": {
+    "top": "gravel",
+    "soil": "gravel",
+    "soil_depth": 2,
+    "underwater": "gravel",
+    "cliff": "granite"
+   },
+   "grass_colors": {
+    "spring": "#6f9a45",
+    "summer": "#5a8a38",
+    "autumn": "#8a8a40",
+    "winter": "#7a8670"
+   },
+   "foliage_colors": {
+    "spring": "#6aa04a",
+    "summer": "#4f8a3a",
+    "autumn": "#c49a2c",
+    "winter": "#6a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "rocky_shore",
+   "music": "rocky_shore",
+   "features": [
+    {
+     "kind": "boulder",
+     "density": 0.6,
+     "block": "granite"
+    }
+   ],
+   "fauna": [
+    "seal",
+    "gull"
+   ],
+   "weather": [
+    "fog",
+    "rain"
+   ]
+  },
+  {
+   "id": "mangroves",
+   "name": {
+    "ru": "Мангры",
+    "en": "Mangroves"
+   },
+   "category": "beach",
+   "climate": {
+    "temperature": 0.46,
+    "humidity": 0.42
+   },
+   "map_color": "#4a7a4a",
+   "temperature_c": 27.0,
+   "surface": {
+    "top": "silt",
+    "soil": "silt",
+    "soil_depth": 3,
+    "underwater": "silt"
+   },
+   "grass_colors": {
+    "spring": "#5ab03a",
+    "summer": "#4aa83a",
+    "autumn": "#5aa53a",
+    "winter": "#5ab03a"
+   },
+   "foliage_colors": {
+    "spring": "#3a9a2a",
+    "summer": "#2f8a2a",
+    "autumn": "#3a902a",
+    "winter": "#3a9a2a"
+   },
+   "water_color": "#3a6a5a",
+   "ambience": "mangroves",
+   "music": "mangroves",
+   "terrain": {
+    "kind": "swamp",
+    "strength": 0.6
+   },
+   "trees": [
+    {
+     "tree": "mangrove",
+     "weight": 1
+    }
+   ],
+   "tree_density": 4.0,
+   "plants": [
+    {
+     "block": "reeds",
+     "density": 0.05
+    }
+   ],
+   "fauna": [
+    "crocodile",
+    "crab",
+    "heron"
+   ],
+   "weather": [
+    "rain",
+    "thunderstorm"
+   ]
+  },
+  {
+   "id": "river",
+   "name": {
+    "ru": "Река",
+    "en": "River"
+   },
+   "category": "river",
+   "climate": {
+    "temperature": 0.0,
+    "humidity": 0.0
+   },
+   "map_color": "#3a7ab0",
+   "temperature_c": 8.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 2,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "river",
+   "music": "river",
+   "trees": [
+    {
+     "tree": "willow",
+     "weight": 1
+    }
+   ],
+   "tree_density": 0.2,
+   "plants": [
+    {
+     "block": "reeds",
+     "density": 0.05,
+     "on": [
+      "sand",
+      "gravel"
+     ]
+    }
+   ],
+   "fauna": [
+    "fish",
+    "beaver",
+    "duck"
+   ],
+   "weather": [
+    "rain",
+    "fog"
+   ]
+  },
+  {
+   "id": "frozen_river",
+   "name": {
+    "ru": "Замёрзшая река",
+    "en": "Frozen River"
+   },
+   "category": "river",
+   "climate": {
+    "temperature": -0.35,
+    "humidity": 0.0
+   },
+   "map_color": "#9ac0e0",
+   "temperature_c": -10.0,
+   "surface": {
+    "top": "gravel",
+    "soil": "gravel",
+    "soil_depth": 2,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7a9a6a",
+    "summer": "#6a925a",
+    "autumn": "#8a8a5a",
+    "winter": "#a8b0a8"
+   },
+   "foliage_colors": {
+    "spring": "#5a8a50",
+    "summer": "#4a7a45",
+    "autumn": "#a08a40",
+    "winter": "#7a7a6a"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "frozen_river",
+   "music": "frozen_river",
+   "snow_cover": true,
+   "freeze_water": true,
+   "fauna": [
+    "fish"
+   ],
+   "weather": [
+    "snow"
+   ]
+  },
+  {
+   "id": "ocean",
+   "name": {
+    "ru": "Океан",
+    "en": "Ocean"
+   },
+   "category": "ocean",
+   "climate": {
+    "temperature": 0.0,
+    "humidity": 0.0,
+    "elevation": -0.3
+   },
+   "map_color": "#2a5a9a",
+   "temperature_c": 12.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 3,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#2f5f86",
+   "ambience": "ocean",
+   "music": "ocean",
+   "fauna": [
+    "fish",
+    "dolphin"
+   ]
+  },
+  {
+   "id": "warm_ocean",
+   "name": {
+    "ru": "Тёплый океан",
+    "en": "Warm Ocean"
+   },
+   "category": "ocean",
+   "climate": {
+    "temperature": 0.42,
+    "humidity": 0.0,
+    "elevation": -0.3
+   },
+   "map_color": "#2a8ab0",
+   "temperature_c": 26.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 3,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#5ab03a",
+    "summer": "#4aa83a",
+    "autumn": "#5aa53a",
+    "winter": "#5ab03a"
+   },
+   "foliage_colors": {
+    "spring": "#3a9a2a",
+    "summer": "#2f8a2a",
+    "autumn": "#3a902a",
+    "winter": "#3a9a2a"
+   },
+   "water_color": "#2a8aa0",
+   "ambience": "warm_ocean",
+   "music": "warm_ocean",
+   "fauna": [
+    "fish",
+    "turtle"
+   ]
+  },
+  {
+   "id": "cold_ocean",
+   "name": {
+    "ru": "Холодный океан",
+    "en": "Cold Ocean"
+   },
+   "category": "ocean",
+   "climate": {
+    "temperature": -0.38,
+    "humidity": 0.0,
+    "elevation": -0.3
+   },
+   "map_color": "#2a4a7a",
+   "temperature_c": 2.0,
+   "surface": {
+    "top": "gravel",
+    "soil": "gravel",
+    "soil_depth": 3,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#6f9a45",
+    "summer": "#5a8a38",
+    "autumn": "#8a8a40",
+    "winter": "#7a8670"
+   },
+   "foliage_colors": {
+    "spring": "#6aa04a",
+    "summer": "#4f8a3a",
+    "autumn": "#c49a2c",
+    "winter": "#6a6a50"
+   },
+   "water_color": "#2a4a6a",
+   "ambience": "cold_ocean",
+   "music": "cold_ocean",
+   "fauna": [
+    "fish",
+    "seal",
+    "walrus"
+   ]
+  },
+  {
+   "id": "deep_ocean",
+   "name": {
+    "ru": "Глубокий океан",
+    "en": "Deep Ocean"
+   },
+   "category": "ocean",
+   "climate": {
+    "temperature": 0.0,
+    "humidity": 0.0,
+    "elevation": -0.7
+   },
+   "map_color": "#1a3a6a",
+   "temperature_c": 4.0,
+   "surface": {
+    "top": "gravel",
+    "soil": "clay",
+    "soil_depth": 3,
+    "underwater": "gravel"
+   },
+   "grass_colors": {
+    "spring": "#7ab04a",
+    "summer": "#62a03c",
+    "autumn": "#a09a40",
+    "winter": "#8a8a60"
+   },
+   "foliage_colors": {
+    "spring": "#7ab04a",
+    "summer": "#5a9a3a",
+    "autumn": "#d0802a",
+    "winter": "#7a6a50"
+   },
+   "water_color": "#1a3a5a",
+   "ambience": "deep_ocean",
+   "music": "deep_ocean",
+   "fauna": [
+    "whale",
+    "squid"
+   ]
+  },
+  {
+   "id": "reef_ocean",
+   "name": {
+    "ru": "Океан с рифами",
+    "en": "Reef Ocean"
+   },
+   "category": "ocean",
+   "climate": {
+    "temperature": 0.48,
+    "humidity": 0.2,
+    "weirdness": 0.25,
+    "elevation": -0.25
+   },
+   "map_color": "#3ab0c0",
+   "temperature_c": 27.0,
+   "surface": {
+    "top": "sand",
+    "soil": "sand",
+    "soil_depth": 3,
+    "underwater": "sand"
+   },
+   "grass_colors": {
+    "spring": "#5ab03a",
+    "summer": "#4aa83a",
+    "autumn": "#5aa53a",
+    "winter": "#5ab03a"
+   },
+   "foliage_colors": {
+    "spring": "#3a9a2a",
+    "summer": "#2f8a2a",
+    "autumn": "#3a902a",
+    "winter": "#3a9a2a"
+   },
+   "water_color": "#2aa0b0",
+   "ambience": "reef_ocean",
+   "music": "reef_ocean",
+   "features": [
+    {
+     "kind": "coral",
+     "density": 6.0
+    }
+   ],
+   "fauna": [
+    "fish",
+    "turtle",
+    "shark"
+   ]
+  }
+ ]
+}

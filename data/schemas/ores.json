@@ -1,0 +1,152 @@
+{
+  "format": 1,
+  "category": "ores",
+  "description": "Залежи руд, минералов и пород (раздел 2.5). Формы: blob — гнездо, vein — жила, layer — пласт, geode — жеода, pipe — трубка, placer — россыпь у поверхности.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "block": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "required": true
+    },
+    "shape": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "blob",
+        "vein",
+        "layer",
+        "geode",
+        "pipe",
+        "placer"
+      ]
+    },
+    "hosts": {
+      "type": "array",
+      "required": true,
+      "of": {
+        "type": "ref",
+        "to": [
+          "blocks"
+        ]
+      },
+      "doc": "Какие блоки замещает."
+    },
+    "y_min": {
+      "type": "int",
+      "min": -256,
+      "max": 319,
+      "required": true
+    },
+    "y_max": {
+      "type": "int",
+      "min": -256,
+      "max": 319,
+      "required": true
+    },
+    "per_column": {
+      "type": "float",
+      "min": 0.0,
+      "max": 64.0,
+      "required": true,
+      "doc": "Сколько залежей в среднем на колонну 16×16 (для placer — доля блоков)."
+    },
+    "size": {
+      "type": "object",
+      "required": true,
+      "doc": "Размер залежи в блоках (для pipe — радиус).",
+      "fields": {
+        "min": {
+          "type": "int",
+          "min": 1,
+          "max": 400,
+          "required": true
+        },
+        "max": {
+          "type": "int",
+          "min": 1,
+          "max": 400,
+          "required": true
+        }
+      }
+    },
+    "provinces": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "ref",
+        "to": [
+          "geology"
+        ]
+      },
+      "doc": "Пусто — во всех провинциях."
+    },
+    "biomes": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "ref",
+        "to": [
+          "biomes"
+        ]
+      },
+      "doc": "Для placer: в каких биомах."
+    },
+    "depth": {
+      "type": "object",
+      "doc": "Для placer: глубина под поверхностью.",
+      "fields": {
+        "min": {
+          "type": "int",
+          "min": 0,
+          "max": 32,
+          "default": 0
+        },
+        "max": {
+          "type": "int",
+          "min": 0,
+          "max": 32,
+          "default": 2
+        }
+      }
+    },
+    "shell": {
+      "type": "ref",
+      "to": [
+        "blocks"
+      ],
+      "doc": "Для geode: внешняя оболочка."
+    },
+    "inclusion": {
+      "type": "object",
+      "doc": "Вкрапления внутри залежи (алмазы в кимберлите).",
+      "fields": {
+        "block": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ],
+          "required": true
+        },
+        "chance": {
+          "type": "float",
+          "min": 0.0,
+          "max": 1.0,
+          "required": true
+        },
+        "y_max": {
+          "type": "int",
+          "min": -256,
+          "max": 319,
+          "default": 319
+        }
+      }
+    }
+  }
+}

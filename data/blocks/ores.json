@@ -1,0 +1,716 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "native_copper_ore",
+   "name": {
+    "ru": "Самородная медь",
+    "en": "Native Copper Ore"
+   },
+   "material": "stone",
+   "map_color": "#b0714a",
+   "hardness": 4.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "copper"
+   ],
+   "drops": [
+    {
+     "id": "native_copper_ore"
+    }
+   ],
+   "textures": {
+    "all": "native_copper_ore"
+   }
+  },
+  {
+   "id": "malachite_ore",
+   "name": {
+    "ru": "Малахит",
+    "en": "Malachite Ore"
+   },
+   "material": "stone",
+   "map_color": "#2f8a5c",
+   "hardness": 4.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "copper"
+   ],
+   "drops": [
+    {
+     "id": "malachite_ore"
+    }
+   ],
+   "textures": {
+    "all": "malachite_ore"
+   }
+  },
+  {
+   "id": "cassiterite_ore",
+   "name": {
+    "ru": "Касситерит",
+    "en": "Cassiterite Ore"
+   },
+   "material": "stone",
+   "map_color": "#5b4a43",
+   "hardness": 5.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "tin"
+   ],
+   "drops": [
+    {
+     "id": "cassiterite_ore"
+    }
+   ],
+   "textures": {
+    "all": "cassiterite_ore"
+   }
+  },
+  {
+   "id": "hematite_ore",
+   "name": {
+    "ru": "Гематит",
+    "en": "Hematite Ore"
+   },
+   "material": "stone",
+   "map_color": "#7a3c33",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "iron"
+   ],
+   "drops": [
+    {
+     "id": "hematite_ore"
+    }
+   ],
+   "textures": {
+    "all": "hematite_ore"
+   }
+  },
+  {
+   "id": "magnetite_ore",
+   "name": {
+    "ru": "Магнетит",
+    "en": "Magnetite Ore"
+   },
+   "material": "stone",
+   "map_color": "#3b3a3d",
+   "hardness": 6.5,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "iron"
+   ],
+   "drops": [
+    {
+     "id": "magnetite_ore"
+    }
+   ],
+   "textures": {
+    "all": "magnetite_ore"
+   }
+  },
+  {
+   "id": "bog_iron_ore",
+   "name": {
+    "ru": "Болотная руда",
+    "en": "Bog Iron Ore"
+   },
+   "material": "soil",
+   "map_color": "#7b5130",
+   "hardness": 1.5,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "tags": [
+    "soil",
+    "ore",
+    "iron"
+   ],
+   "drops": [
+    {
+     "id": "bog_iron_ore"
+    }
+   ],
+   "textures": {
+    "all": "bog_iron_ore"
+   }
+  },
+  {
+   "id": "galena_ore",
+   "name": {
+    "ru": "Галенит",
+    "en": "Galena Ore"
+   },
+   "material": "stone",
+   "map_color": "#7d8088",
+   "hardness": 5.5,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "lead"
+   ],
+   "drops": [
+    {
+     "id": "galena_ore"
+    }
+   ],
+   "textures": {
+    "all": "galena_ore"
+   }
+  },
+  {
+   "id": "sphalerite_ore",
+   "name": {
+    "ru": "Сфалерит",
+    "en": "Sphalerite Ore"
+   },
+   "material": "stone",
+   "map_color": "#6a5530",
+   "hardness": 5.5,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "zinc"
+   ],
+   "drops": [
+    {
+     "id": "sphalerite_ore"
+    }
+   ],
+   "textures": {
+    "all": "sphalerite_ore"
+   }
+  },
+  {
+   "id": "pentlandite_ore",
+   "name": {
+    "ru": "Пентландит (никель)",
+    "en": "Pentlandite Ore"
+   },
+   "material": "stone",
+   "map_color": "#9b8b55",
+   "hardness": 7.0,
+   "tool": "pickaxe",
+   "tool_tier": 3,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "nickel"
+   ],
+   "drops": [
+    {
+     "id": "pentlandite_ore"
+    }
+   ],
+   "textures": {
+    "all": "pentlandite_ore"
+   }
+  },
+  {
+   "id": "native_silver_ore",
+   "name": {
+    "ru": "Самородное серебро",
+    "en": "Native Silver Ore"
+   },
+   "material": "stone",
+   "map_color": "#b9bcc2",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "silver"
+   ],
+   "drops": [
+    {
+     "id": "native_silver_ore"
+    }
+   ],
+   "textures": {
+    "all": "native_silver_ore"
+   }
+  },
+  {
+   "id": "gold_quartz_ore",
+   "name": {
+    "ru": "Золотоносный кварц",
+    "en": "Gold-Bearing Quartz"
+   },
+   "material": "stone",
+   "map_color": "#e9d27b",
+   "hardness": 6.5,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "gold"
+   ],
+   "drops": [
+    {
+     "id": "gold_quartz_ore"
+    }
+   ],
+   "textures": {
+    "all": "gold_quartz_ore"
+   }
+  },
+  {
+   "id": "gold_gravel",
+   "name": {
+    "ru": "Золотоносный гравий",
+    "en": "Gold-Bearing Gravel"
+   },
+   "material": "gravel",
+   "map_color": "#a0906a",
+   "hardness": 0.9,
+   "tool": "shovel",
+   "sounds": "gravel",
+   "drops": [
+    {
+     "id": "gold_gravel"
+    }
+   ],
+   "tags": [
+    "ore",
+    "gold",
+    "placer",
+    "pannable",
+    "falling"
+   ],
+   "textures": {
+    "all": "gold_gravel"
+   }
+  },
+  {
+   "id": "platinum_ore",
+   "name": {
+    "ru": "Платиновая руда",
+    "en": "Platinum Ore"
+   },
+   "material": "stone",
+   "map_color": "#c9cdd2",
+   "hardness": 9.0,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "platinum",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "platinum_ore"
+    }
+   ],
+   "textures": {
+    "all": "platinum_ore"
+   }
+  },
+  {
+   "id": "lignite_ore",
+   "name": {
+    "ru": "Бурый уголь",
+    "en": "Lignite"
+   },
+   "material": "stone",
+   "map_color": "#4a3b2a",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "coal",
+    "fuel"
+   ],
+   "drops": [
+    {
+     "id": "lignite_ore"
+    }
+   ],
+   "textures": {
+    "all": "lignite_ore"
+   }
+  },
+  {
+   "id": "coal_ore",
+   "name": {
+    "ru": "Каменный уголь",
+    "en": "Coal Ore"
+   },
+   "material": "stone",
+   "map_color": "#2a2a2a",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "coal",
+    "fuel"
+   ],
+   "drops": [
+    {
+     "id": "coal_ore"
+    }
+   ],
+   "textures": {
+    "all": "coal_ore"
+   }
+  },
+  {
+   "id": "anthracite_ore",
+   "name": {
+    "ru": "Антрацит",
+    "en": "Anthracite"
+   },
+   "material": "stone",
+   "map_color": "#141418",
+   "hardness": 5.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "coal",
+    "fuel"
+   ],
+   "drops": [
+    {
+     "id": "anthracite_ore"
+    }
+   ],
+   "textures": {
+    "all": "anthracite_ore"
+   }
+  },
+  {
+   "id": "sulfur_ore",
+   "name": {
+    "ru": "Сера",
+    "en": "Sulfur Ore"
+   },
+   "material": "stone",
+   "map_color": "#d9c53a",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "sulfur"
+   ],
+   "drops": [
+    {
+     "id": "sulfur_ore"
+    }
+   ],
+   "textures": {
+    "all": "sulfur_ore"
+   }
+  },
+  {
+   "id": "saltpeter_ore",
+   "name": {
+    "ru": "Селитра",
+    "en": "Saltpeter Ore"
+   },
+   "material": "stone",
+   "map_color": "#e7e3d5",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "saltpeter"
+   ],
+   "drops": [
+    {
+     "id": "saltpeter_ore"
+    }
+   ],
+   "textures": {
+    "all": "saltpeter_ore"
+   }
+  },
+  {
+   "id": "spodumene_ore",
+   "name": {
+    "ru": "Сподумен (литий)",
+    "en": "Spodumene Ore"
+   },
+   "material": "stone",
+   "map_color": "#c7b5c9",
+   "hardness": 7.0,
+   "tool": "pickaxe",
+   "tool_tier": 3,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "lithium",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "spodumene_ore"
+    }
+   ],
+   "textures": {
+    "all": "spodumene_ore"
+   }
+  },
+  {
+   "id": "graphite_ore",
+   "name": {
+    "ru": "Графит",
+    "en": "Graphite Ore"
+   },
+   "material": "stone",
+   "map_color": "#3e4146",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "ore",
+    "graphite"
+   ],
+   "drops": [
+    {
+     "id": "graphite_ore"
+    }
+   ],
+   "textures": {
+    "all": "graphite_ore"
+   }
+  },
+  {
+   "id": "amethyst",
+   "name": {
+    "ru": "Аметист",
+    "en": "Amethyst"
+   },
+   "material": "stone",
+   "map_color": "#8a5cc2",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "amethyst"
+   ],
+   "drops": [
+    {
+     "id": "amethyst"
+    }
+   ],
+   "textures": {
+    "all": "amethyst"
+   }
+  },
+  {
+   "id": "topaz_ore",
+   "name": {
+    "ru": "Топаз",
+    "en": "Topaz Ore"
+   },
+   "material": "stone",
+   "map_color": "#e5a64a",
+   "hardness": 7.5,
+   "tool": "pickaxe",
+   "tool_tier": 3,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "topaz"
+   ],
+   "drops": [
+    {
+     "id": "topaz_ore"
+    }
+   ],
+   "textures": {
+    "all": "topaz_ore"
+   }
+  },
+  {
+   "id": "garnet_ore",
+   "name": {
+    "ru": "Гранат",
+    "en": "Garnet Ore"
+   },
+   "material": "stone",
+   "map_color": "#8c2433",
+   "hardness": 7.5,
+   "tool": "pickaxe",
+   "tool_tier": 3,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "garnet"
+   ],
+   "drops": [
+    {
+     "id": "garnet_ore"
+    }
+   ],
+   "textures": {
+    "all": "garnet_ore"
+   }
+  },
+  {
+   "id": "emerald_ore",
+   "name": {
+    "ru": "Изумруд",
+    "en": "Emerald Ore"
+   },
+   "material": "stone",
+   "map_color": "#2fb36b",
+   "hardness": 8.0,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "emerald",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "emerald_ore"
+    }
+   ],
+   "textures": {
+    "all": "emerald_ore"
+   }
+  },
+  {
+   "id": "sapphire_ore",
+   "name": {
+    "ru": "Сапфир",
+    "en": "Sapphire Ore"
+   },
+   "material": "stone",
+   "map_color": "#2f4fb3",
+   "hardness": 8.5,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "sapphire",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "sapphire_ore"
+    }
+   ],
+   "textures": {
+    "all": "sapphire_ore"
+   }
+  },
+  {
+   "id": "ruby_ore",
+   "name": {
+    "ru": "Рубин",
+    "en": "Ruby Ore"
+   },
+   "material": "stone",
+   "map_color": "#c2213f",
+   "hardness": 8.5,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "ruby",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "ruby_ore"
+    }
+   ],
+   "textures": {
+    "all": "ruby_ore"
+   }
+  },
+  {
+   "id": "diamond_ore",
+   "name": {
+    "ru": "Алмаз в кимберлите",
+    "en": "Diamond Ore"
+   },
+   "material": "stone",
+   "map_color": "#9fe3e6",
+   "hardness": 10.0,
+   "tool": "pickaxe",
+   "tool_tier": 4,
+   "sounds": "stone",
+   "tags": [
+    "stone",
+    "gem",
+    "diamond",
+    "deep"
+   ],
+   "drops": [
+    {
+     "id": "diamond_ore"
+    }
+   ],
+   "textures": {
+    "all": "diamond_ore"
+   }
+  }
+ ]
+}

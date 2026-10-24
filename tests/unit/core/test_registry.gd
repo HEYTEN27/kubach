@@ -19,9 +19,18 @@ func test_real_data_loads_without_errors() -> void:
 	assert_eq(reg.warnings.size(), 0, "предупреждения: %s" % "\n".join(reg.warnings))
 
 
-func test_ten_blocks_plus_air() -> void:
-	assert_eq(reg.get_entries("blocks").size(), 10)
-	assert_eq(reg.block_count(), 11)
+func test_block_counts() -> void:
+	assert_gt(reg.get_entries("blocks").size(), 150, "этап 2: породы, руды, дерево, растения")
+	assert_eq(reg.block_count(), reg.get_entries("blocks").size() + 1, "плюс воздух")
+
+
+func test_shapes_and_tints() -> void:
+	assert_eq(reg.block(&"grass").shape, &"cross")
+	assert_false(reg.block(&"grass").opaque, "растение не закрывает соседей")
+	assert_eq(reg.block(&"snow_layer").shape, &"layer")
+	assert_eq(reg.block(&"turf").tint, &"grass")
+	assert_eq(reg.block(&"birch_leaves").tint, &"foliage")
+	assert_eq(reg.block_shape[reg.block_num(&"grass")], BlockDef.SHAPE_CROSS)
 
 
 func test_air_is_zero_and_empty() -> void:

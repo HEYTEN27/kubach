@@ -1,0 +1,359 @@
+{
+  "format": 1,
+  "category": "biomes",
+  "description": "Биомы (раздел 2.4). Выбор — ближайшая климатическая точка в своей категории рельефа.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": {
+      "type": "localized",
+      "required": true
+    },
+    "category": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "land",
+        "mountain",
+        "peak",
+        "beach",
+        "river",
+        "ocean"
+      ]
+    },
+    "climate": {
+      "type": "object",
+      "required": true,
+      "doc": "Целевые значения шумов климата (примерно −0.6…0.6) и нормированной высоты.",
+      "fields": {
+        "temperature": {
+          "type": "float",
+          "min": -1.5,
+          "max": 1.5,
+          "required": true
+        },
+        "humidity": {
+          "type": "float",
+          "min": -1.5,
+          "max": 1.5,
+          "required": true
+        },
+        "weirdness": {
+          "type": "float",
+          "min": 0.0,
+          "max": 1.5,
+          "default": 0.0,
+          "doc": "Редкий биом: допускается только там, где |weirdness| ≥ этого значения (и тогда выигрывает у обычных при близком климате). 0 — обычный биом."
+        },
+        "elevation": {
+          "type": "float",
+          "min": -3.0,
+          "max": 3.0,
+          "doc": "Нормированная высота (h − уровень моря)/64; не задано — не учитывается."
+        }
+      }
+    },
+    "map_color": {
+      "type": "color",
+      "required": true
+    },
+    "temperature_c": {
+      "type": "float",
+      "min": -60.0,
+      "max": 60.0,
+      "required": true,
+      "doc": "Средняя температура, °C (выживание — этап 5)."
+    },
+    "surface": {
+      "type": "object",
+      "required": true,
+      "fields": {
+        "top": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ],
+          "required": true
+        },
+        "soil": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ],
+          "required": true
+        },
+        "soil_depth": {
+          "type": "int",
+          "min": 0,
+          "max": 32,
+          "default": 3
+        },
+        "subsoil": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ]
+        },
+        "subsoil_depth": {
+          "type": "int",
+          "min": 0,
+          "max": 32,
+          "default": 0
+        },
+        "underwater": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ],
+          "required": true
+        },
+        "cliff": {
+          "type": "ref",
+          "to": [
+            "blocks"
+          ]
+        }
+      }
+    },
+    "terrain": {
+      "type": "object",
+      "default": {
+        "kind": "none",
+        "strength": 0.0
+      },
+      "fields": {
+        "kind": {
+          "type": "enum",
+          "values": [
+            "none",
+            "swamp",
+            "terrace",
+            "plateau",
+            "karst",
+            "dunes",
+            "glacier",
+            "rugged"
+          ],
+          "default": "none"
+        },
+        "strength": {
+          "type": "float",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 1.0
+        }
+      }
+    },
+    "bands": {
+      "type": "array",
+      "default": [],
+      "doc": "Слоистые породы по высоте (каньоны).",
+      "of": {
+        "type": "object",
+        "fields": {
+          "block": {
+            "type": "ref",
+            "to": [
+              "blocks"
+            ],
+            "required": true
+          },
+          "thickness": {
+            "type": "int",
+            "min": 1,
+            "max": 16,
+            "required": true
+          }
+        }
+      }
+    },
+    "snow_cover": {
+      "type": "bool",
+      "default": false
+    },
+    "freeze_water": {
+      "type": "bool",
+      "default": false
+    },
+    "grass_colors": {
+      "type": "object",
+      "required": true,
+      "fields": {
+        "spring": {
+          "type": "color",
+          "required": true
+        },
+        "summer": {
+          "type": "color",
+          "required": true
+        },
+        "autumn": {
+          "type": "color",
+          "required": true
+        },
+        "winter": {
+          "type": "color",
+          "required": true
+        }
+      }
+    },
+    "foliage_colors": {
+      "type": "object",
+      "required": true,
+      "fields": {
+        "spring": {
+          "type": "color",
+          "required": true
+        },
+        "summer": {
+          "type": "color",
+          "required": true
+        },
+        "autumn": {
+          "type": "color",
+          "required": true
+        },
+        "winter": {
+          "type": "color",
+          "required": true
+        }
+      }
+    },
+    "water_color": {
+      "type": "color",
+      "default": "#2f5f86"
+    },
+    "tree_density": {
+      "type": "float",
+      "min": 0.0,
+      "max": 10.0,
+      "default": 0.0,
+      "doc": "Деревьев на колонну 16×16 в среднем."
+    },
+    "trees": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "object",
+        "fields": {
+          "tree": {
+            "type": "ref",
+            "to": [
+              "trees"
+            ],
+            "required": true
+          },
+          "weight": {
+            "type": "float",
+            "min": 0.0,
+            "max": 100.0,
+            "default": 1.0
+          }
+        }
+      }
+    },
+    "plants": {
+      "type": "array",
+      "default": [],
+      "doc": "density — вероятность на блок поверхности.",
+      "of": {
+        "type": "object",
+        "fields": {
+          "block": {
+            "type": "ref",
+            "to": [
+              "blocks"
+            ],
+            "required": true
+          },
+          "density": {
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "required": true
+          },
+          "on": {
+            "type": "array",
+            "default": [],
+            "of": {
+              "type": "ref",
+              "to": [
+                "blocks"
+              ]
+            },
+            "doc": "На каких блоках растёт; пусто — на верхнем блоке биома."
+          },
+          "on_water": {
+            "type": "bool",
+            "default": false,
+            "doc": "На поверхности воды (кувшинки)."
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "object",
+        "fields": {
+          "kind": {
+            "type": "enum",
+            "required": true,
+            "values": [
+              "fallen_log",
+              "rock_pile",
+              "tussock",
+              "geyser",
+              "coral",
+              "boulder",
+              "giant_mushroom"
+            ]
+          },
+          "density": {
+            "type": "float",
+            "min": 0.0,
+            "max": 16.0,
+            "required": true,
+            "doc": "Штук на колонну в среднем."
+          },
+          "block": {
+            "type": "ref",
+            "to": [
+              "blocks"
+            ]
+          }
+        }
+      }
+    },
+    "fauna": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "string"
+      },
+      "doc": "Животные (этап 11)."
+    },
+    "weather": {
+      "type": "array",
+      "default": [],
+      "of": {
+        "type": "string"
+      },
+      "doc": "Типичная погода (этап 7)."
+    },
+    "ambience": {
+      "type": "string",
+      "default": "",
+      "doc": "Ключ звуков окружения (этап 16)."
+    },
+    "music": {
+      "type": "string",
+      "default": "",
+      "doc": "Ключ музыкального набора (этап 16)."
+    }
+  }
+}

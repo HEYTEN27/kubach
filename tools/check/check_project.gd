@@ -33,6 +33,9 @@ func _ready() -> void:
 
 
 func _collect(dir: String, out: PackedStringArray) -> void:
+	# Каталоги с .gdignore Godot не импортирует (godot-cpp, сборки) — и мы их не проверяем.
+	if FileAccess.file_exists(dir.path_join(".gdignore")):
+		return
 	for sub in DirAccess.get_directories_at(dir):
 		_collect(dir.path_join(sub), out)
 	for f in DirAccess.get_files_at(dir):

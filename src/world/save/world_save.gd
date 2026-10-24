@@ -23,7 +23,8 @@ static func list_worlds() -> Array[Dictionary]:
 	return out
 
 
-static func create(world_name: String, seed_text: String, game_mode: StringName = &"survival", root: String = ROOT) -> WorldSave:
+static func create(world_name: String, seed_text: String, game_mode: StringName = &"survival", root: String = ROOT,
+		settings: WorldGenSettings = null) -> WorldSave:
 	var ws := WorldSave.new()
 	var base := _slug(world_name)
 	var folder := root.path_join(base)
@@ -38,7 +39,7 @@ static func create(world_name: String, seed_text: String, game_mode: StringName 
 		"name": world_name,
 		"seed_text": seed_text,
 		"seed": str(WorldSeed.from_text(seed_text)),
-		"worldgen": "default",
+		"worldgen": (settings if settings != null else WorldGenSettings.new()).to_dict(),
 		"game_mode": String(game_mode),
 		"created": now,
 		"last_played": now,
@@ -66,6 +67,12 @@ static func open(folder: String) -> WorldSave:
 
 func world_seed() -> int:
 	return String(meta["seed"]).to_int()
+
+
+## Настройки генерации мира (сохранения этапа 1 хранили здесь строку — тогда значения по умолчанию).
+func gen_settings() -> WorldGenSettings:
+	var d: Variant = meta.get("worldgen", {})
+	return WorldGenSettings.from_dict(d if d is Dictionary else {})
 
 
 func region_dir() -> String:

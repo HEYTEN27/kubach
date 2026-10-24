@@ -7,15 +7,13 @@ extends Control
 ##   --screenshot=<файл>  без --world — снимок самого меню.
 
 const GAME_SCENE := "res://src/core/game/game.tscn"
+const CREATE_SCENE := "res://src/ui/world_create/world_create.tscn"
 
 @onready var _title: Label = %Title
 @onready var _info: Label = %Info
 @onready var _status: Label = %Status
 @onready var _menu: VBoxContainer = %Menu
 
-var _name_edit: LineEdit
-var _seed_edit: LineEdit
-var _mode: OptionButton
 var _worlds: ItemList
 var _world_list: Array[Dictionary] = []
 
@@ -58,28 +56,14 @@ func _build_menu() -> void:
 	_menu.add_child(grid)
 
 	var create := _column(grid, "Новый мир")
-	_name_edit = LineEdit.new()
-	_name_edit.placeholder_text = "Название мира"
-	_name_edit.text = "Новый мир"
-	create.add_child(_name_edit)
-	var seed_row := HBoxContainer.new()
-	create.add_child(seed_row)
-	_seed_edit = LineEdit.new()
-	_seed_edit.placeholder_text = "Сид (текст или число)"
-	_seed_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	seed_row.add_child(_seed_edit)
-	var rnd := Button.new()
-	rnd.text = "Случайный"
-	rnd.pressed.connect(func() -> void: _seed_edit.text = str(WorldSeed.random()))
-	seed_row.add_child(rnd)
-	_mode = OptionButton.new()
-	_mode.add_item("Выживание")
-	_mode.add_item("Творческий")
-	create.add_child(_mode)
+	var hint := Label.new()
+	hint.text = "Сид, тип мира, биомы, пещеры, руды,\nсложность и предпросмотр карты."
+	hint.modulate = Color(0.7, 0.75, 0.7)
+	create.add_child(hint)
 	var go := Button.new()
-	go.text = "Создать мир"
+	go.text = "Создать новый мир…"
 	go.custom_minimum_size.y = 44
-	go.pressed.connect(_on_create)
+	go.pressed.connect(func() -> void: get_tree().change_scene_to_file(CREATE_SCENE))
 	create.add_child(go)
 
 	var load := _column(grid, "Сохранённые миры")
@@ -117,14 +101,6 @@ func _column(parent: Control, title: String) -> VBoxContainer:
 	l.add_theme_font_size_override("font_size", 24)
 	box.add_child(l)
 	return box
-
-
-func _on_create() -> void:
-	GameLaunch.reset()
-	GameLaunch.new_world_name = _name_edit.text.strip_edges() if _name_edit.text.strip_edges() != "" else "Новый мир"
-	GameLaunch.seed_text = _seed_edit.text.strip_edges() if _seed_edit.text.strip_edges() != "" else str(WorldSeed.random())
-	GameLaunch.game_mode = &"creative" if _mode.selected == 1 else &"survival"
-	_start_game()
 
 
 func _on_load() -> void:

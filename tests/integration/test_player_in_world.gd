@@ -82,11 +82,17 @@ func test_break_and_place_block_in_creative() -> void:
 	player.interaction.select(player.interaction.palette.find(granite))
 	assert_eq(player.interaction.selected_block(), granite)
 	var target := ground + Vector3i.UP
+	# Растения, снег и листву над точкой убираем: цель луча должна быть землёй.
+	for dy in range(1, 8):
+		world.set_block(ground.x, ground.y + dy, ground.z, 0)
+	world.set_block(ground.x, ground.y, ground.z, Registry.block_num(&"loam"))
+	await _frames(2)
 	assert_eq(world.get_block(target.x, target.y, target.z), 0, "над землёй пусто")
 	Input.action_press(&"use")
 	await _frames(3)
 	Input.action_release(&"use")
-	assert_eq(world.get_block(target.x, target.y, target.z), granite, "гранит поставлен на землю")
+	assert_eq(world.get_block(target.x, target.y, target.z), granite,
+		"гранит поставлен на землю; цель луча: %s" % player.interaction.target)
 
 
 func test_survival_breaking_takes_time() -> void:
