@@ -48,7 +48,8 @@ func select(index: int) -> void:
 
 func _process(delta: float) -> void:
 	_cooldown = maxf(0.0, _cooldown - delta)
-	_handle_selection_input()
+	if player.input_allowed():
+		_handle_selection_input()
 	if not player.active or not player.input_allowed():
 		_highlight.visible = false
 		break_progress = 0.0

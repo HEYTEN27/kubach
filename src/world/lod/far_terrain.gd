@@ -15,7 +15,7 @@ const TILE := 64
 const STEP2_DIST := 288.0
 const STEP4_DIST := 576.0
 const SINK := 0.3
-const MAX_IN_FLIGHT := 2
+var max_in_flight := 2
 
 var world: World
 var enabled := true
@@ -119,11 +119,14 @@ func update(px: float, pz: float) -> void:
 	if not enabled:
 		return
 	_player = Vector2(px, pz)
+	var c := Vector2(px - world.origin.x, pz - world.origin.z)
+	_land_mat.set_shader_parameter(&"clip_center", c)
+	_water_mat.set_shader_parameter(&"clip_center", c)
 	var center := Vector2i(floori(px / TILE), floori(pz / TILE))
 	if center != _center:
 		_center = center
 		_rebuild_wanted()
-	while _tasks.size() < MAX_IN_FLIGHT and not _wanted.is_empty():
+	while _tasks.size() < max_in_flight and not _wanted.is_empty():
 		var w: Array = _wanted.pop_front()
 		var t: Vector2i = w[0]
 		var step: int = w[1]

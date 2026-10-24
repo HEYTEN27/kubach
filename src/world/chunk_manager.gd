@@ -150,8 +150,13 @@ func is_area_ready(center: Vector2i, radius: int) -> bool:
 	return true
 
 
+## Колонны в генерации и ещё не розданные в пределах дальности.
 func pending_generation() -> int:
-	return _gen_tasks.size()
+	var queued := 0
+	for i in range(_wanted_cursor, _wanted.size()):
+		if not columns.has(_wanted[i]):
+			queued += 1
+	return _gen_tasks.size() + queued
 
 
 func pending_meshing() -> int:

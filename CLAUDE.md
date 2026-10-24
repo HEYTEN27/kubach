@@ -24,7 +24,8 @@
 | `scripts/bench.sh [--strict \| --update-baseline]` | CPU-бенчмарки из `tools/bench/cases/`, сравнение с `tools/bench/baseline.json`. |
 | `scripts/screenshot.sh [out.png] [аргументы игры]` | Запуск под Xvfb с программным OpenGL и сохранение кадра (визуальный смоук-тест, 1280×720, ~4 мин). Пример: `scripts/screenshot.sh build/s.png --world=Тест --view=6 --camera=back --teleport=40.5,~,40.5 --f3`. `SHOT_SIZE=1920x1080 SHOT_TIMEOUT=400` — крупнее. |
 | `scripts/gallery.sh [out.png] [--blocks=a,b]` | Ряд блоков с шейдерами этапа 3 — быстрый (секунды) визуальный тест текстур и материалов. |
-| `python3 tools/texgen/texgen.py [--only a,b] [--size 128]` | Перерисовать текстуры блоков (атласы `assets/textures/generated/`, превью `docs/textures_preview.png`). Нужно после добавления блока с новым набором текстур. ~90 с. |
+| `python3 tools/texgen/texgen.py [--only a,b] [--size 128]` | Перерисовать текстуры блоков (атласы `assets/textures/generated/`, превью `docs/textures_preview.png`) и иконки предметов. Нужно после добавления блока с новым набором текстур или нового предмета. ~90 с. |
+| `python3 tools/texgen/icons.py` | Только иконки предметов (`items_icons.png` + `.json`): блоки — изометрия из атласа, предметы — по полю `icon` в `data/items.json`. |
 | `scripts/build_native.sh [linux\|windows]` | Сборка C++-расширения `native/kubach_native` (godot-cpp 4.5 скачивается в `tools/`; Windows — кросс-компиляцией через zig). Готовые `.so`/`.dll` лежат в `native/bin/` и коммитятся. |
 | `scripts/export_windows.sh` | `build/windows/Kubach.exe` (pck встроен) + `libkubach_native…dll` рядом. Сам скачивает шаблоны экспорта. |
 | `scripts/export_linux.sh` | `build/linux/Kubach.x86_64`. |
@@ -35,13 +36,16 @@
 - **`check.sh`/`test.sh` всегда переимпортируют проект**: без этого новые `class_name` не попадают в кэш и скрипты «не видят» классы.
 - **Packed-массивы в GDScript 4 передаются по ссылке.** Снимок для потока = ссылка на массив, который потом не меняется: `ChunkSection.set_block()` сначала заменяет массив копией. Массовые записи собирают новый массив и присваивают целиком.
 - **`Vector3` — float32.** Мировые координаты (до ±15 000) и сдвиги храни в `float` (double) по отдельности или в `PackedFloat64Array`; `Vector3` — только для сценовых координат после `World.to_scene()`.
-- Аргументы запуска игры (`--world`, `--seed`, `--creative`, `--view`, `--preset`, `--teleport=x,~,z`, `--look`, `--camera`, `--f3`, `--screenshot`, `--bench`) описаны в `src/core/game/game_launch.gd`.
+- Аргументы запуска игры (`--world`, `--seed`, `--creative`, `--view`, `--preset`, `--teleport=x,~,z`, `--look`, `--camera`, `--f3`, `--screenshot`, `--bench`, `--open=inventory|chest`) описаны в `src/core/game/game_launch.gd`; меню — `--menu=load|settings|credits|character` (`src/ui/boot/boot.gd`).
 - **Нативное расширение.** Горячие циклы, упёршиеся в GDScript, переносятся в `native/kubach_native/src/` (сейчас — greedy-мешер `NativeMesher` и свет `NativeLight`). GDScript-версии остаются эталоном: `GreedyMesher.create_best()` / `VoxelLight.create_best()` берут C++, если библиотека загрузилась. **Любая правка `greedy_mesher.gd` повторяется в `native_mesher.cpp`, правка `voxel_light.gd` — в `native_light.cpp`**, иначе упадут `test_native_mesher.gd` / `test_voxel_light.gd` (сравнивают побайтно). `KUBACH_NO_NATIVE=1` — принудительно GDScript (свет тогда выключается: на GDScript он идёт секунды на колонну). После правки C++ — `scripts/build_native.sh` (обе платформы) и закоммитить `native/bin/`.
 - **Текстуры блоков** — атласы `CompressedTexture2DArray`: это `TextureLayered`, **не** `Texture2DArray` (`load(...) as Texture2DArray` даёт null). Новый набор текстур в `data/blocks*.json` → `texgen.py`, иначе `test_block_textures` упадёт.
 - **Шейдеры:** варинги можно писать только в `vertex()`/`fragment()` — общая часть вершинного шейдера блоков сделана макросом `KB_VERTEX_COMMON`, функции получают значения параметрами. `instance uniform` не годится для секций: буфер ограничен 4096 экземплярами — свет секции идёт обычным uniform в кэше материалов (`BlockMaterials.for_const`). В `check.sh` шейдеры не компилируются (headless без рендера) — проверяй `scripts/gallery.sh`.
 - **Пул потоков:** генерация колонны на GDScript почти не ускоряется от потоков (общие RefCounted), поэтому её задачи ставятся с высоким приоритетом, а мешинг и свет — обычными. Иначе загрузка мира ждёт генерацию в очереди за светом.
 - **Циклические ссылки RefCounted не освобождаются.** Вспомогательные объекты генератора (`CaveCarver`, `OrePlacer`, `VegetationPlacer`) не хранят генератор — получают нужные значения в `_init` или генератор параметром. Статические переменные держат только простые данные (`GameLaunch.settings` — словарь).
-- Имена помощников в тестах не должны совпадать с членами `GutTest` (например, `_compare` занят).
+- Имена помощников в тестах не должны совпадать с членами `GutTest` (например, `_compare` занят). Методы узлов не называй `_set`/`_get` — это виртуальные методы Object.
+- **Лямбды в connect() держат self.** Подписка RefCounted-объекта на сигнал своего же поля через лямбду — цикл, объект не освободится. Подключай методы (`inv.changed.connect(_on_changed)`).
+- **Валидатор проверяет и значения по умолчанию.** У объекта-поля с `default: {}` не может быть `required`-полей внутри (иначе ошибка на каждой записи) — либо убери `default`, либо дай вложенным полям значения по умолчанию.
+- `get_node_or_null("/root/...")` у узла вне дерева — ошибка движка; в таких местах сначала `is_inside_tree()`.
 - Каталоги с `.gdignore` (godot-cpp, сборки) не импортируются Godot и не проверяются `check.sh`.
 - GUT считает любую ошибку движка (`push_error`, ошибки RegEx и т.п.) провалом теста. Ожидаемые ошибки помечай `assert_engine_error(...)` / `assert_push_error(...)`.
 
@@ -57,7 +61,9 @@ src/
   graphics/            GraphicsRig: небо, солнце, тени, туман, SSAO/SSIL, glow, AgX, автоэкспозиция, пресеты
   fluids/ weather/ player/ inventory/ crafting/ cooking/ farming/ fishing/
   power/ npc/ ai/ combat/ progression/ audio/
-  ui/                  меню, HUD, окна (сейчас — ui/boot/ стартовый экран этапа 0)
+  inventory/           ItemStack, Inventory, PlayerInventory, InventoryOps (клики окна), DroppedItems, ItemIcons
+  ui/                  boot/ (главное меню), world_create/, character/, inventory/ (окно, ячейка, подсказка),
+                       settings/ (экран настроек), hud/, pause/, common/ (3D-превью персонажа), theme/ (тема, экранный фильтр)
 tests/                 GUT: unit/<система>/test_*.gd, helpers/ — общие помощники тестов
 tools/                 godot/ (бинарник, не в git), check/, bench/, texgen/
 native/                C++ GDExtension — только если профилирование покажет узкое место
@@ -65,7 +71,9 @@ scripts/               check, test, bench, screenshot, export_*
 docs/                  скриншоты и заметки
 ```
 
-Автозагрузки: `EventBus` (`src/core/event_bus.gd`), `Registry` (`src/core/registry/registry.gd`, класс `ContentRegistry`), `Controls` (действия InputMap из `data/input_bindings.json`, физические клавиши), `Settings` (`src/core/settings/settings.gd`, класс `GameSettings`: пресет графики из `data/graphics_presets.json` + личные правки, `user://settings.cfg`), `Audio` (`src/audio/audio_manager.gd`).
+Автозагрузки (порядок важен): `EventBus` (`src/core/event_bus.gd`), `Registry` (`src/core/registry/registry.gd`, класс `ContentRegistry`), `Settings` (`src/core/settings/settings.gd`, класс `GameSettings`: все настройки из `data/settings.json`, пресет графики из `data/graphics_presets.json`, переназначенные клавиши; `user://settings.cfg`; применяет окно, звук, масштаб и тему UI, экранный фильтр), `Controls` (действия InputMap из `data/input_bindings.json` + переназначения игрока; клавиатура по физическим клавишам, мышь, геймпад), `Audio` (`src/audio/audio_manager.gd`, шины SFX/UI/Music/Ambience/Voice).
+
+Инвентарь (этап 4): предметы — `Registry.item(id)` (`ItemDef`): блоки с `item: true` + `data/items.json`. `ItemStack` (id, count, data: прочность, свежесть, цвет, содержимое рюкзака; стопки складываются только при равных data). `PlayerInventory` — хотбар 9, основной 27, рюкзак (размер и содержимое — у надетого рюкзака), 9 слотов экипировки. Клики окна — `InventoryOps` через `InventoryAction` (слой действий). Хранилища — блоки с `container`; содержимое в `ChunkColumn.block_entities` (region-формат колонны 2), открытый инвентарь — `World.get_container()`. Выпавшее — `World.items_dropped` → `DroppedItems`. Модель персонажа — `CharacterModel` по `data/hairstyles.json`, `beards.json`, `face_parts.json`, `face_presets.json`, `body_types.json`, `palettes.json`; экипировка видна по полю `model` предметов. `world.json` формата 2: инвентарь, внешность, предметы на земле; `WorldSave.migrate()` поднимает старые.
 
 Мир (этап 1): `World` (доступ к блокам, слой действий `execute(GameAction)`, floating origin) → `ChunkManager` (потоки генерации и мешинга, бюджет применения мешей, отсечение пещер) → `ChunkColumn` (36 × `ChunkSection` 16³ + карта биомов и сетка цветов). `RegionStore` + `WorldSave` — сохранения. Игрок: `Player` (узел) → `PlayerMotor` (движение) → `VoxelBody` (AABB-коллизии в double).
 

@@ -100,6 +100,14 @@ func _build_background() -> void:
 	far.setup(_bg_world, _bg_world.chunks.season)
 	far.configure(true, 24, (BG_VIEW - 2.5) * 16.0)
 	rig.set_view_range(BG_VIEW * 16.0, 24 * 16.0)
+	if ScreenshotUtil.requested_path() != "":
+		# Программный OpenGL рисует кадр секундами — раздаём задачи пачками.
+		var ch := _bg_world.chunks
+		ch.apply_budget_usec = 200000
+		ch.max_mesh_in_flight = 256
+		ch.max_light_in_flight = 32
+		ch.max_gen_in_flight = 16
+		far.max_in_flight = 16
 	var spot := _find_taiga()
 	_bg_center = Vector2i(spot.x >> 4, spot.y >> 4)
 	var h := maxi(_bg_world.generator.surface_height(spot.x, spot.y), _bg_world.generator.sea_level)
@@ -138,7 +146,7 @@ func _process(delta: float) -> void:
 	if _bg_world == null:
 		return
 	_bg_world.chunks.update(_bg_center)
-	(get_meta("far") as FarTerrain).update(_bg_target.x, _bg_target.z)
+	(get_meta("far") as FarTerrain).update(_bg_center.x * 16.0 + 8.0, _bg_center.y * 16.0 + 8.0)
 	_bg_angle += delta * 0.03
 	var r := 30.0
 	var p := Vector3(_bg_target.x + cos(_bg_angle) * r, _bg_target.y + 11.0, _bg_target.z + sin(_bg_angle) * r)
@@ -216,6 +224,10 @@ func _open_load() -> void:
 	list.custom_minimum_size = Vector2(640, 420)
 	list.fixed_icon_size = Vector2i(160, 90)
 	list.icon_mode = ItemList.ICON_MODE_LEFT
+	list.max_text_lines = 3
+	list.auto_height = false
+	list.same_column_width = true
+	list.fixed_column_width = 600
 	box.add_child(list)
 	_world_list = WorldSave.list_worlds()
 	for w in _world_list:
@@ -325,15 +337,19 @@ func _maybe_take_screenshot() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--screenshot="):
 			var path := arg.get_slice("=", 1)
-			# Ждём, пока фон догрузится (не дольше 90 с).
+			# Ждём, пока фон догрузится (не дольше 180 с).
 			var t0 := Time.get_ticks_msec()
-			while _bg_world != null and Time.get_ticks_msec() - t0 < 90000:
+			while _bg_world != null and Time.get_ticks_msec() - t0 < 180000:
 				var ch := _bg_world.chunks
-				if ch.columns.size() > 20 and ch.pending_generation() == 0 and ch.pending_meshing() == 0:
+				if ch.columns.size() > 20 and ch.pending_generation() == 0 and ch.pending_meshing() == 0 \
+						and (get_meta("far") as FarTerrain).pending() == 0:
 					break
 				await get_tree().process_frame
 			for i in 8:
 				await RenderingServer.frame_post_draw
+			if _bg_world != null:
+				print("Фон: колонн %d, мешей %d, LOD-плиток %d" % [_bg_world.chunks.columns.size(),
+					_bg_world.chunks.mesh_node_count(), (get_meta("far") as FarTerrain).tile_count()])
 			var err := get_viewport().get_texture().get_image().save_png(path)
 			print("Скриншот: %s (%s)" % [path, error_string(err)])
 			get_tree().quit(0 if err == OK else 1)

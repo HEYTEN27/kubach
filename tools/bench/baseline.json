@@ -1,61 +1,61 @@
 {
   "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
-  "date": "2026-10-24T08:56:46",
+  "date": "2026-10-24T14:07:10",
   "engine": "4.7.2-stable (official)",
   "results": {
     "biome_preview_128": {
       "iterations": 3,
-      "max_ms": 213.297,
-      "median_ms": 212.749,
-      "min_ms": 212.411
+      "max_ms": 185.264,
+      "median_ms": 184.615,
+      "min_ms": 180.741
     },
     "grass_column": {
       "iterations": 20,
-      "max_ms": 8.354,
-      "median_ms": 4.085,
-      "min_ms": 2.17
+      "max_ms": 7.038,
+      "median_ms": 3.507,
+      "min_ms": 1.858
     },
     "light_column_native": {
       "iterations": 12,
-      "max_ms": 16.465,
-      "median_ms": 13.908,
-      "min_ms": 12.087
+      "max_ms": 10.688,
+      "median_ms": 9.184,
+      "min_ms": 8.115
     },
     "lod_tile_step4": {
       "iterations": 10,
-      "max_ms": 26.92,
-      "median_ms": 25.542,
-      "min_ms": 13.934
+      "max_ms": 28.93,
+      "median_ms": 23.68,
+      "min_ms": 12.24
     },
     "mesh_surface_section": {
       "iterations": 30,
-      "max_ms": 18.772,
-      "median_ms": 12.875,
-      "min_ms": 5.783
+      "max_ms": 31.896,
+      "median_ms": 11.727,
+      "min_ms": 4.651
     },
     "mesh_surface_section_native": {
       "iterations": 30,
-      "max_ms": 1.082,
-      "median_ms": 0.439,
-      "min_ms": 0.09
+      "max_ms": 1.546,
+      "median_ms": 0.649,
+      "min_ms": 0.117
     },
     "registry_load": {
       "iterations": 20,
-      "max_ms": 103.907,
-      "median_ms": 69.661,
-      "min_ms": 65.122
+      "max_ms": 138.179,
+      "median_ms": 88.448,
+      "min_ms": 84.168
     },
     "terrain_column": {
       "iterations": 40,
-      "max_ms": 55.624,
-      "median_ms": 28.274,
-      "min_ms": 20.262
+      "max_ms": 38.791,
+      "median_ms": 22.613,
+      "min_ms": 16.426
     },
     "world_load_view12": {
       "iterations": 2,
-      "max_ms": 10568.997,
-      "median_ms": 10568.997,
-      "min_ms": 8761.319
+      "max_ms": 8010.0,
+      "median_ms": 8010.0,
+      "min_ms": 6666.553
     }
   },
   "threads": 4
