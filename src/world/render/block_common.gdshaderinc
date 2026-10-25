@@ -27,6 +27,14 @@ uniform vec4 light_const = vec4(1.0, 0.0, 0.0, 0.0);
 
 global uniform ivec3 world_origin;
 global uniform vec4 wind;   // xy — направление, z — сила 0…1, w — порывы
+// Тени облаков (этап 7): xy — сдвиг текстуры облаков (ветер + проекция от солнца), z — облачность,
+// w — сила тени. Та же текстура и формула плотности, что в небе (src/graphics/sky.gdshader).
+global uniform vec4 cloud_shadow;
+// Мокрость: x — накопленная мокрость поверхностей 0…1, y — сила дождя сейчас (круги на лужах).
+global uniform vec2 rain_wetness;
+global uniform sampler2D cloud_noise : filter_linear_mipmap, repeat_enable;
+
+const float KB_CLOUD_TILE = 1024.0;
 
 varying flat vec4 v_info;
 varying flat vec4 v_block;
@@ -156,4 +164,54 @@ float kb_curve(float level) {
 
 vec3 kb_tinted(vec3 albedo, vec3 tint, float mask) {
 	return albedo * mix(vec3(1.0), tint, mask);
+}
+
+// Доля прямого света под облаками 0…1 в сценовой точке world. Приближение: тень гасит
+// альбедо освещённых небом граней (свет из light() трогать дорого).
+float kb_cloud_shadow(vec3 world) {
+	if (cloud_shadow.w <= 0.001) {
+		return 1.0;
+	}
+	vec2 uv = (world.xz + vec2(world_origin.xz)) / KB_CLOUD_TILE + cloud_shadow.xy;
+	float d = texture(cloud_noise, uv).r;
+	float thr = mix(0.86, 0.12, cloud_shadow.z);
+	return 1.0 - smoothstep(thr, thr + 0.22, d) * cloud_shadow.w;
+}
+
+// Круги от капель: смещение нормали (в осях грани) на клетках по 0,5 блока, два слоя.
+vec2 kb_ripples(vec2 p, float t) {
+	vec2 sum = vec2(0.0);
+	for (int i = 0; i < 2; i++) {
+		vec2 q = p * 2.0 + float(i) * 0.37;
+		vec2 c = floor(q);
+		uint h = kb_hash(ivec3(ivec2(c), 17 + i));
+		vec2 off = vec2(float(h & 255u), float((h >> 8u) & 255u)) / 255.0 - 0.5;
+		float ph = fract(t * (1.1 + 0.3 * float(i)) + float((h >> 16u) & 255u) / 255.0);
+		vec2 d = fract(q) - 0.5 - off * 0.4;
+		float r = length(d) + 1e-4;
+		float ring = exp(-pow((r - ph * 0.42) / 0.035, 2.0)) * (1.0 - ph);
+		sum += d / r * ring;
+	}
+	return sum * 0.6;
+}
+
+// Мокрые поверхности под открытым небом (sky_level — свет неба 0…1): темнее и глянцевее,
+// на верхних гранях — лужи по низкочастотному шуму, на лужах — круги от капель.
+void kb_wet(inout vec3 albedo, inout float rough, inout vec2 nrm_xy, vec3 world, vec3 n, float sky_level, float t) {
+	if (rain_wetness.x <= 0.001) {
+		return;
+	}
+	float exposed = smoothstep(0.9, 0.99, sky_level);
+	bool top = n.y > 0.5;
+	float wet = rain_wetness.x * exposed * (top ? 1.0 : 0.55);
+	albedo *= mix(1.0, 0.58 + 0.2 * (1.0 - rough), wet);
+	rough = mix(rough, 0.2, wet);
+	if (top) {
+		vec2 wp = world.xz + vec2(world_origin.xz);
+		float pn = texture(cloud_noise, wp / 41.0).b * 0.75 + texture(cloud_noise, wp / 13.0).g * 0.25;
+		float puddle = smoothstep(0.6, 0.66, pn) * smoothstep(0.35, 0.85, rain_wetness.x) * exposed;
+		albedo *= mix(1.0, 0.6, puddle);
+		rough = mix(rough, 0.03, puddle);
+		nrm_xy = mix(nrm_xy, kb_ripples(wp, t) * rain_wetness.y, puddle);
+	}
 }

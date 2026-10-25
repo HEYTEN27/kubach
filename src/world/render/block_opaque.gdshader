@@ -20,14 +20,19 @@ void fragment() {
 	if (v_info.x < 0.0) {
 		base = v_block.rgb;
 	}
-	ALBEDO = kb_tinted(base, v_tint, s.albedo.a);
-	NORMAL_MAP = vec3(s.normal_ts.xy * 0.5 + 0.5, 1.0);
-	NORMAL_MAP_DEPTH = normal_depth;
-	ROUGHNESS = s.orm.g;
-	METALLIC = s.metal;
+	vec3 albedo = kb_tinted(base, v_tint, s.albedo.a);
 	vec4 L = kb_light(v_local, v_n);
 	float sky = kb_curve(L.x);
+	float rough = s.orm.g;
+	vec2 nxy = s.normal_ts.xy;
+	vec3 emit = albedo * (L.yzw * block_light_energy + s.orm.a * v_info.w);
+	kb_wet(albedo, rough, nxy, v_world, v_n, L.x, TIME);
+	ALBEDO = albedo * mix(1.0, kb_cloud_shadow(v_world), sky);
+	NORMAL_MAP = vec3(nxy * 0.5 + 0.5, 1.0);
+	NORMAL_MAP_DEPTH = normal_depth;
+	ROUGHNESS = rough;
+	METALLIC = s.metal;
 	AO = s.orm.r * mix(cave_ambient, 1.0, sky);
 	AO_LIGHT_AFFECT = 1.0;
-	EMISSION = ALBEDO * (L.yzw * block_light_energy + s.orm.a * v_info.w);
+	EMISSION = emit;
 }

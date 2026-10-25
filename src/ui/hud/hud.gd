@@ -9,6 +9,7 @@ const BORDER_WARNING_DISTANCE := 48.0
 var player: Player
 var world: World
 var survival: SurvivalController
+var weather: WeatherSystem
 var vitals_hud: SurvivalHud
 
 var _crosshair: Control
@@ -16,6 +17,7 @@ var _break_bar: ProgressBar
 var _selected: Label
 var _hotbar: Control
 var _compass: Label
+var _weather: Label
 var _fps: Label
 var _root: Control
 var _last_held: StringName = &"-"
@@ -68,6 +70,8 @@ func _ready() -> void:
 	_selected.position.y -= 150
 	_compass = _label(root, Control.PRESET_CENTER_TOP, 16, HORIZONTAL_ALIGNMENT_CENTER)
 	_compass.position.y += 10
+	_weather = _label(root, Control.PRESET_TOP_RIGHT, 15, HORIZONTAL_ALIGNMENT_RIGHT)
+	_weather.position += Vector2(-16, 32)
 	_fps = _label(root, Control.PRESET_TOP_LEFT, 15, HORIZONTAL_ALIGNMENT_LEFT)
 	_fps.position += Vector2(10, 8)
 	_mode = _label(root, Control.PRESET_BOTTOM_RIGHT, 14, HORIZONTAL_ALIGNMENT_RIGHT)
@@ -131,6 +135,8 @@ func _process(delta: float) -> void:
 	_compass.visible = bool(Settings.get_value("compass"))
 	if _compass.visible:
 		_compass.text = _compass_text(player.yaw)
+	if weather != null:
+		_weather.text = weather_text(weather.sim.name_of(weather.sim.current), weather.values)
 	_fps.visible = bool(Settings.get_value("show_fps"))
 	_fps.text = "%d FPS" % Engine.get_frames_per_second()
 	(_crosshair as _Crosshair).style = String(Settings.get_value("crosshair_style"))
@@ -164,6 +170,19 @@ func _label(parent: Control, preset: Control.LayoutPreset, size: int, align: Hor
 
 
 ## Компас: стороны света по рысканию (−Z — север).
+## «Дождь · ветер СЗ 6 м/с»: откуда дует ветер (−Z — север, +X — восток), сила 0…1 → м/с.
+static func weather_text(name: String, w: Dictionary) -> String:
+	var wind := float(w.get("wind", 0.0))
+	var d: Vector2 = w.get("wind_dir", Vector2(1, 0))
+	var from := -d
+	var a := fposmod(atan2(from.x, -from.y), TAU)
+	var dirs := ["С", "СВ", "В", "ЮВ", "Ю", "ЮЗ", "З", "СЗ"]
+	var ms := roundi(wind * 16.0)
+	if ms <= 0:
+		return "%s · штиль" % name
+	return "%s · ветер %s %d м/с" % [name, dirs[roundi(a / (TAU / 8.0)) % 8], ms]
+
+
 static func _compass_text(yaw: float) -> String:
 	const NAMES := ["С", "СЗ", "З", "ЮЗ", "Ю", "ЮВ", "В", "СВ"]
 	var deg := fposmod(rad_to_deg(yaw), 360.0)

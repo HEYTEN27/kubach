@@ -288,6 +288,8 @@ def main():
         import icons
         icons.build(args.out)
         CT.particles(os.path.join(args.out, "particles"))
+        import sky_tex
+        sky_tex.build(args.out)
 
 
 def preview(names, manifest, albedo, normal, size, path):

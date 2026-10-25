@@ -75,6 +75,16 @@ func configure(p_enabled: bool, p_lod_distance: int, p_clip_radius: float) -> vo
 		_center = Vector2i(1 << 30, 0)
 
 
+## Смена сезона: плитки перестраиваются по одной, старые видны до замены.
+func set_season(season: int) -> void:
+	if season == _season:
+		return
+	_season = season
+	for t: Vector2i in _tiles:
+		(_tiles[t] as Array)[0] = -1
+	_center = Vector2i(1 << 30, 0)
+
+
 func _exit_tree() -> void:
 	wait_all()
 

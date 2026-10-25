@@ -1,5 +1,5 @@
-// Вода, лёд, стекло (поверхность "transparent"). Вода — простая волнистая поверхность;
-// полноценная вода с течениями — этап 7.
+// Вода, лёд, стекло (поверхность "transparent"). Вода — простая волнистая поверхность
+// (полноценная вода с течениями — этап 8), в дождь на открытой воде — круги от капель.
 shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
@@ -19,12 +19,17 @@ void fragment() {
 	KbSample s = kb_sample(tuv, v_world, v_n, v_info);
 	ALBEDO = kb_tinted(v_info.x < 0.0 ? v_block.rgb : s.albedo.rgb, v_tint, 1.0);
 	ALPHA = liquid ? v_block.a : clamp(s.albedo.a, 0.3, 1.0);
-	NORMAL_MAP = vec3(s.normal_ts.xy * 0.5 + 0.5, 1.0);
+	vec4 L = kb_light(v_local, v_n);
+	float sky = kb_curve(L.x);
+	vec2 nxy = s.normal_ts.xy;
+	if (liquid && v_n.y > 0.5 && rain_wetness.y > 0.01) {
+		nxy += kb_ripples(v_world.xz + vec2(world_origin.xz), TIME) * rain_wetness.y * 3.0 * smoothstep(0.9, 0.99, L.x);
+	}
+	ALBEDO *= mix(1.0, kb_cloud_shadow(v_world), sky);
+	NORMAL_MAP = vec3(nxy * 0.5 + 0.5, 1.0);
 	NORMAL_MAP_DEPTH = liquid ? 0.35 : normal_depth;
 	ROUGHNESS = liquid ? 0.04 : s.orm.g;
 	SPECULAR = 0.5;
-	vec4 L = kb_light(v_local, v_n);
-	float sky = kb_curve(L.x);
 	AO = mix(cave_ambient, 1.0, sky);
 	AO_LIGHT_AFFECT = 1.0;
 	EMISSION = ALBEDO * (L.yzw * block_light_energy + s.orm.a * v_info.w);

@@ -25,16 +25,17 @@ void vertex() {
 void fragment() {
 	vec4 c = texture(albedo_tex, vec3(clamp(UV, vec2(0.002), vec2(0.998)), v_info.x));
 	vec4 orm = texture(orm_tex, vec3(clamp(UV, vec2(0.002), vec2(0.998)), v_info.x));
-	ALBEDO = kb_tinted(v_info.x < 0.0 ? v_block.rgb : c.rgb, v_tint, 1.0);
-	ALPHA = v_info.x < 0.0 ? 1.0 : c.a;
-	ALPHA_SCISSOR_THRESHOLD = 0.5;
-	ROUGHNESS = orm.g;
 	vec4 L = kb_light(v_local, v_n);
 	float sky = kb_curve(L.x);
+	vec3 albedo = kb_tinted(v_info.x < 0.0 ? v_block.rgb : c.rgb, v_tint, 1.0);
+	ALBEDO = albedo * mix(1.0, kb_cloud_shadow(v_world), sky) * mix(1.0, 0.8, rain_wetness.x * smoothstep(0.9, 0.99, L.x));
+	ALPHA = v_info.x < 0.0 ? 1.0 : c.a;
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	ROUGHNESS = mix(orm.g, 0.35, rain_wetness.x * smoothstep(0.9, 0.99, L.x));
 	// Низ куста темнее — самозатенение.
 	AO = mix(0.55, 1.0, UV2.y) * mix(cave_ambient, 1.0, sky);
 	AO_LIGHT_AFFECT = 1.0;
 	BACKLIGHT = ALBEDO * backlight * sky;
 	// Пламя факела светится (ORM.A — маска свечения из texgen).
-	EMISSION = ALBEDO * (L.yzw * block_light_energy + orm.a * v_info.w);
+	EMISSION = albedo * (L.yzw * block_light_energy + orm.a * v_info.w);
 }

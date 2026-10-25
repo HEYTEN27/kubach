@@ -5,6 +5,8 @@ extends Node
 ## (скорость, запрет бега). Еда и лекарства — удержанием ПКМ с предметом в руке, вода —
 ## ПКМ пустой рукой по воде, сон — ПКМ по кровати, урон от падения — EventBus.player_landed.
 ## В творческом режиме параметры заморожены, время идёт.
+## Погода (этап 7) — словарь WeatherSim.values от WeatherSystem: под открытым небом дождь мочит,
+## град ранит, ветер и непогода холодят, суховей сушит.
 
 ## Игрок умер (причина — PlayerVitals.CAUSE_*, id эффекта или "contact").
 signal died(cause: String)
@@ -38,6 +40,8 @@ var consume_what: StringName = &""
 var daylight := 1.0
 ## Идёт ли время: игра выставляет после загрузки мира (во время загрузки часы стоят).
 var running := false
+## Погода сейчас (WeatherSim.values), выставляет WeatherSystem.
+var weather := {}
 
 var _probe_left := 0.0
 var _consume_slot := -1
@@ -49,6 +53,7 @@ func setup(p_world: World, p_player: Player, day_length_min: float) -> void:
 	clock = GameClock.new(day_length_min)
 	clock.start_season = maxi(0, world.settings.season_index())
 	clock.season_length = world.settings.season_length
+	clock.windows = SkyMath.season_windows(world.registry)
 	vitals = PlayerVitals.from_registry(world.registry, difficulty)
 	probe = EnvironmentProbe.new(world, vitals.cfg)
 	EventBus.player_landed.connect(_on_landed)
@@ -80,6 +85,7 @@ func _process(delta: float) -> void:
 		_probe_left = PROBE_INTERVAL
 		var eye := player.eye_world()
 		env = probe.sample(player.body.x, player.body.y, player.body.z, eye[1], clock)
+		apply_weather(env, weather)
 	var jumped := player.jumps > 0
 	player.jumps = 0
 	if not is_active():
@@ -100,6 +106,21 @@ func _process(delta: float) -> void:
 	player.survival_speed = vitals.speed_mult()
 	player.can_sprint = vitals.can_sprint()
 	_dispatch_events()
+
+
+## Погода в окружении игрока: open — открытость небу (sky 0…15). Под крышей дождь и град не
+## достают, температура непогоды и ветер действуют слабее.
+static func apply_weather(e: Dictionary, w: Dictionary) -> void:
+	if w.is_empty():
+		return
+	var open := clampf(float(e.get("sky", 15)) / 15.0, 0.0, 1.0)
+	var outside := smoothstep(0.5, 0.9, open)
+	var wind := float(w.get("wind", 0.0))
+	e["ambient"] = float(e.get("ambient", 20.0)) + float(w.get("temp", 0.0)) * (0.4 + 0.6 * open) - wind * 3.0 * outside
+	e["rain"] = maxf(float(w.get("rain", 0.0)), float(w.get("snow", 0.0)) * 0.4) * outside
+	e["hail"] = float(w.get("hail", 0.0)) * float(w.get("hail_damage", 0.0)) * outside
+	e["thirst_weather"] = lerpf(1.0, float(w.get("thirst", 1.0)), outside)
+	e["outside"] = outside
 
 
 func _dispatch_events() -> void:
@@ -216,7 +237,7 @@ func use_bed(pos: Vector3i) -> String:
 		return msg
 	var hours := 0.0
 	if clock.is_night():
-		hours = clock.hours_until(GameClock.NIGHT_END)
+		hours = clock.hours_until(clock.sunrise())
 	elif vitals.is_tired():
 		hours = minf(8.0, vitals.fatigue / maxf(1.0, float(vitals.cfg.get("sleep_fatigue_per_hour", 14.0)) * float(def.bed.get("rest", 1.0))))
 	else:

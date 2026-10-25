@@ -1,0 +1,282 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "snow_layer_2",
+   "name": {
+    "ru": "Снежный покров (2/8)",
+    "en": "Snow Layer (2/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.25,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.18,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_3",
+   "name": {
+    "ru": "Снежный покров (3/8)",
+    "en": "Snow Layer (3/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.375,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.22,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_4",
+   "name": {
+    "ru": "Снежный покров (4/8)",
+    "en": "Snow Layer (4/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.5,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.26,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_5",
+   "name": {
+    "ru": "Снежный покров (5/8)",
+    "en": "Snow Layer (5/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.625,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.30000000000000004,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_6",
+   "name": {
+    "ru": "Снежный покров (6/8)",
+    "en": "Snow Layer (6/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.75,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.33999999999999997,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_7",
+   "name": {
+    "ru": "Снежный покров (7/8)",
+    "en": "Snow Layer (7/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 0.875,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.38,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "snow_layer_8",
+   "name": {
+    "ru": "Снежный покров (8/8)",
+    "en": "Snow Layer (8/8)"
+   },
+   "material": "snow",
+   "map_color": "#f2f6f8",
+   "render": "cutout",
+   "shape": "layer",
+   "layer_height": 1.0,
+   "solid": false,
+   "light_filter": 0,
+   "sounds": "snow",
+   "hardness": 0.42000000000000004,
+   "tool": "shovel",
+   "tags": [
+    "snow",
+    "snow_layer"
+   ],
+   "textures": {
+    "all": "snow_layer"
+   },
+   "item": false,
+   "drops": []
+  },
+  {
+   "id": "fire",
+   "name": {
+    "ru": "Огонь",
+    "en": "Fire"
+   },
+   "material": "special",
+   "map_color": "#ff8a30",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "light_emission": 14,
+   "light_color": "#ffa050",
+   "light_filter": 0,
+   "hardness": 0.0,
+   "tool": "none",
+   "sounds": "none",
+   "textures": {
+    "all": "fire"
+   },
+   "item": false,
+   "drops": [],
+   "tags": [
+    "fire"
+   ],
+   "heat": 15.0,
+   "contact_damage": 5.0
+  },
+  {
+   "id": "lightning_rod",
+   "name": {
+    "ru": "Громоотвод",
+    "en": "Lightning Rod"
+   },
+   "material": "metal",
+   "map_color": "#c87a4a",
+   "render": "invisible",
+   "light_filter": 0,
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "copper_block"
+   },
+   "drops": [
+    {
+     "id": "lightning_rod"
+    }
+   ],
+   "tags": [
+    "lightning_rod"
+   ],
+   "weight": 3.0,
+   "model": [
+    {
+     "from": [
+      5,
+      0,
+      5
+     ],
+     "to": [
+      11,
+      2,
+      11
+     ],
+     "tex": "copper_block"
+    },
+    {
+     "from": [
+      7,
+      2,
+      7
+     ],
+     "to": [
+      9,
+      16,
+      9
+     ],
+     "tex": "copper_block"
+    },
+    {
+     "from": [
+      7.5,
+      16,
+      7.5
+     ],
+     "to": [
+      8.5,
+      19,
+      8.5
+     ],
+     "tex": "copper_block"
+    }
+   ]
+  }
+ ]
+}

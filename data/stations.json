@@ -205,7 +205,8 @@
    ],
    "sound": "stations/campfire",
    "order": 11,
-   "always_burn": true
+   "always_burn": true,
+   "rain_douse": 4.0
   },
   {
    "id": "grindstone",

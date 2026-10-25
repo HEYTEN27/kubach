@@ -1,0 +1,153 @@
+{
+ "format": 1,
+ "category": "weather",
+ "description": "Погода (раздел 3.3): облачность, осадки, ветер, молнии, туман, влияние на температуру.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "symbol": {
+   "type": "string",
+   "default": "",
+   "doc": "Значок для HUD."
+  },
+  "weight": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 100
+  },
+  "requires": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "string"
+   },
+   "doc": "Нужен хотя бы один из ключей weather биома (пусто — везде)."
+  },
+  "precip": {
+   "type": "enum",
+   "default": "none",
+   "values": [
+    "none",
+    "rain",
+    "snow",
+    "hail"
+   ],
+   "doc": "Дождь при морозе становится снегом и наоборот."
+  },
+  "cloud": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "rain": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "snow": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "hail": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "fog": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "dust": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "wind_min": {
+   "type": "float",
+   "default": 0.1,
+   "min": 0,
+   "max": 1
+  },
+  "wind_max": {
+   "type": "float",
+   "default": 0.4,
+   "min": 0,
+   "max": 1
+  },
+  "lightning": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1000,
+   "doc": "Ударов молнии за игровой час."
+  },
+  "darkness": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1,
+   "doc": "Насколько темнеет день."
+  },
+  "temp": {
+   "type": "float",
+   "default": 0.0,
+   "min": -40,
+   "max": 40,
+   "doc": "Поправка температуры воздуха, °C."
+  },
+  "hail_damage": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 50,
+   "doc": "Урон в минуту под открытым небом."
+  },
+  "thirst": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 5,
+   "doc": "Множитель жажды."
+  },
+  "duration": {
+   "type": "object",
+   "default": {},
+   "fields": {
+    "min": {
+     "type": "float",
+     "default": 2.0,
+     "min": 0.1,
+     "max": 100
+    },
+    "max": {
+     "type": "float",
+     "default": 8.0,
+     "min": 0.1,
+     "max": 200
+    }
+   },
+   "doc": "Сколько игровых часов длится."
+  },
+  "sound": {
+   "type": "string",
+   "default": "",
+   "doc": "Ключ петли звука погоды."
+  }
+ }
+}

@@ -21,3 +21,9 @@ signal block_placed(pos: Vector3i, block: int, scene_pos: Vector3)
 
 ## Шаг игрока: группа звуков поверхности (поле `sounds` блока под ногами) и точка в сцене.
 signal player_step(sound_group: StringName, scene_pos: Vector3)
+
+## Удар молнии (этап 7): верхний блок, куда ударило; rod — в громоотвод (зарядка накопителя — этап 14).
+signal lightning_struck(pos: Vector3i, rod: bool)
+
+## Сменилась погода (WeatherSystem): id записи data/weather.json.
+signal weather_changed(id: StringName)

@@ -35,6 +35,9 @@ var outputs: Inventory
 
 var temp := AMBIENT
 var fuel_left := 0.0
+## Дождь над станцией 0…1 (этап 7, выставляет WeatherSystem): открытый огонь (rain_douse)
+## сгорает быстрее и даёт меньше жара.
+var rain := 0.0
 var fuel_heat := 0.0
 var bellows := 0.0
 var damper := 1.0
@@ -256,9 +259,10 @@ func _heat_step(dt: float, need_heat: float, busy: bool) -> void:
 			bellows = clampf((desired - fh) / boost, 0.0, 1.0) if boost > 0.0 else 0.0
 	var target := AMBIENT
 	if fuel_left > 0.0:
-		fuel_left = maxf(0.0, fuel_left - dt * (0.5 + 0.5 * damper + 0.4 * bellows))
+		var douse := rain * float(def.get("rain_douse", 0.0))
+		fuel_left = maxf(0.0, fuel_left - dt * (0.5 + 0.5 * damper + 0.4 * bellows) * (1.0 + douse))
 		target = AMBIENT + (minf(fuel_heat, max_heat()) - AMBIENT) * damper + bellows * boost
-		target = minf(target, max_heat())
+		target = minf(target, max_heat()) * (1.0 - minf(0.6, douse * 0.15))
 	var rate := float(def.get("heat_rate", 60.0)) if target > temp else float(def.get("cool_rate", 20.0))
 	temp = move_toward(temp, target, rate * dt)
 	if not auto:

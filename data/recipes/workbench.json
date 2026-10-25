@@ -849,6 +849,25 @@
     "count": 4
    },
    "order": 41
+  },
+  {
+   "id": "make_lightning_rod",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "copper_ingot",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "lightning_rod",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "order": 42
   }
  ]
 }

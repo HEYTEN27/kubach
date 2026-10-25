@@ -9,7 +9,7 @@ signal menu_requested()
 const CAUSES := {
 	"starve": "Умер от голода", "thirst": "Умер от жажды", "cold": "Замёрз насмерть",
 	"heat": "Тепловой удар", "drown": "Утонул", "fall": "Разбился при падении",
-	"fire": "Сгорел", "contact": "Изранен",
+	"fire": "Сгорел", "contact": "Изранен", "hail": "Забит градом", "lightning": "Убит молнией",
 }
 
 var cause := ""

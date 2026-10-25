@@ -5,19 +5,32 @@ extends Node3D
 ## автоэкспозиция (выход из пещеры ослепляет), цветокоррекция по климату биома.
 ## Значения качества — из Settings.graphics (data/graphics_presets.json).
 ##
-## Базовая смена суток (этап 5): солнце идёт по дуге по часам GameClock, ночью гаснет, небо
-## и рассеянный свет темнеют. Луна с фазами, звёзды и длина дня по сезону — этап 7.
+## Сутки и погода (этап 7): своё небо (src/graphics/sky.gdshader) — солнце по дуге окна дня
+## сезона, луна с фазами, звёзды и Млечный Путь, 2.5D-облака по ветру с тенями на блоках
+## (глобальный параметр cloud_shadow), пасмурность, дымка, вспышки молний, цветокоррекция
+## по погоде. Глобальные параметры шейдеров: wind, cloud_shadow, rain_wetness.
 
-const SUN_ROTATION := Vector3(-48.0, -35.0, 0.0)
 ## Скорость смены цветокоррекции при переходе между биомами (доля за секунду).
 const GRADE_SPEED := 0.6
+## Облака: высота плоскости над камерой и размер плитки текстуры (блоки).
+const CLOUD_HEIGHT := 180.0
+const CLOUD_TILE := 1024.0
+## Насколько тень облака гасит прямой свет на блоках.
+const CLOUD_SHADOW := 0.45
+## Высота полюса мира (вокруг него вращаются звёзды), градусы.
+const POLE_ELEV := 52.0
+const MOON_TEX := "res://assets/textures/generated/sky/moon.png"
+const STARS_TEX := "res://assets/textures/generated/sky/night_sky.png"
+const CLOUDS_TEX := "res://assets/textures/generated/sky/clouds.png"
 
 var environment: Environment
 var sun: DirectionalLight3D
-## Лунный свет: тусклый холодный, ночью вместо солнца (фазы луны — этап 7).
+## Лунный свет: тусклый холодный, сила — по освещённой доле диска и высоте луны.
 var moon: DirectionalLight3D
 var camera_attributes: CameraAttributesPractical
-var sky_material: PhysicalSkyMaterial
+var sky_shader: ShaderMaterial
+## Сила лунного света в полнолуние (data/sky.json → moon_light).
+var moon_light := 0.2
 var world_environment: WorldEnvironment
 var graphics := {}
 
@@ -26,29 +39,37 @@ var _grade := Vector4(1.0, 1.0, 1.0, 0.0)
 ## Дневной свет 0 (ночь) … 1 (день) — для неба, солнца и рассеянного света.
 var daylight := 1.0
 var _sun_color := Color(1.0, 0.97, 0.92)
+var _weather_grade := Vector4.ZERO
+var _moon_illum := 1.0
+var _moon_up := 0.0
+var _cover := 0.3
+var _darkness := 0.0
+var _fog := 0.0
+var _dust := 0.0
+var _rain := 0.0
+var _snow := 0.0
+var _flash := 0.0
+var _wind := Vector4(0.8, 0.6, 0.5, 0.0)
+var _cloud_shift := Vector2.ZERO
+var _sun_shift := Vector2.ZERO
+var _cloud_quality := 2
+var _fog_near := 120.0
+var _fog_far := 200.0
 
 
 func _init() -> void:
 	name = "GraphicsRig"
-	sky_material = PhysicalSkyMaterial.new()
-	sky_material.rayleigh_coefficient = 2.2
-	sky_material.mie_coefficient = 0.004
-	sky_material.mie_eccentricity = 0.82
-	sky_material.turbidity = 8.0
-	# Низ неба — цвет дымки: за краем LOD-рельефа не видно тёмной полосы.
-	sky_material.ground_color = Color(0.55, 0.62, 0.7)
-	sky_material.energy_multiplier = 1.0
+	sky_shader = ShaderMaterial.new()
+	sky_shader.shader = load("res://src/graphics/sky.gdshader")
+	for pair: Array in [[&"moon_tex", MOON_TEX], [&"stars_tex", STARS_TEX], [&"clouds_tex", CLOUDS_TEX]]:
+		if ResourceLoader.exists(pair[1]):
+			sky_shader.set_shader_parameter(pair[0], load(pair[1]))
+	sky_shader.set_shader_parameter(&"cloud_height", CLOUD_HEIGHT)
+	sky_shader.set_shader_parameter(&"cloud_tile", CLOUD_TILE)
 	var sky := Sky.new()
-	sky.sky_material = sky_material
-	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
-		# Запасной рендер (OpenGL 3): физическое небо там рисуется неверно — процедурное.
-		var proc := ProceduralSkyMaterial.new()
-		proc.sky_top_color = Color(0.26, 0.45, 0.75)
-		proc.sky_horizon_color = Color(0.66, 0.76, 0.88)
-		proc.ground_horizon_color = Color(0.66, 0.76, 0.88)
-		proc.ground_bottom_color = Color(0.6, 0.68, 0.78)
-		proc.ground_curve = 0.5
-		sky.sky_material = proc
+	sky.sky_material = sky_shader
+	# Солнце и облака движутся постоянно: кубическая карта отражений обновляется по частям.
+	sky.process_mode = Sky.PROCESS_MODE_INCREMENTAL
 	sky.radiance_size = Sky.RADIANCE_SIZE_128
 
 	environment = Environment.new()
@@ -99,7 +120,6 @@ func _init() -> void:
 
 	sun = DirectionalLight3D.new()
 	sun.name = "Sun"
-	sun.rotation_degrees = SUN_ROTATION
 	sun.light_energy = 1.0
 	sun.light_color = Color(1.0, 0.97, 0.92)
 	sun.light_angular_distance = 0.6
@@ -116,37 +136,129 @@ func _init() -> void:
 	moon.shadow_enabled = false
 	moon.visible = false
 	add_child(moon)
+	set_time_of_day(13.0)
+	set_weather({})
 
 
-## Положение солнца по часу суток (0…24): восход в 6:00, закат в 21:00, полдень ~13:30.
+## Положение солнца по часу суток с постоянным окном 6:00–21:00 (фон меню, без сезона).
 func set_time_of_day(hour: float) -> void:
-	const RISE := 6.0
-	const SET := 21.0
-	var t := (hour - RISE) / (SET - RISE)   # 0…1 — день
-	var elev: float
-	if t >= 0.0 and t <= 1.0:
-		elev = sin(t * PI) * 62.0
-	else:
-		# Ночь: солнце под горизонтом.
-		var n := fposmod(hour - SET, 24.0) / (24.0 - (SET - RISE))
-		elev = -sin(n * PI) * 30.0
-	var azimuth := -90.0 + clampf(t, -0.2, 1.2) * 180.0
-	sun.rotation_degrees = Vector3(-elev, azimuth + SUN_ROTATION.y, 0.0)
-	daylight = smoothstep(-6.0, 8.0, elev)
-	var low := 1.0 - smoothstep(4.0, 22.0, elev)   # закатный тёплый свет
+	set_sky_time(hour, Vector2(6.0, 21.0), 0.5)
+
+
+## Солнце, луна и звёзды (этап 7): дуга солнца по окну дня сезона (SkyMath), луна с фазой,
+## небо вращается вокруг полюса мира (север, высота POLE_ELEV).
+func set_sky_time(hour: float, window: Vector2, phase: float) -> void:
+	var s := SkyMath.sun(hour, window)
+	var m := SkyMath.moon(hour, window, phase)
+	var sd := SkyMath.direction(s)
+	var md := SkyMath.direction(m)
+	_aim(sun, sd)
+	_aim(moon, md)
+	daylight = smoothstep(-6.0, 8.0, s.x)
+	var low := 1.0 - smoothstep(4.0, 22.0, s.x)   # закатный тёплый свет
 	_sun_color = Color(1.0, 0.97, 0.92).lerp(Color(1.0, 0.62, 0.36), low * daylight)
-	sun.light_energy = daylight
+	_moon_illum = SkyMath.moon_illumination(phase)
+	_moon_up = smoothstep(-2.0, 6.0, m.x)
+	sky_shader.set_shader_parameter(&"sun_dir", sd)
+	sky_shader.set_shader_parameter(&"moon_dir", md)
+	sky_shader.set_shader_parameter(&"moon_phase", phase)
+	sky_shader.set_shader_parameter(&"daylight", daylight)
+	sky_shader.set_shader_parameter(&"sun_color", Vector3(_sun_color.r, _sun_color.g, _sun_color.b))
+	var pole := Vector3(0.0, sin(deg_to_rad(POLE_ELEV)), -cos(deg_to_rad(POLE_ELEV)))
+	sky_shader.set_shader_parameter(&"star_rotation", Basis(pole, hour / 24.0 * TAU))
+	_sun_shift = Vector2(sd.x, sd.z) / maxf(sd.y, 0.2) * CLOUD_HEIGHT
+	_update_lights()
+
+
+## DirectionalLight3D светит вдоль −Z: направляем его от светила к земле.
+func _aim(light: DirectionalLight3D, to_light: Vector3) -> void:
+	var up := Vector3.UP if absf(to_light.y) < 0.98 else Vector3.FORWARD
+	light.basis = Basis.looking_at(-to_light, up)
+
+
+## Погода (значения WeatherSim.values): облачность, дымка, темнота, пыль, ветер.
+func set_weather(w: Dictionary) -> void:
+	_cover = float(w.get("cloud", 0.3))
+	_darkness = float(w.get("darkness", 0.0))
+	_fog = float(w.get("fog", 0.0))
+	_dust = float(w.get("dust", 0.0))
+	_rain = maxf(float(w.get("rain", 0.0)), float(w.get("hail", 0.0)))
+	_snow = float(w.get("snow", 0.0))
+	var wd: Vector2 = w.get("wind_dir", Vector2(0.8, 0.6))
+	var ws := clampf(float(w.get("wind", 0.2)), 0.0, 1.0)
+	_wind = Vector4(wd.x, wd.y, 0.25 + 0.75 * ws, ws * 1.5)
+	# Цветокоррекция погоды: дождь и гроза — блёклые и холодные, туман — мягкий, суховей — тёплый.
+	var wet := maxf(_rain, _snow * 0.5)
+	_weather_grade = Vector4(-0.2 * wet - 0.12 * _fog - 0.15 * _cover * _cover + 0.05 * _dust,
+		-0.06 * _fog + 0.04 * _darkness, -0.03 * _darkness, 0.6 * _dust - 0.25 * wet)
+	sky_shader.set_shader_parameter(&"cloud_cover", _cover)
+	sky_shader.set_shader_parameter(&"darkness", _darkness)
+	sky_shader.set_shader_parameter(&"fog_amount", _fog + wet * 0.35)
+	sky_shader.set_shader_parameter(&"dust", _dust * 0.6)
+	_apply_fog_range()
+	_update_lights()
+
+
+## Сдвиг облаков ветром за dt секунд и положение камеры в мировых координатах (double):
+## небо и тени облаков на блоках смотрят в одну и ту же точку текстуры.
+func move_clouds(dt: float, cam_x: float, cam_z: float) -> void:
+	var speed := 0.6 + _wind.z * 6.0
+	_cloud_shift += Vector2(_wind.x, _wind.y) * speed * dt / CLOUD_TILE
+	_cloud_shift = Vector2(fposmod(_cloud_shift.x, 1.0), fposmod(_cloud_shift.y, 1.0))
+	var o := Vector2(fposmod(cam_x / CLOUD_TILE + _cloud_shift.x, 1.0), fposmod(cam_z / CLOUD_TILE + _cloud_shift.y, 1.0))
+	sky_shader.set_shader_parameter(&"cloud_origin", o)
+	var sh := _cloud_shift + _sun_shift / CLOUD_TILE
+	var strength := CLOUD_SHADOW * daylight * (1.0 - smoothstep(0.6, 1.0, _cover)) if _cloud_quality > 0 else 0.0
+	RenderingServer.global_shader_parameter_set(&"cloud_shadow", Vector4(fposmod(sh.x, 1.0), fposmod(sh.y, 1.0), _cover, strength))
+	RenderingServer.global_shader_parameter_set(&"wind", _wind)
+
+
+## Мокрость поверхностей 0…1 (лужи и блеск) — глобальный параметр шейдеров блоков.
+func set_wetness(v: float, raining: float) -> void:
+	RenderingServer.global_shader_parameter_set(&"rain_wetness", Vector2(v, raining))
+
+
+## Вспышка молнии: небо и сцена подсвечиваются и гаснут за доли секунды.
+func flash(strength: float) -> void:
+	_flash = maxf(_flash, strength)
+
+
+## Облака: 0 — выкл., 1 — низкое, 2 — высокое (настройка «Качество облаков»).
+func set_cloud_quality(q: int) -> void:
+	_cloud_quality = q
+	sky_shader.set_shader_parameter(&"cloud_quality", q)
+
+
+func _update_lights() -> void:
+	var overcast := smoothstep(0.5, 1.0, _cover)
+	var dim := (1.0 - _darkness * 0.7) * (1.0 - overcast * 0.6)
+	sun.light_energy = daylight * dim
 	sun.visible = daylight > 0.01
+	sun.shadow_opacity = 1.0 - overcast * 0.7
 	var night := 1.0 - daylight
-	moon.visible = night > 0.01
-	moon.light_energy = 0.16 * night
-	moon.rotation_degrees = Vector3(-50.0, sun.rotation_degrees.y + 180.0, 0.0)
-	# Ночью рассеянный свет — не только от тёмного неба, но и постоянный синеватый (луна, звёзды).
+	var mlight := moon_light * _moon_illum * _moon_up * night * (1.0 - overcast * 0.8)
+	moon.light_energy = mlight
+	moon.visible = mlight > 0.004
+	# Ночью рассеянный свет — не только от тёмного неба, но и постоянный синеватый (луна, звёзды):
+	# в полнолуние светлее, в новолуние темнее.
+	var nightglow := 0.65 + 0.6 * _moon_illum
 	environment.ambient_light_sky_contribution = lerpf(0.35, 1.0, daylight)
-	environment.ambient_light_color = Color(0.16, 0.2, 0.32)
-	environment.ambient_light_energy = lerpf(0.55, 1.0, daylight)
-	environment.background_energy_multiplier = lerpf(0.12, 1.0, daylight)
-	environment.fog_light_color = Color(0.05, 0.07, 0.12).lerp(Color(0.62, 0.72, 0.86), daylight)
+	environment.ambient_light_color = Color(0.16, 0.2, 0.32) * nightglow
+	environment.ambient_light_energy = lerpf(0.5, 1.0, daylight) * (1.0 - _darkness * 0.35) + _flash * 3.0
+	environment.background_energy_multiplier = 1.0
+	var day_fog := Color(0.62, 0.72, 0.86).lerp(Color(0.6, 0.63, 0.66), maxf(overcast, _fog))
+	day_fog = day_fog.lerp(Color(0.78, 0.68, 0.5), _dust * 0.7)
+	var fc := Color(0.04, 0.05, 0.09).lerp(day_fog, daylight) * (1.0 - _darkness * 0.6)
+	environment.fog_light_color = fc
+	sky_shader.set_shader_parameter(&"fog_color", Vector3(fc.r, fc.g, fc.b) / maxf(0.03, daylight * (1.0 - _darkness * 0.6)))
+	environment.volumetric_fog_density = 0.006 + _fog * 0.025 + _rain * 0.008 + _snow * 0.012 + _dust * 0.02
+	environment.volumetric_fog_albedo = Color(0.9, 0.93, 1.0).lerp(Color(0.85, 0.74, 0.55), _dust)
+
+
+func _apply_fog_range() -> void:
+	var thick := clampf(_fog * 0.85 + _rain * 0.35 + _snow * 0.5 + _dust * 0.5, 0.0, 0.92)
+	environment.fog_depth_begin = _fog_near * (1.0 - thick)
+	environment.fog_depth_end = lerpf(_fog_far, minf(_fog_far, 90.0), thick)
 
 
 ## Применить качество графики (Settings.graphics) к окружению, солнцу и вьюпорту.
@@ -203,8 +315,9 @@ func set_depth_of_field(on: bool) -> void:
 
 ## Дальний туман: начинается за прорисованными чанками и прячет край LOD-рельефа.
 func set_view_range(near_blocks: float, far_blocks: float) -> void:
-	environment.fog_depth_begin = near_blocks * 0.6
-	environment.fog_depth_end = maxf(far_blocks, near_blocks) * 1.02
+	_fog_near = near_blocks * 0.6
+	_fog_far = maxf(far_blocks, near_blocks) * 1.02
+	_apply_fog_range()
 
 
 ## Цветокоррекция по климату биома под игроком: холод — прохладнее и бледнее, жара — теплее.
@@ -215,7 +328,11 @@ func set_biome_climate(temperature_c: float) -> void:
 
 
 func _process(delta: float) -> void:
-	_grade = _grade.lerp(_grade_target, clampf(delta * GRADE_SPEED, 0.0, 1.0))
+	_grade = _grade.lerp(_grade_target + _weather_grade, clampf(delta * GRADE_SPEED, 0.0, 1.0))
+	if _flash > 0.0:
+		_flash = maxf(0.0, _flash - delta * 5.0)
+		sky_shader.set_shader_parameter(&"flash", _flash)
+		_update_lights()
 	environment.adjustment_saturation = _grade.x
 	environment.adjustment_contrast = _grade.y
 	environment.adjustment_brightness = _grade.z

@@ -18,6 +18,8 @@ const CAUSE_HEAT := "heat"
 const CAUSE_DROWN := "drown"
 const CAUSE_FALL := "fall"
 const CAUSE_FIRE := "fire"
+const CAUSE_HAIL := "hail"
+const CAUSE_LIGHTNING := "lightning"
 
 ## Шаг расчёта сна, игровые часы.
 const SLEEP_STEP_H := 0.25
@@ -106,7 +108,7 @@ func take_events() -> Array[Dictionary]:
 ## Шаг симуляции. dt — реальные секунды, hours — игровые часы за тот же шаг.
 ## env: ambient (°C воздуха), heat (°C от костров), in_water, head_in_water, sprinting,
 ## moving, jumped, working, sleeping, insulation, water_resist, rain (0..1), contact_damage,
-## contact_cause.
+## contact_cause, thirst_weather (множитель жажды от погоды: суховей), hail (урон/с от града).
 func tick(dt: float, hours: float, env: Dictionary) -> void:
 	if dead:
 		return
@@ -122,6 +124,9 @@ func tick(dt: float, hours: float, env: Dictionary) -> void:
 		fatigue = maxf(0.0, fatigue - _c("sleep_fatigue_per_hour", 14.0) * float(env.get("rest", 1.0)) * hours)
 	else:
 		fatigue = minf(100.0, fatigue + _c("fatigue_per_hour", 4.0) * hours)
+	var hail: float = env.get("hail", 0.0)
+	if hail > 0.0:
+		damage(hail * dt, CAUSE_HAIL)
 	var contact: float = env.get("contact_damage", 0.0)
 	if contact > 0.0:
 		damage(contact * dt, String(env.get("contact_cause", CAUSE_FIRE)))
@@ -198,7 +203,8 @@ func _tick_wetness(dt: float, hours: float, env: Dictionary) -> void:
 func _tick_food(dt: float, hours: float, env: Dictionary) -> void:
 	var sleeping: bool = env.get("sleeping", false)
 	var h_rate := _c("hunger_per_hour", 3.5) * _d("hunger_mult") * _effect_mult("hunger_mult")
-	var t_rate := _c("thirst_per_hour", 5.0) * _d("thirst_mult") * _effect_mult("thirst_mult")
+	var t_rate := _c("thirst_per_hour", 5.0) * _d("thirst_mult") * _effect_mult("thirst_mult") \
+			* float(env.get("thirst_weather", 1.0))
 	if env.get("sprinting", false) and env.get("moving", false):
 		h_rate *= _c("sprint_hunger_mult", 2.0)
 		t_rate *= 1.3

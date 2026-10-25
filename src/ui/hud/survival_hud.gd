@@ -120,7 +120,7 @@ func _draw_clock(font: Font, vs: Vector2) -> void:
 
 func _draw_effects(v: PlayerVitals, font: Font, vs: Vector2) -> void:
 	var x := vs.x - 16.0 - BADGE
-	var y := 40.0
+	var y := 62.0
 	for e in v.effects:
 		var def: Dictionary = v.effect_defs.get(StringName(e["id"]), {})
 		var col: Color = def.get("color", Color.GRAY)

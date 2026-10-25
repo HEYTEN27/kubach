@@ -72,6 +72,12 @@ func configure(p_enabled: bool, p_radius: int, p_density: int) -> void:
 		_center = Vector2i(1 << 30, 0)
 
 
+## Смена сезона: трава перестраивается постепенно (сезон берётся из chunks.season).
+func refresh_season() -> void:
+	for c: Vector2i in _built.keys():
+		_dirty[c] = true
+
+
 func _exit_tree() -> void:
 	wait_all()
 

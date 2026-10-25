@@ -19,7 +19,11 @@ extends RefCounted
 ##   --open=inventory|chest — после загрузки открыть окно инвентаря (или поставить рядом сундук
 ##                        с предметами и открыть его) — для скриншотов; --open=status —
 ##                        экран состояния персонажа (C);
-##   --time=<час>         поставить время суток (например 22.5), для проверки ночи.
+##   --time=<час>         поставить время суток (например 22.5), для проверки ночи;
+##   --weather=<id>       сразу включить погоду из data/weather.json (rain, thunderstorm, snow…);
+##   --season=<id>        у нового мира — стартовый сезон, у сохранённого — перейти в середину сезона;
+##   --day=<N>            день при запуске (фаза луны);
+##   --biome=<id>         начать в ближайшем биоме id (meadow, steppe, tundra…) — для скриншотов.
 
 static var folder := ""
 static var new_world_name := ""
@@ -37,6 +41,11 @@ static var bench_seconds := 0.0
 static var open_ui := ""
 ## Час суток при запуске (−1 — из сохранения).
 static var start_hour := -1.0
+## Погода, сезон и день при запуске ("" / 0 — из сохранения).
+static var weather := ""
+static var season := ""
+static var start_day := 0
+static var biome := ""
 ## Внешность и стартовая одежда из редактора персонажа (новый мир).
 static var appearance: Dictionary = {}
 static var outfit: Array = []
@@ -62,6 +71,10 @@ static func reset() -> void:
 	outfit = []
 	open_ui = ""
 	start_hour = -1.0
+	weather = ""
+	season = ""
+	start_day = 0
+	biome = ""
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -93,6 +106,7 @@ static func parse_args(args: PackedStringArray) -> bool:
 				settings["sea_level"] = clampi(value.to_int(), 32, 96)
 			"--season":
 				settings["start_season"] = value
+				season = value
 			"--view":
 				view_distance = clampi(value.to_int(), 4, 32)
 			"--teleport":
@@ -109,6 +123,12 @@ static func parse_args(args: PackedStringArray) -> bool:
 				open_ui = value
 			"--time":
 				start_hour = clampf(value.to_float(), 0.0, 23.99)
+			"--weather":
+				weather = value
+			"--biome":
+				biome = value
+			"--day":
+				start_day = maxi(1, value.to_int())
 			"--camera":
 				camera = value
 			"--f3":

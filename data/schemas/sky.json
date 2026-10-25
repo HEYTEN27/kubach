@@ -1,0 +1,39 @@
+{
+ "format": 1,
+ "category": "sky",
+ "description": "Небо (раздел 3.1): цикл луны, яркость луны и звёзд, ветер.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "moon_cycle_days": {
+   "type": "float",
+   "default": 8.0,
+   "min": 1,
+   "max": 60,
+   "doc": "Дней от новолуния до новолуния."
+  },
+  "moon_light": {
+   "type": "float",
+   "default": 0.2,
+   "min": 0,
+   "max": 1,
+   "doc": "Яркость полной луны."
+  },
+  "star_brightness": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 4
+  },
+  "change_minutes": {
+   "type": "float",
+   "default": 25.0,
+   "min": 1,
+   "max": 600,
+   "doc": "За сколько игровых минут погода сменяется плавно."
+  }
+ }
+}

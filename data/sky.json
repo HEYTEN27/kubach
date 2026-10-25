@@ -1,0 +1,12 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "default",
+   "moon_cycle_days": 8.0,
+   "moon_light": 0.2,
+   "star_brightness": 1.0,
+   "change_minutes": 25.0
+  }
+ ]
+}

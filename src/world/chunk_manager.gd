@@ -218,13 +218,15 @@ func mesh_node_count() -> int:
 
 
 ## Перемешать секцию с блоком и соседние, если блок на краю секции.
-func notify_block_changed(x: int, y: int, z: int) -> void:
+## relight = false — свет не меняется (снег ↔ воздух, вода ↔ лёд): только перемешать.
+func notify_block_changed(x: int, y: int, z: int, relight: bool = true) -> void:
 	var cpos := Vector2i(x >> 4, z >> 4)
-	for dz in range(-1, 2):
-		for dx in range(-1, 2):
-			var c := cpos + Vector2i(dx, dz)
-			if _lit.has(c):
-				_queue_light(c, true)
+	if relight:
+		for dz in range(-1, 2):
+			for dx in range(-1, 2):
+				var c := cpos + Vector2i(dx, dz)
+				if _lit.has(c):
+					_queue_light(c, true)
 	var si := WorldConst.section_index(y)
 	_queue_mesh(Vector3i(cpos.x, si, cpos.y), true)
 	var lx := x & 15
@@ -242,6 +244,16 @@ func notify_block_changed(x: int, y: int, z: int) -> void:
 		_queue_mesh(Vector3i(cpos.x, si - 1, cpos.y), true)
 	elif ly == 15 and si < WorldConst.SECTIONS_PER_COLUMN - 1:
 		_queue_mesh(Vector3i(cpos.x, si + 1, cpos.y), true)
+
+
+## Смена сезона (этап 7): цвета листвы и травы зашиты в вершины — все готовые секции
+## перемешиваются в обычной очереди (без рывка: старые меши видны до замены).
+func set_season(s: int) -> void:
+	if s == season:
+		return
+	season = s
+	for key: Vector3i in _nodes.keys():
+		_queue_mesh(key, false)
 
 
 ## Отдаёт изменённые загруженные колонны в RegionStore (перед flush).

@@ -27,6 +27,10 @@ var _bg_cam: Camera3D
 var _bg_center := Vector2i.ZERO
 var _bg_target := Vector3.ZERO
 var _bg_angle := 0.0
+var _bg_rig: GraphicsRig
+var _bg_hour := 9.0
+## Фон меню (этап 7): случайная погода и время суток, которое медленно идёт.
+const BG_SCENES := [["cloudy", 9.0], ["clear", 7.0], ["fog", 6.4], ["overcast", 13.0], ["cloudy", 19.2]]
 
 
 func _ready() -> void:
@@ -100,6 +104,12 @@ func _build_background() -> void:
 	far.setup(_bg_world, _bg_world.chunks.season)
 	far.configure(true, 24, (BG_VIEW - 2.5) * 16.0)
 	rig.set_view_range(BG_VIEW * 16.0, 24 * 16.0)
+	_bg_rig = rig
+	var scene: Array = BG_SCENES[0 if ScreenshotUtil.requested_path() != "" else randi() % BG_SCENES.size()]
+	var sim := WeatherSim.new(Registry, randi())
+	sim.force(StringName(scene[0]))
+	rig.set_weather(sim.values(12.0))
+	_bg_hour = scene[1]
 	if ScreenshotUtil.requested_path() != "":
 		# Программный OpenGL рисует кадр секундами — раздаём задачи пачками.
 		var ch := _bg_world.chunks
@@ -148,6 +158,9 @@ func _process(delta: float) -> void:
 	_bg_world.chunks.update(_bg_center)
 	(get_meta("far") as FarTerrain).update(_bg_center.x * 16.0 + 8.0, _bg_center.y * 16.0 + 8.0)
 	_bg_angle += delta * 0.03
+	_bg_hour = fposmod(_bg_hour + delta / 40.0, 24.0)
+	_bg_rig.set_time_of_day(_bg_hour)
+	_bg_rig.move_clouds(delta, _bg_target.x, _bg_target.z)
 	var r := 30.0
 	var p := Vector3(_bg_target.x + cos(_bg_angle) * r, _bg_target.y + 11.0, _bg_target.z + sin(_bg_angle) * r)
 	var o := Vector3(_bg_world.origin)

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Кубач"
 config/description="Блочная песочница-выживание: тайга, сезоны, ремесло, электричество."
-config/version="0.6.0"
+config/version="0.7.0"
 run/main_scene="res://src/ui/boot/boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Kubach"
@@ -59,6 +59,18 @@ world_origin={
 wind={
 "type": "vec4",
 "value": Vector4(0.8, 0.6, 0.5, 0)
+}
+cloud_shadow={
+"type": "vec4",
+"value": Vector4(0, 0, 0.3, 0)
+}
+rain_wetness={
+"type": "vec2",
+"value": Vector2(0, 0)
+}
+cloud_noise={
+"type": "sampler2D",
+"value": "res://assets/textures/generated/sky/clouds.png"
 }
 
 [rendering]

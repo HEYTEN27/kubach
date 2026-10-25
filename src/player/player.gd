@@ -49,6 +49,8 @@ var use_weight := false
 var force_input := false
 ## Выживание (этап 5): множитель скорости от травм и болезней, можно ли бежать.
 var survival_speed := 1.0
+## Вязкость рыхлых слоёв (снег, этап 7): блок → доля потери скорости, когда стоишь в нём.
+var _wade := PackedFloat32Array()
 var can_sprint := true
 ## Прыжков с прошлого опроса SurvivalController (тратят выносливость).
 var jumps := 0
@@ -69,6 +71,14 @@ var _sprint_on := false
 var _bob := 0.0
 
 
+## Замедление в глубоком снегу 0…1 (блок у ног).
+func wade() -> float:
+	if motor.flying:
+		return 0.0
+	var b := world.get_block(floori(body.x), floori(body.y + 0.05), floori(body.z))
+	return _wade[b] if b > 0 and b < _wade.size() else 0.0
+
+
 func setup(p_world: World, x: float, y: float, z: float, p_yaw: float = 0.0, p_pitch: float = 0.0) -> void:
 	world = p_world
 	if inventory == null:
@@ -80,6 +90,12 @@ func setup(p_world: World, x: float, y: float, z: float, p_yaw: float = 0.0, p_p
 	pitch = p_pitch
 	_prev = PackedFloat64Array([x, y, z])
 	world.bodies.append(body)
+	var reg := world.registry
+	_wade.resize(reg.block_count())
+	for b in reg.block_count():
+		var def := reg.block_by_num(b)
+		if def != null and def.shape == &"layer" and not def.solid and def.material == &"snow":
+			_wade[b] = 0.55 * def.layer_height
 
 
 func _ready() -> void:
@@ -183,7 +199,7 @@ func _physics_process(delta: float) -> void:
 		var fy := floori(body.y + 0.01)
 		if world.is_solid(fx, fy, fz) and not world.is_solid(fx, fy + 1, fz) and not world.is_solid(fx, fy + 2, fz):
 			jump = true
-	motor.speed_mult = (inventory.overload_factor() if use_weight else 1.0) * survival_speed
+	motor.speed_mult = (inventory.overload_factor() if use_weight else 1.0) * survival_speed * (1.0 - wade())
 
 	if captured and Input.is_action_just_pressed(&"jump") and world.game_mode == &"creative":
 		var now := Time.get_ticks_msec() / 1000.0

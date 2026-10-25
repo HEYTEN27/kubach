@@ -44,6 +44,8 @@ var block_heat := PackedFloat32Array()
 var block_contact := PackedFloat32Array()
 ## Ремесло: 1 — блок рисуется моделью из коробок (станции), а не кубом.
 var block_model := PackedByteArray()
+## Погода (этап 7): 1 — горит (огонь от молнии распространяется).
+var block_flammable := PackedByteArray()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -172,6 +174,7 @@ func _clear() -> void:
 	block_heat = PackedFloat32Array()
 	block_contact = PackedFloat32Array()
 	block_model = PackedByteArray()
+	block_flammable = PackedByteArray()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -371,6 +374,7 @@ func _add_block(b: BlockDef) -> void:
 	block_heat.append(b.heat)
 	block_contact.append(b.contact_damage)
 	block_model.append(1 if b.has_model() else 0)
+	block_flammable.append(1 if b.flammable else 0)
 
 
 func _parse_json(path: String) -> Variant:

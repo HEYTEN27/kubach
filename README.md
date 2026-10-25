@@ -17,6 +17,7 @@
 
 Пресет графики: `Kubach.exe -- --preset=low|medium|high|ultra` (по умолчанию «Высокие»; всё остальное — в «Настройках»).
 Время суток при запуске (для проверки ночи): `Kubach.exe -- --time=22`.
+Погода и сезон при запуске: `Kubach.exe -- --weather=thunderstorm --season=autumn` (виды погоды — `data/weather.json`).
 
 Бенчмарк: `Kubach.exe -- --bench=60 --preset=high`. Отчёт появится в `%APPDATA%\Kubach\bench\`.
 

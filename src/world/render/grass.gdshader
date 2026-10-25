@@ -13,9 +13,14 @@ uniform float backlight = 0.45;
 uniform float sway_amount = 0.16;
 
 global uniform vec4 wind;
+global uniform ivec3 world_origin;
+global uniform vec4 cloud_shadow;
+global uniform vec2 rain_wetness;
+global uniform sampler2D cloud_noise : filter_linear_mipmap, repeat_enable;
 
 varying float v_sky;
 varying float v_h;
+varying vec3 v_wpos;
 
 void vertex() {
 	vec3 world = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -29,14 +34,22 @@ void vertex() {
 	VERTEX.xz += (inverse(mat3(MODEL_MATRIX)) * vec3(wind.x, 0.0, wind.y)).xz * sw * wind.z * sway_amount * v_h * v_h * s;
 	NORMAL = vec3(0.0, 1.0, 0.0);
 	v_sky = INSTANCE_CUSTOM.r;
+	v_wpos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
 	vec4 c = texture(albedo_tex, vec3(clamp(UV, vec2(0.002), vec2(0.998)), layer));
 	ALBEDO = c.rgb / max(sprite_color, vec3(0.05)) * COLOR.rgb;
+	// Тень облаков (как kb_cloud_shadow в шейдерах блоков) и мокрая трава в дождь.
+	if (cloud_shadow.w > 0.001) {
+		float d = texture(cloud_noise, (v_wpos.xz + vec2(world_origin.xz)) / 1024.0 + cloud_shadow.xy).r;
+		float thr = mix(0.86, 0.12, cloud_shadow.z);
+		ALBEDO *= 1.0 - smoothstep(thr, thr + 0.22, d) * cloud_shadow.w * v_sky;
+	}
+	ALBEDO *= 1.0 - 0.2 * rain_wetness.x * v_sky;
 	ALPHA = c.a;
 	ALPHA_SCISSOR_THRESHOLD = 0.5;
-	ROUGHNESS = 0.85;
+	ROUGHNESS = mix(0.85, 0.4, rain_wetness.x * v_sky);
 	AO = mix(0.5, 1.0, v_h) * v_sky;
 	AO_LIGHT_AFFECT = 0.5;
 	BACKLIGHT = ALBEDO * backlight * v_sky;

@@ -10,6 +10,7 @@ var player: Player
 var world: World
 var world_name := ""
 var survival: SurvivalController
+var weather: WeatherSystem
 
 var _label: Label
 var _accum := 0.0
@@ -119,6 +120,16 @@ func build_text() -> String:
 			v.body_temp, v.perceived, float(e.get("ambient", 0.0)), float(e.get("heat", 0.0)), v.wetness, v.fatigue])
 		lines.append("Время %s · день %d · %s · дневной свет %.2f · сложность %s" % [survival.clock.time_text(),
 			survival.clock.day, survival.clock.season(), survival.daylight, survival.difficulty])
+	if weather != null:
+		var w := weather.values
+		var win := weather.clock.day_window()
+		lines.append("Погода %s → %s (%.0f%%, ещё %.1f ч) · облака %.2f · дождь %.2f · снег %.2f · ветер %.2f · мокрость %.2f" % [
+			weather.sim.previous, weather.sim.current, weather.sim.blend() * 100.0, weather.sim.left_hours,
+			float(w.get("cloud", 0.0)), float(w.get("rain", 0.0)), float(w.get("snow", 0.0)), float(w.get("wind", 0.0)),
+			weather.wetness])
+		lines.append("Небо: восход %.2f · закат %.2f · луна %.2f · воздух снаружи %.1f °C · огней %d · громоотводов %d · молний %d" % [
+			win.x, win.y, SkyMath.moon_phase(weather.clock.day, weather.clock.minute, weather.moon_cycle_days),
+			weather.temperature, weather.fire.fires.size(), weather.rods.size(), weather.strikes])
 	lines.append("Мир: %s · сид %d" % [world_name, world.world_seed])
 	return "\n".join(lines)
 

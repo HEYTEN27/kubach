@@ -1,0 +1,119 @@
+{
+ "format": 1,
+ "category": "seasons",
+ "description": "Сезоны (раздел 3.2): длина дня, листопад, таяние, множители погоды.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "sunrise": {
+   "type": "float",
+   "default": 6.0,
+   "min": 0,
+   "max": 12,
+   "doc": "Час восхода в середине сезона."
+  },
+  "sunset": {
+   "type": "float",
+   "default": 21.0,
+   "min": 12,
+   "max": 24,
+   "doc": "Час заката в середине сезона."
+  },
+  "leaf_fall": {
+   "type": "bool",
+   "default": false,
+   "doc": "Листопад частицами в лесу."
+  },
+  "snow_melt": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1,
+   "doc": "Доп. скорость таяния снега (весна)."
+  },
+  "weather": {
+   "type": "object",
+   "default": {},
+   "doc": "Множители весов погоды: { id погоды: множитель }.",
+   "fields": {
+    "clear": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "cloudy": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "overcast": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "rain": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "downpour": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "thunderstorm": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "snow": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "blizzard": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "fog": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "hail": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    },
+    "dry_wind": {
+     "type": "float",
+     "min": 0,
+     "max": 10,
+     "default": 1.0
+    }
+   }
+  }
+ }
+}

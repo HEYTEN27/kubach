@@ -19,6 +19,8 @@ var dropped: DroppedItems
 var survival: SurvivalController
 var stations: StationSystem
 var crafting: CraftingController
+var weather: WeatherSystem
+var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
 var _window: InventoryWindow
@@ -114,6 +116,7 @@ func _ready() -> void:
 		dropped.from_array(save.meta.get("dropped", []))
 	_setup_survival(pmeta, spawn)
 	_setup_crafting(pmeta)
+	_setup_weather(seed_value)
 	_apply_player_settings()
 	Settings.setting_changed.connect(func(_id: String, _v: Variant) -> void: _apply_player_settings())
 	player.teleport(spawn[0], spawn[1], spawn[2])
@@ -132,6 +135,7 @@ func _ready() -> void:
 	hud.player = player
 	hud.world = world
 	hud.survival = survival
+	hud.weather = weather
 	add_child(hud)
 	survival.hurt.connect(func(amount: float, _c: String) -> void: hud.vitals_hud.flash_hurt(amount))
 	survival.message.connect(func(t: String) -> void: hud.show_toast(t))
@@ -145,6 +149,7 @@ func _ready() -> void:
 	debug_overlay.world = world
 	debug_overlay.world_name = world_name
 	debug_overlay.survival = survival
+	debug_overlay.weather = weather
 	add_child(debug_overlay)
 	debug_overlay.visible = GameLaunch.show_debug
 	pause_menu = PauseMenu.new()
@@ -166,7 +171,6 @@ func _process(delta: float) -> void:
 	world.chunks.update(center)
 	grass.update(center)
 	far_terrain.update(b.x, b.z)
-	rig.set_time_of_day(survival.clock.hour())
 	stations.viewer = Vector3(b.x, b.y, b.z)
 	survival.daylight = rig.daylight
 	_climate_left -= delta
@@ -252,6 +256,7 @@ func save_game(autosave: bool = false) -> void:
 		"inventory": player.inventory.to_dict(), "appearance": player.appearance, "survival": survival.to_dict(),
 		"recipes": crafting.to_dict() }
 	save.meta["dropped"] = dropped.to_array()
+	save.meta["weather"] = weather.to_dict()
 	save.meta["season"] = String(survival.clock.season())
 	save.meta["day"] = survival.clock.day
 	save.meta["world_spawn"] = _world_spawn
@@ -322,6 +327,10 @@ func _apply_player_settings() -> void:
 		stations.set_auto(auto)
 		crafting.minigames = not auto
 		stations.particles_level = { "low": 1, "medium": 2, "high": 2 }.get(String(Settings.get_value("particles")), 2)
+	if weather != null:
+		weather_effects.set_density({ "low": 0.3, "medium": 0.6, "high": 1.0 }.get(String(Settings.get_value("particles")), 1.0))
+		weather.reduce_flashing = bool(Settings.get_value("reduce_flashing"))
+		rig.set_cloud_quality({ "off": 0, "low": 1, "high": 2 }.get(String(Settings.get_value("clouds")), 2))
 	player.fov = float(Settings.get_value("fov"))
 	player.mouse_sens_x = 0.0025 * float(Settings.get_value("mouse_sens_x")) * (-1.0 if Settings.get_value("invert_x") else 1.0)
 	player.mouse_sens_y = 0.0025 * float(Settings.get_value("mouse_sens_y")) * (-1.0 if Settings.get_value("invert_y") else 1.0)
@@ -356,6 +365,14 @@ func _setup_survival(pmeta: Dictionary, spawn: Array) -> void:
 		survival.from_dict(pmeta["survival"])
 	if GameLaunch.start_hour >= 0.0:
 		survival.clock.minute = GameLaunch.start_hour * 60.0
+	if GameLaunch.start_day > 0:
+		survival.clock.day = GameLaunch.start_day
+	var si := GameClock.SEASONS.find(StringName(GameLaunch.season))
+	if si >= 0:
+		# Середина нужного сезона, фаза луны — по --day внутри сезона.
+		var c := survival.clock
+		var shift := posmod(si - c.start_season, 4)
+		c.day = shift * c.season_length + (GameLaunch.start_day if GameLaunch.start_day > 0 else c.season_length / 2) + 1
 	add_child(survival)
 	var ws: Array = save.meta.get("world_spawn", []) if save != null else []
 	_world_spawn = ws if ws.size() == 3 else [spawn[0], spawn[1], spawn[2]]
@@ -473,6 +490,34 @@ func _setup_crafting(pmeta: Dictionary) -> void:
 			Audio.play_ui("crafting/done"))
 
 
+## Погода: небо, частицы, снег и лёд, огонь, молнии; сезон меняет цвета мира.
+func _setup_weather(seed_value: int) -> void:
+	weather_effects = WeatherEffects.new()
+	add_child(weather_effects)
+	weather_effects.setup(world)
+	weather = WeatherSystem.new()
+	add_child(weather)
+	weather.setup(world, survival.clock, player, rig, weather_effects, survival, stations, seed_value)
+	if save != null and save.meta.has("weather"):
+		weather.from_dict(save.meta["weather"])
+	if GameLaunch.weather != "":
+		weather.force(StringName(GameLaunch.weather))
+	weather.season_changed.connect(_on_season_changed)
+	_on_season_changed(GameClock.SEASONS.find(survival.clock.season()), true)
+
+
+func _on_season_changed(index: int, quiet: bool = false) -> void:
+	if index < 0:
+		return
+	var changed := index != world.chunks.season
+	world.chunks.set_season(index)
+	far_terrain.set_season(index)
+	if changed:
+		grass.refresh_season()
+	if not quiet and changed and hud != null:
+		hud.show_toast("Наступает %s" % ["весна", "лето", "осень", "зима"][index], 4.0)
+
+
 ## Окно станции: панель станции над инвентарём игрока.
 func open_station(pos: Vector3i) -> void:
 	if _window != null:
@@ -566,6 +611,7 @@ func _on_loaded() -> void:
 	# В режиме скриншота игрок заморожен — кадр повторяем.
 	player.active = GameLaunch.screenshot_path == ""
 	survival.running = true
+	weather.running = true
 	if GameLaunch.screenshot_path == "" and GameLaunch.bench_seconds == 0.0:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if GameLaunch.bench_seconds > 0.0:
@@ -609,10 +655,13 @@ func _spawn_point() -> Array:
 		out = [float(p["x"]), float(p["y"]), float(p["z"])]
 	else:
 		out = _find_land()
+	if GameLaunch.biome != "":
+		var at := _find_biome(StringName(GameLaunch.biome))
+		out = [at.x + 0.5, NAN, at.y + 0.5]
 	if GameLaunch.teleport.size() == 3:
 		out = [GameLaunch.teleport[0], GameLaunch.teleport[1], GameLaunch.teleport[2]]
-		if is_nan(out[1]):
-			out[1] = float(maxi(world.generator.surface_height(floori(out[0]), floori(out[2])), world.generator.sea_level) + 1)
+	if is_nan(float(out[1])):
+		out[1] = float(maxi(world.generator.surface_height(floori(out[0]), floori(out[2])), world.generator.sea_level) + 1)
 	if GameLaunch.look.x != INF:
 		yaw = deg_to_rad(GameLaunch.look.x)
 		pitch = deg_to_rad(GameLaunch.look.y)

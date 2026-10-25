@@ -193,7 +193,42 @@ def bellows(ctx):
     return Tex(np.clip(alb, 0, 1), ones(ctx, 0.0), normalize(h), 0.7 + 0.1 * n, ones(ctx, 0.0), normal_strength=2.4)
 
 
-RECIPES = {"hide": hide, "cloth": cloth, "embers": embers, "soot": soot, "bellows": bellows, "bricks": bricks}
+def fire(ctx):
+    """Блок огня (крест): несколько языков пламени от углей у земли, горячее ядро, искры;
+    альфа — покрытие, ORM.A — свечение."""
+    from PIL import Image, ImageDraw
+    s = ctx.size
+    rng = ctx.rng
+    k = 4
+    big = s * k
+    img = Image.new("RGBA", (big, big), (0, 0, 0, 0))
+    glow = Image.new("L", (big, big), 0)
+    d = ImageDraw.Draw(img)
+    dg = ImageDraw.Draw(glow)
+    for layer, (col, scale) in enumerate([((0.85, 0.22, 0.04), 1.0), ((1.0, 0.5, 0.1), 0.75), ((1.0, 0.85, 0.45), 0.45)]):
+        for t in range(4):
+            cx = big * (0.2 + 0.2 * t) + rng.normal() * k * 3
+            w = big * 0.13 * scale
+            top = big * (0.05 + 0.18 * layer + 0.12 * rng.random())
+            pts = [(cx - w, big * 0.98), (cx + w, big * 0.98), (cx + w * 0.5, top + big * 0.3),
+                   (cx + rng.normal() * k * 4, top), (cx - w * 0.6, top + big * 0.35)]
+            fill = tuple(int(255 * c) for c in col) + (235,)
+            d.polygon(pts, fill=fill)
+            dg.polygon(pts, fill=int(140 + 110 * layer / 2))
+    for _ in range(10):
+        x, y = rng.random() * big, rng.random() * big * 0.6
+        r = k * (1 + rng.random())
+        d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 200, 90, 255))
+        dg.ellipse([x - r, y - r, x + r, y + r], fill=255)
+    img = img.resize((s, s), Image.LANCZOS)
+    glow = np.array(glow.resize((s, s), Image.LANCZOS)) / 255.0
+    a = np.array(img).astype(float) / 255.0
+    t = Tex(np.clip(a[..., :3], 0, 1), a[..., 3], normalize(glow), 0.9 * ones(ctx), ones(ctx, 0.0), normal_strength=0.5)
+    t.emission = glow
+    return t
+
+
+RECIPES = {"fire": fire, "hide": hide, "cloth": cloth, "embers": embers, "soot": soot, "bellows": bellows, "bricks": bricks}
 
 
 def classify(name, block):
@@ -204,7 +239,7 @@ def classify(name, block):
     if "metal_block" in tags:
         return metal_block, 1, False
     if name in RECIPES:
-        return RECIPES[name], (2 if name in ("bricks", "embers") else 1), name in ("embers", "soot", "cloth")
+        return RECIPES[name], (2 if name in ("bricks", "embers", "fire") else 1), name in ("embers", "soot", "cloth")
     return None
 
 

@@ -1,0 +1,254 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "clear",
+   "name": {
+    "ru": "Ясно",
+    "en": "Clear"
+   },
+   "symbol": "☀",
+   "duration": {
+    "min": 6,
+    "max": 18
+   },
+   "weight": 4,
+   "cloud": 0.08,
+   "wind_min": 0.05,
+   "wind_max": 0.35
+  },
+  {
+   "id": "cloudy",
+   "name": {
+    "ru": "Облачно",
+    "en": "Cloudy"
+   },
+   "symbol": "⛅",
+   "duration": {
+    "min": 4,
+    "max": 12
+   },
+   "weight": 3,
+   "cloud": 0.5,
+   "wind_min": 0.1,
+   "wind_max": 0.45
+  },
+  {
+   "id": "overcast",
+   "name": {
+    "ru": "Пасмурно",
+    "en": "Overcast"
+   },
+   "symbol": "☁",
+   "duration": {
+    "min": 4,
+    "max": 12
+   },
+   "weight": 2,
+   "cloud": 0.92,
+   "darkness": 0.25,
+   "temp": -1,
+   "wind_min": 0.15,
+   "wind_max": 0.5
+  },
+  {
+   "id": "rain",
+   "name": {
+    "ru": "Дождь",
+    "en": "Rain"
+   },
+   "symbol": "🌦",
+   "duration": {
+    "min": 2,
+    "max": 8
+   },
+   "weight": 2.5,
+   "requires": [
+    "rain",
+    "thunderstorm"
+   ],
+   "cloud": 0.9,
+   "precip": "rain",
+   "rain": 0.45,
+   "darkness": 0.3,
+   "temp": -2,
+   "fog": 0.15,
+   "wind_min": 0.2,
+   "wind_max": 0.5,
+   "sound": "weather/rain_light"
+  },
+  {
+   "id": "downpour",
+   "name": {
+    "ru": "Ливень",
+    "en": "Downpour"
+   },
+   "symbol": "🌧",
+   "duration": {
+    "min": 1,
+    "max": 4
+   },
+   "weight": 1.0,
+   "requires": [
+    "rain",
+    "thunderstorm"
+   ],
+   "cloud": 1.0,
+   "precip": "rain",
+   "rain": 1.0,
+   "darkness": 0.45,
+   "temp": -3,
+   "fog": 0.3,
+   "wind_min": 0.3,
+   "wind_max": 0.7,
+   "sound": "weather/rain_heavy"
+  },
+  {
+   "id": "thunderstorm",
+   "name": {
+    "ru": "Гроза",
+    "en": "Thunderstorm"
+   },
+   "symbol": "⛈",
+   "duration": {
+    "min": 1,
+    "max": 3
+   },
+   "weight": 0.8,
+   "requires": [
+    "thunderstorm"
+   ],
+   "cloud": 1.0,
+   "precip": "rain",
+   "rain": 0.9,
+   "lightning": 12,
+   "darkness": 0.55,
+   "temp": -3,
+   "fog": 0.2,
+   "wind_min": 0.5,
+   "wind_max": 0.9,
+   "sound": "weather/rain_heavy"
+  },
+  {
+   "id": "snow",
+   "name": {
+    "ru": "Снег",
+    "en": "Snow"
+   },
+   "symbol": "🌨",
+   "duration": {
+    "min": 3,
+    "max": 12
+   },
+   "weight": 2.0,
+   "requires": [
+    "snow",
+    "blizzard"
+   ],
+   "cloud": 0.9,
+   "precip": "snow",
+   "snow": 0.5,
+   "darkness": 0.2,
+   "temp": -2,
+   "fog": 0.2,
+   "wind_min": 0.05,
+   "wind_max": 0.4,
+   "sound": "weather/snow"
+  },
+  {
+   "id": "blizzard",
+   "name": {
+    "ru": "Метель",
+    "en": "Blizzard"
+   },
+   "symbol": "❄",
+   "duration": {
+    "min": 2,
+    "max": 6
+   },
+   "weight": 0.8,
+   "requires": [
+    "blizzard"
+   ],
+   "cloud": 1.0,
+   "precip": "snow",
+   "snow": 1.0,
+   "darkness": 0.4,
+   "temp": -8,
+   "fog": 0.75,
+   "wind_min": 0.8,
+   "wind_max": 1.0,
+   "sound": "weather/blizzard"
+  },
+  {
+   "id": "fog",
+   "name": {
+    "ru": "Туман",
+    "en": "Fog"
+   },
+   "symbol": "🌫",
+   "duration": {
+    "min": 2,
+    "max": 6
+   },
+   "weight": 1.5,
+   "requires": [
+    "fog"
+   ],
+   "cloud": 0.5,
+   "fog": 0.85,
+   "temp": -1,
+   "wind_min": 0.0,
+   "wind_max": 0.1
+  },
+  {
+   "id": "hail",
+   "name": {
+    "ru": "Град",
+    "en": "Hail"
+   },
+   "symbol": "🌨",
+   "duration": {
+    "min": 0.3,
+    "max": 1
+   },
+   "weight": 0.2,
+   "requires": [
+    "thunderstorm"
+   ],
+   "cloud": 1.0,
+   "precip": "hail",
+   "hail": 1.0,
+   "rain": 0.4,
+   "darkness": 0.5,
+   "temp": -5,
+   "wind_min": 0.4,
+   "wind_max": 0.8,
+   "sound": "weather/hail",
+   "hail_damage": 1.5
+  },
+  {
+   "id": "dry_wind",
+   "name": {
+    "ru": "Суховей",
+    "en": "Dry Wind"
+   },
+   "symbol": "🌪",
+   "duration": {
+    "min": 2,
+    "max": 8
+   },
+   "weight": 1.2,
+   "requires": [
+    "dry_wind"
+   ],
+   "cloud": 0.15,
+   "dust": 0.8,
+   "temp": 4,
+   "wind_min": 0.8,
+   "wind_max": 1.0,
+   "sound": "weather/wind_strong",
+   "thirst": 1.5
+  }
+ ]
+}

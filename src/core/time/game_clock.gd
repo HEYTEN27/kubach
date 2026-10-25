@@ -1,8 +1,8 @@
 class_name GameClock
 extends RefCounted
-## Игровое время (раздел 2.2: длина суток 10–60 минут, по умолчанию 24): день и минута суток.
-## Этап 5 — часы, счётчик дней, сезон по дню (для температуры) и пропуск ночи сном.
-## Дуга солнца с луной, длина дня по сезону и сезонная картинка (снег, листва) — этап 7.
+## Игровое время (раздел 2.2: длина суток 10–60 минут, по умолчанию 24): день и минута суток,
+## сезон по дню, восход и закат по сезону (этап 7, SkyMath и data/seasons.json; без данных —
+## постоянные 6:00 и 21:00).
 
 const SEASONS: Array[StringName] = [&"spring", &"summer", &"autumn", &"winter"]
 const SEASON_NAMES := { &"spring": "Весна", &"summer": "Лето", &"autumn": "Осень", &"winter": "Зима" }
@@ -19,6 +19,8 @@ var day_length_min := 24.0
 ## Сезон первого дня (индекс в SEASONS) и длина сезона в днях (настройки мира).
 var start_season := 1
 var season_length := 28
+## Восход и закат середины каждого сезона: 4 × Vector2 (SkyMath.season_windows). Пусто — постоянные.
+var windows: Array = []
 
 
 func _init(p_day_length: float = 24.0) -> void:
@@ -49,8 +51,28 @@ func hour() -> float:
 
 
 func is_night() -> bool:
-	var h := hour()
-	return h >= NIGHT_START or h < NIGHT_END
+	return SkyMath.is_night(hour(), day_window())
+
+
+## Восход и закат сегодня (часы).
+func day_window() -> Vector2:
+	if windows.size() != 4:
+		return Vector2(NIGHT_END, NIGHT_START)
+	return SkyMath.day_window(year_fraction(), windows)
+
+
+func sunrise() -> float:
+	return day_window().x
+
+
+## Доля года 0…1 (0 — начало весны).
+func year_fraction() -> float:
+	return SkyMath.year_fraction(day, minute, start_season, season_length)
+
+
+## Абсолютное время в игровых минутах с начала мира.
+func total_minutes() -> float:
+	return float(day - 1) * MINUTES_PER_DAY + minute
 
 
 ## Сколько часов до ближайшего наступления часа target (0…24).

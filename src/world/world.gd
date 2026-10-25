@@ -112,9 +112,16 @@ func set_block(x: int, y: int, z: int, block: int) -> bool:
 	if sec != null:
 		sec.note_block(block, registry.block_opaque, registry.block_shape)
 	col.dirty = true
-	chunks.notify_block_changed(x, y, z)
+	chunks.notify_block_changed(x, y, z, light_differs(old, block))
 	block_changed.emit(Vector3i(x, y, z), old, block)
 	return true
+
+
+## Меняет ли замена блока a на b свет (фильтр, свечение, непрозрачность).
+func light_differs(a: int, b: int) -> bool:
+	var r := registry
+	return r.block_light_filter[a] != r.block_light_filter[b] or r.block_light_emission[a] != r.block_light_emission[b] \
+			or r.block_opaque[a] != r.block_opaque[b]
 
 
 ## Слой действий: проверка правил и применение. true — действие выполнено.

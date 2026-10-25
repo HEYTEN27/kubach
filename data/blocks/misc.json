@@ -18,7 +18,8 @@
    "hardness": 0.1,
    "tool": "shovel",
    "tags": [
-    "snow"
+    "snow",
+    "snow_layer"
    ],
    "textures": {
     "all": "snow_layer"
