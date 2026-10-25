@@ -1,0 +1,196 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "forge_pickaxe_head",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 3
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "pickaxe_head",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 0
+  },
+  {
+   "id": "forge_axe_head",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 3
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "axe_head",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 1
+  },
+  {
+   "id": "forge_shovel_head",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 2
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "shovel_head",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 2
+  },
+  {
+   "id": "forge_hoe_head",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 2
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "hoe_head",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 3
+  },
+  {
+   "id": "forge_knife_blade",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "knife_blade",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 4
+  },
+  {
+   "id": "forge_sword_blade",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 4
+    }
+   ],
+   "time": 10,
+   "unlock": "blueprint",
+   "category": "parts",
+   "output": {
+    "id": "sword_blade",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 5
+  },
+  {
+   "id": "forge_spear_head",
+   "station": "anvil",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "ingot",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "spear_head",
+    "count": 1
+   },
+   "minigame": "forge",
+   "categories": [
+    "metal"
+   ],
+   "order": 6
+  },
+  {
+   "id": "quench_part",
+   "station": "quench",
+   "op": "quench",
+   "inputs": [],
+   "time": 1,
+   "unlock": "default",
+   "category": "parts",
+   "order": 7
+  },
+  {
+   "id": "sharpen_part",
+   "station": "grindstone",
+   "op": "sharpen",
+   "inputs": [],
+   "time": 6,
+   "unlock": "default",
+   "category": "parts",
+   "order": 8
+  },
+  {
+   "id": "repair_metal",
+   "station": "anvil",
+   "op": "repair",
+   "inputs": [],
+   "time": 15,
+   "unlock": "default",
+   "category": "service",
+   "order": 9
+  }
+ ]
+}

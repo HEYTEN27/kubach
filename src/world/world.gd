@@ -12,6 +12,8 @@ signal block_changed(pos: Vector3i, old_block: int, new_block: int)
 signal origin_shifted(new_origin: Vector3i)
 ## Предметы выпали в мир (мировые координаты точки, стопки). Их подхватывает DroppedItems.
 signal items_dropped(x: float, y: float, z: float, stacks: Array)
+## Данные блока (станции) удалены — StationSystem забывает живой объект.
+signal entity_removed(pos: Vector3i)
 
 const REBASE_DISTANCE := 256.0
 
@@ -29,6 +31,9 @@ var origin := Vector3i.ZERO
 var bodies: Array[VoxelBody] = []
 ## Открытые инвентари контейнеров: Vector3i → Inventory (данные — в ChunkColumn.block_entities).
 var _containers := {}
+## Перед чтением данных блока (поломка) — сбросить живое состояние станции в данные:
+## Callable(pos: Vector3i). Ставит StationSystem.
+var entity_flush: Callable
 
 
 func setup(p_registry: ContentRegistry, p_save: WorldSave, p_seed: int, p_settings: WorldGenSettings = null) -> void:
@@ -84,7 +89,11 @@ func is_fluid(x: int, y: int, z: int) -> bool:
 ## Можно ли навести прицел (жидкости и воздух пропускаются).
 func is_targetable(x: int, y: int, z: int) -> bool:
 	var b := get_block(x, y, z)
-	return b > 0 and registry.block_render[b] != BlockDef.RENDER_LIQUID and registry.block_render[b] != BlockDef.RENDER_INVISIBLE
+	if b <= 0:
+		return false
+	if registry.block_model[b] == 1:
+		return true
+	return registry.block_render[b] != BlockDef.RENDER_LIQUID and registry.block_render[b] != BlockDef.RENDER_INVISIBLE
 
 
 ## Низкоуровневая запись блока (без проверок правил). Возвращает false, если колонна не загружена.
@@ -140,6 +149,11 @@ func execute(action: GameAction) -> bool:
 						return false
 			if not set_block(p.x, p.y, p.z, action.block):
 				return false
+			if def.is_station():
+				# Станция помнит поворот (к игроку) и вид — модель мешится с поворотом.
+				set_entity(p, { "type": "station", "kind": String(def.station_kind), "tier": def.station_tier,
+					"facing": posmod(action.facing, 4) })
+				chunks.notify_block_changed(p.x, p.y, p.z)
 			_emit_bus(&"block_placed", p, action.block)
 			return true
 	return false
@@ -184,6 +198,51 @@ func get_container(x: int, y: int, z: int) -> Inventory:
 	return inv
 
 
+## Данные блока в клетке (станция, сундук) или пусто.
+func get_entity(p: Vector3i) -> Dictionary:
+	var col: ChunkColumn = chunks.columns.get(Vector2i(p.x >> 4, p.z >> 4))
+	if col == null:
+		return {}
+	return col.block_entities.get(ChunkColumn.entity_index(p.x & 15, p.y, p.z & 15), {})
+
+
+## Записать данные блока (пустой словарь — удалить).
+func set_entity(p: Vector3i, e: Dictionary) -> void:
+	var col: ChunkColumn = chunks.columns.get(Vector2i(p.x >> 4, p.z >> 4))
+	if col == null:
+		return
+	var key := ChunkColumn.entity_index(p.x & 15, p.y, p.z & 15)
+	if e.is_empty():
+		col.block_entities.erase(key)
+	else:
+		col.block_entities[key] = e
+	col.dirty = true
+
+
+## Все стопки из данных блока: содержимое сундука, ячейки станции, входы её заданий.
+static func entity_stacks(e: Dictionary) -> Array:
+	var out := []
+	for k: String in ["items", "in", "fuel", "out"]:
+		for d: Variant in e.get(k, []):
+			if d is Dictionary:
+				out.append(d)
+	var jobs: Array = (e.get("queue", []) as Array).duplicate()
+	if not (e.get("job", {}) as Dictionary).is_empty():
+		jobs.push_front(e["job"])
+	for j: Dictionary in jobs:
+		for d: Variant in j.get("outputs" if j.get("done", false) else "inputs", []):
+			if d is Dictionary:
+				out.append(d)
+		if not j.get("done", false):
+			var pr: Dictionary = j.get("params", {})
+			if pr.get("tool") is Dictionary:
+				out.append(pr["tool"])
+			if pr.get("parts") is Dictionary:
+				for pk: String in pr["parts"]:
+					out.append(pr["parts"][pk])
+	return out
+
+
 ## Отвязанный инвентарь (блок сломан, колонна выгружена) сюда больше не пишет.
 func _on_container_changed(p: Vector3i) -> void:
 	var inv: Inventory = _containers.get(p)
@@ -204,15 +263,18 @@ func _remove_entity(col: ChunkColumn, x: int, y: int, z: int) -> void:
 	var inv: Inventory = _containers.get(p)
 	var key := ChunkColumn.entity_index(x & 15, y, z & 15)
 	var items: Array = []
+	if entity_flush.is_valid() and col.block_entities.has(key):
+		entity_flush.call(p)
 	if inv != null:
 		items = inv.to_array()
 		_containers.erase(p)
 	elif col.block_entities.has(key):
-		items = col.block_entities[key].get("items", [])
+		items = entity_stacks(col.block_entities[key])
 	if not col.block_entities.has(key) and items.is_empty():
 		return
 	col.block_entities.erase(key)
 	col.dirty = true
+	entity_removed.emit(p)
 	var stacks: Array[ItemStack] = []
 	for d: Variant in items:
 		if d is Dictionary:

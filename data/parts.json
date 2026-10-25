@@ -1,0 +1,241 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "pickaxe_head",
+   "name": {
+    "ru": "Навершие кирки",
+    "en": "Pickaxe Head"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 3,
+   "forge_profile": [
+    2,
+    4,
+    6,
+    8,
+    8,
+    6,
+    4,
+    2
+   ],
+   "weight": 1.0,
+   "icon": {
+    "shape": "pickaxe_head"
+   }
+  },
+  {
+   "id": "axe_head",
+   "name": {
+    "ru": "Лезвие топора",
+    "en": "Axe Head"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 3,
+   "forge_profile": [
+    8,
+    7,
+    6,
+    5,
+    4,
+    4,
+    3,
+    3
+   ],
+   "weight": 1.0,
+   "icon": {
+    "shape": "axe_head"
+   }
+  },
+  {
+   "id": "shovel_head",
+   "name": {
+    "ru": "Лопасть лопаты",
+    "en": "Shovel Blade"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 2,
+   "forge_profile": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    2,
+    2
+   ],
+   "weight": 1.0,
+   "icon": {
+    "shape": "shovel_head"
+   }
+  },
+  {
+   "id": "hoe_head",
+   "name": {
+    "ru": "Лезвие мотыги",
+    "en": "Hoe Blade"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 2,
+   "forge_profile": [
+    2,
+    2,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "weight": 1.0,
+   "icon": {
+    "shape": "hoe_head"
+   }
+  },
+  {
+   "id": "knife_blade",
+   "name": {
+    "ru": "Клинок ножа",
+    "en": "Knife Blade"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 1,
+   "forge_profile": [
+    4,
+    5,
+    6,
+    7,
+    7,
+    5,
+    4,
+    2
+   ],
+   "weight": 0.6,
+   "icon": {
+    "shape": "knife_blade"
+   }
+  },
+  {
+   "id": "sword_blade",
+   "name": {
+    "ru": "Клинок меча",
+    "en": "Sword Blade"
+   },
+   "slot": "head",
+   "categories": [
+    "metal"
+   ],
+   "units": 4,
+   "forge_profile": [
+    3,
+    6,
+    6,
+    6,
+    6,
+    6,
+    5,
+    2
+   ],
+   "weight": 1.0,
+   "icon": {
+    "shape": "sword_blade"
+   }
+  },
+  {
+   "id": "spear_head",
+   "name": {
+    "ru": "Наконечник копья",
+    "en": "Spear Head"
+   },
+   "slot": "head",
+   "categories": [
+    "stone",
+    "metal"
+   ],
+   "units": 1,
+   "forge_profile": [
+    2,
+    3,
+    5,
+    7,
+    9,
+    7,
+    5,
+    2
+   ],
+   "weight": 0.6,
+   "icon": {
+    "shape": "spear_head"
+   }
+  },
+  {
+   "id": "haft",
+   "name": {
+    "ru": "Рукоять",
+    "en": "Haft"
+   },
+   "slot": "handle",
+   "categories": [
+    "wood"
+   ],
+   "units": 1,
+   "weight": 1.2,
+   "icon": {
+    "shape": "haft"
+   }
+  },
+  {
+   "id": "grip",
+   "name": {
+    "ru": "Рукоятка",
+    "en": "Grip"
+   },
+   "slot": "handle",
+   "categories": [
+    "wood"
+   ],
+   "units": 1,
+   "weight": 0.5,
+   "icon": {
+    "shape": "grip"
+   }
+  },
+  {
+   "id": "binding",
+   "name": {
+    "ru": "Обмотка",
+    "en": "Binding"
+   },
+   "slot": "binding",
+   "categories": [
+    "binding"
+   ],
+   "units": 1,
+   "weight": 1.0,
+   "icon": {
+    "shape": "binding"
+   }
+  }
+ ]
+}

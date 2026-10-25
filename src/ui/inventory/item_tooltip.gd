@@ -6,7 +6,7 @@ extends RefCounted
 const KINDS := {
 	&"block": "Блок", &"material": "Материал", &"tool": "Инструмент", &"weapon": "Оружие", &"armor": "Броня",
 	&"clothing": "Одежда", &"backpack": "Рюкзак", &"accessory": "Украшение", &"shield": "Щит", &"light": "Свет",
-	&"food": "Еда", &"misc": "Разное",
+	&"food": "Еда", &"misc": "Разное", &"part": "Часть инструмента",
 }
 const SLOTS := {
 	&"head": "голова", &"body": "тело", &"legs": "ноги", &"feet": "ступни", &"hands": "руки", &"back": "спина",
@@ -22,20 +22,46 @@ static func lines(s: ItemStack, registry: ContentRegistry, locale: String = "ru"
 	if d == null:
 		out.append(String(s.id))
 		return out
-	out.append(d.display_name(locale))
+	var data := CraftingData.shared(registry)
+	out.append(ToolAssembly.display_name(s, d, data, locale))
 	var kind := String(KINDS.get(d.kind, d.kind))
 	if d.equip != ItemDef.EQUIP_NONE:
 		kind += " · слот: %s" % SLOTS.get(d.equip, d.equip)
 	out.append(kind)
 	if s.data.has("quality"):
-		out.append("Качество: %d%%" % roundi(float(s.data["quality"]) * 100.0))
-	if d.durability > 0:
-		out.append("Прочность: %d / %d" % [int(s.data.get("durability", d.durability)), d.durability])
-	if d.is_tool():
-		out.append("Инструмент: %s, уровень %d, скорость ×%.1f" % [TOOLS.get(d.tool["type"], d.tool["type"]),
-			int(d.tool.get("tier", 0)), float(d.tool.get("speed", 1.0))])
-	if d.damage > 0.0:
-		out.append("Урон: %.0f" % d.damage)
+		out.append("Качество: %s" % data.quality_name(int(s.data["quality"]), locale))
+	var mx := s.max_durability(d)
+	if mx > 0:
+		out.append("Прочность: %d / %d" % [int(s.data.get("durability", mx)), mx])
+	var tool := ToolAssembly.tool_of(s, d)
+	if not tool.is_empty():
+		out.append("Инструмент: %s, уровень %d, скорость ×%.1f" % [TOOLS.get(tool["type"], tool["type"]),
+			int(tool.get("tier", 0)), float(tool.get("speed", 1.0))])
+	var dmg := ToolAssembly.damage_of(s, d)
+	if dmg > 0.0:
+		out.append("Урон: %.1f" % dmg)
+	if s.data.get("parts") is Dictionary:
+		var p: Dictionary = s.data["parts"]
+		var names := PackedStringArray()
+		for key: String in ["head", "handle", "binding"]:
+			var part: Dictionary = p.get(key, {})
+			if not part.is_empty():
+				var pd := registry.item(StringName(part["id"]))
+				names.append("%s: %s" % [pd.display_name(locale) if pd else part["id"], data.material_name(StringName(part["material"]), locale).to_lower()])
+		out.append("Части — " + "; ".join(names))
+	if d.is_part() and s.data.has("material"):
+		var m := data.material(StringName(s.data["material"]))
+		if not m.is_empty():
+			match String(m["category"]):
+				"metal", "stone":
+					out.append("Материал: уровень %d, скорость %.1f, острота %.1f, прочность ×%.1f" % [int(m["tier"]),
+						float(m["speed"]), float(m["sharpness"]), float(m["toughness"])])
+				_:
+					out.append("Материал: прочность ×%.2f, гибкость ×%.2f" % [float(m["toughness"]), float(m["flexibility"])])
+	if d.is_fuel():
+		out.append("Топливо: %d °C, %.0f мин" % [roundi(float(d.fuel["heat"])), float(d.fuel["minutes"])])
+	if not d.unlocks.is_empty():
+		out.append("ПКМ — прочитать чертёж (%d рец.)" % d.unlocks.size())
 	if d.armor > 0.0:
 		out.append("Защита: %.1f" % d.armor)
 	if d.insulation != 0.0:
@@ -60,8 +86,8 @@ static func lines(s: ItemStack, registry: ContentRegistry, locale: String = "ru"
 			if c != null:
 				n += 1
 		out.append("Внутри: %d стоп." % n)
-	if s.data.has("color"):
-		out.append("Цвет: %s" % String(s.data["color"]))
+	if s.data.has("cook"):
+		out.append({ "under": "Недожарено — можно отравиться", "over": "Пережарено — меньше сытости" }.get(String(s.data["cook"]), ""))
 	if s.count > 1:
 		out.append("Вес: %.2f кг × %d = %.1f кг" % [d.weight, s.count, d.weight * s.count])
 	else:

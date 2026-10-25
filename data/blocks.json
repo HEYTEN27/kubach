@@ -40,7 +40,8 @@
       ],
       "tags": [
         "stone",
-        "igneous"
+        "igneous",
+        "rock"
       ]
     },
     {
@@ -65,7 +66,8 @@
       ],
       "tags": [
         "stone",
-        "sedimentary"
+        "sedimentary",
+        "rock"
       ]
     },
     {
@@ -162,7 +164,12 @@
       },
       "drops": [
         {
-          "id": "gravel"
+          "id": "gravel",
+          "chance": 0.85
+        },
+        {
+          "id": "flint",
+          "chance": 0.15
         }
       ],
       "tags": [
@@ -194,7 +201,11 @@
       "tags": [
         "log",
         "spruce"
-      ]
+      ],
+      "fuel": {
+        "heat": 750,
+        "minutes": 8
+      }
     },
     {
       "id": "spruce_needles",

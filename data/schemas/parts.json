@@ -1,0 +1,70 @@
+{
+ "format": 1,
+ "category": "parts",
+ "description": "Части инструментов и оружия (раздел 5.1). Часть — тоже предмет (тот же id).",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "slot": {
+   "type": "enum",
+   "values": [
+    "head",
+    "handle",
+    "binding"
+   ],
+   "required": true
+  },
+  "categories": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "enum",
+    "values": [
+     "stone",
+     "metal",
+     "wood",
+     "binding"
+    ]
+   }
+  },
+  "units": {
+   "type": "int",
+   "default": 1,
+   "min": 1,
+   "max": 16,
+   "doc": "Сколько единиц материала уходит на часть."
+  },
+  "forge_profile": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "float"
+   },
+   "doc": "Целевая форма заготовки для мини-игры ковки (8 столбиков 0…10)."
+  },
+  "weight": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 5,
+   "doc": "Множитель веса материала."
+  },
+  "icon": {
+   "type": "object",
+   "default": {},
+   "fields": {
+    "shape": {
+     "type": "string",
+     "default": ""
+    }
+   }
+  }
+ }
+}

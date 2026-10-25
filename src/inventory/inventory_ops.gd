@@ -15,6 +15,9 @@ signal dropped(stack: ItemStack)
 var player: PlayerInventory
 ## Открытый контейнер (сундук) или null.
 var container: Inventory
+## Ячейки открытой станции (этап 6): имя → Inventory ("st_in", "st_fuel", "st_out").
+## Shift+клик от игрока несёт сначала в топливо, потом во входы.
+var station := {}
 var cursor: ItemStack
 var creative := false
 var _drag_visited := {}
@@ -36,7 +39,7 @@ func resolve(name: String) -> Inventory:
 			return player.equipment
 		"container":
 			return container
-	return null
+	return station.get(name)
 
 
 ## Выполнить действие слоя действий. true — что-то изменилось.
@@ -150,6 +153,14 @@ func _place_one(inv: Inventory, i: int) -> bool:
 
 ## Куда переносит Shift+клик из хранилища inv.
 func quick_targets(inv: Inventory) -> Array[Inventory]:
+	if not station.is_empty():
+		if station.values().has(inv):
+			return [player.hotbar, player.main, player.backpack]
+		var out: Array[Inventory] = []
+		for key: String in ["st_fuel", "st_in"]:
+			if station.has(key):
+				out.append(station[key])
+		return out
 	if container != null:
 		if inv == container:
 			return [player.hotbar, player.main, player.backpack]
@@ -196,7 +207,7 @@ func double_click(inv: Inventory, i: int) -> bool:
 		inv.set_stack(i, null)
 	var limit := inv.max_stack(cursor.id)
 	var changed := false
-	for src: Inventory in [player.hotbar, player.main, player.backpack, container]:
+	for src: Inventory in [player.hotbar, player.main, player.backpack, container, station.get("st_in"), station.get("st_out")]:
 		if src == null:
 			continue
 		for k in src.size():

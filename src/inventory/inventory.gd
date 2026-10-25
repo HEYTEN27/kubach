@@ -12,6 +12,9 @@ var slots: Array = []
 var slot_kinds: Array[StringName] = []
 ## Виды предметов, которые сюда класть нельзя (рюкзак в рюкзак).
 var deny_kinds: Array[StringName] = []
+## Своё правило ячеек (станции: топливо — только в топливные ячейки, в выход класть нельзя):
+## Callable(i: int, s: ItemStack) -> bool. Не держи в нём сам инвентарь (цикл ссылок).
+var accept_filter: Callable
 var name := ""
 
 
@@ -48,6 +51,8 @@ func accepts(i: int, s: ItemStack) -> bool:
 		return false
 	if not deny_kinds.is_empty() and deny_kinds.has(d.kind):
 		return false
+	if accept_filter.is_valid() and not accept_filter.call(i, s):
+		return false
 	if slot_kinds.is_empty() or slot_kinds[i] == &"":
 		return true
 	return d.equip == slot_kinds[i]
@@ -59,7 +64,7 @@ func add(s: ItemStack) -> int:
 	if s == null or s.is_empty():
 		return 0
 	var limit := max_stack(s.id)
-	if not accepts(0, s) and slot_kinds.is_empty():
+	if not accepts(0, s) and slot_kinds.is_empty() and not accept_filter.is_valid():
 		return s.count
 	for i in slots.size():
 		var cur: ItemStack = slots[i]

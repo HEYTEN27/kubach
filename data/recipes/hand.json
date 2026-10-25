@@ -1,0 +1,544 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "hand_sticks",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "basic",
+   "output": {
+    "id": "stick",
+    "count": 4
+   },
+   "order": 0
+  },
+  {
+   "id": "hand_twine",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "plant_fiber",
+     "count": 3
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "basic",
+   "output": {
+    "id": "twine",
+    "count": 1
+   },
+   "order": 1
+  },
+  {
+   "id": "hand_rope",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "twine",
+     "count": 3
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "basic",
+   "output": {
+    "id": "rope",
+    "count": 1
+   },
+   "order": 2
+  },
+  {
+   "id": "hand_flint_knife_blade",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "flint",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "knife_blade",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 3
+  },
+  {
+   "id": "hand_flint_axe_head",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "flint",
+     "count": 2
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "axe_head",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 4
+  },
+  {
+   "id": "hand_flint_spear_head",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "flint",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "spear_head",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 5
+  },
+  {
+   "id": "hand_flint_shovel_head",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "flint",
+     "count": 2
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "shovel_head",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 6
+  },
+  {
+   "id": "hand_stone_pickaxe_head",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "rock",
+     "count": 3
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "pickaxe_head",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 7
+  },
+  {
+   "id": "hand_stone_hoe_head",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "rock",
+     "count": 2
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "hoe_head",
+    "count": 1
+   },
+   "categories": [
+    "stone"
+   ],
+   "order": 8
+  },
+  {
+   "id": "hand_haft",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "haft",
+    "count": 1
+   },
+   "order": 9
+  },
+  {
+   "id": "hand_grip",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "grip",
+    "count": 1
+   },
+   "order": 10
+  },
+  {
+   "id": "hand_binding_twine",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "twine",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "binding",
+    "count": 1
+   },
+   "order": 11
+  },
+  {
+   "id": "hand_binding_rope",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "rope",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "parts",
+   "output": {
+    "id": "binding",
+    "count": 1
+   },
+   "order": 12
+  },
+  {
+   "id": "hand_binding_leather",
+   "station": "hand",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "id": "leather_strip",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "parts",
+   "output": {
+    "id": "binding",
+    "count": 1
+   },
+   "order": 13
+  },
+  {
+   "id": "hand_assemble_pickaxe",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "pickaxe",
+    "count": 1
+   },
+   "tool_type": "pickaxe",
+   "categories": [
+    "stone"
+   ],
+   "order": 14
+  },
+  {
+   "id": "hand_assemble_axe",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "axe",
+    "count": 1
+   },
+   "tool_type": "axe",
+   "categories": [
+    "stone"
+   ],
+   "order": 15
+  },
+  {
+   "id": "hand_assemble_shovel",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "shovel",
+    "count": 1
+   },
+   "tool_type": "shovel",
+   "categories": [
+    "stone"
+   ],
+   "order": 16
+  },
+  {
+   "id": "hand_assemble_hoe",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "hoe",
+    "count": 1
+   },
+   "tool_type": "hoe",
+   "categories": [
+    "stone"
+   ],
+   "order": 17
+  },
+  {
+   "id": "hand_assemble_knife",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "knife",
+    "count": 1
+   },
+   "tool_type": "knife",
+   "categories": [
+    "stone"
+   ],
+   "order": 18
+  },
+  {
+   "id": "hand_assemble_spear",
+   "station": "hand",
+   "op": "assemble",
+   "inputs": [],
+   "time": 0,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "spear",
+    "count": 1
+   },
+   "tool_type": "spear",
+   "categories": [
+    "stone"
+   ],
+   "order": 19
+  },
+  {
+   "id": "hand_workbench",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 4
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "workbench",
+    "count": 1
+   },
+   "needs_tool": "axe",
+   "order": 20
+  },
+  {
+   "id": "hand_campfire",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 4
+    },
+    {
+     "tag": "rock",
+     "count": 3
+    }
+   ],
+   "time": 0,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "campfire",
+    "count": 1
+   },
+   "order": 21
+  },
+  {
+   "id": "hand_torch",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 1
+    },
+    {
+     "tag": "torch_fuel",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "basic",
+   "output": {
+    "id": "torch",
+    "count": 4
+   },
+   "order": 22
+  },
+  {
+   "id": "hand_bandage",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "cloth",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "bandage",
+    "count": 2
+   },
+   "order": 23
+  },
+  {
+   "id": "hand_splint",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 2
+    },
+    {
+     "id": "twine",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "splint",
+    "count": 1
+   },
+   "order": 24
+  },
+  {
+   "id": "hand_unfired_brick",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "clay",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "unfired_brick",
+    "count": 4
+   },
+   "order": 25
+  },
+  {
+   "id": "hand_leather_strip",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 1
+    }
+   ],
+   "time": 0,
+   "unlock": "ingredients",
+   "category": "basic",
+   "output": {
+    "id": "leather_strip",
+    "count": 4
+   },
+   "needs_tool": "knife",
+   "order": 26
+  }
+ ]
+}

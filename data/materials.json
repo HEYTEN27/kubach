@@ -1,0 +1,924 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "flint",
+   "name": {
+    "ru": "Кремень",
+    "en": "Flint"
+   },
+   "adj": {
+    "m": "кремнёвый",
+    "f": "кремнёвая",
+    "n": "кремнёвое",
+    "en": "Flint"
+   },
+   "category": "stone",
+   "tier": 1,
+   "speed": 2.0,
+   "toughness": 0.5,
+   "sharpness": 4.0,
+   "weight": 0.3,
+   "color": "#4a4a50",
+   "sources": [
+    "flint"
+   ]
+  },
+  {
+   "id": "stone",
+   "name": {
+    "ru": "Камень",
+    "en": "Stone"
+   },
+   "adj": {
+    "m": "каменный",
+    "f": "каменная",
+    "n": "каменное",
+    "en": "Stone"
+   },
+   "category": "stone",
+   "tier": 1,
+   "speed": 1.8,
+   "toughness": 0.7,
+   "sharpness": 1.0,
+   "weight": 0.6,
+   "color": "#8f8a84",
+   "source_tags": [
+    "rock"
+   ]
+  },
+  {
+   "id": "copper",
+   "name": {
+    "ru": "Медь",
+    "en": "Copper"
+   },
+   "adj": {
+    "m": "медный",
+    "f": "медная",
+    "n": "медное",
+    "en": "Copper"
+   },
+   "category": "metal",
+   "tier": 2,
+   "speed": 3.0,
+   "toughness": 0.9,
+   "sharpness": 3.0,
+   "weight": 0.9,
+   "melt": 1085,
+   "color": "#c87a4a",
+   "sources": [
+    "copper_ingot"
+   ]
+  },
+  {
+   "id": "bronze",
+   "name": {
+    "ru": "Бронза",
+    "en": "Bronze"
+   },
+   "adj": {
+    "m": "бронзовый",
+    "f": "бронзовая",
+    "n": "бронзовое",
+    "en": "Bronze"
+   },
+   "category": "metal",
+   "tier": 3,
+   "speed": 3.8,
+   "toughness": 1.4,
+   "sharpness": 4.0,
+   "weight": 0.85,
+   "melt": 950,
+   "color": "#b8873a",
+   "sources": [
+    "bronze_ingot"
+   ]
+  },
+  {
+   "id": "brass",
+   "name": {
+    "ru": "Латунь",
+    "en": "Brass"
+   },
+   "adj": {
+    "m": "латунный",
+    "f": "латунная",
+    "n": "латунное",
+    "en": "Brass"
+   },
+   "category": "metal",
+   "tier": 3,
+   "speed": 3.4,
+   "toughness": 1.1,
+   "sharpness": 3.0,
+   "weight": 0.85,
+   "melt": 930,
+   "color": "#d4b04a",
+   "sources": [
+    "brass_ingot"
+   ]
+  },
+  {
+   "id": "iron",
+   "name": {
+    "ru": "Железо",
+    "en": "Iron"
+   },
+   "adj": {
+    "m": "железный",
+    "f": "железная",
+    "n": "железное",
+    "en": "Iron"
+   },
+   "category": "metal",
+   "tier": 4,
+   "speed": 4.8,
+   "toughness": 1.8,
+   "sharpness": 5.0,
+   "weight": 0.8,
+   "melt": 1250,
+   "color": "#a8acb2",
+   "sources": [
+    "iron_ingot"
+   ]
+  },
+  {
+   "id": "steel",
+   "name": {
+    "ru": "Сталь",
+    "en": "Steel"
+   },
+   "adj": {
+    "m": "стальной",
+    "f": "стальная",
+    "n": "стальное",
+    "en": "Steel"
+   },
+   "category": "metal",
+   "tier": 5,
+   "speed": 6.5,
+   "toughness": 2.8,
+   "sharpness": 6.5,
+   "weight": 0.8,
+   "melt": 1400,
+   "color": "#c8ced6",
+   "sources": [
+    "steel_ingot"
+   ]
+  },
+  {
+   "id": "gold",
+   "name": {
+    "ru": "Золото",
+    "en": "Gold"
+   },
+   "adj": {
+    "m": "золотой",
+    "f": "золотая",
+    "n": "золотое",
+    "en": "Gold"
+   },
+   "category": "metal",
+   "tier": 2,
+   "speed": 7.0,
+   "toughness": 0.35,
+   "sharpness": 2.0,
+   "weight": 1.9,
+   "melt": 1064,
+   "color": "#e8c040",
+   "sources": [
+    "gold_ingot"
+   ]
+  },
+  {
+   "id": "silver",
+   "name": {
+    "ru": "Серебро",
+    "en": "Silver"
+   },
+   "adj": {
+    "m": "серебряный",
+    "f": "серебряная",
+    "n": "серебряное",
+    "en": "Silver"
+   },
+   "category": "metal",
+   "tier": 2,
+   "speed": 4.0,
+   "toughness": 0.6,
+   "sharpness": 3.5,
+   "weight": 1.05,
+   "melt": 962,
+   "color": "#d8dce2",
+   "sources": [
+    "silver_ingot"
+   ]
+  },
+  {
+   "id": "tin",
+   "name": {
+    "ru": "Олово",
+    "en": "Tin"
+   },
+   "adj": {
+    "m": "оловянный",
+    "f": "оловянная",
+    "n": "оловянное",
+    "en": "Tin"
+   },
+   "category": "metal",
+   "tier": 0,
+   "speed": 1.0,
+   "toughness": 0.3,
+   "sharpness": 0.5,
+   "weight": 0.75,
+   "melt": 232,
+   "color": "#c8ccd0",
+   "sources": [
+    "tin_ingot"
+   ]
+  },
+  {
+   "id": "lead",
+   "name": {
+    "ru": "Свинец",
+    "en": "Lead"
+   },
+   "adj": {
+    "m": "свинцовый",
+    "f": "свинцовая",
+    "n": "свинцовое",
+    "en": "Lead"
+   },
+   "category": "metal",
+   "tier": 0,
+   "speed": 1.0,
+   "toughness": 0.3,
+   "sharpness": 0.5,
+   "weight": 1.15,
+   "melt": 327,
+   "color": "#6a6e78",
+   "sources": [
+    "lead_ingot"
+   ]
+  },
+  {
+   "id": "zinc",
+   "name": {
+    "ru": "Цинк",
+    "en": "Zinc"
+   },
+   "adj": {
+    "m": "цинковый",
+    "f": "цинковая",
+    "n": "цинковое",
+    "en": "Zinc"
+   },
+   "category": "metal",
+   "tier": 0,
+   "speed": 1.0,
+   "toughness": 0.4,
+   "sharpness": 0.5,
+   "weight": 0.72,
+   "melt": 420,
+   "color": "#9ea6ae",
+   "sources": [
+    "zinc_ingot"
+   ]
+  },
+  {
+   "id": "nickel",
+   "name": {
+    "ru": "Никель",
+    "en": "Nickel"
+   },
+   "adj": {
+    "m": "никелевый",
+    "f": "никелевая",
+    "n": "никелевое",
+    "en": "Nickel"
+   },
+   "category": "metal",
+   "tier": 0,
+   "speed": 1.0,
+   "toughness": 1.2,
+   "sharpness": 1.0,
+   "weight": 0.9,
+   "melt": 1455,
+   "color": "#b4b49c",
+   "sources": [
+    "nickel_ingot"
+   ]
+  },
+  {
+   "id": "wood",
+   "name": {
+    "ru": "Дерево",
+    "en": "Wood"
+   },
+   "adj": {
+    "m": "деревянный",
+    "f": "деревянная",
+    "n": "деревянное",
+    "en": "Wooden"
+   },
+   "category": "wood",
+   "toughness": 0.8,
+   "flexibility": 1.0,
+   "weight": 0.5,
+   "color": "#8a6a44",
+   "sources": [
+    "stick"
+   ]
+  },
+  {
+   "id": "spruce",
+   "name": {
+    "ru": "Ель",
+    "en": "Spruce"
+   },
+   "adj": {
+    "m": "еловый",
+    "f": "еловая",
+    "n": "еловое",
+    "en": "Spruce"
+   },
+   "category": "wood",
+   "toughness": 0.85,
+   "flexibility": 0.9,
+   "weight": 0.45,
+   "color": "#c9a77a",
+   "sources": [
+    "spruce_planks"
+   ]
+  },
+  {
+   "id": "fir",
+   "name": {
+    "ru": "Пихта",
+    "en": "Fir"
+   },
+   "adj": {
+    "m": "пихтовый",
+    "f": "пихтовая",
+    "n": "пихтовое",
+    "en": "Fir"
+   },
+   "category": "wood",
+   "toughness": 0.8,
+   "flexibility": 0.9,
+   "weight": 0.42,
+   "color": "#c7aa82",
+   "sources": [
+    "fir_planks"
+   ]
+  },
+  {
+   "id": "pine",
+   "name": {
+    "ru": "Сосна",
+    "en": "Pine"
+   },
+   "adj": {
+    "m": "сосновый",
+    "f": "сосновая",
+    "n": "сосновое",
+    "en": "Pine"
+   },
+   "category": "wood",
+   "toughness": 0.9,
+   "flexibility": 0.9,
+   "weight": 0.5,
+   "color": "#d1a36b",
+   "sources": [
+    "pine_planks"
+   ]
+  },
+  {
+   "id": "cedar",
+   "name": {
+    "ru": "Кедр",
+    "en": "Cedar"
+   },
+   "adj": {
+    "m": "кедровый",
+    "f": "кедровая",
+    "n": "кедровое",
+    "en": "Cedar"
+   },
+   "category": "wood",
+   "toughness": 0.9,
+   "flexibility": 0.9,
+   "weight": 0.48,
+   "color": "#b07850",
+   "sources": [
+    "cedar_planks"
+   ]
+  },
+  {
+   "id": "larch",
+   "name": {
+    "ru": "Лиственница",
+    "en": "Larch"
+   },
+   "adj": {
+    "m": "лиственничный",
+    "f": "лиственничная",
+    "n": "лиственничное",
+    "en": "Larch"
+   },
+   "category": "wood",
+   "toughness": 1.2,
+   "flexibility": 1.0,
+   "weight": 0.65,
+   "color": "#c0804f",
+   "sources": [
+    "larch_planks"
+   ]
+  },
+  {
+   "id": "birch",
+   "name": {
+    "ru": "Берёза",
+    "en": "Birch"
+   },
+   "adj": {
+    "m": "берёзовый",
+    "f": "берёзовая",
+    "n": "берёзовое",
+    "en": "Birch"
+   },
+   "category": "wood",
+   "toughness": 1.1,
+   "flexibility": 1.1,
+   "weight": 0.62,
+   "color": "#e2cfa6",
+   "sources": [
+    "birch_planks"
+   ]
+  },
+  {
+   "id": "aspen",
+   "name": {
+    "ru": "Осина",
+    "en": "Aspen"
+   },
+   "adj": {
+    "m": "осиновый",
+    "f": "осиновая",
+    "n": "осиновое",
+    "en": "Aspen"
+   },
+   "category": "wood",
+   "toughness": 0.8,
+   "flexibility": 1.0,
+   "weight": 0.45,
+   "color": "#ddd2b4",
+   "sources": [
+    "aspen_planks"
+   ]
+  },
+  {
+   "id": "oak",
+   "name": {
+    "ru": "Дуб",
+    "en": "Oak"
+   },
+   "adj": {
+    "m": "дубовый",
+    "f": "дубовая",
+    "n": "дубовое",
+    "en": "Oak"
+   },
+   "category": "wood",
+   "toughness": 1.3,
+   "flexibility": 1.0,
+   "weight": 0.75,
+   "color": "#a8804f",
+   "sources": [
+    "oak_planks"
+   ]
+  },
+  {
+   "id": "maple",
+   "name": {
+    "ru": "Клён",
+    "en": "Maple"
+   },
+   "adj": {
+    "m": "кленовый",
+    "f": "кленовая",
+    "n": "кленовое",
+    "en": "Maple"
+   },
+   "category": "wood",
+   "toughness": 1.2,
+   "flexibility": 1.0,
+   "weight": 0.68,
+   "color": "#d2ae7e",
+   "sources": [
+    "maple_planks"
+   ]
+  },
+  {
+   "id": "linden",
+   "name": {
+    "ru": "Липа",
+    "en": "Linden"
+   },
+   "adj": {
+    "m": "липовый",
+    "f": "липовая",
+    "n": "липовое",
+    "en": "Linden"
+   },
+   "category": "wood",
+   "toughness": 0.75,
+   "flexibility": 0.9,
+   "weight": 0.45,
+   "color": "#e0c99c",
+   "sources": [
+    "linden_planks"
+   ]
+  },
+  {
+   "id": "alder",
+   "name": {
+    "ru": "Ольха",
+    "en": "Alder"
+   },
+   "adj": {
+    "m": "ольховый",
+    "f": "ольховая",
+    "n": "ольховое",
+    "en": "Alder"
+   },
+   "category": "wood",
+   "toughness": 0.8,
+   "flexibility": 0.9,
+   "weight": 0.5,
+   "color": "#c9875a",
+   "sources": [
+    "alder_planks"
+   ]
+  },
+  {
+   "id": "willow",
+   "name": {
+    "ru": "Ива",
+    "en": "Willow"
+   },
+   "adj": {
+    "m": "ивовый",
+    "f": "ивовая",
+    "n": "ивовое",
+    "en": "Willow"
+   },
+   "category": "wood",
+   "toughness": 0.7,
+   "flexibility": 1.25,
+   "weight": 0.45,
+   "color": "#c7b08a",
+   "sources": [
+    "willow_planks"
+   ]
+  },
+  {
+   "id": "rowan",
+   "name": {
+    "ru": "Рябина",
+    "en": "Rowan"
+   },
+   "adj": {
+    "m": "рябиновый",
+    "f": "рябиновая",
+    "n": "рябиновое",
+    "en": "Rowan"
+   },
+   "category": "wood",
+   "toughness": 1.0,
+   "flexibility": 1.1,
+   "weight": 0.6,
+   "color": "#b8865c",
+   "sources": [
+    "rowan_planks"
+   ]
+  },
+  {
+   "id": "bird_cherry",
+   "name": {
+    "ru": "Черёмуха",
+    "en": "Bird Cherry"
+   },
+   "adj": {
+    "m": "черёмуховый",
+    "f": "черёмуховая",
+    "n": "черёмуховое",
+    "en": "Bird Cherry"
+   },
+   "category": "wood",
+   "toughness": 1.0,
+   "flexibility": 1.1,
+   "weight": 0.6,
+   "color": "#9a6a4a",
+   "sources": [
+    "bird_cherry_planks"
+   ]
+  },
+  {
+   "id": "apple",
+   "name": {
+    "ru": "Яблоня",
+    "en": "Apple"
+   },
+   "adj": {
+    "m": "яблоневый",
+    "f": "яблоневая",
+    "n": "яблоневое",
+    "en": "Apple"
+   },
+   "category": "wood",
+   "toughness": 1.15,
+   "flexibility": 1.0,
+   "weight": 0.7,
+   "color": "#c49a70",
+   "sources": [
+    "apple_planks"
+   ]
+  },
+  {
+   "id": "pear",
+   "name": {
+    "ru": "Груша",
+    "en": "Pear"
+   },
+   "adj": {
+    "m": "грушевый",
+    "f": "грушевая",
+    "n": "грушевое",
+    "en": "Pear"
+   },
+   "category": "wood",
+   "toughness": 1.15,
+   "flexibility": 1.0,
+   "weight": 0.7,
+   "color": "#c9a27a",
+   "sources": [
+    "pear_planks"
+   ]
+  },
+  {
+   "id": "cherry",
+   "name": {
+    "ru": "Вишня",
+    "en": "Cherry"
+   },
+   "adj": {
+    "m": "вишнёвый",
+    "f": "вишнёвая",
+    "n": "вишнёвое",
+    "en": "Cherry"
+   },
+   "category": "wood",
+   "toughness": 1.05,
+   "flexibility": 1.0,
+   "weight": 0.62,
+   "color": "#a8603f",
+   "sources": [
+    "cherry_planks"
+   ]
+  },
+  {
+   "id": "plum",
+   "name": {
+    "ru": "Слива",
+    "en": "Plum"
+   },
+   "adj": {
+    "m": "сливовый",
+    "f": "сливовая",
+    "n": "сливовое",
+    "en": "Plum"
+   },
+   "category": "wood",
+   "toughness": 1.05,
+   "flexibility": 1.0,
+   "weight": 0.65,
+   "color": "#8f5a42",
+   "sources": [
+    "plum_planks"
+   ]
+  },
+  {
+   "id": "apricot",
+   "name": {
+    "ru": "Абрикос",
+    "en": "Apricot"
+   },
+   "adj": {
+    "m": "абрикосовый",
+    "f": "абрикосовая",
+    "n": "абрикосовое",
+    "en": "Apricot"
+   },
+   "category": "wood",
+   "toughness": 1.0,
+   "flexibility": 1.0,
+   "weight": 0.62,
+   "color": "#c08a5a",
+   "sources": [
+    "apricot_planks"
+   ]
+  },
+  {
+   "id": "hazel",
+   "name": {
+    "ru": "Лещина",
+    "en": "Hazel"
+   },
+   "adj": {
+    "m": "ореховый",
+    "f": "ореховая",
+    "n": "ореховое",
+    "en": "Hazel"
+   },
+   "category": "wood",
+   "toughness": 0.9,
+   "flexibility": 1.3,
+   "weight": 0.55,
+   "color": "#c49a6a",
+   "sources": [
+    "hazel_planks"
+   ]
+  },
+  {
+   "id": "palm",
+   "name": {
+    "ru": "Пальма",
+    "en": "Palm"
+   },
+   "adj": {
+    "m": "пальмовый",
+    "f": "пальмовая",
+    "n": "пальмовое",
+    "en": "Palm"
+   },
+   "category": "wood",
+   "toughness": 0.8,
+   "flexibility": 1.2,
+   "weight": 0.5,
+   "color": "#b89a6a",
+   "sources": [
+    "palm_planks"
+   ]
+  },
+  {
+   "id": "acacia",
+   "name": {
+    "ru": "Акация",
+    "en": "Acacia"
+   },
+   "adj": {
+    "m": "акациевый",
+    "f": "акациевая",
+    "n": "акациевое",
+    "en": "Acacia"
+   },
+   "category": "wood",
+   "toughness": 1.25,
+   "flexibility": 0.95,
+   "weight": 0.75,
+   "color": "#b8703f",
+   "sources": [
+    "acacia_planks"
+   ]
+  },
+  {
+   "id": "jungle",
+   "name": {
+    "ru": "Тропическое дерево",
+    "en": "Jungle"
+   },
+   "adj": {
+    "m": "тропический",
+    "f": "тропическая",
+    "n": "тропическое",
+    "en": "Jungle"
+   },
+   "category": "wood",
+   "toughness": 1.1,
+   "flexibility": 1.0,
+   "weight": 0.65,
+   "color": "#9a6a42",
+   "sources": [
+    "jungle_planks"
+   ]
+  },
+  {
+   "id": "mangrove",
+   "name": {
+    "ru": "Мангр",
+    "en": "Mangrove"
+   },
+   "adj": {
+    "m": "мангровый",
+    "f": "мангровая",
+    "n": "мангровое",
+    "en": "Mangrove"
+   },
+   "category": "wood",
+   "toughness": 1.0,
+   "flexibility": 0.9,
+   "weight": 0.7,
+   "color": "#8a4a35",
+   "sources": [
+    "mangrove_planks"
+   ]
+  },
+  {
+   "id": "dwarf_birch",
+   "name": {
+    "ru": "Ерник",
+    "en": "Dwarf Birch"
+   },
+   "adj": {
+    "m": "ерниковый",
+    "f": "ерниковая",
+    "n": "ерниковое",
+    "en": "Dwarf Birch"
+   },
+   "category": "wood",
+   "toughness": 0.9,
+   "flexibility": 1.1,
+   "weight": 0.55,
+   "color": "#d8c49a",
+   "sources": [
+    "dwarf_birch_planks"
+   ]
+  },
+  {
+   "id": "twine",
+   "name": {
+    "ru": "Бечёвка",
+    "en": "Twine"
+   },
+   "adj": {
+    "m": "бечёвочный",
+    "f": "бечёвочная",
+    "n": "бечёвочное",
+    "en": "Twine"
+   },
+   "category": "binding",
+   "toughness": 0.8,
+   "flexibility": 0.85,
+   "weight": 0.05,
+   "color": "#b0a070",
+   "sources": [
+    "twine"
+   ]
+  },
+  {
+   "id": "rope",
+   "name": {
+    "ru": "Верёвка",
+    "en": "Rope"
+   },
+   "adj": {
+    "m": "верёвочный",
+    "f": "верёвочная",
+    "n": "верёвочное",
+    "en": "Rope"
+   },
+   "category": "binding",
+   "toughness": 0.95,
+   "flexibility": 0.95,
+   "weight": 0.1,
+   "color": "#a08860",
+   "sources": [
+    "rope"
+   ]
+  },
+  {
+   "id": "leather",
+   "name": {
+    "ru": "Кожа",
+    "en": "Leather"
+   },
+   "adj": {
+    "m": "кожаный",
+    "f": "кожаная",
+    "n": "кожаное",
+    "en": "Leather"
+   },
+   "category": "binding",
+   "toughness": 1.1,
+   "flexibility": 1.1,
+   "weight": 0.1,
+   "color": "#7a4a2a",
+   "sources": [
+    "leather_strip"
+   ]
+  }
+ ]
+}

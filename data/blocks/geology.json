@@ -356,7 +356,8 @@
    "tags": [
     "stone",
     "sedimentary",
-    "band"
+    "band",
+    "rock"
    ],
    "drops": [
     {
@@ -382,7 +383,8 @@
    "tags": [
     "stone",
     "sedimentary",
-    "band"
+    "band",
+    "rock"
    ],
    "drops": [
     {
@@ -407,7 +409,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "sedimentary"
+    "sedimentary",
+    "rock"
    ],
    "drops": [
     {
@@ -433,7 +436,8 @@
    "tags": [
     "stone",
     "sedimentary",
-    "band"
+    "band",
+    "rock"
    ],
    "drops": [
     {
@@ -458,7 +462,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "sedimentary"
+    "sedimentary",
+    "rock"
    ],
    "drops": [
     {
@@ -483,7 +488,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "sedimentary"
+    "sedimentary",
+    "rock"
    ],
    "drops": [
     {
@@ -508,7 +514,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "metamorphic"
+    "metamorphic",
+    "rock"
    ],
    "drops": [
     {
@@ -533,7 +540,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "metamorphic"
+    "metamorphic",
+    "rock"
    ],
    "drops": [
     {
@@ -558,7 +566,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "metamorphic"
+    "metamorphic",
+    "rock"
    ],
    "drops": [
     {
@@ -583,7 +592,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "metamorphic"
+    "metamorphic",
+    "rock"
    ],
    "drops": [
     {
@@ -608,7 +618,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "metamorphic"
+    "metamorphic",
+    "rock"
    ],
    "drops": [
     {
@@ -633,7 +644,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "igneous"
+    "igneous",
+    "rock"
    ],
    "drops": [
     {
@@ -658,7 +670,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "igneous"
+    "igneous",
+    "rock"
    ],
    "drops": [
     {
@@ -683,7 +696,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "igneous"
+    "igneous",
+    "rock"
    ],
    "drops": [
     {
@@ -709,7 +723,8 @@
    "tags": [
     "stone",
     "igneous",
-    "volcanic"
+    "volcanic",
+    "rock"
    ],
    "drops": [
     {
@@ -735,7 +750,8 @@
    "tags": [
     "stone",
     "igneous",
-    "volcanic"
+    "volcanic",
+    "rock"
    ],
    "drops": [
     {
@@ -761,7 +777,8 @@
    "tags": [
     "stone",
     "igneous",
-    "volcanic"
+    "volcanic",
+    "rock"
    ],
    "drops": [
     {
@@ -787,7 +804,8 @@
    "tags": [
     "stone",
     "igneous",
-    "volcanic"
+    "volcanic",
+    "rock"
    ],
    "drops": [
     {
@@ -812,7 +830,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "deep"
+    "deep",
+    "rock"
    ],
    "drops": [
     {
@@ -837,7 +856,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "deep"
+    "deep",
+    "rock"
    ],
    "drops": [
     {
@@ -862,7 +882,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "deep"
+    "deep",
+    "rock"
    ],
    "drops": [
     {
@@ -987,7 +1008,8 @@
    "tool_tier": 1,
    "sounds": "stone",
    "tags": [
-    "stone"
+    "stone",
+    "rock"
    ],
    "drops": [
     {
@@ -1012,7 +1034,8 @@
    "sounds": "stone",
    "tags": [
     "stone",
-    "volcanic"
+    "volcanic",
+    "rock"
    ],
    "drops": [
     {

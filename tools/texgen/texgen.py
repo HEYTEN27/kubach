@@ -31,6 +31,7 @@ from PIL import Image, ImageDraw
 sys.path.insert(0, os.path.dirname(__file__))
 import recipes as R  # noqa: E402
 import furniture as F  # noqa: E402
+import crafting_tex as CT  # noqa: E402
 from noise import blur  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -72,6 +73,9 @@ def classify(name, uses):
     }
     if name in furn:
         return furn[name], 1, False
+    ct = CT.classify(name, e)
+    if ct is not None:
+        return ct
     if name in ("turf_top", "mycelium_top"):
         return R.turf_top, 3, True
     if name in ("turf_side", "mycelium_side"):
@@ -283,6 +287,7 @@ def main():
     if not args.only and args.out == OUT_DIR:
         import icons
         icons.build(args.out)
+        CT.particles(os.path.join(args.out, "particles"))
 
 
 def preview(names, manifest, albedo, normal, size, path):

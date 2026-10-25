@@ -1,0 +1,62 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "throw_bowl",
+   "station": "pottery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "clay",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "unfired_bowl",
+    "count": 2
+   },
+   "order": 0
+  },
+  {
+   "id": "throw_cup",
+   "station": "pottery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "clay",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "unfired_cup",
+    "count": 3
+   },
+   "order": 1
+  },
+  {
+   "id": "throw_bricks",
+   "station": "pottery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "clay",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "unfired_brick",
+    "count": 5
+   },
+   "order": 2
+  }
+ ]
+}

@@ -61,6 +61,13 @@ var heat := 0.0
 var contact_damage := 0.0
 ## Кровать: kind (none, sleeping_bag, bed, double_bed) и rest.
 var bed := {}
+## Ремесло (этап 6): вид станции (data/stations.json) и уровень (наковальни); модель из
+## коробок вместо куба — [{ from: Vector3, to: Vector3 (в блоках), tex: StringName, anim }];
+## топливо { heat, minutes }.
+var station_kind: StringName = &""
+var station_tier := 0
+var model: Array = []
+var fuel := {}
 ## Съедобные растения и лекарственные травы: те же поля, что у предметов.
 var food := {}
 var medicine := {}
@@ -106,6 +113,16 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.bed = bd if String(bd.get("kind", "none")) != "none" else {}
 	b.food = _non_empty(e.get("food", {}))
 	b.medicine = _non_empty(e.get("medicine", {}))
+	var st: Dictionary = e.get("station", {})
+	b.station_kind = StringName(st.get("kind", ""))
+	b.station_tier = int(st.get("tier", 1)) if b.station_kind != &"" else 0
+	for m: Dictionary in e.get("model", []):
+		var f: Array = m.get("from", [0, 0, 0])
+		var t: Array = m.get("to", [16, 16, 16])
+		b.model.append({ "from": Vector3(f[0], f[1], f[2]) / 16.0, "to": Vector3(t[0], t[1], t[2]) / 16.0,
+			"tex": StringName(m.get("tex", "")), "anim": StringName(m.get("anim", "")) })
+	var fu: Dictionary = e.get("fuel", {})
+	b.fuel = fu if float(fu.get("minutes", 0.0)) > 0.0 else {}
 	return b
 
 
@@ -115,6 +132,16 @@ static func _non_empty(d: Dictionary) -> Dictionary:
 	if float(d.get("nutrition", 0.0)) == 0.0 and float(d.get("thirst", 0.0)) == 0.0 and (d.get("cures", []) as Array).is_empty() and float(d.get("heal", 0.0)) == 0.0 and (d.get("applies", []) as Array).is_empty() and (d.get("effects", []) as Array).is_empty():
 		return {}
 	return d
+
+
+## Станция ремесла.
+func is_station() -> bool:
+	return station_kind != &""
+
+
+## Рисуется моделью из коробок (ModelMesher), а не кубом.
+func has_model() -> bool:
+	return not model.is_empty()
 
 
 ## Кровать или спальник.

@@ -1,0 +1,85 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "fire_brick",
+   "station": "kiln",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "unfired_brick",
+     "count": 1
+    }
+   ],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "brick",
+    "count": 1
+   },
+   "heat": 850,
+   "order": 0
+  },
+  {
+   "id": "fire_bowl",
+   "station": "kiln",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "unfired_bowl",
+     "count": 1
+    }
+   ],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "clay_bowl",
+    "count": 1
+   },
+   "heat": 850,
+   "order": 1
+  },
+  {
+   "id": "fire_cup",
+   "station": "kiln",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "unfired_cup",
+     "count": 1
+    }
+   ],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "pottery",
+   "output": {
+    "id": "clay_cup",
+    "count": 1
+   },
+   "heat": 850,
+   "order": 2
+  },
+  {
+   "id": "kiln_charcoal",
+   "station": "kiln",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    }
+   ],
+   "time": 40,
+   "unlock": "default",
+   "category": "fuel",
+   "output": {
+    "id": "charcoal",
+    "count": 2
+   },
+   "heat": 350,
+   "order": 3
+  }
+ ]
+}

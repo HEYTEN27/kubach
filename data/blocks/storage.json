@@ -343,10 +343,9 @@
    },
    "material": "wood",
    "map_color": "#e08030",
-   "render": "cutout",
-   "shape": "cross",
+   "render": "invisible",
    "solid": false,
-   "light_emission": 15,
+   "light_emission": 0,
    "light_color": "#ffa050",
    "light_filter": 0,
    "hardness": 0.5,
@@ -365,11 +364,160 @@
    ],
    "tags": [
     "fire",
-    "heat"
+    "station"
    ],
-   "heat": 18.0,
+   "heat": 0.0,
    "contact_damage": 6.0,
-   "weight": 3.0
+   "weight": 3.0,
+   "station": {
+    "kind": "campfire",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      6
+     ],
+     "to": [
+      3,
+      2,
+      9
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      13,
+      0,
+      6
+     ],
+     "to": [
+      16,
+      2,
+      9
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      6,
+      0,
+      0
+     ],
+     "to": [
+      9,
+      2,
+      3
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      6,
+      0,
+      13
+     ],
+     "to": [
+      9,
+      2,
+      16
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      5,
+      2,
+      5
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      11,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      2,
+      5
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      2,
+      0,
+      11
+     ],
+     "to": [
+      5,
+      2,
+      14
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      11,
+      0,
+      11
+     ],
+     "to": [
+      14,
+      2,
+      14
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      3,
+      1,
+      7
+     ],
+     "to": [
+      13,
+      3,
+      9
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      7,
+      2.5,
+      3
+     ],
+     "to": [
+      9,
+      4.5,
+      13
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      4,
+      0.5,
+      4
+     ],
+     "to": [
+      12,
+      1.2,
+      12
+     ],
+     "tex": "tex_embers"
+    }
+   ]
   }
  ]
 }

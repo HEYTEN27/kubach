@@ -32,8 +32,10 @@ func test_items_survival_fields() -> void:
 
 
 func test_blocks_heat_beds() -> void:
-	var fire := Registry.block_num(&"campfire")
-	assert_gt(Registry.block_heat[fire], 10.0)
+	# Костёр (этап 6) — станция: греет, только пока горит топливо.
+	assert_eq(Registry.block(&"campfire").station_kind, &"campfire")
+	assert_gt(float(Registry.get_entry("stations", &"campfire")["warmth"]), 10.0)
+	assert_gt(Registry.block_heat[Registry.block_num(&"lava")], 10.0)
 	assert_gt(Registry.block_contact[Registry.block_num(&"lava")], 10.0)
 	assert_eq(Registry.block_heat[Registry.block_num(&"granite")], 0.0)
 	for id: StringName in [&"sleeping_bag", &"bed", &"double_bed"]:

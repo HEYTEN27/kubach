@@ -13,6 +13,8 @@ signal container_requested(pos: Vector3i)
 signal tool_broken(item: StringName)
 ## ПКМ по кровати: сон и точка возрождения (этап 5).
 signal bed_requested(pos: Vector3i)
+## ПКМ по станции ремесла (этап 6).
+signal station_requested(pos: Vector3i)
 
 const REACH_SURVIVAL := 5.0
 const REACH_CREATIVE := 7.0
@@ -82,9 +84,13 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed(&"use"):
 				bed_requested.emit(b)
 			_cooldown = PLACE_COOLDOWN
+		elif def != null and def.is_station() and not Input.is_action_pressed(&"crouch"):
+			if Input.is_action_just_pressed(&"use"):
+				station_requested.emit(b)
+			_cooldown = PLACE_COOLDOWN
 		else:
 			var block := selected_block()
-			if block > 0 and world.execute(GameAction.place_block(b + target["normal"], block)):
+			if block > 0 and world.execute(GameAction.place_block(b + target["normal"], block, facing_to_player())):
 				player.swing()
 				if not creative:
 					player.inventory.consume_held()
@@ -110,7 +116,7 @@ func _process_break(delta: float, creative: bool) -> void:
 		return
 	# hardness — время ломания голыми руками; подходящий инструмент делит его на speed.
 	var before := break_progress
-	break_progress += delta * break_speed(def, player.inventory.held_def()) / maxf(def.hardness, 0.05)
+	break_progress += delta * break_speed(def, player.inventory.held_def(), player.inventory.held()) / maxf(def.hardness, 0.05)
 	if floori(before * 4.0) != floori(break_progress * 4.0):
 		player.swing()
 	if break_progress >= 1.0:
@@ -122,20 +128,36 @@ func _process_break(delta: float, creative: bool) -> void:
 		_break_block = Vector3i(0, 1 << 30, 0)
 
 
+## Поворот модели «лицом к игроку»: перед модели (−Z) смотрит туда, откуда смотрит игрок.
+func facing_to_player() -> int:
+	var look := player.look_dir()
+	var want := Vector3(-look.x, 0.0, -look.z)
+	var best := 0
+	var best_dot := -INF
+	for f in 4:
+		var d := ModelMesher.rotate_normal(Vector3.FORWARD, f).dot(want)
+		if d > best_dot:
+			best_dot = d
+			best = f
+	return best
+
+
 ## Во сколько раз быстрее голых рук: инструмент нужного типа и уровня не ниже требуемого —
-## его speed; нужного типа, но слабее — половина; ножницы режут листву и растения.
-static func break_speed(block: BlockDef, tool: ItemDef) -> float:
+## его speed; нужного типа, но слабее — половина; ножницы и нож режут листву и растения.
+static func break_speed(block: BlockDef, tool: ItemDef, stack: ItemStack = null) -> float:
 	if tool == null or not tool.is_tool():
 		return 1.0
-	var t: StringName = tool.tool.get("type", &"")
-	var speed: float = tool.tool.get("speed", 1.0)
+	# У инструмента из частей свойства — в данных стопки (этап 6).
+	var info := ToolAssembly.tool_of(stack, tool)
+	var t: StringName = info.get("type", &"")
+	var speed: float = info.get("speed", 1.0)
 	if t == &"shears" and (block.material == &"leaves" or block.material == &"plant"):
 		return speed
 	if t == &"knife" and block.material == &"plant":
 		return speed
 	if t != block.tool:
 		return 1.0
-	if int(tool.tool.get("tier", 0)) < block.tool_tier:
+	if int(info.get("tier", 0)) < block.tool_tier:
 		return maxf(1.0, speed * 0.5)
 	return speed
 

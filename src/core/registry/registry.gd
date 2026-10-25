@@ -42,6 +42,8 @@ var block_layer_height := PackedFloat32Array()
 ## Выживание: тепло блока (°C) и урон при контакте (в секунду) — для быстрого обхода.
 var block_heat := PackedFloat32Array()
 var block_contact := PackedFloat32Array()
+## Ремесло: 1 — блок рисуется моделью из коробок (станции), а не кубом.
+var block_model := PackedByteArray()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -169,6 +171,7 @@ func _clear() -> void:
 	block_layer_height = PackedFloat32Array()
 	block_heat = PackedFloat32Array()
 	block_contact = PackedFloat32Array()
+	block_model = PackedByteArray()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -316,6 +319,16 @@ func _build_items() -> void:
 		if not e.has("kind") or not e.has("stack"):
 			continue
 		_add_item(ItemDef.from_entry(e, self))
+	# Части и инструменты из частей — тоже предметы (тот же id).
+	for cat: String in ["parts", "tool_types"]:
+		if not _entries.has(cat):
+			continue
+		for id: StringName in _order[cat]:
+			var e: Dictionary = _entries[cat][id]
+			if _item_index.has(id):
+				errors.append("%s:%s: id совпадает с предметом или блоком" % [_sources["%s:%s" % [cat, id]], id])
+				continue
+			_add_item(ItemDef.from_part(e) if cat == "parts" else ItemDef.from_tool_type(e))
 
 
 func _add_item(d: ItemDef) -> void:
@@ -357,6 +370,7 @@ func _add_block(b: BlockDef) -> void:
 	block_layer_height.append(b.layer_height)
 	block_heat.append(b.heat)
 	block_contact.append(b.contact_damage)
+	block_model.append(1 if b.has_model() else 0)
 
 
 func _parse_json(path: String) -> Variant:

@@ -382,6 +382,82 @@
           "doc": "Насколько хорошо отдыхаешь (снятие усталости)."
         }
       }
+    },
+    "fuel": {
+      "type": "object",
+      "default": {},
+      "doc": "Топливо (бревно, доски): жар °C и минуты горения.",
+      "fields": {
+        "heat": {
+          "type": "float",
+          "min": 0,
+          "max": 4000,
+          "default": 0.0
+        },
+        "minutes": {
+          "type": "float",
+          "min": 0,
+          "max": 100000,
+          "default": 0.0
+        }
+      }
+    },
+    "station": {
+      "type": "object",
+      "default": {},
+      "doc": "Станция ремесла (раздел 6): вид из data/stations.json и уровень (наковальни).",
+      "fields": {
+        "kind": {
+          "type": "string",
+          "default": ""
+        },
+        "tier": {
+          "type": "int",
+          "min": 0,
+          "max": 8,
+          "default": 1
+        }
+      }
+    },
+    "model": {
+      "type": "array",
+      "default": [],
+      "doc": "Модель из коробок вместо куба (станции): from/to в 1/16 блока, tex — блок, чья текстура берётся; anim — вращение части (spin_x, spin_y, spin_z), когда станция работает.",
+      "of": {
+        "type": "object",
+        "fields": {
+          "from": {
+            "type": "array",
+            "of": {
+              "type": "float"
+            },
+            "default": [
+              0,
+              0,
+              0
+            ]
+          },
+          "to": {
+            "type": "array",
+            "of": {
+              "type": "float"
+            },
+            "default": [
+              16,
+              16,
+              16
+            ]
+          },
+          "tex": {
+            "type": "string",
+            "default": ""
+          },
+          "anim": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
     }
   }
 }

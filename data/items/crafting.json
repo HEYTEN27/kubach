@@ -1,0 +1,1106 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "twine",
+   "name": {
+    "ru": "Бечёвка",
+    "en": "Twine"
+   },
+   "kind": "material",
+   "weight": 0.05,
+   "icon": {
+    "shape": "fiber",
+    "color": "#b0a070"
+   },
+   "tags": [
+    "binding"
+   ]
+  },
+  {
+   "id": "leather_strip",
+   "name": {
+    "ru": "Кожаный ремешок",
+    "en": "Leather Strip"
+   },
+   "kind": "material",
+   "weight": 0.05,
+   "icon": {
+    "shape": "strip",
+    "color": "#7a4a2a"
+   },
+   "tags": [
+    "binding"
+   ]
+  },
+  {
+   "id": "coal",
+   "name": {
+    "ru": "Каменный уголь",
+    "en": "Coal"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#262628"
+   },
+   "fuel": {
+    "heat": 1250,
+    "minutes": 14
+   },
+   "tags": [
+    "fuel",
+    "torch_fuel"
+   ]
+  },
+  {
+   "id": "brown_coal",
+   "name": {
+    "ru": "Бурый уголь",
+    "en": "Brown Coal"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#4a3b2a"
+   },
+   "fuel": {
+    "heat": 950,
+    "minutes": 10
+   },
+   "tags": [
+    "fuel"
+   ]
+  },
+  {
+   "id": "anthracite",
+   "name": {
+    "ru": "Антрацит",
+    "en": "Anthracite"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#141418"
+   },
+   "fuel": {
+    "heat": 1400,
+    "minutes": 16
+   },
+   "tags": [
+    "fuel"
+   ]
+  },
+  {
+   "id": "charcoal",
+   "name": {
+    "ru": "Древесный уголь",
+    "en": "Charcoal"
+   },
+   "kind": "material",
+   "weight": 0.15,
+   "icon": {
+    "shape": "lump",
+    "color": "#302a26"
+   },
+   "fuel": {
+    "heat": 1150,
+    "minutes": 12
+   },
+   "tags": [
+    "fuel",
+    "torch_fuel"
+   ]
+  },
+  {
+   "id": "crushed_copper",
+   "name": {
+    "ru": "Дроблёная руда (медь)",
+    "en": "Crushed Copper Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#c87a4a"
+   },
+   "tags": [
+    "crushed_ore",
+    "copper"
+   ]
+  },
+  {
+   "id": "copper_concentrate",
+   "name": {
+    "ru": "Концентрат (медь)",
+    "en": "Copper Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#c87a4a"
+   },
+   "tags": [
+    "concentrate",
+    "copper"
+   ]
+  },
+  {
+   "id": "crushed_tin",
+   "name": {
+    "ru": "Дроблёная руда (олово)",
+    "en": "Crushed Tin Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#8a7a70"
+   },
+   "tags": [
+    "crushed_ore",
+    "tin"
+   ]
+  },
+  {
+   "id": "tin_concentrate",
+   "name": {
+    "ru": "Концентрат (олово)",
+    "en": "Tin Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#8a7a70"
+   },
+   "tags": [
+    "concentrate",
+    "tin"
+   ]
+  },
+  {
+   "id": "crushed_iron",
+   "name": {
+    "ru": "Дроблёная руда (железо)",
+    "en": "Crushed Iron Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#8a5040"
+   },
+   "tags": [
+    "crushed_ore",
+    "iron"
+   ]
+  },
+  {
+   "id": "iron_concentrate",
+   "name": {
+    "ru": "Концентрат (железо)",
+    "en": "Iron Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#8a5040"
+   },
+   "tags": [
+    "concentrate",
+    "iron"
+   ]
+  },
+  {
+   "id": "crushed_lead",
+   "name": {
+    "ru": "Дроблёная руда (свинец)",
+    "en": "Crushed Lead Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#7d8088"
+   },
+   "tags": [
+    "crushed_ore",
+    "lead"
+   ]
+  },
+  {
+   "id": "lead_concentrate",
+   "name": {
+    "ru": "Концентрат (свинец)",
+    "en": "Lead Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#7d8088"
+   },
+   "tags": [
+    "concentrate",
+    "lead"
+   ]
+  },
+  {
+   "id": "roasted_lead",
+   "name": {
+    "ru": "Обожжённый концентрат (свинец)",
+    "en": "Roasted Lead Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#5a4a40"
+   },
+   "tags": [
+    "concentrate",
+    "lead"
+   ]
+  },
+  {
+   "id": "crushed_zinc",
+   "name": {
+    "ru": "Дроблёная руда (цинк)",
+    "en": "Crushed Zinc Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#8a7040"
+   },
+   "tags": [
+    "crushed_ore",
+    "zinc"
+   ]
+  },
+  {
+   "id": "zinc_concentrate",
+   "name": {
+    "ru": "Концентрат (цинк)",
+    "en": "Zinc Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#8a7040"
+   },
+   "tags": [
+    "concentrate",
+    "zinc"
+   ]
+  },
+  {
+   "id": "roasted_zinc",
+   "name": {
+    "ru": "Обожжённый концентрат (цинк)",
+    "en": "Roasted Zinc Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#5a4a40"
+   },
+   "tags": [
+    "concentrate",
+    "zinc"
+   ]
+  },
+  {
+   "id": "crushed_nickel",
+   "name": {
+    "ru": "Дроблёная руда (никель)",
+    "en": "Crushed Nickel Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#9b8b55"
+   },
+   "tags": [
+    "crushed_ore",
+    "nickel"
+   ]
+  },
+  {
+   "id": "nickel_concentrate",
+   "name": {
+    "ru": "Концентрат (никель)",
+    "en": "Nickel Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#9b8b55"
+   },
+   "tags": [
+    "concentrate",
+    "nickel"
+   ]
+  },
+  {
+   "id": "roasted_nickel",
+   "name": {
+    "ru": "Обожжённый концентрат (никель)",
+    "en": "Roasted Nickel Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#5a4a40"
+   },
+   "tags": [
+    "concentrate",
+    "nickel"
+   ]
+  },
+  {
+   "id": "crushed_silver",
+   "name": {
+    "ru": "Дроблёная руда (серебро)",
+    "en": "Crushed Silver Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#b9bcc2"
+   },
+   "tags": [
+    "crushed_ore",
+    "silver"
+   ]
+  },
+  {
+   "id": "silver_concentrate",
+   "name": {
+    "ru": "Концентрат (серебро)",
+    "en": "Silver Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#b9bcc2"
+   },
+   "tags": [
+    "concentrate",
+    "silver"
+   ]
+  },
+  {
+   "id": "crushed_gold",
+   "name": {
+    "ru": "Дроблёная руда (золото)",
+    "en": "Crushed Gold Ore"
+   },
+   "kind": "material",
+   "weight": 0.5,
+   "icon": {
+    "shape": "gravel",
+    "color": "#e9d27b"
+   },
+   "tags": [
+    "crushed_ore",
+    "gold"
+   ]
+  },
+  {
+   "id": "gold_concentrate",
+   "name": {
+    "ru": "Концентрат (золото)",
+    "en": "Gold Concentrate"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#e9d27b"
+   },
+   "tags": [
+    "concentrate",
+    "gold"
+   ]
+  },
+  {
+   "id": "copper_ingot",
+   "name": {
+    "ru": "Медный слиток",
+    "en": "Copper Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#c87a4a"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "copper"
+   ]
+  },
+  {
+   "id": "tin_ingot",
+   "name": {
+    "ru": "Оловянный слиток",
+    "en": "Tin Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#c8ccd0"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "tin"
+   ]
+  },
+  {
+   "id": "iron_ingot",
+   "name": {
+    "ru": "Железный слиток",
+    "en": "Iron Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#a8acb2"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "iron"
+   ]
+  },
+  {
+   "id": "lead_ingot",
+   "name": {
+    "ru": "Свинцовый слиток",
+    "en": "Lead Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#6a6e78"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "lead"
+   ]
+  },
+  {
+   "id": "zinc_ingot",
+   "name": {
+    "ru": "Цинковый слиток",
+    "en": "Zinc Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#9ea6ae"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "zinc"
+   ]
+  },
+  {
+   "id": "nickel_ingot",
+   "name": {
+    "ru": "Никелевый слиток",
+    "en": "Nickel Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#b4b49c"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "nickel"
+   ]
+  },
+  {
+   "id": "silver_ingot",
+   "name": {
+    "ru": "Серебряный слиток",
+    "en": "Silver Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#d8dce2"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "silver"
+   ]
+  },
+  {
+   "id": "gold_ingot",
+   "name": {
+    "ru": "Золотой слиток",
+    "en": "Gold Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#e8c040"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "gold"
+   ]
+  },
+  {
+   "id": "bronze_ingot",
+   "name": {
+    "ru": "Бронзовый слиток",
+    "en": "Bronze Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#b8873a"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "bronze"
+   ]
+  },
+  {
+   "id": "brass_ingot",
+   "name": {
+    "ru": "Латунный слиток",
+    "en": "Brass Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#d4b04a"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "brass"
+   ]
+  },
+  {
+   "id": "steel_ingot",
+   "name": {
+    "ru": "Стальной слиток",
+    "en": "Steel Ingot"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "ingot",
+    "color": "#c8ced6"
+   },
+   "quality": true,
+   "tags": [
+    "ingot",
+    "steel"
+   ]
+  },
+  {
+   "id": "raw_hide",
+   "name": {
+    "ru": "Сырая шкура",
+    "en": "Raw Hide"
+   },
+   "kind": "material",
+   "weight": 1.5,
+   "icon": {
+    "shape": "hide",
+    "color": "#8a6a4a"
+   },
+   "tags": [
+    "hide"
+   ]
+  },
+  {
+   "id": "scraped_hide",
+   "name": {
+    "ru": "Очищенная шкура",
+    "en": "Scraped Hide"
+   },
+   "kind": "material",
+   "weight": 1.2,
+   "icon": {
+    "shape": "hide",
+    "color": "#c0a080"
+   }
+  },
+  {
+   "id": "tanned_hide",
+   "name": {
+    "ru": "Дублёная шкура (сырая)",
+    "en": "Wet Tanned Hide"
+   },
+   "kind": "material",
+   "weight": 1.2,
+   "icon": {
+    "shape": "hide",
+    "color": "#6a4028"
+   }
+  },
+  {
+   "id": "oak_bark",
+   "name": {
+    "ru": "Дубовая кора",
+    "en": "Oak Bark"
+   },
+   "kind": "material",
+   "weight": 0.2,
+   "icon": {
+    "shape": "bark",
+    "color": "#5a4430"
+   },
+   "tags": [
+    "tannin"
+   ]
+  },
+  {
+   "id": "bast",
+   "name": {
+    "ru": "Лыко",
+    "en": "Bast"
+   },
+   "kind": "material",
+   "weight": 0.1,
+   "icon": {
+    "shape": "strip",
+    "color": "#c8b080"
+   }
+  },
+  {
+   "id": "nettle_fiber",
+   "name": {
+    "ru": "Крапивное волокно",
+    "en": "Nettle Fiber"
+   },
+   "kind": "material",
+   "weight": 0.05,
+   "icon": {
+    "shape": "fiber",
+    "color": "#a0a878"
+   }
+  },
+  {
+   "id": "thread",
+   "name": {
+    "ru": "Нить",
+    "en": "Thread"
+   },
+   "kind": "material",
+   "weight": 0.02,
+   "icon": {
+    "shape": "thread",
+    "color": "#e0d8c0"
+   },
+   "tags": [
+    "thread"
+   ]
+  },
+  {
+   "id": "yarn",
+   "name": {
+    "ru": "Пряжа",
+    "en": "Yarn"
+   },
+   "kind": "material",
+   "weight": 0.05,
+   "icon": {
+    "shape": "thread",
+    "color": "#e8e0d0"
+   },
+   "tags": [
+    "thread"
+   ]
+  },
+  {
+   "id": "wool_cloth",
+   "name": {
+    "ru": "Шерстяное сукно",
+    "en": "Wool Cloth"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "cloth",
+    "color": "#d8d0c0"
+   },
+   "tags": [
+    "cloth"
+   ]
+  },
+  {
+   "id": "blue_dye",
+   "name": {
+    "ru": "Синяя краска",
+    "en": "Blue Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#3a5aa8"
+   },
+   "dye": "#3a5aa8",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "red_dye",
+   "name": {
+    "ru": "Красная краска",
+    "en": "Red Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#b03030"
+   },
+   "dye": "#b03030",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "yellow_dye",
+   "name": {
+    "ru": "Жёлтая краска",
+    "en": "Yellow Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#e0b830"
+   },
+   "dye": "#e0b830",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "green_dye",
+   "name": {
+    "ru": "Зелёная краска",
+    "en": "Green Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#4a8a3a"
+   },
+   "dye": "#4a8a3a",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "brown_dye",
+   "name": {
+    "ru": "Коричневая краска",
+    "en": "Brown Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#6a4428"
+   },
+   "dye": "#6a4428",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "black_dye",
+   "name": {
+    "ru": "Чёрная краска",
+    "en": "Black Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#262626"
+   },
+   "dye": "#262626",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "purple_dye",
+   "name": {
+    "ru": "Пурпурная краска",
+    "en": "Purple Dye"
+   },
+   "kind": "misc",
+   "weight": 0.1,
+   "icon": {
+    "shape": "jar",
+    "color": "#7a3a90"
+   },
+   "dye": "#7a3a90",
+   "tags": [
+    "dye"
+   ]
+  },
+  {
+   "id": "unfired_brick",
+   "name": {
+    "ru": "Сырец (кирпич)",
+    "en": "Unfired Brick"
+   },
+   "kind": "material",
+   "weight": 0.6,
+   "icon": {
+    "shape": "brick",
+    "color": "#a0705a"
+   }
+  },
+  {
+   "id": "brick",
+   "name": {
+    "ru": "Кирпич",
+    "en": "Brick"
+   },
+   "kind": "material",
+   "weight": 0.6,
+   "icon": {
+    "shape": "brick",
+    "color": "#9a4a32"
+   },
+   "tags": [
+    "brick"
+   ]
+  },
+  {
+   "id": "unfired_bowl",
+   "name": {
+    "ru": "Сырая миска",
+    "en": "Unfired Bowl"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "bowl",
+    "color": "#a0806a"
+   }
+  },
+  {
+   "id": "unfired_cup",
+   "name": {
+    "ru": "Сырая кружка",
+    "en": "Unfired Cup"
+   },
+   "kind": "material",
+   "weight": 0.2,
+   "icon": {
+    "shape": "cup",
+    "color": "#a0806a"
+   }
+  },
+  {
+   "id": "clay_bowl",
+   "name": {
+    "ru": "Глиняная миска",
+    "en": "Clay Bowl"
+   },
+   "kind": "misc",
+   "weight": 0.3,
+   "icon": {
+    "shape": "bowl",
+    "color": "#a85a3a"
+   },
+   "tags": [
+    "bowl"
+   ]
+  },
+  {
+   "id": "clay_cup",
+   "name": {
+    "ru": "Глиняная кружка",
+    "en": "Clay Cup"
+   },
+   "kind": "misc",
+   "weight": 0.2,
+   "icon": {
+    "shape": "cup",
+    "color": "#a85a3a"
+   },
+   "tags": [
+    "cup"
+   ]
+  },
+  {
+   "id": "wooden_bowl",
+   "name": {
+    "ru": "Деревянная миска",
+    "en": "Wooden Bowl"
+   },
+   "kind": "misc",
+   "weight": 0.2,
+   "icon": {
+    "shape": "bowl",
+    "color": "#a87a4a"
+   },
+   "tags": [
+    "bowl"
+   ]
+  },
+  {
+   "id": "wooden_cup",
+   "name": {
+    "ru": "Деревянная кружка",
+    "en": "Wooden Cup"
+   },
+   "kind": "misc",
+   "weight": 0.15,
+   "icon": {
+    "shape": "cup",
+    "color": "#a87a4a"
+   },
+   "tags": [
+    "cup"
+   ]
+  },
+  {
+   "id": "animal_fat",
+   "name": {
+    "ru": "Топлёный жир",
+    "en": "Tallow"
+   },
+   "kind": "material",
+   "weight": 0.2,
+   "icon": {
+    "shape": "jar",
+    "color": "#e8dcb0"
+   },
+   "tags": [
+    "quench_oil"
+   ],
+   "fuel": {
+    "heat": 400,
+    "minutes": 3
+   }
+  },
+  {
+   "id": "burnt_food",
+   "name": {
+    "ru": "Горелое",
+    "en": "Burnt Food"
+   },
+   "kind": "food",
+   "weight": 0.1,
+   "icon": {
+    "shape": "lump",
+    "color": "#2a2018"
+   },
+   "food": {
+    "nutrition": 1,
+    "eat_seconds": 1.0
+   }
+  },
+  {
+   "id": "blueprint_steel",
+   "name": {
+    "ru": "Чертёж: сталь",
+    "en": "Blueprint: Steel"
+   },
+   "kind": "misc",
+   "weight": 0.05,
+   "icon": {
+    "shape": "scroll",
+    "color": "#d8c8a0"
+   },
+   "unlocks": [
+    "alloy_steel",
+    "forge_steel_anvil"
+   ],
+   "tags": [
+    "blueprint"
+   ]
+  },
+  {
+   "id": "blueprint_brass",
+   "name": {
+    "ru": "Чертёж: латунь",
+    "en": "Blueprint: Brass"
+   },
+   "kind": "misc",
+   "weight": 0.05,
+   "icon": {
+    "shape": "scroll",
+    "color": "#d8c8a0"
+   },
+   "unlocks": [
+    "alloy_brass"
+   ],
+   "tags": [
+    "blueprint"
+   ]
+  },
+  {
+   "id": "blueprint_sword",
+   "name": {
+    "ru": "Чертёж: меч",
+    "en": "Blueprint: Sword"
+   },
+   "kind": "misc",
+   "weight": 0.05,
+   "icon": {
+    "shape": "scroll",
+    "color": "#d8c8a0"
+   },
+   "unlocks": [
+    "forge_sword_blade",
+    "assemble_sword"
+   ],
+   "tags": [
+    "blueprint"
+   ]
+  }
+ ]
+}

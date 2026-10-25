@@ -1,0 +1,854 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "assemble_pickaxe",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "pickaxe",
+    "count": 1
+   },
+   "tool_type": "pickaxe",
+   "order": 0
+  },
+  {
+   "id": "assemble_axe",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "axe",
+    "count": 1
+   },
+   "tool_type": "axe",
+   "order": 1
+  },
+  {
+   "id": "assemble_shovel",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "shovel",
+    "count": 1
+   },
+   "tool_type": "shovel",
+   "order": 2
+  },
+  {
+   "id": "assemble_hoe",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "hoe",
+    "count": 1
+   },
+   "tool_type": "hoe",
+   "order": 3
+  },
+  {
+   "id": "assemble_knife",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "knife",
+    "count": 1
+   },
+   "tool_type": "knife",
+   "order": 4
+  },
+  {
+   "id": "assemble_sword",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "blueprint",
+   "category": "tools",
+   "output": {
+    "id": "sword",
+    "count": 1
+   },
+   "tool_type": "sword",
+   "order": 5
+  },
+  {
+   "id": "assemble_spear",
+   "station": "workbench",
+   "op": "assemble",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "tools",
+   "output": {
+    "id": "spear",
+    "count": 1
+   },
+   "tool_type": "spear",
+   "order": 6
+  },
+  {
+   "id": "repair_tool",
+   "station": "workbench",
+   "op": "repair",
+   "inputs": [],
+   "time": 15,
+   "unlock": "default",
+   "category": "service",
+   "order": 7
+  },
+  {
+   "id": "salvage_tool",
+   "station": "workbench",
+   "op": "salvage",
+   "inputs": [],
+   "time": 10,
+   "unlock": "default",
+   "category": "service",
+   "order": 8
+  },
+  {
+   "id": "make_carpenter_table",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "tag": "log",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "carpenter_table",
+    "count": 1
+   },
+   "order": 9
+  },
+  {
+   "id": "make_sewing_table",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "thread",
+     "count": 2
+    },
+    {
+     "id": "copper_ingot",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "sewing_table",
+    "count": 1
+   },
+   "order": 10
+  },
+  {
+   "id": "make_pottery_wheel",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 3
+    },
+    {
+     "tag": "rock",
+     "count": 3
+    },
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "pottery_wheel",
+    "count": 1
+   },
+   "order": 11
+  },
+  {
+   "id": "make_stone_anvil",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "rock",
+     "count": 6
+    }
+   ],
+   "time": 30,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "stone_anvil",
+    "count": 1
+   },
+   "order": 12
+  },
+  {
+   "id": "make_bronze_anvil",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bronze_ingot",
+     "count": 8
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "bronze_anvil",
+    "count": 1
+   },
+   "order": 13
+  },
+  {
+   "id": "make_iron_anvil",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_ingot",
+     "count": 10
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "iron_anvil",
+    "count": 1
+   },
+   "order": 14
+  },
+  {
+   "id": "make_crusher",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "rock",
+     "count": 6
+    },
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "rope",
+     "count": 1
+    }
+   ],
+   "time": 25,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "crusher",
+    "count": 1
+   },
+   "order": 15
+  },
+  {
+   "id": "make_washing_pan",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 5
+    }
+   ],
+   "time": 15,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "washing_pan",
+    "count": 1
+   },
+   "order": 16
+  },
+  {
+   "id": "make_stone_furnace",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "rock",
+     "count": 10
+    },
+    {
+     "id": "clay",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "default",
+   "category": "stations",
+   "output": {
+    "id": "stone_furnace",
+    "count": 1
+   },
+   "order": 17
+  },
+  {
+   "id": "make_bloomery",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "brick",
+     "count": 8
+    },
+    {
+     "id": "clay",
+     "count": 4
+    },
+    {
+     "id": "leather",
+     "count": 2
+    },
+    {
+     "tag": "planks",
+     "count": 2
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "bloomery",
+    "count": 1
+   },
+   "order": 18
+  },
+  {
+   "id": "make_kiln",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "unfired_brick",
+     "count": 12
+    },
+    {
+     "id": "clay",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "kiln",
+    "count": 1
+   },
+   "order": 19
+  },
+  {
+   "id": "make_grindstone",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "sandstone",
+     "count": 2
+    },
+    {
+     "tag": "planks",
+     "count": 3
+    },
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "grindstone",
+    "count": 1
+   },
+   "order": 20
+  },
+  {
+   "id": "make_quench_barrel",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "quench_barrel",
+    "count": 1
+   },
+   "order": 21
+  },
+  {
+   "id": "make_tanning_rack",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 2
+    }
+   ],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "tanning_rack",
+    "count": 1
+   },
+   "order": 22
+  },
+  {
+   "id": "make_tanning_barrel",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "tanning_barrel",
+    "count": 1
+   },
+   "order": 23
+  },
+  {
+   "id": "make_spinning_wheel",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "stick",
+     "count": 4
+    },
+    {
+     "id": "twine",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "spinning_wheel",
+    "count": 1
+   },
+   "order": 24
+  },
+  {
+   "id": "make_loom",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "stick",
+     "count": 6
+    },
+    {
+     "id": "thread",
+     "count": 4
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "loom",
+    "count": 1
+   },
+   "order": 25
+  },
+  {
+   "id": "make_dye_vat",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 5
+    },
+    {
+     "id": "clay",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "stations",
+   "output": {
+    "id": "dye_vat",
+    "count": 1
+   },
+   "order": 26
+  },
+  {
+   "id": "forge_steel_anvil",
+   "station": "anvil",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "steel_ingot",
+     "count": 10
+    }
+   ],
+   "time": 60,
+   "unlock": "blueprint",
+   "category": "stations",
+   "output": {
+    "id": "steel_anvil",
+    "count": 1
+   },
+   "min_tier": 4,
+   "order": 27
+  },
+  {
+   "id": "copper_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "copper_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "copper_block",
+    "count": 1
+   },
+   "order": 28
+  },
+  {
+   "id": "copper_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "copper_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "copper_ingot",
+    "count": 9
+   },
+   "order": 29
+  },
+  {
+   "id": "bronze_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bronze_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "bronze_block",
+    "count": 1
+   },
+   "order": 30
+  },
+  {
+   "id": "bronze_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bronze_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "bronze_ingot",
+    "count": 9
+   },
+   "order": 31
+  },
+  {
+   "id": "iron_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "iron_block",
+    "count": 1
+   },
+   "order": 32
+  },
+  {
+   "id": "iron_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "iron_ingot",
+    "count": 9
+   },
+   "order": 33
+  },
+  {
+   "id": "steel_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "steel_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "steel_block",
+    "count": 1
+   },
+   "order": 34
+  },
+  {
+   "id": "steel_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "steel_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "steel_ingot",
+    "count": 9
+   },
+   "order": 35
+  },
+  {
+   "id": "gold_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gold_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "gold_block",
+    "count": 1
+   },
+   "order": 36
+  },
+  {
+   "id": "gold_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gold_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "gold_ingot",
+    "count": 9
+   },
+   "order": 37
+  },
+  {
+   "id": "silver_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "silver_ingot",
+     "count": 9
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "silver_block",
+    "count": 1
+   },
+   "order": 38
+  },
+  {
+   "id": "silver_block_ingots",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "silver_block",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "silver_ingot",
+    "count": 9
+   },
+   "order": 39
+  },
+  {
+   "id": "bricks_block",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "brick",
+     "count": 4
+    },
+    {
+     "id": "clay",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "output": {
+    "id": "bricks",
+    "count": 2
+   },
+   "order": 40
+  },
+  {
+   "id": "make_torch",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "stick",
+     "count": 1
+    },
+    {
+     "tag": "torch_fuel",
+     "count": 1
+    }
+   ],
+   "time": 1,
+   "unlock": "ingredients",
+   "category": "basic",
+   "output": {
+    "id": "torch",
+    "count": 4
+   },
+   "order": 41
+  }
+ ]
+}

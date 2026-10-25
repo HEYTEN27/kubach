@@ -1,0 +1,423 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "sew_linen_shirt",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "linen_cloth",
+     "count": 3
+    },
+    {
+     "id": "thread",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "linen_shirt",
+    "count": 1
+   },
+   "order": 0
+  },
+  {
+   "id": "sew_linen_pants",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "linen_cloth",
+     "count": 3
+    },
+    {
+     "id": "thread",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "linen_pants",
+    "count": 1
+   },
+   "order": 1
+  },
+  {
+   "id": "sew_leather_cap",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 2
+    },
+    {
+     "id": "thread",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "leather_cap",
+    "count": 1
+   },
+   "order": 2
+  },
+  {
+   "id": "sew_leather_jacket",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 5
+    },
+    {
+     "id": "thread",
+     "count": 3
+    }
+   ],
+   "time": 50,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "leather_jacket",
+    "count": 1
+   },
+   "order": 3
+  },
+  {
+   "id": "sew_leather_pants",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 4
+    },
+    {
+     "id": "thread",
+     "count": 2
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "leather_pants",
+    "count": 1
+   },
+   "order": 4
+  },
+  {
+   "id": "sew_leather_boots",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 3
+    },
+    {
+     "id": "thread",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "leather_boots",
+    "count": 1
+   },
+   "order": 5
+  },
+  {
+   "id": "sew_leather_gloves",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 2
+    },
+    {
+     "id": "thread",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "leather_gloves",
+    "count": 1
+   },
+   "order": 6
+  },
+  {
+   "id": "sew_mittens",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wool_cloth",
+     "count": 2
+    },
+    {
+     "id": "yarn",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "mittens",
+    "count": 1
+   },
+   "order": 7
+  },
+  {
+   "id": "sew_fur_hat",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "fur",
+     "count": 2
+    },
+    {
+     "id": "leather",
+     "count": 1
+    },
+    {
+     "id": "thread",
+     "count": 1
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "fur_hat",
+    "count": 1
+   },
+   "order": 8
+  },
+  {
+   "id": "sew_fur_coat",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "fur",
+     "count": 6
+    },
+    {
+     "id": "leather",
+     "count": 2
+    },
+    {
+     "id": "thread",
+     "count": 3
+    }
+   ],
+   "time": 60,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "fur_coat",
+    "count": 1
+   },
+   "order": 9
+  },
+  {
+   "id": "sew_valenki",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wool",
+     "count": 8
+    }
+   ],
+   "time": 60,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "valenki",
+    "count": 1
+   },
+   "order": 10
+  },
+  {
+   "id": "sew_bast_shoes",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bast",
+     "count": 6
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "bast_shoes",
+    "count": 1
+   },
+   "order": 11
+  },
+  {
+   "id": "sew_small_backpack",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 4
+    },
+    {
+     "id": "rope",
+     "count": 1
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "small_backpack",
+    "count": 1
+   },
+   "order": 12
+  },
+  {
+   "id": "sew_travel_backpack",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 2
+    },
+    {
+     "id": "copper_ingot",
+     "count": 1
+    }
+   ],
+   "time": 45,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "travel_backpack",
+    "count": 1
+   },
+   "order": 13
+  },
+  {
+   "id": "sew_large_backpack",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 8
+    },
+    {
+     "id": "rope",
+     "count": 2
+    },
+    {
+     "id": "iron_ingot",
+     "count": 2
+    }
+   ],
+   "time": 60,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "large_backpack",
+    "count": 1
+   },
+   "order": 14
+  },
+  {
+   "id": "sew_quiver",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 3
+    },
+    {
+     "id": "thread",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "quiver",
+    "count": 1
+   },
+   "order": 15
+  },
+  {
+   "id": "sew_sleeping_bag",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wool_cloth",
+     "count": 3
+    },
+    {
+     "id": "fur",
+     "count": 1
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "sleeping_bag",
+    "count": 1
+   },
+   "order": 16
+  },
+  {
+   "id": "sew_bandage",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "linen_cloth",
+     "count": 1
+    }
+   ],
+   "time": 2,
+   "unlock": "ingredients",
+   "category": "clothing",
+   "output": {
+    "id": "bandage",
+    "count": 3
+   },
+   "order": 17
+  }
+ ]
+}

@@ -59,12 +59,20 @@ func _draw() -> void:
 
 ## Нарисовать стопку в прямоугольнике (ячейки, курсор, хотбар HUD).
 static func draw_item(c: CanvasItem, s: ItemStack, r: Rect2, dim: bool = false) -> void:
-	var tex := ItemIcons.shared().icon(s.id)
-	c.draw_texture_rect(tex, r, false, Color(1, 1, 1, 0.3) if dim else Color.WHITE)
+	var tex := ItemIcons.shared().icon_for(s)
+	var tint := Color.WHITE
+	if s.data.has("color"):
+		# Крашеная ткань и одежда — оттенок цвета.
+		tint = Color.WHITE.lerp(Color.html(String(s.data["color"])), 0.6)
+	c.draw_texture_rect(tex, r, false, Color(tint, 0.3) if dim else tint)
 	var reg := ItemIcons.registry()
 	var d := reg.item(s.id) if reg else null
-	if d != null and d.durability > 0 and s.data.has("durability"):
-		var k := clampf(float(s.data["durability"]) / d.durability, 0.0, 1.0)
+	if reg != null and s.data.has("quality") and int(s.data["quality"]) != 1:
+		# Качество — уголок цвета уровня (обычное не помечается).
+		var qc := CraftingData.shared(reg).quality_color(int(s.data["quality"]))
+		c.draw_colored_polygon(PackedVector2Array([r.position, r.position + Vector2(12, 0), r.position + Vector2(0, 12)]), qc)
+	if d != null and s.max_durability(d) > 0 and s.data.has("durability"):
+		var k := clampf(float(s.data["durability"]) / s.max_durability(d), 0.0, 1.0)
 		if k < 1.0:
 			var bar := Rect2(r.position.x + 2, r.end.y - 4, r.size.x - 4, 4)
 			c.draw_rect(bar, Color(0, 0, 0, 0.8))

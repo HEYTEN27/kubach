@@ -1,0 +1,890 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "crush_native_copper_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "native_copper_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_copper",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 0
+  },
+  {
+   "id": "crush_malachite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "malachite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_copper",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 1
+  },
+  {
+   "id": "wash_copper",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_copper",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "copper_concentrate",
+    "count": 1
+   },
+   "order": 2
+  },
+  {
+   "id": "crush_cassiterite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cassiterite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_tin",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 3
+  },
+  {
+   "id": "wash_tin",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_tin",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "tin_concentrate",
+    "count": 1
+   },
+   "order": 4
+  },
+  {
+   "id": "crush_hematite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "hematite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_iron",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 5
+  },
+  {
+   "id": "crush_magnetite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "magnetite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_iron",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 6
+  },
+  {
+   "id": "crush_bog_iron_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bog_iron_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_iron",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 7
+  },
+  {
+   "id": "wash_iron",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_iron",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "iron_concentrate",
+    "count": 1
+   },
+   "order": 8
+  },
+  {
+   "id": "crush_galena_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "galena_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_lead",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 9
+  },
+  {
+   "id": "wash_lead",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_lead",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "lead_concentrate",
+    "count": 1
+   },
+   "order": 10
+  },
+  {
+   "id": "crush_sphalerite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "sphalerite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_zinc",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 11
+  },
+  {
+   "id": "wash_zinc",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_zinc",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "zinc_concentrate",
+    "count": 1
+   },
+   "order": 12
+  },
+  {
+   "id": "crush_pentlandite_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pentlandite_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_nickel",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 13
+  },
+  {
+   "id": "wash_nickel",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_nickel",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "nickel_concentrate",
+    "count": 1
+   },
+   "order": 14
+  },
+  {
+   "id": "crush_native_silver_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "native_silver_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_silver",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 15
+  },
+  {
+   "id": "wash_silver",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_silver",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "silver_concentrate",
+    "count": 1
+   },
+   "order": 16
+  },
+  {
+   "id": "crush_gold_quartz_ore",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gold_quartz_ore",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "crushed_gold",
+    "count": 2
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1,
+     "chance": 0.3
+    }
+   ],
+   "order": 17
+  },
+  {
+   "id": "wash_gold",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "crushed_gold",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "gold_concentrate",
+    "count": 1
+   },
+   "order": 18
+  },
+  {
+   "id": "wash_gold_gravel",
+   "station": "washing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gold_gravel",
+     "count": 1
+    }
+   ],
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "gold_concentrate",
+    "count": 1
+   },
+   "extra": [
+    {
+     "id": "gravel",
+     "count": 1
+    }
+   ],
+   "order": 19
+  },
+  {
+   "id": "crush_coal",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "coal_ore",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "default",
+   "category": "fuel",
+   "output": {
+    "id": "coal",
+    "count": 3
+   },
+   "order": 20
+  },
+  {
+   "id": "crush_lignite",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "lignite_ore",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "fuel",
+   "output": {
+    "id": "brown_coal",
+    "count": 3
+   },
+   "order": 21
+  },
+  {
+   "id": "crush_anthracite",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "anthracite_ore",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "fuel",
+   "output": {
+    "id": "anthracite",
+    "count": 3
+   },
+   "order": 22
+  },
+  {
+   "id": "crush_gravel",
+   "station": "crusher",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gravel",
+     "count": 1
+    }
+   ],
+   "time": 3,
+   "unlock": "ingredients",
+   "category": "misc",
+   "output": {
+    "id": "sand",
+    "count": 1
+   },
+   "extra": [
+    {
+     "id": "flint",
+     "count": 1,
+     "chance": 0.35
+    }
+   ],
+   "order": 23
+  },
+  {
+   "id": "roast_lead",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "lead_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 12,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "roasted_lead",
+    "count": 1
+   },
+   "heat": 600,
+   "order": 24
+  },
+  {
+   "id": "roast_zinc",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "zinc_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 12,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "roasted_zinc",
+    "count": 1
+   },
+   "heat": 600,
+   "order": 25
+  },
+  {
+   "id": "roast_nickel",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "nickel_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 12,
+   "unlock": "ingredients",
+   "category": "ore",
+   "output": {
+    "id": "roasted_nickel",
+    "count": 1
+   },
+   "heat": 600,
+   "order": 26
+  },
+  {
+   "id": "smelt_tin",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "tin_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "default",
+   "category": "ingots",
+   "output": {
+    "id": "tin_ingot",
+    "count": 1
+   },
+   "heat": 232,
+   "minigame": "smelt",
+   "order": 27
+  },
+  {
+   "id": "smelt_lead",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "roasted_lead",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "lead_ingot",
+    "count": 1
+   },
+   "heat": 327,
+   "minigame": "smelt",
+   "order": 28
+  },
+  {
+   "id": "smelt_zinc",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "roasted_zinc",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "zinc_ingot",
+    "count": 1
+   },
+   "heat": 420,
+   "minigame": "smelt",
+   "order": 29
+  },
+  {
+   "id": "smelt_silver",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "silver_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "silver_ingot",
+    "count": 1
+   },
+   "heat": 962,
+   "minigame": "smelt",
+   "order": 30
+  },
+  {
+   "id": "smelt_copper",
+   "station": "bloomery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "copper_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "default",
+   "category": "ingots",
+   "output": {
+    "id": "copper_ingot",
+    "count": 1
+   },
+   "heat": 1085,
+   "minigame": "smelt",
+   "order": 31
+  },
+  {
+   "id": "smelt_gold",
+   "station": "bloomery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gold_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "gold_ingot",
+    "count": 1
+   },
+   "heat": 1064,
+   "minigame": "smelt",
+   "order": 32
+  },
+  {
+   "id": "smelt_iron",
+   "station": "bloomery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_concentrate",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "iron_ingot",
+    "count": 1
+   },
+   "heat": 1250,
+   "minigame": "smelt",
+   "order": 33
+  },
+  {
+   "id": "smelt_nickel",
+   "station": "bloomery",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "roasted_nickel",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "nickel_ingot",
+    "count": 1
+   },
+   "heat": 1455,
+   "minigame": "smelt",
+   "order": 34
+  },
+  {
+   "id": "alloy_bronze",
+   "station": "bloomery",
+   "op": "alloy",
+   "inputs": [],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "ingots",
+   "output": {
+    "id": "bronze_ingot",
+    "count": 1
+   },
+   "heat": 950,
+   "minigame": "smelt",
+   "tool_type": "bronze",
+   "order": 35
+  },
+  {
+   "id": "alloy_brass",
+   "station": "bloomery",
+   "op": "alloy",
+   "inputs": [],
+   "time": 15,
+   "unlock": "blueprint",
+   "category": "ingots",
+   "output": {
+    "id": "brass_ingot",
+    "count": 1
+   },
+   "heat": 930,
+   "minigame": "smelt",
+   "tool_type": "brass",
+   "order": 36
+  },
+  {
+   "id": "alloy_steel",
+   "station": "bloomery",
+   "op": "alloy",
+   "inputs": [],
+   "time": 25,
+   "unlock": "blueprint",
+   "category": "ingots",
+   "output": {
+    "id": "steel_ingot",
+    "count": 1
+   },
+   "heat": 1400,
+   "minigame": "smelt",
+   "tool_type": "steel",
+   "order": 37
+  },
+  {
+   "id": "render_fat",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_meat",
+     "count": 2
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "misc",
+   "output": {
+    "id": "animal_fat",
+    "count": 1
+   },
+   "heat": 150,
+   "order": 38
+  },
+  {
+   "id": "activated_charcoal",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "charcoal",
+     "count": 2
+    }
+   ],
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "activated_charcoal",
+    "count": 1
+   },
+   "heat": 700,
+   "order": 39
+  },
+  {
+   "id": "furnace_charcoal",
+   "station": "furnace",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "fuel",
+   "output": {
+    "id": "charcoal",
+    "count": 2
+   },
+   "heat": 350,
+   "order": 40
+  }
+ ]
+}

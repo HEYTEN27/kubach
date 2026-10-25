@@ -27,6 +27,9 @@ const RECOVER_STAMINA := 25.0
 const LOW_FOOD := 15.0
 ## Свежесть ниже этого — еда испорчена.
 const SPOILED := 0.25
+## Готовка (этап 6): пережаренное даёт меньше сытости, недожаренное может отравить.
+const OVERCOOKED := 0.7
+const UNDERCOOKED_POISON := 0.35
 
 var cfg := {}
 var diff := {}
@@ -441,12 +444,18 @@ func fall(blocks: float) -> float:
 
 
 ## Съесть или выпить еду (поле food предмета). freshness 0..1 — свежесть (порча — этап 9).
-func eat(food: Dictionary, freshness: float = 1.0) -> void:
+## cook — прожарка с костра (этап 6): under — недожарено (риск отравления), over — пережарено
+## (меньше сытости).
+func eat(food: Dictionary, freshness: float = 1.0, cook: String = "") -> void:
 	if dead or food.is_empty():
 		return
 	var spoiled := freshness < SPOILED
 	var nutr: float = food.get("nutrition", 0.0)
+	if cook == "over":
+		nutr *= OVERCOOKED
 	hunger = clampf(hunger + nutr * (0.5 if spoiled else 1.0), 0.0, 100.0)
+	if cook == "under" and rng.randf() < UNDERCOOKED_POISON * _d("disease_mult"):
+		add_effect(&"food_poisoning", true)
 	thirst = clampf(thirst + float(food.get("thirst", 0.0)), 0.0, 100.0)
 	if food.get("hot", false):
 		add_effect(&"warm_meal")

@@ -1,0 +1,91 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "bronze",
+   "name": {
+    "ru": "Бронза",
+    "en": "Bronze"
+   },
+   "result": "bronze_ingot",
+   "heat": 950,
+   "time": 15,
+   "tolerance": 0.03,
+   "components": [
+    {
+     "material": "copper",
+     "share": 0.88,
+     "items": [
+      "copper_ingot",
+      "copper_concentrate"
+     ]
+    },
+    {
+     "material": "tin",
+     "share": 0.12,
+     "items": [
+      "tin_ingot",
+      "tin_concentrate"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "brass",
+   "name": {
+    "ru": "Латунь",
+    "en": "Brass"
+   },
+   "result": "brass_ingot",
+   "heat": 930,
+   "time": 15,
+   "tolerance": 0.05,
+   "components": [
+    {
+     "material": "copper",
+     "share": 0.67,
+     "items": [
+      "copper_ingot",
+      "copper_concentrate"
+     ]
+    },
+    {
+     "material": "zinc",
+     "share": 0.33,
+     "items": [
+      "zinc_ingot",
+      "roasted_zinc"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "steel",
+   "name": {
+    "ru": "Сталь",
+    "en": "Steel"
+   },
+   "result": "steel_ingot",
+   "heat": 1400,
+   "time": 25,
+   "tolerance": 0.04,
+   "components": [
+    {
+     "material": "iron",
+     "share": 0.9,
+     "items": [
+      "iron_ingot"
+     ]
+    },
+    {
+     "material": "carbon",
+     "share": 0.1,
+     "items": [
+      "charcoal",
+      "coal"
+     ]
+    }
+   ]
+  }
+ ]
+}

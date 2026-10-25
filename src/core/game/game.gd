@@ -17,10 +17,13 @@ var grass: GrassField
 var far_terrain: FarTerrain
 var dropped: DroppedItems
 var survival: SurvivalController
+var stations: StationSystem
+var crafting: CraftingController
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
 var _window: InventoryWindow
 var _status: StatusScreen
+var _station_pos := Vector3i(0, -10000, 0)
 var _death: DeathScreen
 ## Точка мира для возрождения без кровати: [x, y, z].
 var _world_spawn: Array = []
@@ -110,6 +113,7 @@ func _ready() -> void:
 	if save != null:
 		dropped.from_array(save.meta.get("dropped", []))
 	_setup_survival(pmeta, spawn)
+	_setup_crafting(pmeta)
 	_apply_player_settings()
 	Settings.setting_changed.connect(func(_id: String, _v: Variant) -> void: _apply_player_settings())
 	player.teleport(spawn[0], spawn[1], spawn[2])
@@ -131,6 +135,7 @@ func _ready() -> void:
 	add_child(hud)
 	survival.hurt.connect(func(amount: float, _c: String) -> void: hud.vitals_hud.flash_hurt(amount))
 	survival.message.connect(func(t: String) -> void: hud.show_toast(t))
+	crafting.message.connect(func(t: String) -> void: hud.show_toast(t, 3.5))
 	survival.effect_changed.connect(_on_effect_changed)
 	if save != null and save.meta.get("hardcore_dead", false):
 		hud.show_toast("Хардкор: персонаж погиб — мир открыт только для осмотра", 6.0)
@@ -162,6 +167,7 @@ func _process(delta: float) -> void:
 	grass.update(center)
 	far_terrain.update(b.x, b.z)
 	rig.set_time_of_day(survival.clock.hour())
+	stations.viewer = Vector3(b.x, b.y, b.z)
 	survival.daylight = rig.daylight
 	_climate_left -= delta
 	if _climate_left <= 0.0:
@@ -243,7 +249,8 @@ func save_game(autosave: bool = false) -> void:
 		save.backup(3)
 	var b := player.body
 	save.meta["player"] = { "x": b.x, "y": b.y, "z": b.z, "yaw": player.yaw, "pitch": player.pitch, "flying": player.motor.flying,
-		"inventory": player.inventory.to_dict(), "appearance": player.appearance, "survival": survival.to_dict() }
+		"inventory": player.inventory.to_dict(), "appearance": player.appearance, "survival": survival.to_dict(),
+		"recipes": crafting.to_dict() }
 	save.meta["dropped"] = dropped.to_array()
 	save.meta["season"] = String(survival.clock.season())
 	save.meta["day"] = survival.clock.day
@@ -251,6 +258,7 @@ func save_game(autosave: bool = false) -> void:
 	save.meta["worldgen"] = world.settings.to_dict()
 	save.meta["game_mode"] = String(world.game_mode)
 	save.meta["play_time_sec"] = _play_time
+	stations.flush_all()
 	var err := world.save_chunks()
 	if err != OK:
 		push_error("Сохранение region-файлов: %s" % error_string(err))
@@ -292,7 +300,8 @@ func _starting_inventory() -> void:
 			inv.add(st)
 	if world.game_mode == &"survival":
 		# Стартовый набор до ремесла (этап 6): спальник, костёр, хлеб, бинты.
-		for pair: Array in [[&"sleeping_bag", 1], [&"campfire", 1], [&"rye_bread", 3], [&"bandage", 2]]:
+		for pair: Array in [[&"sleeping_bag", 1], [&"campfire", 1], [&"rye_bread", 3], [&"bandage", 2], [&"flint", 3],
+				[&"plant_fiber", 6]]:
 			var d := Registry.item(pair[0])
 			if d != null:
 				inv.add(ItemStack.create(d, pair[1]))
@@ -308,6 +317,11 @@ func _starting_inventory() -> void:
 
 ## Настройки, которые читает игрок: обзор, мышь, присед/бег, автопрыжок, вес, автосохранение.
 func _apply_player_settings() -> void:
+	if stations != null:
+		var auto := String(Settings.get_value("minigames")) == "auto"
+		stations.set_auto(auto)
+		crafting.minigames = not auto
+		stations.particles_level = { "low": 1, "medium": 2, "high": 2 }.get(String(Settings.get_value("particles")), 2)
 	player.fov = float(Settings.get_value("fov"))
 	player.mouse_sens_x = 0.0025 * float(Settings.get_value("mouse_sens_x")) * (-1.0 if Settings.get_value("invert_x") else 1.0)
 	player.mouse_sens_y = 0.0025 * float(Settings.get_value("mouse_sens_y")) * (-1.0 if Settings.get_value("invert_y") else 1.0)
@@ -439,6 +453,60 @@ func open_inventory() -> void:
 	_open_window(null, "")
 
 
+## Ремесло: станции в мире, книга рецептов, тепло станций для выживания.
+func _setup_crafting(pmeta: Dictionary) -> void:
+	stations = StationSystem.new()
+	stations.name = "Stations"
+	add_child(stations)
+	stations.setup(world, CraftingData.shared(Registry), survival.clock)
+	crafting = CraftingController.new()
+	crafting.name = "Crafting"
+	add_child(crafting)
+	crafting.setup(world, player, stations)
+	crafting.from_dict(pmeta.get("recipes", {}))
+	crafting.book.note_inventory(player.inventory)
+	survival.probe.heat_sources = stations.heat_sources
+	player.interaction.station_requested.connect(open_station)
+	crafting.forge_requested.connect(_open_forge)
+	stations.job_done.connect(func(p: Vector3i, _r: StringName) -> void:
+		if p == _station_pos:
+			Audio.play_ui("crafting/done"))
+
+
+## Окно станции: панель станции над инвентарём игрока.
+func open_station(pos: Vector3i) -> void:
+	if _window != null:
+		return
+	var st := stations.station_at(pos)
+	if st == null:
+		return
+	_station_pos = pos
+	inv_ops.station = {}
+	for pair: Array in [["st_in", st.inputs], ["st_fuel", st.fuel], ["st_out", st.outputs]]:
+		if (pair[1] as Inventory).size() > 0:
+			inv_ops.station[pair[0]] = pair[1]
+	_open_window(null, "", st)
+	Audio.play_at(String(st.def.get("sound", "stations/open")), world.to_scene(pos.x + 0.5, pos.y + 0.5, pos.z + 0.5))
+
+
+func _open_forge(pos: Vector3i, recipe_id: StringName, material: StringName) -> void:
+	var st := stations.get_station(pos)
+	var r := crafting.data.recipe(recipe_id)
+	if st == null or r.is_empty():
+		return
+	var fw := ForgeWindow.new()
+	var part: Dictionary = crafting.data.parts.get(StringName(r["output"]["id"]), {})
+	fw.game = ForgeGame.new(part.get("forge_profile", []))
+	fw.title = "%s (%s)" % [crafting.data.recipe_name(r), crafting.data.material_name(material).to_lower()]
+	fw.can_heat = func() -> bool: return stations.heat_near(pos, 4, crafting.forge_heat(material))
+	fw.slow = bool(Settings.get_value("slow_minigames"))
+	fw.finished.connect(func(score: float) -> void:
+		if crafting.finish_forge(st, r, material, score):
+			hud.show_toast("Поковка: %s" % crafting.data.quality_name(crafting.data.quality_level(
+				CraftingData.combine_score(CraftingData.RAW_SCORE, score, float(st.def.get("quality_bonus", 0.0)))))))
+	add_child(fw)
+
+
 func open_container(pos: Vector3i) -> void:
 	var inv := world.get_container(pos.x, pos.y, pos.z)
 	if inv == null or _window != null:
@@ -448,9 +516,10 @@ func open_container(pos: Vector3i) -> void:
 	_open_window(inv, def.display_name())
 
 
-func _open_window(container: Inventory, title: String) -> void:
+func _open_window(container: Inventory, title: String, station: Station = null) -> void:
 	inv_ops.container = container
 	_window = InventoryWindow.new()
+	_window.crafting = crafting
 	_window.ops = inv_ops
 	_window.player_inv = player.inventory
 	_window.registry = Registry
@@ -459,6 +528,13 @@ func _open_window(container: Inventory, title: String) -> void:
 	_window.container_title = title
 	_window.appearance = player.appearance
 	_window.closed.connect(_on_window_closed)
+	if station != null:
+		var panel := StationPanel.new()
+		panel.controller = crafting
+		panel.station = station
+		panel.pos = _station_pos
+		panel.window = _window
+		_window.station_panel = panel
 	add_child(_window)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Audio.play_ui("ui/inventory_open")
@@ -467,6 +543,10 @@ func _open_window(container: Inventory, title: String) -> void:
 func _on_window_closed() -> void:
 	_window = null
 	inv_ops.container = null
+	if not inv_ops.station.is_empty():
+		inv_ops.station = {}
+		stations.flush(_station_pos)
+		_station_pos = Vector3i(0, -10000, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Audio.play_ui("ui/inventory_close")
 
@@ -598,6 +678,74 @@ func _bench_fly() -> void:
 	player.motor.vy = 0.0
 
 
+## Скриншот станций: ставит станции перед игроком, наполняет и открывает окно.
+func _screenshot_station(kind: String) -> void:
+	var b := player.body
+	var base := Vector3i(floori(b.x), floori(b.y), floori(b.z) - 3)
+	var ground := func(x: int, z: int) -> int:
+		var y := base.y + 3
+		while y > base.y - 6 and not world.is_solid(x, y - 1, z):
+			y -= 1
+		return y
+	var place := func(id: StringName, dx: int, facing: int = 2) -> Vector3i:
+		var x := base.x + dx
+		var y: int = ground.call(x, base.z)
+		world.execute(GameAction.place_block(Vector3i(x, y, base.z), Registry.block_num(id), facing))
+		return Vector3i(x, y, base.z)
+	if kind == "station_row":
+		var ids: Array[StringName] = [&"workbench", &"stone_furnace", &"bloomery", &"iron_anvil", &"grindstone",
+			&"spinning_wheel", &"loom", &"campfire"]
+		for i in ids.size():
+			var p: Vector3i = place.call(ids[i], i * 2 - 7)
+			var st := stations.station_at(p)
+			if st != null and st.fuel.size() > 0:
+				st.fuel.set_stack(0, ItemStack.make(&"charcoal", 8))
+				st.inputs.set_stack(0, ItemStack.make(&"tin_concentrate", 4))
+				st.advance(8.0)
+		stations.viewer = Vector3(b.x, b.y, b.z)
+		stations._process(1.0)
+		return
+	if kind == "workbench":
+		var p: Vector3i = place.call(&"workbench", 0)
+		var st := stations.station_at(p)
+		st.inputs.set_stack(0, ItemStack.make(&"pickaxe_head", 1, { "material": "bronze", "quality": 2, "quenched": true }))
+		st.inputs.set_stack(1, ItemStack.make(&"haft", 1, { "material": "oak", "quality": 1 }))
+		st.inputs.set_stack(2, ItemStack.make(&"binding", 1, { "material": "leather", "quality": 1 }))
+		for id: StringName in [&"oak_planks", &"stick", &"rope", &"granite", &"clay"]:
+			player.inventory.add(ItemStack.create(Registry.item(id), 16))
+		crafting.book.note_inventory(player.inventory)
+		open_station(p)
+		return
+	if kind == "furnace" or kind == "forge":
+		var p: Vector3i = place.call(&"bloomery", 0)
+		var st := stations.station_at(p)
+		st.auto = kind == "forge"
+		st.fuel.set_stack(0, ItemStack.make(&"charcoal", 12))
+		st.inputs.set_stack(0, ItemStack.make(&"copper_ingot", 7))
+		st.inputs.set_stack(1, ItemStack.make(&"tin_ingot", 1))
+		crafting.book.note_items([&"copper_ingot", &"tin_ingot"])
+		for i in 20:
+			st.pump()
+			st.advance(0.5)
+		if kind == "furnace":
+			open_station(p)
+			return
+		var a: Vector3i = place.call(&"bronze_anvil", 2)
+		player.inventory.add(ItemStack.make(&"bronze_ingot", 6, { "quality": 2 }))
+		var anvil := stations.station_at(a)
+		crafting.minigames = true
+		crafting.start_recipe(anvil, a, crafting.data.recipe(&"forge_pickaxe_head"), 1, &"bronze")
+		return
+	if kind == "campfire":
+		var p: Vector3i = place.call(&"campfire", 0)
+		var st := stations.station_at(p)
+		st.auto = false
+		st.fuel.set_stack(0, ItemStack.make(&"oak_log", 4))
+		st.inputs.set_stack(0, ItemStack.make(&"raw_meat", 3))
+		st.advance(6.2)
+		open_station(p)
+
+
 ## Скриншот: ждём, пока догрузится вся дальность (не дольше 60 с), затем ещё несколько кадров.
 func _screenshot_step(delta: float) -> void:
 	_screenshot_wait += delta
@@ -611,6 +759,14 @@ func _screenshot_step(delta: float) -> void:
 	_screenshot_wait = -1000.0
 	world.visible = true
 	if GameLaunch.open_ui == "inventory":
+		open_inventory()
+	elif GameLaunch.open_ui in ["furnace", "workbench", "forge", "campfire", "station_row"]:
+		_screenshot_station(GameLaunch.open_ui)
+	elif GameLaunch.open_ui in ["craft", "book"]:
+		InventoryWindow._remembered_tab = 1 if GameLaunch.open_ui == "craft" else 2
+		for id: StringName in [&"birch_log", &"stick", &"twine", &"flint"]:
+			player.inventory.add(ItemStack.create(Registry.item(id), 4))
+		crafting.book.note_items([&"iron_concentrate", &"copper_concentrate", &"tin_concentrate", &"raw_meat"])
 		open_inventory()
 	elif GameLaunch.open_ui == "status":
 		survival.vitals.hunger = 46.0
@@ -628,6 +784,11 @@ func _screenshot_step(delta: float) -> void:
 		for id: StringName in [&"granite", &"stick", &"bilberries", &"iron_pickaxe", &"fur_coat", &"torch"]:
 			inv.add(ItemStack.create(Registry.item(id), 20))
 		open_container(p)
+	# Поставленные блоки (станции) — дождаться света и меша.
+	for i in 120:
+		if ch.pending_meshing() == 0 and ch.pending_lighting() == 0:
+			break
+		await get_tree().process_frame
 	for i in 8:
 		await RenderingServer.frame_post_draw
 	var err := get_viewport().get_texture().get_image().save_png(GameLaunch.screenshot_path)

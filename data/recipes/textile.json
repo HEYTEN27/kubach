@@ -1,0 +1,452 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "ret_nettle",
+   "station": "tanning_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "nettle",
+     "count": 4
+    }
+   ],
+   "time": 720,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "nettle_fiber",
+    "count": 2
+   },
+   "order": 0
+  },
+  {
+   "id": "spin_fiber",
+   "station": "spinning",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "plant_fiber",
+     "count": 3
+    }
+   ],
+   "time": 10,
+   "unlock": "default",
+   "category": "textile",
+   "output": {
+    "id": "thread",
+    "count": 1
+   },
+   "order": 1
+  },
+  {
+   "id": "spin_nettle",
+   "station": "spinning",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "nettle_fiber",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "thread",
+    "count": 2
+   },
+   "order": 2
+  },
+  {
+   "id": "spin_wool",
+   "station": "spinning",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wool",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "yarn",
+    "count": 1
+   },
+   "order": 3
+  },
+  {
+   "id": "weave_linen",
+   "station": "loom",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "thread",
+     "count": 4
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "linen_cloth",
+    "count": 1
+   },
+   "order": 4
+  },
+  {
+   "id": "weave_wool",
+   "station": "loom",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "yarn",
+     "count": 4
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "wool_cloth",
+    "count": 1
+   },
+   "order": 5
+  },
+  {
+   "id": "dye_blue_bilberries",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bilberries",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "blue_dye",
+    "count": 1
+   },
+   "order": 6
+  },
+  {
+   "id": "dye_blue_cornflower",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cornflower",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "blue_dye",
+    "count": 1
+   },
+   "order": 7
+  },
+  {
+   "id": "dye_blue_forget_me_not",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "forget_me_not",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "blue_dye",
+    "count": 1
+   },
+   "order": 8
+  },
+  {
+   "id": "dye_blue_gentian",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "gentian",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "blue_dye",
+    "count": 1
+   },
+   "order": 9
+  },
+  {
+   "id": "dye_red_cranberries",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cranberries",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "red_dye",
+    "count": 1
+   },
+   "order": 10
+  },
+  {
+   "id": "dye_red_lingonberries",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "lingonberries",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "red_dye",
+    "count": 1
+   },
+   "order": 11
+  },
+  {
+   "id": "dye_red_poppy",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "poppy",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "red_dye",
+    "count": 1
+   },
+   "order": 12
+  },
+  {
+   "id": "dye_yellow_dandelion",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "dandelion",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "yellow_dye",
+    "count": 1
+   },
+   "order": 13
+  },
+  {
+   "id": "dye_yellow_buttercup",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "buttercup",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "yellow_dye",
+    "count": 1
+   },
+   "order": 14
+  },
+  {
+   "id": "dye_yellow_tansy",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "tansy",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "yellow_dye",
+    "count": 1
+   },
+   "order": 15
+  },
+  {
+   "id": "dye_yellow_st_johns_wort",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "st_johns_wort",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "yellow_dye",
+    "count": 1
+   },
+   "order": 16
+  },
+  {
+   "id": "dye_green_nettle",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "nettle",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "green_dye",
+    "count": 1
+   },
+   "order": 17
+  },
+  {
+   "id": "dye_brown_oak_bark",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oak_bark",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "brown_dye",
+    "count": 1
+   },
+   "order": 18
+  },
+  {
+   "id": "dye_black_charcoal",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "charcoal",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "black_dye",
+    "count": 1
+   },
+   "order": 19
+  },
+  {
+   "id": "dye_purple_fireweed",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "fireweed",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "purple_dye",
+    "count": 1
+   },
+   "order": 20
+  },
+  {
+   "id": "dye_purple_clover",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "clover",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "purple_dye",
+    "count": 1
+   },
+   "order": 21
+  },
+  {
+   "id": "dye_purple_heather",
+   "station": "dye_vat",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "heather",
+     "count": 4
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "dyes",
+   "output": {
+    "id": "purple_dye",
+    "count": 1
+   },
+   "order": 22
+  },
+  {
+   "id": "dye_cloth",
+   "station": "dye_vat",
+   "op": "dye",
+   "inputs": [],
+   "time": 15,
+   "unlock": "default",
+   "category": "dyes",
+   "order": 23
+  }
+ ]
+}

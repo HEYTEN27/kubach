@@ -13,6 +13,8 @@ var world: World
 ## Есть ли в секции источники тепла: instance_id секции → [version, bool]. Секция сканируется
 ## один раз после изменения — опрос стоит доли миллисекунды (в мире почти нет тёплых блоков).
 var _heat_cache := {}
+## Тепло горящих станций (этап 6): Callable() -> [[x, y, z, тепло], ...] (StationSystem).
+var heat_sources: Callable
 
 
 func _init(p_world: World, p_cfg: Dictionary) -> void:
@@ -85,7 +87,12 @@ func sample(x: float, y: float, z: float, eye_y: float, clock: GameClock) -> Dic
 	var head_in_water := head_b > 0 and reg.block_render[head_b] == BlockDef.RENDER_LIQUID and reg.block_heat[head_b] <= 0.0
 	var ambient := air_temperature(cfg, biome_temp, clock.season(), clock.hour(), y,
 		float(world.generator.sea_level), sky, in_water)
-	var heat := _heat_scan(x, y + 0.9, z, float(cfg.get("heat_radius", 7.0)))
+	var radius := float(cfg.get("heat_radius", 7.0))
+	var heat := _heat_scan(x, y + 0.9, z, radius)
+	if heat_sources.is_valid():
+		for hs: Array in heat_sources.call():
+			var d := Vector3(float(hs[0]) + 0.5 - x, float(hs[1]) + 0.5 - (y + 0.9), float(hs[2]) + 0.5 - z).length()
+			heat = minf(45.0, heat + heat_falloff(float(hs[3]), d, radius))
 	# Контакт: клетки, которые занимает тело (ноги и туловище).
 	var contact := 0.0
 	var cause := ""

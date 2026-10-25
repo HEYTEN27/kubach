@@ -1,0 +1,123 @@
+{
+ "format": 1,
+ "category": "materials",
+ "description": "Материалы частей инструментов (раздел 5.1): свойства и из чего получаются.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "adj": {
+   "type": "object",
+   "fields": {
+    "m": {
+     "type": "string",
+     "default": ""
+    },
+    "f": {
+     "type": "string",
+     "default": ""
+    },
+    "n": {
+     "type": "string",
+     "default": ""
+    },
+    "en": {
+     "type": "string",
+     "default": ""
+    }
+   },
+   "doc": "Прилагательное для названий: «стальная кирка», «дубовая рукоять»."
+  },
+  "category": {
+   "type": "enum",
+   "values": [
+    "stone",
+    "metal",
+    "wood",
+    "binding"
+   ],
+   "required": true
+  },
+  "tier": {
+   "type": "int",
+   "default": 1,
+   "min": 0,
+   "max": 8,
+   "doc": "Уровень добычи навершия."
+  },
+  "speed": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 20,
+   "doc": "Скорость добычи навершия (× голых рук)."
+  },
+  "toughness": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0.05,
+   "max": 10,
+   "doc": "Прочность: множитель износостойкости."
+  },
+  "sharpness": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 20,
+   "doc": "Острота: добавка к урону."
+  },
+  "weight": {
+   "type": "float",
+   "default": 0.5,
+   "min": 0,
+   "max": 10,
+   "doc": "Вес единицы материала, кг."
+  },
+  "flexibility": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 3,
+   "doc": "Гибкость (рукояти, обмотки): множитель прочности."
+  },
+  "melt": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 4000,
+   "doc": "Температура плавки, °C (металлы)."
+  },
+  "color": {
+   "type": "color",
+   "default": "#808080"
+  },
+  "sources": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "ref",
+    "to": [
+     "items",
+     "blocks",
+     "parts",
+     "tool_types"
+    ]
+   },
+   "doc": "Предметы, которые являются этим материалом (слиток, доски, бечёвка)."
+  },
+  "source_tags": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "string"
+   },
+   "doc": "Или все предметы с тегом."
+  }
+ }
+}

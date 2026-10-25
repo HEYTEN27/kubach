@@ -16,7 +16,7 @@ const EQUIP_LABELS := ["Голова", "Тело", "Ноги", "Ступни", "
 const CATALOG_TABS := [
 	["Все", []], ["Строительство", [&"block"]], ["Инструменты", [&"tool", &"weapon"]],
 	["Одежда", [&"armor", &"clothing", &"backpack", &"accessory", &"shield"]], ["Еда", [&"food"]],
-	["Материалы", [&"material", &"misc", &"light"]],
+	["Материалы", [&"material", &"misc", &"light", &"part"]],
 ]
 
 var ops: InventoryOps
@@ -27,6 +27,10 @@ var executor: Callable
 var creative := false
 var container_title := ""
 var appearance := {}
+## Ремесло (этап 6): контроллер (вкладки «Ремесло» и «Книга рецептов») и панель станции,
+## которая встаёт над инвентарём вместо сетки сундука.
+var crafting: CraftingController
+var station_panel: Control
 
 var _root: Control
 var _slots: Array[ItemSlot] = []
@@ -66,7 +70,7 @@ func _ready() -> void:
 
 	if creative:
 		row.add_child(_build_catalog())
-	row.add_child(_build_character())
+	row.add_child(_build_left())
 	row.add_child(_build_storage())
 
 	_cursor = _CursorItem.new()
@@ -85,8 +89,43 @@ func _ready() -> void:
 		inv.changed.connect(_refresh)
 	if ops.container != null:
 		ops.container.changed.connect(_refresh)
+	for inv: Inventory in ops.station.values():
+		inv.changed.connect(_refresh)
 	player_inv.equipment_changed.connect(_rebuild_backpack)
 	_refresh()
+
+
+## Левая колонка: вкладки «Персонаж», «Ремесло» (ручные рецепты), «Книга рецептов».
+func _build_left() -> Control:
+	var ch := _build_character()
+	if crafting == null:
+		return ch
+	var box := VBoxContainer.new()
+	var tabs := TabBar.new()
+	tabs.add_tab("Персонаж")
+	tabs.add_tab("Ремесло")
+	tabs.add_tab("Книга рецептов")
+	box.add_child(tabs)
+	var hand := HandCraftPanel.new()
+	hand.controller = crafting
+	hand.window = self
+	var bookp := RecipeBookPanel.new()
+	bookp.controller = crafting
+	var pages: Array[Control] = [ch, hand, bookp]
+	for pg in pages:
+		pg.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		box.add_child(pg)
+		pg.visible = pg == ch
+	tabs.tab_changed.connect(func(i: int) -> void:
+		for k in pages.size():
+			pages[k].visible = k == i)
+	if station_panel == null and _remembered_tab > 0:
+		tabs.current_tab = _remembered_tab
+	tabs.tab_changed.connect(func(i: int) -> void: InventoryWindow._remembered_tab = i)
+	return box
+
+
+static var _remembered_tab := 0
 
 
 func _build_character() -> Control:
@@ -125,7 +164,10 @@ func _build_storage() -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 8)
 	panel.add_child(box)
-	if ops.container != null:
+	if station_panel != null:
+		box.add_child(station_panel)
+		box.add_child(HSeparator.new())
+	elif ops.container != null:
 		var head := HBoxContainer.new()
 		var t := Label.new()
 		t.text = container_title
@@ -264,6 +306,13 @@ func _grid(inv: Inventory, columns: int) -> GridContainer:
 	return g
 
 
+## Ячейка окна для чужого инвентаря (панель станции).
+func make_slot(inv: Inventory, i: int, placeholder: String = "") -> ItemSlot:
+	var s := _slot(inv, i)
+	s.placeholder = placeholder
+	return s
+
+
 func _slot(inv: Inventory, i: int) -> ItemSlot:
 	var s := ItemSlot.new()
 	s.inv = inv
@@ -282,6 +331,9 @@ func _name_of(inv: Inventory) -> String:
 		return "backpack"
 	if inv == player_inv.equipment:
 		return "equipment"
+	for k: String in ops.station:
+		if ops.station[k] == inv:
+			return k
 	return "container"
 
 
@@ -375,6 +427,11 @@ func close() -> void:
 	ops.close()
 	closed.emit()
 	queue_free()
+
+
+## Перерисовать (панели ремесла зовут после действий).
+func refresh() -> void:
+	_refresh()
 
 
 func _refresh() -> void:

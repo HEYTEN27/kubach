@@ -1,0 +1,3175 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "spruce_planks",
+   "name": {
+    "ru": "Доски (ель)",
+    "en": "Spruce Planks"
+   },
+   "material": "wood",
+   "map_color": "#c9a77a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "spruce_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "spruce"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "fir_planks",
+   "name": {
+    "ru": "Доски (пихта)",
+    "en": "Fir Planks"
+   },
+   "material": "wood",
+   "map_color": "#c7aa82",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "fir_planks"
+   },
+   "drops": [
+    {
+     "id": "fir_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "fir"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "pine_planks",
+   "name": {
+    "ru": "Доски (сосна)",
+    "en": "Pine Planks"
+   },
+   "material": "wood",
+   "map_color": "#d1a36b",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "pine_planks"
+   },
+   "drops": [
+    {
+     "id": "pine_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "pine"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "cedar_planks",
+   "name": {
+    "ru": "Доски (кедр)",
+    "en": "Cedar Planks"
+   },
+   "material": "wood",
+   "map_color": "#b07850",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "cedar_planks"
+   },
+   "drops": [
+    {
+     "id": "cedar_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "cedar"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "larch_planks",
+   "name": {
+    "ru": "Доски (лиственница)",
+    "en": "Larch Planks"
+   },
+   "material": "wood",
+   "map_color": "#c0804f",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "larch_planks"
+   },
+   "drops": [
+    {
+     "id": "larch_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "larch"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "birch_planks",
+   "name": {
+    "ru": "Доски (берёза)",
+    "en": "Birch Planks"
+   },
+   "material": "wood",
+   "map_color": "#e2cfa6",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "birch_planks"
+   },
+   "drops": [
+    {
+     "id": "birch_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "birch"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "aspen_planks",
+   "name": {
+    "ru": "Доски (осина)",
+    "en": "Aspen Planks"
+   },
+   "material": "wood",
+   "map_color": "#ddd2b4",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "aspen_planks"
+   },
+   "drops": [
+    {
+     "id": "aspen_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "aspen"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "oak_planks",
+   "name": {
+    "ru": "Доски (дуб)",
+    "en": "Oak Planks"
+   },
+   "material": "wood",
+   "map_color": "#a8804f",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "oak_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "oak"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "maple_planks",
+   "name": {
+    "ru": "Доски (клён)",
+    "en": "Maple Planks"
+   },
+   "material": "wood",
+   "map_color": "#d2ae7e",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "maple_planks"
+   },
+   "drops": [
+    {
+     "id": "maple_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "maple"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "linden_planks",
+   "name": {
+    "ru": "Доски (липа)",
+    "en": "Linden Planks"
+   },
+   "material": "wood",
+   "map_color": "#e0c99c",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "linden_planks"
+   },
+   "drops": [
+    {
+     "id": "linden_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "linden"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "alder_planks",
+   "name": {
+    "ru": "Доски (ольха)",
+    "en": "Alder Planks"
+   },
+   "material": "wood",
+   "map_color": "#c9875a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "alder_planks"
+   },
+   "drops": [
+    {
+     "id": "alder_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "alder"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "willow_planks",
+   "name": {
+    "ru": "Доски (ива)",
+    "en": "Willow Planks"
+   },
+   "material": "wood",
+   "map_color": "#c7b08a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "willow_planks"
+   },
+   "drops": [
+    {
+     "id": "willow_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "willow"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "rowan_planks",
+   "name": {
+    "ru": "Доски (рябина)",
+    "en": "Rowan Planks"
+   },
+   "material": "wood",
+   "map_color": "#b8865c",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "rowan_planks"
+   },
+   "drops": [
+    {
+     "id": "rowan_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "rowan"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "bird_cherry_planks",
+   "name": {
+    "ru": "Доски (черёмуха)",
+    "en": "Bird Cherry Planks"
+   },
+   "material": "wood",
+   "map_color": "#9a6a4a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "bird_cherry_planks"
+   },
+   "drops": [
+    {
+     "id": "bird_cherry_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "bird_cherry"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "apple_planks",
+   "name": {
+    "ru": "Доски (яблоня)",
+    "en": "Apple Planks"
+   },
+   "material": "wood",
+   "map_color": "#c49a70",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "apple_planks"
+   },
+   "drops": [
+    {
+     "id": "apple_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "apple"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "pear_planks",
+   "name": {
+    "ru": "Доски (груша)",
+    "en": "Pear Planks"
+   },
+   "material": "wood",
+   "map_color": "#c9a27a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "pear_planks"
+   },
+   "drops": [
+    {
+     "id": "pear_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "pear"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "cherry_planks",
+   "name": {
+    "ru": "Доски (вишня)",
+    "en": "Cherry Planks"
+   },
+   "material": "wood",
+   "map_color": "#a8603f",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "cherry_planks"
+   },
+   "drops": [
+    {
+     "id": "cherry_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "cherry"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "plum_planks",
+   "name": {
+    "ru": "Доски (слива)",
+    "en": "Plum Planks"
+   },
+   "material": "wood",
+   "map_color": "#8f5a42",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "plum_planks"
+   },
+   "drops": [
+    {
+     "id": "plum_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "plum"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "apricot_planks",
+   "name": {
+    "ru": "Доски (абрикос)",
+    "en": "Apricot Planks"
+   },
+   "material": "wood",
+   "map_color": "#c08a5a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "apricot_planks"
+   },
+   "drops": [
+    {
+     "id": "apricot_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "apricot"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "hazel_planks",
+   "name": {
+    "ru": "Доски (лещина)",
+    "en": "Hazel Planks"
+   },
+   "material": "wood",
+   "map_color": "#c49a6a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "hazel_planks"
+   },
+   "drops": [
+    {
+     "id": "hazel_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "hazel"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "palm_planks",
+   "name": {
+    "ru": "Доски (пальма)",
+    "en": "Palm Planks"
+   },
+   "material": "wood",
+   "map_color": "#b89a6a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "palm_planks"
+   },
+   "drops": [
+    {
+     "id": "palm_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "palm"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "acacia_planks",
+   "name": {
+    "ru": "Доски (акация)",
+    "en": "Acacia Planks"
+   },
+   "material": "wood",
+   "map_color": "#b8703f",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "acacia_planks"
+   },
+   "drops": [
+    {
+     "id": "acacia_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "acacia"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "jungle_planks",
+   "name": {
+    "ru": "Доски (тропическое дерево)",
+    "en": "Jungle Planks"
+   },
+   "material": "wood",
+   "map_color": "#9a6a42",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "jungle_planks"
+   },
+   "drops": [
+    {
+     "id": "jungle_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "jungle"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "mangrove_planks",
+   "name": {
+    "ru": "Доски (мангр)",
+    "en": "Mangrove Planks"
+   },
+   "material": "wood",
+   "map_color": "#8a4a35",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "mangrove_planks"
+   },
+   "drops": [
+    {
+     "id": "mangrove_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "mangrove"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "dwarf_birch_planks",
+   "name": {
+    "ru": "Доски (ерник)",
+    "en": "Dwarf Birch Planks"
+   },
+   "material": "wood",
+   "map_color": "#d8c49a",
+   "hardness": 2.0,
+   "tool": "axe",
+   "flammable": true,
+   "sounds": "wood",
+   "textures": {
+    "all": "dwarf_birch_planks"
+   },
+   "drops": [
+    {
+     "id": "dwarf_birch_planks"
+    }
+   ],
+   "tags": [
+    "planks",
+    "dwarf_birch"
+   ],
+   "fuel": {
+    "heat": 700,
+    "minutes": 4
+   },
+   "weight": 0.6
+  },
+  {
+   "id": "copper_block",
+   "name": {
+    "ru": "Медный блок",
+    "en": "Block of Copper"
+   },
+   "material": "metal",
+   "map_color": "#c87a4a",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "copper_block"
+   },
+   "drops": [
+    {
+     "id": "copper_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "copper"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "bronze_block",
+   "name": {
+    "ru": "Бронзовый блок",
+    "en": "Block of Bronze"
+   },
+   "material": "metal",
+   "map_color": "#b8873a",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "bronze_block"
+   },
+   "drops": [
+    {
+     "id": "bronze_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "bronze"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "iron_block",
+   "name": {
+    "ru": "Железный блок",
+    "en": "Block of Iron"
+   },
+   "material": "metal",
+   "map_color": "#a8acb2",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "iron_block"
+   },
+   "drops": [
+    {
+     "id": "iron_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "iron"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "steel_block",
+   "name": {
+    "ru": "Стальной блок",
+    "en": "Block of Steel"
+   },
+   "material": "metal",
+   "map_color": "#c8ced6",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "steel_block"
+   },
+   "drops": [
+    {
+     "id": "steel_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "steel"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "gold_block",
+   "name": {
+    "ru": "Золотой блок",
+    "en": "Block of Gold"
+   },
+   "material": "metal",
+   "map_color": "#e8c040",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "gold_block"
+   },
+   "drops": [
+    {
+     "id": "gold_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "gold"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "silver_block",
+   "name": {
+    "ru": "Серебряный блок",
+    "en": "Block of Silver"
+   },
+   "material": "metal",
+   "map_color": "#d8dce2",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "tool_tier": 2,
+   "sounds": "metal",
+   "textures": {
+    "all": "silver_block"
+   },
+   "drops": [
+    {
+     "id": "silver_block"
+    }
+   ],
+   "tags": [
+    "metal_block",
+    "silver"
+   ],
+   "weight": 9.0
+  },
+  {
+   "id": "bricks",
+   "name": {
+    "ru": "Кирпичная кладка",
+    "en": "Bricks"
+   },
+   "material": "stone",
+   "map_color": "#9a4a32",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "tool_tier": 1,
+   "sounds": "stone",
+   "textures": {
+    "all": "bricks"
+   },
+   "drops": [
+    {
+     "id": "bricks"
+    }
+   ],
+   "tags": [
+    "masonry"
+   ],
+   "weight": 2.4
+  },
+  {
+   "id": "tex_hide",
+   "name": {
+    "ru": "Шкура",
+    "en": "Hide"
+   },
+   "material": "special",
+   "render": "invisible",
+   "solid": false,
+   "hardness": -1,
+   "item": false,
+   "map_color": "#a08060",
+   "light_filter": 0,
+   "textures": {
+    "all": "hide"
+   },
+   "tags": [
+    "model_texture"
+   ]
+  },
+  {
+   "id": "tex_cloth",
+   "name": {
+    "ru": "Холст",
+    "en": "Canvas"
+   },
+   "material": "special",
+   "render": "invisible",
+   "solid": false,
+   "hardness": -1,
+   "item": false,
+   "map_color": "#d8ceb4",
+   "light_filter": 0,
+   "textures": {
+    "all": "cloth"
+   },
+   "tags": [
+    "model_texture"
+   ]
+  },
+  {
+   "id": "tex_embers",
+   "name": {
+    "ru": "Угли",
+    "en": "Embers"
+   },
+   "material": "special",
+   "render": "invisible",
+   "solid": false,
+   "hardness": -1,
+   "item": false,
+   "map_color": "#c04010",
+   "light_filter": 0,
+   "textures": {
+    "all": "embers"
+   },
+   "tags": [
+    "model_texture"
+   ]
+  },
+  {
+   "id": "tex_soot",
+   "name": {
+    "ru": "Копоть",
+    "en": "Soot"
+   },
+   "material": "special",
+   "render": "invisible",
+   "solid": false,
+   "hardness": -1,
+   "item": false,
+   "map_color": "#2a2624",
+   "light_filter": 0,
+   "textures": {
+    "all": "soot"
+   },
+   "tags": [
+    "model_texture"
+   ]
+  },
+  {
+   "id": "tex_bellows",
+   "name": {
+    "ru": "Кожа мехов",
+    "en": "Bellows Leather"
+   },
+   "material": "special",
+   "render": "invisible",
+   "solid": false,
+   "hardness": -1,
+   "item": false,
+   "map_color": "#5a3a24",
+   "light_filter": 0,
+   "textures": {
+    "all": "bellows"
+   },
+   "tags": [
+    "model_texture"
+   ]
+  },
+  {
+   "id": "workbench",
+   "name": {
+    "ru": "Верстак",
+    "en": "Workbench"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "workbench"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "workbench",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      12,
+      0
+     ],
+     "to": [
+      16,
+      15,
+      16
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      3,
+      12,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      13
+     ],
+     "to": [
+      3,
+      12,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      12,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      13
+     ],
+     "to": [
+      15,
+      12,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      4,
+      1
+     ],
+     "to": [
+      15,
+      5,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      11,
+      15,
+      2
+     ],
+     "to": [
+      15,
+      17,
+      5
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      2,
+      15,
+      10
+     ],
+     "to": [
+      7,
+      15.5,
+      14
+     ],
+     "tex": "spruce_log"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "carpenter_table",
+   "name": {
+    "ru": "Столярный стол",
+    "en": "Carpenter's Table"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#e2cfa6",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "birch_planks"
+   },
+   "drops": [
+    {
+     "id": "carpenter_table"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "carpenter",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      11,
+      0
+     ],
+     "to": [
+      16,
+      14,
+      16
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      3,
+      11,
+      3
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      13
+     ],
+     "to": [
+      3,
+      11,
+      15
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      11,
+      3
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      13
+     ],
+     "to": [
+      15,
+      11,
+      15
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      3,
+      14,
+      6
+     ],
+     "to": [
+      13,
+      18,
+      6.6
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      3,
+      14,
+      5.5
+     ],
+     "to": [
+      13,
+      15,
+      7
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      14,
+      11
+     ],
+     "to": [
+      6,
+      15,
+      15
+     ],
+     "tex": "birch_log"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "sewing_table",
+   "name": {
+    "ru": "Швейный стол",
+    "en": "Sewing Table"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#e0c99c",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "linden_planks"
+   },
+   "drops": [
+    {
+     "id": "sewing_table"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "sewing",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      11,
+      0
+     ],
+     "to": [
+      16,
+      13,
+      16
+     ],
+     "tex": "linden_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      3,
+      11,
+      3
+     ],
+     "tex": "linden_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      13
+     ],
+     "to": [
+      3,
+      11,
+      15
+     ],
+     "tex": "linden_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      11,
+      3
+     ],
+     "tex": "linden_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      13
+     ],
+     "to": [
+      15,
+      11,
+      15
+     ],
+     "tex": "linden_planks"
+    },
+    {
+     "from": [
+      2,
+      13,
+      2
+     ],
+     "to": [
+      12,
+      13.5,
+      12
+     ],
+     "tex": "tex_cloth"
+    },
+    {
+     "from": [
+      12,
+      13,
+      11
+     ],
+     "to": [
+      14,
+      16,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      12.5,
+      16,
+      11.5
+     ],
+     "to": [
+      13.5,
+      17,
+      12.5
+     ],
+     "tex": "tex_cloth"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "pottery_wheel",
+   "name": {
+    "ru": "Гончарный круг",
+    "en": "Potter's Wheel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "pottery_wheel"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "pottery",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      8,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      7,
+      8,
+      7
+     ],
+     "to": [
+      9,
+      11,
+      9
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      3,
+      11,
+      3
+     ],
+     "to": [
+      13,
+      12,
+      13
+     ],
+     "tex": "granite",
+     "anim": "spin_y"
+    },
+    {
+     "from": [
+      6,
+      12,
+      6
+     ],
+     "to": [
+      10,
+      15,
+      10
+     ],
+     "tex": "clay",
+     "anim": "spin_y"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "stone_anvil",
+   "name": {
+    "ru": "Каменная наковальня",
+    "en": "Stone Anvil"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#7a7a80",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "granite"
+   },
+   "drops": [
+    {
+     "id": "stone_anvil"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "anvil",
+    "tier": 2
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      9,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      0,
+      9,
+      2
+     ],
+     "to": [
+      16,
+      13,
+      14
+     ],
+     "tex": "granite"
+    }
+   ],
+   "weight": 20.0
+  },
+  {
+   "id": "bronze_anvil",
+   "name": {
+    "ru": "Бронзовая наковальня",
+    "en": "Bronze Anvil"
+   },
+   "material": "metal",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#7a7a80",
+   "hardness": 6.0,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "bronze_block"
+   },
+   "drops": [
+    {
+     "id": "bronze_anvil"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "anvil",
+    "tier": 3
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      3
+     ],
+     "to": [
+      14,
+      4,
+      13
+     ],
+     "tex": "bronze_block"
+    },
+    {
+     "from": [
+      5,
+      4,
+      5
+     ],
+     "to": [
+      11,
+      9,
+      11
+     ],
+     "tex": "bronze_block"
+    },
+    {
+     "from": [
+      1,
+      9,
+      4
+     ],
+     "to": [
+      15,
+      14,
+      12
+     ],
+     "tex": "bronze_block"
+    },
+    {
+     "from": [
+      -3,
+      10,
+      6
+     ],
+     "to": [
+      1,
+      13,
+      10
+     ],
+     "tex": "bronze_block"
+    },
+    {
+     "from": [
+      15,
+      11,
+      5
+     ],
+     "to": [
+      17,
+      14,
+      11
+     ],
+     "tex": "bronze_block"
+    }
+   ],
+   "weight": 20.0
+  },
+  {
+   "id": "iron_anvil",
+   "name": {
+    "ru": "Железная наковальня",
+    "en": "Iron Anvil"
+   },
+   "material": "metal",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#7a7a80",
+   "hardness": 7.0,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "iron_block"
+   },
+   "drops": [
+    {
+     "id": "iron_anvil"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "anvil",
+    "tier": 4
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      3
+     ],
+     "to": [
+      14,
+      4,
+      13
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      5,
+      4,
+      5
+     ],
+     "to": [
+      11,
+      9,
+      11
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      1,
+      9,
+      4
+     ],
+     "to": [
+      15,
+      14,
+      12
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      -3,
+      10,
+      6
+     ],
+     "to": [
+      1,
+      13,
+      10
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      15,
+      11,
+      5
+     ],
+     "to": [
+      17,
+      14,
+      11
+     ],
+     "tex": "iron_block"
+    }
+   ],
+   "weight": 20.0
+  },
+  {
+   "id": "steel_anvil",
+   "name": {
+    "ru": "Стальная наковальня",
+    "en": "Steel Anvil"
+   },
+   "material": "metal",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#7a7a80",
+   "hardness": 8.0,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "steel_block"
+   },
+   "drops": [
+    {
+     "id": "steel_anvil"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "anvil",
+    "tier": 5
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      3
+     ],
+     "to": [
+      14,
+      4,
+      13
+     ],
+     "tex": "steel_block"
+    },
+    {
+     "from": [
+      5,
+      4,
+      5
+     ],
+     "to": [
+      11,
+      9,
+      11
+     ],
+     "tex": "steel_block"
+    },
+    {
+     "from": [
+      1,
+      9,
+      4
+     ],
+     "to": [
+      15,
+      14,
+      12
+     ],
+     "tex": "steel_block"
+    },
+    {
+     "from": [
+      -3,
+      10,
+      6
+     ],
+     "to": [
+      1,
+      13,
+      10
+     ],
+     "tex": "steel_block"
+    },
+    {
+     "from": [
+      15,
+      11,
+      5
+     ],
+     "to": [
+      17,
+      14,
+      11
+     ],
+     "tex": "steel_block"
+    }
+   ],
+   "weight": 20.0
+  },
+  {
+   "id": "crusher",
+   "name": {
+    "ru": "Ручная дробилка",
+    "en": "Crusher"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 3.0,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "crusher"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "crusher",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      6,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      3,
+      6,
+      3
+     ],
+     "to": [
+      13,
+      7,
+      13
+     ],
+     "tex": "gravel"
+    },
+    {
+     "from": [
+      1,
+      6,
+      1
+     ],
+     "to": [
+      3,
+      18,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      13,
+      6,
+      1
+     ],
+     "to": [
+      15,
+      18,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      16,
+      1
+     ],
+     "to": [
+      15,
+      18,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      6,
+      9,
+      5
+     ],
+     "to": [
+      10,
+      14,
+      9
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      7.5,
+      14,
+      6.5
+     ],
+     "to": [
+      8.5,
+      17,
+      7.5
+     ],
+     "tex": "spruce_planks"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "washing_pan",
+   "name": {
+    "ru": "Промывочный лоток",
+    "en": "Washing Pan"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "washing_pan"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "washing",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      2
+     ],
+     "to": [
+      16,
+      1,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      1,
+      2
+     ],
+     "to": [
+      16,
+      5,
+      3
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      1,
+      13
+     ],
+     "to": [
+      16,
+      5,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      15,
+      1,
+      3
+     ],
+     "to": [
+      16,
+      5,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      3
+     ],
+     "to": [
+      15,
+      3,
+      13
+     ],
+     "tex": "gravel"
+    },
+    {
+     "from": [
+      1,
+      3,
+      3
+     ],
+     "to": [
+      15,
+      3.6,
+      13
+     ],
+     "tex": "water"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "stone_furnace",
+   "name": {
+    "ru": "Каменная печь",
+    "en": "Stone Furnace"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8f7a70",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "granite"
+   },
+   "drops": [
+    {
+     "id": "stone_furnace"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "furnace",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      3,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      1,
+      3,
+      1
+     ],
+     "to": [
+      15,
+      12,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      4,
+      3,
+      0.6
+     ],
+     "to": [
+      12,
+      9,
+      1.2
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      5,
+      3.2,
+      0.5
+     ],
+     "to": [
+      11,
+      5,
+      1
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      2,
+      12,
+      2
+     ],
+     "to": [
+      14,
+      14,
+      14
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      6,
+      14,
+      6
+     ],
+     "to": [
+      10,
+      20,
+      10
+     ],
+     "tex": "granite"
+    }
+   ],
+   "weight": 20.0
+  },
+  {
+   "id": "bloomery",
+   "name": {
+    "ru": "Плавильная печь",
+    "en": "Bloomery"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#9a4a32",
+   "hardness": 4.0,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "bricks"
+   },
+   "drops": [
+    {
+     "id": "bloomery"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "bloomery",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      4,
+      14
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      3,
+      4,
+      3
+     ],
+     "to": [
+      13,
+      16,
+      13
+     ],
+     "tex": "red_clay"
+    },
+    {
+     "from": [
+      5,
+      16,
+      5
+     ],
+     "to": [
+      11,
+      22,
+      11
+     ],
+     "tex": "red_clay"
+    },
+    {
+     "from": [
+      5,
+      1,
+      1.5
+     ],
+     "to": [
+      11,
+      6,
+      2
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      6,
+      1.2,
+      1.4
+     ],
+     "to": [
+      10,
+      3,
+      1.9
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      13,
+      2,
+      5
+     ],
+     "to": [
+      16,
+      7,
+      11
+     ],
+     "tex": "tex_bellows"
+    },
+    {
+     "from": [
+      14,
+      7,
+      6
+     ],
+     "to": [
+      15,
+      10,
+      10
+     ],
+     "tex": "spruce_planks"
+    }
+   ],
+   "weight": 30.0
+  },
+  {
+   "id": "kiln",
+   "name": {
+    "ru": "Обжиговая печь",
+    "en": "Kiln"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#9a4a32",
+   "hardness": 3.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "bricks"
+   },
+   "drops": [
+    {
+     "id": "kiln"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "kiln",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      3,
+      15
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      2,
+      3,
+      2
+     ],
+     "to": [
+      14,
+      11,
+      14
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      4,
+      11,
+      4
+     ],
+     "to": [
+      12,
+      14,
+      12
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      7,
+      14,
+      7
+     ],
+     "to": [
+      9,
+      18,
+      9
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      5,
+      3,
+      1.5
+     ],
+     "to": [
+      11,
+      8,
+      2
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      6,
+      3.2,
+      1.4
+     ],
+     "to": [
+      10,
+      4.5,
+      1.9
+     ],
+     "tex": "tex_embers"
+    }
+   ],
+   "weight": 25.0
+  },
+  {
+   "id": "grindstone",
+   "name": {
+    "ru": "Точило",
+    "en": "Grindstone"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "grindstone"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "grindstone",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      3
+     ],
+     "to": [
+      4,
+      9,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      12,
+      0,
+      3
+     ],
+     "to": [
+      14,
+      9,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      4,
+      2,
+      7
+     ],
+     "to": [
+      12,
+      3,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      5,
+      4,
+      3
+     ],
+     "to": [
+      11,
+      15,
+      13
+     ],
+     "tex": "sandstone",
+     "anim": "spin_x"
+    },
+    {
+     "from": [
+      4,
+      8.5,
+      7.5
+     ],
+     "to": [
+      12,
+      9.5,
+      8.5
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      14,
+      8,
+      7
+     ],
+     "to": [
+      16,
+      9,
+      9
+     ],
+     "tex": "spruce_planks"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "quench_barrel",
+   "name": {
+    "ru": "Бочка для закалки",
+    "en": "Quenching Barrel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "quench_barrel"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "quench",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      12,
+      14
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      3,
+      12,
+      3
+     ],
+     "to": [
+      13,
+      12.2,
+      13
+     ],
+     "tex": "water"
+    },
+    {
+     "from": [
+      1.6,
+      2,
+      1.6
+     ],
+     "to": [
+      14.4,
+      3,
+      14.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      1.6,
+      9,
+      1.6
+     ],
+     "to": [
+      14.4,
+      10,
+      14.4
+     ],
+     "tex": "iron_block"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "tanning_rack",
+   "name": {
+    "ru": "Кожевенная рама",
+    "en": "Tanning Rack"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "tanning_rack"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "tanning_rack",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      7
+     ],
+     "to": [
+      2,
+      16,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      14,
+      0,
+      7
+     ],
+     "to": [
+      15,
+      16,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      15,
+      7
+     ],
+     "to": [
+      15,
+      16,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      2,
+      7
+     ],
+     "to": [
+      15,
+      3,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      2.5,
+      3.5,
+      7.6
+     ],
+     "to": [
+      13.5,
+      14.5,
+      8.4
+     ],
+     "tex": "tex_hide"
+    },
+    {
+     "from": [
+      2,
+      0,
+      3
+     ],
+     "to": [
+      3,
+      1,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      3
+     ],
+     "to": [
+      14,
+      1,
+      13
+     ],
+     "tex": "spruce_planks"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "tanning_barrel",
+   "name": {
+    "ru": "Дубильная бочка",
+    "en": "Tanning Barrel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "tanning_barrel"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "tanning_barrel",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      13,
+      15
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      2,
+      13,
+      2
+     ],
+     "to": [
+      14,
+      13.2,
+      14
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      0.6,
+      3,
+      0.6
+     ],
+     "to": [
+      15.4,
+      4,
+      15.4
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      0.6,
+      10,
+      0.6
+     ],
+     "to": [
+      15.4,
+      11,
+      15.4
+     ],
+     "tex": "spruce_log"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "spinning_wheel",
+   "name": {
+    "ru": "Прялка",
+    "en": "Spinning Wheel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "spinning_wheel"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "spinning",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      6
+     ],
+     "to": [
+      15,
+      3,
+      10
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      3,
+      3,
+      7
+     ],
+     "to": [
+      4,
+      10,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      3,
+      9,
+      7
+     ],
+     "to": [
+      4,
+      10,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      6,
+      7.5
+     ],
+     "to": [
+      9,
+      14,
+      8.5
+     ],
+     "tex": "oak_planks",
+     "anim": "spin_z"
+    },
+    {
+     "from": [
+      11,
+      3,
+      7
+     ],
+     "to": [
+      12,
+      12,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      10,
+      12,
+      7.5
+     ],
+     "to": [
+      14,
+      13,
+      8.5
+     ],
+     "tex": "tex_cloth"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "loom",
+   "name": {
+    "ru": "Ткацкий станок",
+    "en": "Loom"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "loom"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "loom",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      2
+     ],
+     "to": [
+      2,
+      16,
+      4
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      14,
+      0,
+      2
+     ],
+     "to": [
+      16,
+      16,
+      4
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      0,
+      12
+     ],
+     "to": [
+      2,
+      12,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      14,
+      0,
+      12
+     ],
+     "to": [
+      16,
+      12,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      14,
+      2
+     ],
+     "to": [
+      16,
+      16,
+      4
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      10,
+      12
+     ],
+     "to": [
+      16,
+      12,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      2,
+      10,
+      4
+     ],
+     "to": [
+      14,
+      10.5,
+      12
+     ],
+     "tex": "tex_cloth"
+    },
+    {
+     "from": [
+      2,
+      6,
+      2.5
+     ],
+     "to": [
+      14,
+      14,
+      3.2
+     ],
+     "tex": "tex_cloth"
+    }
+   ],
+   "weight": 8.0
+  },
+  {
+   "id": "dye_vat",
+   "name": {
+    "ru": "Красильный чан",
+    "en": "Dye Vat"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "dye_vat"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "dye_vat",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      9,
+      15
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      2,
+      9,
+      2
+     ],
+     "to": [
+      14,
+      9.2,
+      14
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      0,
+      9,
+      7
+     ],
+     "to": [
+      16,
+      10,
+      9
+     ],
+     "tex": "spruce_planks"
+    }
+   ],
+   "weight": 8.0
+  }
+ ]
+}

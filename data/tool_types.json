@@ -1,0 +1,145 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "pickaxe",
+   "name": {
+    "ru": "Кирка",
+    "en": "Pickaxe"
+   },
+   "gender": "f",
+   "kind": "tool",
+   "head": "pickaxe_head",
+   "handle": "haft",
+   "binding": "binding",
+   "tool": "pickaxe",
+   "speed": 1.0,
+   "damage": 2.0,
+   "sharp_k": 0.3,
+   "durability": 130,
+   "icon": {
+    "shape": "pickaxe"
+   }
+  },
+  {
+   "id": "axe",
+   "name": {
+    "ru": "Топор",
+    "en": "Axe"
+   },
+   "gender": "m",
+   "kind": "tool",
+   "head": "axe_head",
+   "handle": "haft",
+   "binding": "binding",
+   "tool": "axe",
+   "speed": 1.0,
+   "damage": 4.0,
+   "sharp_k": 0.7,
+   "durability": 130,
+   "icon": {
+    "shape": "axe"
+   }
+  },
+  {
+   "id": "shovel",
+   "name": {
+    "ru": "Лопата",
+    "en": "Shovel"
+   },
+   "gender": "f",
+   "kind": "tool",
+   "head": "shovel_head",
+   "handle": "haft",
+   "binding": "binding",
+   "tool": "shovel",
+   "speed": 1.0,
+   "damage": 1.5,
+   "sharp_k": 0.2,
+   "durability": 120,
+   "icon": {
+    "shape": "shovel"
+   }
+  },
+  {
+   "id": "hoe",
+   "name": {
+    "ru": "Мотыга",
+    "en": "Hoe"
+   },
+   "gender": "f",
+   "kind": "tool",
+   "head": "hoe_head",
+   "handle": "haft",
+   "binding": "binding",
+   "tool": "hoe",
+   "speed": 1.0,
+   "damage": 1.5,
+   "sharp_k": 0.3,
+   "durability": 110,
+   "icon": {
+    "shape": "hoe"
+   }
+  },
+  {
+   "id": "knife",
+   "name": {
+    "ru": "Нож",
+    "en": "Knife"
+   },
+   "gender": "m",
+   "kind": "tool",
+   "head": "knife_blade",
+   "handle": "grip",
+   "binding": "binding",
+   "tool": "knife",
+   "speed": 0.9,
+   "damage": 3.0,
+   "sharp_k": 1.0,
+   "durability": 90,
+   "icon": {
+    "shape": "knife"
+   }
+  },
+  {
+   "id": "sword",
+   "name": {
+    "ru": "Меч",
+    "en": "Sword"
+   },
+   "gender": "m",
+   "kind": "weapon",
+   "head": "sword_blade",
+   "handle": "grip",
+   "binding": "binding",
+   "tool": "none",
+   "speed": 0.5,
+   "damage": 6.0,
+   "sharp_k": 1.2,
+   "durability": 170,
+   "icon": {
+    "shape": "sword"
+   }
+  },
+  {
+   "id": "spear",
+   "name": {
+    "ru": "Копьё",
+    "en": "Spear"
+   },
+   "gender": "n",
+   "kind": "weapon",
+   "head": "spear_head",
+   "handle": "haft",
+   "binding": "binding",
+   "tool": "none",
+   "speed": 0.5,
+   "damage": 5.0,
+   "sharp_k": 1.0,
+   "durability": 110,
+   "icon": {
+    "shape": "spear"
+   }
+  }
+ ]
+}

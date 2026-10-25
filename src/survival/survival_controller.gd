@@ -163,7 +163,7 @@ func _update_consume(delta: float) -> void:
 	if d == null or s == null:
 		return
 	if d.is_food():
-		vitals.eat(d.food, float(s.data.get("freshness", 1.0)))
+		vitals.eat(d.food, float(s.data.get("freshness", 1.0)), String(s.data.get("cook", "")))
 	if d.is_medicine():
 		vitals.apply_medicine(d.medicine)
 	Audio.play_ui("player/drink" if d.is_food() and float(d.food.get("nutrition", 0.0)) <= 0.0 else "player/eat")

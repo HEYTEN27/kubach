@@ -6,8 +6,11 @@ extends RefCounted
 
 var id: StringName
 var count := 1
-## Данные экземпляра: "durability" (int), "quality" (float), "freshness" (float 0…1),
-## "color" (строка #rrggbb — для одежды), "contents" (Array — содержимое рюкзака).
+## Данные экземпляра: "durability" (int), "quality" (int 0…4 — уровень из data/qualities.json),
+## "freshness" (float 0…1), "color" (строка #rrggbb — одежда, крашеная ткань), "contents"
+## (Array — содержимое рюкзака). Ремесло (этап 6): "material" (id материала части),
+## "quenched"/"sharpened" (bool), "parts" (части инструмента), "max_durability" (int),
+## "stats" (уровень, скорость, урон инструмента из частей), "cook" (under/perfect/over).
 var data := {}
 
 
@@ -27,6 +30,11 @@ static func create(def: ItemDef, p_count: int = 1) -> ItemStack:
 	if def.is_food() and float(def.food.get("spoil_days", 0.0)) > 0.0:
 		s.data["freshness"] = 1.0
 	return s
+
+
+## Наибольшая прочность экземпляра: у инструментов из частей — своя, иначе из определения.
+func max_durability(def: ItemDef) -> int:
+	return int(data.get("max_durability", def.durability if def != null else 0))
 
 
 func copy() -> ItemStack:

@@ -1,0 +1,318 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "cook_meat",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "raw_meat",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "default",
+   "category": "food",
+   "output": {
+    "id": "cooked_meat",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.25,
+    "burnt_at": 1.8
+   },
+   "order": 0
+  },
+  {
+   "id": "soup_porcini",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "porcini",
+     "count": 3
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "output": {
+    "id": "mushroom_soup",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.4,
+    "burnt_at": 2.0
+   },
+   "order": 1
+  },
+  {
+   "id": "soup_chanterelle",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "chanterelle",
+     "count": 3
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "output": {
+    "id": "mushroom_soup",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.4,
+    "burnt_at": 2.0
+   },
+   "order": 2
+  },
+  {
+   "id": "soup_birch_bolete",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "birch_bolete",
+     "count": 3
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "output": {
+    "id": "mushroom_soup",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.4,
+    "burnt_at": 2.0
+   },
+   "order": 3
+  },
+  {
+   "id": "soup_russula",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "russula",
+     "count": 3
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "output": {
+    "id": "mushroom_soup",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.4,
+    "burnt_at": 2.0
+   },
+   "order": 4
+  },
+  {
+   "id": "tea_chamomile",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "chamomile",
+     "count": 2
+    },
+    {
+     "tag": "cup",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "herbal_tea",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.85,
+    "perfect_to": 1.5,
+    "burnt_at": 2.2
+   },
+   "order": 5
+  },
+  {
+   "id": "tea_thyme",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "thyme",
+     "count": 2
+    },
+    {
+     "tag": "cup",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "herbal_tea",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.85,
+    "perfect_to": 1.5,
+    "burnt_at": 2.2
+   },
+   "order": 6
+  },
+  {
+   "id": "tea_st_johns_wort",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "st_johns_wort",
+     "count": 2
+    },
+    {
+     "tag": "cup",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "herbal_tea",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.85,
+    "perfect_to": 1.5,
+    "burnt_at": 2.2
+   },
+   "order": 7
+  },
+  {
+   "id": "tea_yarrow",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "yarrow",
+     "count": 2
+    },
+    {
+     "tag": "cup",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "herbal_tea",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.85,
+    "perfect_to": 1.5,
+    "burnt_at": 2.2
+   },
+   "order": 8
+  },
+  {
+   "id": "antidote",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "plantain",
+     "count": 2
+    },
+    {
+     "id": "st_johns_wort",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 1
+    }
+   ],
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "antidote_decoction",
+    "count": 1
+   },
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.85,
+    "perfect_to": 1.4,
+    "burnt_at": 2.0
+   },
+   "order": 9
+  },
+  {
+   "id": "salve",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "plantain",
+     "count": 3
+    },
+    {
+     "id": "animal_fat",
+     "count": 1
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "medicine",
+   "output": {
+    "id": "salve",
+    "count": 1
+   },
+   "order": 10
+  }
+ ]
+}

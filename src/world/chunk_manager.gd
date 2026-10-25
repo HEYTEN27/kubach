@@ -10,6 +10,11 @@ extends Node3D
 ## области 3×3, см. VoxelLight) → мешинг секций. Свет секции — постоянный цвет или 3D-текстура
 ## 18³ в материале секции. Правка блока пересчитывает свет 3×3 колонн и меняет только материалы.
 
+## Колонна загружена (сгенерирована или прочитана) — станции в ней оживают.
+signal column_loaded(cpos: Vector2i)
+## Колонна сейчас выгрузится — успеть записать живое состояние станций в её данные.
+signal column_unloading(cpos: Vector2i)
+
 ## Радиус загрузки в колоннах (настройка «дальность прорисовки»).
 var view_distance := 12
 ## Колонны выгружаются на расстоянии view_distance + unload_margin (чтобы не дёргать на границе).
@@ -36,6 +41,8 @@ var stat_meshes_applied := 0
 
 ## GreedyMesher (GDScript) или NativeMesher (C++) — см. GreedyMesher.create_best().
 var _mesher: Object
+## Модели станций (этап 6) — дописываются к мешу секции.
+var _models: ModelMesher
 ## NativeLight (C++) или VoxelLight. Без нативной библиотеки свет выключен (GDScript-расчёт
 ## занимает секунды на колонну): все секции — полный свет неба.
 var _light: Object
@@ -75,6 +82,7 @@ var _node_surfs := {}      # Vector3i -> Array[StringName]: поверхност
 
 func _ready() -> void:
 	_mesher = GreedyMesher.create_best(world.registry)
+	_models = ModelMesher.new(world.registry)
 	_light = VoxelLight.create_best(world.registry)
 	if not VoxelLight.is_native(_light):
 		lighting_enabled = false
@@ -305,6 +313,7 @@ func _collect_gen_results() -> void:
 
 
 func _on_column_added(cpos: Vector2i) -> void:
+	column_loaded.emit(cpos)
 	for dz in range(-1, 2):
 		for dx in range(-1, 2):
 			var c := cpos + Vector2i(dx, dz)
@@ -478,6 +487,7 @@ func _unload_far() -> void:
 		if _in_radius(cpos, _center, limit):
 			continue
 		var col: ChunkColumn = columns[cpos]
+		column_unloading.emit(cpos)
 		if col.dirty:
 			world.store.store_column(col)
 		for si in WorldConst.SECTIONS_PER_COLUMN:
@@ -539,7 +549,21 @@ func _dispatch_mesh() -> void:
 			_snap(cpos + Vector2i.UP, si), _snap(cpos + Vector2i.DOWN, si),
 		]
 		var origin := Vector3i(cpos.x * 16, WorldConst.section_base_y(si), cpos.y * 16)
-		_mesh_tasks[key] = WorkerThreadPool.add_task(_mesh_task.bind(key, center, nbs, col.tints, origin), false, "mesh %s" % key)
+		var facings := _section_facings(col, si) if _models.any_in(center) else {}
+		_mesh_tasks[key] = WorkerThreadPool.add_task(_mesh_task.bind(key, center, nbs, col.tints, origin, facings), false, "mesh %s" % key)
+
+
+## Повороты моделей станций секции: локальный индекс → 0…3 (из данных блоков колонны).
+static func _section_facings(col: ChunkColumn, si: int) -> Dictionary:
+	var out := {}
+	for k: int in col.block_entities:
+		var e: Dictionary = col.block_entities[k]
+		if not e.has("facing"):
+			continue
+		var p := ChunkColumn.entity_pos(k)
+		if WorldConst.section_index(p.y) == si:
+			out[WorldConst.local_index(p.x, p.y & 15, p.z)] = int(e["facing"])
+	return out
 
 
 ## Секция и все шесть соседей — однородные непрозрачные блоки (низ мира считается непрозрачным).
@@ -572,8 +596,14 @@ func _snap(cpos: Vector2i, si: int) -> Variant:
 	return GreedyMesher.snapshot(col.sections[si])
 
 
-func _mesh_task(key: Vector3i, center: Array, nbs: Array, tints: PackedColorArray, origin: Vector3i) -> void:
+func _mesh_task(key: Vector3i, center: Array, nbs: Array, tints: PackedColorArray, origin: Vector3i,
+		facings: Dictionary = {}) -> void:
 	var res: Dictionary = _mesher.mesh_section(center, nbs, tints, season, origin)
+	if _models.any_in(center):
+		var arr := _models.build(center, facings)
+		if not arr.is_empty():
+			res["models"] = arr
+			res["quads"] = int(res["quads"]) + (arr[Mesh.ARRAY_INDEX] as PackedInt32Array).size() / 6
 	_results_mutex.lock()
 	_mesh_results.append([key, res])
 	_results_mutex.unlock()
@@ -633,6 +663,11 @@ func _apply_mesh(key: Vector3i, res: Dictionary) -> void:
 		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 		mesh.surface_set_material(mesh.get_surface_count() - 1, _material(key, surf))
 		surfs.append(surf)
+	var models: Array = res.get("models", [])
+	if not models.is_empty():
+		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, models)
+		mesh.surface_set_material(mesh.get_surface_count() - 1, _material(key, &"opaque"))
+		surfs.append(&"opaque")
 	_node_surfs[key] = surfs
 	var node: MeshInstance3D = _nodes.get(key)
 	if node == null:

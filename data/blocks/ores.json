@@ -365,6 +365,10 @@
    ],
    "textures": {
     "all": "lignite_ore"
+   },
+   "fuel": {
+    "heat": 850,
+    "minutes": 10
    }
   },
   {
@@ -392,6 +396,10 @@
    ],
    "textures": {
     "all": "coal_ore"
+   },
+   "fuel": {
+    "heat": 1100,
+    "minutes": 10
    }
   },
   {
@@ -419,6 +427,10 @@
    ],
    "textures": {
     "all": "anthracite_ore"
+   },
+   "fuel": {
+    "heat": 1250,
+    "minutes": 10
    }
   },
   {

@@ -7,7 +7,7 @@ const EQUIP_NONE := &"none"
 
 var id: StringName
 var name: Dictionary
-## material, tool, weapon, armor, clothing, backpack, accessory, shield, light, food, misc, block.
+## material, tool, weapon, armor, clothing, backpack, accessory, shield, light, food, misc, block, part.
 var kind: StringName
 var stack := 64
 var weight := 0.1
@@ -34,6 +34,14 @@ var place_block := 0
 var model := {}
 var icon := {}
 var tags: PackedStringArray = []
+## Ремесло (этап 6): топливо { heat, minutes }, цвет красителя, рецепты чертежа.
+var fuel := {}
+var dye := ""
+var unlocks: PackedStringArray = []
+## Часть инструмента (id из data/parts.json) — материал и качество лежат в данных стопки.
+var part: StringName = &""
+## Инструмент из частей (id из data/tool_types.json) — свойства считаются по частям.
+var assembly: StringName = &""
 
 
 static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
@@ -61,6 +69,10 @@ static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
 	d.model = e.get("model", {})
 	d.icon = e.get("icon", {})
 	d.tags = PackedStringArray(e["tags"])
+	var fu: Dictionary = e.get("fuel", {})
+	d.fuel = fu if float(fu.get("minutes", 0.0)) > 0.0 else {}
+	d.dye = String(e.get("dye", ""))
+	d.unlocks = PackedStringArray(e.get("unlocks", []))
 	if d.stack > 1 and (d.durability > 0 or d.equip != EQUIP_NONE):
 		d.stack = 1
 	return d
@@ -82,6 +94,42 @@ static func from_block(b: BlockDef) -> ItemDef:
 	d.tags = b.tags
 	d.food = b.food
 	d.medicine = b.medicine
+	d.fuel = b.fuel
+	return d
+
+
+## Предмет-часть (навершие, рукоять, обмотка): материал и качество — в данных стопки.
+static func from_part(e: Dictionary) -> ItemDef:
+	var d := ItemDef.new()
+	d.id = StringName(e["id"])
+	d.name = e["name"]
+	d.kind = &"part"
+	d.stack = 16
+	d.weight = 0.3 * float(e.get("units", 1)) * float(e.get("weight", 1.0))
+	d.quality = true
+	d.part = d.id
+	d.icon = e.get("icon", {})
+	d.tags = PackedStringArray(["part", String(e.get("slot", ""))])
+	return d
+
+
+## Инструмент или оружие из частей: прочность, скорость и урон — по частям (ToolAssembly).
+static func from_tool_type(e: Dictionary) -> ItemDef:
+	var d := ItemDef.new()
+	d.id = StringName(e["id"])
+	d.name = e["name"]
+	d.kind = StringName(e.get("kind", "tool"))
+	d.stack = 1
+	d.weight = 1.0
+	d.durability = int(e.get("durability", 100))
+	d.quality = true
+	d.damage = float(e.get("damage", 1.0))
+	d.assembly = d.id
+	var t := String(e.get("tool", "none"))
+	if t != "none":
+		d.tool = { "type": StringName(t), "tier": 1, "speed": 1.0 }
+	d.icon = e.get("icon", {})
+	d.tags = PackedStringArray(["assembled"])
 	return d
 
 
@@ -96,6 +144,18 @@ func display_name(p_locale: String = "") -> String:
 
 func is_block() -> bool:
 	return kind == &"block"
+
+
+func is_part() -> bool:
+	return part != &""
+
+
+func is_assembled() -> bool:
+	return assembly != &""
+
+
+func is_fuel() -> bool:
+	return not fuel.is_empty()
 
 
 func is_tool() -> bool:

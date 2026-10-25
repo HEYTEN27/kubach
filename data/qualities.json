@@ -1,0 +1,65 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "poor",
+   "name": {
+    "ru": "Плохое",
+    "en": "Poor"
+   },
+   "order": 0,
+   "color": "#9a8a7a",
+   "mult": 0.8,
+   "min_score": 0.0,
+   "score": 0.15
+  },
+  {
+   "id": "common",
+   "name": {
+    "ru": "Обычное",
+    "en": "Common"
+   },
+   "order": 1,
+   "color": "#e0e0e0",
+   "mult": 1.0,
+   "min_score": 0.3,
+   "score": 0.4
+  },
+  {
+   "id": "good",
+   "name": {
+    "ru": "Хорошее",
+    "en": "Good"
+   },
+   "order": 2,
+   "color": "#6ad06a",
+   "mult": 1.15,
+   "min_score": 0.55,
+   "score": 0.65
+  },
+  {
+   "id": "excellent",
+   "name": {
+    "ru": "Отличное",
+    "en": "Excellent"
+   },
+   "order": 3,
+   "color": "#5aa0ff",
+   "mult": 1.3,
+   "min_score": 0.75,
+   "score": 0.85
+  },
+  {
+   "id": "masterpiece",
+   "name": {
+    "ru": "Шедевр",
+    "en": "Masterpiece"
+   },
+   "order": 4,
+   "color": "#e8a030",
+   "mult": 1.5,
+   "min_score": 0.92,
+   "score": 1.0
+  }
+ ]
+}

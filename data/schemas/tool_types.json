@@ -1,0 +1,105 @@
+{
+ "format": 1,
+ "category": "tool_types",
+ "description": "Инструменты и оружие из частей (раздел 5.1).",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "gender": {
+   "type": "enum",
+   "default": "f",
+   "values": [
+    "m",
+    "f",
+    "n"
+   ],
+   "doc": "Род названия — для прилагательного материала."
+  },
+  "kind": {
+   "type": "enum",
+   "default": "tool",
+   "values": [
+    "tool",
+    "weapon"
+   ]
+  },
+  "head": {
+   "type": "ref",
+   "to": [
+    "parts"
+   ],
+   "required": true
+  },
+  "handle": {
+   "type": "ref",
+   "to": [
+    "parts"
+   ],
+   "required": true
+  },
+  "binding": {
+   "type": "ref",
+   "to": [
+    "parts"
+   ],
+   "required": true
+  },
+  "tool": {
+   "type": "enum",
+   "default": "none",
+   "values": [
+    "none",
+    "pickaxe",
+    "axe",
+    "shovel",
+    "hoe",
+    "knife",
+    "shears"
+   ],
+   "doc": "Чем ломает блоки."
+  },
+  "speed": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 5,
+   "doc": "Множитель скорости материала навершия."
+  },
+  "damage": {
+   "type": "float",
+   "default": 1.0,
+   "min": 0,
+   "max": 100
+  },
+  "sharp_k": {
+   "type": "float",
+   "default": 0.5,
+   "min": 0,
+   "max": 5,
+   "doc": "Сколько урона даёт острота навершия."
+  },
+  "durability": {
+   "type": "int",
+   "default": 100,
+   "min": 1,
+   "max": 10000
+  },
+  "icon": {
+   "type": "object",
+   "default": {},
+   "fields": {
+    "shape": {
+     "type": "string",
+     "default": ""
+    }
+   }
+  }
+ }
+}

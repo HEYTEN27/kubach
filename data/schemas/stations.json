@@ -1,0 +1,153 @@
+{
+ "format": 1,
+ "category": "stations",
+ "description": "Виды станций (раздел 6): слоты, жар, вода, режим работы.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "mode": {
+   "type": "enum",
+   "default": "process",
+   "values": [
+    "process",
+    "recipe",
+    "hand"
+   ],
+   "doc": "process — рецепт выбирается сам по входам; recipe — игрок выбирает рецепт."
+  },
+  "inputs": {
+   "type": "int",
+   "default": 0,
+   "min": 0,
+   "max": 9
+  },
+  "fuel": {
+   "type": "int",
+   "default": 0,
+   "min": 0,
+   "max": 4
+  },
+  "outputs": {
+   "type": "int",
+   "default": 1,
+   "min": 0,
+   "max": 9
+  },
+  "heat": {
+   "type": "bool",
+   "default": false,
+   "doc": "Есть температура и топливо."
+  },
+  "max_heat": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 4000
+  },
+  "bellows": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1000,
+   "doc": "Сколько °C добавляют мехи."
+  },
+  "heat_rate": {
+   "type": "float",
+   "default": 60.0,
+   "min": 0,
+   "max": 5000,
+   "doc": "Нагрев, °C за игровую минуту."
+  },
+  "cool_rate": {
+   "type": "float",
+   "default": 20.0,
+   "min": 0,
+   "max": 5000
+  },
+  "heat_source": {
+   "type": "bool",
+   "default": false,
+   "doc": "Можно греть заготовку для ковки."
+  },
+  "warmth": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 80,
+   "doc": "Тепло рядом, когда горит (как heat у блоков)."
+  },
+  "needs_water": {
+   "type": "bool",
+   "default": false,
+   "doc": "Работает только у воды (в 2 блоках)."
+  },
+  "quality_bonus": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 1
+  },
+  "assembly": {
+   "type": "bool",
+   "default": false
+  },
+  "repair": {
+   "type": "bool",
+   "default": false
+  },
+  "salvage": {
+   "type": "bool",
+   "default": false
+  },
+  "forge": {
+   "type": "bool",
+   "default": false,
+   "doc": "Ковка частей (наковальня)."
+  },
+  "light": {
+   "type": "int",
+   "default": 0,
+   "min": 0,
+   "max": 15,
+   "doc": "Свет, пока горит."
+  },
+  "light_color": {
+   "type": "color",
+   "default": "#ffb060"
+  },
+  "effects": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "enum",
+    "values": [
+     "fire",
+     "smoke",
+     "sparks",
+     "steam"
+    ]
+   }
+  },
+  "sound": {
+   "type": "string",
+   "default": "",
+   "doc": "Ключ звука работы (assets/audio/MANIFEST.md)."
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  },
+  "always_burn": {
+   "type": "bool",
+   "default": false,
+   "doc": "Горит и без работы (костёр — тепло и свет)."
+  }
+ }
+}

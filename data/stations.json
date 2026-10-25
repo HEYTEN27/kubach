@@ -1,0 +1,299 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "hand",
+   "name": {
+    "ru": "Руки",
+    "en": "Hand"
+   },
+   "mode": "hand",
+   "outputs": 0,
+   "order": 0
+  },
+  {
+   "id": "workbench",
+   "name": {
+    "ru": "Верстак",
+    "en": "Workbench"
+   },
+   "mode": "recipe",
+   "inputs": 3,
+   "outputs": 4,
+   "assembly": true,
+   "repair": true,
+   "salvage": true,
+   "quality_bonus": 0.1,
+   "sound": "stations/workbench",
+   "order": 1
+  },
+  {
+   "id": "carpenter",
+   "name": {
+    "ru": "Столярный стол",
+    "en": "Carpenter's Table"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "quality_bonus": 0.1,
+   "sound": "stations/saw",
+   "order": 2
+  },
+  {
+   "id": "sewing",
+   "name": {
+    "ru": "Швейный стол",
+    "en": "Sewing Table"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "quality_bonus": 0.1,
+   "sound": "stations/sewing",
+   "order": 3
+  },
+  {
+   "id": "pottery",
+   "name": {
+    "ru": "Гончарный круг",
+    "en": "Potter's Wheel"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "sound": "stations/pottery",
+   "order": 4
+  },
+  {
+   "id": "anvil",
+   "name": {
+    "ru": "Наковальня",
+    "en": "Anvil"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "forge": true,
+   "repair": true,
+   "quality_bonus": 0.05,
+   "effects": [
+    "sparks"
+   ],
+   "sound": "stations/anvil",
+   "order": 5,
+   "inputs": 1
+  },
+  {
+   "id": "crusher",
+   "name": {
+    "ru": "Дробилка",
+    "en": "Crusher"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 4,
+   "sound": "stations/crusher",
+   "order": 6
+  },
+  {
+   "id": "washing",
+   "name": {
+    "ru": "Промывочный лоток",
+    "en": "Washing Pan"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 4,
+   "needs_water": true,
+   "effects": [
+    "steam"
+   ],
+   "sound": "stations/washing",
+   "order": 7
+  },
+  {
+   "id": "furnace",
+   "name": {
+    "ru": "Каменная печь",
+    "en": "Stone Furnace"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "fuel": 1,
+   "outputs": 4,
+   "heat": true,
+   "max_heat": 1000,
+   "heat_rate": 70,
+   "cool_rate": 25,
+   "heat_source": true,
+   "warmth": 14,
+   "light": 12,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/furnace",
+   "order": 8
+  },
+  {
+   "id": "bloomery",
+   "name": {
+    "ru": "Плавильная печь с мехами",
+    "en": "Bloomery"
+   },
+   "mode": "process",
+   "inputs": 4,
+   "fuel": 2,
+   "outputs": 4,
+   "heat": true,
+   "max_heat": 1600,
+   "bellows": 350,
+   "heat_rate": 60,
+   "cool_rate": 30,
+   "heat_source": true,
+   "warmth": 16,
+   "light": 13,
+   "quality_bonus": 0.05,
+   "effects": [
+    "fire",
+    "smoke",
+    "sparks"
+   ],
+   "sound": "stations/bloomery",
+   "order": 9
+  },
+  {
+   "id": "kiln",
+   "name": {
+    "ru": "Обжиговая печь",
+    "en": "Kiln"
+   },
+   "mode": "process",
+   "inputs": 4,
+   "fuel": 1,
+   "outputs": 4,
+   "heat": true,
+   "max_heat": 1100,
+   "heat_rate": 50,
+   "cool_rate": 20,
+   "heat_source": true,
+   "warmth": 12,
+   "light": 10,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/kiln",
+   "order": 10
+  },
+  {
+   "id": "campfire",
+   "name": {
+    "ru": "Костёр",
+    "en": "Campfire"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "fuel": 1,
+   "outputs": 2,
+   "heat": true,
+   "max_heat": 750,
+   "heat_rate": 120,
+   "cool_rate": 40,
+   "warmth": 18,
+   "light": 14,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/campfire",
+   "order": 11,
+   "always_burn": true
+  },
+  {
+   "id": "grindstone",
+   "name": {
+    "ru": "Точило",
+    "en": "Grindstone"
+   },
+   "mode": "process",
+   "inputs": 1,
+   "outputs": 1,
+   "effects": [
+    "sparks"
+   ],
+   "sound": "stations/grindstone",
+   "order": 12
+  },
+  {
+   "id": "quench",
+   "name": {
+    "ru": "Бочка для закалки",
+    "en": "Quenching Barrel"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 1,
+   "effects": [
+    "steam"
+   ],
+   "sound": "stations/quench",
+   "order": 13
+  },
+  {
+   "id": "tanning_rack",
+   "name": {
+    "ru": "Кожевенная рама",
+    "en": "Tanning Rack"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/scrape",
+   "order": 14
+  },
+  {
+   "id": "tanning_barrel",
+   "name": {
+    "ru": "Дубильная бочка",
+    "en": "Tanning Barrel"
+   },
+   "mode": "process",
+   "inputs": 3,
+   "outputs": 2,
+   "order": 15
+  },
+  {
+   "id": "spinning",
+   "name": {
+    "ru": "Прялка",
+    "en": "Spinning Wheel"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/spinning",
+   "order": 16
+  },
+  {
+   "id": "loom",
+   "name": {
+    "ru": "Ткацкий станок",
+    "en": "Loom"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/loom",
+   "order": 17
+  },
+  {
+   "id": "dye_vat",
+   "name": {
+    "ru": "Красильный чан",
+    "en": "Dye Vat"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "order": 18
+  }
+ ]
+}

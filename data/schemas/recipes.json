@@ -1,0 +1,219 @@
+{
+ "format": 1,
+ "category": "recipes",
+ "description": "Рецепты и процессы (раздел 5): станция, входы, выход, время, жар, мини-игра, открытие.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "object",
+   "default": {},
+   "doc": "Название в книге рецептов; пусто — по выходу.",
+   "fields": {
+    "ru": {
+     "type": "string",
+     "default": ""
+    },
+    "en": {
+     "type": "string",
+     "default": ""
+    }
+   }
+  },
+  "station": {
+   "type": "ref",
+   "to": [
+    "stations"
+   ],
+   "required": true
+  },
+  "op": {
+   "type": "enum",
+   "default": "craft",
+   "values": [
+    "craft",
+    "forge_part",
+    "alloy",
+    "assemble",
+    "quench",
+    "sharpen",
+    "dye",
+    "cook",
+    "repair",
+    "salvage"
+   ]
+  },
+  "inputs": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "object",
+    "fields": {
+     "id": {
+      "type": "string",
+      "default": "",
+      "doc": "id предмета (или пусто, если tag)."
+     },
+     "tag": {
+      "type": "string",
+      "default": ""
+     },
+     "count": {
+      "type": "int",
+      "default": 1,
+      "min": 1,
+      "max": 999
+     }
+    }
+   }
+  },
+  "output": {
+   "type": "object",
+   "default": {},
+   "fields": {
+    "id": {
+     "type": "string",
+     "default": ""
+    },
+    "count": {
+     "type": "int",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    }
+   }
+  },
+  "extra": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "object",
+    "fields": {
+     "id": {
+      "type": "string",
+      "default": ""
+     },
+     "count": {
+      "type": "int",
+      "default": 1,
+      "min": 1,
+      "max": 999
+     },
+     "chance": {
+      "type": "float",
+      "default": 1.0,
+      "min": 0,
+      "max": 1
+     }
+    }
+   }
+  },
+  "time": {
+   "type": "float",
+   "default": 5.0,
+   "min": 0,
+   "max": 100000,
+   "doc": "Игровые минуты (1 мин ≈ 1 с при сутках 24 мин)."
+  },
+  "heat": {
+   "type": "float",
+   "default": 0.0,
+   "min": 0,
+   "max": 4000,
+   "doc": "Нужная температура станции, °C."
+  },
+  "minigame": {
+   "type": "enum",
+   "default": "none",
+   "values": [
+    "none",
+    "forge",
+    "smelt",
+    "cook"
+   ]
+  },
+  "tool_type": {
+   "type": "string",
+   "default": "",
+   "doc": "assemble/forge_part: какой инструмент или часть."
+  },
+  "categories": {
+   "type": "array",
+   "default": [],
+   "of": {
+    "type": "enum",
+    "values": [
+     "stone",
+     "metal",
+     "wood",
+     "binding"
+    ]
+   },
+   "doc": "Разрешённые категории материала навершия."
+  },
+  "min_tier": {
+   "type": "int",
+   "default": 0,
+   "min": 0,
+   "max": 8,
+   "doc": "Уровень станции (наковальни)."
+  },
+  "needs_tool": {
+   "type": "enum",
+   "default": "none",
+   "values": [
+    "none",
+    "knife",
+    "axe",
+    "pickaxe",
+    "shovel",
+    "hoe"
+   ],
+   "doc": "Нужен инструмент в инвентаре (изнашивается)."
+  },
+  "cook": {
+   "type": "object",
+   "default": {},
+   "fields": {
+    "perfect_from": {
+     "type": "float",
+     "default": 0.9
+    },
+    "perfect_to": {
+     "type": "float",
+     "default": 1.25
+    },
+    "burnt_at": {
+     "type": "float",
+     "default": 1.8
+    },
+    "burnt": {
+     "type": "string",
+     "default": "burnt_food"
+    }
+   }
+  },
+  "unlock": {
+   "type": "enum",
+   "default": "ingredients",
+   "values": [
+    "default",
+    "ingredients",
+    "blueprint"
+   ],
+   "doc": "default — известен сразу; ingredients — когда видел все входы; blueprint — только из чертежа."
+  },
+  "category": {
+   "type": "string",
+   "default": "misc",
+   "doc": "Раздел книги рецептов."
+  },
+  "order": {
+   "type": "int",
+   "default": 0
+  }
+ }
+}

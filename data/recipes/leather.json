@@ -1,0 +1,66 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "scrape_hide",
+   "station": "tanning_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_hide",
+     "count": 1
+    }
+   ],
+   "time": 60,
+   "unlock": "ingredients",
+   "category": "leather",
+   "output": {
+    "id": "scraped_hide",
+    "count": 1
+   },
+   "order": 0
+  },
+  {
+   "id": "tan_hide",
+   "station": "tanning_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "scraped_hide",
+     "count": 1
+    },
+    {
+     "tag": "tannin",
+     "count": 2
+    }
+   ],
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "leather",
+   "output": {
+    "id": "tanned_hide",
+    "count": 1
+   },
+   "order": 1
+  },
+  {
+   "id": "dry_leather",
+   "station": "tanning_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "tanned_hide",
+     "count": 1
+    }
+   ],
+   "time": 480,
+   "unlock": "ingredients",
+   "category": "leather",
+   "output": {
+    "id": "leather",
+    "count": 2
+   },
+   "order": 2
+  }
+ ]
+}

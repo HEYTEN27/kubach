@@ -144,11 +144,115 @@ def block_icon(e, atlas):
     return iso_cube(top, side, True)
 
 
+def _crop(tex, u0, v0, u1, v1):
+    """Часть текстуры по долям (с повтором за пределами 0…1)."""
+    n = tex.size[0]
+    x0, x1 = int(round(u0 * n)), int(round(u1 * n))
+    y0, y1 = int(round(v0 * n)), int(round(v1 * n))
+    w, h = max(1, x1 - x0), max(1, y1 - y0)
+    out = Image.new("RGBA", (w, h))
+    for yy in range(0, h, n):
+        for xx in range(0, w, n):
+            out.paste(tex.crop((0, 0, min(n, w - xx), min(n, h - yy))), (xx, yy))
+    if 0 <= x0 and x1 <= n and 0 <= y0 and y1 <= n:
+        out = tex.crop((x0, y0, x0 + w, y0 + h))
+    return out.resize((n, n), Image.NEAREST)
+
+
+def model_icon(e, atlas, blocks):
+    """Изометрия модели станции: коробки от дальних к ближним, видны верх и две передние грани."""
+    c = np.zeros((CANVAS, CANVAS, 4), dtype=np.float32)
+    boxes = e["model"]
+    lo = [min(b["from"][i] for b in boxes) / 16 for i in range(3)]
+    hi = [max(b["to"][i] for b in boxes) / 16 for i in range(3)]
+    span = max(hi[0] - lo[0], hi[2] - lo[2], (hi[1] - lo[1]) * 0.9, 1.0)
+    L = 100.0 / span
+    a = (L * math.cos(math.pi / 6), L * 0.5)
+    b = (-L * math.cos(math.pi / 6), L * 0.5)
+    D = (0.0, L)
+    cx = (lo[0] + hi[0]) / 2
+    cz = (lo[2] + hi[2]) / 2
+    cy = (lo[1] + hi[1]) / 2
+
+    def scr(x, y, z):
+        return (CANVAS / 2 + (x - cx) * a[0] + (z - cz) * b[0], CANVAS / 2 + 20 + (x - cx) * a[1] + (z - cz) * b[1] - (y - cy) * D[1])
+
+    def tex_of(bid, role):
+        be = blocks.get(bid)
+        if be is None:
+            return None
+        t = be["textures"]
+        return atlas.layer(t.get(role, t.get("all")))
+
+    order = sorted(boxes, key=lambda bx: ((bx["from"][0] + bx["to"][0]) + (bx["from"][2] + bx["to"][2]), bx["from"][1]))
+    for bx in order:
+        f = [v / 16 for v in bx["from"]]
+        t = [v / 16 for v in bx["to"]]
+        top = tex_of(bx["tex"], "top")
+        side = tex_of(bx["tex"], "side")
+        if top is None or side is None:
+            continue
+        top = top.copy()
+        top.putalpha(255)
+        side = side.copy()
+        side.putalpha(255)
+        dx, dy, dz = t[0] - f[0], t[1] - f[1], t[2] - f[2]
+        # Передняя-левая грань (z = to), передняя-правая (x = to), верх (y = to).
+        face(c, _crop(side, f[0] % 1, 0, f[0] % 1 + dx, dy), scr(f[0], t[1], t[2]), (a[0] * dx, a[1] * dx), (0.0, D[1] * dy), 0.8)
+        face(c, _crop(side, f[2] % 1, 0, f[2] % 1 + dz, dy), scr(t[0], t[1], t[2]), (-b[0] * dz, -b[1] * dz),
+             (0.0, D[1] * dy), 0.62)
+        face(c, _crop(top, f[0] % 1, f[2] % 1, f[0] % 1 + dx, f[2] % 1 + dz), scr(f[0], t[1], f[2]),
+             (a[0] * dx, a[1] * dx), (b[0] * dz, b[1] * dz), 1.0)
+    return Image.fromarray(np.clip(c, 0, 255).astype(np.uint8), "RGBA")
+
+
 # ---------------------------------------------------------------------------------------------
 # Нарисованные иконки предметов
 
 def _c(rgb, k=1.0, a=255):
     return tuple(int(max(0, min(255, v * k))) for v in rgb) + (a,)
+
+
+PART_SHAPES = ("pickaxe_head", "axe_head", "shovel_head", "hoe_head", "knife_blade", "sword_blade", "spear_head",
+               "haft", "grip", "binding")
+
+
+def draw_part(d, shape, col, col2, handle):
+    """Части инструментов: навершия и клинки цвета материала, рукояти цвета древесины."""
+    if shape == "pickaxe_head":
+        d.polygon([(30, 150), (90, 90), (166, 90), (226, 150), (196, 130), (128, 116), (60, 130)], fill=_c(col))
+        d.rectangle([110, 100, 146, 140], fill=_c(col, 0.75))
+        d.line([(40, 146), (96, 96), (160, 96), (216, 146)], fill=_c(col, 1.4), width=5)
+    elif shape == "axe_head":
+        d.polygon([(70, 100), (160, 80), (220, 40), (230, 200), (160, 170), (70, 150)], fill=_c(col))
+        d.line([(222, 46), (228, 194)], fill=_c(col, 1.45), width=7)
+        d.ellipse([84, 110, 116, 140], fill=(20, 18, 16, 255))
+    elif shape == "shovel_head":
+        d.polygon([(80, 40), (176, 40), (196, 170), (128, 226), (60, 170)], fill=_c(col))
+        d.polygon([(110, 40), (146, 40), (140, 120), (116, 120)], fill=_c(col, 1.25))
+    elif shape == "hoe_head":
+        d.polygon([(60, 80), (200, 80), (210, 130), (60, 120)], fill=_c(col))
+        d.rectangle([60, 60, 96, 120], fill=_c(col, 0.8))
+        d.line([(100, 126), (208, 126)], fill=_c(col, 1.4), width=5)
+    elif shape == "knife_blade":
+        d.polygon([(40, 170), (200, 60), (226, 50), (210, 84), (70, 190)], fill=_c(col))
+        d.line([(50, 172), (204, 66)], fill=_c(col, 1.45), width=5)
+        d.rectangle([24, 172, 60, 206], fill=_c(col, 0.7))
+    elif shape == "sword_blade":
+        d.polygon([(30, 210), (210, 50), (236, 22), (226, 60), (50, 226)], fill=_c(col))
+        d.line([(40, 214), (216, 54)], fill=_c(col, 1.4), width=6)
+    elif shape == "spear_head":
+        d.polygon([(90, 200), (128, 30), (166, 200), (128, 226)], fill=_c(col))
+        d.polygon([(128, 30), (166, 200), (128, 226)], fill=_c(col, 0.8))
+    elif shape == "haft":
+        handle(40, 230, 216, 30, 18, col)
+    elif shape == "grip":
+        handle(70, 190, 186, 70, 26, col)
+        for i in range(4):
+            d.line([(92 + i * 22, 168 - i * 22), (112 + i * 22, 186 - i * 22)], fill=_c(col, 0.6), width=4)
+    elif shape == "binding":
+        for i in range(5):
+            d.ellipse([50 + i * 6, 70 + i * 10, 206 - i * 6, 186 - i * 6], outline=_c(col, 0.8 + 0.08 * i), width=14)
 
 
 def draw_item(e):
@@ -331,6 +435,46 @@ def draw_item(e):
         d.rectangle([60, 40, 196, 90], fill=_c(col2))
         for i in range(3):
             d.ellipse([86 + i * 30, 140, 112 + i * 30, 166], fill=_c(col2, 1.1))
+    elif shape in PART_SHAPES:
+        draw_part(d, shape, col, col2, handle)
+    elif shape == "ingot":
+        d.polygon([(40, 170), (90, 120), (230, 120), (190, 170)], fill=_c(col, 1.25))
+        d.polygon([(40, 170), (190, 170), (190, 205), (40, 205)], fill=_c(col, 0.85))
+        d.polygon([(190, 170), (230, 120), (230, 155), (190, 205)], fill=_c(col, 0.65))
+        d.line([(95, 128), (200, 128)], fill=_c(col, 1.6), width=5)
+    elif shape == "lump":
+        d.polygon([(60, 150), (90, 80), (160, 60), (210, 110), (200, 190), (120, 210)], fill=_c(col))
+        d.polygon([(90, 80), (160, 60), (140, 120)], fill=_c(col, 1.8))
+        d.polygon([(160, 60), (210, 110), (140, 120)], fill=_c(col, 1.3))
+    elif shape == "gravel":
+        rng = np.random.default_rng(len(e["id"]) * 7919)
+        for _ in range(26):
+            x, y = 50 + rng.random() * 150, 90 + rng.random() * 110
+            r = 10 + rng.random() * 16
+            k = 0.75 + rng.random() * 0.6
+            d.ellipse([x - r, y - r * 0.8, x + r, y + r * 0.8], fill=_c(col, k))
+    elif shape == "bark":
+        d.polygon([(50, 80), (210, 50), (220, 170), (60, 210)], fill=_c(col))
+        for i in range(6):
+            d.line([(70 + i * 25, 75 - i * 4), (78 + i * 25, 200 - i * 6)], fill=_c(col, 0.6), width=6)
+    elif shape == "strip":
+        d.line([(40, 200), (110, 120), (160, 150), (220, 60)], fill=_c(col, 0.7), width=24)
+        d.line([(40, 200), (110, 120), (160, 150), (220, 60)], fill=_c(col), width=16)
+    elif shape == "thread":
+        d.rounded_rectangle([96, 40, 160, 220], 12, fill=_c(hex_rgb("#8a6a44")))
+        for y in range(60, 205, 9):
+            d.line([(82, y), (174, y + 4)], fill=_c(col, 0.85 + 0.15 * ((y // 9) % 2)), width=8)
+    elif shape == "brick":
+        d.polygon([(40, 150), (100, 110), (230, 110), (180, 150)], fill=_c(col, 1.2))
+        d.polygon([(40, 150), (180, 150), (180, 200), (40, 200)], fill=_c(col, 0.9))
+        d.polygon([(180, 150), (230, 110), (230, 160), (180, 200)], fill=_c(col, 0.7))
+    elif shape == "scroll":
+        d.rectangle([60, 50, 196, 210], fill=_c(col))
+        d.ellipse([46, 36, 76, 66], fill=_c(col, 0.8))
+        d.ellipse([180, 194, 210, 224], fill=_c(col, 0.8))
+        for y in range(80, 190, 18):
+            d.line([(80, y), (176, y)], fill=_c(hex_rgb("#5a4a3a")), width=4)
+        d.ellipse([140, 150, 180, 190], outline=_c(hex_rgb("#3a5aa8")), width=6)
     else:
         d.rounded_rectangle([60, 60, 196, 196], 24, fill=_c(col))
     # Обводка и мягкая тень сверху-слева → объём.
@@ -346,12 +490,37 @@ def build(out_dir=GEN):
     atlas = Atlas()
     icons = []
     ids = []
+    all_blocks = {e["id"]: e for e in load_entries([os.path.join(ROOT, "data", "blocks.json")] +
+                                                   sorted(glob.glob(os.path.join(ROOT, "data", "blocks", "*.json"))))}
     for e in block_items():
-        icons.append(block_icon(e, atlas))
+        icons.append(model_icon(e, atlas, all_blocks) if e.get("model") else block_icon(e, atlas))
         ids.append(e["id"])
     for e in load_entries([os.path.join(ROOT, "data", "items.json")] + sorted(glob.glob(os.path.join(ROOT, "data", "items", "*.json")))):
         icons.append(draw_item(e))
         ids.append(e["id"])
+    # Части и инструменты из частей: основная иконка и варианты «id@материал» (цвет материала).
+    mats = load_entries([os.path.join(ROOT, "data", "materials.json")])
+    by_cat = {}
+    for m in mats:
+        by_cat.setdefault(m["category"], []).append(m)
+    head_mats = [m for m in by_cat.get("metal", []) if m.get("tier", 1) > 0] + by_cat.get("stone", [])
+    wood = hex_rgb("#8a6a44")
+    for p in load_entries([os.path.join(ROOT, "data", "parts.json")]):
+        shape = p.get("icon", {}).get("shape", p["id"])
+        cats = p.get("categories", [])
+        variants = head_mats if p["slot"] == "head" else by_cat.get(cats[0] if cats else "wood", [])
+        icons.append(draw_item({"id": p["id"], "icon": {"shape": shape, "color": "#a8acb2" if p["slot"] == "head" else "#8a6a44"}}))
+        ids.append(p["id"])
+        for m in variants:
+            icons.append(draw_item({"id": p["id"], "icon": {"shape": shape, "color": m.get("color", "#808080")}}))
+            ids.append(p["id"] + "@" + m["id"])
+    for t in load_entries([os.path.join(ROOT, "data", "tool_types.json")]):
+        shape = t.get("icon", {}).get("shape", t["id"])
+        icons.append(draw_item({"id": t["id"], "icon": {"shape": shape, "color": "#a8acb2", "color2": "#6b4a2c"}}))
+        ids.append(t["id"])
+        for m in head_mats:
+            icons.append(draw_item({"id": t["id"], "icon": {"shape": shape, "color": m.get("color", "#808080"), "color2": "#6b4a2c"}}))
+            ids.append(t["id"] + "@" + m["id"])
     rows = math.ceil(len(icons) / COLUMNS)
     sheet = Image.new("RGBA", (COLUMNS * ICON, rows * ICON), (0, 0, 0, 0))
     for i, img in enumerate(icons):

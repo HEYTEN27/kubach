@@ -1,0 +1,78 @@
+{
+ "format": 1,
+ "category": "alloys",
+ "description": "Сплавы по пропорциям (раздел 5.2): бронза = медь 88 % + олово 12 %.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "result": {
+   "type": "ref",
+   "to": [
+    "items",
+    "blocks",
+    "parts",
+    "tool_types"
+   ],
+   "required": true
+  },
+  "components": {
+   "type": "array",
+   "of": {
+    "type": "object",
+    "fields": {
+     "material": {
+      "type": "string",
+      "default": ""
+     },
+     "share": {
+      "type": "float",
+      "default": 0.5,
+      "min": 0,
+      "max": 1
+     },
+     "items": {
+      "type": "array",
+      "default": [],
+      "of": {
+       "type": "ref",
+       "to": [
+        "items",
+        "blocks",
+        "parts",
+        "tool_types"
+       ]
+      }
+     }
+    }
+   },
+   "required": true
+  },
+  "tolerance": {
+   "type": "float",
+   "default": 0.04,
+   "min": 0.001,
+   "max": 1,
+   "doc": "Отклонение доли, при котором качество падает на ступень."
+  },
+  "heat": {
+   "type": "float",
+   "default": 1000.0,
+   "min": 0,
+   "max": 4000
+  },
+  "time": {
+   "type": "float",
+   "default": 30.0,
+   "min": 0,
+   "max": 100000,
+   "doc": "Игровые минуты на единицу."
+  }
+ }
+}

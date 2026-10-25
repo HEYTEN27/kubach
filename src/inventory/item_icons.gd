@@ -52,6 +52,20 @@ func has_icon(id: StringName) -> bool:
 	return _index.has(String(id))
 
 
+## Иконка стопки: у частей и инструментов из частей — вариант по материалу («pickaxe@steel»).
+func icon_for(s: ItemStack) -> Texture2D:
+	var mat := ""
+	if s.data.has("material"):
+		mat = String(s.data["material"])
+	elif s.data.get("parts") is Dictionary:
+		mat = String(s.data["parts"].get("head", {}).get("material", ""))
+	if mat != "":
+		var key := StringName("%s@%s" % [s.id, mat])
+		if has_icon(key):
+			return icon(key)
+	return icon(s.id)
+
+
 func icon(id: StringName) -> Texture2D:
 	if _cache.has(id):
 		return _cache[id]

@@ -1,0 +1,837 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "spruce_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "spruce_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "spruce_planks",
+    "count": 4
+   },
+   "order": 0
+  },
+  {
+   "id": "fir_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "fir_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "fir_planks",
+    "count": 4
+   },
+   "order": 1
+  },
+  {
+   "id": "pine_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pine_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "pine_planks",
+    "count": 4
+   },
+   "order": 2
+  },
+  {
+   "id": "cedar_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cedar_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "cedar_planks",
+    "count": 4
+   },
+   "order": 3
+  },
+  {
+   "id": "larch_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "larch_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "larch_planks",
+    "count": 4
+   },
+   "order": 4
+  },
+  {
+   "id": "birch_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "birch_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "birch_planks",
+    "count": 4
+   },
+   "order": 5
+  },
+  {
+   "id": "aspen_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "aspen_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "aspen_planks",
+    "count": 4
+   },
+   "order": 6
+  },
+  {
+   "id": "oak_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oak_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "oak_planks",
+    "count": 4
+   },
+   "order": 7
+  },
+  {
+   "id": "maple_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "maple_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "maple_planks",
+    "count": 4
+   },
+   "order": 8
+  },
+  {
+   "id": "linden_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "linden_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "linden_planks",
+    "count": 4
+   },
+   "order": 9
+  },
+  {
+   "id": "alder_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "alder_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "alder_planks",
+    "count": 4
+   },
+   "order": 10
+  },
+  {
+   "id": "willow_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "willow_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "willow_planks",
+    "count": 4
+   },
+   "order": 11
+  },
+  {
+   "id": "rowan_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rowan_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "rowan_planks",
+    "count": 4
+   },
+   "order": 12
+  },
+  {
+   "id": "bird_cherry_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bird_cherry_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "bird_cherry_planks",
+    "count": 4
+   },
+   "order": 13
+  },
+  {
+   "id": "apple_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apple_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "apple_planks",
+    "count": 4
+   },
+   "order": 14
+  },
+  {
+   "id": "pear_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pear_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "pear_planks",
+    "count": 4
+   },
+   "order": 15
+  },
+  {
+   "id": "cherry_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cherry_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "cherry_planks",
+    "count": 4
+   },
+   "order": 16
+  },
+  {
+   "id": "plum_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "plum_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "plum_planks",
+    "count": 4
+   },
+   "order": 17
+  },
+  {
+   "id": "apricot_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apricot_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "apricot_planks",
+    "count": 4
+   },
+   "order": 18
+  },
+  {
+   "id": "hazel_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "hazel_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "hazel_planks",
+    "count": 4
+   },
+   "order": 19
+  },
+  {
+   "id": "palm_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "palm_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "palm_planks",
+    "count": 4
+   },
+   "order": 20
+  },
+  {
+   "id": "acacia_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "acacia_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "acacia_planks",
+    "count": 4
+   },
+   "order": 21
+  },
+  {
+   "id": "jungle_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "jungle_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "jungle_planks",
+    "count": 4
+   },
+   "order": 22
+  },
+  {
+   "id": "mangrove_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "mangrove_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "mangrove_planks",
+    "count": 4
+   },
+   "order": 23
+  },
+  {
+   "id": "dwarf_birch_planks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "dwarf_birch_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "planks",
+   "output": {
+    "id": "dwarf_birch_planks",
+    "count": 4
+   },
+   "order": 24
+  },
+  {
+   "id": "planks_sticks",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "time": 2,
+   "unlock": "default",
+   "category": "basic",
+   "output": {
+    "id": "stick",
+    "count": 4
+   },
+   "order": 25
+  },
+  {
+   "id": "carve_haft",
+   "station": "carpenter",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "haft",
+    "count": 2
+   },
+   "order": 26
+  },
+  {
+   "id": "carve_grip",
+   "station": "carpenter",
+   "op": "forge_part",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "default",
+   "category": "parts",
+   "output": {
+    "id": "grip",
+    "count": 3
+   },
+   "order": 27
+  },
+  {
+   "id": "wooden_bowl",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "output": {
+    "id": "wooden_bowl",
+    "count": 2
+   },
+   "order": 28
+  },
+  {
+   "id": "wooden_cup",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "output": {
+    "id": "wooden_cup",
+    "count": 2
+   },
+   "order": 29
+  },
+  {
+   "id": "oak_bark",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oak_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "leather",
+   "output": {
+    "id": "oak_bark",
+    "count": 3
+   },
+   "extra": [
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "order": 30
+  },
+  {
+   "id": "linden_bast",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "linden_log",
+     "count": 1
+    }
+   ],
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "textile",
+   "output": {
+    "id": "bast",
+    "count": 4
+   },
+   "order": 31
+  },
+  {
+   "id": "chest_wood",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 8
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "chest_wood",
+    "count": 1
+   },
+   "order": 32
+  },
+  {
+   "id": "chest_reinforced",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 8
+    },
+    {
+     "id": "iron_ingot",
+     "count": 2
+    }
+   ],
+   "time": 25,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "chest_reinforced",
+    "count": 1
+   },
+   "order": 33
+  },
+  {
+   "id": "chest_iron",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_ingot",
+     "count": 8
+    },
+    {
+     "tag": "planks",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "chest_iron",
+    "count": 1
+   },
+   "order": 34
+  },
+  {
+   "id": "dresser",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 10
+    },
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "dresser",
+    "count": 1
+   },
+   "order": 35
+  },
+  {
+   "id": "barrel",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 1
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "barrel",
+    "count": 1
+   },
+   "order": 36
+  },
+  {
+   "id": "crate",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    }
+   ],
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "storage",
+   "output": {
+    "id": "crate",
+    "count": 1
+   },
+   "order": 37
+  },
+  {
+   "id": "bed",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "tag": "cloth",
+     "count": 3
+    }
+   ],
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "furniture",
+   "output": {
+    "id": "bed",
+    "count": 1
+   },
+   "order": 38
+  },
+  {
+   "id": "double_bed",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "tag": "cloth",
+     "count": 5
+    }
+   ],
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "furniture",
+   "output": {
+    "id": "double_bed",
+    "count": 1
+   },
+   "order": 39
+  },
+  {
+   "id": "wooden_club",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    }
+   ],
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "weapons",
+   "output": {
+    "id": "wooden_club",
+    "count": 1
+   },
+   "order": 40
+  },
+  {
+   "id": "wooden_shield",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "leather_strip",
+     "count": 2
+    }
+   ],
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "weapons",
+   "output": {
+    "id": "wooden_shield",
+    "count": 1
+   },
+   "order": 41
+  }
+ ]
+}

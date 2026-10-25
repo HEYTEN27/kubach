@@ -26,7 +26,11 @@
    "tags": [
     "log",
     "fir"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "fir_leaves",
@@ -84,7 +88,11 @@
    "tags": [
     "log",
     "pine"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "pine_leaves",
@@ -142,7 +150,11 @@
    "tags": [
     "log",
     "cedar"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "cedar_leaves",
@@ -200,7 +212,11 @@
    "tags": [
     "log",
     "larch"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "larch_leaves",
@@ -258,7 +274,11 @@
    "tags": [
     "log",
     "birch"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "birch_leaves",
@@ -316,7 +336,11 @@
    "tags": [
     "log",
     "aspen"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "aspen_leaves",
@@ -374,7 +398,11 @@
    "tags": [
     "log",
     "oak"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "oak_leaves",
@@ -432,7 +460,11 @@
    "tags": [
     "log",
     "maple"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "maple_leaves",
@@ -490,7 +522,11 @@
    "tags": [
     "log",
     "linden"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "linden_leaves",
@@ -548,7 +584,11 @@
    "tags": [
     "log",
     "alder"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "alder_leaves",
@@ -606,7 +646,11 @@
    "tags": [
     "log",
     "willow"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "willow_leaves",
@@ -664,7 +708,11 @@
    "tags": [
     "log",
     "rowan"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "rowan_leaves",
@@ -722,7 +770,11 @@
    "tags": [
     "log",
     "bird_cherry"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "bird_cherry_leaves",
@@ -780,7 +832,11 @@
    "tags": [
     "log",
     "apple"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "apple_leaves",
@@ -838,7 +894,11 @@
    "tags": [
     "log",
     "pear"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "pear_leaves",
@@ -896,7 +956,11 @@
    "tags": [
     "log",
     "cherry"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "cherry_leaves",
@@ -954,7 +1018,11 @@
    "tags": [
     "log",
     "plum"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "plum_leaves",
@@ -1012,7 +1080,11 @@
    "tags": [
     "log",
     "apricot"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "apricot_leaves",
@@ -1070,7 +1142,11 @@
    "tags": [
     "log",
     "hazel"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "hazel_leaves",
@@ -1128,7 +1204,11 @@
    "tags": [
     "log",
     "palm"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "palm_leaves",
@@ -1186,7 +1266,11 @@
    "tags": [
     "log",
     "acacia"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "acacia_leaves",
@@ -1244,7 +1328,11 @@
    "tags": [
     "log",
     "jungle"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "jungle_leaves",
@@ -1302,7 +1390,11 @@
    "tags": [
     "log",
     "mangrove"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "mangrove_leaves",
@@ -1360,7 +1452,11 @@
    "tags": [
     "log",
     "dwarf_birch"
-   ]
+   ],
+   "fuel": {
+    "heat": 750,
+    "minutes": 8
+   }
   },
   {
    "id": "dwarf_birch_leaves",
