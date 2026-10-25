@@ -1,67 +1,73 @@
 {
-  "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
-  "date": "2026-10-24T15:18:21",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "date": "2026-10-25T07:27:08",
   "engine": "4.7.2-stable (official)",
   "results": {
     "biome_preview_128": {
       "iterations": 3,
-      "max_ms": 195.352,
-      "median_ms": 189.927,
-      "min_ms": 187.921
+      "max_ms": 169.875,
+      "median_ms": 161.635,
+      "min_ms": 160.348
     },
     "grass_column": {
       "iterations": 20,
-      "max_ms": 7.205,
-      "median_ms": 3.584,
-      "min_ms": 1.851
+      "max_ms": 6.629,
+      "median_ms": 3.119,
+      "min_ms": 1.675
     },
     "light_column_native": {
       "iterations": 12,
-      "max_ms": 10.339,
-      "median_ms": 9.199,
-      "min_ms": 8.022
+      "max_ms": 9.754,
+      "median_ms": 7.737,
+      "min_ms": 6.634
     },
     "lod_tile_step4": {
       "iterations": 10,
-      "max_ms": 26.52,
-      "median_ms": 23.664,
-      "min_ms": 13.966
+      "max_ms": 20.538,
+      "median_ms": 19.953,
+      "min_ms": 10.506
     },
     "mesh_surface_section": {
       "iterations": 30,
-      "max_ms": 20.7,
-      "median_ms": 11.547,
-      "min_ms": 4.858
+      "max_ms": 22.35,
+      "median_ms": 9.847,
+      "min_ms": 4.265
     },
     "mesh_surface_section_native": {
       "iterations": 30,
-      "max_ms": 0.877,
-      "median_ms": 0.325,
-      "min_ms": 0.068
+      "max_ms": 0.786,
+      "median_ms": 0.32,
+      "min_ms": 0.066
     },
     "registry_load": {
       "iterations": 20,
-      "max_ms": 184.299,
-      "median_ms": 114.574,
-      "min_ms": 99.467
+      "max_ms": 214.19,
+      "median_ms": 174.374,
+      "min_ms": 164.175
+    },
+    "stations_tick": {
+      "iterations": 20,
+      "max_ms": 5.029,
+      "median_ms": 2.338,
+      "min_ms": 2.16
     },
     "survival_probe": {
       "iterations": 20,
-      "max_ms": 1.977,
-      "median_ms": 0.479,
-      "min_ms": 0.43
+      "max_ms": 1.606,
+      "median_ms": 0.426,
+      "min_ms": 0.402
     },
     "terrain_column": {
       "iterations": 40,
-      "max_ms": 47.339,
-      "median_ms": 25.455,
-      "min_ms": 16.169
+      "max_ms": 41.755,
+      "median_ms": 19.334,
+      "min_ms": 15.112
     },
     "world_load_view12": {
       "iterations": 2,
-      "max_ms": 7925.394,
-      "median_ms": 7925.394,
-      "min_ms": 6832.325
+      "max_ms": 6519.69,
+      "median_ms": 6519.69,
+      "min_ms": 5658.465
     }
   },
   "threads": 4
