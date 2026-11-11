@@ -3,7 +3,8 @@ extends Node3D
 ## Предметы на земле (выпали из блоков, выброшены игроком, высыпались из сундука).
 ## Каждый — маленькое AABB-тело (VoxelBody, координаты в double) и спрайт иконки. Подбираются,
 ## когда игрок рядом и задержка прошла; одинаковые лежащие рядом сливаются. Сохраняются в
-## world.json, исчезают через DESPAWN_SEC.
+## world.json, исчезают через DESPAWN_SEC. В воде (этап 8) лёгкое и деревянное всплывает и
+## дрейфует по течению, тяжёлое медленно тонет.
 
 signal picked_up(stack: ItemStack)
 
@@ -18,6 +19,8 @@ var world: World
 ## Кто подбирает: PlayerInventory и тело игрока.
 var inventory: PlayerInventory
 var player_body: VoxelBody
+## Течение: `current_at(x, y, z) -> Vector3` (FluidSystem).
+var current_at: Callable
 
 var _items: Array[_Dropped] = []
 var _merge_timer := 0.0
@@ -91,12 +94,25 @@ func _physics_process(delta: float) -> void:
 		if _try_pickup(d):
 			_remove(i)
 			continue
-		d.vy -= GRAVITY * delta
-		var drag := 0.92 if d.body.on_ground else 0.99
-		d.vx *= drag
-		d.vz *= drag
+		var surface := world.liquid_surface(d.body.x, d.body.y + 0.05, d.body.z)
+		if surface != -INF:
+			var def := world.registry.item(d.stack.id)
+			var floats := def != null and def.floats
+			var target := clampf((surface - 0.12 - d.body.y) * 4.0, -1.0, 2.5) if floats else -0.8
+			d.vy = lerpf(d.vy, target, 1.0 - exp(-4.0 * delta))
+			var cur := Vector3.ZERO
+			if current_at.is_valid():
+				cur = current_at.call(d.body.x, d.body.y + 0.05, d.body.z)
+			var k := 1.0 - exp(-(2.0 if floats else 0.6) * delta)
+			d.vx = lerpf(d.vx, cur.x, k)
+			d.vz = lerpf(d.vz, cur.z, k)
+		else:
+			d.vy -= GRAVITY * delta
+			var drag := 0.92 if d.body.on_ground else 0.99
+			d.vx *= drag
+			d.vz *= drag
 		d.body.move(d.vx * delta, d.vy * delta, d.vz * delta)
-		if d.body.on_ground:
+		if d.body.on_ground and d.vy < 0.0:
 			d.vy = 0.0
 		if d.body.hit_wall:
 			d.vx *= -0.3

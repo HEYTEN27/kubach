@@ -21,7 +21,8 @@ const SHAPE_CODES := { &"cube": 0, &"cross": 1, &"layer": 2 }
 const TINT_NONE := 0
 const TINT_GRASS := 1
 const TINT_FOLIAGE := 2
-const TINT_CODES := { &"none": 0, &"grass": 1, &"foliage": 2 }
+const TINT_WATER := 3
+const TINT_CODES := { &"none": 0, &"grass": 1, &"foliage": 2, &"water": 3 }
 
 var num: int
 var id: StringName
@@ -61,6 +62,10 @@ var heat := 0.0
 var contact_damage := 0.0
 ## Кровать: kind (none, sleeping_bag, bed, double_bed) и rest.
 var bed := {}
+## Жидкость (этап 8): вид (id из data/fluids.json, "" — не жидкость), уровень 1…8, источник.
+var fluid_kind: StringName = &""
+var fluid_level := 0
+var fluid_source := false
 ## Ремесло (этап 6): вид станции (data/stations.json) и уровень (наковальни); модель из
 ## коробок вместо куба — [{ from: Vector3, to: Vector3 (в блоках), tex: StringName, anim }];
 ## топливо { heat, minutes }.
@@ -109,6 +114,10 @@ static func from_entry(p_num: int, e: Dictionary) -> BlockDef:
 	b.weight = e.get("weight", 1.0)
 	b.heat = e.get("heat", 0.0)
 	b.contact_damage = e.get("contact_damage", 0.0)
+	var fl: Dictionary = e.get("fluid", {})
+	b.fluid_kind = StringName(fl.get("kind", ""))
+	b.fluid_level = int(fl.get("level", 8)) if b.fluid_kind != &"" else 0
+	b.fluid_source = bool(fl.get("source", false)) and b.fluid_kind != &""
 	var bd: Dictionary = e.get("bed", {})
 	b.bed = bd if String(bd.get("kind", "none")) != "none" else {}
 	b.food = _non_empty(e.get("food", {}))

@@ -20,6 +20,7 @@ var _ui: AudioStreamPlayer
 var _ambient: AudioStreamPlayer
 ## Зацикленные фоны (погода, этап 7): канал → { player, key, target }.
 var _loops := {}
+var _underwater := false
 
 
 func _ready() -> void:
@@ -120,6 +121,28 @@ func set_loop(channel: StringName, key: String, volume_db: float = 0.0) -> void:
 			player.volume_db = -60.0
 			player.play()
 	l["target"] = volume_db if key != "" else -60.0
+
+
+## Под водой (этап 8): всё, кроме интерфейса, глуше — фильтр низких частот на шинах.
+func set_underwater(on: bool) -> void:
+	if on == _underwater:
+		return
+	_underwater = on
+	for bus_name: StringName in [&"SFX", &"Ambience", &"Music", &"Voice"]:
+		var bus := AudioServer.get_bus_index(bus_name)
+		if bus < 0:
+			continue
+		var idx := -1
+		for i in AudioServer.get_bus_effect_count(bus):
+			if AudioServer.get_bus_effect(bus, i) is AudioEffectLowPassFilter:
+				idx = i
+		if idx < 0:
+			var lp := AudioEffectLowPassFilter.new()
+			lp.cutoff_hz = 650.0
+			lp.resonance = 0.6
+			AudioServer.add_bus_effect(bus, lp)
+			idx = AudioServer.get_bus_effect_count(bus) - 1
+		AudioServer.set_bus_effect_enabled(bus, idx, on)
 
 
 ## Есть ли файлы для звука (для выбора «под крышей» / «снаружи»).

@@ -14,6 +14,8 @@ const FACE_TOP := 0
 const FACE_BOTTOM := 1
 const FACE_SIDE := 2
 const LIQUID_OPACITY := 0.72
+## Конечная (текущая) вода — чуть иначе, чтобы шейдер отличал водопады от источников.
+const FLOWING_OPACITY := 0.70
 ## Яркость самосветящихся блоков (лава) при light_emission = 15.
 const EMISSION_ENERGY := 2.5
 
@@ -70,9 +72,13 @@ func build_info_image(registry: ContentRegistry) -> Image:
 				img.set_pixel(face, num, Color(-1, 1, 0, emission))
 			else:
 				img.set_pixel(face, num, Color(float(s["first"]), float(s["count"]), 1.0 if s["rotate"] else 0.0, emission))
+		# Альфа строки 3: −1 — не жидкость, LIQUID_OPACITY — вода-источник, FLOWING_OPACITY — конечная
+		# вода (шейдер воды: пена на падающих струях), 1 — прочие жидкости (лава).
 		var opacity := -1.0
 		if b.render == &"liquid":
-			opacity = LIQUID_OPACITY
+			opacity = 1.0
+			if b.tint == &"water":
+				opacity = LIQUID_OPACITY if b.fluid_source else FLOWING_OPACITY
 		var c := b.map_color
 		img.set_pixel(3, num, Color(c.r, c.g, c.b, opacity))
 	if not missing.is_empty() and not sets.is_empty():

@@ -93,3 +93,28 @@ func test_default_arguments() -> void:
 	var a := gd.mesh_section([stone, PackedInt32Array(), true, false], empty)
 	var b: Dictionary = native.mesh_section([stone, PackedInt32Array(), true, false], empty)
 	assert_eq(b["quads"], a["quads"], "вызов без необязательных аргументов")
+
+
+## Уровни воды (этап 8): слои, падающая струя, грани между жидкостями, цвет воды биома.
+func test_same_output_on_fluid_levels() -> void:
+	if native == null:
+		fail_test("нет нативной библиотеки")
+		return
+	var s := ChunkSection.new()
+	var water := Registry.block_num(&"water")
+	var stone := Registry.block_num(&"granite")
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 8
+	for i in 900:
+		var x := rng.randi_range(0, 15)
+		var y := rng.randi_range(0, 15)
+		var z := rng.randi_range(0, 15)
+		var r := rng.randi_range(0, 10)
+		var b := stone if r == 0 else (water if r == 1 else Registry.block_num(StringName("water_%d" % rng.randi_range(1, 8))))
+		s.set_block(WorldConst.local_index(x, y, z), b)
+	s.analyze(Registry.block_opaque, Registry.block_shape)
+	var c := gen.generate_column(Vector2i(2, 2))
+	assert_eq(c.tints.size(), 9 * 25, "9 каналов цвета: сезоны × трава/листва + вода")
+	_compare_meshes(GreedyMesher.snapshot(s), [null, null, null, null, null, null], c.tints, Vector3i.ZERO)
+	var res := gd.mesh_section(GreedyMesher.snapshot(s), [null, null, null, null, null, null], c.tints, 1, Vector3i.ZERO)
+	assert_false((res["transparent"] as Array).is_empty(), "вода — в прозрачной поверхности")

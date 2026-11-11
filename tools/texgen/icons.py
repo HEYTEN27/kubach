@@ -260,6 +260,7 @@ def draw_item(e):
     shape = ic.get("shape", "") or "misc"
     col = hex_rgb(ic.get("color", "#808080"))
     col2 = hex_rgb(ic.get("color2", "#5a4030"))
+    col3 = ic.get("color3", "")
     wood = hex_rgb("#7a5a36")
     img = Image.new("RGBA", (CANVAS, CANVAS), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
@@ -413,6 +414,30 @@ def draw_item(e):
             d.arc([160, 110, 220, 180], 270, 90, fill=_c(col2), width=12)
             for x in (100, 125, 150):
                 d.arc([x - 10, 20, x + 10, 70], 90, 270, fill=(220, 220, 220, 160), width=5)
+    elif shape == "bucket":
+        # Деревянное ведро: клёпки, два обруча, дужка; с водой — поверхность с бликом.
+        d.arc([58, 20, 198, 150], 200, 340, fill=_c(col2, 0.9), width=8)
+        d.polygon([(52, 92), (204, 92), (186, 226), (70, 226)], fill=_c(col))
+        for i in range(6):
+            x = 60 + i * 27
+            d.line([(x, 96), (x + (6 if i > 2 else -6) * (i - 2.5) / 2.5 * 0.4, 222)], fill=_c(col, 0.72), width=3)
+        for y, w in ((118, 10), (198, 10)):
+            k = (y - 92) / (226 - 92)
+            d.line([(52 + 18 * k, y), (204 - 18 * k, y)], fill=_c(col2), width=w)
+            d.line([(52 + 18 * k, y - 3), (204 - 18 * k, y - 3)], fill=_c(col2, 1.4), width=2)
+        d.ellipse([52, 80, 204, 106], fill=_c(col, 0.55))
+        if col3:
+            w3 = hex_rgb(col3)
+            d.ellipse([60, 84, 196, 104], fill=_c(w3))
+            d.ellipse([90, 88, 130, 96], fill=(230, 240, 255, 180))
+    elif shape == "waterskin":
+        d.ellipse([46, 70, 210, 230], fill=_c(col))
+        d.ellipse([70, 96, 150, 170], fill=_c(col, 1.18))
+        d.rectangle([110, 30, 146, 80], fill=_c(col2))
+        d.rectangle([104, 22, 152, 38], fill=_c(col2, 1.3))
+        d.arc([30, 40, 226, 236], 200, 330, fill=_c(col2, 0.8), width=6)
+        if col3:
+            d.ellipse([140, 150, 200, 200], fill=_c(hex_rgb(col3), 1.1))
     elif shape == "powder":
         d.polygon([(40, 210), (216, 210), (170, 120), (90, 120)], fill=_c(col))
         d.polygon([(90, 120), (170, 120), (150, 90), (110, 90)], fill=_c(col, 1.3))

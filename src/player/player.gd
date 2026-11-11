@@ -86,6 +86,7 @@ func setup(p_world: World, x: float, y: float, z: float, p_yaw: float = 0.0, p_p
 	body = VoxelBody.new(world.is_solid)
 	body.set_position(x, y, z)
 	motor = PlayerMotor.new(body, world.is_fluid)
+	motor.fluid_surface = world.liquid_surface
 	yaw = p_yaw
 	pitch = p_pitch
 	_prev = PackedFloat64Array([x, y, z])

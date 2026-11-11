@@ -1,0 +1,259 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "water_1",
+   "name": {
+    "ru": "Вода (1/8)",
+    "en": "Water (1/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 1,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.125
+  },
+  {
+   "id": "water_2",
+   "name": {
+    "ru": "Вода (2/8)",
+    "en": "Water (2/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 2,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.25
+  },
+  {
+   "id": "water_3",
+   "name": {
+    "ru": "Вода (3/8)",
+    "en": "Water (3/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 3,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.375
+  },
+  {
+   "id": "water_4",
+   "name": {
+    "ru": "Вода (4/8)",
+    "en": "Water (4/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 4,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.5
+  },
+  {
+   "id": "water_5",
+   "name": {
+    "ru": "Вода (5/8)",
+    "en": "Water (5/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 5,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.625
+  },
+  {
+   "id": "water_6",
+   "name": {
+    "ru": "Вода (6/8)",
+    "en": "Water (6/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 6,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.75
+  },
+  {
+   "id": "water_7",
+   "name": {
+    "ru": "Вода (7/8)",
+    "en": "Water (7/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 0,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 7,
+    "source": false
+   },
+   "shape": "layer",
+   "layer_height": 0.875
+  },
+  {
+   "id": "water_8",
+   "name": {
+    "ru": "Вода (8/8)",
+    "en": "Water (8/8)"
+   },
+   "material": "liquid",
+   "map_color": "#2f5f86",
+   "render": "liquid",
+   "solid": false,
+   "hardness": -1.0,
+   "light_filter": 2,
+   "sounds": "water",
+   "textures": {
+    "all": "water"
+   },
+   "tags": [
+    "fluid",
+    "flowing_water"
+   ],
+   "tint": "water",
+   "tint_strength": 1.0,
+   "item": false,
+   "drops": [],
+   "fluid": {
+    "kind": "water",
+    "level": 8,
+    "source": false
+   }
+  }
+ ]
+}

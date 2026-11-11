@@ -159,6 +159,11 @@ func _update_consume(delta: float) -> void:
 		elif d == null and _water_target() != &"":
 			what = &"water"
 			seconds = DRINK_SECONDS
+		elif d != null and String(d.fluid_container.get("fluid", "")) == "water" \
+				and (not aiming or Input.is_action_pressed(&"crouch")) and vitals.thirst < 99.0:
+			# Пить из ведра или бурдюка (этап 8): по глотку = один уровень.
+			what = &"vessel"
+			seconds = DRINK_SECONDS
 	if what == &"" or what != consume_what or (what != &"water" and _consume_slot != player.inventory.selected):
 		consume_progress = 0.0
 		consume_what = what
@@ -182,6 +187,18 @@ func _update_consume(delta: float) -> void:
 	var d := player.inventory.held_def()
 	var s := player.inventory.held()
 	if d == null or s == null:
+		return
+	if what == &"vessel":
+		vitals.drink(StringName(s.data.get("water_kind", "fresh")))
+		Audio.play_ui("player/drink")
+		var left := int(s.data.get("amount", int(d.fluid_container.get("capacity", 1)))) - 1
+		if left <= 0:
+			var empty := world.registry.item(StringName(d.fluid_container.get("empty", "")))
+			player.inventory.hotbar.set_stack(player.inventory.selected, ItemStack.create(empty, 1) if empty != null else null)
+		else:
+			var rest := s.copy()
+			rest.data["amount"] = left
+			player.inventory.hotbar.set_stack(player.inventory.selected, rest)
 		return
 	if d.is_food():
 		vitals.eat(d.food, float(s.data.get("freshness", 1.0)), String(s.data.get("cook", "")))

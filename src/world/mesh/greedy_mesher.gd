@@ -33,6 +33,8 @@ const STRIDE: Array[int] = [1, PY, P]
 const AXIS_U: Array[int] = [2, 0, 0]
 const AXIS_V: Array[int] = [1, 2, 1]
 const TINT_N := 5
+## Каналы сетки цветов колонны: 4 сезона × (трава, листва), 8 — цвет воды (этап 8).
+const WATER_CHANNEL := 8
 const NEUTRAL := Color(0.5, 0.5, 0.5, 1.0)
 ## UV спрайта растения: низ квадрата — v = 1, верх — v = 0.
 const PLANT_UV: PackedVector2Array = [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(0, 0)]
@@ -100,7 +102,7 @@ func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = Pac
 	var plants := _Surface.new()
 	var mask := PackedInt32Array()
 	mask.resize(256)
-	var tinting := tints.size() == 8 * TINT_N * TINT_N
+	var tinting := tints.size() >= 8 * TINT_N * TINT_N
 
 	for d in 3:
 		var sd: int = STRIDE[d]
@@ -130,7 +132,9 @@ func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = Pac
 							var rb := _render[b]
 							if rb == BlockDef.RENDER_INVISIBLE:
 								m = a
-							elif _opaque[b] != 1 and (a != b or ra == BlockDef.RENDER_CUTOUT):
+							elif _opaque[b] != 1 and (a != b or ra == BlockDef.RENDER_CUTOUT) \
+									and not (ra == BlockDef.RENDER_LIQUID and rb == BlockDef.RENDER_LIQUID and _shape[b] == BlockDef.SHAPE_CUBE):
+								# Между полными жидкостями (источник и конечная вода) граней нет.
 								m = a
 						mask[uu + vv * 16] = m
 						if m != 0:
@@ -139,7 +143,7 @@ func mesh_section(center: Array, neighbors: Array, tints: PackedColorArray = Pac
 					_greedy(mask, d, s, k, opaque, cutout, transparent, tints if tinting else PackedColorArray(), season)
 
 	if center[3]:
-		_special(cb, cu, pad, opaque, cutout, plants, tints if tinting else PackedColorArray(), season, origin)
+		_special(cb, cu, pad, opaque, cutout, plants, transparent, tints if tinting else PackedColorArray(), season, origin)
 
 	result["opaque"] = opaque.to_arrays()
 	result["cutout"] = cutout.to_arrays()
@@ -265,7 +269,7 @@ func _greedy(mask: PackedInt32Array, d: int, s: int, k: int, opaque: _Surface, c
 
 ## Растения крестом и тонкие слои (снег, мох, кувшинки).
 func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Surface, cutout: _Surface,
-		plants: _Surface, tints: PackedColorArray, season: int, origin: Vector3i) -> void:
+		plants: _Surface, transparent: _Surface, tints: PackedColorArray, season: int, origin: Vector3i) -> void:
 	for y in 16:
 		for z in 16:
 			for x in 16:
@@ -289,6 +293,8 @@ func _special(cb: PackedInt32Array, cu: int, pad: PackedInt32Array, opaque: _Sur
 						n1, cols, b, PLANT_UV)
 					plants.add_quad(PackedVector3Array([Vector3(x0, y, z1), Vector3(x1, y, z0), Vector3(x1, y + 1, z0), Vector3(x0, y + 1, z1)]),
 						n2, cols, b, PLANT_UV)
+				elif _render[b] == BlockDef.RENDER_LIQUID:
+					_liquid_layer(b, x, y, z, pad, transparent, c)
 				else:
 					_layer(b, x, y, z, pad, cutout if _render[b] == BlockDef.RENDER_CUTOUT else opaque, c)
 
@@ -316,6 +322,44 @@ func _layer(b: int, x: int, y: int, z: int, pad: PackedInt32Array, surf: _Surfac
 			Vector3.BACK, cols, b)
 
 
+## Неполный уровень жидкости (этап 8): слой высотой уровень/8. Если сверху жидкость — это
+## падающая струя, она рисуется во всю высоту. Грани к непрозрачным блокам и к жидкости, которая
+## не ниже этой, не рисуются.
+func _liquid_layer(b: int, x: int, y: int, z: int, pad: PackedInt32Array, surf: _Surface, c: Color) -> void:
+	var pi := (x + 1) + (z + 1) * P + (y + 1) * PY
+	var above := pad[pi + PY]
+	var falling := _render[above] == BlockDef.RENDER_LIQUID
+	var h := 1.0 if falling else _layer_h[b]
+	var top := y + h
+	var cols := PackedColorArray([c, c, c, c])
+	if not falling:
+		surf.add_quad(PackedVector3Array([Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+			Vector3.UP, cols, b)
+	if _liquid_side(pad[pi - 1], h):
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z)]),
+			Vector3.LEFT, cols, b)
+	if _liquid_side(pad[pi + 1], h):
+		surf.add_quad(PackedVector3Array([Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z)]),
+			Vector3.RIGHT, cols, b)
+	if _liquid_side(pad[pi - P], h):
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z)]),
+			Vector3.FORWARD, cols, b)
+	if _liquid_side(pad[pi + P], h):
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1)]),
+			Vector3.BACK, cols, b)
+	if _render[pad[pi - PY]] == BlockDef.RENDER_INVISIBLE:
+		surf.add_quad(PackedVector3Array([Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x, y, z + 1)]),
+			Vector3.DOWN, cols, b)
+
+
+func _liquid_side(nb: int, h: float) -> bool:
+	if _opaque[nb] == 1:
+		return false
+	if _render[nb] == BlockDef.RENDER_LIQUID:
+		return _shape[nb] != BlockDef.SHAPE_CUBE and _layer_h[nb] < h
+	return true
+
+
 ## Множитель тонирования в точке (локальные x, z колонны), делённый на 2: (map_color, смешанный
 ## с цветом биома) / map_color. Текстура нарисована в map_color, шейдер умножает её на 2·COLOR.
 func _block_color(b: int, lx: float, lz: float, tints: PackedColorArray, season: int) -> Color:
@@ -323,6 +367,10 @@ func _block_color(b: int, lx: float, lz: float, tints: PackedColorArray, season:
 	if t == BlockDef.TINT_NONE or tints.is_empty():
 		return NEUTRAL
 	var ch := season * 2 + (1 if t == BlockDef.TINT_FOLIAGE else 0)
+	if t == BlockDef.TINT_WATER:
+		if tints.size() < (WATER_CHANNEL + 1) * TINT_N * TINT_N:
+			return NEUTRAL
+		ch = WATER_CHANNEL
 	var off := ch * TINT_N * TINT_N
 	var gx := clampf(lx / 4.0, 0.0, 4.0)
 	var gz := clampf(lz / 4.0, 0.0, 4.0)

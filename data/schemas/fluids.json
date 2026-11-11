@@ -1,0 +1,68 @@
+{
+ "format": 1,
+ "category": "fluids",
+ "description": "Жидкости (раздел 10, этап 8): блок-источник, блоки уровней 1–8 конечного объёма, течёт ли, скорость, реакции с другими жидкостями.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "source": {
+   "type": "ref",
+   "to": ["blocks"],
+   "required": true,
+   "doc": "Природный бесконечный источник (океан, река, озеро): отдаёт воду, не убывая."
+  },
+  "levels": {
+   "type": "array",
+   "of": { "type": "ref", "to": ["blocks"] },
+   "default": [],
+   "doc": "Блоки конечной жидкости с уровнями 1…8 по порядку (8 — полный блок, не источник). Пусто — жидкость не течёт."
+  },
+  "tick": {
+   "type": "float",
+   "default": 0.25,
+   "min": 0.05,
+   "max": 10.0,
+   "doc": "Шаг клеточного автомата, реальные секунды."
+  },
+  "min_spread": {
+   "type": "int",
+   "default": 2,
+   "min": 1,
+   "max": 8,
+   "doc": "Наименьшая разница уровней, при которой жидкость перетекает вбок (меньше — лужа застывает)."
+  },
+  "flow_speed": {
+   "type": "float",
+   "default": 1.6,
+   "min": 0.0,
+   "max": 10.0,
+   "doc": "Скорость течения (блоков/с) при перепаде в один уровень: сносит игрока, предметы, лодку."
+  },
+  "extinguishes": {
+   "type": "bool",
+   "default": false,
+   "doc": "Заливает огонь (блок fire) и открытые костры."
+  },
+  "reactions": {
+   "type": "array",
+   "default": [],
+   "doc": "Встреча с другой жидкостью: другой источник/текущая становятся блоком (лава + вода = обсидиан/базальт с паром).",
+   "of": {
+    "type": "object",
+    "fields": {
+     "with": { "type": "ref", "to": ["fluids"], "required": true },
+     "source_to": { "type": "ref", "to": ["blocks"], "required": true },
+     "flowing_to": { "type": "ref", "to": ["blocks"], "required": true },
+     "sound": { "type": "string", "default": "" }
+    }
+   }
+  }
+ }
+}

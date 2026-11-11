@@ -25,6 +25,8 @@ constexpr int SHAPE_CUBE = 0;
 constexpr int SHAPE_CROSS = 1;
 constexpr int TINT_NONE = 0;
 constexpr int TINT_FOLIAGE = 2;
+constexpr int TINT_WATER = 3;
+constexpr int WATER_CHANNEL = 8;
 
 constexpr int P = 18;
 constexpr int PY = 324;
@@ -153,7 +155,7 @@ void NativeMesher::setup(const PackedByteArray &p_render, const PackedByteArray 
 }
 
 String NativeMesher::version() const {
-	return "kubach_native 2";
+	return "kubach_native 3";
 }
 
 Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neighbors,
@@ -244,7 +246,7 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 		}
 	}
 
-	const bool tinting = p_tints.size() == 8 * TINT_N * TINT_N;
+	const bool tinting = p_tints.size() >= 8 * TINT_N * TINT_N;
 	const Color *tp = p_tints.ptr();
 	auto block_color = [&](int b, double lx, double lz) -> Color {
 		int t = tint[b];
@@ -252,6 +254,12 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 			return NEUTRAL;
 		}
 		int ch = p_season * 2 + (t == TINT_FOLIAGE ? 1 : 0);
+		if (t == TINT_WATER) {
+			if (p_tints.size() < (WATER_CHANNEL + 1) * TINT_N * TINT_N) {
+				return NEUTRAL;
+			}
+			ch = WATER_CHANNEL;
+		}
 		int off = ch * TINT_N * TINT_N;
 		double gx = std::clamp(lx / 4.0, 0.0, 4.0);
 		double gz = std::clamp(lz / 4.0, 0.0, 4.0);
@@ -298,7 +306,9 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 							const int rb = render[b];
 							if (rb == RENDER_INVISIBLE) {
 								m = a;
-							} else if (opaque[b] != 1 && (a != b || ra == RENDER_CUTOUT)) {
+							} else if (opaque[b] != 1 && (a != b || ra == RENDER_CUTOUT)
+									&& !(ra == RENDER_LIQUID && rb == RENDER_LIQUID && shape[b] == SHAPE_CUBE)) {
+								// Между полными жидкостями (источник и конечная вода) граней нет.
 								m = a;
 							}
 						}
@@ -390,6 +400,45 @@ Dictionary NativeMesher::mesh_section(const Array &p_center, const Array &p_neig
 						const Vector3 q2[4] = { Vector3(x0, y, z1), Vector3(x1, y, z0), Vector3(x1, y + 1, z0), Vector3(x0, y + 1, z1) };
 						s_plants.add_quad(q1, n1, cols, b, PLANT_UV);
 						s_plants.add_quad(q2, n2, cols, b, PLANT_UV);
+					} else if (render[b] == RENDER_LIQUID) {
+						// Неполный уровень жидкости: см. GreedyMesher._liquid_layer.
+						const int pi = (x + 1) + (z + 1) * P + (y + 1) * PY;
+						const bool falling = render[pad[pi + PY]] == RENDER_LIQUID;
+						const double hh = falling ? 1.0 : (double)layer_h[b];
+						const float top = (float)((double)y + hh);
+						auto side = [&](int nb) -> bool {
+							if (opaque[nb] == 1) {
+								return false;
+							}
+							if (render[nb] == RENDER_LIQUID) {
+								return shape[nb] != SHAPE_CUBE && (double)layer_h[nb] < hh;
+							}
+							return true;
+						};
+						if (!falling) {
+							const Vector3 qt[4] = { Vector3(x, top, z), Vector3(x + 1, top, z), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1) };
+							s_transparent.add_quad(qt, Vector3(0, 1, 0), cols, b);
+						}
+						if (side(pad[pi - 1])) {
+							const Vector3 q[4] = { Vector3(x, y, z), Vector3(x, y, z + 1), Vector3(x, top, z + 1), Vector3(x, top, z) };
+							s_transparent.add_quad(q, Vector3(-1, 0, 0), cols, b);
+						}
+						if (side(pad[pi + 1])) {
+							const Vector3 q[4] = { Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x + 1, top, z) };
+							s_transparent.add_quad(q, Vector3(1, 0, 0), cols, b);
+						}
+						if (side(pad[pi - P])) {
+							const Vector3 q[4] = { Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, top, z), Vector3(x, top, z) };
+							s_transparent.add_quad(q, Vector3(0, 0, -1), cols, b);
+						}
+						if (side(pad[pi + P])) {
+							const Vector3 q[4] = { Vector3(x, y, z + 1), Vector3(x + 1, y, z + 1), Vector3(x + 1, top, z + 1), Vector3(x, top, z + 1) };
+							s_transparent.add_quad(q, Vector3(0, 0, 1), cols, b);
+						}
+						if (render[pad[pi - PY]] == RENDER_INVISIBLE) {
+							const Vector3 q[4] = { Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x, y, z + 1) };
+							s_transparent.add_quad(q, Vector3(0, -1, 0), cols, b);
+						}
 					} else {
 						Surface &ls = render[b] == RENDER_CUTOUT ? s_cutout : s_opaque;
 						const float top = (float)((double)y + (double)layer_h[b]);

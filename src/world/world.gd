@@ -86,6 +86,27 @@ func is_fluid(x: int, y: int, z: int) -> bool:
 	return b > 0 and registry.block_render[b] == BlockDef.RENDER_LIQUID
 
 
+## Поверхность жидкости над точкой (этап 8): мировая Y верха столба жидкости, в котором точка,
+## или −INF, если точка не в жидкости. Уровень верхнего блока — level/8.
+func liquid_surface(x: float, y: float, z: float) -> float:
+	var bx := floori(x)
+	var bz := floori(z)
+	var by := floori(y)
+	var b := get_block(bx, by, bz)
+	if b <= 0 or registry.block_fluid[b] == 0:
+		return -INF
+	var top := float(by) + float(registry.block_fluid_level[b]) / 8.0
+	if top < y:
+		return -INF
+	for i in 64:
+		var above := get_block(bx, by + 1, bz)
+		if above <= 0 or registry.block_fluid[above] == 0:
+			break
+		by += 1
+		b = above
+	return float(by) + float(registry.block_fluid_level[b]) / 8.0
+
+
 ## Можно ли навести прицел (жидкости и воздух пропускаются).
 func is_targetable(x: int, y: int, z: int) -> bool:
 	var b := get_block(x, y, z)
@@ -115,6 +136,50 @@ func set_block(x: int, y: int, z: int, block: int) -> bool:
 	chunks.notify_block_changed(x, y, z, light_differs(old, block))
 	block_changed.emit(Vector3i(x, y, z), old, block)
 	return true
+
+
+## Пакетная запись (вода, этап 8): ch — [x, y, z, блок]…. То же, что set_block для каждой
+## клетки, но массив секции копируется один раз на пакет, а сжатие пустых секций — в конце.
+func apply_changes(ch: PackedInt32Array) -> void:
+	var fresh := {}     # ChunkSection → true: массив уже свой, можно писать на месте
+	var touched := {}   # Vector3i(cx, si, cz) → [колонна, si]
+	for i in range(0, ch.size(), 4):
+		var x := ch[i]
+		var y := ch[i + 1]
+		var z := ch[i + 2]
+		var block := ch[i + 3]
+		if y < WorldConst.MIN_Y or y >= WorldConst.MAX_Y or not WorldConst.is_inside_world_xz(x, z):
+			continue
+		var col: ChunkColumn = chunks.columns.get(Vector2i(x >> 4, z >> 4))
+		if col == null:
+			continue
+		var old := col.get_block(x & 15, y, z & 15)
+		if old == block:
+			continue
+		_remove_entity(col, x, y, z)
+		var si := WorldConst.section_index(y)
+		var sec := col.sections[si]
+		if sec == null:
+			sec = ChunkSection.new()
+			col.sections[si] = sec
+		var idx := WorldConst.local_index(x & 15, y & 15, z & 15)
+		if fresh.has(sec):
+			sec.blocks[idx] = block
+			sec.version += 1
+		else:
+			sec.set_block(idx, block)
+			fresh[sec] = true
+		sec.note_block(block, registry.block_opaque, registry.block_shape)
+		touched[Vector3i(x >> 4, si, z >> 4)] = [col, si]
+		col.dirty = true
+		chunks.notify_block_changed(x, y, z, light_differs(old, block))
+		block_changed.emit(Vector3i(x, y, z), old, block)
+	for k: Vector3i in touched:
+		var col: ChunkColumn = touched[k][0]
+		var si: int = touched[k][1]
+		var sec := col.sections[si]
+		if sec != null and sec.try_compact() and sec.uniform == 0:
+			col.sections[si] = null
 
 
 ## Меняет ли замена блока a на b свет (фильтр, свечение, непрозрачность).
@@ -163,6 +228,34 @@ func execute(action: GameAction) -> bool:
 				chunks.notify_block_changed(p.x, p.y, p.z)
 			_emit_bus(&"block_placed", p, action.block)
 			return true
+		GameAction.Type.TAKE_FLUID:
+			var f := registry.block_fluid[current] if current > 0 else 0
+			if f == 0:
+				return false
+			if registry.block_fluid_source[current] == 1:
+				action.taken = 8
+				action.fluid = f
+				return true
+			action.taken = registry.block_fluid_level[current]
+			action.fluid = f
+			return set_block(p.x, p.y, p.z, 0)
+		GameAction.Type.POUR_FLUID:
+			if action.fluid <= 0 or action.fluid > registry.fluid_level_blocks.size() or action.fluid_amount <= 0:
+				return false
+			var levels := registry.fluid_level_blocks[action.fluid - 1]
+			var have := 0
+			if current != 0:
+				if registry.block_fluid[current] == action.fluid:
+					if registry.block_fluid_source[current] == 1:
+						return false
+					have = registry.block_fluid_level[current]
+				elif registry.block_render[current] == BlockDef.RENDER_LIQUID or registry.block_shape[current] == BlockDef.SHAPE_CUBE:
+					return false
+			var total := mini(8, have + action.fluid_amount)
+			if total == have or levels[total] <= 0:
+				return false
+			action.taken = total - have
+			return set_block(p.x, p.y, p.z, levels[total])
 	return false
 
 

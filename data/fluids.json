@@ -1,0 +1,46 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "water",
+   "name": {
+    "ru": "Вода",
+    "en": "Water"
+   },
+   "source": "water",
+   "levels": [
+    "water_1",
+    "water_2",
+    "water_3",
+    "water_4",
+    "water_5",
+    "water_6",
+    "water_7",
+    "water_8"
+   ],
+   "tick": 0.2,
+   "min_spread": 2,
+   "flow_speed": 1.6,
+   "extinguishes": true,
+   "reactions": [
+    {
+     "with": "lava",
+     "source_to": "obsidian",
+     "flowing_to": "basalt",
+     "sound": "fluids/lava_hiss"
+    }
+   ]
+  },
+  {
+   "id": "lava",
+   "name": {
+    "ru": "Лава",
+    "en": "Lava"
+   },
+   "source": "lava",
+   "levels": [],
+   "tick": 1.0,
+   "flow_speed": 0.4
+  }
+ ]
+}

@@ -1,3 +1,4 @@
+#include "native_fluid.h"
 #include "native_light.h"
 #include "native_mesher.h"
 
@@ -14,6 +15,7 @@ void initialize_kubach_native(ModuleInitializationLevel p_level) {
 	}
 	GDREGISTER_CLASS(kubach::NativeMesher);
 	GDREGISTER_CLASS(kubach::NativeLight);
+	GDREGISTER_CLASS(kubach::NativeFluid);
 }
 
 void uninitialize_kubach_native(ModuleInitializationLevel p_level) {

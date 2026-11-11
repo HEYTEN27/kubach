@@ -164,3 +164,53 @@ func test_swimming_floats_up_on_jump() -> void:
 	_run(60, Vector2.ZERO, true)
 	assert_gt(body.y, -4.0, "всплывает")
 	assert_true(motor.in_fluid)
+
+
+func _pool(top: int) -> void:
+	world.floor_y = -100
+	for x in range(-6, 7):
+		for z in range(-6, 7):
+			for y in range(-20, top + 1):
+				world.fluid[Vector3i(x, y, z)] = true
+
+
+## Плавучесть: без ввода игрок всплывает и держит голову над водой (этап 8).
+func test_floats_at_surface() -> void:
+	_pool(0)
+	body.set_position(0.5, -6.0, 0.5)
+	_run(600)
+	var head := body.y + body.height
+	assert_gt(head, 1.0, "голова над водой")
+	assert_lt(body.y, 1.0, "тело в воде")
+	assert_true(motor.in_fluid)
+
+
+## Присед под водой — нырок вниз.
+func test_dive_with_crouch() -> void:
+	_pool(0)
+	body.set_position(0.5, -1.0, 0.5)
+	var y0 := body.y
+	_run(60, Vector2.ZERO, false, false, true)
+	assert_lt(body.y, y0 - 1.5, "ныряет")
+	assert_false(motor.crouching, "в воде не приседает")
+
+
+## Течение сносит плывущего.
+func test_current_pushes() -> void:
+	_pool(0)
+	motor.current_at = func(_x: float, _y: float, _z: float) -> Vector3: return Vector3(1.5, 0.0, 0.0)
+	body.set_position(0.5, -1.0, 0.5)
+	_run(120)
+	assert_gt(body.x, 2.5, "снесло по течению")
+
+
+## Вход в воду с высоты гасит скорость падения (без урона).
+func test_water_breaks_fall() -> void:
+	_pool(0)
+	body.set_position(0.5, 20.0, 0.5)
+	var landed := 0.0
+	for i in 240:
+		motor.step(DT, Vector2.ZERO, false, false, false)
+		landed = maxf(landed, motor.landed_fall)
+	assert_eq(landed, 0.0, "падение в воду не считается приземлением")
+	assert_gt(body.y, -10.0, "в воде затормозил")

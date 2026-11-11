@@ -11,6 +11,7 @@ var world: World
 var world_name := ""
 var survival: SurvivalController
 var weather: WeatherSystem
+var fluids: FluidSystem
 
 var _label: Label
 var _accum := 0.0
@@ -120,6 +121,13 @@ func build_text() -> String:
 			v.body_temp, v.perceived, float(e.get("ambient", 0.0)), float(e.get("heat", 0.0)), v.wetness, v.fatigue])
 		lines.append("Время %s · день %d · %s · дневной свет %.2f · сложность %s" % [survival.clock.time_text(),
 			survival.clock.day, survival.clock.season(), survival.daylight, survival.difficulty])
+	if fluids != null:
+		var fs := fluids.sim
+		var bb := player.body
+		var cur := fluids.current_at(bb.x, bb.y + 0.4, bb.z)
+		lines.append("Вода: активных %d · спят %d · шаг %d клеток, %d изменений · %.2f мс (C++ %.2f + запись %.2f)%s · течение %.2f м/с" % [
+			fs.active_count(), fs.sleeping_count(), fs.stat_cells, fs.stat_changes, fluids.stat_ms, fs.stat_calc_ms,
+			fs.stat_apply_ms, "" if fs.native != null else " · GDScript", Vector2(cur.x, cur.z).length()])
 	if weather != null:
 		var w := weather.values
 		var win := weather.clock.day_window()

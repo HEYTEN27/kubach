@@ -157,7 +157,7 @@ func _build(c: Vector2i, col: ChunkColumn, season: int, dens: int) -> void:
 			var sky: float = top[2]
 			var base := _registry.block_color[b]
 			var color := base
-			if tints.size() == 200:
+			if tints.size() >= 200:
 				color = base.lerp(_tint(tints, season, lx + 0.5, lz + 0.5), _registry.block_tint_strength[b])
 			for k in dens:
 				var h := GenRandom.hash3(seed, lx, lz, k, 91)

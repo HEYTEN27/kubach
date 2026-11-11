@@ -64,6 +64,12 @@ static func outputs(data: CraftingData, r: Dictionary, consumed: Array[ItemStack
 				var q := s.copy()
 				q.data["sharpened"] = true
 				out.append(q)
+		"boil":
+			# Кипячение (этап 8): вода в сосуде становится чистой, сосуд тот же.
+			for s in consumed:
+				var q := s.copy()
+				q.data["water_kind"] = "purified"
+				out.append(q)
 		"dye":
 			var cloth: ItemStack = null
 			var color := ""

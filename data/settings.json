@@ -459,7 +459,8 @@
    "type": "bool",
    "default": "false",
    "order": 20,
-   "stage": 8
+   "stage": 8,
+   "preset_key": true
   },
   {
    "id": "water_quality",
@@ -487,7 +488,8 @@
      }
     }
    ],
-   "stage": 8
+   "stage": 8,
+   "preset_key": true
   },
   {
    "id": "particles",

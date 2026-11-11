@@ -42,6 +42,10 @@ var unlocks: PackedStringArray = []
 var part: StringName = &""
 ## Инструмент из частей (id из data/tool_types.json) — свойства считаются по частям.
 var assembly: StringName = &""
+## Плавает ли в воде (этап 8): дерево, листва, растения, лёгкие вещи — да, камень и металл — нет.
+var floats := false
+## Сосуд для жидкости: capacity, fluid (у полного), filled/empty, pour (data/items: fluid_container).
+var fluid_container := {}
 
 
 static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
@@ -72,9 +76,13 @@ static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
 	var fu: Dictionary = e.get("fuel", {})
 	d.fuel = fu if float(fu.get("minutes", 0.0)) > 0.0 else {}
 	d.dye = String(e.get("dye", ""))
+	var fc: Dictionary = e.get("fluid_container", {})
+	d.fluid_container = fc if int(fc.get("capacity", 0)) > 0 else {}
 	d.unlocks = PackedStringArray(e.get("unlocks", []))
 	if d.stack > 1 and (d.durability > 0 or d.equip != EQUIP_NONE):
 		d.stack = 1
+	# Лёгкие вещи (еда, волокно, ткань) и всё с тегом floats плавают; тег sinks — тонет.
+	d.floats = (d.weight <= 0.35 or d.tags.has("floats")) and not d.tags.has("sinks")
 	return d
 
 
@@ -95,6 +103,7 @@ static func from_block(b: BlockDef) -> ItemDef:
 	d.food = b.food
 	d.medicine = b.medicine
 	d.fuel = b.fuel
+	d.floats = b.material in [&"wood", &"leaves", &"plant", &"snow"] or b.has_tag("floats")
 	return d
 
 

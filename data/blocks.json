@@ -256,7 +256,14 @@
       },
       "tags": [
         "fluid"
-      ]
+      ],
+      "tint": "water",
+      "tint_strength": 1.0,
+      "fluid": {
+        "kind": "water",
+        "level": 8,
+        "source": true
+      }
     }
   ]
 }

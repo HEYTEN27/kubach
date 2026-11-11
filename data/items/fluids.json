@@ -1,0 +1,101 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "wooden_bucket",
+   "name": {
+    "ru": "Деревянное ведро",
+    "en": "Wooden Bucket"
+   },
+   "kind": "tool",
+   "stack": 4,
+   "weight": 1.2,
+   "icon": {
+    "shape": "bucket",
+    "color": "#9a7448",
+    "color2": "#5c5c60"
+   },
+   "tags": [
+    "bucket"
+   ],
+   "fluid_container": {
+    "capacity": 8,
+    "filled": "wooden_bucket_water"
+   }
+  },
+  {
+   "id": "wooden_bucket_water",
+   "name": {
+    "ru": "Ведро воды",
+    "en": "Bucket of Water"
+   },
+   "kind": "tool",
+   "stack": 1,
+   "weight": 5.0,
+   "icon": {
+    "shape": "bucket",
+    "color": "#9a7448",
+    "color2": "#5c5c60",
+    "color3": "#3f7fb0"
+   },
+   "tags": [
+    "bucket",
+    "water_filled"
+   ],
+   "fluid_container": {
+    "capacity": 8,
+    "fluid": "water",
+    "empty": "wooden_bucket"
+   }
+  },
+  {
+   "id": "waterskin",
+   "name": {
+    "ru": "Бурдюк",
+    "en": "Waterskin"
+   },
+   "kind": "tool",
+   "stack": 4,
+   "weight": 0.4,
+   "icon": {
+    "shape": "waterskin",
+    "color": "#8a5a34",
+    "color2": "#4a3020"
+   },
+   "tags": [
+    "waterskin"
+   ],
+   "fluid_container": {
+    "capacity": 4,
+    "filled": "waterskin_water",
+    "pour": false
+   }
+  },
+  {
+   "id": "waterskin_water",
+   "name": {
+    "ru": "Бурдюк с водой",
+    "en": "Waterskin of Water"
+   },
+   "kind": "tool",
+   "stack": 1,
+   "weight": 2.4,
+   "icon": {
+    "shape": "waterskin",
+    "color": "#7a4e2c",
+    "color2": "#4a3020",
+    "color3": "#3f7fb0"
+   },
+   "tags": [
+    "waterskin",
+    "water_filled"
+   ],
+   "fluid_container": {
+    "capacity": 4,
+    "fluid": "water",
+    "empty": "waterskin",
+    "pour": false
+   }
+  }
+ ]
+}

@@ -68,6 +68,14 @@ rain_wetness={
 "type": "vec2",
 "value": Vector2(0, 0)
 }
+daylight={
+"type": "float",
+"value": 1.0
+}
+ripples={
+"type": "mat4",
+"value": Projection(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
 cloud_noise={
 "type": "sampler2D",
 "value": "res://assets/textures/generated/sky/clouds.png"

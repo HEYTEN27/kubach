@@ -240,6 +240,11 @@
         "color2": {
           "type": "color",
           "default": "#5a4030"
+        },
+        "color3": {
+          "type": "color",
+          "default": "#00000000",
+          "doc": "Третий цвет (содержимое сосуда: вода в ведре)."
         }
       }
     },
@@ -289,6 +294,18 @@
           },
           "doc": "Какие эффекты накладывает (шина → «Шина на ноге»)."
         }
+      }
+    },
+    "fluid_container": {
+      "type": "object",
+      "default": {},
+      "doc": "Сосуд для жидкости (этап 8): пустой — capacity и filled (во что превращается набранный); полный — fluid, capacity и empty. Сколько уровней внутри и вид воды — в данных стопки (amount, water_kind).",
+      "fields": {
+        "capacity": { "type": "int", "min": 0, "max": 64, "default": 0 },
+        "fluid": { "type": "string", "default": "" },
+        "filled": { "type": "string", "default": "" },
+        "empty": { "type": "string", "default": "" },
+        "pour": { "type": "bool", "default": true, "doc": "Можно вылить на землю (ведро — да, бурдюк — нет)." }
       }
     },
     "fuel": {

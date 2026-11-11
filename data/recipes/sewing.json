@@ -418,6 +418,29 @@
     "count": 3
    },
    "order": 17
+  },
+  {
+   "id": "make_waterskin",
+   "station": "sewing",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "leather",
+     "count": 2
+    },
+    {
+     "id": "twine",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "waterskin",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "tools",
+   "order": 18
   }
  ]
 }

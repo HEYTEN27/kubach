@@ -20,6 +20,11 @@ func _run() -> void:
 	var results := {}
 	var files := Array(DirAccess.get_files_at(CASES_DIR)).filter(func(f: String) -> bool: return f.ends_with(".gd"))
 	files.sort()
+	# --only=a,b — только эти кейсы (по имени файла без .gd); сравнение — по ним же.
+	for a: String in args:
+		if a.begins_with("--only="):
+			var only := a.substr(7).split(",")
+			files = files.filter(func(f: String) -> bool: return f.get_basename() in only)
 	for file: String in files:
 		var bench: Object = load(CASES_DIR.path_join(file)).new()
 		bench.setup()

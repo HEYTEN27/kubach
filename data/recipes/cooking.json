@@ -313,6 +313,26 @@
     "count": 1
    },
    "order": 10
+  },
+  {
+   "id": "boil_water",
+   "station": "campfire",
+   "op": "boil",
+   "inputs": [
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "wooden_bucket_water",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "default",
+   "category": "water",
+   "heat": 100,
+   "order": 11
   }
  ]
 }

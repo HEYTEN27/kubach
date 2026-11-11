@@ -23,6 +23,8 @@ const GN := (16 + 2 * MARGIN) / GRID + 1
 const NO_WATER := -100000
 ## Сетка цветов для мешера: 5×5 узлов (0, 4, 8, 12, 16) × 8 каналов (сезон × трава/листва).
 const TINT_N := 5
+## Каналы сетки цветов: 4 сезона × (трава, листва) + цвет воды.
+const TINT_CHANNELS := 9
 
 var world_seed: int
 var sea_level: int
@@ -334,6 +336,28 @@ func _river_channel(x: float, z: float, hb: float) -> float:
 	var rv := absf(_n_river.get_noise_2d(x, z))
 	var w := float(_river["width"])
 	return (1.0 - smoothstep(w * 0.6, w, rv)) * _river_fade(hb)
+
+
+## Течение реки в точке (этап 8), блоков/с по X и Z: вдоль русла (перпендикулярно градиенту
+## шума рек), в сторону понижения базового рельефа — к морю. Вне русла — ноль. Чистая функция.
+func river_flow(x: float, z: float) -> Vector2:
+	if flat:
+		return Vector2.ZERO
+	var hb := _base(x, z).x
+	var ch := _river_channel(x, z, hb)
+	if ch <= 0.05:
+		return Vector2.ZERO
+	var e := 2.0
+	var gx := _n_river.get_noise_2d(x + e, z) - _n_river.get_noise_2d(x - e, z)
+	var gz := _n_river.get_noise_2d(x, z + e) - _n_river.get_noise_2d(x, z - e)
+	var t := Vector2(-gz, gx)
+	if t.length_squared() < 1e-12:
+		return Vector2.ZERO
+	t = t.normalized()
+	var down := Vector2(_base(x + 24.0, z).x - _base(x - 24.0, z).x, _base(x, z + 24.0).x - _base(x, z - 24.0).x)
+	if t.dot(down) > 0.0:
+		t = -t
+	return t * ch * float(_river.get("current", 1.4))
 
 
 func _river_fade(hb: float) -> float:
@@ -706,7 +730,7 @@ func _apply_climate(col: ChunkColumn, ctx: Context) -> void:
 		col.biomes[i] = ctx.bio[i]
 	# Размытые цвета: для каждого из 5×5 узлов внутри колонны — среднее по квадрату ±_blend_cells.
 	var tints := PackedColorArray()
-	tints.resize(8 * TINT_N * TINT_N)
+	tints.resize(TINT_CHANNELS * TINT_N * TINT_N)
 	var first := MARGIN / GRID
 	var r := _blend_cells
 	var cnt := float((2 * r + 1) * (2 * r + 1))
@@ -723,6 +747,10 @@ func _apply_climate(col: ChunkColumn, ctx: Context) -> void:
 				for bi: int in seen:
 					acc += biomes.palettes[bi * 8 + ch] * (seen[bi] / cnt)
 				tints[ch * TINT_N * TINT_N + tz * TINT_N + tx] = acc
+			var wacc := Color(0, 0, 0, 0)
+			for bi: int in seen:
+				wacc += biomes.water_colors[bi] * (seen[bi] / cnt)
+			tints[8 * TINT_N * TINT_N + tz * TINT_N + tx] = wacc
 	col.tints = tints
 
 

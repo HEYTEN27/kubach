@@ -25,7 +25,9 @@
    "anti_aliasing": "none",
    "anisotropy": 2,
    "render_scale": 0.77,
-   "fsr": true
+   "fsr": true,
+   "water_quality": "low",
+   "ssr": false
   },
   {
    "id": "medium",
@@ -51,7 +53,9 @@
    "anti_aliasing": "fxaa",
    "anisotropy": 4,
    "render_scale": 1.0,
-   "fsr": false
+   "fsr": false,
+   "water_quality": "high",
+   "ssr": false
   },
   {
    "id": "high",
@@ -77,7 +81,9 @@
    "anti_aliasing": "fxaa",
    "anisotropy": 8,
    "render_scale": 1.0,
-   "fsr": false
+   "fsr": false,
+   "water_quality": "high",
+   "ssr": true
   },
   {
    "id": "ultra",
@@ -103,7 +109,9 @@
    "anti_aliasing": "taa",
    "anisotropy": 16,
    "render_scale": 1.0,
-   "fsr": false
+   "fsr": false,
+   "water_quality": "high",
+   "ssr": true
   }
  ]
 }

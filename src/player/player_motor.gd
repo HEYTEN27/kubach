@@ -2,6 +2,9 @@ class_name PlayerMotor
 extends RefCounted
 ## Движение игрока поверх VoxelBody: ходьба, бег, присед (не падаешь с края), ровно один прыжок
 ## на 1,25 блока, плавание, полёт в творческом режиме. Без узлов и ввода — тестируется напрямую.
+## Плавание (этап 8): плавучесть держит голову над водой, прыжок — вверх (у стенки — выбраться
+## на берег), присед — нырнуть; вход в воду гасит скорость падения; течение сносит; по мелководью
+## идёшь медленнее.
 ## Шаг фиксированный (физический тик), интегрирование параболы точное — высота прыжка не зависит от FPS.
 
 const GRAVITY := 32.0
@@ -13,6 +16,12 @@ const WALK_SPEED := 4.3
 const SPRINT_SPEED := 5.6
 const CROUCH_SPEED := 1.3
 const SWIM_SPEED := 2.2
+const SWIM_SPRINT_SPEED := 3.3
+const SWIM_UP := 3.0
+const DIVE_SPEED := 2.6
+## Доля тела под водой, при которой игрок плывёт, и при которой плавучесть уравновешена.
+const SWIM_DEPTH := 0.45
+const FLOAT_DEPTH := 0.72
 const FLY_SPEED := 10.9
 const GROUND_ACCEL := 40.0
 const AIR_ACCEL := 8.0
@@ -24,6 +33,13 @@ const CROUCH_EYE := 1.27
 var body: VoxelBody
 ## `is_fluid(bx, by, bz) -> bool`.
 var is_fluid: Callable
+## Поверхность жидкости над точкой: `fluid_surface(x, y, z) -> float` (−INF — не в жидкости).
+## Не задана — по is_fluid (полные блоки).
+var fluid_surface: Callable
+## Течение: `current_at(x, y, z) -> Vector3`, блоков/с.
+var current_at: Callable
+## Доля тела в жидкости 0…1.
+var submerged := 0.0
 var vx := 0.0
 var vy := 0.0
 var vz := 0.0
@@ -54,9 +70,10 @@ func eye_height() -> float:
 func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> void:
 	landed_fall = 0.0
 	jumped = false
-	_update_crouch(crouch and not flying)
+	submerged = _submersion()
+	in_fluid = submerged > SWIM_DEPTH
+	_update_crouch(crouch and not flying and not in_fluid)
 	sprinting = sprint and not crouching and wish.length_squared() > 0.01
-	in_fluid = _check_fluid()
 	if flying:
 		_step_fly(dt, wish, jump, crouch)
 		return
@@ -65,9 +82,11 @@ func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> v
 	if crouching:
 		speed = CROUCH_SPEED
 	elif in_fluid:
-		speed = SWIM_SPEED
+		speed = SWIM_SPRINT_SPEED if sprinting else SWIM_SPEED
 	elif sprinting:
 		speed = SPRINT_SPEED
+	if not in_fluid and submerged > 0.0:
+		speed *= 1.0 - 0.6 * submerged   # вброд
 	speed *= speed_mult
 	var accel := GROUND_ACCEL if body.on_ground or in_fluid else AIR_ACCEL
 	vx = move_toward(vx, wish.x * speed, accel * dt)
@@ -75,11 +94,20 @@ func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> v
 
 	var dy: float
 	if in_fluid:
-		# Упрощённое плавание (полноценное — этап 8): медленное погружение, всплытие на прыжок.
-		vy = clampf(vy - GRAVITY * 0.15 * dt, -3.0, 3.0)
-		if jump:
-			vy = minf(vy + GRAVITY * 0.5 * dt, 2.6)
-		vy *= 0.92
+		var target_vy: float
+		if jump and submerged < FLOAT_DEPTH + 0.15 and body.hit_wall:
+			# У берега: выбраться прыжком.
+			vy = JUMP_VELOCITY * 0.95
+			target_vy = vy
+			jumped = true
+		elif jump:
+			target_vy = SWIM_UP
+		elif crouch:
+			target_vy = -DIVE_SPEED
+		else:
+			# Плавучесть: держит на глубине FLOAT_DEPTH (голова над водой).
+			target_vy = clampf((submerged - FLOAT_DEPTH) * 5.0, -1.2, 1.6)
+		vy = lerpf(vy, target_vy, 1.0 - exp(-5.0 * dt))
 		dy = vy * dt
 	else:
 		if jump and body.on_ground:
@@ -90,6 +118,13 @@ func step(dt: float, wish: Vector2, jump: bool, sprint: bool, crouch: bool) -> v
 
 	var dx := vx * dt
 	var dz := vz * dt
+	if submerged > 0.05 and current_at.is_valid():
+		var cur: Vector3 = current_at.call(body.x, body.y + 0.2, body.z)
+		var k := minf(1.0, submerged * 1.6)
+		dx += cur.x * k * dt
+		dz += cur.z * k * dt
+		if in_fluid:
+			dy += cur.y * 0.5 * k * dt
 	if crouching and body.on_ground:
 		if dx != 0.0 and not body.has_support_at(body.x + dx, body.z):
 			dx = 0.0
@@ -143,9 +178,23 @@ func _update_crouch(want: bool) -> void:
 
 
 func _check_fluid() -> bool:
-	if not is_fluid.is_valid():
-		return false
-	return is_fluid.call(floori(body.x), floori(body.y + 0.4), floori(body.z))
+	return submerged > SWIM_DEPTH
+
+
+## Доля тела в жидкости по поверхности над ногами.
+func _submersion() -> float:
+	var s := -INF
+	if fluid_surface.is_valid():
+		s = fluid_surface.call(body.x, body.y + 0.05, body.z)
+	elif is_fluid.is_valid():
+		var by := floori(body.y + 0.05)
+		if is_fluid.call(floori(body.x), by, floori(body.z)):
+			while by < floori(body.y) + 4 and is_fluid.call(floori(body.x), by + 1, floori(body.z)):
+				by += 1
+			s = float(by + 1)
+	if s == -INF:
+		return 0.0
+	return clampf((s - body.y) / maxf(body.height, 0.5), 0.0, 1.0)
 
 
 func _track_fall() -> void:

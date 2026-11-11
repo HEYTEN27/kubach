@@ -20,6 +20,7 @@ var survival: SurvivalController
 var stations: StationSystem
 var crafting: CraftingController
 var weather: WeatherSystem
+var fluids: FluidSystem
 var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
@@ -69,6 +70,9 @@ func _ready() -> void:
 	else:
 		world.game_mode = &"creative"
 	add_child(world)
+	fluids = FluidSystem.new()
+	add_child(fluids)
+	fluids.setup(world)
 	grass = GrassField.new()
 	grass.name = "Grass"
 	world.add_child(grass)
@@ -117,6 +121,14 @@ func _ready() -> void:
 	_setup_survival(pmeta, spawn)
 	_setup_crafting(pmeta)
 	_setup_weather(seed_value)
+	fluids.player = player
+	fluids.rig = rig
+	player.motor.current_at = fluids.current_at
+	dropped.current_at = fluids.current_at
+	var buckets := BucketController.new()
+	buckets.name = "Buckets"
+	add_child(buckets)
+	buckets.setup(world, player, survival)
 	_apply_player_settings()
 	Settings.setting_changed.connect(func(_id: String, _v: Variant) -> void: _apply_player_settings())
 	player.teleport(spawn[0], spawn[1], spawn[2])
@@ -150,6 +162,7 @@ func _ready() -> void:
 	debug_overlay.world_name = world_name
 	debug_overlay.survival = survival
 	debug_overlay.weather = weather
+	debug_overlay.fluids = fluids
 	add_child(debug_overlay)
 	debug_overlay.visible = GameLaunch.show_debug
 	pause_menu = PauseMenu.new()
@@ -171,6 +184,7 @@ func _process(delta: float) -> void:
 	world.chunks.update(center)
 	grass.update(center)
 	far_terrain.update(b.x, b.z)
+	fluids.set_center(b.x, b.z)
 	stations.viewer = Vector3(b.x, b.y, b.z)
 	survival.daylight = rig.daylight
 	_climate_left -= delta
@@ -713,6 +727,8 @@ func _apply_graphics(g: Dictionary) -> void:
 	far_terrain.configure(lod > view, lod, (view - 1.5) * 16.0)
 	grass.configure(g.get("dense_grass", true), int(g.get("grass_distance", 3)), int(g.get("grass_density", 4)))
 	ch.materials.set_param(&"parallax", g.get("parallax", false))
+	ch.materials.set_param(&"water_quality", 0 if String(g.get("water_quality", "high")) == "low" else 1)
+	ch.materials.set_param(&"water_ssr", bool(g.get("ssr", false)))
 	rig.set_view_range(view * 16.0, (lod if lod > view else view) * 16.0)
 
 

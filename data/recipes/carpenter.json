@@ -832,6 +832,29 @@
     "count": 1
    },
    "order": 41
+  },
+  {
+   "id": "make_wooden_bucket",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 3
+    },
+    {
+     "id": "twine",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "wooden_bucket",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "tools",
+   "order": 42
   }
  ]
 }

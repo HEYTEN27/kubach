@@ -46,6 +46,14 @@ var block_contact := PackedFloat32Array()
 var block_model := PackedByteArray()
 ## Погода (этап 7): 1 — горит (огонь от молнии распространяется).
 var block_flammable := PackedByteArray()
+## Жидкости (этап 8): номер вида (1 + индекс в fluid_ids, 0 — не жидкость), уровень 0…8,
+## 1 — бесконечный источник. fluid_level_blocks[вид] — блоки уровней 0…8 (0 — воздух).
+var block_fluid := PackedByteArray()
+var block_fluid_level := PackedByteArray()
+var block_fluid_source := PackedByteArray()
+var fluid_ids: Array[StringName] = []
+var fluid_level_blocks: Array[PackedInt32Array] = []
+var fluid_source_blocks := PackedInt32Array()
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -89,6 +97,7 @@ func load_all(dir: String = DEFAULT_DATA_DIR) -> bool:
 	_resolve_refs(validator)
 	errors.append_array(validator.errors)
 	_build_blocks()
+	_build_fluids()
 	_build_items()
 	loaded = errors.is_empty()
 	return loaded
@@ -175,6 +184,12 @@ func _clear() -> void:
 	block_contact = PackedFloat32Array()
 	block_model = PackedByteArray()
 	block_flammable = PackedByteArray()
+	block_fluid = PackedByteArray()
+	block_fluid_level = PackedByteArray()
+	block_fluid_source = PackedByteArray()
+	fluid_ids = []
+	fluid_level_blocks = []
+	fluid_source_blocks = PackedInt32Array()
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -375,6 +390,33 @@ func _add_block(b: BlockDef) -> void:
 	block_contact.append(b.contact_damage)
 	block_model.append(1 if b.has_model() else 0)
 	block_flammable.append(1 if b.flammable else 0)
+	block_fluid.append(0)
+	block_fluid_level.append(b.fluid_level)
+	block_fluid_source.append(1 if b.fluid_source else 0)
+
+
+## Таблицы жидкостей: вид блока, блоки уровней и источники (после загрузки блоков).
+func _build_fluids() -> void:
+	if not _entries.has("fluids"):
+		return
+	for id: StringName in _order["fluids"]:
+		var e: Dictionary = _entries["fluids"][id]
+		var idx := fluid_ids.size()
+		fluid_ids.append(id)
+		var lv := PackedInt32Array()
+		lv.resize(9)
+		var levels: Array = e.get("levels", [])
+		for i in mini(levels.size(), 8):
+			lv[i + 1] = block_num(StringName(levels[i]))
+		fluid_level_blocks.append(lv)
+		var src := block_num(StringName(e["source"]))
+		fluid_source_blocks.append(src)
+		for b in _blocks.size():
+			if _blocks[b].fluid_kind == id:
+				block_fluid[b] = idx + 1
+	for b in _blocks.size():
+		if _blocks[b].fluid_kind != &"" and block_fluid[b] == 0:
+			errors.append("блок %s: неизвестная жидкость '%s'" % [_blocks[b].id, _blocks[b].fluid_kind])
 
 
 func _parse_json(path: String) -> Variant:

@@ -43,6 +43,8 @@ var freeze_water := PackedByteArray()
 var tree_density := PackedFloat32Array()
 ## Палитры: index = биом*8 + сезон*2 + (0 трава, 1 листва).
 var palettes := PackedColorArray()
+## Цвет воды биома (этап 8): тонирование блоков воды, канал 8 сетки цветов колонны.
+var water_colors := PackedColorArray()
 ## По биому: [PackedInt32Array индексы деревьев, PackedFloat32Array накопленные веса].
 var trees: Array = []
 ## По биому: массив растений [блок, плотность, PackedInt32Array допустимые основания, на воде].
@@ -96,6 +98,7 @@ func _init(registry: ContentRegistry, tree_index: Dictionary) -> void:
 		for season in WorldGenSettings.SEASONS:
 			palettes.append(e["grass_colors"][season])
 			palettes.append(e["foliage_colors"][season])
+		water_colors.append(e["water_color"])
 		var tidx := PackedInt32Array()
 		var tw := PackedFloat32Array()
 		var total := 0.0

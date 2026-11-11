@@ -53,6 +53,8 @@ var _wind := Vector4(0.8, 0.6, 0.5, 0.0)
 var _cloud_shift := Vector2.ZERO
 var _sun_shift := Vector2.ZERO
 var _cloud_quality := 2
+var _underwater := false
+var _water_color := Color(0.1, 0.3, 0.4)
 var _fog_near := 120.0
 var _fog_far := 200.0
 
@@ -163,6 +165,7 @@ func set_sky_time(hour: float, window: Vector2, phase: float) -> void:
 	sky_shader.set_shader_parameter(&"moon_dir", md)
 	sky_shader.set_shader_parameter(&"moon_phase", phase)
 	sky_shader.set_shader_parameter(&"daylight", daylight)
+	RenderingServer.global_shader_parameter_set(&"daylight", daylight)
 	sky_shader.set_shader_parameter(&"sun_color", Vector3(_sun_color.r, _sun_color.g, _sun_color.b))
 	var pole := Vector3(0.0, sin(deg_to_rad(POLE_ELEV)), -cos(deg_to_rad(POLE_ELEV)))
 	sky_shader.set_shader_parameter(&"star_rotation", Basis(pole, hour / 24.0 * TAU))
@@ -253,9 +256,28 @@ func _update_lights() -> void:
 	sky_shader.set_shader_parameter(&"fog_color", Vector3(fc.r, fc.g, fc.b) / maxf(0.03, daylight * (1.0 - _darkness * 0.6)))
 	environment.volumetric_fog_density = 0.006 + _fog * 0.025 + _rain * 0.008 + _snow * 0.012 + _dust * 0.02
 	environment.volumetric_fog_albedo = Color(0.9, 0.93, 1.0).lerp(Color(0.85, 0.74, 0.55), _dust)
+	if _underwater:
+		var wc := _water_color * (0.08 + 0.6 * daylight) * (1.0 - _darkness * 0.5)
+		environment.fog_light_color = wc
+		environment.volumetric_fog_density = 0.08
+		environment.volumetric_fog_albedo = _water_color.lightened(0.3)
+
+
+## Камера под водой (этап 8): густой туман цвета воды биома, видно на ~20 блоков.
+func set_underwater(on: bool, color: Color = Color(0.1, 0.3, 0.4)) -> void:
+	if on == _underwater and color.is_equal_approx(_water_color):
+		return
+	_underwater = on
+	_water_color = color
+	_apply_fog_range()
+	_update_lights()
 
 
 func _apply_fog_range() -> void:
+	if _underwater:
+		environment.fog_depth_begin = 0.0
+		environment.fog_depth_end = 22.0
+		return
 	var thick := clampf(_fog * 0.85 + _rain * 0.35 + _snow * 0.5 + _dust * 0.5, 0.0, 0.92)
 	environment.fog_depth_begin = _fog_near * (1.0 - thick)
 	environment.fog_depth_end = lerpf(_fog_far, minf(_fog_far, 90.0), thick)
@@ -280,6 +302,11 @@ func apply(g: Dictionary, viewport: Viewport) -> void:
 	if ssao > 0:
 		RenderingServer.environment_set_ssao_quality((ssao - 1) as RenderingServer.EnvironmentSSAOQuality, ssao <= 2, 0.5, 2, 50.0, 300.0)
 	environment.ssil_enabled = g.get("ssil", false)
+	# SSR окружения — мокрые блоки и металл; вода отражает своим проходом (water.gdshaderinc).
+	environment.ssr_enabled = g.get("ssr", false)
+	environment.ssr_max_steps = 48
+	environment.ssr_fade_in = 0.2
+	environment.ssr_fade_out = 2.0
 	environment.volumetric_fog_enabled = g.get("volumetric_fog", true)
 	environment.glow_enabled = g.get("glow", true)
 	camera_attributes.auto_exposure_enabled = g.get("auto_exposure", true)
