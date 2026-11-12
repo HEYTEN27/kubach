@@ -1407,7 +1407,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#f0d060"
    },
    "food": {
@@ -1438,7 +1438,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#d8a040"
    },
    "food": {
@@ -1644,7 +1644,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#8a6030"
    },
    "food": {
@@ -1675,7 +1675,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#f0d880"
    },
    "food": {
@@ -1706,7 +1706,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#c0c050"
    },
    "food": {
@@ -2051,7 +2051,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#e0c890"
    },
    "food": {
@@ -2797,7 +2797,7 @@
    "weight": 0.4,
    "quality": true,
    "icon": {
-    "shape": "plate",
+    "shape": "dish_plate",
     "color": "#c06030"
    },
    "food": {

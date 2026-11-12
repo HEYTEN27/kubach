@@ -15,7 +15,8 @@
     "max": 14
    },
    "canopy_radius": 2.6,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 8
   },
   {
    "id": "giant_spruce",
@@ -31,7 +32,8 @@
     "max": 40
    },
    "canopy_radius": 5.0,
-   "trunk_width": 2
+   "trunk_width": 2,
+   "sapling": false
   },
   {
    "id": "fir",
@@ -47,7 +49,8 @@
     "max": 15
    },
    "canopy_radius": 2.1,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 8
   },
   {
    "id": "pine",
@@ -63,7 +66,8 @@
     "max": 18
    },
    "canopy_radius": 3.0,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 8
   },
   {
    "id": "cedar",
@@ -79,7 +83,13 @@
     "max": 16
    },
    "canopy_radius": 3.6,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 12,
+   "fruit": "pine_nuts",
+   "fruit_color": "#7a5a3a",
+   "fruit_seasons": [
+    "autumn"
+   ]
   },
   {
    "id": "larch",
@@ -95,7 +105,8 @@
     "max": 18
    },
    "canopy_radius": 2.4,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 8
   },
   {
    "id": "birch",
@@ -111,7 +122,8 @@
     "max": 11
    },
    "canopy_radius": 2.2,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 6
   },
   {
    "id": "aspen",
@@ -127,7 +139,8 @@
     "max": 14
    },
    "canopy_radius": 2.0,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 5
   },
   {
    "id": "oak",
@@ -143,7 +156,8 @@
     "max": 9
    },
    "canopy_radius": 3.8,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 10
   },
   {
    "id": "big_oak",
@@ -159,7 +173,9 @@
     "max": 13
    },
    "canopy_radius": 6.0,
-   "trunk_width": 2
+   "trunk_width": 2,
+   "sapling": false,
+   "grow_days": 16
   },
   {
    "id": "maple",
@@ -271,7 +287,15 @@
     "max": 6
    },
    "canopy_radius": 2.5,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 7,
+   "fruit": "apple",
+   "fruit_color": "#c83a2a",
+   "fruit_seasons": [
+    "summer",
+    "autumn"
+   ],
+   "blossom_color": "#f4dce4"
   },
   {
    "id": "pear",
@@ -287,7 +311,15 @@
     "max": 7
    },
    "canopy_radius": 2.2,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 7,
+   "fruit": "pear",
+   "fruit_color": "#c8c040",
+   "fruit_seasons": [
+    "summer",
+    "autumn"
+   ],
+   "blossom_color": "#f4f0ec"
   },
   {
    "id": "cherry",
@@ -303,7 +335,14 @@
     "max": 6
    },
    "canopy_radius": 2.2,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 6,
+   "fruit": "cherries",
+   "fruit_color": "#901a2a",
+   "fruit_seasons": [
+    "summer"
+   ],
+   "blossom_color": "#f8f0f4"
   },
   {
    "id": "plum",
@@ -319,7 +358,15 @@
     "max": 6
    },
    "canopy_radius": 2.2,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 6,
+   "fruit": "plum",
+   "fruit_color": "#5a2a6a",
+   "fruit_seasons": [
+    "summer",
+    "autumn"
+   ],
+   "blossom_color": "#f4f4f0"
   },
   {
    "id": "apricot",
@@ -335,7 +382,14 @@
     "max": 6
    },
    "canopy_radius": 2.6,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 7,
+   "fruit": "apricot",
+   "fruit_color": "#f0a040",
+   "fruit_seasons": [
+    "summer"
+   ],
+   "blossom_color": "#f8e4ec"
   },
   {
    "id": "hazel",
@@ -351,7 +405,14 @@
     "max": 3
    },
    "canopy_radius": 2.0,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "grow_days": 5,
+   "fruit": "hazelnuts",
+   "fruit_color": "#8a5a30",
+   "fruit_seasons": [
+    "autumn"
+   ],
+   "blossom_color": "#e0d890"
   },
   {
    "id": "palm",
@@ -399,7 +460,8 @@
     "max": 28
    },
    "canopy_radius": 6.0,
-   "trunk_width": 2
+   "trunk_width": 2,
+   "sapling": false
   },
   {
    "id": "jungle_small",
@@ -480,7 +542,8 @@
     "max": 9
    },
    "canopy_radius": 3.0,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "sapling": false
   },
   {
    "id": "brown_giant_mushroom",
@@ -496,7 +559,8 @@
     "max": 7
    },
    "canopy_radius": 4.0,
-   "trunk_width": 1
+   "trunk_width": 1,
+   "sapling": false
   }
  ]
 }

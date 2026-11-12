@@ -37,9 +37,52 @@ def derived_blocks():
     return out
 
 
+def _all_blocks():
+    import glob
+    files = [os.path.join(ROOT, "data", "blocks.json")] + sorted(glob.glob(os.path.join(ROOT, "data", "blocks", "*.json")))
+    out = {}
+    for f in files:
+        for e in json.load(open(f, encoding="utf-8"))["entries"]:
+            out[e["id"]] = e
+    return out
+
+
+def derived_tree_blocks():
+    """Саженцы и листва плодовых в цвету/с плодами — как их выводит Registry из data/trees.json."""
+    path = os.path.join(ROOT, "data", "trees.json")
+    if not os.path.exists(path):
+        return []
+    blocks = _all_blocks()
+    out = []
+    for t in json.load(open(path, encoding="utf-8"))["entries"]:
+        leaves = blocks.get(t["leaves"])
+        log = blocks.get(t["log"])
+        if leaves is None:
+            continue
+        if t.get("sapling", True):
+            sid = f"sapling_{t['id']}"
+            out.append({"id": sid, "material": "plant", "render": "cutout", "shape": "cross", "map_color": leaves["map_color"],
+                        "textures": {"all": sid}, "tags": ["sapling", "plant"], "_tree": t, "_leaves": leaves,
+                        "_log": log or {"map_color": "#6a4a30"}})
+        if t.get("fruit", ""):
+            for v in ("blossom", "fruit"):
+                vid = f"{t['leaves']}_{v}"
+                e = dict(leaves)
+                e["id"] = vid
+                e["textures"] = {"all": vid}
+                e["_variant"] = v
+                e["_tree"] = t
+                out.append(e)
+    return out
+
+
 def classify(name, e):
     if name.startswith("crop_") and "_crop" in e:
         return (lambda ctx, c=e["_crop"], k=e["_stage"], n=e["_stages"]: crop(ctx, c, k, n)), 1, False
+    if name.startswith("sapling_") and "_tree" in e:
+        return (lambda ctx, t=e["_tree"], lv=e["_leaves"], lg=e["_log"]: sapling(ctx, t, lv, lg)), 1, False
+    if "_variant" in e:
+        return (lambda ctx, v=e["_variant"], t=e["_tree"]: fruit_leaves(ctx, v, t)), 2, True
     table = {
         "farmland_top": (lambda c: farmland(c, False), 3, True),
         "farmland_wet_top": (lambda c: farmland(c, True), 3, True),
@@ -110,7 +153,8 @@ def crop(ctx, c, k, n):
                 if c["id"] in ("buckwheat",):
                     col = flower if (flower and not ripe) else fruit
                     for j in range(5):
-                        d.ellipse([hx - q * 4 + rng.normal() * q * 3, hy + j * q * 3, hx + q * 4, hy + j * q * 3 + q * 4], fill=_rgba(col))
+                        ox = rng.normal() * q * 2
+                        d.ellipse([hx - q * 4 + ox, hy + j * q * 3, hx + q * 4 + ox, hy + j * q * 3 + q * 4], fill=_rgba(col))
                 elif c["id"] in ("flax",) and not ripe and flower:
                     d.ellipse([hx - q * 5, hy - q * 5, hx + q * 5, hy + q * 5], fill=_rgba(flower))
                 elif c["id"] in ("oats", "millet", "rice"):
@@ -362,3 +406,60 @@ def compost(ctx):
     green = (chips < 0.08)
     albedo[green] = np.array(hex_rgb("#4a6a2a"))
     return Tex(np.clip(albedo, 0, 1), np.ones((s, s)), 0.6 * n + 0.4 * chips, 0.95 + 0.0 * n)
+
+
+def sapling(ctx, t, leaves, log):
+    s = ctx.size
+    rng = ctx.rng
+    q = 4
+    big = s * q
+    img = Image.new("RGBA", (big, big), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    lc = hex_rgb(leaves["map_color"])
+    tc = hex_rgb(log["map_color"]) if log else hex_rgb("#6a4a30")
+    shape = t.get("shape", "round")
+    x = big * 0.5
+    d.line([(x, big), (x + rng.normal() * q * 2, big * 0.35)], fill=_rgba(shade(tc, 0.8)), width=q * 3)
+    if shape in ("conifer", "pine"):
+        for i in range(5):
+            y = big * (0.25 + i * 0.13)
+            w = big * (0.08 + i * 0.05)
+            d.polygon([(x - w, y + big * 0.12), (x + w, y + big * 0.12), (x, y - big * 0.04)], fill=_rgba(shade(lc, 0.8 + 0.08 * i)))
+    elif shape in ("palm", "bamboo"):
+        for i in range(6):
+            a = -math.pi / 2 + (i - 2.5) * 0.45
+            d.line([(x, big * 0.4), (x + math.cos(a) * big * 0.35, big * 0.4 + math.sin(a) * big * 0.18 + big * 0.1)],
+                   fill=_rgba(shade(lc, 0.9)), width=q * 3)
+    else:
+        for _ in range(40):
+            px = x + (rng.random() - 0.5) * big * 0.5
+            py = big * (0.2 + 0.35 * rng.random())
+            d.ellipse([px - q * 6, py - q * 4, px + q * 6, py + q * 4], fill=_rgba(shade(lc, 0.75 + 0.45 * rng.random())))
+    for i in range(3):
+        a = -math.pi / 2 + (i - 1) * 0.8
+        d.line([(x, big * 0.7), (x + math.cos(a) * big * 0.15, big * 0.7 + math.sin(a) * big * 0.15)], fill=_rgba(tc), width=q * 2)
+    return _sprite(img, s, lc)
+
+
+def fruit_leaves(ctx, variant, t):
+    """Листва плодового дерева (рецепт обычной листвы) с цветами или плодами поверх."""
+    tex = R.leaves(ctx, needles=t.get("shape") in ("pine", "conifer"), fronds=False)
+    s = ctx.size
+    rng = ctx.rng
+    col = np.array(hex_rgb(t.get("blossom_color", "#f4e4ec") if variant == "blossom" else t.get("fruit_color", "#c83a2a")))
+    n = 26 if variant == "blossom" else 9
+    ys, xs = np.mgrid[0:s, 0:s]
+    for _ in range(n):
+        cx, cy = rng.random() * s, rng.random() * s
+        r = s * (0.025 if variant == "blossom" else 0.045) * (0.8 + 0.4 * rng.random())
+        m = (xs - cx) ** 2 + (ys - cy) ** 2 < r * r
+        k = 0.95 + 0.12 * ((cy - ys[m]) / max(r, 1))
+        tex.albedo[m] = col[None, :] * k[:, None]
+        tex.alpha[m] = 1.0
+        tex.height[m] = 0.9
+        if variant == "fruit":
+            hl = (xs - cx + r * 0.35) ** 2 + (ys - cy + r * 0.35) ** 2 < (r * 0.3) ** 2
+            tex.albedo[hl] = np.clip(col * 1.5, 0, 1)
+    if variant == "fruit":
+        tex.albedo = np.clip(tex.albedo, 0, 1)
+    return tex

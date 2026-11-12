@@ -1,85 +1,132 @@
 {
-  "format": 1,
-  "category": "trees",
-  "description": "Виды деревьев: блоки и форма. Формы реализованы в src/world/gen/tree_builder.gd.",
-  "fields": {
-    "id": {
-      "type": "string",
-      "required": true,
-      "pattern": "^[a-z][a-z0-9_]*$"
+ "format": 1,
+ "category": "trees",
+ "description": "Виды деревьев: блоки и форма. Формы реализованы в src/world/gen/tree_builder.gd.",
+ "fields": {
+  "id": {
+   "type": "string",
+   "required": true,
+   "pattern": "^[a-z][a-z0-9_]*$"
+  },
+  "name": {
+   "type": "localized",
+   "required": true
+  },
+  "log": {
+   "type": "ref",
+   "to": [
+    "blocks"
+   ],
+   "required": true
+  },
+  "leaves": {
+   "type": "ref",
+   "to": [
+    "blocks"
+   ],
+   "required": true
+  },
+  "shape": {
+   "type": "enum",
+   "required": true,
+   "values": [
+    "conifer",
+    "pine",
+    "round",
+    "oval",
+    "broad",
+    "willow",
+    "bush",
+    "palm",
+    "acacia",
+    "jungle",
+    "mangrove",
+    "bamboo",
+    "mushroom"
+   ]
+  },
+  "height": {
+   "type": "object",
+   "required": true,
+   "doc": "Высота ствола в блоках.",
+   "fields": {
+    "min": {
+     "type": "int",
+     "min": 1,
+     "max": 48,
+     "required": true
     },
-    "name": {
-      "type": "localized",
-      "required": true
-    },
-    "log": {
-      "type": "ref",
-      "to": [
-        "blocks"
-      ],
-      "required": true
-    },
-    "leaves": {
-      "type": "ref",
-      "to": [
-        "blocks"
-      ],
-      "required": true
-    },
-    "shape": {
-      "type": "enum",
-      "required": true,
-      "values": [
-        "conifer",
-        "pine",
-        "round",
-        "oval",
-        "broad",
-        "willow",
-        "bush",
-        "palm",
-        "acacia",
-        "jungle",
-        "mangrove",
-        "bamboo",
-        "mushroom"
-      ]
-    },
-    "height": {
-      "type": "object",
-      "required": true,
-      "doc": "Высота ствола в блоках.",
-      "fields": {
-        "min": {
-          "type": "int",
-          "min": 1,
-          "max": 48,
-          "required": true
-        },
-        "max": {
-          "type": "int",
-          "min": 1,
-          "max": 48,
-          "required": true
-        }
-      }
-    },
-    "trunk_width": {
-      "type": "int",
-      "min": 1,
-      "max": 2,
-      "default": 1
-    },
-    "canopy_radius": {
-      "type": "float",
-      "min": 0.5,
-      "max": 9.0,
-      "default": 2.5
-    },
-    "in_water": {
-      "type": "bool",
-      "default": false,
-      "doc": "Может расти на мелководье (мангры)."
+    "max": {
+     "type": "int",
+     "min": 1,
+     "max": 48,
+     "required": true
     }
+   }
+  },
+  "trunk_width": {
+   "type": "int",
+   "min": 1,
+   "max": 2,
+   "default": 1
+  },
+  "canopy_radius": {
+   "type": "float",
+   "min": 0.5,
+   "max": 9.0,
+   "default": 2.5
+  },
+  "in_water": {
+   "type": "bool",
+   "default": false,
+   "doc": "Может расти на мелководье (мангры)."
+  },
+  "grow_days": {
+   "type": "float",
+   "default": 6.0,
+   "min": 0.5,
+   "max": 120.0,
+   "doc": "Этап 9: сколько игровых дней саженец растёт до дерева."
+  },
+  "sapling": {
+   "type": "bool",
+   "default": true,
+   "doc": "Есть ли саженец (sapling_<id>, Registry выводит сам); листва роняет его с шансом sapling_chance."
+  },
+  "sapling_chance": {
+   "type": "float",
+   "default": 0.05,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "fruit": {
+   "type": "string",
+   "default": "",
+   "doc": "Плод (id предмета): листва цветёт весной (<листва>_blossom) и плодоносит в fruit_seasons (<листва>_fruit)."
+  },
+  "fruit_seasons": {
+   "type": "array",
+   "of": {
+    "type": "enum",
+    "values": [
+     "spring",
+     "summer",
+     "autumn",
+     "winter"
+    ]
+   },
+   "default": [
+    "summer",
+    "autumn"
+   ]
+  },
+  "fruit_color": {
+   "type": "color",
+   "default": "#c83a2a"
+  },
+  "blossom_color": {
+   "type": "color",
+   "default": "#f4e4ec"
   }
+ }
 }

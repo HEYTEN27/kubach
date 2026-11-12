@@ -101,6 +101,7 @@ func load_all(dir: String = DEFAULT_DATA_DIR) -> bool:
 		for path in _category_files(dir, category):
 			_load_file(path, category, validator)
 	_derive_entries(validator)
+	_derive_trees(validator)
 	_resolve_refs(validator)
 	errors.append_array(validator.errors)
 	_build_blocks()
@@ -325,6 +326,66 @@ func _derive_entries(validator: SchemaValidator) -> void:
 				"color2": "#%s" % (c["leaf_color"] as Color).to_html(false) },
 			"tags": ["seeds", "compostable"], "plant": String(id),
 		}, src, validator)
+
+
+## Сады (этап 9): саженец sapling_<дерево> (крест, предмет) и у плодовых — листва в цвету и с
+## плодами (<листва>_blossom, <листва>_fruit — копии листвы со своей текстурой). Листва роняет
+## саженец с шансом sapling_chance.
+func _derive_trees(validator: SchemaValidator) -> void:
+	if not _entries.has("trees") or not _entries.has("blocks"):
+		return
+	for id: StringName in _order["trees"]:
+		var t: Dictionary = _entries["trees"][id]
+		var src := "%s (выведено)" % _sources["trees:%s" % id]
+		var leaves_id := StringName(t["leaves"])
+		var leaves: Dictionary = _entries["blocks"].get(leaves_id, {})
+		if t.get("sapling", true) and not leaves.is_empty():
+			var sid := "sapling_%s" % id
+			_add_derived("blocks", sid, {
+				"id": sid, "name": { "ru": "Саженец: %s" % t["name"]["ru"], "en": "%s Sapling" % t["name"]["en"] },
+				"material": "plant", "render": "cutout", "shape": "cross", "solid": false, "hardness": 0.0,
+				"light_filter": 0, "sounds": "grass", "map_color": "#%s" % (leaves["map_color"] as Color).to_html(false),
+				"textures": { "all": sid }, "drops": [{ "id": sid }], "flammable": true,
+				"tags": ["sapling", "plant", "compostable"], "weight": 0.3,
+			}, src, validator)
+			if _entries["blocks"].has(StringName(sid)):
+				(leaves["drops"] as Array).append({ "id": sid, "min": 1, "max": 1, "chance": float(t.get("sapling_chance", 0.05)) })
+		if String(t.get("fruit", "")) != "" and not leaves.is_empty():
+			for v: String in ["blossom", "fruit"]:
+				var vid := "%s_%s" % [leaves_id, v]
+				if _entries["blocks"].has(StringName(vid)):
+					continue
+				var raw: Dictionary = _plain(leaves)
+				raw["id"] = vid
+				raw["name"] = { "ru": "%s (%s)" % [leaves["name"]["ru"], "цветёт" if v == "blossom" else "с плодами"],
+					"en": "%s (%s)" % [leaves["name"]["en"], "blossom" if v == "blossom" else "fruit"] }
+				raw["textures"] = { "all": vid }
+				raw["item"] = false
+				raw["drops"] = [{ "id": String(leaves_id), "min": 1, "max": 1, "chance": 0.0 }]
+				raw["tags"] = (leaves["tags"] as Array) + ["fruit_leaves" if v == "fruit" else "blossom_leaves"]
+				_add_derived("blocks", vid, raw, src, validator)
+
+
+## Проверенная запись → снова «сырая» (строки вместо StringName, #rrggbb вместо Color),
+## чтобы вывести из неё новую запись через схему.
+static func _plain(v: Variant) -> Variant:
+	if v is StringName:
+		return String(v)
+	if v is Color:
+		return "#%s" % (v as Color).to_html((v as Color).a < 1.0)
+	if v is Dictionary:
+		var d := {}
+		for k: Variant in v:
+			d[_plain(k)] = _plain(v[k])
+		return d
+	if v is Array:
+		var a := []
+		for x: Variant in v:
+			a.append(_plain(x))
+		return a
+	if v is PackedStringArray:
+		return Array(v)
+	return v
 
 
 func _add_derived(category: String, id: String, raw: Dictionary, src: String, validator: SchemaValidator) -> void:

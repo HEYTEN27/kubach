@@ -448,6 +448,108 @@ def draw_item(e):
             d.line([(x + 10, 80), (x + 12, 200)], fill=_c(col, 0.7), width=3)
         for y in (86, 180):
             d.rectangle([28, y, 228, y + 10], fill=_c(hex_rgb("#b89a62")))
+    elif shape == "ear":
+        for i in range(3):
+            x = 100 + i * 28
+            d.line([(x, 230), (x + (i - 1) * 20, 60)], fill=_c(col, 0.8), width=6)
+            for j in range(7):
+                yy = 70 + j * 16
+                for sgn in (-1, 1):
+                    d.ellipse([x + (i - 1) * 20 * (1 - (yy - 60) / 170) + sgn * 10 - 9, yy - 8,
+                               x + (i - 1) * 20 * (1 - (yy - 60) / 170) + sgn * 10 + 9, yy + 10], fill=_c(col, 1.0 + 0.04 * sgn))
+    elif shape == "seeds":
+        rng = __import__("random").Random(hash(e["id"]) & 0xffff)
+        for _ in range(22):
+            x, y = rng.randint(50, 200), rng.randint(90, 210)
+            d.ellipse([x - 12, y - 8, x + 12, y + 8], fill=_c(col, 0.8 + 0.4 * rng.random()))
+            d.ellipse([x - 6, y - 5, x - 1, y - 2], fill=_c(col, 1.4))
+    elif shape == "veg_round":
+        d.ellipse([46, 64, 210, 222], fill=_c(col))
+        d.ellipse([80, 90, 130, 130], fill=_c(col, 1.3))
+        d.polygon([(124, 64), (110, 30), (140, 34)], fill=_c(hex_rgb("#4a8a34")))
+    elif shape == "veg_long":
+        d.rounded_rectangle([96, 40, 160, 226], 30, fill=_c(col))
+        d.rounded_rectangle([108, 60, 124, 200], 8, fill=_c(col, 1.25))
+        d.polygon([(128, 40), (110, 14), (146, 18)], fill=_c(hex_rgb("#4a8a34")))
+    elif shape == "pod":
+        d.chord([40, 90, 216, 180], 0, 180, fill=_c(col, 0.9))
+        for i in range(5):
+            d.ellipse([58 + i * 30, 112, 84 + i * 30, 138], fill=_c(col, 1.25))
+    elif shape == "leaves":
+        for i in range(5):
+            a = -math.pi / 2 + (i - 2) * 0.45
+            x2, y2 = 128 + math.cos(a) * 100, 220 + math.sin(a) * 160
+            d.polygon([(128, 220), (x2 - 20, y2 + 40), (x2, y2), (x2 + 20, y2 + 40)], fill=_c(col, 0.85 + 0.06 * i))
+            d.line([(128, 220), (x2, y2)], fill=_c(col, 0.6), width=4)
+    elif shape == "grapes":
+        for r in range(5):
+            for c in range(5 - r):
+                x = 80 + c * 26 + r * 13
+                y = 70 + r * 30
+                d.ellipse([x - 16, y - 16, x + 16, y + 16], fill=_c(col, 0.9 + 0.05 * c))
+        d.line([(128, 60), (140, 28)], fill=_c(hex_rgb("#6a4a2a")), width=6)
+    elif shape == "egg":
+        d.ellipse([70, 50, 186, 216], fill=_c(col))
+        d.ellipse([92, 76, 124, 120], fill=_c(col, 1.12))
+    elif shape == "jug":
+        d.rounded_rectangle([70, 70, 186, 226], 30, fill=_c(hex_rgb("#a85a3a")))
+        d.ellipse([84, 60, 172, 92], fill=_c(col))
+        d.arc([160, 100, 220, 180], 270, 90, fill=_c(hex_rgb("#a85a3a")), width=12)
+    elif shape == "butter":
+        d.polygon([(40, 150), (150, 110), (220, 140), (110, 190)], fill=_c(col, 1.1))
+        d.polygon([(40, 150), (110, 190), (110, 220), (40, 180)], fill=_c(col, 0.85))
+        d.polygon([(110, 190), (220, 140), (220, 170), (110, 220)], fill=_c(col, 0.7))
+    elif shape == "cheese":
+        d.polygon([(40, 180), (210, 120), (210, 200), (40, 220)], fill=_c(col, 0.85))
+        d.polygon([(40, 180), (210, 120), (130, 90)], fill=_c(col, 1.1))
+        for x, y in ((90, 190), (150, 175), (180, 195)):
+            d.ellipse([x - 9, y - 7, x + 9, y + 7], fill=_c(col, 0.6))
+    elif shape == "bowl_white":
+        d.chord([40, 70, 216, 220], 0, 180, fill=_c(hex_rgb("#a85a3a")))
+        d.ellipse([40, 100, 216, 150], fill=_c(col))
+    elif shape == "bottle":
+        d.rounded_rectangle([88, 100, 168, 232], 18, fill=_c(hex_rgb("#5a7a5a"), 0.9))
+        d.rectangle([110, 40, 146, 104], fill=_c(hex_rgb("#5a7a5a"), 0.9))
+        d.rectangle([106, 30, 150, 46], fill=_c(hex_rgb("#8a6a44")))
+        d.rounded_rectangle([96, 150, 160, 224], 12, fill=_c(col))
+        d.rectangle([100, 120, 154, 140], fill=(232, 222, 196, 255))
+    elif shape == "sack":
+        d.polygon([(60, 90), (196, 90), (216, 226), (40, 226)], fill=_c(hex_rgb("#c8b088")))
+        d.ellipse([60, 70, 196, 110], fill=_c(col))
+        d.line([(70, 100), (186, 100)], fill=_c(hex_rgb("#8a6a44")), width=6)
+    elif shape == "pancake":
+        for i in range(4):
+            y = 190 - i * 22
+            d.ellipse([40, y - 26, 216, y + 26], fill=_c(col, 0.85 + 0.05 * i))
+        d.ellipse([90, 98, 166, 122], fill=_c(hex_rgb("#f0d880")))
+    elif shape == "pie":
+        d.chord([30, 90, 226, 230], 0, 180, fill=_c(hex_rgb("#c8904a")))
+        d.ellipse([30, 110, 226, 180], fill=_c(hex_rgb("#d8a05a")))
+        d.ellipse([60, 120, 196, 168], fill=_c(col))
+        for i in range(4):
+            d.line([(60 + i * 40, 122), (90 + i * 30, 166)], fill=_c(hex_rgb("#e0b070")), width=8)
+    elif shape == "dumplings":
+        for x, y in ((80, 150), (150, 140), (115, 190), (180, 196)):
+            d.chord([x - 40, y - 34, x + 40, y + 34], 180, 360, fill=_c(col))
+            d.line([(x - 40, y), (x + 40, y)], fill=_c(col, 0.8), width=6)
+    elif shape == "strip":
+        for i in range(3):
+            x = 70 + i * 40
+            d.polygon([(x, 50), (x + 30, 46), (x + 44, 220), (x + 12, 224)], fill=_c(col, 0.85 + 0.1 * i))
+    elif shape == "dish_plate":
+        d.ellipse([20, 120, 236, 220], fill=(236, 232, 224, 255))
+        d.ellipse([46, 132, 210, 206], fill=(214, 208, 198, 255))
+        rng = __import__("random").Random(hash(e["id"]) & 0xffff)
+        for _ in range(14):
+            x, y = rng.randint(70, 186), rng.randint(140, 196)
+            d.ellipse([x - 16, y - 10, x + 16, y + 10], fill=_c(col, 0.8 + 0.4 * rng.random()))
+    elif shape == "watering_can":
+        d.rounded_rectangle([60, 100, 180, 220], 16, fill=_c(col))
+        d.polygon([(176, 130), (240, 70), (248, 84), (180, 160)], fill=_c(col, 0.85))
+        d.ellipse([228, 58, 252, 86], fill=_c(col2))
+        d.arc([70, 50, 170, 150], 180, 360, fill=_c(col2), width=10)
+        if col3:
+            d.ellipse([70, 104, 170, 124], fill=_c(hex_rgb(col3)))
     elif shape == "waterskin":
         d.ellipse([46, 70, 210, 230], fill=_c(col))
         d.ellipse([70, 96, 150, 170], fill=_c(col, 1.18))
@@ -541,6 +643,19 @@ def build(out_dir=GEN):
     for e in load_entries([os.path.join(ROOT, "data", "items.json")] + sorted(glob.glob(os.path.join(ROOT, "data", "items", "*.json")))):
         icons.append(draw_item(e))
         ids.append(e["id"])
+    # Выводимые Registry предметы: семена культур (data/crops.json) и саженцы деревьев (data/trees.json).
+    crops_path = os.path.join(ROOT, "data", "crops.json")
+    if os.path.exists(crops_path):
+        for c in json.load(open(crops_path, encoding="utf-8"))["entries"]:
+            icons.append(draw_item({"id": c["id"] + "_seeds", "icon": {"shape": "seeds", "color": c["fruit_color"],
+                                                                      "color2": c["leaf_color"]}}))
+            ids.append(c["id"] + "_seeds")
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import farm_tex
+    for e in farm_tex.derived_tree_blocks():
+        if e["id"].startswith("sapling_"):
+            icons.append(block_icon(e, atlas))
+            ids.append(e["id"])
     # Части и инструменты из частей: основная иконка и варианты «id@материал» (цвет материала).
     mats = load_entries([os.path.join(ROOT, "data", "materials.json")])
     by_cat = {}

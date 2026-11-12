@@ -49,6 +49,7 @@ def load_blocks():
         entries += json.load(open(f, encoding="utf-8"))["entries"]
     # Блоки, которые Registry выводит из других данных (стадии культур).
     entries += FT.derived_blocks()
+    entries += FT.derived_tree_blocks()
     for e in entries:
         t = e["textures"]
         for role in ("all", "top", "bottom", "side"):
