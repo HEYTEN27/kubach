@@ -274,6 +274,8 @@ func set_underwater(on: bool, color: Color = Color(0.1, 0.3, 0.4)) -> void:
 
 
 func _apply_fog_range() -> void:
+	# Под водой туман закрывает и небо: за краем прогрузки не видно светлой полосы.
+	environment.fog_sky_affect = 1.0 if _underwater else 0.0
 	if _underwater:
 		environment.fog_depth_begin = 0.0
 		environment.fog_depth_end = 22.0
