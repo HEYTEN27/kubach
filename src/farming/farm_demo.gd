@@ -20,6 +20,7 @@ static func build(kind: String, world: World, farm: FarmSystem, orchard: Orchard
 			_lift(player, 5.0)
 		"kitchen":
 			_kitchen(world, base)
+			_lift(player, 3.0)
 		"fell":
 			_fell(world, orchard, base, Vector3(b.x, b.y, b.z))
 		"animals":
@@ -125,13 +126,14 @@ static func _fell(world: World, orchard: OrchardSystem, base: Vector3i, from: Ve
 	var y := base.y
 	_flatten(world, base.x - 14, base.x + 14, base.z - 24, base.z + 3, y, Registry.block_num(&"turf"), 24)
 	var tb := world.generator.trees
-	var p := Vector3i(base.x - 4, y + 1, base.z - 12)
+	var p := Vector3i(base.x - 3, y + 1, base.z - 8)
 	var t: int = tb.index[&"apple"]
 	orchard.grow_tree(p, t)
 	_ripen(orchard)
 	var lg := world.get_block(p.x, p.y, p.z)
 	world.set_block(p.x, p.y, p.z, 0)
-	FallingTree.time_scale = 0.08
+	FallingTree.time_scale = 0.02
+	FallingTree.start_t = 1.2
 	orchard.fell(p, lg, Vector3(p.x - 6.0, from.y, p.z + 0.5))
 
 

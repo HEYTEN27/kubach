@@ -10,6 +10,8 @@ const DURATION := 1.7
 const HOLD := 0.25
 ## Замедление анимации (скриншоты: дерево застаёт кадр в падении).
 static var time_scale := 1.0
+## С какого момента начинать анимацию (скриншоты: кадр посреди падения).
+static var start_t := 0.0
 
 var _blocks := {}
 var _pivot := Vector3.ZERO
@@ -27,6 +29,8 @@ func setup(world: World, mesher: Object, blocks: Dictionary, pivot: Vector3, dir
 		flat = Vector3.FORWARD
 	_axis = Vector3.UP.cross(flat.normalized()).normalized()
 	position = pivot
+	_t = start_t
+	basis = Basis(_axis, angle_at(_t))
 	# Блоки — по временным секциям 16³ относительно угла рамки.
 	var lo := Vector3i(1 << 30, 1 << 30, 1 << 30)
 	for q: Vector3i in blocks:

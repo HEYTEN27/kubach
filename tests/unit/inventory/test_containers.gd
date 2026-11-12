@@ -67,10 +67,15 @@ func test_creative_break_drops_no_block() -> void:
 func test_drop_chances() -> void:
 	var leaves := Registry.block_num(&"oak_leaves")
 	var sticks := 0
+	var saplings := 0
 	for i in 400:
 		for s: ItemStack in world.roll_drops(leaves):
-			sticks += s.count
+			if s.id == &"stick":
+				sticks += s.count
+			else:
+				saplings += s.count
 	assert_between(sticks, 20, 80, "палки из листвы примерно в 12% случаев")
+	assert_between(saplings, 4, 45, "саженцы из листвы (этап 9) примерно в 5% случаев")
 
 
 func test_region_roundtrip_with_entities() -> void:

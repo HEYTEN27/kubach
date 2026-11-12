@@ -55,8 +55,8 @@ func setup(p_chunks: ChunkManager, textures: BlockTextures) -> void:
 		var c := gb.map_color
 		_material.set_shader_parameter(&"sprite_color", Vector3(c.r, c.g, c.b))
 	_mesh.surface_set_material(0, _material)
-	EventBus.block_broken.connect(_on_block_changed)
-	EventBus.block_placed.connect(_on_block_changed)
+	# Все изменения мира, в том числе пакетные (вода, выросшее и упавшее дерево, World.apply_changes).
+	chunks.world.block_changed.connect(_on_world_block_changed)
 
 
 func configure(p_enabled: bool, p_radius: int, p_density: int) -> void:
@@ -135,9 +135,13 @@ func _in_range(c: Vector2i) -> bool:
 	return d.x * d.x + d.y * d.y <= radius * radius + radius
 
 
-func _on_block_changed(pos: Vector3i, _block: int, _scene_pos: Vector3) -> void:
+func _on_world_block_changed(pos: Vector3i, old: int, new: int) -> void:
 	var c := Vector2i(pos.x >> 4, pos.z >> 4)
-	if _built.has(c):
+	if not _built.has(c) or _dirty.has(c):
+		return
+	# Важно только то, что меняет поверхность для травы: дерн, твёрдость клетки над ним.
+	# Смена уровня воды (жидкость → жидкость) траву не трогает — колонна не перестраивается.
+	if _grass_ok[old] != _grass_ok[new] or _skip[old] != _skip[new] or (old == 0) != (new == 0):
 		_dirty[c] = true
 
 
