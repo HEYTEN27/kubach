@@ -447,19 +447,42 @@ def fruit_leaves(ctx, variant, t):
     s = ctx.size
     rng = ctx.rng
     col = np.array(hex_rgb(t.get("blossom_color", "#f4e4ec") if variant == "blossom" else t.get("fruit_color", "#c83a2a")))
-    n = 26 if variant == "blossom" else 9
+    n = 34 if variant == "blossom" else 7
     ys, xs = np.mgrid[0:s, 0:s]
+    nut = t.get("shape") in ("pine", "conifer", "bush")
     for _ in range(n):
-        cx, cy = rng.random() * s, rng.random() * s
-        r = s * (0.025 if variant == "blossom" else 0.045) * (0.8 + 0.4 * rng.random())
-        m = (xs - cx) ** 2 + (ys - cy) ** 2 < r * r
-        k = 0.95 + 0.12 * ((cy - ys[m]) / max(r, 1))
+        cx, cy = s * (0.1 + 0.8 * rng.random()), s * (0.1 + 0.8 * rng.random())
+        if variant == "blossom":
+            # Соцветие: 5 лепестков вокруг жёлтой серединки.
+            r = s * 0.022 * (0.8 + 0.4 * rng.random())
+            a0 = rng.random() * 6.283
+            for j in range(5):
+                a = a0 + j * 1.2566
+                px, py = cx + np.cos(a) * r * 1.3, cy + np.sin(a) * r * 1.3
+                m = (xs - px) ** 2 + (ys - py) ** 2 < r * r
+                tex.albedo[m] = col[None, :] * (0.92 + 0.1 * rng.random())
+                tex.alpha[m] = 1.0
+                tex.height[m] = 0.85
+            m = (xs - cx) ** 2 + (ys - cy) ** 2 < (r * 0.7) ** 2
+            tex.albedo[m] = np.array([0.95, 0.82, 0.35])
+            tex.alpha[m] = 1.0
+            continue
+        r = s * (0.05 if nut else 0.075) * (0.85 + 0.3 * rng.random())
+        d2 = (xs - cx) ** 2 + ((ys - cy) * (1.15 if nut else 1.0)) ** 2
+        outline = d2 < (r * 1.12) ** 2
+        tex.albedo[outline] = col * 0.35
+        tex.alpha[outline] = 1.0
+        m = d2 < r * r
+        k = 0.78 + 0.32 * np.clip((cy - ys[m]) / max(r, 1) + 0.3, 0, 1)
         tex.albedo[m] = col[None, :] * k[:, None]
         tex.alpha[m] = 1.0
-        tex.height[m] = 0.9
-        if variant == "fruit":
-            hl = (xs - cx + r * 0.35) ** 2 + (ys - cy + r * 0.35) ** 2 < (r * 0.3) ** 2
-            tex.albedo[hl] = np.clip(col * 1.5, 0, 1)
+        tex.height[outline] = 0.95
+        hl = (xs - cx + r * 0.38) ** 2 + (ys - cy + r * 0.38) ** 2 < (r * 0.28) ** 2
+        tex.albedo[hl] = np.clip(col * 1.6 + 0.15, 0, 1)
+        # Черешок.
+        stem = (np.abs(xs - cx - r * 0.1) < max(1.0, s * 0.008)) & (ys < cy - r * 0.8) & (ys > cy - r * 1.35)
+        tex.albedo[stem] = np.array([0.32, 0.24, 0.12])
+        tex.alpha[stem] = 1.0
     if variant == "fruit":
         tex.albedo = np.clip(tex.albedo, 0, 1)
     return tex

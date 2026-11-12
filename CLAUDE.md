@@ -25,7 +25,7 @@
 | `scripts/screenshot.sh [out.png] [аргументы игры]` | Запуск под Xvfb с программным OpenGL и сохранение кадра (визуальный смоук-тест, 1280×720, ~4 мин). Пример: `scripts/screenshot.sh build/s.png --world=Тест --view=6 --camera=back --teleport=40.5,~,40.5 --f3`. `SHOT_SIZE=1920x1080 SHOT_TIMEOUT=400` — крупнее. |
 | `scripts/gallery.sh [out.png] [--blocks=a,b]` | Ряд блоков с шейдерами этапа 3 — быстрый (секунды) визуальный тест текстур и материалов. |
 | `scripts/sky_gallery.sh [out.png]` | Небо этапа 7: 8 кадров «время × погода» (полдень, закат, ночь, пасмурно, гроза, туман, суховей) за ~15 с. |
-| `python3 tools/texgen/texgen.py [--only a,b] [--size 128]` | Перерисовать текстуры блоков (атласы `assets/textures/generated/`, превью `docs/textures_preview.png`) и иконки предметов. Нужно после добавления блока с новым набором текстур или нового предмета. ~90 с. |
+| `python3 tools/texgen/texgen.py [--only a,b] [--size 128]` | Перерисовать текстуры блоков (атласы `assets/textures/generated/`, превью `docs/textures_preview.png`) и иконки предметов. Нужно после добавления блока с новым набором текстур или нового предмета. ~90 с. `--only` — только просмотр наборов в `build/texgen_only/` (рабочие атласы не трогает). |
 | `python3 tools/texgen/icons.py` | Только иконки предметов (`items_icons.png` + `.json`): блоки — изометрия из атласа, предметы — по полю `icon` в `data/items.json`. |
 | `scripts/build_native.sh [linux\|windows]` | Сборка C++-расширения `native/kubach_native` (godot-cpp 4.5 скачивается в `tools/`; Windows — кросс-компиляцией через zig). Готовые `.so`/`.dll` лежат в `native/bin/` и коммитятся. |
 | `scripts/export_windows.sh` | `build/windows/Kubach.exe` (pck встроен) + `libkubach_native…dll` рядом. Сам скачивает шаблоны экспорта. |

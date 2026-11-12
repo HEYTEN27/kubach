@@ -2,7 +2,8 @@ class_name FarmController
 extends Node
 ## Действия игрока на ферме (этап 9): ПКМ мотыгой по почве — грядка; семенами по грядке —
 ## посадить; удобрением по культуре — удобрить; лейкой — полить 3×3 (уровень воды из лейки);
-## пустой рукой или чем угодно по спелой культуре — собрать урожай. Работает раньше
+## пустой рукой или чем угодно по спелой культуре или листве с плодами — собрать урожай;
+## удобрением по саженцу — ускорить рост. Работает раньше
 ## BlockInteraction и гасит её клик, если действие выполнено.
 
 signal message(text: String)
@@ -10,6 +11,7 @@ signal message(text: String)
 var world: World
 var player: Player
 var farm: FarmSystem
+var orchard: OrchardSystem
 
 
 func _init() -> void:
@@ -17,10 +19,11 @@ func _init() -> void:
 	process_priority = -9
 
 
-func setup(p_world: World, p_player: Player, p_farm: FarmSystem) -> void:
+func setup(p_world: World, p_player: Player, p_farm: FarmSystem, p_orchard: OrchardSystem = null) -> void:
 	world = p_world
 	player = p_player
 	farm = p_farm
+	orchard = p_orchard
 
 
 func _process(_delta: float) -> void:
@@ -55,6 +58,10 @@ func use_on(p: Vector3i, normal: Vector3i) -> bool:
 	# Удобрение.
 	if d != null and d.fertilizer > 0.0:
 		var cp := p if is_crop else p + Vector3i.UP
+		if orchard != null and orchard.fertilize(p, d.fertilizer):
+			if world.game_mode != &"creative":
+				player.inventory.consume_held()
+			return true
 		if farm.fertilize(cp, d.fertilizer):
 			if world.game_mode != &"creative":
 				player.inventory.consume_held()
@@ -76,6 +83,9 @@ func use_on(p: Vector3i, normal: Vector3i) -> bool:
 				player.interaction.tool_broken.emit(d.id)
 			return true
 		return false
+	# Плоды с дерева.
+	if orchard != null and orchard.harvest(p):
+		return true
 	# Сбор спелого.
 	if is_crop:
 		return farm.harvest(p)

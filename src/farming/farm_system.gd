@@ -182,13 +182,13 @@ func _water_near(p: Vector3i, r: int) -> bool:
 func _sprinkled(p: Vector3i) -> bool:
 	for s: Vector3i in sprinklers:
 		if absi(s.x - p.x) <= SPRINKLER_RADIUS and absi(s.z - p.z) <= SPRINKLER_RADIUS and absi(s.y - p.y) <= 2 \
-				and _sprinkler_active(s):
+				and sprinkler_active(s):
 			return true
 	return false
 
 
 ## Разбрызгиватель работает, если рядом (6 соседей) вода.
-func _sprinkler_active(s: Vector3i) -> bool:
+func sprinkler_active(s: Vector3i) -> bool:
 	var reg := world.registry
 	for d: Vector3i in [Vector3i.LEFT, Vector3i.RIGHT, Vector3i.FORWARD, Vector3i.BACK, Vector3i.DOWN, Vector3i.UP]:
 		var b := world.get_block(s.x + d.x, s.y + d.y, s.z + d.z)

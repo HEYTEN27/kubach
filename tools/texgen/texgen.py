@@ -13,6 +13,7 @@
 и числом вариантов.
 
 Запуск:  python3 tools/texgen/texgen.py [--size 128] [--only granite,turf_top] [--preview docs/textures_preview.png]
+         (--only пишет в build/texgen_only/ — для быстрого просмотра, рабочие атласы не меняет)
 Детерминирован: одинаковые данные → одинаковые картинки.
 """
 import argparse
@@ -255,6 +256,12 @@ def main():
     names = sorted(sets)
     if args.only:
         names = [n for n in names if n in args.only.split(",")]
+        # Частичный прогон — только для просмотра: рабочие атласы содержат все наборы.
+        if args.out == OUT_DIR:
+            args.out = os.path.join(ROOT, "build", "texgen_only")
+            if args.preview == ap.get_default("preview"):
+                args.preview = os.path.join(args.out, "preview.png")
+            print(f"--only: атласы и превью — в {args.out} (рабочие в {OUT_DIR} не трогаются)")
     t0 = time.time()
     layers_albedo, layers_normal, layers_orm = [], [], []
     manifest = {"format": FORMAT, "size": size, "columns": COLUMNS, "sets": {}}
