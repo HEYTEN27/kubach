@@ -430,6 +430,24 @@ def draw_item(e):
             w3 = hex_rgb(col3)
             d.ellipse([60, 84, 196, 104], fill=_c(w3))
             d.ellipse([90, 88, 130, 96], fill=(230, 240, 255, 180))
+    elif shape == "boat":
+        # Лодка сбоку-сверху: корпус из досок, банка, вёсла.
+        d.polygon([(20, 120), (236, 120), (210, 190), (46, 190)], fill=_c(col))
+        for i in range(4):
+            y = 132 + i * 14
+            d.line([(30 + i * 5, y), (226 - i * 5, y)], fill=_c(col, 0.7), width=3)
+        d.polygon([(20, 120), (236, 120), (226, 108), (30, 108)], fill=_c(col, 1.25))
+        d.rectangle([108, 104, 148, 116], fill=_c(col2))
+        d.line([(60, 70), (150, 200)], fill=_c(col2, 1.1), width=8)
+        d.polygon([(140, 186), (166, 220), (152, 230), (128, 196)], fill=_c(col2, 1.1))
+    elif shape == "raft":
+        for i in range(5):
+            x = 34 + i * 38
+            d.rounded_rectangle([x, 50, x + 34, 216], 14, fill=_c(col, 0.9 + 0.06 * (i % 2)))
+            d.ellipse([x + 4, 52, x + 30, 70], fill=_c(col2))
+            d.line([(x + 10, 80), (x + 12, 200)], fill=_c(col, 0.7), width=3)
+        for y in (86, 180):
+            d.rectangle([28, y, 228, y + 10], fill=_c(hex_rgb("#b89a62")))
     elif shape == "waterskin":
         d.ellipse([46, 70, 210, 230], fill=_c(col))
         d.ellipse([70, 96, 150, 170], fill=_c(col, 1.18))

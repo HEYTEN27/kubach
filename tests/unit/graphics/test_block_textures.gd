@@ -31,7 +31,10 @@ func test_info_table_rows() -> void:
 	assert_eq(side.b, 0.0, "бок дёрна не поворачивается")
 	var lava := Registry.block(&"lava")
 	assert_gt(img.get_pixel(0, lava.num).a, 0.0, "лава светится")
-	assert_almost_eq(img.get_pixel(3, lava.num).a, BlockTextures.LIQUID_OPACITY, 0.001)
+	assert_almost_eq(img.get_pixel(3, lava.num).a, 1.0, 0.001, "лава — жидкость без шейдера воды")
+	assert_almost_eq(img.get_pixel(3, Registry.block_num(&"water")).a, BlockTextures.LIQUID_OPACITY, 0.001, "вода-источник")
+	assert_almost_eq(img.get_pixel(3, Registry.block_num(&"water_3")).a, BlockTextures.FLOWING_OPACITY, 0.001,
+		"конечная вода (пена на водопадах)")
 
 
 func test_atlases_are_texture_arrays() -> void:

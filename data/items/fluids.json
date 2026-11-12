@@ -96,6 +96,62 @@
     "empty": "waterskin",
     "pour": false
    }
+  },
+  {
+   "id": "oak_boat",
+   "name": {
+    "ru": "Дубовая лодка",
+    "en": "Oak Boat"
+   },
+   "kind": "misc",
+   "stack": 1,
+   "weight": 14.0,
+   "icon": {
+    "shape": "boat",
+    "color": "#a07a4a",
+    "color2": "#6a4a2a"
+   },
+   "tags": [
+    "vehicle",
+    "floats"
+   ],
+   "vehicle": {
+    "kind": "boat",
+    "speed": 6.0,
+    "turn": 1.7,
+    "length": 2.6,
+    "width": 1.3,
+    "texture_block": "oak_planks",
+    "hits": 3
+   }
+  },
+  {
+   "id": "log_raft",
+   "name": {
+    "ru": "Плот",
+    "en": "Raft"
+   },
+   "kind": "misc",
+   "stack": 1,
+   "weight": 30.0,
+   "icon": {
+    "shape": "raft",
+    "color": "#7a5a3a",
+    "color2": "#c8b088"
+   },
+   "tags": [
+    "vehicle",
+    "floats"
+   ],
+   "vehicle": {
+    "kind": "raft",
+    "speed": 3.2,
+    "turn": 1.0,
+    "length": 2.4,
+    "width": 2.0,
+    "texture_block": "oak_log",
+    "hits": 4
+   }
   }
  ]
 }

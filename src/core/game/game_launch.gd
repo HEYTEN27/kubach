@@ -23,7 +23,8 @@ extends RefCounted
 ##   --weather=<id>       сразу включить погоду из data/weather.json (rain, thunderstorm, snow…);
 ##   --season=<id>        у нового мира — стартовый сезон, у сохранённого — перейти в середину сезона;
 ##   --day=<N>            день при запуске (фаза луны);
-##   --biome=<id>         начать в ближайшем биоме id (meadow, steppe, tundra…) — для скриншотов.
+##   --biome=<id>         начать в ближайшем биоме id (meadow, steppe, tundra…) — для скриншотов;
+##   --dive               начать под водой, у дна (с --biome=ocean или river) — проверка подводного вида.
 
 static var folder := ""
 static var new_world_name := ""
@@ -46,6 +47,7 @@ static var weather := ""
 static var season := ""
 static var start_day := 0
 static var biome := ""
+static var dive := false
 ## Внешность и стартовая одежда из редактора персонажа (новый мир).
 static var appearance: Dictionary = {}
 static var outfit: Array = []
@@ -75,6 +77,7 @@ static func reset() -> void:
 	season = ""
 	start_day = 0
 	biome = ""
+	dive = false
 
 
 ## Разбирает аргументы командной строки. true — аргументы требуют сразу запустить игру.
@@ -127,6 +130,8 @@ static func parse_args(args: PackedStringArray) -> bool:
 				weather = value
 			"--biome":
 				biome = value
+			"--dive":
+				dive = true
 			"--day":
 				start_day = maxi(1, value.to_int())
 			"--camera":

@@ -29,6 +29,7 @@ var break_progress := 0.0
 
 var _break_block := Vector3i(0, 1 << 30, 0)
 var _cooldown := 0.0
+var _suppressed := 0.0
 var _highlight: MeshInstance3D
 
 
@@ -50,8 +51,15 @@ func select(index: int) -> void:
 	player.inventory.select(index)
 
 
+## Не ломать и не ставить блоки sec секунд (клик забрала лодка или ведро).
+func suppress(sec: float) -> void:
+	_suppressed = maxf(_suppressed, sec)
+	_cooldown = maxf(_cooldown, sec)
+
+
 func _process(delta: float) -> void:
 	_cooldown = maxf(0.0, _cooldown - delta)
+	_suppressed = maxf(0.0, _suppressed - delta)
 	if player.input_allowed():
 		_handle_selection_input()
 	if not player.active or not player.input_allowed():
@@ -67,7 +75,7 @@ func _process(delta: float) -> void:
 		var b: Vector3i = target["block"]
 		_highlight.global_position = world.to_scene(b.x, b.y, b.z)
 
-	if Input.is_action_pressed(&"attack") and target["hit"]:
+	if Input.is_action_pressed(&"attack") and target["hit"] and _suppressed <= 0.0:
 		_process_break(delta, creative)
 	else:
 		break_progress = 0.0

@@ -76,6 +76,16 @@ static func lines(s: ItemStack, registry: ContentRegistry, locale: String = "ru"
 		out.append("Сытость: %.0f · вода: %+.0f" % [float(d.food.get("nutrition", 0.0)), float(d.food.get("thirst", 0.0))])
 		if s.data.has("freshness"):
 			out.append("Свежесть: %d%%" % roundi(float(s.data["freshness"]) * 100.0))
+	if not d.fluid_container.is_empty():
+		var cap := int(d.fluid_container.get("capacity", 0))
+		if String(d.fluid_container.get("fluid", "")) == "":
+			out.append("Пустой сосуд на %d/8 блока · ПКМ по воде — набрать" % cap)
+		else:
+			var kinds := { "fresh": "пресная", "dirty": "грязная", "sea": "морская", "purified": "чистая (кипячёная)" }
+			out.append("Вода: %d/%d · %s" % [int(s.data.get("amount", cap)), cap, kinds.get(String(s.data.get("water_kind", "fresh")), "пресная")])
+			out.append("ПКМ мимо блоков (или с Shift) — пить" + (" · ПКМ по блоку — вылить" if bool(d.fluid_container.get("pour", true)) else ""))
+	if not d.vehicle.is_empty():
+		out.append("Скорость %.1f бл/с · ПКМ по воде — спустить, ПКМ — сесть, Shift — сойти" % float(d.vehicle.get("speed", 5.0)))
 	var block := registry.block(d.id) if d.is_block() else null
 	if block != null and block.container_slots > 0:
 		out.append("Хранилище: %d ячеек" % block.container_slots)

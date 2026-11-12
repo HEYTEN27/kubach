@@ -21,6 +21,7 @@ var stations: StationSystem
 var crafting: CraftingController
 var weather: WeatherSystem
 var fluids: FluidSystem
+var vehicles: VehicleSystem
 var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
@@ -125,6 +126,12 @@ func _ready() -> void:
 	fluids.rig = rig
 	player.motor.current_at = fluids.current_at
 	dropped.current_at = fluids.current_at
+	vehicles = VehicleSystem.new()
+	add_child(vehicles)
+	vehicles.setup(world, player)
+	vehicles.current_at = fluids.current_at
+	if save != null:
+		vehicles.from_array(save.meta.get("vehicles", []))
 	var buckets := BucketController.new()
 	buckets.name = "Buckets"
 	add_child(buckets)
@@ -271,6 +278,7 @@ func save_game(autosave: bool = false) -> void:
 		"recipes": crafting.to_dict() }
 	save.meta["dropped"] = dropped.to_array()
 	save.meta["weather"] = weather.to_dict()
+	save.meta["vehicles"] = vehicles.to_array()
 	save.meta["season"] = String(survival.clock.season())
 	save.meta["day"] = survival.clock.day
 	save.meta["world_spawn"] = _world_spawn
@@ -676,6 +684,10 @@ func _spawn_point() -> Array:
 		out = [GameLaunch.teleport[0], GameLaunch.teleport[1], GameLaunch.teleport[2]]
 	if is_nan(float(out[1])):
 		out[1] = float(maxi(world.generator.surface_height(floori(out[0]), floori(out[2])), world.generator.sea_level) + 1)
+	if GameLaunch.dive:
+		# У дна: над грунтом, но ниже уровня воды.
+		var floor_y := world.generator.surface_height(floori(out[0]), floori(out[2])) + 1
+		out[1] = float(mini(floor_y + 1, world.generator.sea_level - 2))
 	if GameLaunch.look.x != INF:
 		yaw = deg_to_rad(GameLaunch.look.x)
 		pitch = deg_to_rad(GameLaunch.look.y)

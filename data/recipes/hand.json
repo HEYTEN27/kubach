@@ -539,6 +539,29 @@
    },
    "needs_tool": "knife",
    "order": 26
+  },
+  {
+   "id": "make_log_raft",
+   "station": "hand",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 6
+    },
+    {
+     "id": "rope",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "log_raft",
+    "count": 1
+   },
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "tools",
+   "order": 27
   }
  ]
 }

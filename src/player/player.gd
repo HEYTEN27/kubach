@@ -49,6 +49,8 @@ var use_weight := false
 var force_input := false
 ## Выживание (этап 5): множитель скорости от травм и болезней, можно ли бежать.
 var survival_speed := 1.0
+## Лодка или плот, в котором сидит игрок (этап 8; VehicleSystem ставит и снимает).
+var vehicle: Object = null
 ## Вязкость рыхлых слоёв (снег, этап 7): блок → доля потери скорости, когда стоишь в нём.
 var _wade := PackedFloat32Array()
 var can_sprint := true
@@ -142,6 +144,15 @@ func teleport(x: float, y: float, z: float) -> void:
 	world.update_origin(x, y, z)
 
 
+## Седок: тело следует за местом в лодке (VehicleSystem, физический шаг).
+func ride_at(x: float, y: float, z: float) -> void:
+	_prev = PackedFloat64Array([body.x, body.y, body.z])
+	body.set_position(x, y, z)
+	motor.vx = 0.0
+	motor.vy = 0.0
+	motor.vz = 0.0
+
+
 func eye_world() -> PackedFloat64Array:
 	return PackedFloat64Array([body.x, body.y + _eye, body.z])
 
@@ -177,6 +188,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not active or not world.is_loaded(floori(body.x), floori(body.z)):
 		_prev = PackedFloat64Array([body.x, body.y, body.z])
+		return
+	if vehicle != null:
+		world.update_origin(body.x, body.y, body.z)
 		return
 	_prev = PackedFloat64Array([body.x, body.y, body.z])
 	var captured := input_allowed()

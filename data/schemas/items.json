@@ -296,6 +296,20 @@
         }
       }
     },
+    "vehicle": {
+      "type": "object",
+      "default": {},
+      "doc": "Плавсредство (этап 8): ставится на воду ПКМ, садишься ПКМ, слезаешь Shift. Скорость и поворот, размеры, блок, чья текстура на корпусе.",
+      "fields": {
+        "kind": { "type": "enum", "values": ["none", "boat", "raft"], "default": "none" },
+        "speed": { "type": "float", "min": 0.5, "max": 20.0, "default": 5.0, "doc": "Наибольшая скорость, блоков/с." },
+        "turn": { "type": "float", "min": 0.1, "max": 6.0, "default": 1.6, "doc": "Поворот, рад/с." },
+        "length": { "type": "float", "min": 1.0, "max": 6.0, "default": 2.6 },
+        "width": { "type": "float", "min": 0.6, "max": 4.0, "default": 1.3 },
+        "texture_block": { "type": "string", "default": "oak_planks" },
+        "hits": { "type": "int", "min": 1, "max": 20, "default": 3, "doc": "Сколько ударов, чтобы разбить и забрать." }
+      }
+    },
     "fluid_container": {
       "type": "object",
       "default": {},

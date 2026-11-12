@@ -9,6 +9,12 @@
       "median_ms": 161.635,
       "min_ms": 160.348
     },
+    "fluid_step": {
+      "iterations": 30,
+      "max_ms": 4.319,
+      "median_ms": 2.974,
+      "min_ms": 1.94
+    },
     "grass_column": {
       "iterations": 20,
       "max_ms": 6.629,

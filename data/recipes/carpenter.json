@@ -855,6 +855,29 @@
    "unlock": "ingredients",
    "category": "tools",
    "order": 42
+  },
+  {
+   "id": "make_oak_boat",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oak_planks",
+     "count": 8
+    },
+    {
+     "id": "stick",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "oak_boat",
+    "count": 1
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "tools",
+   "order": 43
   }
  ]
 }
