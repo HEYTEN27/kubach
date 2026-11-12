@@ -1,0 +1,47 @@
+{
+ "format": 1,
+ "category": "crops",
+ "description": "Культуры (раздел 8, этап 9). Registry сам создаёт блоки стадий crop_<id>_<k> (крест, cutout) и семена <id>_seeds. Рост — FarmSystem: дни роста, сезоны, температура, вода, удобрения, сорняки, теплица.",
+ "fields": {
+  "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$" },
+  "name": { "type": "localized", "required": true },
+  "seed_name": { "type": "localized", "required": true, "doc": "Название семян (предмет <id>_seeds)." },
+  "form": {
+   "type": "enum", "values": ["grain", "root", "leafy", "vine", "gourd", "tall", "bush", "herb"], "required": true,
+   "doc": "Облик для texgen и высота модели."
+  },
+  "stages": { "type": "int", "min": 3, "max": 8, "default": 5, "doc": "Стадий роста (блоков); последняя — спелая." },
+  "grow_days": { "type": "float", "min": 0.5, "max": 60.0, "required": true, "doc": "Игровых дней от посадки до урожая в хороших условиях." },
+  "seasons": {
+   "type": "array", "of": { "type": "enum", "values": ["spring", "summer", "autumn", "winter"] }, "default": [],
+   "doc": "Когда растёт. Вне сезона (не в теплице) — стоит и через wither_days вянет."
+  },
+  "temp_min": { "type": "float", "default": 4.0, "min": -30.0, "max": 40.0 },
+  "temp_max": { "type": "float", "default": 32.0, "min": 0.0, "max": 50.0 },
+  "water": { "type": "float", "default": 0.5, "min": 0.0, "max": 1.0, "doc": "Нужда в воде: насколько медленнее растёт на сухой грядке." },
+  "on_water": { "type": "bool", "default": false, "doc": "Растёт только у самой воды (рис)." },
+  "wither_days": { "type": "float", "default": 3.0, "min": 0.5, "max": 30.0 },
+  "produce": { "type": "ref", "to": ["items", "blocks"], "required": true, "doc": "Урожай." },
+  "produce_min": { "type": "int", "default": 1, "min": 0, "max": 32 },
+  "produce_max": { "type": "int", "default": 2, "min": 0, "max": 32 },
+  "seeds_min": { "type": "int", "default": 1, "min": 0, "max": 8 },
+  "seeds_max": { "type": "int", "default": 2, "min": 0, "max": 8 },
+  "perennial": { "type": "bool", "default": false, "doc": "Многолетник (кусты, хмель, виноград): после сбора возвращается на regrow_stage." },
+  "regrow_stage": { "type": "int", "default": 2, "min": 0, "max": 7 },
+  "leaf_color": { "type": "color", "default": "#4f8a36" },
+  "fruit_color": { "type": "color", "default": "#d8b860" },
+  "flower_color": { "type": "color", "default": "#00000000" },
+  "price": { "type": "int", "default": 2, "min": 0, "max": 1000, "doc": "Цена урожая (торговля — этап 12)." },
+  "wild_biomes": { "type": "array", "of": { "type": "ref", "to": ["biomes"] }, "default": [], "doc": "Где семена изредка находятся в траве." },
+  "wild_chance": { "type": "float", "default": 0.0, "min": 0.0, "max": 1.0 },
+  "hybrids": {
+   "type": "array", "default": [],
+   "doc": "Гибридизация: спелая рядом (8 клеток) с культурой with — при сборе с шансом chance выпадают семена child.",
+   "of": { "type": "object", "fields": {
+    "with": { "type": "ref", "to": ["crops"], "required": true },
+    "child": { "type": "ref", "to": ["crops"], "required": true },
+    "chance": { "type": "float", "default": 0.04, "min": 0.0, "max": 1.0 }
+   } }
+  }
+ }
+}

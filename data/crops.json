@@ -1,0 +1,1532 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "wheat",
+   "name": {
+    "ru": "Пшеница",
+    "en": "Wheat"
+   },
+   "seed_name": {
+    "ru": "Зёрна пшеницы",
+    "en": "Wheat Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 32,
+   "water": 0.4,
+   "produce": "wheat",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#6a9a40",
+   "fruit_color": "#d8b860",
+   "price": 2,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe",
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.05,
+   "hybrids": [
+    {
+     "with": "rye",
+     "child": "triticale",
+     "chance": 0.04
+    }
+   ]
+  },
+  {
+   "id": "rye",
+   "name": {
+    "ru": "Рожь",
+    "en": "Rye"
+   },
+   "seed_name": {
+    "ru": "Зёрна ржи",
+    "en": "Rye Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 1,
+   "temp_max": 30,
+   "water": 0.35,
+   "produce": "rye",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5f9040",
+   "fruit_color": "#b89a58",
+   "price": 2,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe",
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.05
+  },
+  {
+   "id": "barley",
+   "name": {
+    "ru": "Ячмень",
+    "en": "Barley"
+   },
+   "seed_name": {
+    "ru": "Зёрна ячменя",
+    "en": "Barley Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 3,
+   "temp_max": 30,
+   "water": 0.4,
+   "produce": "barley",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#6aa048",
+   "fruit_color": "#d4bc70",
+   "price": 2,
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.04
+  },
+  {
+   "id": "oats",
+   "name": {
+    "ru": "Овёс",
+    "en": "Oats"
+   },
+   "seed_name": {
+    "ru": "Зёрна овса",
+    "en": "Oat Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 3,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "oats",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#70a050",
+   "fruit_color": "#d8c890",
+   "price": 2,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.04
+  },
+  {
+   "id": "buckwheat",
+   "name": {
+    "ru": "Гречиха",
+    "en": "Buckwheat"
+   },
+   "seed_name": {
+    "ru": "Семена гречихи",
+    "en": "Buckwheat Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 8,
+   "temp_max": 30,
+   "water": 0.5,
+   "produce": "buckwheat",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#7a9a4a",
+   "fruit_color": "#6a4a30",
+   "price": 2,
+   "flower_color": "#f0ece0",
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "millet",
+   "name": {
+    "ru": "Просо",
+    "en": "Millet"
+   },
+   "seed_name": {
+    "ru": "Семена проса",
+    "en": "Millet Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 10,
+   "temp_max": 34,
+   "water": 0.3,
+   "produce": "millet",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#7aa048",
+   "fruit_color": "#e0c060",
+   "price": 2,
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "flax",
+   "name": {
+    "ru": "Лён",
+    "en": "Flax"
+   },
+   "seed_name": {
+    "ru": "Семена льна",
+    "en": "Flax Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 6,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "flax_stalks",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a9a50",
+   "fruit_color": "#b8a070",
+   "price": 2,
+   "flower_color": "#6a8ad8",
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "rice",
+   "name": {
+    "ru": "Рис",
+    "en": "Rice"
+   },
+   "seed_name": {
+    "ru": "Зёрна риса",
+    "en": "Rice Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 15,
+   "temp_max": 35,
+   "water": 0.9,
+   "produce": "rice",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5aa050",
+   "fruit_color": "#e8e0b0",
+   "price": 2,
+   "wild_biomes": [
+    "mangroves",
+    "bamboo_forest",
+    "temperate_swamp"
+   ],
+   "wild_chance": 0.04,
+   "on_water": true
+  },
+  {
+   "id": "potato",
+   "name": {
+    "ru": "Картофель",
+    "en": "Potato"
+   },
+   "seed_name": {
+    "ru": "Семенной картофель",
+    "en": "Seed Potato"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 6,
+   "temp_max": 28,
+   "water": 0.6,
+   "produce": "potato",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#4f8a3a",
+   "fruit_color": "#c8a870",
+   "price": 3,
+   "flower_color": "#f0e8f0",
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "carrot",
+   "name": {
+    "ru": "Морковь",
+    "en": "Carrot"
+   },
+   "seed_name": {
+    "ru": "Семена моркови",
+    "en": "Carrot Seeds"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "carrot",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5aa040",
+   "fruit_color": "#e87a2a",
+   "price": 3,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "beet",
+   "name": {
+    "ru": "Свёкла",
+    "en": "Beet"
+   },
+   "seed_name": {
+    "ru": "Семена свёклы",
+    "en": "Beet Seeds"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "beet",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a7a3a",
+   "fruit_color": "#8a1a3a",
+   "price": 3,
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "onion",
+   "name": {
+    "ru": "Лук",
+    "en": "Onion"
+   },
+   "seed_name": {
+    "ru": "Лук-севок",
+    "en": "Onion Sets"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 30,
+   "water": 0.4,
+   "produce": "onion",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5aa050",
+   "fruit_color": "#d8a860",
+   "price": 3,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "garlic",
+   "name": {
+    "ru": "Чеснок",
+    "en": "Garlic"
+   },
+   "seed_name": {
+    "ru": "Зубки чеснока",
+    "en": "Garlic Cloves"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 0,
+   "temp_max": 30,
+   "water": 0.3,
+   "produce": "garlic",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#6aa058",
+   "fruit_color": "#ece4d8",
+   "price": 3,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "turnip",
+   "name": {
+    "ru": "Репа",
+    "en": "Turnip"
+   },
+   "seed_name": {
+    "ru": "Семена репы",
+    "en": "Turnip Seeds"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 4,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 2,
+   "temp_max": 26,
+   "water": 0.5,
+   "produce": "turnip",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a9a40",
+   "fruit_color": "#e8d8a0",
+   "price": 3,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf",
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.04
+  },
+  {
+   "id": "radish",
+   "name": {
+    "ru": "Редис",
+    "en": "Radish"
+   },
+   "seed_name": {
+    "ru": "Семена редиса",
+    "en": "Radish Seeds"
+   },
+   "form": "root",
+   "stages": 5,
+   "grow_days": 3,
+   "seasons": [
+    "spring",
+    "autumn"
+   ],
+   "temp_min": 2,
+   "temp_max": 24,
+   "water": 0.6,
+   "produce": "radish",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5aa048",
+   "fruit_color": "#d83a5a",
+   "price": 3,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "cabbage",
+   "name": {
+    "ru": "Капуста",
+    "en": "Cabbage"
+   },
+   "seed_name": {
+    "ru": "Семена капусты",
+    "en": "Cabbage Seeds"
+   },
+   "form": "leafy",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 2,
+   "temp_max": 26,
+   "water": 0.7,
+   "produce": "cabbage",
+   "produce_min": 1,
+   "produce_max": 1,
+   "leaf_color": "#8ab870",
+   "fruit_color": "#a8d07a",
+   "price": 4,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "lettuce",
+   "name": {
+    "ru": "Салат",
+    "en": "Lettuce"
+   },
+   "seed_name": {
+    "ru": "Семена салата",
+    "en": "Lettuce Seeds"
+   },
+   "form": "leafy",
+   "stages": 5,
+   "grow_days": 3,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 24,
+   "water": 0.7,
+   "produce": "lettuce",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#7ac050",
+   "fruit_color": "#8ad050",
+   "price": 4,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "spinach",
+   "name": {
+    "ru": "Шпинат",
+    "en": "Spinach"
+   },
+   "seed_name": {
+    "ru": "Семена шпината",
+    "en": "Spinach Seeds"
+   },
+   "form": "leafy",
+   "stages": 5,
+   "grow_days": 3,
+   "seasons": [
+    "spring",
+    "autumn"
+   ],
+   "temp_min": 2,
+   "temp_max": 24,
+   "water": 0.6,
+   "produce": "spinach",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#3a8a30",
+   "fruit_color": "#3a8a30",
+   "price": 4,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "cucumber",
+   "name": {
+    "ru": "Огурец",
+    "en": "Cucumber"
+   },
+   "seed_name": {
+    "ru": "Семена огурца",
+    "en": "Cucumber Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 12,
+   "temp_max": 32,
+   "water": 0.8,
+   "produce": "cucumber",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#3a7a2a",
+   "price": 5,
+   "flower_color": "#f0d040",
+   "wild_biomes": [
+    "forest_steppe",
+    "river"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "tomato",
+   "name": {
+    "ru": "Томат",
+    "en": "Tomato"
+   },
+   "seed_name": {
+    "ru": "Семена томата",
+    "en": "Tomato Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 12,
+   "temp_max": 32,
+   "water": 0.6,
+   "produce": "tomato",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#d83020",
+   "price": 5,
+   "flower_color": "#f0d040",
+   "wild_biomes": [
+    "savanna",
+    "jungle",
+    "bamboo_forest"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "pepper",
+   "name": {
+    "ru": "Перец",
+    "en": "Bell Pepper"
+   },
+   "seed_name": {
+    "ru": "Семена перца",
+    "en": "Pepper Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 14,
+   "temp_max": 34,
+   "water": 0.6,
+   "produce": "bell_pepper",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#d84a1a",
+   "price": 5,
+   "flower_color": "#f4f0e8",
+   "wild_biomes": [
+    "savanna",
+    "jungle",
+    "bamboo_forest"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "eggplant",
+   "name": {
+    "ru": "Баклажан",
+    "en": "Eggplant"
+   },
+   "seed_name": {
+    "ru": "Семена баклажана",
+    "en": "Eggplant Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 7,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 15,
+   "temp_max": 34,
+   "water": 0.6,
+   "produce": "eggplant",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#4a7a3a",
+   "fruit_color": "#4a2a5a",
+   "price": 5,
+   "flower_color": "#a080c0",
+   "wild_biomes": [
+    "savanna",
+    "jungle",
+    "bamboo_forest"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "peas",
+   "name": {
+    "ru": "Горох",
+    "en": "Peas"
+   },
+   "seed_name": {
+    "ru": "Горох посевной",
+    "en": "Pea Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 4,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 26,
+   "water": 0.5,
+   "produce": "peas",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#6ab050",
+   "fruit_color": "#7ac050",
+   "price": 5,
+   "flower_color": "#f4f0f4",
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "beans",
+   "name": {
+    "ru": "Фасоль",
+    "en": "Beans"
+   },
+   "seed_name": {
+    "ru": "Семена фасоли",
+    "en": "Bean Seeds"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 10,
+   "temp_max": 30,
+   "water": 0.5,
+   "produce": "beans",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a9a40",
+   "fruit_color": "#d8c8a8",
+   "price": 5,
+   "flower_color": "#f0a0a0",
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "hops",
+   "name": {
+    "ru": "Хмель",
+    "en": "Hops"
+   },
+   "seed_name": {
+    "ru": "Отводки хмеля",
+    "en": "Hop Cuttings"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 4,
+   "temp_max": 30,
+   "water": 0.5,
+   "produce": "hops",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a9a3a",
+   "fruit_color": "#b8d070",
+   "price": 5,
+   "wild_biomes": [
+    "river",
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 2
+  },
+  {
+   "id": "grape",
+   "name": {
+    "ru": "Виноград",
+    "en": "Grape"
+   },
+   "seed_name": {
+    "ru": "Черенки винограда",
+    "en": "Grape Cuttings"
+   },
+   "form": "vine",
+   "stages": 5,
+   "grow_days": 10,
+   "seasons": [
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 10,
+   "temp_max": 34,
+   "water": 0.4,
+   "produce": "grapes",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a8a3a",
+   "fruit_color": "#5a2a6a",
+   "price": 5,
+   "wild_biomes": [
+    "savanna",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3
+  },
+  {
+   "id": "pumpkin",
+   "name": {
+    "ru": "Тыква",
+    "en": "Pumpkin"
+   },
+   "seed_name": {
+    "ru": "Семена тыквы",
+    "en": "Pumpkin Seeds"
+   },
+   "form": "gourd",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 10,
+   "temp_max": 32,
+   "water": 0.6,
+   "produce": "pumpkin",
+   "produce_min": 1,
+   "produce_max": 1,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#e88a2a",
+   "price": 8,
+   "flower_color": "#f0c030",
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "zucchini",
+   "name": {
+    "ru": "Кабачок",
+    "en": "Zucchini"
+   },
+   "seed_name": {
+    "ru": "Семена кабачка",
+    "en": "Zucchini Seeds"
+   },
+   "form": "gourd",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 10,
+   "temp_max": 32,
+   "water": 0.6,
+   "produce": "zucchini",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#4a8a3a",
+   "price": 8,
+   "flower_color": "#f0c030",
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "watermelon",
+   "name": {
+    "ru": "Арбуз",
+    "en": "Watermelon"
+   },
+   "seed_name": {
+    "ru": "Семена арбуза",
+    "en": "Watermelon Seeds"
+   },
+   "form": "gourd",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 16,
+   "temp_max": 36,
+   "water": 0.5,
+   "produce": "watermelon",
+   "produce_min": 1,
+   "produce_max": 1,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#3a7a3a",
+   "price": 8,
+   "flower_color": "#f0d040",
+   "wild_biomes": [
+    "savanna",
+    "steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "melon",
+   "name": {
+    "ru": "Дыня",
+    "en": "Melon"
+   },
+   "seed_name": {
+    "ru": "Семена дыни",
+    "en": "Melon Seeds"
+   },
+   "form": "gourd",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 16,
+   "temp_max": 36,
+   "water": 0.5,
+   "produce": "melon",
+   "produce_min": 1,
+   "produce_max": 1,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#e8c860",
+   "price": 8,
+   "flower_color": "#f0d040",
+   "wild_biomes": [
+    "savanna",
+    "steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "corn",
+   "name": {
+    "ru": "Кукуруза",
+    "en": "Corn"
+   },
+   "seed_name": {
+    "ru": "Зёрна кукурузы",
+    "en": "Corn Seeds"
+   },
+   "form": "tall",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 12,
+   "temp_max": 34,
+   "water": 0.6,
+   "produce": "corn",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#5a9a3a",
+   "fruit_color": "#f0c840",
+   "price": 5,
+   "wild_biomes": [
+    "savanna",
+    "jungle",
+    "bamboo_forest",
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "sunflower",
+   "name": {
+    "ru": "Подсолнечник",
+    "en": "Sunflower"
+   },
+   "seed_name": {
+    "ru": "Семена подсолнечника",
+    "en": "Sunflower Seeds"
+   },
+   "form": "tall",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 10,
+   "temp_max": 34,
+   "water": 0.4,
+   "produce": "sunflower_kernels",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#5a9a3a",
+   "fruit_color": "#3a2a1a",
+   "price": 5,
+   "flower_color": "#f0c020",
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "strawberry",
+   "name": {
+    "ru": "Клубника",
+    "en": "Strawberry"
+   },
+   "seed_name": {
+    "ru": "Рассада клубники",
+    "en": "Strawberry Runners"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 5,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 6,
+   "temp_max": 28,
+   "water": 0.6,
+   "produce": "strawberries",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a8a34",
+   "fruit_color": "#e02a3a",
+   "price": 6,
+   "flower_color": "#f4f0f0",
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 2
+  },
+  {
+   "id": "raspberry",
+   "name": {
+    "ru": "Малина",
+    "en": "Raspberry"
+   },
+   "seed_name": {
+    "ru": "Черенки малины",
+    "en": "Raspberry Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 9,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "raspberries",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#4a8a3a",
+   "fruit_color": "#c83a5a",
+   "price": 6,
+   "flower_color": "#f4f0f0",
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3,
+   "hybrids": [
+    {
+     "with": "blackberry",
+     "child": "tayberry",
+     "chance": 0.04
+    }
+   ]
+  },
+  {
+   "id": "currant",
+   "name": {
+    "ru": "Смородина",
+    "en": "Currant"
+   },
+   "seed_name": {
+    "ru": "Черенки смородины",
+    "en": "Currant Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 9,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 2,
+   "temp_max": 26,
+   "water": 0.5,
+   "produce": "currants",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#3a7a30",
+   "fruit_color": "#2a1a2a",
+   "price": 6,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3,
+   "hybrids": [
+    {
+     "with": "gooseberry",
+     "child": "jostaberry",
+     "chance": 0.04
+    }
+   ]
+  },
+  {
+   "id": "gooseberry",
+   "name": {
+    "ru": "Крыжовник",
+    "en": "Gooseberry"
+   },
+   "seed_name": {
+    "ru": "Черенки крыжовника",
+    "en": "Gooseberry Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 9,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 2,
+   "temp_max": 26,
+   "water": 0.5,
+   "produce": "gooseberries",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#4a8a3a",
+   "fruit_color": "#a8c860",
+   "price": 6,
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3
+  },
+  {
+   "id": "blackberry",
+   "name": {
+    "ru": "Ежевика",
+    "en": "Blackberry"
+   },
+   "seed_name": {
+    "ru": "Черенки ежевики",
+    "en": "Blackberry Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 9,
+   "seasons": [
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "blackberries",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#3a7a30",
+   "fruit_color": "#2a1a3a",
+   "price": 6,
+   "flower_color": "#f4f0f0",
+   "wild_biomes": [
+    "mixed_forest",
+    "oak_forest",
+    "birch_grove",
+    "mixed_conifer_broadleaf",
+    "river"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3
+  },
+  {
+   "id": "tea",
+   "name": {
+    "ru": "Чай",
+    "en": "Tea"
+   },
+   "seed_name": {
+    "ru": "Черенки чая",
+    "en": "Tea Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 10,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 12,
+   "temp_max": 32,
+   "water": 0.7,
+   "produce": "tea_leaves",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#3a7a2a",
+   "fruit_color": "#4a7a2a",
+   "price": 6,
+   "flower_color": "#f4f0e0",
+   "wild_biomes": [
+    "jungle",
+    "bamboo_forest"
+   ],
+   "wild_chance": 0.02,
+   "perennial": true,
+   "regrow_stage": 3
+  },
+  {
+   "id": "cotton",
+   "name": {
+    "ru": "Хлопок",
+    "en": "Cotton"
+   },
+   "seed_name": {
+    "ru": "Семена хлопка",
+    "en": "Cotton Seeds"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 9,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 16,
+   "temp_max": 36,
+   "water": 0.5,
+   "produce": "cotton_boll",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#4a8a3a",
+   "fruit_color": "#f4f0e8",
+   "price": 6,
+   "flower_color": "#f0e0a0",
+   "wild_biomes": [
+    "savanna"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "dill",
+   "name": {
+    "ru": "Укроп",
+    "en": "Dill"
+   },
+   "seed_name": {
+    "ru": "Семена укропа",
+    "en": "Dill Seeds"
+   },
+   "form": "herb",
+   "stages": 5,
+   "grow_days": 3,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "dill",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#6aa040",
+   "fruit_color": "#d8d050",
+   "price": 4,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "parsley",
+   "name": {
+    "ru": "Петрушка",
+    "en": "Parsley"
+   },
+   "seed_name": {
+    "ru": "Семена петрушки",
+    "en": "Parsley Seeds"
+   },
+   "form": "herb",
+   "stages": 5,
+   "grow_days": 4,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.5,
+   "produce": "parsley",
+   "produce_min": 1,
+   "produce_max": 2,
+   "leaf_color": "#3a8a2a",
+   "fruit_color": "#3a8a2a",
+   "price": 4,
+   "wild_biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.03
+  },
+  {
+   "id": "mustard",
+   "name": {
+    "ru": "Горчица",
+    "en": "Mustard"
+   },
+   "seed_name": {
+    "ru": "Семена горчицы",
+    "en": "Mustard Seeds"
+   },
+   "form": "herb",
+   "stages": 5,
+   "grow_days": 4,
+   "seasons": [
+    "spring",
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.4,
+   "produce": "mustard_pods",
+   "produce_min": 1,
+   "produce_max": 3,
+   "leaf_color": "#5a9a3a",
+   "fruit_color": "#e8c830",
+   "price": 4,
+   "flower_color": "#f0d030",
+   "wild_biomes": [
+    "steppe",
+    "forest_steppe"
+   ],
+   "wild_chance": 0.02
+  },
+  {
+   "id": "triticale",
+   "name": {
+    "ru": "Тритикале",
+    "en": "Triticale"
+   },
+   "seed_name": {
+    "ru": "Зёрна тритикале",
+    "en": "Triticale Seeds"
+   },
+   "form": "grain",
+   "stages": 5,
+   "grow_days": 6,
+   "seasons": [
+    "spring",
+    "summer",
+    "autumn"
+   ],
+   "temp_min": 0,
+   "temp_max": 30,
+   "water": 0.35,
+   "produce": "triticale",
+   "produce_min": 2,
+   "produce_max": 4,
+   "leaf_color": "#5a9a40",
+   "fruit_color": "#c8a858",
+   "price": 2
+  },
+  {
+   "id": "jostaberry",
+   "name": {
+    "ru": "Йошта",
+    "en": "Jostaberry"
+   },
+   "seed_name": {
+    "ru": "Черенки йошты",
+    "en": "Jostaberry Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 0,
+   "temp_max": 26,
+   "water": 0.45,
+   "produce": "jostaberries",
+   "produce_min": 2,
+   "produce_max": 5,
+   "leaf_color": "#3a7a30",
+   "fruit_color": "#4a1a3a",
+   "price": 6,
+   "perennial": true,
+   "regrow_stage": 3
+  },
+  {
+   "id": "tayberry",
+   "name": {
+    "ru": "Тайберри",
+    "en": "Tayberry"
+   },
+   "seed_name": {
+    "ru": "Черенки тайберри",
+    "en": "Tayberry Cuttings"
+   },
+   "form": "bush",
+   "stages": 5,
+   "grow_days": 8,
+   "seasons": [
+    "summer"
+   ],
+   "temp_min": 4,
+   "temp_max": 28,
+   "water": 0.45,
+   "produce": "tayberries",
+   "produce_min": 2,
+   "produce_max": 5,
+   "leaf_color": "#3a7a30",
+   "fruit_color": "#8a1a3a",
+   "price": 6,
+   "flower_color": "#f4f0f0",
+   "perennial": true,
+   "regrow_stage": 3
+  }
+ ]
+}

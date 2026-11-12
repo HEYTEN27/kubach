@@ -32,6 +32,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import recipes as R  # noqa: E402
 import furniture as F  # noqa: E402
 import crafting_tex as CT  # noqa: E402
+import farm_tex as FT  # noqa: E402
 from noise import blur  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -43,12 +44,16 @@ FORMAT = 1
 def load_blocks():
     files = [os.path.join(ROOT, "data", "blocks.json")] + sorted(glob.glob(os.path.join(ROOT, "data", "blocks", "*.json")))
     sets = {}
+    entries = []
     for f in files:
-        for e in json.load(open(f, encoding="utf-8"))["entries"]:
-            t = e["textures"]
-            for role in ("all", "top", "bottom", "side"):
-                if role in t:
-                    sets.setdefault(t[role], []).append((e, role))
+        entries += json.load(open(f, encoding="utf-8"))["entries"]
+    # Блоки, которые Registry выводит из других данных (стадии культур).
+    entries += FT.derived_blocks()
+    for e in entries:
+        t = e["textures"]
+        for role in ("all", "top", "bottom", "side"):
+            if role in t:
+                sets.setdefault(t[role], []).append((e, role))
     return sets
 
 
@@ -73,6 +78,9 @@ def classify(name, uses):
     }
     if name in furn:
         return furn[name], 1, False
+    ft = FT.classify(name, e)
+    if ft is not None:
+        return ft
     ct = CT.classify(name, e)
     if ct is not None:
         return ct

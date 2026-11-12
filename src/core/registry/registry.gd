@@ -54,6 +54,12 @@ var block_fluid_source := PackedByteArray()
 var fluid_ids: Array[StringName] = []
 var fluid_level_blocks: Array[PackedInt32Array] = []
 var fluid_source_blocks := PackedInt32Array()
+## Культуры (этап 9): номер культуры блока (1 + индекс в crop_ids, 0 — не культура) и стадия;
+## crop_stage_blocks[i] — блоки стадий культуры i.
+var block_crop := PackedByteArray()
+var block_crop_stage := PackedByteArray()
+var crop_ids: Array[StringName] = []
+var crop_stage_blocks: Array[PackedInt32Array] = []
 
 var _schemas := {}   # категория -> схема (Dictionary)
 var _entries := {}   # категория -> { StringName id -> Dictionary }
@@ -94,10 +100,12 @@ func load_all(dir: String = DEFAULT_DATA_DIR) -> bool:
 	for category in _discover_categories(dir):
 		for path in _category_files(dir, category):
 			_load_file(path, category, validator)
+	_derive_entries(validator)
 	_resolve_refs(validator)
 	errors.append_array(validator.errors)
 	_build_blocks()
 	_build_fluids()
+	_build_crops()
 	_build_items()
 	loaded = errors.is_empty()
 	return loaded
@@ -190,6 +198,10 @@ func _clear() -> void:
 	fluid_ids = []
 	fluid_level_blocks = []
 	fluid_source_blocks = PackedInt32Array()
+	block_crop = PackedByteArray()
+	block_crop_stage = PackedByteArray()
+	crop_ids = []
+	crop_stage_blocks = []
 
 
 func _load_schemas(dir: String, validator: SchemaValidator) -> void:
@@ -281,6 +293,55 @@ func _load_file(path: String, category: String, validator: SchemaValidator) -> v
 		_sources[key] = path
 		_entries[category][id] = entry
 		_order[category].append(id)
+
+
+## Записи, которые выводятся из других категорий (этап 9): у каждой культуры — блоки стадий
+## crop_<id>_<k> (крест, cutout, текстура того же имени — её рисует texgen) и семена <id>_seeds.
+## Проходят ту же схему, что и записи из файлов.
+func _derive_entries(validator: SchemaValidator) -> void:
+	if not _entries.has("crops"):
+		return
+	for id: StringName in _order["crops"]:
+		var c: Dictionary = _entries["crops"][id]
+		var src := "%s (выведено)" % _sources["crops:%s" % id]
+		var stages := int(c.get("stages", 5))
+		for k in stages:
+			var bid := "crop_%s_%d" % [id, k]
+			var raw := {
+				"id": bid,
+				"name": { "ru": "%s (стадия %d/%d)" % [c["name"]["ru"], k + 1, stages],
+					"en": "%s (stage %d/%d)" % [c["name"]["en"], k + 1, stages] },
+				"material": "plant", "render": "cutout", "shape": "cross", "solid": false, "hardness": 0.0,
+				"light_filter": 0, "sounds": "grass", "map_color": "#%s" % (c["fruit_color"] as Color).to_html(false) \
+					if k == stages - 1 else "#%s" % (c["leaf_color"] as Color).to_html(false),
+				"textures": { "all": bid }, "item": false, "drops": [], "flammable": true,
+				"tags": ["crop", "plant"] + (["crop_ripe"] if k == stages - 1 else []),
+			}
+			_add_derived("blocks", bid, raw, src, validator)
+		var sid := "%s_seeds" % id
+		_add_derived("items", sid, {
+			"id": sid, "name": c["seed_name"], "kind": "material", "stack": 64, "weight": 0.02,
+			"icon": { "shape": "seeds", "color": "#%s" % (c["fruit_color"] as Color).to_html(false),
+				"color2": "#%s" % (c["leaf_color"] as Color).to_html(false) },
+			"tags": ["seeds", "compostable"], "plant": String(id),
+		}, src, validator)
+
+
+func _add_derived(category: String, id: String, raw: Dictionary, src: String, validator: SchemaValidator) -> void:
+	var schema: Dictionary = _schemas.get(category, {})
+	if schema.is_empty():
+		return
+	var key := "%s:%s" % [category, id]
+	if _sources.has(key):
+		errors.append("%s: выведенный id '%s' уже объявлен в %s" % [src, id, _sources[key]])
+		return
+	var entry := validator.validate_entry(raw, schema["fields"], "%s:%s" % [src, id])
+	if not _entries.has(category):
+		_entries[category] = {}
+		_order[category] = [] as Array[StringName]
+	_sources[key] = src
+	_entries[category][StringName(id)] = entry
+	_order[category].append(StringName(id))
 
 
 func _resolve_refs(validator: SchemaValidator) -> void:
@@ -393,6 +454,26 @@ func _add_block(b: BlockDef) -> void:
 	block_fluid.append(0)
 	block_fluid_level.append(b.fluid_level)
 	block_fluid_source.append(1 if b.fluid_source else 0)
+
+
+## Таблицы культур: какой культуре и стадии принадлежит блок.
+func _build_crops() -> void:
+	block_crop.resize(_blocks.size())
+	block_crop_stage.resize(_blocks.size())
+	if not _entries.has("crops"):
+		return
+	for id: StringName in _order["crops"]:
+		var c: Dictionary = _entries["crops"][id]
+		var idx := crop_ids.size()
+		crop_ids.append(id)
+		var stages := PackedInt32Array()
+		for k in int(c.get("stages", 5)):
+			var b := block_num(StringName("crop_%s_%d" % [id, k]))
+			stages.append(b)
+			if b > 0:
+				block_crop[b] = idx + 1
+				block_crop_stage[b] = k
+		crop_stage_blocks.append(stages)
 
 
 ## Таблицы жидкостей: вид блока, блоки уровней и источники (после загрузки блоков).

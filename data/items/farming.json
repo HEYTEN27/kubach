@@ -1,0 +1,1122 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "wheat",
+   "name": {
+    "ru": "Пшеница",
+    "en": "Wheat"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ear",
+    "color": "#d8b860"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "rye",
+   "name": {
+    "ru": "Рожь",
+    "en": "Rye"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ear",
+    "color": "#b89a58"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "barley",
+   "name": {
+    "ru": "Ячмень",
+    "en": "Barley"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ear",
+    "color": "#d4bc70"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "oats",
+   "name": {
+    "ru": "Овёс",
+    "en": "Oats"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ear",
+    "color": "#d8c890"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "buckwheat",
+   "name": {
+    "ru": "Гречка (зерно)",
+    "en": "Buckwheat"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#6a4a30"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "millet",
+   "name": {
+    "ru": "Просо (зерно)",
+    "en": "Millet"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#e0c060"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "flax_stalks",
+   "name": {
+    "ru": "Стебли льна",
+    "en": "Flax Stalks"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "fiber",
+    "color": "#b8a070"
+   },
+   "tags": [
+    "fiber_source",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "rice",
+   "name": {
+    "ru": "Рис",
+    "en": "Rice"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#e8e0b0"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "triticale",
+   "name": {
+    "ru": "Тритикале",
+    "en": "Triticale"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ear",
+    "color": "#c8a858"
+   },
+   "tags": [
+    "grain",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "potato",
+   "name": {
+    "ru": "Картофель",
+    "en": "Potato"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#c8a870"
+   },
+   "tags": [
+    "vegetable",
+    "root",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 0,
+    "spoil_days": 40,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "carrot",
+   "name": {
+    "ru": "Морковь",
+    "en": "Carrot"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#e87a2a"
+   },
+   "tags": [
+    "vegetable",
+    "root",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 1,
+    "spoil_days": 25,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "beet",
+   "name": {
+    "ru": "Свёкла",
+    "en": "Beet"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#8a1a3a"
+   },
+   "tags": [
+    "vegetable",
+    "root",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 30,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "onion",
+   "name": {
+    "ru": "Лук",
+    "en": "Onion"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#d8a860"
+   },
+   "tags": [
+    "vegetable",
+    "spice",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 0,
+    "spoil_days": 40,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "garlic",
+   "name": {
+    "ru": "Чеснок",
+    "en": "Garlic"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#ece4d8"
+   },
+   "tags": [
+    "vegetable",
+    "spice",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": 0,
+    "spoil_days": 60,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "turnip",
+   "name": {
+    "ru": "Репа",
+    "en": "Turnip"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#e8d8a0"
+   },
+   "tags": [
+    "vegetable",
+    "root",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 1,
+    "spoil_days": 30,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "radish",
+   "name": {
+    "ru": "Редис",
+    "en": "Radish"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#d83a5a"
+   },
+   "tags": [
+    "vegetable",
+    "root",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 1,
+    "spoil_days": 7,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "cabbage",
+   "name": {
+    "ru": "Капуста",
+    "en": "Cabbage"
+   },
+   "kind": "food",
+   "weight": 2.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#a8d07a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 5,
+    "thirst": 3,
+    "spoil_days": 20,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "lettuce",
+   "name": {
+    "ru": "Салат",
+    "en": "Lettuce"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#8ad050"
+   },
+   "tags": [
+    "vegetable",
+    "greens",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 3,
+    "spoil_days": 4,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "spinach",
+   "name": {
+    "ru": "Шпинат",
+    "en": "Spinach"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#3a8a30"
+   },
+   "tags": [
+    "vegetable",
+    "greens",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 2,
+    "spoil_days": 4,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "cucumber",
+   "name": {
+    "ru": "Огурец",
+    "en": "Cucumber"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#3a7a2a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 6,
+    "spoil_days": 6,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "tomato",
+   "name": {
+    "ru": "Томат",
+    "en": "Tomato"
+   },
+   "kind": "food",
+   "weight": 0.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#d83020"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 4,
+    "spoil_days": 6,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "bell_pepper",
+   "name": {
+    "ru": "Перец",
+    "en": "Bell Pepper"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#d84a1a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 3,
+    "spoil_days": 8,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "eggplant",
+   "name": {
+    "ru": "Баклажан",
+    "en": "Eggplant"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#4a2a5a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 2,
+    "spoil_days": 8,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "peas",
+   "name": {
+    "ru": "Горох",
+    "en": "Peas"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "pod",
+    "color": "#7ac050"
+   },
+   "tags": [
+    "vegetable",
+    "legume",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 12,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "beans",
+   "name": {
+    "ru": "Фасоль",
+    "en": "Beans"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "pod",
+    "color": "#d8c8a8"
+   },
+   "tags": [
+    "vegetable",
+    "legume",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "spoil_days": 120,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "hops",
+   "name": {
+    "ru": "Хмель",
+    "en": "Hops"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#b8d070"
+   },
+   "tags": [
+    "brewing",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "grapes",
+   "name": {
+    "ru": "Виноград",
+    "en": "Grapes"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "grapes",
+    "color": "#5a2a6a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 3,
+    "spoil_days": 6,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "pumpkin",
+   "name": {
+    "ru": "Тыква",
+    "en": "Pumpkin"
+   },
+   "kind": "food",
+   "weight": 2.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#e88a2a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 6,
+    "thirst": 2,
+    "spoil_days": 60,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "zucchini",
+   "name": {
+    "ru": "Кабачок",
+    "en": "Zucchini"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#4a8a3a"
+   },
+   "tags": [
+    "vegetable",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 3,
+    "spoil_days": 10,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "watermelon",
+   "name": {
+    "ru": "Арбуз",
+    "en": "Watermelon"
+   },
+   "kind": "food",
+   "weight": 2.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#3a7a3a"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 5,
+    "thirst": 14,
+    "spoil_days": 15,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "melon",
+   "name": {
+    "ru": "Дыня",
+    "en": "Melon"
+   },
+   "kind": "food",
+   "weight": 2.5,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#e8c860"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 6,
+    "thirst": 10,
+    "spoil_days": 10,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "corn",
+   "name": {
+    "ru": "Кукуруза",
+    "en": "Corn"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#f0c840"
+   },
+   "tags": [
+    "vegetable",
+    "grain",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 1,
+    "spoil_days": 10,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "sunflower_kernels",
+   "name": {
+    "ru": "Семечки",
+    "en": "Sunflower Kernels"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#3a2a1a"
+   },
+   "tags": [
+    "nut",
+    "oil_source",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": -2,
+    "spoil_days": 90,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "strawberries",
+   "name": {
+    "ru": "Клубника",
+    "en": "Strawberries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#e02a3a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 2,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "currants",
+   "name": {
+    "ru": "Смородина",
+    "en": "Currants"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#2a1a2a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 1,
+    "spoil_days": 4,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "gooseberries",
+   "name": {
+    "ru": "Крыжовник",
+    "en": "Gooseberries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#a8c860"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": 1,
+    "spoil_days": 5,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "blackberries",
+   "name": {
+    "ru": "Ежевика",
+    "en": "Blackberries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#2a1a3a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 3,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "jostaberries",
+   "name": {
+    "ru": "Йошта",
+    "en": "Jostaberries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#4a1a3a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 5,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "tayberries",
+   "name": {
+    "ru": "Тайберри",
+    "en": "Tayberries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#8a1a3a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 1,
+    "spoil_days": 3,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "tea_leaves",
+   "name": {
+    "ru": "Чайный лист",
+    "en": "Tea Leaves"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#4a7a2a"
+   },
+   "tags": [
+    "tea",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "cotton_boll",
+   "name": {
+    "ru": "Коробочка хлопка",
+    "en": "Cotton Boll"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "ball",
+    "color": "#f4f0e8"
+   },
+   "tags": [
+    "fiber_source",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "dill",
+   "name": {
+    "ru": "Укроп",
+    "en": "Dill"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#6aa040"
+   },
+   "tags": [
+    "greens",
+    "spice",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": 0,
+    "spoil_days": 4,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "parsley",
+   "name": {
+    "ru": "Петрушка",
+    "en": "Parsley"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#3a8a2a"
+   },
+   "tags": [
+    "greens",
+    "spice",
+    "compostable",
+    "produce"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": 0,
+    "spoil_days": 4,
+    "eat_seconds": 1.2
+   }
+  },
+  {
+   "id": "mustard_pods",
+   "name": {
+    "ru": "Стручки горчицы",
+    "en": "Mustard Pods"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#e8c830"
+   },
+   "tags": [
+    "spice",
+    "compostable",
+    "produce"
+   ]
+  },
+  {
+   "id": "watering_can",
+   "name": {
+    "ru": "Лейка",
+    "en": "Watering Can"
+   },
+   "kind": "tool",
+   "stack": 1,
+   "weight": 0.8,
+   "icon": {
+    "shape": "watering_can",
+    "color": "#b07a4a",
+    "color2": "#6a6a70"
+   },
+   "tags": [
+    "watering_can"
+   ],
+   "fluid_container": {
+    "capacity": 8,
+    "filled": "watering_can_water",
+    "pour": false
+   }
+  },
+  {
+   "id": "watering_can_water",
+   "name": {
+    "ru": "Лейка с водой",
+    "en": "Watering Can (Water)"
+   },
+   "kind": "tool",
+   "stack": 1,
+   "weight": 4.5,
+   "icon": {
+    "shape": "watering_can",
+    "color": "#b07a4a",
+    "color2": "#6a6a70",
+    "color3": "#3f7fb0"
+   },
+   "tags": [
+    "watering_can",
+    "water_filled"
+   ],
+   "fluid_container": {
+    "capacity": 8,
+    "fluid": "water",
+    "empty": "watering_can",
+    "pour": false
+   }
+  },
+  {
+   "id": "compost",
+   "name": {
+    "ru": "Компост",
+    "en": "Compost"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "powder",
+    "color": "#4a3220"
+   },
+   "fertilizer": 1.0,
+   "tags": [
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "manure",
+   "name": {
+    "ru": "Навоз",
+    "en": "Manure"
+   },
+   "kind": "material",
+   "weight": 1.0,
+   "icon": {
+    "shape": "lump",
+    "color": "#5a4028"
+   },
+   "fertilizer": 1.2,
+   "tags": [
+    "fertilizer",
+    "compostable"
+   ]
+  },
+  {
+   "id": "bone_meal",
+   "name": {
+    "ru": "Костная мука",
+    "en": "Bone Meal"
+   },
+   "kind": "material",
+   "weight": 0.4,
+   "icon": {
+    "shape": "powder",
+    "color": "#e8e0cc"
+   },
+   "fertilizer": 1.5,
+   "tags": [
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "bone",
+   "name": {
+    "ru": "Кость",
+    "en": "Bone"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "stick",
+    "color": "#ece4d4"
+   },
+   "tags": [
+    "bone"
+   ]
+  }
+ ]
+}

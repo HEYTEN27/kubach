@@ -22,6 +22,7 @@ var crafting: CraftingController
 var weather: WeatherSystem
 var fluids: FluidSystem
 var vehicles: VehicleSystem
+var farm: FarmSystem
 var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
@@ -132,6 +133,13 @@ func _ready() -> void:
 	vehicles.current_at = fluids.current_at
 	if save != null:
 		vehicles.from_array(save.meta.get("vehicles", []))
+	farm = FarmSystem.new()
+	add_child(farm)
+	farm.setup(world, survival.clock, survival.vitals.cfg, weather, stations, player)
+	var farm_ctl := FarmController.new()
+	add_child(farm_ctl)
+	farm_ctl.setup(world, player, farm)
+	farm_ctl.message.connect(func(t: String) -> void: hud.show_toast(t))
 	var buckets := BucketController.new()
 	buckets.name = "Buckets"
 	add_child(buckets)

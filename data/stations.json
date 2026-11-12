@@ -295,6 +295,17 @@
    "inputs": 2,
    "outputs": 2,
    "order": 18
+  },
+  {
+   "id": "compost_bin",
+   "name": {
+    "ru": "Компостер",
+    "en": "Compost Bin"
+   },
+   "mode": "process",
+   "inputs": 4,
+   "outputs": 2,
+   "order": 20
   }
  ]
 }

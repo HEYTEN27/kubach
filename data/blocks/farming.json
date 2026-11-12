@@ -1,0 +1,348 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "farmland",
+   "name": {
+    "ru": "Грядка",
+    "en": "Farmland"
+   },
+   "material": "soil",
+   "map_color": "#6e4c32",
+   "hardness": 0.6,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "textures": {
+    "top": "farmland_top",
+    "side": "loam",
+    "bottom": "loam"
+   },
+   "drops": [
+    {
+     "id": "loam"
+    }
+   ],
+   "tags": [
+    "farmland",
+    "soil"
+   ],
+   "item": false
+  },
+  {
+   "id": "farmland_wet",
+   "name": {
+    "ru": "Политая грядка",
+    "en": "Wet Farmland"
+   },
+   "material": "soil",
+   "map_color": "#4a3222",
+   "hardness": 0.6,
+   "tool": "shovel",
+   "sounds": "dirt",
+   "textures": {
+    "top": "farmland_wet_top",
+    "side": "loam",
+    "bottom": "loam"
+   },
+   "drops": [
+    {
+     "id": "loam"
+    }
+   ],
+   "tags": [
+    "farmland",
+    "farmland_wet",
+    "soil"
+   ],
+   "item": false
+  },
+  {
+   "id": "weed",
+   "name": {
+    "ru": "Сорняк",
+    "en": "Weed"
+   },
+   "material": "plant",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "sounds": "grass",
+   "map_color": "#5a7a34",
+   "textures": {
+    "all": "weed"
+   },
+   "flammable": true,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.5
+    }
+   ],
+   "tags": [
+    "weed",
+    "plant",
+    "compostable"
+   ],
+   "item": false
+  },
+  {
+   "id": "withered_crop",
+   "name": {
+    "ru": "Увядшее растение",
+    "en": "Withered Plant"
+   },
+   "material": "plant",
+   "render": "cutout",
+   "shape": "cross",
+   "solid": false,
+   "hardness": 0.0,
+   "light_filter": 0,
+   "sounds": "grass",
+   "map_color": "#8a7a4a",
+   "textures": {
+    "all": "withered_crop"
+   },
+   "flammable": true,
+   "drops": [
+    {
+     "id": "plant_fiber",
+     "chance": 0.6
+    }
+   ],
+   "tags": [
+    "withered",
+    "plant"
+   ],
+   "item": false
+  },
+  {
+   "id": "glass",
+   "name": {
+    "ru": "Стекло",
+    "en": "Glass"
+   },
+   "material": "glass",
+   "render": "translucent",
+   "map_color": "#c8dce8",
+   "hardness": 0.4,
+   "light_filter": 0,
+   "sounds": "glass",
+   "textures": {
+    "all": "glass"
+   },
+   "drops": [],
+   "tags": [
+    "glass"
+   ],
+   "weight": 1.0
+  },
+  {
+   "id": "sprinkler",
+   "name": {
+    "ru": "Разбрызгиватель",
+    "en": "Sprinkler"
+   },
+   "material": "metal",
+   "render": "invisible",
+   "solid": false,
+   "light_filter": 0,
+   "map_color": "#b87a4a",
+   "hardness": 1.0,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "copper_block"
+   },
+   "drops": [
+    {
+     "id": "sprinkler"
+    }
+   ],
+   "tags": [
+    "sprinkler"
+   ],
+   "weight": 2.0,
+   "model": [
+    {
+     "from": [
+      6,
+      0,
+      6
+     ],
+     "to": [
+      10,
+      9,
+      10
+     ],
+     "tex": "copper_block"
+    },
+    {
+     "from": [
+      4,
+      9,
+      4
+     ],
+     "to": [
+      12,
+      10,
+      12
+     ],
+     "tex": "copper_block"
+    },
+    {
+     "from": [
+      7,
+      10,
+      7
+     ],
+     "to": [
+      9,
+      12,
+      9
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      3,
+      10,
+      7.5
+     ],
+     "to": [
+      13,
+      10.6,
+      8.5
+     ],
+     "tex": "iron_block"
+    }
+   ]
+  },
+  {
+   "id": "compost_bin",
+   "name": {
+    "ru": "Компостер",
+    "en": "Compost Bin"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#7a5a36",
+   "hardness": 2.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "compost_bin"
+    }
+   ],
+   "tags": [
+    "station"
+   ],
+   "station": {
+    "kind": "compost_bin",
+    "tier": 1
+   },
+   "weight": 6.0,
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      1,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      1
+     ],
+     "to": [
+      15,
+      11,
+      2.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      13.5
+     ],
+     "to": [
+      15,
+      11,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      2.5
+     ],
+     "to": [
+      2.5,
+      11,
+      13.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      13.5,
+      1,
+      2.5
+     ],
+     "to": [
+      15,
+      11,
+      13.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      2.5,
+      1,
+      2.5
+     ],
+     "to": [
+      13.5,
+      8,
+      13.5
+     ],
+     "tex": "tex_compost"
+    }
+   ]
+  },
+  {
+   "id": "tex_compost",
+   "name": {
+    "ru": "Компост (текстура)",
+    "en": "Compost (texture)"
+   },
+   "material": "soil",
+   "map_color": "#3e2a1a",
+   "textures": {
+    "all": "tex_compost"
+   },
+   "item": false,
+   "drops": [],
+   "tags": []
+  }
+ ]
+}

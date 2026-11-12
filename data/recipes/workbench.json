@@ -868,6 +868,25 @@
    "unlock": "ingredients",
    "category": "blocks",
    "order": 42
+  },
+  {
+   "id": "make_sprinkler",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "copper_ingot",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "sprinkler",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 43
   }
  ]
 }

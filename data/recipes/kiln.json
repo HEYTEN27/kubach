@@ -80,6 +80,26 @@
    },
    "heat": 350,
    "order": 3
+  },
+  {
+   "id": "make_glass",
+   "station": "kiln",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "sand",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "glass",
+    "count": 1
+   },
+   "time": 20,
+   "heat": 900,
+   "unlock": "ingredients",
+   "category": "blocks",
+   "order": 4
   }
  ]
 }

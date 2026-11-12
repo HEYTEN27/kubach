@@ -878,6 +878,48 @@
    "unlock": "ingredients",
    "category": "tools",
    "order": 43
+  },
+  {
+   "id": "make_compost_bin",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    }
+   ],
+   "output": {
+    "id": "compost_bin",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 44
+  },
+  {
+   "id": "make_watering_can",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 2
+    },
+    {
+     "id": "copper_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "watering_can",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 45
   }
  ]
 }

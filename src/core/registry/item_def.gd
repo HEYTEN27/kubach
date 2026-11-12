@@ -46,6 +46,9 @@ var assembly: StringName = &""
 var floats := false
 ## Сосуд для жидкости: capacity, fluid (у полного), filled/empty, pour (data/items: fluid_container).
 var fluid_container := {}
+## Семена: id культуры (этап 9); удобрение: сила (0 — не удобрение).
+var plant: StringName = &""
+var fertilizer := 0.0
 ## Плавсредство (лодка, плот): kind, speed, turn, length, width, texture_block, hits.
 var vehicle := {}
 
@@ -80,6 +83,8 @@ static func from_entry(e: Dictionary, registry: ContentRegistry) -> ItemDef:
 	d.dye = String(e.get("dye", ""))
 	var fc: Dictionary = e.get("fluid_container", {})
 	d.fluid_container = fc if int(fc.get("capacity", 0)) > 0 else {}
+	d.plant = StringName(e.get("plant", ""))
+	d.fertilizer = float(e.get("fertilizer", 0.0))
 	var vh: Dictionary = e.get("vehicle", {})
 	d.vehicle = vh if String(vh.get("kind", "none")) != "none" else {}
 	d.unlocks = PackedStringArray(e.get("unlocks", []))

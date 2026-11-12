@@ -1,0 +1,24 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "make_compost",
+   "station": "compost_bin",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "compostable",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "compost",
+    "count": 2
+   },
+   "time": 1440,
+   "unlock": "default",
+   "category": "farming",
+   "order": 1
+  }
+ ]
+}
