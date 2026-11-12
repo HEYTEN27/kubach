@@ -298,6 +298,11 @@ func get_container(x: int, y: int, z: int) -> Inventory:
 	return inv
 
 
+## Открытое (живое) хранилище в клетке или null — без создания.
+func live_container(p: Vector3i) -> Inventory:
+	return _containers.get(p)
+
+
 ## Данные блока в клетке (станция, сундук) или пусто.
 func get_entity(p: Vector3i) -> Dictionary:
 	var col: ChunkColumn = chunks.columns.get(Vector2i(p.x >> 4, p.z >> 4))

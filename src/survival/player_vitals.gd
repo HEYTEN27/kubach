@@ -29,6 +29,10 @@ const RECOVER_STAMINA := 25.0
 const LOW_FOOD := 15.0
 ## Свежесть ниже этого — еда испорчена.
 const SPOILED := 0.25
+## Сколько последних блюд помнит разнообразие, и насколько хуже каждый повтор.
+const VARIETY_MEMORY := 8
+const VARIETY_PENALTY := 0.15
+const VARIETY_MIN := 0.4
 ## Готовка (этап 6): пережаренное даёт меньше сытости, недожаренное может отравить.
 const OVERCOOKED := 0.7
 const UNDERCOOKED_POISON := 0.35
@@ -59,6 +63,8 @@ var diseases_enabled := true
 var temperature_enabled := true
 var thirst_enabled := true
 
+## Разнообразие еды (этап 9): последние съеденные блюда; повтор даёт меньше сытости и эффектов.
+var recent_food: Array[StringName] = []
 var _stamina_delay := 0.0
 var _events: Array[Dictionary] = []
 
@@ -452,11 +458,24 @@ func fall(blocks: float) -> float:
 ## Съесть или выпить еду (поле food предмета). freshness 0..1 — свежесть (порча — этап 9).
 ## cook — прожарка с костра (этап 6): under — недожарено (риск отравления), over — пережарено
 ## (меньше сытости).
-func eat(food: Dictionary, freshness: float = 1.0, cook: String = "") -> void:
+## Насколько полезно блюдо id сейчас: 1 — давно не ели, меньше — однообразно.
+func variety(id: StringName) -> float:
+	if id == &"":
+		return 1.0
+	return maxf(VARIETY_MIN, 1.0 - VARIETY_PENALTY * recent_food.count(id))
+
+
+## Съесть. id — что (для разнообразия), quality_mult — множитель качества блюда.
+func eat(food: Dictionary, freshness: float = 1.0, cook: String = "", id: StringName = &"", quality_mult: float = 1.0) -> void:
 	if dead or food.is_empty():
 		return
 	var spoiled := freshness < SPOILED
-	var nutr: float = food.get("nutrition", 0.0)
+	var var_k := variety(id)
+	if id != &"":
+		recent_food.append(id)
+		while recent_food.size() > VARIETY_MEMORY:
+			recent_food.pop_front()
+	var nutr: float = float(food.get("nutrition", 0.0)) * var_k * quality_mult
 	if cook == "over":
 		nutr *= OVERCOOKED
 	hunger = clampf(hunger + nutr * (0.5 if spoiled else 1.0), 0.0, 100.0)
@@ -466,12 +485,16 @@ func eat(food: Dictionary, freshness: float = 1.0, cook: String = "") -> void:
 	if food.get("hot", false):
 		add_effect(&"warm_meal")
 	for fx: Dictionary in food.get("effects", []):
-		var id := StringName(fx.get("id", ""))
+		var eid := StringName(fx.get("id", ""))
 		var chance: float = fx.get("chance", 1.0)
-		if String(effect_defs.get(id, {}).get("kind", "")) == "disease":
+		if String(effect_defs.get(eid, {}).get("kind", "")) == "disease":
 			chance *= _d("disease_mult")
+		elif spoiled:
+			continue   # испорченное не бодрит
+		else:
+			chance *= var_k   # однообразное — реже даёт баффы
 		if rng.randf() < chance:
-			add_effect(id, true)
+			add_effect(eid, true)
 	if spoiled and rng.randf() < _c("spoiled_poison_chance", 0.6) * _d("disease_mult"):
 		add_effect(&"food_poisoning", true)
 
@@ -598,6 +621,16 @@ func can_sprint() -> bool:
 	return true
 
 
+## Множитель скорости добычи (бафф «Сила»).
+func mine_mult() -> float:
+	return _effect_mult("mine_mult")
+
+
+## Ночное зрение 0…1.
+func night_vision() -> float:
+	return clampf(_effect_sum("night_vision"), 0.0, 1.0)
+
+
 func is_tired() -> bool:
 	return fatigue >= _c("tired_fatigue", 75.0)
 
@@ -611,7 +644,7 @@ func to_dict() -> Dictionary:
 	return {
 		"health": health, "hunger": hunger, "thirst": thirst, "stamina": stamina,
 		"body_temp": body_temp, "wetness": wetness, "air": air, "fatigue": fatigue,
-		"effects": fx, "dead": dead,
+		"effects": fx, "dead": dead, "recent_food": recent_food.map(func(x: StringName) -> String: return String(x)),
 	}
 
 
@@ -625,6 +658,9 @@ func from_dict(d: Dictionary) -> void:
 	air = clampf(float(d.get("air", _c("air_max_s", 15.0))), 0.0, _c("air_max_s", 15.0))
 	fatigue = clampf(float(d.get("fatigue", 0.0)), 0.0, 100.0)
 	dead = bool(d.get("dead", false))
+	recent_food.clear()
+	for f: Variant in d.get("recent_food", []):
+		recent_food.append(StringName(String(f)))
 	effects.clear()
 	for e: Dictionary in d.get("effects", []):
 		var id := StringName(e.get("id", ""))

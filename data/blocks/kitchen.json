@@ -1,0 +1,1428 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "spit",
+   "name": {
+    "ru": "Вертел",
+    "en": "Roasting Spit"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_log"
+   },
+   "drops": [
+    {
+     "id": "spit"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "spit",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      1.5,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      4,
+      1.5,
+      4
+     ],
+     "to": [
+      12,
+      3,
+      12
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      1,
+      0,
+      7
+     ],
+     "to": [
+      2,
+      11,
+      9
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      7
+     ],
+     "to": [
+      15,
+      11,
+      9
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      0,
+      10,
+      7.5
+     ],
+     "to": [
+      16,
+      11,
+      8.5
+     ],
+     "tex": "iron_block"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "frying_pan",
+   "name": {
+    "ru": "Очаг со сковородой",
+    "en": "Hearth with Frying Pan"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a8070",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "granite"
+   },
+   "drops": [
+    {
+     "id": "frying_pan"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "frying_pan",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      7,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      3,
+      7,
+      3
+     ],
+     "to": [
+      13,
+      7.6,
+      13
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      4,
+      7.6,
+      4
+     ],
+     "to": [
+      12,
+      8.6,
+      12
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      12,
+      8,
+      7
+     ],
+     "to": [
+      16,
+      8.6,
+      9
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      5,
+      1,
+      0.6
+     ],
+     "to": [
+      11,
+      5,
+      1.1
+     ],
+     "tex": "tex_embers"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "cauldron",
+   "name": {
+    "ru": "Котёл над огнём",
+    "en": "Cauldron"
+   },
+   "material": "metal",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a8070",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "sounds": "metal",
+   "textures": {
+    "all": "iron_block"
+   },
+   "drops": [
+    {
+     "id": "cauldron"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "cauldron",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      1.5,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      4,
+      1.5,
+      4
+     ],
+     "to": [
+      12,
+      3,
+      12
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      3,
+      3,
+      3
+     ],
+     "to": [
+      13,
+      11,
+      13
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      4,
+      10.6,
+      4
+     ],
+     "to": [
+      12,
+      11.2,
+      12
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      1,
+      0,
+      7.5
+     ],
+     "to": [
+      2,
+      15,
+      8.5
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      7.5
+     ],
+     "to": [
+      15,
+      15,
+      8.5
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      1,
+      14,
+      7.5
+     ],
+     "to": [
+      15,
+      15,
+      8.5
+     ],
+     "tex": "spruce_log"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "bread_oven",
+   "name": {
+    "ru": "Пекарская печь",
+    "en": "Bread Oven"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a8070",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "bricks"
+   },
+   "drops": [
+    {
+     "id": "bread_oven"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "bread_oven",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      0
+     ],
+     "to": [
+      16,
+      4,
+      16
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      0,
+      4,
+      0
+     ],
+     "to": [
+      16,
+      13,
+      16
+     ],
+     "tex": "bricks"
+    },
+    {
+     "from": [
+      4,
+      5,
+      -0.2
+     ],
+     "to": [
+      12,
+      10,
+      0.4
+     ],
+     "tex": "tex_soot"
+    },
+    {
+     "from": [
+      5,
+      5.2,
+      -0.3
+     ],
+     "to": [
+      11,
+      7,
+      0.2
+     ],
+     "tex": "tex_embers"
+    },
+    {
+     "from": [
+      10,
+      13,
+      10
+     ],
+     "to": [
+      14,
+      20,
+      14
+     ],
+     "tex": "bricks"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "smokehouse",
+   "name": {
+    "ru": "Коптильня",
+    "en": "Smokehouse"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "smokehouse"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "smokehouse",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      3,
+      15
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      2,
+      3,
+      2
+     ],
+     "to": [
+      14,
+      15,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1.5,
+      14,
+      1.5
+     ],
+     "to": [
+      14.5,
+      16,
+      14.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      6,
+      16,
+      6
+     ],
+     "to": [
+      10,
+      19,
+      10
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      5,
+      0.5,
+      0.6
+     ],
+     "to": [
+      11,
+      2.5,
+      1.1
+     ],
+     "tex": "tex_embers"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "drying_rack",
+   "name": {
+    "ru": "Сушилка",
+    "en": "Drying Rack"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "birch_planks"
+   },
+   "drops": [
+    {
+     "id": "drying_rack"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "drying_rack",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      2,
+      14,
+      2
+     ],
+     "tex": "birch_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      14,
+      2
+     ],
+     "tex": "birch_log"
+    },
+    {
+     "from": [
+      1,
+      0,
+      14
+     ],
+     "to": [
+      2,
+      14,
+      15
+     ],
+     "tex": "birch_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      14
+     ],
+     "to": [
+      15,
+      14,
+      15
+     ],
+     "tex": "birch_log"
+    },
+    {
+     "from": [
+      1,
+      12,
+      1
+     ],
+     "to": [
+      15,
+      13,
+      15
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      1,
+      7,
+      1
+     ],
+     "to": [
+      15,
+      8,
+      15
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      3,
+      8,
+      3
+     ],
+     "to": [
+      13,
+      8.4,
+      13
+     ],
+     "tex": "tex_hide"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "salting_barrel",
+   "name": {
+    "ru": "Бочка для засолки",
+    "en": "Salting Barrel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "salting_barrel"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "salting_barrel",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      13,
+      15
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      0.6,
+      3,
+      0.6
+     ],
+     "to": [
+      15.4,
+      4,
+      15.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      0.6,
+      10,
+      0.6
+     ],
+     "to": [
+      15.4,
+      11,
+      15.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      2,
+      13,
+      2
+     ],
+     "to": [
+      14,
+      14,
+      14
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      6,
+      14,
+      6
+     ],
+     "to": [
+      10,
+      16,
+      10
+     ],
+     "tex": "granite"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "ferment_barrel",
+   "name": {
+    "ru": "Бродильная бочка",
+    "en": "Fermentation Barrel"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "barrel_side"
+   },
+   "drops": [
+    {
+     "id": "ferment_barrel"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "ferment_barrel",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      14,
+      15
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      0.6,
+      3,
+      0.6
+     ],
+     "to": [
+      15.4,
+      4,
+      15.4
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      0.6,
+      10,
+      0.6
+     ],
+     "to": [
+      15.4,
+      11,
+      15.4
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      7,
+      6,
+      0.2
+     ],
+     "to": [
+      9,
+      8,
+      1
+     ],
+     "tex": "copper_block"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "butter_churn",
+   "name": {
+    "ru": "Маслобойка",
+    "en": "Butter Churn"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "butter_churn"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "butter_churn",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      4,
+      0,
+      4
+     ],
+     "to": [
+      12,
+      11,
+      12
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      3.6,
+      2,
+      3.6
+     ],
+     "to": [
+      12.4,
+      3,
+      12.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      3.6,
+      8,
+      3.6
+     ],
+     "to": [
+      12.4,
+      9,
+      12.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      7.5,
+      11,
+      7.5
+     ],
+     "to": [
+      8.5,
+      18,
+      8.5
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      6,
+      17,
+      7.5
+     ],
+     "to": [
+      10,
+      18,
+      8.5
+     ],
+     "tex": "birch_planks"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "juice_press",
+   "name": {
+    "ru": "Пресс",
+    "en": "Press"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "juice_press"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "juice_press",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      2,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      3,
+      2,
+      3
+     ],
+     "to": [
+      13,
+      8,
+      13
+     ],
+     "tex": "barrel"
+    },
+    {
+     "from": [
+      1,
+      0,
+      7
+     ],
+     "to": [
+      2.5,
+      16,
+      9
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      13.5,
+      0,
+      7
+     ],
+     "to": [
+      15,
+      16,
+      9
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      1,
+      14,
+      7
+     ],
+     "to": [
+      15,
+      16,
+      9
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      7.5,
+      8,
+      7.5
+     ],
+     "to": [
+      8.5,
+      14,
+      8.5
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      4,
+      8,
+      4
+     ],
+     "to": [
+      12,
+      9,
+      12
+     ],
+     "tex": "oak_planks"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "quern",
+   "name": {
+    "ru": "Жернова",
+    "en": "Quern"
+   },
+   "material": "stone",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a8070",
+   "hardness": 2.5,
+   "tool": "pickaxe",
+   "sounds": "stone",
+   "textures": {
+    "all": "granite"
+   },
+   "drops": [
+    {
+     "id": "quern"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "quern",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      5,
+      14
+     ],
+     "tex": "granite"
+    },
+    {
+     "from": [
+      2.5,
+      5,
+      2.5
+     ],
+     "to": [
+      13.5,
+      9,
+      13.5
+     ],
+     "tex": "basalt"
+    },
+    {
+     "from": [
+      11,
+      9,
+      7.5
+     ],
+     "to": [
+      12,
+      14,
+      8.5
+     ],
+     "tex": "oak_planks"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "kitchen_table",
+   "name": {
+    "ru": "Кухонный стол",
+    "en": "Kitchen Table"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "birch_planks"
+   },
+   "drops": [
+    {
+     "id": "kitchen_table"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "kitchen_table",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      12,
+      0
+     ],
+     "to": [
+      16,
+      14,
+      16
+     ],
+     "tex": "birch_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      3,
+      12,
+      3
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      0,
+      13
+     ],
+     "to": [
+      3,
+      12,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      12,
+      3
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      13,
+      0,
+      13
+     ],
+     "to": [
+      15,
+      12,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      3,
+      14,
+      3
+     ],
+     "to": [
+      10,
+      14.6,
+      8
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      11,
+      14,
+      9
+     ],
+     "to": [
+      14,
+      17,
+      12
+     ],
+     "tex": "tex_cloth"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "beehive",
+   "name": {
+    "ru": "Улей",
+    "en": "Beehive"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "beehive"
+    }
+   ],
+   "tags": [
+    "station",
+    "kitchen"
+   ],
+   "station": {
+    "kind": "beehive",
+    "tier": 1
+   },
+   "model": [
+    {
+     "from": [
+      2,
+      0,
+      2
+     ],
+     "to": [
+      14,
+      2,
+      14
+     ],
+     "tex": "spruce_log"
+    },
+    {
+     "from": [
+      2.5,
+      2,
+      2.5
+     ],
+     "to": [
+      13.5,
+      13,
+      13.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      2,
+      13,
+      2
+     ],
+     "to": [
+      14,
+      15,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      6,
+      3,
+      2.2
+     ],
+     "to": [
+      10,
+      4,
+      2.6
+     ],
+     "tex": "tex_soot"
+    }
+   ],
+   "weight": 10.0
+  },
+  {
+   "id": "ice_box",
+   "name": {
+    "ru": "Ледник",
+    "en": "Ice Box"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#9ab0c0",
+   "hardness": 2.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "ice_box"
+    }
+   ],
+   "tags": [
+    "cooling"
+   ],
+   "container": {
+    "slots": 18,
+    "kind": "chest"
+   },
+   "weight": 12.0,
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      12,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0.6,
+      2,
+      0.6
+     ],
+     "to": [
+      15.4,
+      3,
+      15.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      0.6,
+      9,
+      0.6
+     ],
+     "to": [
+      15.4,
+      10,
+      15.4
+     ],
+     "tex": "iron_block"
+    },
+    {
+     "from": [
+      1.5,
+      12,
+      1.5
+     ],
+     "to": [
+      14.5,
+      13,
+      14.5
+     ],
+     "tex": "packed_ice"
+    },
+    {
+     "from": [
+      1,
+      13,
+      1
+     ],
+     "to": [
+      15,
+      14,
+      15
+     ],
+     "tex": "spruce_planks"
+    }
+   ]
+  }
+ ]
+}

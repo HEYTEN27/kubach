@@ -921,7 +921,12 @@
    "icon": {
     "shape": "berries",
     "color": "#2a2f5a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "lingonberries",
@@ -940,7 +945,12 @@
    "icon": {
     "shape": "berries",
     "color": "#b0202a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "cranberries",
@@ -959,7 +969,12 @@
    "icon": {
     "shape": "berries",
     "color": "#c0182a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "cloudberries",
@@ -978,7 +993,12 @@
    "icon": {
     "shape": "berries",
     "color": "#e8902a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "bog_bilberries",
@@ -997,7 +1017,12 @@
    "icon": {
     "shape": "berries",
     "color": "#4a5a8a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "wild_strawberries",
@@ -1016,7 +1041,12 @@
    "icon": {
     "shape": "berries",
     "color": "#d8282a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "raspberries",
@@ -1035,7 +1065,12 @@
    "icon": {
     "shape": "berries",
     "color": "#c8304a"
-   }
+   },
+   "tags": [
+    "berry",
+    "compostable",
+    "fruit"
+   ]
   },
   {
    "id": "rye_bread",
@@ -1055,7 +1090,11 @@
    "icon": {
     "shape": "bread",
     "color": "#6a4426"
-   }
+   },
+   "tags": [
+    "bread",
+    "compostable"
+   ]
   },
   {
    "id": "dried_fish",
@@ -1075,7 +1114,10 @@
    "icon": {
     "shape": "fish",
     "color": "#a8885a"
-   }
+   },
+   "tags": [
+    "compostable"
+   ]
   },
   {
    "id": "raw_meat",
@@ -1100,7 +1142,11 @@
    "icon": {
     "shape": "meat",
     "color": "#c04a4a"
-   }
+   },
+   "tags": [
+    "compostable",
+    "raw_meat_any"
+   ]
   },
   {
    "id": "cooked_meat",
@@ -1127,7 +1173,10 @@
    "icon": {
     "shape": "meat",
     "color": "#8a4a2a"
-   }
+   },
+   "tags": [
+    "compostable"
+   ]
   },
   {
    "id": "mushroom_soup",
@@ -1156,7 +1205,10 @@
     "shape": "bowl",
     "color": "#a07040",
     "color2": "#6a4a2a"
-   }
+   },
+   "tags": [
+    "compostable"
+   ]
   },
   {
    "id": "herbal_tea",
@@ -1185,7 +1237,10 @@
     "shape": "cup",
     "color": "#8aa060",
     "color2": "#7a5a36"
-   }
+   },
+   "tags": [
+    "compostable"
+   ]
   },
   {
    "id": "antidote_decoction",

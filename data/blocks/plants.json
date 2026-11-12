@@ -18,7 +18,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "grass"
+    "grass",
+    "compostable"
    ],
    "textures": {
     "all": "grass"
@@ -49,7 +50,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "grass"
+    "grass",
+    "compostable"
    ],
    "textures": {
     "all": "tall_grass"
@@ -80,7 +82,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "fern"
+    "fern",
+    "compostable"
    ],
    "textures": {
     "all": "fern"
@@ -111,7 +114,8 @@
    "tags": [
     "plant",
     "grass",
-    "wetland"
+    "wetland",
+    "compostable"
    ],
    "textures": {
     "all": "sedge"
@@ -143,7 +147,8 @@
    "tags": [
     "plant",
     "wetland",
-    "fiber"
+    "fiber",
+    "compostable"
    ],
    "textures": {
     "all": "reeds"
@@ -174,7 +179,8 @@
    "tags": [
     "plant",
     "grass",
-    "steppe"
+    "steppe",
+    "compostable"
    ],
    "textures": {
     "all": "feather_grass"
@@ -203,7 +209,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "dry"
+    "dry",
+    "compostable"
    ],
    "textures": {
     "all": "dead_bush"
@@ -235,7 +242,8 @@
     "plant",
     "herb",
     "fiber",
-    "edible"
+    "edible",
+    "compostable"
    ],
    "textures": {
     "all": "nettle"
@@ -272,7 +280,8 @@
    "tags": [
     "plant",
     "herb",
-    "medicinal"
+    "medicinal",
+    "compostable"
    ],
    "textures": {
     "all": "plantain"
@@ -310,7 +319,8 @@
    "tags": [
     "plant",
     "berry",
-    "edible"
+    "edible",
+    "compostable"
    ],
    "textures": {
     "all": "bilberry_bush"
@@ -344,7 +354,8 @@
    "tags": [
     "plant",
     "berry",
-    "edible"
+    "edible",
+    "compostable"
    ],
    "textures": {
     "all": "lingonberry_bush"
@@ -379,7 +390,8 @@
     "plant",
     "berry",
     "edible",
-    "wetland"
+    "wetland",
+    "compostable"
    ],
    "textures": {
     "all": "cranberry_bush"
@@ -414,7 +426,8 @@
     "plant",
     "berry",
     "edible",
-    "wetland"
+    "wetland",
+    "compostable"
    ],
    "textures": {
     "all": "cloudberry"
@@ -449,7 +462,8 @@
     "plant",
     "berry",
     "edible",
-    "wetland"
+    "wetland",
+    "compostable"
    ],
    "textures": {
     "all": "bog_bilberry"
@@ -483,7 +497,8 @@
    "tags": [
     "plant",
     "berry",
-    "edible"
+    "edible",
+    "compostable"
    ],
    "textures": {
     "all": "wild_strawberry"
@@ -517,7 +532,8 @@
    "tags": [
     "plant",
     "berry",
-    "edible"
+    "edible",
+    "compostable"
    ],
    "textures": {
     "all": "raspberry_bush"
@@ -552,7 +568,8 @@
     "plant",
     "herb",
     "poisonous",
-    "wetland"
+    "wetland",
+    "compostable"
    ],
    "textures": {
     "all": "labrador_tea"
@@ -590,7 +607,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "shrub"
+    "shrub",
+    "compostable"
    ],
    "textures": {
     "all": "juniper"
@@ -619,7 +637,9 @@
    "tags": [
     "plant",
     "mushroom",
-    "edible"
+    "edible",
+    "edible_mushroom",
+    "compostable"
    ],
    "textures": {
     "all": "porcini"
@@ -658,7 +678,9 @@
    "tags": [
     "plant",
     "mushroom",
-    "edible"
+    "edible",
+    "edible_mushroom",
+    "compostable"
    ],
    "textures": {
     "all": "birch_bolete"
@@ -697,7 +719,9 @@
    "tags": [
     "plant",
     "mushroom",
-    "edible"
+    "edible",
+    "edible_mushroom",
+    "compostable"
    ],
    "textures": {
     "all": "chanterelle"
@@ -737,7 +761,8 @@
     "plant",
     "mushroom",
     "poisonous",
-    "lookalike"
+    "lookalike",
+    "compostable"
    ],
    "textures": {
     "all": "false_chanterelle"
@@ -776,7 +801,9 @@
    "tags": [
     "plant",
     "mushroom",
-    "edible"
+    "edible",
+    "edible_mushroom",
+    "compostable"
    ],
    "textures": {
     "all": "russula"
@@ -816,7 +843,8 @@
     "plant",
     "mushroom",
     "poisonous",
-    "lookalike"
+    "lookalike",
+    "compostable"
    ],
    "textures": {
     "all": "death_cap"
@@ -855,7 +883,8 @@
    "tags": [
     "plant",
     "mushroom",
-    "poisonous"
+    "poisonous",
+    "compostable"
    ],
    "textures": {
     "all": "fly_agaric"
@@ -893,7 +922,8 @@
    "sounds": "grass",
    "tags": [
     "plant",
-    "lichen"
+    "lichen",
+    "compostable"
    ],
    "textures": {
     "all": "lichen"
@@ -922,7 +952,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "chamomile"
@@ -951,7 +982,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "cornflower"
@@ -980,7 +1012,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "bellflower"
@@ -1009,7 +1042,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "dandelion"
@@ -1038,7 +1072,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "poppy"
@@ -1067,7 +1102,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "buttercup"
@@ -1096,7 +1132,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "clover"
@@ -1125,7 +1162,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "fireweed"
@@ -1154,7 +1192,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "st_johns_wort"
@@ -1183,7 +1222,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "yarrow"
@@ -1212,7 +1252,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "tansy"
@@ -1241,7 +1282,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "chicory"
@@ -1270,7 +1312,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "forget_me_not"
@@ -1299,7 +1342,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "lily_of_the_valley"
@@ -1328,7 +1372,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "violet"
@@ -1357,7 +1402,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "dianthus"
@@ -1386,7 +1432,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "tulip"
@@ -1415,7 +1462,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "thyme"
@@ -1444,7 +1492,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "sage"
@@ -1473,7 +1522,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "edelweiss"
@@ -1502,7 +1552,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "gentian"
@@ -1531,7 +1582,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "rhododendron"
@@ -1560,7 +1612,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "martagon_lily"
@@ -1589,7 +1642,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "snowdrop"
@@ -1618,7 +1672,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "globeflower"
@@ -1647,7 +1702,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "orchid"
@@ -1676,7 +1732,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "hibiscus"
@@ -1705,7 +1762,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "saxifrage"
@@ -1734,7 +1792,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "lupine"
@@ -1763,7 +1822,8 @@
    "tags": [
     "plant",
     "flower",
-    "dye"
+    "dye",
+    "compostable"
    ],
    "textures": {
     "all": "heather"

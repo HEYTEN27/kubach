@@ -887,6 +887,98 @@
    "unlock": "ingredients",
    "category": "farming",
    "order": 43
+  },
+  {
+   "id": "make_frying_pan",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "brick",
+     "count": 6
+    },
+    {
+     "id": "iron_ingot",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "frying_pan",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 44
+  },
+  {
+   "id": "make_cauldron",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "iron_ingot",
+     "count": 5
+    },
+    {
+     "tag": "log",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "cauldron",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 45
+  },
+  {
+   "id": "make_bread_oven",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "brick",
+     "count": 12
+    },
+    {
+     "id": "granite",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "bread_oven",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 46
+  },
+  {
+   "id": "make_quern",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "granite",
+     "count": 4
+    },
+    {
+     "tag": "planks",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "quern",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 47
   }
  ]
 }

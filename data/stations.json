@@ -306,6 +306,212 @@
    "inputs": 4,
    "outputs": 2,
    "order": 20
+  },
+  {
+   "id": "spit",
+   "name": {
+    "ru": "Вертел",
+    "en": "Roasting Spit"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "fuel": 1,
+   "outputs": 2,
+   "heat": true,
+   "max_heat": 500,
+   "heat_rate": 100,
+   "cool_rate": 40,
+   "warmth": 14,
+   "light": 12,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/campfire",
+   "rain_douse": 4.0,
+   "order": 30
+  },
+  {
+   "id": "frying_pan",
+   "name": {
+    "ru": "Очаг со сковородой",
+    "en": "Hearth with Frying Pan"
+   },
+   "mode": "recipe",
+   "fuel": 1,
+   "outputs": 2,
+   "heat": true,
+   "max_heat": 450,
+   "heat_rate": 90,
+   "cool_rate": 40,
+   "warmth": 12,
+   "light": 10,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/campfire",
+   "order": 31
+  },
+  {
+   "id": "cauldron",
+   "name": {
+    "ru": "Котёл над огнём",
+    "en": "Cauldron"
+   },
+   "mode": "recipe",
+   "fuel": 1,
+   "outputs": 3,
+   "heat": true,
+   "max_heat": 300,
+   "heat_rate": 60,
+   "cool_rate": 30,
+   "warmth": 14,
+   "light": 10,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/boil",
+   "order": 32
+  },
+  {
+   "id": "bread_oven",
+   "name": {
+    "ru": "Пекарская печь",
+    "en": "Bread Oven"
+   },
+   "mode": "recipe",
+   "fuel": 1,
+   "outputs": 3,
+   "heat": true,
+   "max_heat": 400,
+   "heat_rate": 50,
+   "cool_rate": 20,
+   "warmth": 16,
+   "light": 8,
+   "effects": [
+    "fire",
+    "smoke"
+   ],
+   "sound": "stations/furnace",
+   "heat_source": true,
+   "order": 33
+  },
+  {
+   "id": "smokehouse",
+   "name": {
+    "ru": "Коптильня",
+    "en": "Smokehouse"
+   },
+   "mode": "recipe",
+   "fuel": 1,
+   "outputs": 3,
+   "heat": true,
+   "max_heat": 160,
+   "heat_rate": 30,
+   "cool_rate": 15,
+   "warmth": 6,
+   "light": 4,
+   "effects": [
+    "smoke"
+   ],
+   "sound": "stations/furnace",
+   "order": 34
+  },
+  {
+   "id": "drying_rack",
+   "name": {
+    "ru": "Сушилка",
+    "en": "Drying Rack"
+   },
+   "mode": "process",
+   "inputs": 3,
+   "outputs": 3,
+   "sound": "stations/workbench",
+   "order": 35
+  },
+  {
+   "id": "salting_barrel",
+   "name": {
+    "ru": "Бочка для засолки",
+    "en": "Salting Barrel"
+   },
+   "mode": "process",
+   "inputs": 3,
+   "outputs": 3,
+   "sound": "stations/workbench",
+   "order": 36
+  },
+  {
+   "id": "ferment_barrel",
+   "name": {
+    "ru": "Бродильная бочка",
+    "en": "Fermentation Barrel"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "sound": "stations/workbench",
+   "order": 37
+  },
+  {
+   "id": "butter_churn",
+   "name": {
+    "ru": "Маслобойка",
+    "en": "Butter Churn"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/workbench",
+   "order": 38
+  },
+  {
+   "id": "juice_press",
+   "name": {
+    "ru": "Пресс",
+    "en": "Press"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/workbench",
+   "order": 39
+  },
+  {
+   "id": "quern",
+   "name": {
+    "ru": "Жернова",
+    "en": "Quern"
+   },
+   "mode": "process",
+   "inputs": 2,
+   "outputs": 2,
+   "sound": "stations/grindstone",
+   "order": 40
+  },
+  {
+   "id": "kitchen_table",
+   "name": {
+    "ru": "Кухонный стол",
+    "en": "Kitchen Table"
+   },
+   "mode": "recipe",
+   "outputs": 4,
+   "sound": "stations/workbench",
+   "order": 41
+  },
+  {
+   "id": "beehive",
+   "name": {
+    "ru": "Улей",
+    "en": "Beehive"
+   },
+   "mode": "process",
+   "inputs": 1,
+   "outputs": 3,
+   "sound": "stations/bees",
+   "order": 42
   }
  ]
 }

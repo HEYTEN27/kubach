@@ -37,6 +37,14 @@ class _Dropped:
 	var sprite: Sprite3D
 
 
+## Стопки на земле (для порчи еды).
+func stacks() -> Array[ItemStack]:
+	var out: Array[ItemStack] = []
+	for d in _items:
+		out.append(d.stack)
+	return out
+
+
 func count() -> int:
 	return _items.size()
 

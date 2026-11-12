@@ -108,6 +108,14 @@ static func outputs(data: CraftingData, r: Dictionary, consumed: Array[ItemStack
 			var x := _stack(data, StringName(e["id"]), int(e.get("count", 1)), sc)
 			if x != null:
 				out.append(x)
+	# Вода из сосуда (ведро, бурдюк, лейка) ушла в рецепт — пустой сосуд возвращается (этап 9).
+	if String(r.get("op", "craft")) != "boil":
+		for s in consumed:
+			var d := data.registry.item(s.id)
+			if d != null and String(d.fluid_container.get("fluid", "")) != "":
+				var empty := data.registry.item(StringName(d.fluid_container.get("empty", "")))
+				if empty != null:
+					out.append(ItemStack.create(empty, s.count))
 	return out
 
 

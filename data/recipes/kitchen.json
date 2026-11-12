@@ -1,0 +1,2949 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "spit_venison",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "venison",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_venison",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 0
+  },
+  {
+   "id": "spit_moose",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "moose_meat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_moose",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 1
+  },
+  {
+   "id": "spit_bear",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "bear_meat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_bear",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 2
+  },
+  {
+   "id": "spit_boar",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "boar_meat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_boar",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 3
+  },
+  {
+   "id": "spit_hare",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "hare_meat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_hare",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 4
+  },
+  {
+   "id": "spit_poultry",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "poultry",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_poultry",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "default",
+   "category": "food",
+   "heat": 250,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 5
+  },
+  {
+   "id": "spit_fish",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_fish",
+    "count": 1
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 220,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 6
+  },
+  {
+   "id": "spit_corn",
+   "station": "spit",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "corn",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_corn",
+    "count": 1
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 7
+  },
+  {
+   "id": "campfire_baked_potato",
+   "station": "campfire",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "potato",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "baked_potato",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "default",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 8
+  },
+  {
+   "id": "pan_fried_eggs",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "egg",
+     "count": 2
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fried_eggs",
+    "count": 1
+   },
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 9
+  },
+  {
+   "id": "pan_fried_potatoes",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "potato",
+     "count": 2
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fried_potatoes",
+    "count": 2
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 10
+  },
+  {
+   "id": "pan_pork_chop",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "pork",
+     "count": 1
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "pork_chop",
+    "count": 1
+   },
+   "time": 7,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 220,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 11
+  },
+  {
+   "id": "pan_beef_steak",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "beef",
+     "count": 1
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "beef_steak",
+    "count": 1
+   },
+   "time": 7,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 220,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 12
+  },
+  {
+   "id": "pan_fried_fish",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 1
+    },
+    {
+     "tag": "flour",
+     "count": 1
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fried_fish",
+    "count": 1
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 13
+  },
+  {
+   "id": "pan_pancakes",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "flour",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "milk",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "pancakes",
+    "count": 3
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 14
+  },
+  {
+   "id": "pan_syrniki",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "cottage_cheese",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "flour",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "syrniki",
+    "count": 2
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 15
+  },
+  {
+   "id": "pan_fried_mushrooms",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "tag": "edible_mushroom",
+     "count": 2
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fried_mushrooms",
+    "count": 1
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 16
+  },
+  {
+   "id": "pan_omelette",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "egg",
+     "count": 2
+    },
+    {
+     "id": "milk",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "omelette",
+    "count": 1
+   },
+   "time": 4,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 17
+  },
+  {
+   "id": "pan_fried_zucchini",
+   "station": "frying_pan",
+   "op": "cook",
+   "inputs": [
+    {
+     "id": "zucchini",
+     "count": 1
+    },
+    {
+     "tag": "flour",
+     "count": 1
+    },
+    {
+     "tag": "cooking_fat",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fried_zucchini",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "minigame": "cook",
+   "cook": {
+    "perfect_from": 0.9,
+    "perfect_to": 1.3,
+    "burnt_at": 1.9
+   },
+   "order": 18
+  },
+  {
+   "id": "cauldron_shchi",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cabbage",
+     "count": 1
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "carrot",
+     "count": 1
+    },
+    {
+     "tag": "raw_meat_any",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "shchi",
+    "count": 2
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 19
+  },
+  {
+   "id": "cauldron_borscht",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "beet",
+     "count": 1
+    },
+    {
+     "id": "cabbage",
+     "count": 1
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "tag": "raw_meat_any",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "borscht",
+    "count": 2
+   },
+   "time": 45,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 20
+  },
+  {
+   "id": "cauldron_ukha",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 2
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "ukha",
+    "count": 2
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 21
+  },
+  {
+   "id": "cauldron_pea_soup",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "peas",
+     "count": 2
+    },
+    {
+     "id": "pork",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "pea_soup",
+    "count": 2
+   },
+   "time": 50,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 22
+  },
+  {
+   "id": "cauldron_broth",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "beef",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "beef_broth",
+    "count": 2
+   },
+   "time": 60,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 23
+  },
+  {
+   "id": "cauldron_buckwheat",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "buckwheat_groats",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "id": "butter",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "buckwheat_porridge",
+    "count": 2
+   },
+   "time": 25,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 24
+  },
+  {
+   "id": "cauldron_oatmeal",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oat_flakes",
+     "count": 1
+    },
+    {
+     "id": "milk",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "oatmeal",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 25
+  },
+  {
+   "id": "cauldron_millet",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "millet_groats",
+     "count": 1
+    },
+    {
+     "id": "milk",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "millet_porridge",
+    "count": 1
+   },
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 26
+  },
+  {
+   "id": "cauldron_rice",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rice",
+     "count": 2
+    },
+    {
+     "id": "milk",
+     "count": 1
+    },
+    {
+     "id": "honey",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "rice_porridge",
+    "count": 2
+   },
+   "time": 25,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 27
+  },
+  {
+   "id": "cauldron_boiled_potatoes",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "potato",
+     "count": 3
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "boiled_potatoes",
+    "count": 3
+   },
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 28
+  },
+  {
+   "id": "cauldron_stew",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "raw_meat_any",
+     "count": 1
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "carrot",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "stew",
+    "count": 2
+   },
+   "time": 50,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 29
+  },
+  {
+   "id": "cauldron_jam",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "berry",
+     "count": 4
+    },
+    {
+     "id": "honey",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "berry_jam",
+    "count": 2
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 30
+  },
+  {
+   "id": "cauldron_mors",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "berry",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "berry_mors",
+    "count": 2
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 31
+  },
+  {
+   "id": "cauldron_compote",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "fruit",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "compote",
+    "count": 2
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 32
+  },
+  {
+   "id": "cauldron_kissel",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "berry",
+     "count": 2
+    },
+    {
+     "id": "oat_flakes",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "kissel",
+    "count": 2
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 33
+  },
+  {
+   "id": "cauldron_cottage_cheese",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "milk",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "cottage_cheese",
+    "count": 1
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 80,
+   "order": 34
+  },
+  {
+   "id": "cauldron_pelmeni",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_pelmeni",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "pelmeni",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 35
+  },
+  {
+   "id": "cauldron_vareniki",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_vareniki",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "vareniki",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 36
+  },
+  {
+   "id": "cauldron_black_tea",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "tea_leaves",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "black_tea",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 37
+  },
+  {
+   "id": "cauldron_fireweed_tea",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "fireweed",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "fireweed_tea",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 38
+  },
+  {
+   "id": "cauldron_herb_tea",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "dried_herbs",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "herbal_tea",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 39
+  },
+  {
+   "id": "cauldron_sbiten",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "honey",
+     "count": 1
+    },
+    {
+     "id": "spice_mix",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "tag": "cup",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "sbiten",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 40
+  },
+  {
+   "id": "cauldron_boiled_eggs",
+   "station": "cauldron",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "egg",
+     "count": 3
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "boiled_eggs",
+    "count": 3
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 100,
+   "order": 41
+  },
+  {
+   "id": "oven_wheat_bread",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "wheat_bread",
+    "count": 2
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 220,
+   "order": 42
+  },
+  {
+   "id": "oven_rye_bread",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rye_dough",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "rye_bread",
+    "count": 2
+   },
+   "time": 50,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 220,
+   "order": 43
+  },
+  {
+   "id": "oven_berry_pie",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_berry_pie",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "berry_pie",
+    "count": 1
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 44
+  },
+  {
+   "id": "oven_meat_pie",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_meat_pie",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "meat_pie",
+    "count": 1
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 45
+  },
+  {
+   "id": "oven_cabbage_pie",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_cabbage_pie",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "cabbage_pie",
+    "count": 1
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 46
+  },
+  {
+   "id": "oven_fish_pie",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "raw_fish_pie",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fish_pie",
+    "count": 1
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 47
+  },
+  {
+   "id": "oven_baked_potato",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "potato",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "baked_potato",
+    "count": 3
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 48
+  },
+  {
+   "id": "oven_roast_pork",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pork",
+     "count": 2
+    },
+    {
+     "id": "garlic",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roast_pork",
+    "count": 2
+   },
+   "time": 90,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 49
+  },
+  {
+   "id": "oven_baked_apples",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apple",
+     "count": 2
+    },
+    {
+     "id": "honey",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "baked_apples",
+    "count": 2
+   },
+   "time": 25,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "order": 50
+  },
+  {
+   "id": "oven_sweet_buns",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "butter",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "sweet_buns",
+    "count": 3
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 51
+  },
+  {
+   "id": "oven_baked_pumpkin",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pumpkin",
+     "count": 1
+    },
+    {
+     "id": "honey",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "baked_pumpkin",
+    "count": 3
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "order": 52
+  },
+  {
+   "id": "oven_casserole",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cottage_cheese",
+     "count": 2
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "sour_cream",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "casserole",
+    "count": 2
+   },
+   "time": 40,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "order": 53
+  },
+  {
+   "id": "oven_roasted_vegetables",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "carrot",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    },
+    {
+     "id": "bell_pepper",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "roasted_vegetables",
+    "count": 2
+   },
+   "time": 35,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 200,
+   "order": 54
+  },
+  {
+   "id": "oven_gingerbread",
+   "station": "bread_oven",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "flour",
+     "count": 1
+    },
+    {
+     "id": "honey",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "spice_mix",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "gingerbread",
+    "count": 4
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 180,
+   "order": 55
+  },
+  {
+   "id": "smoke_hot_fish",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "hot_smoked_fish",
+    "count": 2
+   },
+   "time": 120,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 110,
+   "order": 56
+  },
+  {
+   "id": "smoke_cold_salmon",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "salmon",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "smoked_salmon",
+    "count": 1
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 30,
+   "order": 57
+  },
+  {
+   "id": "smoke_ham",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "pork",
+     "count": 2
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "smoked_ham",
+    "count": 2
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 60,
+   "order": 58
+  },
+  {
+   "id": "smoke_lard",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "lard",
+     "count": 2
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "smoked_lard",
+    "count": 2
+   },
+   "time": 720,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 60,
+   "order": 59
+  },
+  {
+   "id": "smoke_venison",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "venison",
+     "count": 2
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "smoked_venison",
+    "count": 2
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 60,
+   "order": 60
+  },
+  {
+   "id": "smoke_cheese",
+   "station": "smokehouse",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cheese",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "smoked_cheese",
+    "count": 2
+   },
+   "time": 360,
+   "unlock": "ingredients",
+   "category": "food",
+   "heat": 30,
+   "order": 61
+  },
+  {
+   "id": "dry_venison",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "venison",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "venison_jerky",
+    "count": 2
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 62
+  },
+  {
+   "id": "dry_fish",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "dried_fish",
+    "count": 1
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 63
+  },
+  {
+   "id": "dry_mushrooms",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "edible_mushroom",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "dried_mushrooms",
+    "count": 1
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 64
+  },
+  {
+   "id": "dry_berries",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "berry",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "dried_berries",
+    "count": 1
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 65
+  },
+  {
+   "id": "dry_herbs",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "dye",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "dried_herbs",
+    "count": 1
+   },
+   "time": 720,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 66
+  },
+  {
+   "id": "dry_apples",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apple",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "dried_apples",
+    "count": 1
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 67
+  },
+  {
+   "id": "dry_raisins",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "grapes",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "raisins",
+    "count": 1
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 68
+  },
+  {
+   "id": "dry_beef",
+   "station": "drying_rack",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "beef",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    },
+    {
+     "id": "spice_mix",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "dried_beef",
+    "count": 2
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 69
+  },
+  {
+   "id": "salt_lard",
+   "station": "salting_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "lard",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    },
+    {
+     "id": "garlic",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salted_lard",
+    "count": 2
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 70
+  },
+  {
+   "id": "salt_fish",
+   "station": "salting_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "fish_raw",
+     "count": 2
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salted_fish",
+    "count": 2
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 71
+  },
+  {
+   "id": "salt_cucumbers",
+   "station": "salting_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cucumber",
+     "count": 3
+    },
+    {
+     "id": "salt",
+     "count": 1
+    },
+    {
+     "id": "dill",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "pickles",
+    "count": 3
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 72
+  },
+  {
+   "id": "salt_mushrooms",
+   "station": "salting_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "edible_mushroom",
+     "count": 3
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salted_mushrooms",
+    "count": 2
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 73
+  },
+  {
+   "id": "salt_tomatoes",
+   "station": "salting_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "tomato",
+     "count": 3
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salted_tomatoes",
+    "count": 3
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 74
+  },
+  {
+   "id": "ferment_sauerkraut",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cabbage",
+     "count": 1
+    },
+    {
+     "id": "carrot",
+     "count": 1
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "sauerkraut",
+    "count": 3
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 75
+  },
+  {
+   "id": "ferment_kvass",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rye_bread",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "id": "honey",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "kvass",
+    "count": 4
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 76
+  },
+  {
+   "id": "ferment_cider",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apple",
+     "count": 4
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "cider",
+    "count": 4
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 77
+  },
+  {
+   "id": "ferment_wine",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "grapes",
+     "count": 6
+    }
+   ],
+   "output": {
+    "id": "wine",
+    "count": 4
+   },
+   "time": 8640,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 78
+  },
+  {
+   "id": "ferment_mead",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "honey",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    },
+    {
+     "id": "hops",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "mead",
+    "count": 4
+   },
+   "time": 5760,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 79
+  },
+  {
+   "id": "ferment_beer",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "barley",
+     "count": 3
+    },
+    {
+     "id": "hops",
+     "count": 1
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "beer",
+    "count": 4
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 80
+  },
+  {
+   "id": "ferment_vinegar",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cider",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "vinegar",
+    "count": 2
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 81
+  },
+  {
+   "id": "ferment_pickled_vegetables",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "vinegar",
+     "count": 1
+    },
+    {
+     "tag": "vegetable",
+     "count": 3
+    },
+    {
+     "id": "garlic",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "pickled_vegetables",
+    "count": 3
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 82
+  },
+  {
+   "id": "ferment_marinated_mushrooms",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "vinegar",
+     "count": 1
+    },
+    {
+     "tag": "edible_mushroom",
+     "count": 2
+    },
+    {
+     "id": "onion",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "marinated_mushrooms",
+    "count": 2
+   },
+   "time": 1440,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 83
+  },
+  {
+   "id": "ferment_sour_cream",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "milk",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "sour_cream",
+    "count": 1
+   },
+   "time": 720,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 84
+  },
+  {
+   "id": "ferment_cheese",
+   "station": "ferment_barrel",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cottage_cheese",
+     "count": 2
+    },
+    {
+     "id": "salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "cheese",
+    "count": 1
+   },
+   "time": 4320,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 85
+  },
+  {
+   "id": "churn_butter",
+   "station": "butter_churn",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "milk",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "butter",
+    "count": 1
+   },
+   "time": 30,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 86
+  },
+  {
+   "id": "press_apple_juice",
+   "station": "juice_press",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "apple",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "apple_juice",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 87
+  },
+  {
+   "id": "press_grape_juice",
+   "station": "juice_press",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "grapes",
+     "count": 3
+    }
+   ],
+   "output": {
+    "id": "grape_juice",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 88
+  },
+  {
+   "id": "press_sunflower_oil",
+   "station": "juice_press",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "sunflower_kernels",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "sunflower_oil",
+    "count": 1
+   },
+   "time": 20,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 89
+  },
+  {
+   "id": "press_berry_juice",
+   "station": "juice_press",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "berry",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "berry_juice",
+    "count": 2
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 90
+  },
+  {
+   "id": "grind_wheat",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "flour",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "default",
+   "category": "food",
+   "order": 91
+  },
+  {
+   "id": "grind_triticale",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "triticale",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "flour",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 92
+  },
+  {
+   "id": "grind_rye",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rye",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "rye_flour",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 93
+  },
+  {
+   "id": "grind_corn",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "corn",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "corn_meal",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 94
+  },
+  {
+   "id": "grind_buckwheat",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "buckwheat",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "buckwheat_groats",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 95
+  },
+  {
+   "id": "grind_oats",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "oats",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "oat_flakes",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 96
+  },
+  {
+   "id": "grind_millet",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "millet",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "millet_groats",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 97
+  },
+  {
+   "id": "grind_rock_salt",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rock_salt",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salt",
+    "count": 3
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 98
+  },
+  {
+   "id": "grind_bone",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "bone",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "bone_meal",
+    "count": 2
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 99
+  },
+  {
+   "id": "grind_mustard",
+   "station": "quern",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "mustard_pods",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "mustard_powder",
+    "count": 1
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 100
+  },
+  {
+   "id": "knead_wheat_dough",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "flour",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "wheat_dough",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 101
+  },
+  {
+   "id": "knead_rye_dough",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rye_flour",
+     "count": 2
+    },
+    {
+     "tag": "water_filled",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "rye_dough",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 102
+  },
+  {
+   "id": "make_raw_pelmeni",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "tag": "raw_meat_any",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_pelmeni",
+    "count": 4
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 103
+  },
+  {
+   "id": "make_raw_vareniki",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "id": "cottage_cheese",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_vareniki",
+    "count": 4
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 104
+  },
+  {
+   "id": "make_raw_berry_pie",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "tag": "berry",
+     "count": 3
+    },
+    {
+     "id": "egg",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_berry_pie",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 105
+  },
+  {
+   "id": "make_raw_meat_pie",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "tag": "raw_meat_any",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_meat_pie",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 106
+  },
+  {
+   "id": "make_raw_cabbage_pie",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "id": "cabbage",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_cabbage_pie",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 107
+  },
+  {
+   "id": "make_raw_fish_pie",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "wheat_dough",
+     "count": 1
+    },
+    {
+     "tag": "fish_raw",
+     "count": 1
+    },
+    {
+     "id": "onion",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "raw_fish_pie",
+    "count": 1
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 108
+  },
+  {
+   "id": "make_vegetable_salad",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "cucumber",
+     "count": 1
+    },
+    {
+     "id": "tomato",
+     "count": 1
+    },
+    {
+     "id": "sour_cream",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "vegetable_salad",
+    "count": 1
+   },
+   "time": 3,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 109
+  },
+  {
+   "id": "make_vinegret",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "beet",
+     "count": 1
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "pickles",
+     "count": 1
+    },
+    {
+     "id": "sunflower_oil",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "vinegret",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 110
+  },
+  {
+   "id": "make_sandwich",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "bread",
+     "count": 1
+    },
+    {
+     "id": "cheese",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "sandwich",
+    "count": 2
+   },
+   "time": 2,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 111
+  },
+  {
+   "id": "make_lard_sandwich",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "rye_bread",
+     "count": 1
+    },
+    {
+     "id": "salted_lard",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "sandwich",
+    "count": 2
+   },
+   "time": 2,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 112
+  },
+  {
+   "id": "make_okroshka",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "kvass",
+     "count": 1
+    },
+    {
+     "id": "cucumber",
+     "count": 1
+    },
+    {
+     "id": "egg",
+     "count": 1
+    },
+    {
+     "id": "potato",
+     "count": 1
+    },
+    {
+     "id": "dill",
+     "count": 1
+    },
+    {
+     "tag": "bowl",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "okroshka",
+    "count": 2
+   },
+   "time": 5,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 113
+  },
+  {
+   "id": "make_spice_mix",
+   "station": "kitchen_table",
+   "op": "craft",
+   "inputs": [
+    {
+     "id": "dill",
+     "count": 1
+    },
+    {
+     "id": "parsley",
+     "count": 1
+    },
+    {
+     "id": "garlic",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "spice_mix",
+    "count": 3
+   },
+   "time": 3,
+   "unlock": "ingredients",
+   "category": "food",
+   "order": 114
+  },
+  {
+   "id": "beehive_honey",
+   "station": "beehive",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "flower",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "honey",
+    "count": 2
+   },
+   "time": 2880,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 115
+  }
+ ]
+}

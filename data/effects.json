@@ -540,6 +540,176 @@
      "stamina_regen_mult": 1.3
     }
    ]
+  },
+  {
+   "id": "strength",
+   "name": {
+    "ru": "Сила",
+    "en": "Strength"
+   },
+   "kind": "buff",
+   "color": "#c0503a",
+   "abbr": "Сл",
+   "stages": [
+    {
+     "name": {
+      "ru": "Сила",
+      "en": "Strength"
+     },
+     "hours": 3,
+     "symptoms": {
+      "ru": "Добыча и удары быстрее на 25 %",
+      "en": "Mining 25% faster"
+     },
+     "mine_mult": 1.25
+    }
+   ]
+  },
+  {
+   "id": "endurance",
+   "name": {
+    "ru": "Выносливость",
+    "en": "Endurance"
+   },
+   "kind": "buff",
+   "color": "#d09a3a",
+   "abbr": "Вн",
+   "stages": [
+    {
+     "name": {
+      "ru": "Выносливость",
+      "en": "Endurance"
+     },
+     "hours": 4,
+     "symptoms": {
+      "ru": "Выносливость восстанавливается быстрее",
+      "en": "Stamina regenerates faster"
+     },
+     "stamina_regen_mult": 1.5,
+     "hunger_mult": 0.9
+    }
+   ]
+  },
+  {
+   "id": "swiftness",
+   "name": {
+    "ru": "Бодрость",
+    "en": "Swiftness"
+   },
+   "kind": "buff",
+   "color": "#4aa0c0",
+   "abbr": "Бд",
+   "stages": [
+    {
+     "name": {
+      "ru": "Бодрость",
+      "en": "Swiftness"
+     },
+     "hours": 2,
+     "symptoms": {
+      "ru": "Шаг на 8 % быстрее",
+      "en": "8% faster"
+     },
+     "speed_mult": 1.08
+    }
+   ]
+  },
+  {
+   "id": "cold_resist",
+   "name": {
+    "ru": "Стойкость к холоду",
+    "en": "Cold Resistance"
+   },
+   "kind": "buff",
+   "color": "#6a8ad8",
+   "abbr": "Хл",
+   "stages": [
+    {
+     "name": {
+      "ru": "Стойкость к холоду",
+      "en": "Cold Resistance"
+     },
+     "hours": 5,
+     "symptoms": {
+      "ru": "Теплее на 6 °C",
+      "en": "+6 °C"
+     },
+     "warmth": 6
+    }
+   ]
+  },
+  {
+   "id": "night_vision",
+   "name": {
+    "ru": "Ночное зрение",
+    "en": "Night Vision"
+   },
+   "kind": "buff",
+   "color": "#7a6ad0",
+   "abbr": "Нз",
+   "stages": [
+    {
+     "name": {
+      "ru": "Ночное зрение",
+      "en": "Night Vision"
+     },
+     "hours": 3,
+     "symptoms": {
+      "ru": "Ночью видно лучше",
+      "en": "See better at night"
+     },
+     "night_vision": 1.0
+    }
+   ]
+  },
+  {
+   "id": "vitamins",
+   "name": {
+    "ru": "Витамины",
+    "en": "Vitamins"
+   },
+   "kind": "buff",
+   "color": "#5ab04a",
+   "abbr": "Вт",
+   "stages": [
+    {
+     "name": {
+      "ru": "Витамины",
+      "en": "Vitamins"
+     },
+     "hours": 4,
+     "symptoms": {
+      "ru": "Здоровье понемногу прибавляется",
+      "en": "Slow healing"
+     },
+     "health_per_hour": 2.0
+    }
+   ]
+  },
+  {
+   "id": "tipsy",
+   "name": {
+    "ru": "Навеселе",
+    "en": "Tipsy"
+   },
+   "kind": "buff",
+   "color": "#b04a8a",
+   "abbr": "Хм",
+   "stages": [
+    {
+     "name": {
+      "ru": "Навеселе",
+      "en": "Tipsy"
+     },
+     "hours": 1,
+     "symptoms": {
+      "ru": "Тепло, но шаг неуверенный",
+      "en": "Warm but unsteady"
+     },
+     "warmth": 3,
+     "speed_mult": 0.95
+    }
+   ]
   }
  ]
 }

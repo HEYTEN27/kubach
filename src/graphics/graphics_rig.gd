@@ -54,6 +54,8 @@ var _cloud_shift := Vector2.ZERO
 var _sun_shift := Vector2.ZERO
 var _cloud_quality := 2
 var _underwater := false
+## Ночное зрение 0…1 (бафф от еды): ночью рассеянный свет ярче.
+var night_vision := 0.0
 var _water_color := Color(0.1, 0.3, 0.4)
 var _fog_near := 120.0
 var _fog_far := 200.0
@@ -247,7 +249,8 @@ func _update_lights() -> void:
 	var nightglow := 0.65 + 0.6 * _moon_illum
 	environment.ambient_light_sky_contribution = lerpf(0.35, 1.0, daylight)
 	environment.ambient_light_color = Color(0.16, 0.2, 0.32) * nightglow
-	environment.ambient_light_energy = lerpf(0.5, 1.0, daylight) * (1.0 - _darkness * 0.35) + _flash * 3.0
+	environment.ambient_light_energy = lerpf(0.5, 1.0, daylight) * (1.0 - _darkness * 0.35) + _flash * 3.0 \
+			+ night_vision * (1.0 - daylight) * 1.6
 	environment.background_energy_multiplier = 1.0
 	var day_fog := Color(0.62, 0.72, 0.86).lerp(Color(0.6, 0.63, 0.66), maxf(overcast, _fog))
 	day_fog = day_fog.lerp(Color(0.78, 0.68, 0.5), _dust * 0.7)

@@ -23,6 +23,7 @@ var weather: WeatherSystem
 var fluids: FluidSystem
 var vehicles: VehicleSystem
 var farm: FarmSystem
+var spoilage: SpoilageSystem
 var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
@@ -140,6 +141,9 @@ func _ready() -> void:
 	add_child(farm_ctl)
 	farm_ctl.setup(world, player, farm)
 	farm_ctl.message.connect(func(t: String) -> void: hud.show_toast(t))
+	spoilage = SpoilageSystem.new()
+	add_child(spoilage)
+	spoilage.setup(world, survival.clock, player, survival, stations, dropped)
 	var buckets := BucketController.new()
 	buckets.name = "Buckets"
 	add_child(buckets)
@@ -202,6 +206,7 @@ func _process(delta: float) -> void:
 	fluids.set_center(b.x, b.z)
 	stations.viewer = Vector3(b.x, b.y, b.z)
 	survival.daylight = rig.daylight
+	rig.night_vision = survival.night_vision
 	_climate_left -= delta
 	if _climate_left <= 0.0:
 		_climate_left = 0.5
@@ -370,6 +375,8 @@ func _apply_player_settings() -> void:
 	player.camera_bob = bool(Settings.get_value("camera_bob"))
 	player.pad_look_speed = float(Settings.get_value("pad_look_speed"))
 	player.use_weight = bool(Settings.get_value("weight"))
+	if spoilage != null:
+		spoilage.enabled = bool(Settings.get_value("food_spoilage"))
 	rig.set_depth_of_field(bool(Settings.get_value("depth_of_field")))
 	var v := survival.vitals
 	v.diseases_enabled = bool(Settings.get_value("diseases"))

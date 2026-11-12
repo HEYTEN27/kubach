@@ -42,6 +42,8 @@ var daylight := 1.0
 var running := false
 ## Погода сейчас (WeatherSim.values), выставляет WeatherSystem.
 var weather := {}
+## Ночное зрение 0…1 (бафф), игра передаёт в GraphicsRig.
+var night_vision := 0.0
 
 var _probe_left := 0.0
 var _consume_slot := -1
@@ -104,6 +106,8 @@ func _process(delta: float) -> void:
 	vitals.tick(delta, hours, e)
 	_update_consume(delta)
 	player.survival_speed = vitals.speed_mult()
+	player.mine_mult = vitals.mine_mult()
+	night_vision = vitals.night_vision()
 	player.can_sprint = vitals.can_sprint()
 	_dispatch_events()
 
@@ -201,7 +205,11 @@ func _update_consume(delta: float) -> void:
 			player.inventory.hotbar.set_stack(player.inventory.selected, rest)
 		return
 	if d.is_food():
-		vitals.eat(d.food, float(s.data.get("freshness", 1.0)), String(s.data.get("cook", "")))
+		var qm := CraftingData.shared(world.registry).quality_mult(int(s.data["quality"])) if s.data.has("quality") else 1.0
+		var variety := vitals.variety(d.id)
+		vitals.eat(d.food, float(s.data.get("freshness", 1.0)), String(s.data.get("cook", "")), d.id, qm)
+		if variety < 0.7:
+			message.emit("Однообразная еда: сытости и пользы меньше")
 	if d.is_medicine():
 		vitals.apply_medicine(d.medicine)
 	Audio.play_ui("player/drink" if d.is_food() and float(d.food.get("nutrition", 0.0)) <= 0.0 else "player/eat")

@@ -920,6 +920,236 @@
    "unlock": "ingredients",
    "category": "farming",
    "order": 45
+  },
+  {
+   "id": "make_spit",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 2
+    },
+    {
+     "id": "iron_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "spit",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 46
+  },
+  {
+   "id": "make_drying_rack",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "tag": "log",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "drying_rack",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 47
+  },
+  {
+   "id": "make_salting_barrel",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "iron_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "salting_barrel",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 48
+  },
+  {
+   "id": "make_ferment_barrel",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "id": "copper_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "ferment_barrel",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 49
+  },
+  {
+   "id": "make_butter_churn",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "iron_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "butter_churn",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 50
+  },
+  {
+   "id": "make_juice_press",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "tag": "log",
+     "count": 3
+    },
+    {
+     "id": "iron_ingot",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "juice_press",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 51
+  },
+  {
+   "id": "make_kitchen_table",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    }
+   ],
+   "output": {
+    "id": "kitchen_table",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 52
+  },
+  {
+   "id": "make_beehive",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 6
+    },
+    {
+     "tag": "log",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "beehive",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 53
+  },
+  {
+   "id": "make_ice_box",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 8
+    },
+    {
+     "id": "iron_ingot",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "ice_box",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 54
+  },
+  {
+   "id": "make_smokehouse",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 8
+    },
+    {
+     "id": "brick",
+     "count": 4
+    }
+   ],
+   "output": {
+    "id": "smokehouse",
+    "count": 1
+   },
+   "time": 15,
+   "unlock": "ingredients",
+   "category": "kitchen",
+   "order": 55
   }
  ]
 }

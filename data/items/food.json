@@ -1,0 +1,3958 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "venison",
+   "name": {
+    "ru": "Оленина",
+    "en": "Venison"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#a8403a"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 10,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "moose_meat",
+   "name": {
+    "ru": "Лосятина",
+    "en": "Moose Meat"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#9a3a32"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 11,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "bear_meat",
+   "name": {
+    "ru": "Медвежатина",
+    "en": "Bear Meat"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#8a3030"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 12,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "boar_meat",
+   "name": {
+    "ru": "Кабанятина",
+    "en": "Boar Meat"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#b04a44"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 11,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "hare_meat",
+   "name": {
+    "ru": "Зайчатина",
+    "en": "Hare Meat"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#c05a50"
+   },
+   "tags": [
+    "raw_meat_any",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 8,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "poultry",
+   "name": {
+    "ru": "Птица",
+    "en": "Poultry"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#e0a090"
+   },
+   "tags": [
+    "raw_meat_any",
+    "white_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 8,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "beef",
+   "name": {
+    "ru": "Говядина",
+    "en": "Beef"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#b03a34"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 11,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "pork",
+   "name": {
+    "ru": "Свинина",
+    "en": "Pork"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#e09088"
+   },
+   "tags": [
+    "raw_meat_any",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 11,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "mutton",
+   "name": {
+    "ru": "Баранина",
+    "en": "Mutton"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#b8504a"
+   },
+   "tags": [
+    "raw_meat_any",
+    "red_meat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 10,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "pike",
+   "name": {
+    "ru": "Щука",
+    "en": "Pike"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "fish",
+    "color": "#7a8a5a"
+   },
+   "tags": [
+    "fish_raw",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 7,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 1.5,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "perch",
+   "name": {
+    "ru": "Окунь",
+    "en": "Perch"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "fish",
+    "color": "#8aa060"
+   },
+   "tags": [
+    "fish_raw",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 6,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 1.5,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "bream",
+   "name": {
+    "ru": "Лещ",
+    "en": "Bream"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "fish",
+    "color": "#b0a080"
+   },
+   "tags": [
+    "fish_raw",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 7,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 1.5,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "salmon",
+   "name": {
+    "ru": "Лосось",
+    "en": "Salmon"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "fish",
+    "color": "#d07a60"
+   },
+   "tags": [
+    "fish_raw",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 9,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 1.5,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "egg",
+   "name": {
+    "ru": "Яйцо",
+    "en": "Egg"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "egg",
+    "color": "#ece0c8"
+   },
+   "tags": [
+    "egg",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 14
+   }
+  },
+  {
+   "id": "milk",
+   "name": {
+    "ru": "Молоко",
+    "en": "Milk"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "jug",
+    "color": "#f4f2ea"
+   },
+   "tags": [
+    "dairy",
+    "milk",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 6,
+    "thirst": 14,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   }
+  },
+  {
+   "id": "butter",
+   "name": {
+    "ru": "Масло сливочное",
+    "en": "Butter"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "butter",
+    "color": "#f0d880"
+   },
+   "tags": [
+    "dairy",
+    "cooking_fat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 8,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 20
+   }
+  },
+  {
+   "id": "cheese",
+   "name": {
+    "ru": "Сыр",
+    "en": "Cheese"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "cheese",
+    "color": "#e8c060"
+   },
+   "tags": [
+    "dairy",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 14,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 60
+   }
+  },
+  {
+   "id": "cottage_cheese",
+   "name": {
+    "ru": "Творог",
+    "en": "Cottage Cheese"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "bowl_white",
+    "color": "#f4f0e4"
+   },
+   "tags": [
+    "dairy",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 10,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 4
+   }
+  },
+  {
+   "id": "sour_cream",
+   "name": {
+    "ru": "Сметана",
+    "en": "Sour Cream"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "jar",
+    "color": "#f4f0e8"
+   },
+   "tags": [
+    "dairy",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 8,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 5
+   }
+  },
+  {
+   "id": "lard",
+   "name": {
+    "ru": "Сало",
+    "en": "Lard"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "butter",
+    "color": "#f0e8e0"
+   },
+   "tags": [
+    "cooking_fat",
+    "fat",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 12,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 10
+   }
+  },
+  {
+   "id": "sunflower_oil",
+   "name": {
+    "ru": "Подсолнечное масло",
+    "en": "Sunflower Oil"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "bottle",
+    "color": "#e8c040"
+   },
+   "tags": [
+    "cooking_fat",
+    "oil",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "honey",
+   "name": {
+    "ru": "Мёд",
+    "en": "Honey"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "jar",
+    "color": "#e0a020"
+   },
+   "tags": [
+    "sweet",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 8,
+    "thirst": 2,
+    "eat_seconds": 1.6
+   }
+  },
+  {
+   "id": "beeswax",
+   "name": {
+    "ru": "Воск",
+    "en": "Beeswax"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#e8c860"
+   },
+   "tags": [
+    "wax",
+    "compostable",
+    "ingredient"
+   ]
+  },
+  {
+   "id": "salt",
+   "name": {
+    "ru": "Соль",
+    "en": "Salt"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "powder",
+    "color": "#f4f4f4"
+   },
+   "tags": [
+    "salt",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 0,
+    "thirst": -4,
+    "eat_seconds": 1.6
+   }
+  },
+  {
+   "id": "flour",
+   "name": {
+    "ru": "Мука пшеничная",
+    "en": "Wheat Flour"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#f0ead8"
+   },
+   "tags": [
+    "flour",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "rye_flour",
+   "name": {
+    "ru": "Мука ржаная",
+    "en": "Rye Flour"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#c8b898"
+   },
+   "tags": [
+    "flour",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "corn_meal",
+   "name": {
+    "ru": "Кукурузная мука",
+    "en": "Corn Meal"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#f0d070"
+   },
+   "tags": [
+    "flour",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "buckwheat_groats",
+   "name": {
+    "ru": "Гречневая крупа",
+    "en": "Buckwheat Groats"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#8a6a40"
+   },
+   "tags": [
+    "groats",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 300
+   }
+  },
+  {
+   "id": "oat_flakes",
+   "name": {
+    "ru": "Овсяные хлопья",
+    "en": "Oat Flakes"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#e0d0a0"
+   },
+   "tags": [
+    "groats",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 2,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 300
+   }
+  },
+  {
+   "id": "millet_groats",
+   "name": {
+    "ru": "Пшено",
+    "en": "Millet Groats"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "sack",
+    "color": "#e8c860"
+   },
+   "tags": [
+    "groats",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 1,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 300
+   }
+  },
+  {
+   "id": "mustard_powder",
+   "name": {
+    "ru": "Горчичный порошок",
+    "en": "Mustard Powder"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "powder",
+    "color": "#e0c040"
+   },
+   "tags": [
+    "spice",
+    "compostable",
+    "ingredient"
+   ]
+  },
+  {
+   "id": "spice_mix",
+   "name": {
+    "ru": "Пряная смесь",
+    "en": "Spice Mix"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "powder",
+    "color": "#7a8a40"
+   },
+   "tags": [
+    "spice",
+    "compostable",
+    "ingredient"
+   ]
+  },
+  {
+   "id": "dried_herbs",
+   "name": {
+    "ru": "Сушёные травы",
+    "en": "Dried Herbs"
+   },
+   "kind": "material",
+   "weight": 0.3,
+   "icon": {
+    "shape": "leaves",
+    "color": "#8a9a5a"
+   },
+   "tags": [
+    "herb_dry",
+    "tea",
+    "compostable",
+    "ingredient"
+   ]
+  },
+  {
+   "id": "wheat_dough",
+   "name": {
+    "ru": "Тесто пшеничное",
+    "en": "Wheat Dough"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#f0e4c8"
+   },
+   "tags": [
+    "dough",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   }
+  },
+  {
+   "id": "rye_dough",
+   "name": {
+    "ru": "Тесто ржаное",
+    "en": "Rye Dough"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "lump",
+    "color": "#b89a70"
+   },
+   "tags": [
+    "dough_rye",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   }
+  },
+  {
+   "id": "vinegar",
+   "name": {
+    "ru": "Уксус",
+    "en": "Vinegar"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "bottle",
+    "color": "#d8c890"
+   },
+   "tags": [
+    "vinegar",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 0,
+    "thirst": 2,
+    "eat_seconds": 1.6
+   }
+  },
+  {
+   "id": "apple",
+   "name": {
+    "ru": "Яблоко",
+    "en": "Apple"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#c83a2a"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 3,
+    "eat_seconds": 1.6,
+    "spoil_days": 30
+   }
+  },
+  {
+   "id": "pear",
+   "name": {
+    "ru": "Груша",
+    "en": "Pear"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#c8c040"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 4,
+    "thirst": 3,
+    "eat_seconds": 1.6,
+    "spoil_days": 14
+   }
+  },
+  {
+   "id": "cherries",
+   "name": {
+    "ru": "Вишня",
+    "en": "Cherries"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "berries",
+    "color": "#901a2a"
+   },
+   "tags": [
+    "fruit",
+    "berry",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 3
+   }
+  },
+  {
+   "id": "plum",
+   "name": {
+    "ru": "Слива",
+    "en": "Plum"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#5a2a6a"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 3,
+    "eat_seconds": 1.6,
+    "spoil_days": 8
+   }
+  },
+  {
+   "id": "apricot",
+   "name": {
+    "ru": "Абрикос",
+    "en": "Apricot"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#f0a040"
+   },
+   "tags": [
+    "fruit",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 3,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 6
+   }
+  },
+  {
+   "id": "hazelnuts",
+   "name": {
+    "ru": "Лесные орехи",
+    "en": "Hazelnuts"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#8a5a30"
+   },
+   "tags": [
+    "nut",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 5,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "pine_nuts",
+   "name": {
+    "ru": "Кедровые орехи",
+    "en": "Pine Nuts"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "seeds",
+    "color": "#a07a50"
+   },
+   "tags": [
+    "nut",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 6,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   }
+  },
+  {
+   "id": "bacon_raw",
+   "name": {
+    "ru": "Грудинка",
+    "en": "Pork Belly"
+   },
+   "kind": "food",
+   "weight": 0.3,
+   "icon": {
+    "shape": "meat",
+    "color": "#e8a0a0"
+   },
+   "tags": [
+    "raw_meat_any",
+    "compostable",
+    "ingredient"
+   ],
+   "food": {
+    "nutrition": 10,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "effects": [
+     {
+      "id": "food_poisoning",
+      "chance": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "roast_venison",
+   "name": {
+    "ru": "Жареная оленина",
+    "en": "Roast Venison"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#7a3a24"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_moose",
+   "name": {
+    "ru": "Жареная лосятина",
+    "en": "Roast Moose"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#6a3020"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_bear",
+   "name": {
+    "ru": "Жареная медвежатина",
+    "en": "Roast Bear"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#5a2a1a"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_boar",
+   "name": {
+    "ru": "Жареная кабанятина",
+    "en": "Roast Boar"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#7a3a28"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_hare",
+   "name": {
+    "ru": "Жареный заяц",
+    "en": "Roast Hare"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#8a4a2a"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_poultry",
+   "name": {
+    "ru": "Жареная птица",
+    "en": "Roast Poultry"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#b06a30"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_fish",
+   "name": {
+    "ru": "Рыба на вертеле",
+    "en": "Spit-Roasted Fish"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "fish",
+    "color": "#a07040"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_corn",
+   "name": {
+    "ru": "Печёная кукуруза",
+    "en": "Roasted Corn"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "veg_long",
+    "color": "#e0b030"
+   },
+   "food": {
+    "nutrition": 12,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fried_eggs",
+   "name": {
+    "ru": "Яичница",
+    "en": "Fried Eggs"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#f0d060"
+   },
+   "food": {
+    "nutrition": 18,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 1,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fried_potatoes",
+   "name": {
+    "ru": "Жареная картошка",
+    "en": "Fried Potatoes"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#d8a040"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pork_chop",
+   "name": {
+    "ru": "Отбивная",
+    "en": "Pork Chop"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#a0603a"
+   },
+   "food": {
+    "nutrition": 32,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "beef_steak",
+   "name": {
+    "ru": "Говяжий стейк",
+    "en": "Beef Steak"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#7a3a2a"
+   },
+   "food": {
+    "nutrition": 34,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fried_fish",
+   "name": {
+    "ru": "Жареная рыба",
+    "en": "Fried Fish"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "fish",
+    "color": "#c08040"
+   },
+   "food": {
+    "nutrition": 24,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pancakes",
+   "name": {
+    "ru": "Блины",
+    "en": "Pancakes"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pancake",
+    "color": "#e0b060"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "syrniki",
+   "name": {
+    "ru": "Сырники",
+    "en": "Syrniki"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pancake",
+    "color": "#e8c070"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fried_mushrooms",
+   "name": {
+    "ru": "Жареные грибы",
+    "en": "Fried Mushrooms"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#8a6030"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "omelette",
+   "name": {
+    "ru": "Омлет",
+    "en": "Omelette"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#f0d880"
+   },
+   "food": {
+    "nutrition": 18,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 1,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fried_zucchini",
+   "name": {
+    "ru": "Жареные кабачки",
+    "en": "Fried Zucchini"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#c0c050"
+   },
+   "food": {
+    "nutrition": 12,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "shchi",
+   "name": {
+    "ru": "Щи",
+    "en": "Shchi"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#c8b060",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 26,
+    "thirst": 18,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     },
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "borscht",
+   "name": {
+    "ru": "Борщ",
+    "en": "Borscht"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#b0283a",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 28,
+    "thirst": 18,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     },
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "ukha",
+   "name": {
+    "ru": "Уха",
+    "en": "Ukha"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#d8c890",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 24,
+    "thirst": 20,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pea_soup",
+   "name": {
+    "ru": "Гороховый суп",
+    "en": "Pea Soup"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#c8b040",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 26,
+    "thirst": 16,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "beef_broth",
+   "name": {
+    "ru": "Бульон",
+    "en": "Broth"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#d0a050",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 14,
+    "thirst": 22,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "buckwheat_porridge",
+   "name": {
+    "ru": "Гречневая каша",
+    "en": "Buckwheat Porridge"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#7a5a34",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 24,
+    "thirst": 4,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "oatmeal",
+   "name": {
+    "ru": "Овсянка",
+    "en": "Oatmeal"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#e0d0a0",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 20,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "millet_porridge",
+   "name": {
+    "ru": "Пшённая каша",
+    "en": "Millet Porridge"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#e8c050",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 20,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "rice_porridge",
+   "name": {
+    "ru": "Рисовая каша с мёдом",
+    "en": "Rice Porridge with Honey"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#f0e8d0",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "endurance",
+      "chance": 1.0
+     },
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "boiled_potatoes",
+   "name": {
+    "ru": "Варёная картошка",
+    "en": "Boiled Potatoes"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#e0c890"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "stew",
+   "name": {
+    "ru": "Рагу",
+    "en": "Stew"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#9a5a30",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": 10,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "berry_jam",
+   "name": {
+    "ru": "Варенье",
+    "en": "Berry Jam"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#a0203a"
+   },
+   "food": {
+    "nutrition": 12,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 365,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "berry_mors",
+   "name": {
+    "ru": "Морс",
+    "en": "Berry Mors"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#c03050",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 2,
+    "thirst": 30,
+    "eat_seconds": 1.8,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "compote",
+   "name": {
+    "ru": "Компот",
+    "en": "Compote"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#d08040",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 30,
+    "eat_seconds": 1.8,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "kissel",
+   "name": {
+    "ru": "Кисель",
+    "en": "Kissel"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#b03060",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 8,
+    "thirst": 20,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pelmeni",
+   "name": {
+    "ru": "Пельмени",
+    "en": "Pelmeni"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#f0e0c0",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 32,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "vareniki",
+   "name": {
+    "ru": "Вареники",
+    "en": "Vareniki"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#f0e8d0",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 26,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "black_tea",
+   "name": {
+    "ru": "Чай",
+    "en": "Tea"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#8a4a20",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 0,
+    "thirst": 22,
+    "eat_seconds": 1.8,
+    "hot": true,
+    "effects": [
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fireweed_tea",
+   "name": {
+    "ru": "Иван-чай",
+    "en": "Fireweed Tea"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#a05a40",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 0,
+    "thirst": 22,
+    "eat_seconds": 1.8,
+    "hot": true,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "sbiten",
+   "name": {
+    "ru": "Сбитень",
+    "en": "Sbiten"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#b07020",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": 20,
+    "eat_seconds": 1.8,
+    "hot": true,
+    "effects": [
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "boiled_eggs",
+   "name": {
+    "ru": "Варёные яйца",
+    "en": "Boiled Eggs"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "egg",
+    "color": "#f0e8d8"
+   },
+   "food": {
+    "nutrition": 9,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 7,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "wheat_bread",
+   "name": {
+    "ru": "Пшеничный хлеб",
+    "en": "Wheat Bread"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bread",
+    "color": "#c08a40"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 6,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable",
+    "bread"
+   ]
+  },
+  {
+   "id": "berry_pie",
+   "name": {
+    "ru": "Пирог с ягодами",
+    "en": "Berry Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#a03050"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "meat_pie",
+   "name": {
+    "ru": "Пирог с мясом",
+    "en": "Meat Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#a06a30"
+   },
+   "food": {
+    "nutrition": 36,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "cabbage_pie",
+   "name": {
+    "ru": "Пирог с капустой",
+    "en": "Cabbage Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#b0a050"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": 1,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "fish_pie",
+   "name": {
+    "ru": "Рыбник",
+    "en": "Fish Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#b08a50"
+   },
+   "food": {
+    "nutrition": 34,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "baked_potato",
+   "name": {
+    "ru": "Печёная картошка",
+    "en": "Baked Potato"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#8a6a40"
+   },
+   "food": {
+    "nutrition": 14,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roast_pork",
+   "name": {
+    "ru": "Буженина",
+    "en": "Roast Pork"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#a05a3a"
+   },
+   "food": {
+    "nutrition": 36,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 6,
+    "hot": true,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "baked_apples",
+   "name": {
+    "ru": "Печёные яблоки",
+    "en": "Baked Apples"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#a04a2a"
+   },
+   "food": {
+    "nutrition": 10,
+    "thirst": 4,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "sweet_buns",
+   "name": {
+    "ru": "Сдобные булочки",
+    "en": "Sweet Buns"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bread",
+    "color": "#d8a050"
+   },
+   "food": {
+    "nutrition": 20,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 4,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable",
+    "bread"
+   ]
+  },
+  {
+   "id": "baked_pumpkin",
+   "name": {
+    "ru": "Печёная тыква с мёдом",
+    "en": "Baked Pumpkin"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "veg_round",
+    "color": "#d07020"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "casserole",
+   "name": {
+    "ru": "Творожная запеканка",
+    "en": "Cottage Cheese Casserole"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#f0d090"
+   },
+   "food": {
+    "nutrition": 26,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "roasted_vegetables",
+   "name": {
+    "ru": "Печёные овощи",
+    "en": "Roasted Vegetables"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "plate",
+    "color": "#c06030"
+   },
+   "food": {
+    "nutrition": 18,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 3,
+    "hot": true,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "gingerbread",
+   "name": {
+    "ru": "Пряник",
+    "en": "Gingerbread"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pancake",
+    "color": "#a06030"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 30,
+    "effects": [
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "hot_smoked_fish",
+   "name": {
+    "ru": "Рыба горячего копчения",
+    "en": "Hot-Smoked Fish"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "fish",
+    "color": "#a06a30"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": -4,
+    "eat_seconds": 1.6,
+    "spoil_days": 10,
+    "effects": [
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "smoked_salmon",
+   "name": {
+    "ru": "Лосось холодного копчения",
+    "en": "Cold-Smoked Salmon"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "fish",
+    "color": "#e08050"
+   },
+   "food": {
+    "nutrition": 24,
+    "thirst": -4,
+    "eat_seconds": 1.6,
+    "spoil_days": 40,
+    "effects": [
+     {
+      "id": "night_vision",
+      "chance": 1.0
+     },
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "smoked_ham",
+   "name": {
+    "ru": "Окорок копчёный",
+    "en": "Smoked Ham"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#8a4a2a"
+   },
+   "food": {
+    "nutrition": 30,
+    "thirst": -5,
+    "eat_seconds": 1.6,
+    "spoil_days": 60,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     },
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "smoked_lard",
+   "name": {
+    "ru": "Копчёное сало",
+    "en": "Smoked Lard"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "butter",
+    "color": "#d8a080"
+   },
+   "food": {
+    "nutrition": 20,
+    "thirst": -4,
+    "eat_seconds": 1.6,
+    "spoil_days": 60,
+    "effects": [
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "smoked_venison",
+   "name": {
+    "ru": "Копчёная оленина",
+    "en": "Smoked Venison"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "meat",
+    "color": "#6a3020"
+   },
+   "food": {
+    "nutrition": 28,
+    "thirst": -5,
+    "eat_seconds": 1.6,
+    "spoil_days": 60,
+    "effects": [
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "smoked_cheese",
+   "name": {
+    "ru": "Копчёный сыр",
+    "en": "Smoked Cheese"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cheese",
+    "color": "#c08a40"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": -3,
+    "eat_seconds": 1.6,
+    "spoil_days": 90,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "venison_jerky",
+   "name": {
+    "ru": "Вяленая оленина",
+    "en": "Venison Jerky"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "strip",
+    "color": "#6a3020"
+   },
+   "food": {
+    "nutrition": 20,
+    "thirst": -6,
+    "eat_seconds": 1.6,
+    "spoil_days": 120,
+    "effects": [
+     {
+      "id": "strength",
+      "chance": 1.0
+     },
+     {
+      "id": "endurance",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "dried_mushrooms",
+   "name": {
+    "ru": "Сушёные грибы",
+    "en": "Dried Mushrooms"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "lump",
+    "color": "#7a5a30"
+   },
+   "food": {
+    "nutrition": 8,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 365
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "dried_berries",
+   "name": {
+    "ru": "Сушёные ягоды",
+    "en": "Dried Berries"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "berries",
+    "color": "#6a2a3a"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 365,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "dried_apples",
+   "name": {
+    "ru": "Сушёные яблоки",
+    "en": "Dried Apples"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "lump",
+    "color": "#b08050"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 365,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raisins",
+   "name": {
+    "ru": "Изюм",
+    "en": "Raisins"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "berries",
+    "color": "#4a2a3a"
+   },
+   "food": {
+    "nutrition": 8,
+    "thirst": -1,
+    "eat_seconds": 1.6,
+    "spoil_days": 365,
+    "effects": [
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "dried_beef",
+   "name": {
+    "ru": "Бастурма",
+    "en": "Dried Beef"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "strip",
+    "color": "#7a2a20"
+   },
+   "food": {
+    "nutrition": 22,
+    "thirst": -6,
+    "eat_seconds": 1.6,
+    "spoil_days": 120,
+    "effects": [
+     {
+      "id": "strength",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "salted_lard",
+   "name": {
+    "ru": "Сало солёное",
+    "en": "Salted Lard"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "butter",
+    "color": "#f0e0d8"
+   },
+   "food": {
+    "nutrition": 18,
+    "thirst": -4,
+    "eat_seconds": 1.6,
+    "spoil_days": 90,
+    "effects": [
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "salted_fish",
+   "name": {
+    "ru": "Солёная рыба",
+    "en": "Salted Fish"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "fish",
+    "color": "#a0a080"
+   },
+   "food": {
+    "nutrition": 14,
+    "thirst": -8,
+    "eat_seconds": 1.6,
+    "spoil_days": 90
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pickles",
+   "name": {
+    "ru": "Солёные огурцы",
+    "en": "Pickles"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#5a7a3a"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 4,
+    "eat_seconds": 1.6,
+    "spoil_days": 180,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "salted_mushrooms",
+   "name": {
+    "ru": "Солёные грибы",
+    "en": "Salted Mushrooms"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#7a6040"
+   },
+   "food": {
+    "nutrition": 8,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "salted_tomatoes",
+   "name": {
+    "ru": "Солёные помидоры",
+    "en": "Salted Tomatoes"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#b03020"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 4,
+    "eat_seconds": 1.6,
+    "spoil_days": 180,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "sauerkraut",
+   "name": {
+    "ru": "Квашеная капуста",
+    "en": "Sauerkraut"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#d8d090"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 180,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "kvass",
+   "name": {
+    "ru": "Квас",
+    "en": "Kvass"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bottle",
+    "color": "#8a5a20"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 26,
+    "eat_seconds": 1.8,
+    "spoil_days": 6,
+    "effects": [
+     {
+      "id": "swiftness",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "cider",
+   "name": {
+    "ru": "Сидр",
+    "en": "Cider"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bottle",
+    "color": "#e0b040"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 18,
+    "eat_seconds": 1.8,
+    "spoil_days": 60,
+    "effects": [
+     {
+      "id": "tipsy",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "wine",
+   "name": {
+    "ru": "Вино",
+    "en": "Wine"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bottle",
+    "color": "#701a3a"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 14,
+    "eat_seconds": 1.8,
+    "spoil_days": 365,
+    "effects": [
+     {
+      "id": "tipsy",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "mead",
+   "name": {
+    "ru": "Медовуха",
+    "en": "Mead"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bottle",
+    "color": "#d09030"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": 16,
+    "eat_seconds": 1.8,
+    "spoil_days": 120,
+    "effects": [
+     {
+      "id": "tipsy",
+      "chance": 1.0
+     },
+     {
+      "id": "cold_resist",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "beer",
+   "name": {
+    "ru": "Пиво",
+    "en": "Beer"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bottle",
+    "color": "#d0a040"
+   },
+   "food": {
+    "nutrition": 5,
+    "thirst": 18,
+    "eat_seconds": 1.8,
+    "spoil_days": 30,
+    "effects": [
+     {
+      "id": "tipsy",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "pickled_vegetables",
+   "name": {
+    "ru": "Маринованные овощи",
+    "en": "Pickled Vegetables"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#a05030"
+   },
+   "food": {
+    "nutrition": 6,
+    "thirst": 2,
+    "eat_seconds": 1.6,
+    "spoil_days": 180,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "marinated_mushrooms",
+   "name": {
+    "ru": "Маринованные грибы",
+    "en": "Marinated Mushrooms"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "jar",
+    "color": "#8a6a40"
+   },
+   "food": {
+    "nutrition": 8,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 180
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "apple_juice",
+   "name": {
+    "ru": "Яблочный сок",
+    "en": "Apple Juice"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#e0c040",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 28,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "grape_juice",
+   "name": {
+    "ru": "Виноградный сок",
+    "en": "Grape Juice"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#7a2a5a",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 28,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "berry_juice",
+   "name": {
+    "ru": "Ягодный сок",
+    "en": "Berry Juice"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "cup",
+    "color": "#c02040",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 28,
+    "eat_seconds": 1.8,
+    "spoil_days": 3,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "vegetable_salad",
+   "name": {
+    "ru": "Овощной салат",
+    "en": "Vegetable Salad"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#6aa040",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 10,
+    "thirst": 6,
+    "eat_seconds": 1.8,
+    "spoil_days": 1,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "vinegret",
+   "name": {
+    "ru": "Винегрет",
+    "en": "Vinegret"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#a02a3a",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 14,
+    "thirst": 4,
+    "eat_seconds": 1.8,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "sandwich",
+   "name": {
+    "ru": "Бутерброд",
+    "en": "Sandwich"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bread",
+    "color": "#d0a060"
+   },
+   "food": {
+    "nutrition": 18,
+    "thirst": -2,
+    "eat_seconds": 1.6,
+    "spoil_days": 2,
+    "effects": [
+     {
+      "id": "well_fed",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "okroshka",
+   "name": {
+    "ru": "Окрошка",
+    "en": "Okroshka"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "bowl",
+    "color": "#d8d0a0",
+    "color2": "#7a5a36"
+   },
+   "food": {
+    "nutrition": 16,
+    "thirst": 22,
+    "eat_seconds": 1.8,
+    "spoil_days": 1,
+    "effects": [
+     {
+      "id": "vitamins",
+      "chance": 1.0
+     }
+    ]
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_pelmeni",
+   "name": {
+    "ru": "Пельмени (сырые)",
+    "en": "Raw Pelmeni"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "dumplings",
+    "color": "#f0e8d8"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 30
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_vareniki",
+   "name": {
+    "ru": "Вареники (сырые)",
+    "en": "Raw Vareniki"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "dumplings",
+    "color": "#f4ece0"
+   },
+   "food": {
+    "nutrition": 4,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 30
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_berry_pie",
+   "name": {
+    "ru": "Сырой пирог с ягодами",
+    "en": "Raw Berry Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#e8dcc0"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_meat_pie",
+   "name": {
+    "ru": "Сырой пирог с мясом",
+    "en": "Raw Meat Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#e8dcc0"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_cabbage_pie",
+   "name": {
+    "ru": "Сырой пирог с капустой",
+    "en": "Raw Cabbage Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#e8dcc0"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  },
+  {
+   "id": "raw_fish_pie",
+   "name": {
+    "ru": "Сырой пирог рыбный",
+    "en": "Raw Fish Pie"
+   },
+   "kind": "food",
+   "weight": 0.4,
+   "quality": true,
+   "icon": {
+    "shape": "pie",
+    "color": "#e8dcc0"
+   },
+   "food": {
+    "nutrition": 3,
+    "thirst": 0,
+    "eat_seconds": 1.6,
+    "spoil_days": 2
+   },
+   "tags": [
+    "dish",
+    "compostable"
+   ]
+  }
+ ]
+}

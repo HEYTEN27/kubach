@@ -124,7 +124,8 @@ func _process_break(delta: float, creative: bool) -> void:
 		return
 	# hardness — время ломания голыми руками; подходящий инструмент делит его на speed.
 	var before := break_progress
-	break_progress += delta * break_speed(def, player.inventory.held_def(), player.inventory.held()) / maxf(def.hardness, 0.05)
+	break_progress += delta * break_speed(def, player.inventory.held_def(), player.inventory.held()) * player.mine_mult \
+			/ maxf(def.hardness, 0.05)
 	if floori(before * 4.0) != floori(break_progress * 4.0):
 		player.swing()
 	if break_progress >= 1.0:

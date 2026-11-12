@@ -74,8 +74,15 @@ static func lines(s: ItemStack, registry: ContentRegistry, locale: String = "ru"
 		out.append("Свет: %d" % d.light)
 	if d.is_food():
 		out.append("Сытость: %.0f · вода: %+.0f" % [float(d.food.get("nutrition", 0.0)), float(d.food.get("thirst", 0.0))])
-		if s.data.has("freshness"):
-			out.append("Свежесть: %d%%" % roundi(float(s.data["freshness"]) * 100.0))
+		if float(d.food.get("spoil_days", 0.0)) > 0.0:
+			out.append("Свежесть: %s · хранится ~%s дн. (в холоде дольше)" % [Spoilage.label(Spoilage.freshness(s)),
+				String.num(float(d.food["spoil_days"]), 0)])
+		else:
+			out.append("Не портится")
+		for fx: Dictionary in d.food.get("effects", []):
+			var ed := registry.get_entry("effects", StringName(fx.get("id", "")))
+			if String(ed.get("kind", "")) == "buff":
+				out.append("Даёт: %s" % ed["name"]["ru"])
 	if not d.fluid_container.is_empty():
 		var cap := int(d.fluid_container.get("capacity", 0))
 		if String(d.fluid_container.get("fluid", "")) == "":
