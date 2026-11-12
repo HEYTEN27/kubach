@@ -1,0 +1,58 @@
+{
+ "format": 1,
+ "category": "animals",
+ "description": "Домашние животные (раздел 8, этап 9: животноводство). Живут в AnimalSystem: бродят, едят из рук и кормушек, пьют из поилки или воды рядом, размножаются, дают продукцию (яйца, молоко, шерсть, навоз), при забое — мясо, шкуру, кости. Дикие стада появляются в новых колоннах по биомам. Модель — коробки (from/to в 1/16 блока от середины ног, +Z — вперёд), узор рисует шейдер животных.",
+ "fields": {
+  "id": { "type": "string", "required": true, "pattern": "^[a-z][a-z0-9_]*$" },
+  "name": { "type": "localized", "required": true },
+  "baby_name": { "type": "localized", "required": true },
+  "health": { "type": "float", "default": 10.0, "min": 1.0, "max": 200.0 },
+  "speed": { "type": "float", "default": 1.2, "min": 0.2, "max": 8.0, "doc": "Скорость шага, м/с; бегство — вдвое быстрее." },
+  "width": { "type": "float", "default": 0.8, "min": 0.2, "max": 3.0, "doc": "Ширина тела (коллизия), блоков." },
+  "height": { "type": "float", "default": 1.2, "min": 0.2, "max": 3.0 },
+  "food": { "type": "array", "of": { "type": "string" }, "default": [], "doc": "Чем кормить: id предметов или #тег." },
+  "fed_hours": { "type": "float", "default": 24.0, "min": 1.0, "max": 240.0, "doc": "Насколько хватает одной порции." },
+  "adult_days": { "type": "float", "default": 3.0, "min": 0.1, "max": 60.0, "doc": "Через сколько игровых дней детёныш вырастает." },
+  "breed_days": { "type": "float", "default": 2.0, "min": 0.1, "max": 60.0, "doc": "Отдых после рождения детёныша." },
+  "products": {
+   "type": "array", "default": [],
+   "doc": "Продукция взрослого сытого (и напоенного, если needs_water) животного. lay — само кладёт в гнездо рядом или на землю; milk — ПКМ с ведром; shear — ПКМ ножницами (отрастает за every_hours); drop — роняет на землю (навоз).",
+   "of": { "type": "object", "fields": {
+    "item": { "type": "ref", "to": ["items", "blocks"], "required": true },
+    "method": { "type": "enum", "values": ["lay", "milk", "shear", "drop"], "required": true },
+    "every_hours": { "type": "float", "default": 24.0, "min": 0.5, "max": 1000.0 },
+    "min": { "type": "int", "default": 1, "min": 1, "max": 16 },
+    "max": { "type": "int", "default": 1, "min": 1, "max": 16 },
+    "needs_water": { "type": "bool", "default": true },
+    "unfed_chance": { "type": "float", "default": 0.0, "min": 0.0, "max": 1.0, "doc": "Шанс получить продукт голодным (дикие куры несутся реже)." }
+   } }
+  },
+  "drops": {
+   "type": "array", "default": [], "doc": "Что выпадает при забое (у детёныша — вдвое меньше, не меньше одного).",
+   "of": { "type": "object", "fields": {
+    "id": { "type": "ref", "to": ["items", "blocks"], "required": true },
+    "min": { "type": "int", "default": 1, "min": 0, "max": 32 },
+    "max": { "type": "int", "default": 1, "min": 0, "max": 32 },
+    "chance": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 }
+   } }
+  },
+  "biomes": { "type": "array", "of": { "type": "ref", "to": ["biomes"] }, "default": [], "doc": "Где встречаются дикие стада." },
+  "herd_min": { "type": "int", "default": 2, "min": 1, "max": 16 },
+  "herd_max": { "type": "int", "default": 4, "min": 1, "max": 16 },
+  "spawn_chance": { "type": "float", "default": 0.05, "min": 0.0, "max": 1.0, "doc": "Шанс стада на новую колонну подходящего биома." },
+  "sounds": { "type": "string", "default": "", "doc": "Ключ звуков: animals/<sounds>_idle, _hurt, _death (assets/audio/MANIFEST.md)." },
+  "color": { "type": "color", "default": "#a08060", "doc": "Основной цвет (части без своего цвета)." },
+  "model": {
+   "type": "array", "required": true,
+   "of": { "type": "object", "fields": {
+    "from": { "type": "array", "of": { "type": "float" }, "required": true },
+    "to": { "type": "array", "of": { "type": "float" }, "required": true },
+    "color": { "type": "color", "default": "#00000000", "doc": "Пусто — color животного." },
+    "color2": { "type": "color", "default": "#00000000", "doc": "Второй цвет узора." },
+    "pattern": { "type": "enum", "values": ["hair", "spots", "wool", "feathers", "skin", "horn", "eye", "beak"], "default": "hair" },
+    "anim": { "type": "enum", "values": ["", "leg_a", "leg_b", "head", "tail", "wool"], "default": "", "doc": "leg_a/leg_b — ноги в противофазе, head — голова (кивает, щиплет траву), wool — шерсть (исчезает после стрижки)." },
+    "pivot": { "type": "array", "of": { "type": "float" }, "default": [], "doc": "Шарнир части (по умолчанию — верх коробки по центру)." }
+   } }
+  }
+ }
+}

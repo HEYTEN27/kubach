@@ -57,6 +57,11 @@ func suppress(sec: float) -> void:
 	_cooldown = maxf(_cooldown, sec)
 
 
+## Клик уже забран другим действием в этом кадре (животное, лодка, ведро).
+func is_suppressed() -> bool:
+	return _suppressed > 0.0
+
+
 func _process(delta: float) -> void:
 	_cooldown = maxf(0.0, _cooldown - delta)
 	_suppressed = maxf(0.0, _suppressed - delta)

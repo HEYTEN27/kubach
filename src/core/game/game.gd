@@ -25,6 +25,7 @@ var vehicles: VehicleSystem
 var farm: FarmSystem
 var spoilage: SpoilageSystem
 var orchard: OrchardSystem
+var animals: AnimalSystem
 var weather_effects: WeatherEffects
 ## Операции окна инвентаря (курсор, клики) — исполнитель действий InventoryAction.
 var inv_ops: InventoryOps
@@ -144,6 +145,16 @@ func _ready() -> void:
 	orchard = OrchardSystem.new()
 	add_child(orchard)
 	orchard.setup(world, survival.clock, player)
+	animals = AnimalSystem.new()
+	add_child(animals)
+	animals.setup(world, survival.clock, player)
+	if save != null:
+		animals.from_array(save.meta.get("animals", []))
+	animals.message.connect(func(t: String) -> void: hud.show_toast(t))
+	var animal_ctl := AnimalController.new()
+	add_child(animal_ctl)
+	animal_ctl.setup(world, player, animals)
+	animal_ctl.message.connect(func(t: String) -> void: hud.show_toast(t, 3.0))
 	var farm_ctl := FarmController.new()
 	add_child(farm_ctl)
 	farm_ctl.setup(world, player, farm, orchard)
@@ -191,6 +202,7 @@ func _ready() -> void:
 	debug_overlay.fluids = fluids
 	debug_overlay.farm = farm
 	debug_overlay.orchard = orchard
+	debug_overlay.animals = animals
 	add_child(debug_overlay)
 	debug_overlay.visible = GameLaunch.show_debug
 	pause_menu = PauseMenu.new()
@@ -301,6 +313,7 @@ func save_game(autosave: bool = false) -> void:
 	save.meta["dropped"] = dropped.to_array()
 	save.meta["weather"] = weather.to_dict()
 	save.meta["vehicles"] = vehicles.to_array()
+	save.meta["animals"] = animals.to_array()
 	save.meta["season"] = String(survival.clock.season())
 	save.meta["day"] = survival.clock.day
 	save.meta["world_spawn"] = _world_spawn
@@ -877,8 +890,11 @@ func _screenshot_step(delta: float) -> void:
 		survival.vitals.add_effect(&"well_fed")
 		survival.vitals.add_effect(&"splinted")
 		_open_status()
-	elif GameLaunch.open_ui in ["farm", "kitchen", "fell"]:
-		FarmDemo.build(GameLaunch.open_ui, world, farm, orchard, player)
+	elif GameLaunch.open_ui in ["farm", "kitchen", "fell", "animals"]:
+		FarmDemo.build(GameLaunch.open_ui, world, farm, orchard, player, animals)
+		for i in 3:
+			await get_tree().process_frame
+		animals.set_physics_process(false)
 	elif GameLaunch.open_ui == "chest":
 		var b := player.body
 		var p := Vector3i(floori(b.x) + 2, floori(b.y), floori(b.z))

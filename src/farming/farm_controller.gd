@@ -29,7 +29,7 @@ func setup(p_world: World, p_player: Player, p_farm: FarmSystem, p_orchard: Orch
 func _process(_delta: float) -> void:
 	if player == null or not player.active or not player.input_allowed() or player.vehicle != null:
 		return
-	if not Input.is_action_just_pressed(&"use") or Input.is_action_pressed(&"crouch"):
+	if not Input.is_action_just_pressed(&"use") or Input.is_action_pressed(&"crouch") or player.interaction.is_suppressed():
 		return
 	var t: Dictionary = player.interaction.target
 	if not t.get("hit", false):

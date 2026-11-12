@@ -48,6 +48,17 @@ func _run() -> void:
 	f.close()
 
 	if "--update-baseline" in args:
+		# С --only обновляются только эти кейсы, остальные остаются из прежнего эталона.
+		var partial := false
+		for arg: String in args:
+			partial = partial or arg.begins_with("--only=")
+		if partial and FileAccess.file_exists(BASELINE):
+			var old: Variant = JSON.parse_string(FileAccess.get_file_as_string(BASELINE))
+			if old is Dictionary and (old as Dictionary).get("results") is Dictionary:
+				var merged: Dictionary = old["results"]
+				for k: String in results:
+					merged[k] = results[k]
+				report["results"] = merged
 		var b := FileAccess.open(BASELINE, FileAccess.WRITE)
 		b.store_string(JSON.stringify(report, "  "))
 		b.close()

@@ -226,6 +226,10 @@ func execute(action: GameAction) -> bool:
 				set_entity(p, { "type": "station", "kind": String(def.station_kind), "tier": def.station_tier,
 					"facing": posmod(action.facing, 4) })
 				chunks.notify_block_changed(p.x, p.y, p.z)
+			elif def.has_tag("facing"):
+				# Повёрнутая модель (изгородь, калитка, кормушка): поворот — в данных блока.
+				set_entity(p, { "type": "block", "facing": posmod(action.facing, 4) })
+				chunks.notify_block_changed(p.x, p.y, p.z)
 			_emit_bus(&"block_placed", p, action.block)
 			return true
 		GameAction.Type.TAKE_FLUID:
@@ -355,10 +359,18 @@ func _on_container_changed(p: Vector3i) -> void:
 	if inv == null or col == null:
 		return
 	var key := ChunkColumn.entity_index(p.x & 15, p.y, p.z & 15)
+	# Поворот модели (кормушка, гнездо) живёт в тех же данных — не теряем его.
+	var old: Dictionary = col.block_entities.get(key, {})
 	if inv.is_empty():
-		col.block_entities.erase(key)
+		if old.has("facing"):
+			col.block_entities[key] = { "type": "block", "facing": old["facing"] }
+		else:
+			col.block_entities.erase(key)
 	else:
-		col.block_entities[key] = { "type": "container", "items": inv.to_array() }
+		var e := { "type": "container", "items": inv.to_array() }
+		if old.has("facing"):
+			e["facing"] = old["facing"]
+		col.block_entities[key] = e
 	col.dirty = true
 
 

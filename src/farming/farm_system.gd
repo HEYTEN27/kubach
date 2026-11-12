@@ -12,8 +12,8 @@ extends Node
 ## (однолетник пересаживается, многолетник откатывается на regrow_stage), сломать — урожай или семя.
 
 const TICK_SEC := 1.0
-## Сколько культур проверяется за тик (остальные — в следующих тиках по кругу).
-const BUDGET := 160
+## Сколько культур проверяется за кадр (~0,05 мс на культуру; остальные — в следующих кадрах).
+const FRAME_BUDGET := 24
 const MAX_CATCHUP_DAYS := 30.0
 const WATER_RADIUS := 4
 const SPRINKLER_RADIUS := 4
@@ -79,14 +79,15 @@ func crop_def(id: StringName) -> Dictionary:
 
 func _process(delta: float) -> void:
 	_left -= delta
-	if _left > 0.0:
-		return
-	_left = TICK_SEC
-	var t0 := Time.get_ticks_usec()
+	# Очередь обходится по FRAME_BUDGET культур за кадр (без рывков); новый круг — не чаще TICK_SEC.
 	if _queue.is_empty():
+		if _left > 0.0:
+			return
+		_left = TICK_SEC
 		for p: Vector3i in crops:
 			_queue.append(p)
-	var n := mini(BUDGET, _queue.size())
+	var t0 := Time.get_ticks_usec()
+	var n := mini(FRAME_BUDGET, _queue.size())
 	var now := clock.total_minutes()
 	for i in n:
 		var p: Vector3i = _queue.pop_back()

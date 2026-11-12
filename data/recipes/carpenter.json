@@ -1150,6 +1150,121 @@
    "unlock": "ingredients",
    "category": "kitchen",
    "order": 55
+  },
+  {
+   "id": "make_fence_oak",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    },
+    {
+     "tag": "planks",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "fence_oak",
+    "count": 3
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 50
+  },
+  {
+   "id": "make_fence_gate",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "log",
+     "count": 1
+    },
+    {
+     "tag": "planks",
+     "count": 3
+    },
+    {
+     "id": "rope",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "fence_gate",
+    "count": 1
+   },
+   "time": 12,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 51
+  },
+  {
+   "id": "make_feeder",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 5
+    }
+   ],
+   "output": {
+    "id": "feeder",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 52
+  },
+  {
+   "id": "make_water_trough",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 5
+    },
+    {
+     "id": "clay",
+     "count": 2
+    }
+   ],
+   "output": {
+    "id": "water_trough",
+    "count": 1
+   },
+   "time": 10,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 53
+  },
+  {
+   "id": "make_nest_box",
+   "station": "carpenter",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "planks",
+     "count": 4
+    },
+    {
+     "id": "hay_bale",
+     "count": 1
+    }
+   ],
+   "output": {
+    "id": "nest_box",
+    "count": 2
+   },
+   "time": 8,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 54
   }
  ]
 }

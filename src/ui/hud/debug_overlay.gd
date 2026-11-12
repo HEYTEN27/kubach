@@ -14,6 +14,7 @@ var weather: WeatherSystem
 var fluids: FluidSystem
 var farm: FarmSystem
 var orchard: OrchardSystem
+var animals: AnimalSystem
 
 var _label: Label
 var _accum := 0.0
@@ -134,6 +135,9 @@ func build_text() -> String:
 		lines.append("Ферма: культур %d · разбрызгивателей %d · %.2f мс%s" % [farm.crops.size(), farm.sprinklers.size(),
 			farm.stat_ms, "" if orchard == null else " · сад: саженцев %d, колонн с плодовыми %d, упало деревьев %d · %.2f мс" % [
 				orchard.saplings.size(), orchard.tracked_columns(), orchard.felled, orchard.stat_ms]])
+	if animals != null:
+		lines.append("Животные: всего %d · ходят %d · кормушек %d, поилок %d, гнёзд %d · %.2f мс" % [animals.animals.size(),
+			animals.stat_sim, animals.feeders.size(), animals.troughs.size(), animals.nests.size(), animals.stat_ms])
 	if weather != null:
 		var w := weather.values
 		var win := weather.clock.day_window()

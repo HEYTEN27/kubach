@@ -1,0 +1,660 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "fence_oak",
+   "name": {
+    "ru": "Изгородь",
+    "en": "Fence"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 0,
+   "map_color": "#8a6a44",
+   "hardness": 1.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "fence_oak"
+    }
+   ],
+   "tags": [
+    "fence",
+    "facing"
+   ],
+   "weight": 3.0,
+   "model": [
+    {
+     "from": [
+      6,
+      0,
+      6
+     ],
+     "to": [
+      10,
+      16,
+      10
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      0,
+      5,
+      7
+     ],
+     "to": [
+      16,
+      8,
+      9
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      0,
+      11,
+      7
+     ],
+     "to": [
+      16,
+      14,
+      9
+     ],
+     "tex": "oak_planks"
+    }
+   ]
+  },
+  {
+   "id": "fence_gate",
+   "name": {
+    "ru": "Калитка",
+    "en": "Fence Gate"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 0,
+   "map_color": "#8a6a44",
+   "hardness": 1.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "fence_gate"
+    }
+   ],
+   "tags": [
+    "fence",
+    "facing",
+    "gate"
+   ],
+   "weight": 3.0,
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      6.5
+     ],
+     "to": [
+      2,
+      16,
+      9.5
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      6.5
+     ],
+     "to": [
+      16,
+      16,
+      9.5
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      2,
+      5,
+      7
+     ],
+     "to": [
+      14,
+      7.5,
+      9
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      2,
+      11,
+      7
+     ],
+     "to": [
+      14,
+      13.5,
+      9
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      7,
+      5,
+      7
+     ],
+     "to": [
+      9,
+      13.5,
+      9
+     ],
+     "tex": "oak_planks"
+    }
+   ]
+  },
+  {
+   "id": "fence_gate_open",
+   "name": {
+    "ru": "Калитка (открыта)",
+    "en": "Fence Gate (open)"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 0,
+   "solid": false,
+   "item": false,
+   "map_color": "#8a6a44",
+   "hardness": 1.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "fence_gate"
+    }
+   ],
+   "tags": [
+    "facing",
+    "gate",
+    "gate_open"
+   ],
+   "weight": 3.0,
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      6.5
+     ],
+     "to": [
+      2,
+      16,
+      9.5
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      14,
+      0,
+      6.5
+     ],
+     "to": [
+      16,
+      16,
+      9.5
+     ],
+     "tex": "oak_log"
+    },
+    {
+     "from": [
+      0.5,
+      5,
+      9.5
+     ],
+     "to": [
+      2.5,
+      7.5,
+      21.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      0.5,
+      11,
+      9.5
+     ],
+     "to": [
+      2.5,
+      13.5,
+      21.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      0.5,
+      5,
+      14.5
+     ],
+     "to": [
+      2.5,
+      13.5,
+      16.5
+     ],
+     "tex": "oak_planks"
+    }
+   ]
+  },
+  {
+   "id": "feeder",
+   "name": {
+    "ru": "Кормушка",
+    "en": "Feeder"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 2.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "feeder"
+    }
+   ],
+   "tags": [
+    "feeder",
+    "facing",
+    "storage"
+   ],
+   "weight": 6.0,
+   "container": {
+    "slots": 9,
+    "kind": "crate"
+   },
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      2
+     ],
+     "to": [
+      16,
+      2,
+      14
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      2,
+      2
+     ],
+     "to": [
+      16,
+      9,
+      3.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      0,
+      2,
+      12.5
+     ],
+     "to": [
+      16,
+      9,
+      14
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      0,
+      2,
+      3.5
+     ],
+     "to": [
+      1.5,
+      9,
+      12.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      14.5,
+      2,
+      3.5
+     ],
+     "to": [
+      16,
+      9,
+      12.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1.5,
+      2,
+      3.5
+     ],
+     "to": [
+      14.5,
+      7,
+      12.5
+     ],
+     "tex": "tex_hay"
+    }
+   ]
+  },
+  {
+   "id": "water_trough",
+   "name": {
+    "ru": "Поилка",
+    "en": "Water Trough"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#6a5a44",
+   "hardness": 2.0,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "spruce_planks"
+   },
+   "drops": [
+    {
+     "id": "water_trough"
+    }
+   ],
+   "tags": [
+    "water_trough",
+    "facing"
+   ],
+   "weight": 6.0,
+   "model": [
+    {
+     "from": [
+      0,
+      0,
+      3
+     ],
+     "to": [
+      16,
+      1.5,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      1.5,
+      3
+     ],
+     "to": [
+      16,
+      8,
+      4.5
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      1.5,
+      11.5
+     ],
+     "to": [
+      16,
+      8,
+      13
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      0,
+      1.5,
+      4.5
+     ],
+     "to": [
+      1.5,
+      8,
+      11.5
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      14.5,
+      1.5,
+      4.5
+     ],
+     "to": [
+      16,
+      8,
+      11.5
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      1.5,
+      1.5,
+      4.5
+     ],
+     "to": [
+      14.5,
+      6.5,
+      11.5
+     ],
+     "tex": "clay"
+    }
+   ]
+  },
+  {
+   "id": "nest_box",
+   "name": {
+    "ru": "Гнездо-несушка",
+    "en": "Nest Box"
+   },
+   "material": "wood",
+   "render": "invisible",
+   "light_filter": 1,
+   "map_color": "#8a6a44",
+   "hardness": 1.5,
+   "tool": "axe",
+   "sounds": "wood",
+   "flammable": true,
+   "textures": {
+    "all": "oak_planks"
+   },
+   "drops": [
+    {
+     "id": "nest_box"
+    }
+   ],
+   "tags": [
+    "nest_box",
+    "facing",
+    "storage"
+   ],
+   "weight": 4.0,
+   "container": {
+    "slots": 6,
+    "kind": "crate"
+   },
+   "model": [
+    {
+     "from": [
+      1,
+      0,
+      1
+     ],
+     "to": [
+      15,
+      1,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      1
+     ],
+     "to": [
+      15,
+      12,
+      2.5
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      1,
+      2.5
+     ],
+     "to": [
+      2.5,
+      12,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      13.5,
+      1,
+      2.5
+     ],
+     "to": [
+      15,
+      12,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      2.5,
+      1,
+      13.5
+     ],
+     "to": [
+      13.5,
+      4,
+      15
+     ],
+     "tex": "oak_planks"
+    },
+    {
+     "from": [
+      1,
+      12,
+      1
+     ],
+     "to": [
+      15,
+      13.5,
+      15
+     ],
+     "tex": "spruce_planks"
+    },
+    {
+     "from": [
+      2.5,
+      1,
+      2.5
+     ],
+     "to": [
+      13.5,
+      3,
+      13.5
+     ],
+     "tex": "tex_hay"
+    }
+   ]
+  },
+  {
+   "id": "hay_bale",
+   "name": {
+    "ru": "Тюк сена",
+    "en": "Hay Bale"
+   },
+   "material": "plant",
+   "map_color": "#c8a95a",
+   "hardness": 0.6,
+   "sounds": "grass",
+   "flammable": true,
+   "textures": {
+    "top": "hay_bale_top",
+    "bottom": "hay_bale_top",
+    "side": "hay_bale_side"
+   },
+   "drops": [
+    {
+     "id": "hay_bale"
+    }
+   ],
+   "tags": [
+    "hay",
+    "compostable"
+   ],
+   "weight": 4.0
+  },
+  {
+   "id": "tex_hay",
+   "name": {
+    "ru": "Сено (текстура)",
+    "en": "Hay (texture)"
+   },
+   "material": "plant",
+   "map_color": "#c8a95a",
+   "hardness": 0.5,
+   "textures": {
+    "all": "tex_hay"
+   },
+   "item": false,
+   "drops": [],
+   "tags": [
+    "texture_only"
+   ]
+  }
+ ]
+}

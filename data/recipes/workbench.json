@@ -979,6 +979,25 @@
    "unlock": "ingredients",
    "category": "kitchen",
    "order": 47
+  },
+  {
+   "id": "make_hay_bale",
+   "station": "workbench",
+   "op": "craft",
+   "inputs": [
+    {
+     "tag": "grain",
+     "count": 9
+    }
+   ],
+   "output": {
+    "id": "hay_bale",
+    "count": 1
+   },
+   "time": 6,
+   "unlock": "ingredients",
+   "category": "farming",
+   "order": 55
   }
  ]
 }

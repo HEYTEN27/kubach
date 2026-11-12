@@ -1,0 +1,1462 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "cow",
+   "name": {
+    "ru": "Корова",
+    "en": "Cow"
+   },
+   "baby_name": {
+    "ru": "Телёнок",
+    "en": "Calf"
+   },
+   "health": 20,
+   "speed": 1.1,
+   "width": 0.9,
+   "height": 1.45,
+   "food": [
+    "#grain",
+    "hay_bale",
+    "cabbage",
+    "#root"
+   ],
+   "adult_days": 4,
+   "breed_days": 3,
+   "products": [
+    {
+     "item": "milk",
+     "method": "milk",
+     "every_hours": 24,
+     "min": 2,
+     "max": 3
+    },
+    {
+     "item": "manure",
+     "method": "drop",
+     "every_hours": 36,
+     "needs_water": false,
+     "unfed_chance": 0.3
+    }
+   ],
+   "drops": [
+    {
+     "id": "beef",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "id": "raw_hide",
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "bone",
+     "min": 1,
+     "max": 3
+    },
+    {
+     "id": "animal_fat",
+     "min": 0,
+     "max": 1
+    }
+   ],
+   "biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe"
+   ],
+   "herd_min": 2,
+   "herd_max": 4,
+   "spawn_chance": 0.035,
+   "sounds": "cow",
+   "color": "#5a3a26",
+   "model": [
+    {
+     "from": [
+      -6,
+      10,
+      -9
+     ],
+     "to": [
+      6,
+      21,
+      9
+     ],
+     "color": "#5a3a26",
+     "color2": "#f2ede4",
+     "pattern": "spots"
+    },
+    {
+     "from": [
+      -5.5,
+      0,
+      -8.0
+     ],
+     "to": [
+      -1.5,
+      10,
+      -4.0
+     ],
+     "color": "#4a3020",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -5.5,
+      0,
+      4.0
+     ],
+     "to": [
+      -1.5,
+      10,
+      8.0
+     ],
+     "color": "#4a3020",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.5,
+      0,
+      -8.0
+     ],
+     "to": [
+      5.5,
+      10,
+      -4.0
+     ],
+     "color": "#4a3020",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.5,
+      0,
+      4.0
+     ],
+     "to": [
+      5.5,
+      10,
+      8.0
+     ],
+     "color": "#4a3020",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -1.5,
+      0,
+      -6.5
+     ],
+     "to": [
+      1.5,
+      1.2,
+      -5.5
+     ],
+     "color": "#2a2420",
+     "pattern": "horn",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -4,
+      14,
+      9
+     ],
+     "to": [
+      4,
+      22,
+      15
+     ],
+     "color": "#5a3a26",
+     "color2": "#f2ede4",
+     "pattern": "spots",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    },
+    {
+     "from": [
+      -3,
+      14,
+      15
+     ],
+     "to": [
+      3,
+      17.5,
+      16.5
+     ],
+     "color": "#d8a090",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    },
+    {
+     "from": [
+      -6,
+      21,
+      11
+     ],
+     "to": [
+      -4,
+      23,
+      12.5
+     ],
+     "color": "#e8e0c8",
+     "pattern": "horn",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    },
+    {
+     "from": [
+      4,
+      21,
+      11
+     ],
+     "to": [
+      6,
+      23,
+      12.5
+     ],
+     "color": "#e8e0c8",
+     "pattern": "horn",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    },
+    {
+     "from": [
+      -2.5,
+      8,
+      -5
+     ],
+     "to": [
+      2.5,
+      10,
+      0
+     ],
+     "color": "#e8a8a0",
+     "pattern": "skin"
+    },
+    {
+     "from": [
+      -0.8,
+      9,
+      -10
+     ],
+     "to": [
+      0.8,
+      20,
+      -9
+     ],
+     "color": "#3a2618",
+     "pattern": "hair",
+     "anim": "tail",
+     "pivot": [
+      0,
+      20,
+      -9.5
+     ]
+    },
+    {
+     "from": [
+      -3.8,
+      19,
+      15
+     ],
+     "to": [
+      -2.6,
+      20.2,
+      15.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    },
+    {
+     "from": [
+      2.6,
+      19,
+      15
+     ],
+     "to": [
+      3.8,
+      20.2,
+      15.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      18,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sheep",
+   "name": {
+    "ru": "Овца",
+    "en": "Sheep"
+   },
+   "baby_name": {
+    "ru": "Ягнёнок",
+    "en": "Lamb"
+   },
+   "health": 14,
+   "speed": 1.1,
+   "width": 0.8,
+   "height": 1.3,
+   "food": [
+    "#grain",
+    "hay_bale",
+    "cabbage",
+    "lettuce"
+   ],
+   "adult_days": 3,
+   "breed_days": 2,
+   "products": [
+    {
+     "item": "wool",
+     "method": "shear",
+     "every_hours": 72,
+     "min": 1,
+     "max": 3,
+     "needs_water": false
+    },
+    {
+     "item": "manure",
+     "method": "drop",
+     "every_hours": 48,
+     "needs_water": false,
+     "unfed_chance": 0.3
+    }
+   ],
+   "drops": [
+    {
+     "id": "mutton",
+     "min": 1,
+     "max": 3
+    },
+    {
+     "id": "raw_hide",
+     "min": 1,
+     "max": 1
+    },
+    {
+     "id": "bone",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "biomes": [
+    "meadow",
+    "steppe",
+    "alpine_meadows",
+    "forest_steppe"
+   ],
+   "herd_min": 3,
+   "herd_max": 5,
+   "spawn_chance": 0.04,
+   "sounds": "sheep",
+   "color": "#ece6d6",
+   "model": [
+    {
+     "from": [
+      -4,
+      10,
+      -6
+     ],
+     "to": [
+      4,
+      17,
+      6
+     ],
+     "color": "#d8ccb0",
+     "pattern": "skin"
+    },
+    {
+     "from": [
+      -5.5,
+      9,
+      -7.5
+     ],
+     "to": [
+      5.5,
+      19,
+      7.5
+     ],
+     "color": "#ece6d6",
+     "color2": "#cfc6b0",
+     "pattern": "wool",
+     "anim": "wool"
+    },
+    {
+     "from": [
+      -4.3,
+      0,
+      -6.0
+     ],
+     "to": [
+      -1.2999999999999998,
+      10,
+      -3.0
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -4.3,
+      0,
+      3.0
+     ],
+     "to": [
+      -1.2999999999999998,
+      10,
+      6.0
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.2999999999999998,
+      0,
+      -6.0
+     ],
+     "to": [
+      4.3,
+      10,
+      -3.0
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.2999999999999998,
+      0,
+      3.0
+     ],
+     "to": [
+      4.3,
+      10,
+      6.0
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -3,
+      13,
+      6.5
+     ],
+     "to": [
+      3,
+      20,
+      12
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    },
+    {
+     "from": [
+      -3.6,
+      17,
+      7
+     ],
+     "to": [
+      3.6,
+      21,
+      10.5
+     ],
+     "color": "#ece6d6",
+     "color2": "#cfc6b0",
+     "pattern": "wool",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    },
+    {
+     "from": [
+      -4.5,
+      16,
+      8
+     ],
+     "to": [
+      -3,
+      17.5,
+      10
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    },
+    {
+     "from": [
+      3,
+      16,
+      8
+     ],
+     "to": [
+      4.5,
+      17.5,
+      10
+     ],
+     "color": "#2e2a26",
+     "pattern": "hair",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    },
+    {
+     "from": [
+      -2.8,
+      17,
+      12
+     ],
+     "to": [
+      -1.8,
+      18.0,
+      12.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    },
+    {
+     "from": [
+      1.8,
+      17,
+      12
+     ],
+     "to": [
+      2.8,
+      18.0,
+      12.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pig",
+   "name": {
+    "ru": "Свинья",
+    "en": "Pig"
+   },
+   "baby_name": {
+    "ru": "Поросёнок",
+    "en": "Piglet"
+   },
+   "health": 16,
+   "speed": 1.0,
+   "width": 0.8,
+   "height": 1.0,
+   "food": [
+    "#root",
+    "#vegetable",
+    "#grain",
+    "#edible_mushroom"
+   ],
+   "adult_days": 3,
+   "breed_days": 2,
+   "products": [
+    {
+     "item": "manure",
+     "method": "drop",
+     "every_hours": 30,
+     "needs_water": false,
+     "unfed_chance": 0.3
+    }
+   ],
+   "drops": [
+    {
+     "id": "pork",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "id": "lard",
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "raw_hide",
+     "min": 0,
+     "max": 1
+    },
+    {
+     "id": "bone",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "biomes": [
+    "forest_steppe",
+    "oak_forest",
+    "mixed_forest"
+   ],
+   "herd_min": 2,
+   "herd_max": 4,
+   "spawn_chance": 0.03,
+   "sounds": "pig",
+   "color": "#e8a8a0",
+   "model": [
+    {
+     "from": [
+      -5,
+      6,
+      -8
+     ],
+     "to": [
+      5,
+      15,
+      8
+     ],
+     "color": "#e8a8a0",
+     "color2": "#d08a84",
+     "pattern": "skin"
+    },
+    {
+     "from": [
+      -4.5,
+      0,
+      -7.0
+     ],
+     "to": [
+      -1.5,
+      6,
+      -4.0
+     ],
+     "color": "#e0a098",
+     "pattern": "skin",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -4.5,
+      0,
+      4.0
+     ],
+     "to": [
+      -1.5,
+      6,
+      7.0
+     ],
+     "color": "#e0a098",
+     "pattern": "skin",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.5,
+      0,
+      -7.0
+     ],
+     "to": [
+      4.5,
+      6,
+      -4.0
+     ],
+     "color": "#e0a098",
+     "pattern": "skin",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.5,
+      0,
+      4.0
+     ],
+     "to": [
+      4.5,
+      6,
+      7.0
+     ],
+     "color": "#e0a098",
+     "pattern": "skin",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -4,
+      7,
+      8
+     ],
+     "to": [
+      4,
+      15,
+      14
+     ],
+     "color": "#e8a8a0",
+     "color2": "#d08a84",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    },
+    {
+     "from": [
+      -2,
+      8,
+      14
+     ],
+     "to": [
+      2,
+      11,
+      15.5
+     ],
+     "color": "#d88a84",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    },
+    {
+     "from": [
+      -4,
+      14,
+      10
+     ],
+     "to": [
+      -2,
+      16,
+      11.5
+     ],
+     "color": "#d88a84",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    },
+    {
+     "from": [
+      2,
+      14,
+      10
+     ],
+     "to": [
+      4,
+      16,
+      11.5
+     ],
+     "color": "#d88a84",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    },
+    {
+     "from": [
+      -0.6,
+      11,
+      -9
+     ],
+     "to": [
+      0.6,
+      14,
+      -8
+     ],
+     "color": "#d88a84",
+     "pattern": "skin",
+     "anim": "tail",
+     "pivot": [
+      0,
+      14,
+      -8.5
+     ]
+    },
+    {
+     "from": [
+      -3.2,
+      12,
+      14
+     ],
+     "to": [
+      -2.2,
+      13.0,
+      14.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    },
+    {
+     "from": [
+      2.2,
+      12,
+      14
+     ],
+     "to": [
+      3.2,
+      13.0,
+      14.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      11,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goat",
+   "name": {
+    "ru": "Коза",
+    "en": "Goat"
+   },
+   "baby_name": {
+    "ru": "Козлёнок",
+    "en": "Kid"
+   },
+   "health": 14,
+   "speed": 1.3,
+   "width": 0.7,
+   "height": 1.35,
+   "food": [
+    "#grain",
+    "hay_bale",
+    "#vegetable",
+    "#leaves"
+   ],
+   "adult_days": 3,
+   "breed_days": 2,
+   "products": [
+    {
+     "item": "milk",
+     "method": "milk",
+     "every_hours": 24,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "item": "manure",
+     "method": "drop",
+     "every_hours": 48,
+     "needs_water": false,
+     "unfed_chance": 0.3
+    }
+   ],
+   "drops": [
+    {
+     "id": "mutton",
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "raw_hide",
+     "min": 1,
+     "max": 1
+    },
+    {
+     "id": "bone",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "biomes": [
+    "alpine_meadows",
+    "steppe",
+    "karst",
+    "rocky_desert"
+   ],
+   "herd_min": 2,
+   "herd_max": 4,
+   "spawn_chance": 0.035,
+   "sounds": "goat",
+   "color": "#e0d8c8",
+   "model": [
+    {
+     "from": [
+      -4,
+      9,
+      -6.5
+     ],
+     "to": [
+      4,
+      17,
+      6.5
+     ],
+     "color": "#e0d8c8",
+     "color2": "#8a7a64",
+     "pattern": "hair"
+    },
+    {
+     "from": [
+      -3.85,
+      0,
+      -5.75
+     ],
+     "to": [
+      -1.35,
+      9,
+      -3.25
+     ],
+     "color": "#cfc4b0",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -3.85,
+      0,
+      3.25
+     ],
+     "to": [
+      -1.35,
+      9,
+      5.75
+     ],
+     "color": "#cfc4b0",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.35,
+      0,
+      -5.75
+     ],
+     "to": [
+      3.85,
+      9,
+      -3.25
+     ],
+     "color": "#cfc4b0",
+     "pattern": "hair",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      1.35,
+      0,
+      3.25
+     ],
+     "to": [
+      3.85,
+      9,
+      5.75
+     ],
+     "color": "#cfc4b0",
+     "pattern": "hair",
+     "anim": "leg_a"
+    },
+    {
+     "from": [
+      -2.5,
+      13,
+      6
+     ],
+     "to": [
+      2.5,
+      20,
+      11
+     ],
+     "color": "#e0d8c8",
+     "color2": "#8a7a64",
+     "pattern": "hair",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    },
+    {
+     "from": [
+      -1.2,
+      9.5,
+      9
+     ],
+     "to": [
+      1.2,
+      13,
+      10.5
+     ],
+     "color": "#cfc4b0",
+     "pattern": "hair",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    },
+    {
+     "from": [
+      -2.5,
+      19.5,
+      6.5
+     ],
+     "to": [
+      -1,
+      24,
+      8
+     ],
+     "color": "#6a5a48",
+     "pattern": "horn",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    },
+    {
+     "from": [
+      1,
+      19.5,
+      6.5
+     ],
+     "to": [
+      2.5,
+      24,
+      8
+     ],
+     "color": "#6a5a48",
+     "pattern": "horn",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    },
+    {
+     "from": [
+      -0.6,
+      15,
+      -7.5
+     ],
+     "to": [
+      0.6,
+      18,
+      -6.5
+     ],
+     "color": "#e0d8c8",
+     "pattern": "hair",
+     "anim": "tail",
+     "pivot": [
+      0,
+      17,
+      -7
+     ]
+    },
+    {
+     "from": [
+      -2.6,
+      17,
+      11
+     ],
+     "to": [
+      -1.6,
+      18.0,
+      11.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    },
+    {
+     "from": [
+      1.6,
+      17,
+      11
+     ],
+     "to": [
+      2.6,
+      18.0,
+      11.4
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      16,
+      6.5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chicken",
+   "name": {
+    "ru": "Курица",
+    "en": "Chicken"
+   },
+   "baby_name": {
+    "ru": "Цыплёнок",
+    "en": "Chick"
+   },
+   "health": 5,
+   "speed": 1.0,
+   "width": 0.45,
+   "height": 0.85,
+   "food": [
+    "#seeds",
+    "#grain"
+   ],
+   "adult_days": 2,
+   "breed_days": 1.5,
+   "products": [
+    {
+     "item": "egg",
+     "method": "lay",
+     "every_hours": 24,
+     "min": 1,
+     "max": 1,
+     "unfed_chance": 0.4
+    },
+    {
+     "item": "feather",
+     "method": "drop",
+     "every_hours": 48,
+     "needs_water": false,
+     "unfed_chance": 0.5
+    }
+   ],
+   "drops": [
+    {
+     "id": "poultry",
+     "min": 1,
+     "max": 1
+    },
+    {
+     "id": "feather",
+     "min": 1,
+     "max": 3
+    },
+    {
+     "id": "bone",
+     "min": 0,
+     "max": 1
+    }
+   ],
+   "biomes": [
+    "meadow",
+    "flower_fields",
+    "forest_steppe",
+    "savanna"
+   ],
+   "herd_min": 3,
+   "herd_max": 5,
+   "spawn_chance": 0.04,
+   "sounds": "chicken",
+   "color": "#f2ece0",
+   "model": [
+    {
+     "from": [
+      -2.5,
+      4,
+      -3.5
+     ],
+     "to": [
+      2.5,
+      9,
+      3.5
+     ],
+     "color": "#f2ece0",
+     "color2": "#d8cab0",
+     "pattern": "feathers"
+    },
+    {
+     "from": [
+      -3,
+      5,
+      -2.5
+     ],
+     "to": [
+      -2.5,
+      8,
+      2.5
+     ],
+     "color": "#e6dccb",
+     "color2": "#c8b898",
+     "pattern": "feathers",
+     "anim": "tail",
+     "pivot": [
+      -2.7,
+      8,
+      0
+     ]
+    },
+    {
+     "from": [
+      2.5,
+      5,
+      -2.5
+     ],
+     "to": [
+      3,
+      8,
+      2.5
+     ],
+     "color": "#e6dccb",
+     "color2": "#c8b898",
+     "pattern": "feathers",
+     "anim": "tail",
+     "pivot": [
+      2.7,
+      8,
+      0
+     ]
+    },
+    {
+     "from": [
+      -1.5,
+      7,
+      -5
+     ],
+     "to": [
+      1.5,
+      11,
+      -3.5
+     ],
+     "color": "#e6dccb",
+     "color2": "#c8b898",
+     "pattern": "feathers"
+    },
+    {
+     "from": [
+      -1.6,
+      0,
+      -0.3
+     ],
+     "to": [
+      -0.6,
+      4,
+      0.9
+     ],
+     "color": "#e0b040",
+     "pattern": "horn",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      0.6,
+      0,
+      -0.3
+     ],
+     "to": [
+      1.6,
+      4,
+      0.9
+     ],
+     "color": "#e0b040",
+     "pattern": "horn",
+     "anim": "leg_b"
+    },
+    {
+     "from": [
+      -1.8,
+      8,
+      2
+     ],
+     "to": [
+      1.8,
+      13,
+      5
+     ],
+     "color": "#f2ece0",
+     "color2": "#d8cab0",
+     "pattern": "feathers",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    },
+    {
+     "from": [
+      -0.8,
+      10,
+      5
+     ],
+     "to": [
+      0.8,
+      11.2,
+      6.6
+     ],
+     "color": "#e0a030",
+     "pattern": "beak",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    },
+    {
+     "from": [
+      -0.6,
+      13,
+      2.5
+     ],
+     "to": [
+      0.6,
+      14.5,
+      4.6
+     ],
+     "color": "#c82a24",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    },
+    {
+     "from": [
+      -0.5,
+      8.6,
+      4.6
+     ],
+     "to": [
+      0.5,
+      10,
+      5.4
+     ],
+     "color": "#c82a24",
+     "pattern": "skin",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    },
+    {
+     "from": [
+      -2.6,
+      11,
+      4.7
+     ],
+     "to": [
+      -1.8,
+      11.8,
+      5.1000000000000005
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    },
+    {
+     "from": [
+      1.8,
+      11,
+      4.7
+     ],
+     "to": [
+      2.6,
+      11.8,
+      5.1000000000000005
+     ],
+     "color": "#141414",
+     "pattern": "eye",
+     "anim": "head",
+     "pivot": [
+      0,
+      9,
+      3
+     ]
+    }
+   ]
+  }
+ ]
+}

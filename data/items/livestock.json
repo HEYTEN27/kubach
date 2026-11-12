@@ -1,0 +1,23 @@
+{
+ "format": 1,
+ "entries": [
+  {
+   "id": "feather",
+   "name": {
+    "ru": "Перо",
+    "en": "Feather"
+   },
+   "kind": "material",
+   "weight": 0.01,
+   "stack": 64,
+   "icon": {
+    "shape": "feather",
+    "color": "#f2ece0",
+    "color2": "#c8b898"
+   },
+   "tags": [
+    "feather"
+   ]
+  }
+ ]
+}

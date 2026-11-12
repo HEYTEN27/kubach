@@ -90,6 +90,9 @@ def classify(name, e):
         "withered_crop": (withered, 2, False),
         "glass": (glass, 1, False),
         "tex_compost": (compost, 2, True),
+        "hay_bale_side": (lambda c: hay(c, False), 2, False),
+        "hay_bale_top": (lambda c: hay(c, True), 2, True),
+        "tex_hay": (lambda c: hay(c, True), 2, True),
     }
     return table.get(name)
 
@@ -406,6 +409,45 @@ def compost(ctx):
     green = (chips < 0.08)
     albedo[green] = np.array(hex_rgb("#4a6a2a"))
     return Tex(np.clip(albedo, 0, 1), np.ones((s, s)), 0.6 * n + 0.4 * chips, 0.95 + 0.0 * n)
+
+
+def hay(ctx, top):
+    """Сено: бок тюка — уложенные стебли и две перевязки; торец — срезы стеблей вразнобой."""
+    s = ctx.size
+    rng = ctx.rng
+    q = 4
+    big = s * q
+    base = hex_rgb("#c8a95a")
+    img = Image.new("RGBA", (big, big), _rgba(shade(base, 0.62)))
+    d = ImageDraw.Draw(img)
+    if top:
+        for _ in range(900):
+            x, y = rng.random() * big, rng.random() * big
+            a = rng.random() * math.pi
+            L = q * (2 + 7 * rng.random())
+            d.line([(x, y), (x + math.cos(a) * L, y + math.sin(a) * L)], fill=_rgba(shade(base, 0.7 + 0.5 * rng.random())), width=q)
+        for _ in range(160):
+            x, y = rng.random() * big, rng.random() * big
+            r = q * (0.8 + 0.8 * rng.random())
+            d.ellipse([x - r, y - r, x + r, y + r], fill=_rgba(shade(base, 0.45)))
+    else:
+        for _ in range(700):
+            y = rng.random() * big
+            x = rng.random() * big - big * 0.2
+            L = big * (0.15 + 0.35 * rng.random())
+            dy = (rng.random() - 0.5) * q * 6
+            d.line([(x, y), (x + L, y + dy)], fill=_rgba(shade(base, 0.68 + 0.5 * rng.random())), width=q)
+        for bx in (0.27, 0.73):
+            x = big * bx
+            d.rectangle([x - q * 3, 0, x + q * 3, big], fill=_rgba(shade(hex_rgb("#8a6a3a"), 0.9)))
+            for y in range(0, big, q * 6):
+                d.line([(x - q * 3, y), (x + q * 3, y + q * 3)], fill=_rgba(shade(hex_rgb("#6a4a24"), 1.0)), width=q)
+    img = img.resize((s, s), Image.LANCZOS)
+    a = np.asarray(img).astype(float) / 255
+    albedo = a[..., :3] * (0.92 + 0.16 * fbm(s, 4, rng, 3)[..., None])
+    lum = albedo.mean(axis=2)
+    height = blur(lum, 1) * 0.8 + 0.2 * fbm(s, 12, rng, 3)
+    return Tex(np.clip(albedo, 0, 1), np.ones((s, s)), height, 0.9 + 0.05 * lum)
 
 
 def sapling(ctx, t, leaves, log):

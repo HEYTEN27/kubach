@@ -488,6 +488,16 @@ def draw_item(e):
                 y = 70 + r * 30
                 d.ellipse([x - 16, y - 16, x + 16, y + 16], fill=_c(col, 0.9 + 0.05 * c))
         d.line([(128, 60), (140, 28)], fill=_c(hex_rgb("#6a4a2a")), width=6)
+    elif shape == "feather":
+        # Перо: стержень по диагонали, опахало из косых бородок.
+        for i in range(22):
+            t = i / 21
+            x = 60 + t * 140
+            y = 210 - t * 170
+            w = 34 * math.sin(math.pi * min(1.0, t * 1.15))
+            d.line([(x, y), (x - w * 0.9, y - w * 0.45)], fill=_c(col, 0.92 + 0.1 * (i % 3)), width=7)
+            d.line([(x, y), (x + w * 0.45, y + w * 0.9)], fill=_c(col2 if i % 4 == 0 else col, 0.85 + 0.1 * (i % 2)), width=7)
+        d.line([(46, 228), (200, 40)], fill=_c(col2, 0.8), width=5)
     elif shape == "egg":
         d.ellipse([70, 50, 186, 216], fill=_c(col))
         d.ellipse([92, 76, 124, 120], fill=_c(col, 1.12))

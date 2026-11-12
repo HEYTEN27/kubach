@@ -3,13 +3,15 @@ extends RefCounted
 ## Сцены для визуальных смоук-тестов этапа 9 (scripts/screenshot.sh … --open=farm|kitchen|fell):
 ## ферма перед игроком (культуры разных стадий, полив, разбрызгиватель, теплица, сорняки,
 ## плодовые деревья, саженцы), ряд кухонных станций, падающее срубленное дерево.
+## Загон с животными (--open=animals).
 ## Камера по умолчанию смотрит на −Z, поэтому всё строится в z < игрока.
 
 const CROPS: Array[StringName] = [&"wheat", &"carrot", &"cabbage", &"tomato", &"corn", &"sunflower",
 	&"pumpkin", &"potato", &"strawberry", &"beet", &"flax", &"onion"]
 
 
-static func build(kind: String, world: World, farm: FarmSystem, orchard: OrchardSystem, player: Player) -> void:
+static func build(kind: String, world: World, farm: FarmSystem, orchard: OrchardSystem, player: Player,
+		animals: AnimalSystem = null) -> void:
 	var b := player.body
 	var base := Vector3i(floori(b.x), floori(b.y) - 1, floori(b.z))
 	match kind:
@@ -20,6 +22,9 @@ static func build(kind: String, world: World, farm: FarmSystem, orchard: Orchard
 			_kitchen(world, base)
 		"fell":
 			_fell(world, orchard, base, Vector3(b.x, b.y, b.z))
+		"animals":
+			_animals(world, animals, base)
+			_lift(player, 3.0)
 
 
 ## Ровная площадка: grnd на уровне y, воздух над ней до +h.
@@ -128,3 +133,45 @@ static func _fell(world: World, orchard: OrchardSystem, base: Vector3i, from: Ve
 	world.set_block(p.x, p.y, p.z, 0)
 	FallingTree.time_scale = 0.08
 	orchard.fell(p, lg, Vector3(p.x - 6.0, from.y, p.z + 0.5))
+
+
+static func _animals(world: World, animals: AnimalSystem, base: Vector3i) -> void:
+	var y := base.y
+	_flatten(world, base.x - 14, base.x + 14, base.z - 22, base.z + 3, y, Registry.block_num(&"turf"), 16)
+	var fence := Registry.block_num(&"fence_oak")
+	var x0 := base.x - 9
+	var x1 := base.x + 9
+	var z0 := base.z - 18
+	var z1 := base.z - 4
+	for x in range(x0, x1 + 1):
+		for z in [z0, z1]:
+			if not (z == z1 and x == base.x):
+				world.execute(GameAction.place_block(Vector3i(x, y + 1, z), fence, 2))
+	for z in range(z0 + 1, z1):
+		for x in [x0, x1]:
+			world.execute(GameAction.place_block(Vector3i(x, y + 1, z), fence, 1))
+	world.execute(GameAction.place_block(Vector3i(base.x, y + 1, z1), Registry.block_num(&"fence_gate"), 2))
+	world.execute(GameAction.place_block(Vector3i(base.x - 3, y + 1, z0 + 1), Registry.block_num(&"feeder"), 2))
+	world.execute(GameAction.place_block(Vector3i(base.x - 2, y + 1, z0 + 1), Registry.block_num(&"feeder"), 2))
+	world.execute(GameAction.place_block(Vector3i(base.x + 2, y + 1, z0 + 1), Registry.block_num(&"water_trough"), 2))
+	world.execute(GameAction.place_block(Vector3i(base.x + 3, y + 1, z0 + 1), Registry.block_num(&"water_trough"), 2))
+	for i in 3:
+		world.execute(GameAction.place_block(Vector3i(x1 - 1, y + 1, z0 + 2 + i), Registry.block_num(&"nest_box"), 3))
+	for p: Vector3i in [Vector3i(x0 + 1, y + 1, z0 + 1), Vector3i(x0 + 2, y + 1, z0 + 1), Vector3i(x0 + 1, y + 2, z0 + 1)]:
+		world.set_block(p.x, p.y, p.z, Registry.block_num(&"hay_bale"))
+	if animals == null:
+		return
+	var layout := [[&"cow", -6, -8, true], [&"cow", -4, -12, true], [&"cow", -5, -10, false],
+		[&"sheep", 0, -9, true], [&"sheep", 2, -11, true], [&"sheep", 1, -7, false],
+		[&"pig", 5, -13, true], [&"pig", 6, -15, false], [&"goat", -1, -14, true], [&"goat", 3, -15, true],
+		[&"chicken", 6, -7, true], [&"chicken", 7, -8, true], [&"chicken", 5, -9, false]]
+	for e: Array in layout:
+		var a := animals.spawn(e[0], base.x + float(e[1]) + 0.5, float(y + 1), base.z + float(e[2]) + 0.5, e[3])
+		if a != null:
+			a.yaw = float(int(e[1]) * 7 + int(e[2]) * 3) * 0.37
+			a.graze = 1.0 if int(e[1]) % 2 == 0 else 0.0
+	# Одну овцу остригли — видно, что шерсть снимается.
+	for a: Animal in animals.animals:
+		if a.id == &"sheep" and AnimalLife.is_adult(a, animals.def_of(a), animals.clock.total_minutes()):
+			a.next[AnimalLife.product_index(animals.def_of(a), "shear")] = animals.clock.total_minutes() + 600.0
+			break
